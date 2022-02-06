@@ -103,8 +103,19 @@ const [expanded, setExpanded] = useState(false);
                 <Tags text={'Postgres'} logo={psqlLogo} classGiven={'express'} />
                 <Tags text={'Express'} logo={''} classGiven={'postgres'} />
                 </div>
-                <div className="details">
-
+                <div className="details app">
+                    <div className="title">
+                    Details
+                </div>
+                <div className='list'>
+                    <ul>
+                        <li>Automated business flow of sale and purchase of items.</li>
+                        <li>Complete diagnosis flow including patient registration, case records, prescription, diagnosis and billing.</li>
+                        <li>Intelligent metrics and statistics of each owner, pet or business to target the right customers & negotiate better prices with vendors.</li>
+                        <li>Automatic reminders by email and sms to target the right customers based on the metrics calculated</li>
+                        <li>Current event scheduler and in-built appointment system</li>
+                    </ul>
+                </div>
                 </div>
             </div>
              
