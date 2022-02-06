@@ -8,6 +8,7 @@
    --light-dark-font-color: rgb(51, 51, 51);
    --logo-color: rgb(0, 145, 255);
    --light-logo-color: rgb(108, 180, 235);
+   --closing-color: rgb(243, 47, 47);
 }
 
 [data-theme="dark"] {
@@ -244,6 +245,9 @@ pre {
 
 
 @media only screen and (max-width: 786px) {
+  .navbar {
+  padding: 0 2.5em;
+}
   .navbar .right {
     display: none;
   }
@@ -289,4 +293,24 @@ pre {
         }
     }
 
+}
+
+/* ---------------------------------- SIDEBAR ---------------------------- */
+.sidebar {
+  width: 170px;
+}
+
+.sidebar .title {
+  padding: 0.5em 0.5em;
+}
+
+.sidebar .title .text {
+  font-size: 1em;
+  font-family: 'Comfortaa', cursive;
+  color: var(--logo-color);
+  font-weight: bold;
+}
+
+.sidebar .title .icon {
+  color: var(--dark-font-color);
 }
