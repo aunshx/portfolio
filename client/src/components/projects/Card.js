@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { IconButton, Tooltip } from '@mui/material';
+import { Collapse, IconButton, Tooltip } from '@mui/material';
 
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
 import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
-import defaultImg from '../../resources/images/default.jpg'
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faReact } from '@fortawesome/free-solid-svg-icons';
+
+import Tags from './Tags';
+
+import defaultImg from '../../resources/images/default.jpg'
+import reduxLogo from '../../resources/images/reduxLogo.png'
+import reactLogo from '../../resources/images/reactLogo.png'
+import jsLogo from '../../resources/images/jsLogo.png'
+import nodeLogo from '../../resources/images/nodeLogo.png'
+import psqlLogo from '../../resources/images/psqlLogo.png'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -70,6 +80,34 @@ const [expanded, setExpanded] = useState(false);
               </div>
           </div>
       </div>
+      <div className=''>
+        <Collapse
+            in={expanded}
+            timeout='auto'
+            unmountOnExit
+            style={{
+            padding: 0,
+            }}
+        >
+            <div className='expanded'>
+            
+            <div className="double">
+                <div className="app" style={{ justifyContent: 'center' }}>
+                <Tags text={'React'} logo={reactLogo} classGiven={'react'} />
+                <Tags text={'JS'} logo={jsLogo} classGiven={'js'} />
+                <Tags text={'Redux'} logo={reduxLogo} classGiven={'redux'} />
+                <Tags text={'Node'} logo={nodeLogo} classGiven={'node'} />
+                <Tags text={'Postgres'} logo={psqlLogo} classGiven={'express'} />
+                <Tags text={'Express'} logo={''} classGiven={'postgres'} />
+                </div>
+                <div className="details">
+
+                </div>
+            </div>
+             
+            </div>
+        </Collapse>
+        </div>
   </div>;
 };
 
