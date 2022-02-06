@@ -763,6 +763,11 @@ pre {
   color: var(--logo-color)
 }
 
+.projects .individual .double_grid .details .links a {
+  color: var(--light-logo-color);
+  cursor: pointer;
+}
+
 .projects .individual .double_grid .details .links .indi:hover {
   color: var(--links-hover-color);
   cursor: pointer;

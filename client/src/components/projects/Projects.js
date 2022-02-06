@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
-import Card from './Card';
+
+import BodingaCard from './BodingaCard';
+import YedaEngineerCard from './YedaengineerCard';
+import GotuuCard from './GotuuCard';
 
 const Projects = (props) => {
   return <div className='projects'>
@@ -14,8 +17,10 @@ const Projects = (props) => {
         Projects
       </div>
     </div>
-    <div className="body flex_middle">
-      <Card />
+    <div className="body app">
+      <BodingaCard />
+      <YedaEngineerCard />
+      <GotuuCard />
     </div>
   </div>;
 };

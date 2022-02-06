@@ -35,7 +35,7 @@ const ExpandMore = styled((props) => {
 }));
 
 
-const Card = (props) => {
+const BodingaCard = (props) => {
 const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -53,7 +53,7 @@ const [expanded, setExpanded] = useState(false);
               </div>
              </a>
               <div className="description">
-                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis distinctio porro sed quidem consequuntur aut sequi suscipit dolorem blanditiis libero!
+                 A web-app to manage business operations, customer and vendor management for medical companies in the veterinary field.
               </div>
               <div className="links flex_around">
                   <div className='indi'>
@@ -127,6 +127,6 @@ const [expanded, setExpanded] = useState(false);
   </div>;
 };
 
-Card.propTypes = {};
+BodingaCard.propTypes = {};
 
-export default Card;
+export default BodingaCard;
