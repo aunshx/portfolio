@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 const Sidebar = (props) => {
     const classes = useStyles()
 
-    const [hover, setHover] = useState(true)
+    const [hover, setHover] = useState(false)
     const [githubHover, setGithubHover] = useState(false)
     const [mediumHover, setMediumHover] = useState(false)
 
@@ -61,7 +61,7 @@ const Sidebar = (props) => {
        <>
       {hover ? (
           <div className='sidebar_main_maximize'
-            // onMouseLeave={minimize}
+            onMouseLeave={minimize}
           >
       <div className="app">
         <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
@@ -156,60 +156,71 @@ const Sidebar = (props) => {
       <div className="app">
         <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
           <div className="element flex_between">
-          <Tooltip title='Home' placement='right' classes={{
-          tooltip: classes.customTooltip,
-        }} >
-              <div>
+
+                  <div>
             <FontAwesomeIcon icon={faHome} style={{ marginRight: '0.5em' }}  />
           </div>
-          </Tooltip>
         </div>
         </NavLink>
-        <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
+        <NavLink to='/projects' activeStyle={{ color: 'rgb(105, 182, 242)' }} >
           <div className="element flex_between">
-          <Tooltip title='Projects' placement='right' classes={{
-          tooltip: classes.customTooltip,
-        }} >
-              <div>
+
+                  <div>
             <FontAwesomeIcon icon={faTools} style={{ marginRight: '0.5em' }}  />
           </div>
-          </Tooltip>
         </div>
         </NavLink>
-        <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
+        <NavLink to='/articles' activeStyle={{ color: 'rgb(105, 182, 242)' }} >
           <div className="element flex_between">
-          <Tooltip title='Articles' placement='right' classes={{
-          tooltip: classes.customTooltip,
-        }} >
-              <div>
+
+                  <div>
             <FontAwesomeIcon icon={faNewspaper} style={{ marginRight: '0.5em' }}  />
           </div>
-          </Tooltip>
         </div>
         </NavLink>
-        <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
+        <NavLink to='/skills' activeStyle={{ color: 'rgb(105, 182, 242)' }} >
           <div className="element flex_between">
-          <Tooltip title='Skills' placement='right' classes={{
-          tooltip: classes.customTooltip,
-        }} >
-              <div>
+
+                  <div>
             <FontAwesomeIcon icon={faBrain} style={{ marginRight: '0.5em' }}  />
           </div>
-          </Tooltip>
         </div>
         </NavLink>
-        <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
+        <NavLink to='/contact' activeStyle={{ color: 'rgb(105, 182, 242)' }} >
           <div className="element flex_between">
-          <Tooltip title='Contact' placement='right' classes={{
-          tooltip: classes.customTooltip,
-        }} >
-              <div>
+
+                  <div>
             <FontAwesomeIcon icon={faMobileAlt} style={{ marginRight: '0.5em' }}  />
           </div>
-          </Tooltip>
         </div>
         </NavLink>
-       
+        <a href='https://github.com/aunshx' target={'_blank'} rel='noreferrer nofollow' alt="Github Logo" >
+          <div className="element flex_between" style={{ padding: '0.7em', marginTop: '1.1em' }}>
+
+        <Tooltip title="Go To Github Profile" placement='right'  classes={{ tooltip: classes.customTooltip, }}>
+            <div style={{ objectFit: 'contain', width: '18px' }} onMouseEnter={githubHoverMoveEnter} onMouseLeave={githubHoverMoveLeave}>
+            {githubHover ? (
+                <img src={githubLogoHover} alt="Github Logo" />
+            ) : (
+                <img src={githubLogo} alt="Github Logo" />
+            )}
+          </div>
+        </Tooltip>
+        </div>
+        </a>
+        <a href='https://aunsh.medium.com' target={'_blank'} rel='noreferrer nofollow' alt="Medium Logo" >
+          <div className="element flex_between" style={{ padding: '0.7em', marginTop: '1em' }}>
+             <Tooltip title="Go To Medium Profile" placement='right'  classes={{ tooltip: classes.customTooltip, }}>
+            <div style={{ objectFit: 'contain', width: '18px' }} onMouseEnter={mediumHoverMoveEnter} onMouseLeave={mediumHoverMoveLeave}>
+            {mediumHover ? (
+                <img src={mediumLogoHover} alt="Medium Logo" />
+            ) : (
+                <img src={mediumLogo} alt="Medium Logo" />
+            )}
+          </div>
+        </Tooltip>
+        </div>
+        </a>
       </div>
   </div>
       )}
