@@ -11,6 +11,7 @@
    --light-logo-color: rgb(105, 182, 242);
    --closing-color: rgb(243, 47, 47);
    --light-grey-color: rgb(230, 230, 230);
+   --background-dots-color: rgb(240, 240, 240);
 }
 
 [data-theme="dark"] {
@@ -29,6 +30,9 @@ body {
     line-height: 1.6;
     background-color: var(--background-color);
     transition: background-color 1s;
+    background-image: radial-gradient(var(--background-dots-color) 20%, transparent 20%);
+  background-position: 0 0, 4px 4px;
+  background-size: 5px 5px;
 }
 
 ul {
@@ -520,9 +524,8 @@ pre {
   /* ---------------------------------------- MAIN ----------------------------- */
 .main {
   width: 70vw;
-  height: calc(100vh - 45px);
+  height: calc(100vh - 100px);
   padding: 1em;
-  border: 1px solid red;
   margin: 50px 0;
 }
 
