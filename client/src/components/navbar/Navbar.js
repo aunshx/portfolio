@@ -95,7 +95,7 @@ const Navbar = (props) => {
           onClose={verticalMenu}
           className='sidebar_nav-right'
         >
-          <SidebarMini open={verticalMenu} />
+          <SidebarMini close={verticalMenu} />
         </Drawer>
   )}
   </div>
