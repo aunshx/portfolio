@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrain, faHome, faMobileAlt, faNewspaper, faTools } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,36 +19,46 @@ const SidebarMini = ({ close }) => {
         </div>
       </div>
       <div className="app">
-        <div className="element flex_between">
+        <NavLink to='/' activeStyle={{ color: 'rgb(105, 182, 242)' }} >
+          <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faHome} style={{ marginRight: '0.5em' }} />
           </div>
           <div>Home</div>
         </div>
-        <div className="element flex_between">
+        </NavLink>
+        <NavLink to='/projects'>
+          <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faTools} style={{ marginRight: '0.5em' }} />
           </div>
           <div>Projects</div>
         </div>
-        <div className="element flex_between">
+        </NavLink>
+        <NavLink to='/articles'>
+          <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faNewspaper} style={{ marginRight: '0.5em' }} />
           </div>
           <div>Articles</div>
         </div>
-        <div className="element flex_between">
+        </NavLink>
+        <NavLink to='/skills'>
+          <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faBrain} style={{ marginRight: '0.5em' }} />
           </div>
           <div>Skills</div>
         </div>
-        <div className="element flex_between">
+        </NavLink>
+       <NavLink to='/contact'>
+          <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faMobileAlt} style={{ marginRight: '0.5em' }} />
           </div>
           <div>Contact</div>
         </div>
+       </NavLink>
         <div className="element">
           <div className="resume">
             Resume
