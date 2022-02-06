@@ -3,23 +3,31 @@ import PropTypes from 'prop-types';
 
 import { NavLink, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSun, faMoon, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
+import {
+    makeStyles,
+} from "@mui/styles";
 
 import SidebarMini from './SidebarMini'
 
 import windowSize from '../../utils/windowSize'
 
-const activeTab = (history, path) => {
-  if (history.location.pathname === path) {
-    return { color: "red" };
-  }
-};
+const useStyles = makeStyles(theme => ({
+  customTooltip: {
+    backgroundColor: 'rgb(245, 245, 245)',
+    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
+    color: 'rgb(72, 72, 72)'
+  },
+}));
 
 const Navbar = ({ history }) => {
+  const classes = useStyles()
+
   const [menu, setMenu] = useState(false)
   const [drawer, setDrawer] = useState(false);
   const [displayMoon, setDisplayMoon] = useState(true);
+  const [displayDownload, setDisplayDownload] = useState(false);
 
   const { width, height }  = windowSize()
 
@@ -30,6 +38,14 @@ const Navbar = ({ history }) => {
 
   const changeMoon = () => {
     setDisplayMoon(!displayMoon)
+  }
+
+  const changeDownloadEnter = () => {
+    setDisplayDownload(true)
+  }
+
+  const changeDownloadLeave = () => {
+    setDisplayDownload(false)
   }
   return <>
   <div className='navbar flex_between'>
@@ -76,9 +92,19 @@ const Navbar = ({ history }) => {
               </Tooltip>
         </div>
       )}
-      <div className="resume">
-        Resume
-      </div>
+      <Tooltip title='Download Resume' placement='left' classes={{ tooltip: classes.customTooltip, }}>
+        <div className="resume flex_middle" onMouseEnter={changeDownloadEnter} onMouseLeave={changeDownloadLeave}>
+            {displayDownload ? (
+            <div>
+              <FontAwesomeIcon icon={faDownload} className='icon' />
+            </div>
+        ) : (
+          <div className="text">
+          Resume
+        </div>
+        )}
+        </div>
+      </Tooltip>
     </div>
       {width < 787 && (
         <div>
