@@ -6,15 +6,15 @@ const Navbar = (props) => {
     <div className="left">
       aunsh.
     </div>
-    <div className="middle flex_between">
-      <div>Home</div>
-      <div>Projects</div>
-      <div>Articles</div>
-      <div>Skills</div>
-      <div>Contact</div>
-    </div>
-    <div className="right">
-      Resume
+    <div className="right flex_between">
+       <div className='element cursor_pointer'>Home</div>
+      <div className='element cursor_pointer'>Projects</div>
+      <div className='element cursor_pointer'>Articles</div>
+      <div className='element cursor_pointer'>Skills</div>
+      <div className='element cursor_pointer'>Contact</div>
+      <div className="resume">
+        Resume
+      </div>
     </div>
   </div>;
 };
