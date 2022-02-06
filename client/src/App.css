@@ -774,6 +774,16 @@ pre {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 2.5fr;
+  font-family: 'Comfortaa', cursive;
+}
+
+.projects .individual .expanded .double .title {
+  padding: 0.2em 0.5em 0 0.5em;
+  border-radius: 10px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  margin: 0.6em 0;
+  color: var(--logo-color);
 }
 
 .projects .individual .expanded .double .tags {
@@ -781,7 +791,7 @@ pre {
   width: 50%;
   padding: 0.2em 0.5em 0 0.5em;
   border-radius: 10px;
-  font-size: 0.8em;
+  font-size: 0.65em;
   text-transform: uppercase;
   margin: 0.6em 0;
 }
@@ -791,8 +801,4 @@ pre {
   transform: scale(1.05);
 }
 
-.projects .individual .expanded .double .redux:hover {
-  color: rgb(173, 0, 216);
-  cursor: context-menu;
-}
 

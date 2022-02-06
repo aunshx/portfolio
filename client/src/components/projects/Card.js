@@ -93,6 +93,9 @@ const [expanded, setExpanded] = useState(false);
             
             <div className="double">
                 <div className="app" style={{ justifyContent: 'center' }}>
+                <div className="title">
+                    Tech Stack
+                </div>
                 <Tags text={'React'} logo={reactLogo} classGiven={'react'} />
                 <Tags text={'JS'} logo={jsLogo} classGiven={'js'} />
                 <Tags text={'Redux'} logo={reduxLogo} classGiven={'redux'} />
