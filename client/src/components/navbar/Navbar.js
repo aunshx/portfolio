@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { NavLink } from "react-router-dom";
+
 const Navbar = (props) => {
   return <div className='navbar flex_between'>
     <div className="left">
