@@ -42,7 +42,7 @@ const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  return <div className='individual'>
+  return <div className='individual' data-aos='fade-up' >
       <div className="double_grid">
           <div className="image">
               <img src={defaultImg} alt="Bodinga Home Page" />
@@ -62,8 +62,10 @@ const [expanded, setExpanded] = useState(false);
                  A web-app to manage business operations, customer and vendor management for medical companies in the veterinary field.
               </div>
               <div className="links flex_around">
-                  <div className='indi'>
+                  <div>
+                      <a href='https://github.com/aunshx/gotuu' target={"_blank"} rel='noreferrer nofollow' alt='Github Repo link' className='indi'>
                       Github Repo
+                  </a>
                   </div>
                   <Tooltip title='Show More Details' placement='top'>
                       <div className="indi">
@@ -82,8 +84,10 @@ const [expanded, setExpanded] = useState(false);
                     </ExpandMore>
                   </div>
                   </Tooltip>
-                  <div className='indi'>
-                      Live demo
+                  <div>
+                      <a href='' target={"_blank"} rel='noreferrer nofollow' alt='Live Demo Link' className='indi'>
+                      Live Demo
+                  </a>
                   </div>
               </div>
           </div>
@@ -130,7 +134,7 @@ const [expanded, setExpanded] = useState(false);
             </div>
         </Collapse>
         </div>
-  </div>;
+  </div>
 };
 
 GotuuCard.propTypes = {};

@@ -20,6 +20,7 @@ import reactLogo from '../../resources/images/reactLogo.png'
 import jsLogo from '../../resources/images/jsLogo.png'
 import nodeLogo from '../../resources/images/nodeLogo.png'
 import psqlLogo from '../../resources/images/psqlLogo.png'
+import bodingaLogo from '../../resources/images/bodingaLogo.png'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -41,23 +42,30 @@ const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  return <div className='individual'>
+  return <div className='individual' data-aos='fade-up' >
       <div className="double_grid">
           <div className="image">
               <img src={defaultImg} alt="Bodinga Home Page" />
           </div>
           <div className="details app" style={{ justifyContent: 'space-around' }}>
              <a href="https://bodinga.com" target={"_blank"} rel='noreferrer nofollow'>
-                  <div className="title flex_middle">
-                      bodinga.com
+                  <div className="title flex_middle" style={{ marginBottom: '-0.6em' }} >
+                      <div style={{ objectFit: 'contain', width: '30px', margin: '0.4em 1em 0 0', transform: 'rotate(3deg)' }}>
+                          <img src={bodingaLogo} alt="Bodinga Logo" />
+                      </div>
+                      <div>
+                          bodinga.com
+                      </div>
               </div>
              </a>
               <div className="description">
                  A web-app to manage business operations, customer and vendor management for medical companies in the veterinary field.
               </div>
               <div className="links flex_around">
-                  <div className='indi'>
+                  <div>
+                      <a href='https://github.com/aunshx/bodinga' target={"_blank"} rel='noreferrer nofollow' alt='Github Repo link' className='indi'>
                       Github Repo
+                  </a>
                   </div>
                   <Tooltip title='Show More Details' placement='top'>
                       <div className="indi">
@@ -76,8 +84,10 @@ const [expanded, setExpanded] = useState(false);
                     </ExpandMore>
                   </div>
                   </Tooltip>
-                  <div className='indi'>
-                      Live demo
+                  <div>
+                      <a href='' target={"_blank"} rel='noreferrer nofollow' alt='Live Demo Link' className='indi'>
+                      Live Demo
+                  </a>
                   </div>
               </div>
           </div>
