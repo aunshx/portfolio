@@ -738,6 +738,10 @@ pre {
   color: var(--light-dark-font-color);
 }
 
+.projects .individual .double_grid .details .title:hover {
+  color: var(--links-hover-color);
+}
+
 .projects .individual .double_grid .details .description {
   font-size: 0.8em;
   color: var(--light-dark-font-color);

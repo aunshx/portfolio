@@ -47,9 +47,11 @@ const [expanded, setExpanded] = useState(false);
               <img src={defaultImg} alt="Bodinga Home Page" />
           </div>
           <div className="details app" style={{ justifyContent: 'space-around' }}>
-              <div className="title flex_middle">
-                  bodinga.com
+             <a href="https://bodinga.com" target={"_blank"} rel='noreferrer nofollow'>
+                  <div className="title flex_middle">
+                      bodinga.com
               </div>
+             </a>
               <div className="description">
                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis distinctio porro sed quidem consequuntur aut sequi suscipit dolorem blanditiis libero!
               </div>
