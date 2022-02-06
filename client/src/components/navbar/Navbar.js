@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { NavLink, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
 
 import SidebarMini from './SidebarMini'
@@ -19,6 +19,7 @@ const activeTab = (history, path) => {
 const Navbar = ({ history }) => {
   const [menu, setMenu] = useState(false)
   const [drawer, setDrawer] = useState(false);
+  const [displayMoon, setDisplayMoon] = useState(true);
 
   const { width, height }  = windowSize()
 
@@ -26,35 +27,59 @@ const Navbar = ({ history }) => {
     setMenu(!menu)
     setDrawer(!drawer);
   };
+
+  const changeMoon = () => {
+    setDisplayMoon(!displayMoon)
+  }
   return <>
   <div className='navbar flex_between'>
     <div className="cursor_pointer">
-      <NavLink to='/' style={activeTab(history, "/")} exact>
+      <NavLink to='/'>
         <div className="left">
           aunsh.
         </div>
       </NavLink>
     </div>
-    {/* <div className="right flex_end" style={activeTab(history, "/projects")} exact> */}
-      {/* <NavLink to='/'>
-         <div className='element cursor_pointer'>Home</div>
-      </NavLink>
-      <NavLink to='/projects' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
-      <div className='element cursor_pointer'>Projects</div>
-      </NavLink>
-      <NavLink to='/articles' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
-         <div className='element cursor_pointer'>Articles</div>
-      </NavLink>
-      <NavLink to='/skills' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
-         <div className='element cursor_pointer'>Skills</div>
-      </NavLink>
-      <NavLink to='/contacts' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
-         <div className='element cursor_pointer'>Contact</div>
-      </NavLink> */}
+    <div className="right flex_evenly" >
+      {displayMoon ? (
+        <div className="sun cursor_pointer" onClick={changeMoon}>
+          <Tooltip title='Light' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faSun}
+                    className={"mobile_logo--tilted"}
+                    // onClick={verticalMenu}
+                    style={{
+                      fontSize: 19,
+                      marginTop: '0.3em',
+                      color: 'orange'
+                    }}
+                  />
+                </div>
+              </Tooltip>
+        </div>
+      ) : (
+        <div className="moon cursor_pointer" onClick={changeMoon}>
+          <Tooltip title='Dark' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faMoon}
+                    className={"mobile_logo--tilted"}
+                    // onClick={verticalMenu}
+                    style={{
+                      fontSize: 17,
+                      marginTop: '0.3em',
+                      color: 'grey'
+                    }}
+                  />
+                </div>
+              </Tooltip>
+        </div>
+      )}
       <div className="resume">
         Resume
       </div>
-    {/* </div> */}
+    </div>
       {width < 787 && (
         <div>
         {menu ? (

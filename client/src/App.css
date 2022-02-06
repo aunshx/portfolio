@@ -204,7 +204,7 @@ pre {
 }
 
 .navbar .right {
-  width: 45vw;
+  /* width: 45vw; */
   font-size: 0.9em;
 }
 
@@ -243,6 +243,37 @@ pre {
   border: 1px solid var(--logo-color);
   padding: 0.2em 0.8em;
   border-radius: 20px;
+  margin-left: 2em;
+}
+
+.navbar .right .sun {
+  animation: sunEntry 0.3s 1 linear;
+}
+
+.navbar .right .moon {
+  animation: moonEntry 0.3s 1 linear;
+}
+
+@keyframes sunEntry {
+  from {
+    opacity: 0;
+    transform: rotate(270deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moonEntry {
+  from {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
 }
 
 
