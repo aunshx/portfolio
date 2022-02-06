@@ -356,10 +356,10 @@ pre {
   left: 0;
   top: 45px;
   font-family: 'Comfortaa', cursive;
-  /* padding: 0 5em; */
 }
 
-.sidebar_main .element {
+.sidebar_main .element,
+.sidebar_main_maximize .element {
    display: inline-block;
   position: relative;
   color: var(--light-dark-font-color);
@@ -369,9 +369,65 @@ pre {
   padding: 2em 0.5em 1em 1em;
 }
 
-.sidebar_main .element:hover {
+.sidebar_main .element:hover,
+.sidebar_main_maximize .element:hover {
   color: var(--light-logo-color);
 }
+
+.sidebar_main_maximize .element .writing {
+  animation: appear 0.4s 1 linear;
+  margin-right: 0.4em;
+}
+
+.sidebar_main_maximize {
+   background-color: var(--navbar-color);
+  color: var(--dark-font-color);
+  width: 150px;
+  height: calc(100vh - 45px);
+  border-right: 1px solid var(--light-grey-color);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: fixed;
+  left: 0;
+  top: 45px;
+  font-family: 'Comfortaa', cursive;
+  animation: openSmoothlySidebar 0.3s 1 linear;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes openSmoothlySidebar {
+  0% {
+    width: 50px;
+  }
+  25% {
+    width: 75px;
+  }
+  50% {
+    width: 100px;
+  }
+  75% {
+    width: 125px;
+  }
+  100% {
+    width: 150px;
+  }
+}
+
 
 
   /* ---------------------------------------- MAIN ----------------------------- */
@@ -403,4 +459,116 @@ pre {
 
 .main .double_grid .title .third {
   font-size: 1.5em;
+}
+
+
+/* -------------------------- Background Animation --------------------------------- */
+.box-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.box-area li {
+	position: absolute;
+	display: block;
+	list-style: none;
+	width: 25px;
+	height: 25px;
+	background: rgba(8, 172, 236, 0.2);
+	animation: animate 20s linear infinite;
+	bottom: -150px;
+  color: rgb(105, 197, 250);
+  font-size: 0.8em;
+}
+.box-area li:nth-child(1) {
+	left: 86%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 0s;
+  border-radius: 50%;
+}
+/* .box-area li:nth-child(2) {
+	left: 12%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 1.5s;
+	animation-duration: 15s;
+} */
+.box-area li:nth-child(3) {
+	left: 70%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 10s;
+}
+.box-area li:nth-child(4) {
+	left: 42%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 3s;
+	animation-duration: 18s;
+}
+.box-area li:nth-child(5) {
+	left: 65%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 0s;
+}
+.box-area li:nth-child(6) {
+	left: 15%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 13s;
+}
+
+.box-area li:nth-child(7) {
+	left: 74%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 0.5s;
+  border-radius: 50%;
+}
+.box-area li:nth-child(8) {
+	left: 95%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 1.5s;
+	animation-duration: 15s;
+}
+.box-area li:nth-child(9) {
+	left: 67%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 10s;
+}
+.box-area li:nth-child(10) {
+	left: 45%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 1s;
+	animation-duration: 18s;
+}
+.box-area li:nth-child(11) {
+	left: 79%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 2s;
+}
+.box-area li:nth-child(12) {
+	left: 8%;
+	width: 10px;
+	height: 10px;
+	animation-delay: 13s;
+}
+@keyframes animate {
+	0% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(-800px) rotate(360deg);
+		opacity: 0;
+	}
 }

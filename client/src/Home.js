@@ -11,6 +11,24 @@ const Home = (props) => {
       <Navbar />
       <Sidebar />
       <Main />
+		{/* <ul class="box-area">
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+			<li>1</li>
+			<li>0</li>
+		</ul> */}
   </div>;
 };
 
