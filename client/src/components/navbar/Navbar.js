@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
@@ -10,7 +10,13 @@ import SidebarMini from './SidebarMini'
 
 import windowSize from '../../utils/windowSize'
 
-const Navbar = (props) => {
+const activeTab = (history, path) => {
+  if (history.location.pathname === path) {
+    return { color: "red" };
+  }
+};
+
+const Navbar = ({ history }) => {
   const [menu, setMenu] = useState(false)
   const [drawer, setDrawer] = useState(false);
 
@@ -23,32 +29,32 @@ const Navbar = (props) => {
   return <>
   <div className='navbar flex_between'>
     <div className="cursor_pointer">
-      <NavLink to='/'>
+      <NavLink to='/' style={activeTab(history, "/")} exact>
         <div className="left">
           aunsh.
         </div>
       </NavLink>
     </div>
-    <div className="right flex_between">
-      <NavLink to='/'>
+    {/* <div className="right flex_end" style={activeTab(history, "/projects")} exact> */}
+      {/* <NavLink to='/'>
          <div className='element cursor_pointer'>Home</div>
       </NavLink>
-      <NavLink to='/projects'>
+      <NavLink to='/projects' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
       <div className='element cursor_pointer'>Projects</div>
       </NavLink>
-      <NavLink to='/articles'>
+      <NavLink to='/articles' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
          <div className='element cursor_pointer'>Articles</div>
       </NavLink>
-      <NavLink to='/skills'>
+      <NavLink to='/skills' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
          <div className='element cursor_pointer'>Skills</div>
       </NavLink>
-      <NavLink to='/contacts'>
+      <NavLink to='/contacts' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
          <div className='element cursor_pointer'>Contact</div>
-      </NavLink>
+      </NavLink> */}
       <div className="resume">
         Resume
       </div>
-    </div>
+    {/* </div> */}
       {width < 787 && (
         <div>
         {menu ? (
@@ -104,4 +110,4 @@ const Navbar = (props) => {
 
 Navbar.propTypes = {};
 
-export default Navbar;
+export default withRouter(Navbar);

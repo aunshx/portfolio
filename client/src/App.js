@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import Articles from './components/articles/Articles';
-import Home from './components/home/Home';
+import Home from './Home';
 import Projects from './components/projects/Projects';
 import Contact from './components/contact/Contact';
 import Skills from './components/skills/Skills';

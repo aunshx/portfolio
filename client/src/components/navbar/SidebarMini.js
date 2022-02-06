@@ -27,7 +27,7 @@ const SidebarMini = ({ close }) => {
           <div>Home</div>
         </div>
         </NavLink>
-        <NavLink to='/projects'>
+        <NavLink to='/projects' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
           <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faTools} style={{ marginRight: '0.5em' }} />
@@ -35,7 +35,7 @@ const SidebarMini = ({ close }) => {
           <div>Projects</div>
         </div>
         </NavLink>
-        <NavLink to='/articles'>
+        <NavLink to='/articles' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
           <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faNewspaper} style={{ marginRight: '0.5em' }} />
@@ -43,7 +43,7 @@ const SidebarMini = ({ close }) => {
           <div>Articles</div>
         </div>
         </NavLink>
-        <NavLink to='/skills'>
+        <NavLink to='/skills' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
           <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faBrain} style={{ marginRight: '0.5em' }} />
@@ -51,7 +51,7 @@ const SidebarMini = ({ close }) => {
           <div>Skills</div>
         </div>
         </NavLink>
-       <NavLink to='/contact'>
+       <NavLink to='/contact' activeStyle={{ color: 'rgb(105, 182, 242)' }}>
           <div className="element flex_between">
           <div>
             <FontAwesomeIcon icon={faMobileAlt} style={{ marginRight: '0.5em' }} />
