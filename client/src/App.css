@@ -523,10 +523,10 @@ pre {
 
   /* ---------------------------------------- MAIN ----------------------------- */
 .main {
-  width: 70vw;
-  height: calc(100vh - 100px);
+  width: 80vw;
+  height: calc(100% - 100px);
   padding: 1em;
-  margin: 50px 0;
+  margin: 50px 0 50px 50px;
 }
 
 .main .double_grid {
@@ -537,6 +537,9 @@ pre {
 .main .double_grid .title {
   color: var(--lighter-dark-font-color);
   font-family: 'Comfortaa', cursive;
+  text-align: center;
+  width: 100%;
+  height: 90%;
 }
 
 .main .double_grid .title .first {
@@ -544,13 +547,17 @@ pre {
 }
 
 .main .double_grid .title .second {
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 .main .double_grid .title .third {
   font-size: 1.5em;
 }
 
+.main .double_grid .image {
+  width: 100%;
+  height: 100%;
+}
 
 /* -------------------------- Background Animation --------------------------------- */
 .box-area {
@@ -661,4 +668,12 @@ pre {
 		transform: translateY(-800px) rotate(360deg);
 		opacity: 0;
 	}
+}
+
+/* ------------------------------------- FOOTER --------------------------------- */
+.footer .text {
+  font-size: 1.3em;
+  color: var(--light-grey-color);
+  font-weight: bold;
+  font-family: 'Comfortaa', cursive;
 }

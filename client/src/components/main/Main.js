@@ -24,7 +24,7 @@ const Main = ({}) => {
                 </Typed>
             </div>
           </div>
-          <div className="image">
+          <div className="image flex_middle">
             <img src={mainImg} alt="Dude sitting and programming" />
           </div>
       </div>

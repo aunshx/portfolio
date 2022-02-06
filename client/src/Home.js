@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Navbar from './components/navbar/Navbar';
 import Main from './components/main/Main';
 import Sidebar from './components/navbar/Sidebar';
+import Footer from './components/layout/Footer'
 
 
 const Home = (props) => {
@@ -11,6 +12,7 @@ const Home = (props) => {
       <Navbar />
       <Sidebar />
       <Main />
+      <Footer />
 		{/* <ul class="box-area">
 			<li>1</li>
 			<li>0</li>
