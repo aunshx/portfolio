@@ -356,6 +356,7 @@ pre {
   left: 0;
   top: 45px;
   font-family: 'Comfortaa', cursive;
+  animation: closeSmoothlySidebar 0.3s 1 linear;
 }
 
 .sidebar_main .element,
@@ -382,7 +383,7 @@ pre {
 .sidebar_main_maximize {
    background-color: var(--navbar-color);
   color: var(--dark-font-color);
-  width: 150px;
+  width: 180px;
   height: calc(100vh - 45px);
   border-right: 1px solid var(--light-grey-color);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -410,6 +411,7 @@ pre {
     opacity: 1;
   }
 }
+
 @keyframes openSmoothlySidebar {
   0% {
     width: 50px;
@@ -418,13 +420,31 @@ pre {
     width: 75px;
   }
   50% {
-    width: 100px;
+    width: 110px;
   }
   75% {
-    width: 125px;
+    width: 145px;
   }
   100% {
-    width: 150px;
+    width: 180px;
+  }
+}
+
+@keyframes closeSmoothlySidebar {
+  0% {
+    width: 180px;
+  }
+  25% {
+    width: 145px;
+  }
+  50% {
+    width: 110px;
+  }
+  75% {
+    width: 75px;
+  }
+  100% {
+    width: 50px;
   }
 }
 
