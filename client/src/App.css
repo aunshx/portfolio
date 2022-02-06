@@ -241,3 +241,52 @@ pre {
   padding: 0.2em 0.8em;
   border-radius: 20px;
 }
+
+
+@media only screen and (max-width: 786px) {
+  .navbar .right {
+    display: none;
+  }
+    .navbar .mobile_logo {
+        cursor: pointer;
+        animation: verticalToHorizontal 0.3s 1 linear;
+        color: var(--light-dark-font-color);
+    }
+
+   .navbar .mobile_logo--tilted {
+      cursor: pointer;
+      transform: rotate(90deg);
+      animation: horizontalToVertical 0.3s 1 linear;
+      color: var(--light-dark-font-color);
+  }
+
+  .navbar .mobile_logo:hover, 
+  .navbar .mobile_logo--tilted:hover {
+    color: var(--logo-color);
+  }
+
+  @keyframes verticalToHorizontal {
+        0% {
+            transform: rotate(90deg);
+        }
+        50% {
+            transform: rotate(45deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes horizontalToVertical {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(45deg);
+        }
+        100% {
+            transform: rotate(90deg);
+        }
+    }
+
+}
