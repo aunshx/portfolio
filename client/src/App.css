@@ -201,6 +201,7 @@ pre {
   top: 0;
   font-family: 'Comfortaa', cursive;
   padding: 0 5em;
+  z-index: 100;
 }
 
 .navbar .left {
@@ -856,4 +857,63 @@ pre {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   margin: 2em 0;
+  z-index: -1;
+}
+
+/* ----------------------------------- SKILLS --------------------------------- */
+.skills {
+  color: var(--grey-color);
+   width: 80vw;
+  height: auto;
+  padding: 0em 1em 1em 1em;
+  margin: 0px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.skills .title {
+  color: var(--lighter-dark-font-color);
+  font-size: 2em;
+}
+
+.skills .body-one {
+  display: grid;
+  margin-top: 2em;
+  column-gap: 50px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.skills .body-two {
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.skills .body-one .individual,
+.skills .body-two .individual {
+  width: 100%;
+  color: var(--lighter-dark-font-color);
+  min-height: 100px;
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.skills .body-one .imp:hover, 
+.skills .body-two .imp:hover {
+  transform: scale(1.05);
+}
+
+.skills .body-one .individual .image img, 
+.skills .body-two .individual .image img {
+  object-fit: contain;
+  width: 60px;
+  height: 70px;
+}
+
+.skills .body-one .individual .title,
+.skills .body-two .individual .title {
+  font-size: 1em;
+  padding-top: 0.6em;
 }

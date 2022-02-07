@@ -9,7 +9,7 @@ import GotuuCard from './GotuuCard';
 
 const Projects = (props) => {
   return <div className='projects'>
-    <div className="title flex_middle">
+    <div className="title flex_middle" data-aos='flip-down'>
       <div style={{ marginRight: '0.5em' }}>
         <FontAwesomeIcon icon={faTools} />
       </div>

@@ -6,7 +6,7 @@ import ArticleOne from './ArticleOne';
 
 const Articles = (props) => {
   return <div className='articles'>
-    <div className="title flex_middle">
+    <div className="title flex_middle" data-aos='flip-up'>
       <div style={{ marginRight: '0.5em' }}>
         <FontAwesomeIcon icon={faNewspaper} />
       </div>
@@ -24,6 +24,15 @@ const Articles = (props) => {
      <div>
         <ArticleOne delay={400} />
      </div>
+      <div>
+        <ArticleOne delay={600} />
+      </div>
+     <div>
+        <ArticleOne delay={800} />
+     </div>
+      <div>
+        <ArticleOne delay={1000} />
+      </div>
       <div>
         <ArticleOne delay={600} />
       </div>
