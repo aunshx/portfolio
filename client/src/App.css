@@ -684,11 +684,10 @@ pre {
 .projects {
   color: var(--grey-color);
    width: 80vw;
-  height: calc(100vh - 100px);
+  height: auto;
   padding: 1em;
   margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .projects .title {

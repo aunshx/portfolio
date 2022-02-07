@@ -17,6 +17,8 @@ import mediumLogo from '../../resources/images/mediumLogo.png'
 import mediumLogoHover from '../../resources/images/mediumLogoHover.png'
 import githubLogo from '../../resources/images/githubLogo.png'
 import githubLogoHover from '../../resources/images/githubLogoHover.png'
+import linkedInLogo from '../../resources/images/linkedInLogo.png'
+import linkedInLogoHover from '../../resources/images/linkedInLogoHover.png'
 
 const useStyles = makeStyles(theme => ({
   customTooltip: {
@@ -32,6 +34,7 @@ const Sidebar = (props) => {
     const [hover, setHover] = useState(false)
     const [githubHover, setGithubHover] = useState(false)
     const [mediumHover, setMediumHover] = useState(false)
+    const [linkedInHover, setLinkedInHover] = useState(false)
 
     const maximize = () => {
         setHover(true)
@@ -55,6 +58,14 @@ const Sidebar = (props) => {
 
     const mediumHoverMoveLeave = () => {
         setMediumHover(false)
+    }
+
+    const linkedInHoverMoveEnter = () => {
+        setLinkedInHover(true)
+    }
+
+    const linkedInHoverMoveLeave = () => {
+        setLinkedInHover(false)
     }
 
   return (
@@ -149,6 +160,19 @@ const Sidebar = (props) => {
         </Tooltip>
         </div>
         </a>
+        <a href='https://linked.com/aunsh' target={'_blank'} rel='noreferrer nofollow' alt="Medium Logo" >
+          <div className="element flex_between" style={{ padding: '0.7em' }}>
+             <Tooltip title="Go To LinkedIn Profile" placement='right'  classes={{ tooltip: classes.customTooltip, }}>
+            <div style={{ objectFit: 'contain', width: '25px' }} onMouseEnter={linkedInHoverMoveEnter} onMouseLeave={linkedInHoverMoveLeave}>
+            {linkedInHover ? (
+                <img src={linkedInLogoHover} alt="LinkedIn Logo" />
+            ) : (
+                <img src={linkedInLogo} alt="LinkedIn Logo" />
+            )}
+          </div>
+        </Tooltip>
+        </div>
+        </a>
       </div>
   </div>
       ) : (
@@ -216,6 +240,19 @@ const Sidebar = (props) => {
                 <img src={mediumLogoHover} alt="Medium Logo" />
             ) : (
                 <img src={mediumLogo} alt="Medium Logo" />
+            )}
+          </div>
+        </Tooltip>
+        </div>
+        </a>
+        <a href='https://linked.com/aunsh' target={'_blank'} rel='noreferrer nofollow' alt="Medium Logo" >
+          <div className="element flex_between" style={{ padding: '0.7em', marginTop: '1.2em' }}>
+             <Tooltip title="Go To LinkedIn Profile" placement='right'  classes={{ tooltip: classes.customTooltip, }}>
+            <div style={{ objectFit: 'contain', width: '18px' }} onMouseEnter={linkedInHoverMoveEnter} onMouseLeave={linkedInHoverMoveLeave}>
+            {linkedInHover ? (
+                <img src={linkedInLogoHover} alt="LinkedIn Logo" />
+            ) : (
+                <img src={linkedInLogo} alt="LinkedIn Logo" />
             )}
           </div>
         </Tooltip>
