@@ -2,11 +2,15 @@ import React from 'react';
 import Typed from 'react-typed';
 
 import mainImg from '../../resources/images/home.png'
+import second from '../../resources/images/mainPic.PNG'
 
 const Main = ({}) => {
   return <div className='main'>
       <div className="double_grid">
           <div className="title app" style={{ justifyContent: 'flex-end' }}>
+          <div className="second ft-bold" data-aos='fade-in'>
+                Aunsh Bandivadekar
+            </div>
             <div className="first">
                 Hi! I'm
             </div>
@@ -23,12 +27,10 @@ const Main = ({}) => {
                     loop >
                 </Typed>
             </div> */}
-            <div className="second ft-bold" data-aos='fade-in'>
-                Aunsh Bandivadekar
-            </div>
+            
           </div>
           <div className="image flex_middle">
-            <img src={mainImg} alt="Dude sitting and programming" />
+            <img src={second} alt="Dude sitting and programming" />
           </div>
       </div>
   </div>;

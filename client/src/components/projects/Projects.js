@@ -7,7 +7,7 @@ import BodingaCard from './BodingaCard';
 import YedaEngineerCard from './YedaengineerCard';
 import GotuuCard from './GotuuCard';
 
-const Projects = (props) => {
+const Projects = ({  }) => {
   return <div className='projects'>
     <div className="title flex_middle" data-aos='flip-down'>
       <div style={{ marginRight: '0.5em' }}>

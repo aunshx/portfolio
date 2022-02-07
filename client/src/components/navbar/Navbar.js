@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Navbar = ({ history }) => {
+const Navbar = ({ history, reference, refMain }) => {
   const classes = useStyles()
 
   const [menu, setMenu] = useState(false)
@@ -48,10 +48,10 @@ const Navbar = ({ history }) => {
     setDisplayDownload(false)
   }
   return <>
-  <div className='navbar flex_between'>
+  <div className='navbar flex_between' ref={reference}>
     <div className="cursor_pointer">
       <NavLink to='/'>
-        <div className="left">
+        <div className="left" ref={refMain}>
           aunsh.
         </div>
       </NavLink>

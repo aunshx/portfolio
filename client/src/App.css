@@ -546,6 +546,7 @@ pre {
   text-align: center;
   width: 100%;
   height: 90%;
+  border: 1px solid red;
 }
 
 .main .double_grid .title .first {
@@ -553,21 +554,13 @@ pre {
 }
 
 .main .double_grid .title .second {
-  font-size: 3.8em;
+  font-size: 4em;
    background: -webkit-linear-gradient(rgb(170, 167, 167), rgb(27, 153, 221));
    -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.spread-out .char {
-  transition: transform 1s cubic-bezier(.8,0,.2,1);
-  transition-delay: calc( 0.2s * var(--distance-percent) );
-}
-
-.spread-out:hover .char {
-  transition-delay: calc( 0.2s * ( 1 - var(--distance-percent) ) );
-  transform: scale(0.6) translateX( calc(1.25em * var(--distance-sine)) );
-}
 
 .main .double_grid .title .third {
   font-size: 1.5em;
@@ -581,6 +574,14 @@ pre {
 .main .double_grid .image {
   width: 100%;
   height: 100%;
+}
+
+.main .double_grid .image img {
+  /* object-fit: contain; */
+  width: 60%;
+  height: 60%;
+  border-radius: 10px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 /* -------------------------- Background Animation --------------------------------- */
@@ -1041,4 +1042,7 @@ pre {
 .go-up {
   color: var(--logo-color);
   cursor: pointer;
+  position: fixed;
+  bottom: 60px;
+  right: 40px;
 }

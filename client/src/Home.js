@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Navbar from './components/navbar/Navbar';
@@ -14,8 +14,37 @@ import { faArrow, faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
 
 const Home = (props) => {
+	const [fixedContent, setFixedContent] = useState(true);
+
+	const checker = useRef();
+	const goMain = useRef();
+
+  const refElement = useCallback((node) => {
+    if (checker.current) {
+      checker.current.disconnect();
+    }
+    const options = {
+      root: null,
+      threshold: 0,
+    };
+    checker.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setFixedContent(false);
+      } else {
+        setFixedContent(true);
+      }
+    }, options);
+    if (node) {
+      checker.current.observe(node);
+    }
+  }, []);
+
+ const goToMain = () => {
+    goMain.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return <div className='app'>
-      <Navbar />
+      <Navbar reference={goMain} refMain={refElement}  />
       <Sidebar />
       <Main />
       <Projects />
@@ -35,9 +64,9 @@ const Home = (props) => {
 			<li></li>
 			<li></li>
 	</ul>
-	<div>
-		{/* <FontAwesomeIcon icon={faChevronCircleUp} className='go-up'  style={{ fontSize: 30 }} /> */}
-	</div>
+	{fixedContent && <div>
+		<FontAwesomeIcon icon={faChevronCircleUp} className='go-up'  style={{ fontSize: 30 }} onClick={goToMain} />
+	</div>}
   </div>;
 };
 
