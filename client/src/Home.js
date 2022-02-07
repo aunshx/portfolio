@@ -8,6 +8,7 @@ import Footer from './components/layout/Footer'
 import Projects from './components/projects/Projects';
 import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
+import Contact from './components/contact/Contact';
 
 
 const Home = (props) => {
@@ -18,6 +19,7 @@ const Home = (props) => {
       <Projects />
 	  <Articles />
 	  <Skills />
+	  <Contact />
       <Footer />
 		{/* <ul class="box-area">
 			<li>1</li>

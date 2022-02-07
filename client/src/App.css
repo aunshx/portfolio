@@ -719,6 +719,7 @@ pre {
 .projects .individual .double_grid .image  {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .projects .individual .double_grid .image img {
@@ -726,6 +727,16 @@ pre {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+}
+
+.projects .individual .double_grid .image img:hover {
+  /* object-fit: fit; */
+  transform: scale(1.2);
+  z-index: 10;
+    cursor: -moz-zoom-in; 
+    cursor: -webkit-zoom-in; 
+    cursor: zoom-in;
+  transition: 0.4s;
 }
 
 .projects .individual .double_grid .details {
@@ -916,4 +927,28 @@ pre {
 .skills .body-two .individual .title {
   font-size: 1em;
   padding-top: 0.6em;
+}
+
+/* --------------------------------- CONTACT ------------------------------ */
+.contact {
+  color: var(--grey-color);
+   width: 80vw;
+  height: auto;
+  padding: 0em 1em 1em 1em;
+  margin: 0px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.contact .title {
+  color: var(--lighter-dark-font-color);
+  font-size: 2em;
+}
+
+.contact .body{
+  display: grid;
+  margin-top: 2em;
+  column-gap: 50px;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
 }
