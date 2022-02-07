@@ -1,16 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Collapse, IconButton, Tooltip } from '@mui/material';
+import { Box, Card, Collapse, Fade, IconButton, Modal, Tooltip } from '@mui/material';
 
-import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
-import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
-
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact } from '@fortawesome/free-solid-svg-icons';
 
 import Tags from './Tags';
 
@@ -21,6 +16,19 @@ import jsLogo from '../../resources/images/jsLogo.png'
 import nodeLogo from '../../resources/images/nodeLogo.png'
 import psqlLogo from '../../resources/images/psqlLogo.png'
 import yedaengineerLogo from '../../resources/images/yedaengineerLogo.png'
+
+const style = {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'white',
+    boxShadow: 24,
+    border: 'none',
+    padding: '1em',
+    width:'70%',
+    height: '60%',
+}
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -38,13 +46,14 @@ const ExpandMore = styled((props) => {
 
 const YedaEngineerCard = (props) => {
 const [expanded, setExpanded] = useState(false);
+const [isPhotoOpen, setIsPhotoOpen] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
   return <div className='individual' data-aos='fade-up'>
      <div className="double_grid">
-          <div className="image">
+          <div className="image" onClick={() => setIsPhotoOpen(true)}>
               <img src={defaultImg} alt="Bodinga Home Page" />
           </div>
           <div className="details app" style={{ justifyContent: 'space-around' }}>
@@ -134,6 +143,30 @@ const [expanded, setExpanded] = useState(false);
             </div>
         </Collapse>
         </div>
+        <Modal
+                open={isPhotoOpen}
+                onClose={() => setIsPhotoOpen(false)}
+                closeAfterTransition
+                BackdropProps={{
+                    timeout: 500,
+                    style: {
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                    },
+                }}
+            >
+                <Fade in={isPhotoOpen}>
+                    <Box style={style}>
+                        <Card style={{ padding: '0.2em' }}>
+                          <div className="flex_right">
+                            <CloseIcon onClick={() => setIsPhotoOpen(false)} className='cancel cursor_pointer' style={{ marginRight: '0.3em' }} />
+                          </div>
+                          <div style={{ padding: '0.3em 0.6em 0.6em 0.6em' }}>
+                            <img src={defaultImg} alt="Bodinga Home Page" />
+                          </div>
+                        </Card>
+                    </Box>
+                </Fade>
+            </Modal>
   </div>;
 };
 

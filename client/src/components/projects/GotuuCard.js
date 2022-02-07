@@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
 
 import { Collapse, IconButton, Tooltip, Box, Fade, Modal, Card } from '@mui/material';
 
-import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
-import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact } from '@fortawesome/free-solid-svg-icons';
 
 import Tags from './Tags';
 
