@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ArticleOne = (props) => {
-  return <div></div>;
+const ArticleOne = ({ delay }) => {
+  return <div className='individual' data-aos="fade-in" data-aos-delay={delay}>
+      kkk
+  </div>;
 };
 
 ArticleOne.propTypes = {};

@@ -825,4 +825,35 @@ pre {
   margin-right: 0.4em;
 }
 
+/* ----------------------------------- ARTICLES ---------------------------- */
+.articles {
+  color: var(--grey-color);
+   width: 80vw;
+  height: auto;
+  padding: 0em 1em 1em 1em;
+  margin: 0px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
 
+.articles .title {
+  color: var(--lighter-dark-font-color);
+  font-size: 2em;
+}
+
+.articles .body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 2em;
+  column-gap: 30px;
+}
+
+.articles .body .individual {
+  width: 100%;
+  color: var(--lighter-dark-font-color);
+  min-height: 200px;
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 2em 0;
+}

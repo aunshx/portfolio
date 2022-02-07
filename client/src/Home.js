@@ -6,6 +6,7 @@ import Main from './components/main/Main';
 import Sidebar from './components/navbar/Sidebar';
 import Footer from './components/layout/Footer'
 import Projects from './components/projects/Projects';
+import Articles from './components/articles/Articles';
 
 
 const Home = (props) => {
@@ -14,6 +15,7 @@ const Home = (props) => {
       <Sidebar />
       <Main />
       <Projects />
+	  <Articles />
       <Footer />
 		{/* <ul class="box-area">
 			<li>1</li>
