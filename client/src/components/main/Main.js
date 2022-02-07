@@ -6,14 +6,14 @@ import mainImg from '../../resources/images/home.png'
 const Main = ({}) => {
   return <div className='main'>
       <div className="double_grid">
-          <div className="title app" style={{ justifyContent: 'center' }}>
+          <div className="title app" style={{ justifyContent: 'flex-end' }}>
             <div className="first">
-                Hi! I'm a,
-            </div>
-            <div className="second">
-                Full Stack Developer
+                Hi! I'm
             </div>
             <div className="third">
+                Full Stack Developer
+            </div>
+             {/* <div className="fourth">
                   <Typed
                 strings={[
                     'JS, React, Node, Redux',
@@ -22,6 +22,9 @@ const Main = ({}) => {
                     backSpeed={50}
                     loop >
                 </Typed>
+            </div> */}
+            <div className="second ft-bold" data-aos='fade-in'>
+                Aunsh Bandivadekar
             </div>
           </div>
           <div className="image flex_middle">
@@ -31,6 +34,6 @@ const Main = ({}) => {
   </div>;
 };
 
-Main.propTypes = {};
+Main.propTypes = {}; 
 
 export default Main;
