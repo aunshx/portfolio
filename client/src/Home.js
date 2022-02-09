@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import Popover from "@mui/material/Popover";
+
 import Navbar from './components/navbar/Navbar';
 import Main from './components/main/Main';
 import Sidebar from './components/navbar/Sidebar';
@@ -46,6 +48,18 @@ const Home = (props) => {
     goMain.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
   return (
     <div className='app '>
       <Navbar reference={goMain} refMain={refElement} />
@@ -67,15 +81,42 @@ const Home = (props) => {
         </div>
       )} */}
       {showContact && (
-        <div className='appear_contact'>
-        <div className='contact-button'>
-          <FontAwesomeIcon
-            icon={faMobileAlt}
-            className='go-up'
-            style={{ fontSize: 23 }}
-          />
-        </div>
-      </div>
+        <>
+          <div className='appear_contact'>
+            <div
+              className='contact-button'
+              onMouseEnter={handlePopoverOpen}
+              onMouseLeave={handlePopoverClose}
+            >
+              <FontAwesomeIcon
+                icon={faMobileAlt}
+                className='go-up'
+                style={{ fontSize: 23 }}
+              />
+            </div>
+          </div>
+          <Popover
+            arrow
+            id='mouse-over-popover'
+            sx={{
+              pointerEvents: "none",
+            }}
+            open={open}
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            onClose={handlePopoverClose}
+            disableRestoreFocus
+          >
+            I jsjsjsjsj
+          </Popover>
+        </>
       )}
     </div>
   );
