@@ -82,41 +82,89 @@ const Main = ({}) => {
       <div className='double_grid'>
         <div className='title app' style={{ justifyContent: "center" }}>
           <div className='second app ft-bold'>
-            <div className='first one'>Hi,</div>
+            <div
+              className='first one'
+              data-aos='fade-left'
+              data-aos-delay='100'
+            >
+              Hi,
+            </div>
             <div>
               <div className='flex_middle boopie'>
                 <div style={{ padding: "-1em" }}>
-                  <span className='one' style={{ display: "inline-block" }}>I</span>
-                  <span className='one' style={{ display: "inline-block" }}>'</span>
-                  <span className='one' style={{ display: "inline-block" }}>m</span>{" "}
+                  <span
+                    className='one'
+                    style={{ display: "inline-block" }}
+                    data-aos='fade-left'
+                    data-aos-delay='200'
+                  >
+                    I
+                  </span>
+                  <span
+                    className='one'
+                    style={{ display: "inline-block" }}
+                    data-aos='fade-left'
+                    data-aos-delay='300'
+                  >
+                    '
+                  </span>
+                  <span
+                    className='one'
+                    style={{ display: "inline-block" }}
+                    data-aos='fade-left'
+                    data-aos-delay='400'
+                  >
+                    m
+                  </span>{" "}
                   <span
                     className='letter-a'
                     style={{ display: "inline-block" }}
+                    data-aos='fade-left'
+                    data-aos-delay='500'
                   >
                     a
                   </span>
-                  <span className='one' style={{ display: "inline-block" }}>
+                  <span
+                    className='one'
+                    style={{ display: "inline-block" }}
+                    data-aos='fade-left'
+                    data-aos-delay='600'
+                  >
                     u
                   </span>
                   <span
                     style={{ display: "inline-block" }}
                     className='one'
+                    data-aos='fade-left'
+                    data-aos-delay='700'
                   >
                     n
                   </span>
-                  <span style={{ display: "inline-block" }} className='one'>
+                  <span
+                    style={{ display: "inline-block" }}
+                    className='one'
+                    data-aos='fade-left'
+                    data-aos-delay='800'
+                  >
                     s
                   </span>
-                  <span style={{ display: "inline-block" }} className='one'>
+                  <span
+                    style={{ display: "inline-block" }}
+                    className='one'
+                    data-aos='fade-left'
+                    data-aos-delay='900'
+                  >
                     h
                   </span>
                   <span
                     style={{ fontSize: "170px", display: "inline-block" }}
                     className='one'
+                    data-aos='fade-left'
+                    data-aos-delay='1000'
                   >
                     !
                   </span>
-                  <span style={{ marginLeft: "-0.28em", paddingTop: "2em" }}>
+                  <span style={{ marginLeft: "-0.28em", paddingTop: "2em" }} data-aos='fade-in' data-aos-delay='1050'>
                     <img src={second} alt='Dude sitting and programming' />
                   </span>
                 </div>
