@@ -51,19 +51,7 @@ const Home = (props) => {
 	  <Articles />
 	  <Skills />
 	  <Contact />
-      <Footer />
-	{/* <ul class="animated-squares">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-	</ul> */}
+    <Footer />
 	{fixedContent && <div>
 		<FontAwesomeIcon icon={faChevronCircleUp} className='go-up'  style={{ fontSize: 30 }} onClick={goToMain} />
 	</div>}
