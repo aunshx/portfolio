@@ -43,7 +43,7 @@ const Home = (props) => {
     goMain.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  return <div className='app'>
+  return <div className='app homely-3'>
       <Navbar reference={goMain} refMain={refElement}  />
       <Sidebar />
       <Main />
