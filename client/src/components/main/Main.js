@@ -8,6 +8,13 @@ import Cools from '../layout/Cools'
 import { animated, useSpring } from 'react-spring';
 import Cools2 from '../layout/Cools2';
 import Background from './Background';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faArrow,
+  faChevronCircleUp,
+  faMobileAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
 
 
 const SplitText = ({ copy, role }) => {
@@ -164,7 +171,11 @@ const Main = ({}) => {
                   >
                     !
                   </span>
-                  <span style={{ marginLeft: "-0.28em", paddingTop: "2em" }} data-aos='fade-in' data-aos-delay='1050'>
+                  <span
+                    style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
+                    data-aos='fade-in'
+                    data-aos-delay='1050'
+                  >
                     <img src={second} alt='Dude sitting and programming' />
                   </span>
                 </div>
@@ -180,6 +191,14 @@ const Main = ({}) => {
           </div>
         </div>
       </div>
+      {/* <div className='contact-button' data-aos='fade-in' data-aos-delay='1200'>
+        <FontAwesomeIcon
+          icon={faMobileAlt}
+          className='go-up'
+          style={{ fontSize: 23 }}
+          onClick={goToMain}
+        />
+      </div> */}
     </div>
   );
 };

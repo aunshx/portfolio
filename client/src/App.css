@@ -1027,11 +1027,41 @@ pre {
 }
 
 /* -------------------------------- Go Up ---------------------------- */
-.go-up {
-  color: var(--logo-color);
-  cursor: pointer;
+
+.contact-button {
   position: fixed;
-  bottom: 60px;
-  right: 40px;
+  bottom: 50px;
+  right: 30px;  background-color: var(--logo-color);
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  cursor: pointer;
 }
+
+.go-up {
+  position: absolute;
+  color: var(--logo-color);
+  top: 10px;
+  left: 15px;
+  z-index: 10;
+  color: var(--light-color);
+}
+
+.contact-button:hover {
+  animation: contactButton 0.2s 1 linear;
+}
+
+@keyframes contactButton {
+  0%{
+    transform: rotate(20deg);
+  }
+  50%{
+    transform: rotate(-20deg);
+  }
+  100%{
+    transform: rotate(20deg);
+  }
+}
+
 
