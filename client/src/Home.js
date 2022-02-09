@@ -43,7 +43,7 @@ const Home = (props) => {
     goMain.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  return <div className='app homely-3'>
+  return <div className='app '>
       <Navbar reference={goMain} refMain={refElement}  />
       <Sidebar />
       <Main />
@@ -52,7 +52,7 @@ const Home = (props) => {
 	  <Skills />
 	  <Contact />
       <Footer />
-	<ul class="animated-squares">
+	{/* <ul class="animated-squares">
 			<li></li>
 			<li></li>
 			<li></li>
@@ -63,7 +63,7 @@ const Home = (props) => {
 			<li></li>
 			<li></li>
 			<li></li>
-	</ul>
+	</ul> */}
 	{fixedContent && <div>
 		<FontAwesomeIcon icon={faChevronCircleUp} className='go-up'  style={{ fontSize: 30 }} onClick={goToMain} />
 	</div>}

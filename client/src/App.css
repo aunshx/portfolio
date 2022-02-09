@@ -559,13 +559,14 @@ pre {
 
 .main .double_grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1fr;
   height: 100%;
   width: 100%;
+  /* border: 1px solid red; */
 }
 
 .main .double_grid .title {
-  color: var(--lighter-dark-font-color);
+  /* color: var(--lighter-dark-font-color); */
   font-family: 'Comfortaa', cursive;
   text-align: center;
   width: 100%;
@@ -573,22 +574,9 @@ pre {
 }
 
 .main .double_grid .title .first {
-  font-size: 6em;
+  font-size: 4em;
   font-weight: bold;
 }
-
-.splitting .char {
-  animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
-  animation-delay: calc(60ms * var(--char-index));
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateY(-1em) rotate(-.5turn) scale(0.5);
-    opacity: 0;
-  }
-}
-
 
 
 .main .double_grid .title .second {
@@ -601,7 +589,7 @@ pre {
    position: relative;
    cursor:context-menu;
    /* z-index: -1; */
-    animation: shake 0.3s 1 linear;
+    /* animation: shake 0.3s 1 linear; */
 
 }
 
@@ -614,59 +602,56 @@ pre {
  color: var(--logo-color);
  font-size: 10px; 
  position: absolute;
- bottom: 88px;
- right: 8px;
+ bottom: 115px;
+ right: 70px;
 }
 
 
 .main .double_grid .title .second .letter-a {
- margin: -0.2em;
  padding: 0;
  color: var(--logo-color);
  font-size: 2em;
 }
 
 .main .double_grid .title .second .letter-a:hover {
- animation: shake 0.3s 1 linear;
- color: black;
+ animation: shakeAndWiggle 0.3s 1 linear;
+ color: var(--lighter-dark-font-color);
 }
 
-  @keyframes shake{
-     0%{
-       transform: translateX(0)
-     }
-     25%{
-       transform: translateX(25px);
-     }
-       
-     50%{
-       transform: translateX(-25px);
-     }
-     100%{
-       transform: translateX(0px);
-     }
-   }
+.main .double_grid .title .second .one {
+  z-index: 10;
+  color: var(--lighter-dark-font-color);
+}
+
+.main .double_grid .title .second .one:hover {
+  animation: shakeAndWiggle 0.2s 2 linear;
+  color: var(--logo-color);
+  transform: 0.1s;
+}
+
+@keyframes shakeAndWiggle {
+  0% { transform: scale(1) rotate(10deg) translate(0, 4px); }
+  50% { transform: scale(1.1) rotate(-10deg) translate(0, -4px); }
+  100% { transform: scale(1) rotate(10deg) translate(0, 4px); }
+}
 
 .main .double_grid .title .second .third {
   font-size:30px;
-  /* color: rgb(179, 179, 179); */
   position: absolute;
   bottom: 15px;
 }
 
 .boopie img {
-  margin-top: 50px;
+  margin-top: -25px;
   width: 0.67em;
-  /* border: 1px solid red; */
   z-index: -2;
   position: relative;
 }
 
 .main .double_grid .title .second .first {
-  font-size:60px;
-  /* color: rgb(179, 179, 179); */
+  font-size: 0.4em;
   position: absolute;
-  top: 15px;
+  top: 20px;
 }
 
 .main .double_grid .image {
@@ -674,25 +659,10 @@ pre {
   height: 100%;
 }
 
-.main .double_grid .image img {
-  /* object-fit: contain; */
-  width: 20%;
-  height: 40%;
-  border-radius: 10px;
-  /* box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
-  animation: initialTrans 5s 1 linear;
-}
-
-@keyframes initialTrans {
-  0% {
-    transform: rotateY(0);
-  }
-  50% {
-    transform: rotateY(90deg);
-  }
-  100% {
-    transform: rotateY(180deg);
-  }
+.shake2:hover{ 
+  animation: shake2 75ms infinite;
+  animation-timing-function: linear; 
+  color: black;  
 }
 
 /* ---------------- moving text ------------------- */
@@ -726,7 +696,7 @@ pre {
 	
 	50% {
 		bottom: 0.2em;
-		color: #EC058E;
+		color: #0593ec;
 	}
 
 	100% {
