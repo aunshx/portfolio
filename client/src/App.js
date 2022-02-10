@@ -4,9 +4,9 @@ import ArticlesMain from './components/articles/ArticlesMain';
 import AboutMain from './components/about/AboutMain';
 import Home from './Home';
 import Projects from './components/projects/Projects';
-import Contact from './components/contact/Contact';
 import NotFound from './components/layout/NotFound';
 import SkillsMain from './components/skills/SkillsMain';
+import ContactMain from './components/contact/ContactMain';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
             <Route path='/projects' component={Projects} />
             <Route path='/articles' component={ArticlesMain} />
             <Route path='/skills' component={SkillsMain} />
-            <Route path='/contact' component={Contact} />
+            <Route path='/contact' component={ContactMain} />
             <Route component={NotFound} />
           </Switch>
         </>
