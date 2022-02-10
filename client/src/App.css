@@ -1234,18 +1234,28 @@ from {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   min-height: 400px;
+  z-index: 1;
+}
+
+.contact .body .form .errors {
+  color: var(--light-color);
+  background-color: var(--closing-color);
+  border-radius: 10px;
+  padding: 0 0.5em;
+  font-size: 0.7em;
+  margin-bottom: 0.8em;
+
 }
 
 .contact .body .form .title {
   padding: 0.5em;
-  margin: 0.5em;
   font-size: 1em;
 }
 
 .contact .body .form .title .first {
   font-size: 1.3em;
   color: var(--logo-color);
-  padding-bottom: 0.5em;
+  /* padding-bottom: 0.5em; */
 }
 
 .contact .body .form .title {

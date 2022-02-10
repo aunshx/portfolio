@@ -25,12 +25,12 @@ const CssTextField = styled(TextField, {
 })((p) => ({
   // input label when focused
   "& label.Mui-focused": {
-    color: "#44af16",
+    color: "rgb(0, 145, 255)",
   },
   // focused color for input with variant='outlined'
   "& .MuiOutlinedInput-root": {
     "&.Mui-focused fieldset": {
-      borderColor: "#44af16",
+      borderColor: "rgb(0, 145, 255)",
       fontSize: "0.9em",
     },
   },
@@ -38,14 +38,15 @@ const CssTextField = styled(TextField, {
 
 const loginIconButtonStyle = makeStyles({
   root: {
-    color: "gray",
+    color: "rgb(0, 145, 255)",
     border: "1px solid green",
     backgroundColor: "none",
     fontSize: "10px",
+    height: '27px',
     "&:hover": {
       backgroundColor: "transparent",
-      color: "#1686f0",
-      border: "1px solid #1686f0",
+      color: "rgb(0, 145, 255)",
+      border: "1px solid rgb(0, 145, 255)",
     },
   },
 });
@@ -64,21 +65,22 @@ const textFieldStyle = {
 
 const ContactMain = (props) => {
 
-  const CHARACTER_LIMIT = 250
+  const CHARACTER_LIMIT = 144
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     organisation: "",
+    message: 'Hi!'
   });
 
   const iconButtonStyle = loginIconButtonStyle();
 
-  const [organisationEmptyError, setorganisationEmptyError] = useState(false);
+  const [messageEmptyError, setMessageEmptyError] = useState(false);
   const [nameEmptyError, setNameEmptyError] = useState(false);
   const [emailEmptyError, setEmailEmptyError] = useState(false);
 
-  const { name, email, organisation } = formData
+  const { name, email, organisation, message } = formData
 
     const onChange = (e) =>
     setFormData({
@@ -89,18 +91,18 @@ const ContactMain = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // if (name.length === 0) {
-    //   setNameEmptyError(true);
-    //   setTimeout(() => setNameEmptyError(false), 5000);
-    // } else if (email.length === 0) {
-    //   setEmailEmptyError(true);
-    //   setTimeout(() => setEmailEmptyError(false), 5000);
-    // } else if (password.length === 0) {
-    //   setPasswordEmptyError(true);
-    //   setTimeout(() => setPasswordEmptyError(false), 5000);
-    // } else {
-    //   register(name, email, password);
-    // }
+    if (name.length === 0) {
+      setNameEmptyError(true);
+      setTimeout(() => setNameEmptyError(false), 5000);
+    } else if (email.length === 0) {
+      setEmailEmptyError(true);
+      setTimeout(() => setEmailEmptyError(false), 5000);
+    } else if (message.length === 0) {
+      setMessageEmptyError(true);
+      setTimeout(() => setMessageEmptyError(false), 5000);
+    } else {
+    //   sendEmail(name, email, organisation, message);
+    }
   };
 
   return (
@@ -122,13 +124,13 @@ const ContactMain = (props) => {
       <div className="form">
              <div className="app title">
                 <div className='first ft-bold flex_middle'>Get in touch!</div>
-              {/* <div className='second'>Send me an email and I'll definitely get back to you!</div> */}
              </div>
               <div className='app'>
-                {organisationEmptyError && (
-                  <div className='errors'>Organization cannot be empty</div>
+              {(!messageEmptyError && !emailEmptyError && !nameEmptyError) && <div className='errors' style={{ backgroundColor: 'white' }}>.</div>}
+                {messageEmptyError && (
+                  <div className='errors'>Message cannot be empty</div>
                 )}
-                {(emailEmptyError || emailEmptyError) && (
+                {(emailEmptyError) && (
                   <div className='errors'>Email cannot be empty</div>
                 )}
                 {nameEmptyError && (
@@ -142,7 +144,7 @@ const ContactMain = (props) => {
                     label='Full Name'
                     placeholder='Full Name'
                     size='small'
-                    focusColor='#1686f0'
+                    focusColor='rgb(0, 145, 255)'
                     InputLabelProps={{
                       style: textFieldInputLabelStyle,
                     }}
@@ -168,7 +170,7 @@ const ContactMain = (props) => {
                     label='Email ID'
                     placeholder='Email ID'
                     size='small'
-                    focusColor='#1686f0'
+                    focusColor='rgb(0, 145, 255)'
                     InputLabelProps={{
                       style: textFieldInputLabelStyle,
                     }}
@@ -188,13 +190,12 @@ const ContactMain = (props) => {
                     required
                   />
                 </div>
-                <div>
+                <div style={{ marginBottom: "1.3em" }}>
                  <CssTextField
-                    error={organisationEmptyError}
                     label='Organization'
                     placeholder='Organization'
                     size='small'
-                    focusColor='#1686f0'
+                    focusColor='rgb(0, 145, 255)'
                     InputLabelProps={{
                       style: textFieldInputLabelStyle,
                     }}
@@ -211,22 +212,23 @@ const ContactMain = (props) => {
                     name='organisation'
                     value={organisation}
                     onChange={onChange}
-                    required
                   />
                 </div>
-                <div>
+                <div style={{ marginBottom: "1.3em" }}>
                  <CssTextField
                     multiline
-
-                    label='Organization'
-                    placeholder='Organization'
+                    label='Message'
+                    placeholder='Message'
                     size='small'
-                    focusColor='#1686f0'
+                    focusColor='rgb(0, 145, 255)'
                     InputLabelProps={{
                       style: textFieldInputLabelStyle,
                     }}
                     inputProps={{
-                        maxLength: CHARACTER_LIMIT,
+                      style: {
+                           width: "230px"
+                      },
+                      maxLength: CHARACTER_LIMIT,
                     }}
                     FormHelperTextProps={{
                         style: {
@@ -236,19 +238,19 @@ const ContactMain = (props) => {
                         },
                     }}
                     error={
-                        organisation.length >
-                        CHARACTER_LIMIT - 1 || organisationEmptyError
+                        message.length >
+                        CHARACTER_LIMIT - 1 || messageEmptyError
                     }
                     helperText={
                         !(
-                            organisation.length >
+                            message.length >
                             CHARACTER_LIMIT - 1
                         )
-                            ? `${organisation.length}/${CHARACTER_LIMIT}`
+                            ? `${message.length}/${CHARACTER_LIMIT}`
                             : 'Max length exceeded'
                     }
-                    name='organisation'
-                    value={organisation}
+                    name='message'
+                    value={message}
                     onChange={onChange}
                     required
                   />
@@ -262,7 +264,7 @@ const ContactMain = (props) => {
                       <ArrowForwardIosIcon
                         style={{
                           fontSize: 12,
-                          color: "green",
+                          color: "rgb(0, 145, 255)",
                         }}
                       />
                     }
@@ -273,11 +275,10 @@ const ContactMain = (props) => {
                     <div
                       style={{
                         margin: "0em 0.5em 0em 0em",
-                        color: "green",
-                        borderColor: "green",
+                        color: "rgb(0, 145, 255)",
                       }}
                     >
-                      Register
+                      Send
                     </div>
                   </LoadingButton>
                 </div>

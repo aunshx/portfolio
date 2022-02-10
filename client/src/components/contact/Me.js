@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,9 @@ import body2 from '../../resources/images/onlyBody3.png'
 import { useState } from 'react';
 
 const Me = (props) => {
-    const [showDialog, setShowDialog] = useState(true)
+    const [showDialog, setShowDialog] = useState(false)
+
+    useEffect(() => setTimeout(() => setShowDialog(true), 2000), [])
 
     const changeDialog = () => {
         setShowDialog(!showDialog)
