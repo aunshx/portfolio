@@ -48,7 +48,9 @@ const Articles = (props) => {
     <div className="read-more flex_middle">
         <FontAwesomeIcon icon={faBook} />
         <div className='ft-bold' style={{ marginLeft: '0.5em' }}>
-            Read More
+            <a href="https://aunsh.medium.com" rel='noreferrer nofollow' target='_blank'>
+                Read More
+            </a>
         </div>
     </div>
       </div>

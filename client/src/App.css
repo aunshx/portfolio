@@ -925,7 +925,8 @@ pre {
   /* z-index: -1; */
 }
 
-.read-more {
+.read-more,
+.read-more a {
   color: var(--expand-more-color);
   font-size: 0.9em;
   margin-top: -3em;
@@ -933,7 +934,8 @@ pre {
   cursor: pointer;
 }
 
-.read-more:hover {
+.read-more:hover,
+.read-more a:hover {
   color: var(--logo-color);
 }
 
