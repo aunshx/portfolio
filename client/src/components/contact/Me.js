@@ -15,7 +15,7 @@ import body2 from '../../resources/images/onlyBody3.png'
 const Me = (props) => {
   return<>
       <div className="all-about">
-      <div class="bubble bubble-bottom-left">Send me an email and I'll definitely get back to you.</div>
+      <div class="bubble bubble-bottom-left">Send <span style={{ display: 'inline-block', color: 'rgb(0, 145, 255)' }}>me</span> an email and I'll <span style={{ display: 'inline-block', color: 'rgb(0, 145, 255)' }}>definitely</span> get <span style={{ display: 'inline-block', color: 'rgb(0, 145, 255)' }}>back</span> to you.</div>
            <div className='image'>
          <img src={body} alt="Face of Me" />
      </div>
