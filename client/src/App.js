@@ -5,8 +5,8 @@ import AboutMain from './components/about/AboutMain';
 import Home from './Home';
 import Projects from './components/projects/Projects';
 import Contact from './components/contact/Contact';
-import Skills from './components/skills/Skills';
 import NotFound from './components/layout/NotFound';
+import SkillsMain from './components/skills/SkillsMain';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route exact path='/user' component={AboutMain} />
             <Route path='/projects' component={Projects} />
             <Route path='/articles' component={ArticlesMain} />
-            <Route path='/skills' component={Skills} />
+            <Route path='/skills' component={SkillsMain} />
             <Route path='/contact' component={Contact} />
             <Route component={NotFound} />
           </Switch>

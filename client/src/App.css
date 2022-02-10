@@ -886,7 +886,6 @@ pre {
   padding: 0em 1em 1em 1em;
   margin: 0px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .articles-main {
@@ -1090,27 +1089,41 @@ from {
   font-family: 'Comfortaa', cursive;
 }
 
-.skills .title {
+.skills-main {
+  color: var(--grey-color);
+   width: 1000px;
+  height: auto;
+    padding: 0em 0em 0em 2em;
+  margin: 60px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.skills .title,
+.skills-main .title {
   color: var(--lighter-dark-font-color);
   font-size: 2em;
 }
 
-.skills .body-one {
+.skills .body-one,
+.skills-main .body-one {
   display: grid;
   margin-top: 2em;
   column-gap: 50px;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.skills .body-two {
+.skills .body-two,
+.skills-main .body-two {
   display: grid;
   column-gap: 50px;
   grid-template-columns: repeat(4, 1fr);
 }
 
 .skills .body-one .individual,
-.skills .body-two .individual {
-  width: 100%;
+.skills-main .body-one .individual,
+.skills .body-two .individual,
+.skills-main .body-two .individual {
+  width: 90%;
   color: var(--lighter-dark-font-color);
   min-height: 100px;
   background-color: var(--navbar-color);
@@ -1121,19 +1134,25 @@ from {
 }
 
 .skills .body-one .imp:hover, 
-.skills .body-two .imp:hover {
+.skills-main .body-one .imp:hover, 
+.skills .body-two .imp:hover,
+.skills-main .body-two .imp:hover {
   transform: scale(1.05);
 }
 
 .skills .body-one .individual .image img, 
-.skills .body-two .individual .image img {
+.skills-main .body-one .individual .image img, 
+.skills .body-two .individual .image img,
+.skills-main .body-two .individual .image img {
   object-fit: contain;
   width: 60px;
   height: 70px;
 }
 
 .skills .body-one .individual .title,
-.skills .body-two .individual .title {
+.skills-main .body-one .individual .title,
+.skills .body-two .individual .title,
+.skills-main .body-two .individual .title {
   font-size: 1em;
   padding-top: 0.6em;
 }
