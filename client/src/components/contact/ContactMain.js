@@ -18,6 +18,7 @@ import Footer from '../layout/Footer';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Background from '../main/Background';
+import Me from './Me';
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -284,6 +285,9 @@ const ContactMain = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+          <Me />
       </div>
   <div style={{ position: 'fixed', bottom: '0', right: '45%' }}>
       <Footer />
