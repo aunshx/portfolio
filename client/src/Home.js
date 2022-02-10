@@ -13,6 +13,7 @@ import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrow, faChevronCircleUp, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import About from './components/about/About';
 
 
 const Home = (props) => {
@@ -65,6 +66,7 @@ const Home = (props) => {
       <Navbar reference={goMain} refMain={refElement} />
       <Sidebar />
       <Main />
+      <About />
       <Projects />
       <Articles />
       <Skills />

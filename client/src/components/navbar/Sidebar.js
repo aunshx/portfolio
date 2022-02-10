@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faComment, faHome, faMobileAlt, faNewspaper, faTools } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faComment, faHome, faMobileAlt, faNewspaper, faTools, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import {
     Tooltip
@@ -83,6 +83,17 @@ const Sidebar = (props) => {
           </div>
           <div className='writing'>
               Home
+          </div>
+        </div>
+        </NavLink>
+        <NavLink to='/user' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
+          <div className="element flex_between">
+
+                  <div>
+            <FontAwesomeIcon icon={faUser} style={{ marginRight: '0.5em' }}  />
+          </div>
+          <div className='writing'>
+              About
           </div>
         </div>
         </NavLink>
@@ -183,6 +194,14 @@ const Sidebar = (props) => {
 
                   <div>
             <FontAwesomeIcon icon={faHome} style={{ marginRight: '0.5em' }}  />
+          </div>
+        </div>
+        </NavLink>
+        <NavLink to='/user' activeStyle={{ color: 'rgb(105, 182, 242)' }} exact >
+          <div className="element flex_between">
+
+                  <div>
+            <FontAwesomeIcon icon={faUser} style={{ marginRight: '0.5em' }}  />
           </div>
         </div>
         </NavLink>

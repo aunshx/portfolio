@@ -708,10 +708,13 @@ pre {
 
 /* ------------------------------------- FOOTER --------------------------------- */
 .footer {
+  position: fixed;
+  bottom: 0px;
   height: 50px;
   background-color: var(--navbar-color);
   width: 100%;
   border-top: 1px solid var(--light-grey-color);
+  z-index: -1;
 }
 .footer .text {
   font-size: 1em;
@@ -886,12 +889,23 @@ pre {
   font-family: 'Comfortaa', cursive;
 }
 
-.articles .title {
+.articles-main {
+  color: var(--grey-color);
+   width: 80vw;
+  height: auto;
+  padding: 0em 1em 0em 1em;
+  margin: 60px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.articles .title, 
+.articles-main .title {
   color: var(--lighter-dark-font-color);
   font-size: 2em;
 }
 
-.articles .body {
+.articles .body,
+.articles-main .body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
@@ -899,7 +913,8 @@ pre {
   column-gap: 30px;
 }
 
-.articles .body .individual {
+.articles .body .individual, 
+.articles-main .body .individual {
   width: 100%;
   color: var(--lighter-dark-font-color);
   min-height: 200px;
@@ -909,6 +924,8 @@ pre {
   margin: 2em 0;
   z-index: -1;
 }
+
+/* ----------------------------------------- articles main ------------------------- */
 
 /* ----------------------------------- SKILLS --------------------------------- */
 .skills {
