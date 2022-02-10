@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import validator from 'email-validator'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -79,6 +80,7 @@ const ContactMain = (props) => {
   const [messageEmptyError, setMessageEmptyError] = useState(false);
   const [nameEmptyError, setNameEmptyError] = useState(false);
   const [emailEmptyError, setEmailEmptyError] = useState(false);
+  const [emailInvalidError, setEmailInvalidError] = useState(false);
 
   const { name, email, organisation, message } = formData
 
@@ -93,13 +95,16 @@ const ContactMain = (props) => {
 
     if (name.length === 0) {
       setNameEmptyError(true);
-      setTimeout(() => setNameEmptyError(false), 5000);
+      setTimeout(() => setNameEmptyError(false), 3000);
     } else if (email.length === 0) {
       setEmailEmptyError(true);
-      setTimeout(() => setEmailEmptyError(false), 5000);
+      setTimeout(() => setEmailEmptyError(false), 3000);
     } else if (message.length === 0) {
       setMessageEmptyError(true);
-      setTimeout(() => setMessageEmptyError(false), 5000);
+      setTimeout(() => setMessageEmptyError(false), 3000);
+    } else if (!validator.validate(email)) {
+      setEmailInvalidError(true);
+      setTimeout(() => setEmailInvalidError(false), 3000);
     } else {
     //   sendEmail(name, email, organisation, message);
     }
@@ -126,7 +131,7 @@ const ContactMain = (props) => {
                 <div className='first ft-bold flex_middle'>Get in touch!</div>
              </div>
               <div className='app'>
-              {(!messageEmptyError && !emailEmptyError && !nameEmptyError) && <div className='errors' style={{ backgroundColor: 'white' }}>.</div>}
+              {(!messageEmptyError && !emailEmptyError && !nameEmptyError && !emailInvalidError) && <div className='errors' style={{ backgroundColor: 'white' }}>.</div>}
                 {messageEmptyError && (
                   <div className='errors'>Message cannot be empty</div>
                 )}
@@ -135,6 +140,9 @@ const ContactMain = (props) => {
                 )}
                 {nameEmptyError && (
                   <div className='errors'>Name cannot be empty</div>
+                )}
+                {emailInvalidError && (
+                  <div className='errors'>Email is invalid.</div>
                 )}
               </div>
               <div style={{ paddingBottom: "1em" }} className='app'>
@@ -166,7 +174,7 @@ const ContactMain = (props) => {
                 </div>
                 <div style={{ marginBottom: "1.3em" }}>
                   <CssTextField
-                    error={emailEmptyError}
+                    error={emailEmptyError || emailInvalidError}
                     label='Email ID'
                     placeholder='Email ID'
                     size='small'
