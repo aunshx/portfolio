@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 import ArticleOne from './ArticleOne';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
+import Background from '../main/Background';
 
 const Articles = (props) => {
   return<>
+  <Background />
   <Navbar />
   <Sidebar />
       <div className="app">
@@ -23,35 +25,32 @@ const Articles = (props) => {
       </div>
     </div>
     <div className="body flex_middle">
-     <div>
-        <ArticleOne delay={0} />
+     <div className="flex_middle">
+        <ArticleOne delay={0} technology={['react', 'redux']} />
      </div>
-      <div>
-        <ArticleOne delay={200} />
+      <div className="flex_middle">
+        <ArticleOne delay={200} technology={['react', 'redux']} />
       </div>
-     <div>
-        <ArticleOne delay={400} />
+     <div className="flex_middle">
+        <ArticleOne delay={400} technology={['node', 'express', 'postman']} />
      </div>
-      <div>
-        <ArticleOne delay={600} />
+      <div className="flex_middle">
+        <ArticleOne delay={600} technology={['react', 'redux']} />
       </div>
-     <div>
-        <ArticleOne delay={800} />
+     <div className="flex_middle">
+        <ArticleOne delay={800} technology={['react', 'node', 'cloudinary']} />
      </div>
-      <div>
-        <ArticleOne delay={1000} />
-      </div>
-      <div>
-        <ArticleOne delay={600} />
-      </div>
-     <div>
-        <ArticleOne delay={800} />
-     </div>
-      <div>
-        <ArticleOne delay={1000} />
+      <div className="flex_middle">
+        <ArticleOne delay={1000} technology={['node', 'cron']} />
       </div>
     </div>
   </div>
+    <div className="read-more flex_middle">
+        <FontAwesomeIcon icon={faBook} />
+        <div className='ft-bold' style={{ marginLeft: '0.5em' }}>
+            Read More
+        </div>
+    </div>
       </div>
   <Footer />
   </>

@@ -15,32 +15,23 @@ const Articles = (props) => {
       </div>
     </div>
     <div className="body flex_middle">
-     <div>
-        <ArticleOne delay={0} />
+       <div className="flex_middle">
+        <ArticleOne delay={0} technology={['react', 'redux']} />
      </div>
-      <div>
-        <ArticleOne delay={200} />
+      <div className="flex_middle">
+        <ArticleOne delay={200} technology={['react', 'redux']} />
       </div>
-     <div>
-        <ArticleOne delay={400} />
+     <div className="flex_middle">
+        <ArticleOne delay={400} technology={['node', 'express', 'postman']} />
      </div>
-      <div>
-        <ArticleOne delay={600} />
+      <div className="flex_middle">
+        <ArticleOne delay={600} technology={['react', 'redux']} />
       </div>
-     <div>
-        <ArticleOne delay={800} />
+     <div className="flex_middle">
+        <ArticleOne delay={800} technology={['react', 'node', 'cloudinary']} />
      </div>
-      <div>
-        <ArticleOne delay={1000} />
-      </div>
-      <div>
-        <ArticleOne delay={600} />
-      </div>
-     <div>
-        <ArticleOne delay={800} />
-     </div>
-      <div>
-        <ArticleOne delay={1000} />
+      <div className="flex_middle">
+        <ArticleOne delay={1000} technology={['node', 'cron']} />
       </div>
     </div>
   </div>;;

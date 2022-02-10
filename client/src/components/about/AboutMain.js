@@ -6,13 +6,23 @@ import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
+import Background from '../main/Background';
 
-const Articles = (props) => {
+import body from '../../resources/images/onlyBodyedit.png'
+import body1 from '../../resources/images/onlyBody2.png'
+import body2 from '../../resources/images/onlyBody3.png'
+
+const AboutMain = (props) => {
   return<>
   <Navbar />
   <Sidebar />
-      <div className="app">
-           <div className='articles-main'>
+  <Background />
+      <div className="all-about">
+           <div className='image'>
+         <img src={body} alt="Face of Me" />
+     </div>
+          <div className="app">
+           <div className='about-main'>
     <div className="title flex_middle" data-aos='flip-up'>
       <div style={{ marginRight: '0.5em' }}>
         <FontAwesomeIcon icon={faNewspaper} />
@@ -22,14 +32,15 @@ const Articles = (props) => {
       </div>
     </div>
     <div className="body flex_middle">
-     
+  
+     iiiiiiiiiiiiiiiiii
     </div>
   </div>
       </div>
-  <Footer />
+      </div>
   </>
 };
 
-Articles.propTypes = {};
+AboutMain.propTypes = {};
 
-export default Articles;
+export default AboutMain;
