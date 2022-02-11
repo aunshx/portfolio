@@ -115,186 +115,186 @@ const ContactMain = (props) => {
         <Navbar />
         <Sidebar />
         <Background />
-          <div className="app">
+          <div className="flex_middle">
       <div className='contact'>
-    <div className="title flex_middle" data-aos='flip-up'>
-      <div style={{ marginRight: '0.5em' }}>
-        <FontAwesomeIcon icon={faMobileAlt} />
-      </div>
-      <div>
-        Contact
-      </div>
-    </div>
-    <div className="body">
-      <div className="form">
-             <div className="app title">
-                <div className='first ft-bold flex_middle'>Get in touch!</div>
-             </div>
-              <div className='app'>
-              {(!messageEmptyError && !emailEmptyError && !nameEmptyError && !emailInvalidError) && <div className='errors' style={{ backgroundColor: 'white' }}>.</div>}
-                {messageEmptyError && (
-                  <div className='errors'>Message cannot be empty</div>
-                )}
-                {(emailEmptyError) && (
-                  <div className='errors'>Email cannot be empty</div>
-                )}
-                {nameEmptyError && (
-                  <div className='errors'>Name cannot be empty</div>
-                )}
-                {emailInvalidError && (
-                  <div className='errors'>Email is invalid.</div>
-                )}
-              </div>
-              <div style={{ paddingBottom: "1em" }} className='app'>
-                <div style={{ marginBottom: "1.3em" }}>
-                  <CssTextField
-                    error={nameEmptyError}
-                    label='Full Name'
-                    placeholder='Full Name'
-                    size='small'
-                    focusColor='rgb(0, 145, 255)'
-                    InputLabelProps={{
-                      style: textFieldInputLabelStyle,
-                    }}
-                    inputProps={{
-                      style: textFieldStyle,
-                    }}
-                    FormHelperTextProps={{
-                      style: {
-                        margin: 0,
-                        padding: "0 0 0 5px",
-                        fontSize: 10,
-                      },
-                    }}
-                    name='name'
-                    value={name}
-                    onChange={onChange}
-                    required
-                  />
+        <div className="title flex_middle" data-aos='flip-up'>
+        <div style={{ marginRight: '0.5em' }}>
+            <FontAwesomeIcon icon={faMobileAlt} />
+        </div>
+        <div>
+            Contact
+        </div>
+        </div>
+        <div className="body">
+        <div className="form">
+                <div className="app title">
+                    <div className='first ft-bold flex_middle'>Get in touch!</div>
                 </div>
-                <div style={{ marginBottom: "1.3em" }}>
-                  <CssTextField
-                    error={emailEmptyError || emailInvalidError}
-                    label='Email ID'
-                    placeholder='Email ID'
-                    size='small'
-                    focusColor='rgb(0, 145, 255)'
-                    InputLabelProps={{
-                      style: textFieldInputLabelStyle,
-                    }}
-                    inputProps={{
-                      style: textFieldStyle,
-                    }}
-                    FormHelperTextProps={{
-                      style: {
-                        margin: 0,
-                        padding: "0 0 0 5px",
-                        fontSize: 10,
-                      },
-                    }}
-                    name='email'
-                    value={email}
-                    onChange={onChange}
-                    required
-                  />
+                <div className='app'>
+                {(!messageEmptyError && !emailEmptyError && !nameEmptyError && !emailInvalidError) && <div className='errors' style={{ backgroundColor: 'white' }}>.</div>}
+                    {messageEmptyError && (
+                    <div className='errors'>Message cannot be empty</div>
+                    )}
+                    {(emailEmptyError) && (
+                    <div className='errors'>Email cannot be empty</div>
+                    )}
+                    {nameEmptyError && (
+                    <div className='errors'>Name cannot be empty</div>
+                    )}
+                    {emailInvalidError && (
+                    <div className='errors'>Email is invalid.</div>
+                    )}
                 </div>
-                <div style={{ marginBottom: "1.3em" }}>
-                 <CssTextField
-                    label='Organization'
-                    placeholder='Organization'
-                    size='small'
-                    focusColor='rgb(0, 145, 255)'
-                    InputLabelProps={{
-                      style: textFieldInputLabelStyle,
-                    }}
-                    inputProps={{
-                      style: textFieldStyle,
-                    }}
-                    FormHelperTextProps={{
-                      style: {
-                        margin: 0,
-                        padding: "0 0 0 5px",
-                        fontSize: 10,
-                      },
-                    }}
-                    name='organisation'
-                    value={organisation}
-                    onChange={onChange}
-                  />
-                </div>
-                <div style={{ marginBottom: "1.3em" }}>
-                 <CssTextField
-                    multiline
-                    label='Message'
-                    placeholder='Message'
-                    size='small'
-                    focusColor='rgb(0, 145, 255)'
-                    InputLabelProps={{
-                      style: textFieldInputLabelStyle,
-                    }}
-                    inputProps={{
-                      style: {
-                           width: "230px"
-                      },
-                      maxLength: CHARACTER_LIMIT,
-                    }}
-                    FormHelperTextProps={{
+                <div style={{ paddingBottom: "1em" }} className='app'>
+                    <div style={{ marginBottom: "1.3em" }}>
+                    <CssTextField
+                        error={nameEmptyError}
+                        label='Full Name'
+                        placeholder='Full Name'
+                        size='small'
+                        focusColor='rgb(0, 145, 255)'
+                        InputLabelProps={{
+                        style: textFieldInputLabelStyle,
+                        }}
+                        inputProps={{
+                        style: textFieldStyle,
+                        }}
+                        FormHelperTextProps={{
                         style: {
                             margin: 0,
-                            padding: '0 0 0 5px',
+                            padding: "0 0 0 5px",
                             fontSize: 10,
                         },
-                    }}
-                    error={
-                        message.length >
-                        CHARACTER_LIMIT - 1 || messageEmptyError
-                    }
-                    helperText={
-                        !(
-                            message.length >
-                            CHARACTER_LIMIT - 1
-                        )
-                            ? `${message.length}/${CHARACTER_LIMIT}`
-                            : 'Max length exceeded'
-                    }
-                    name='message'
-                    value={message}
-                    onChange={onChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <LoadingButton
-                    size='small'
-                    // loading={loginLoading}
-                    loadingPosition='end'
-                    endIcon={
-                      <ArrowForwardIosIcon
-                        style={{
-                          fontSize: 12,
-                          color: "rgb(0, 145, 255)",
                         }}
-                      />
-                    }
-                    variant='outlined'
-                    onClick={onSubmit}
-                    className={iconButtonStyle.root}
-                  >
-                    <div
-                      style={{
-                        margin: "0em 0.5em 0em 0em",
-                        color: "rgb(0, 145, 255)",
-                      }}
-                    >
-                      Send
+                        name='name'
+                        value={name}
+                        onChange={onChange}
+                        required
+                    />
                     </div>
-                  </LoadingButton>
+                    <div style={{ marginBottom: "1.3em" }}>
+                    <CssTextField
+                        error={emailEmptyError || emailInvalidError}
+                        label='Email ID'
+                        placeholder='Email ID'
+                        size='small'
+                        focusColor='rgb(0, 145, 255)'
+                        InputLabelProps={{
+                        style: textFieldInputLabelStyle,
+                        }}
+                        inputProps={{
+                        style: textFieldStyle,
+                        }}
+                        FormHelperTextProps={{
+                        style: {
+                            margin: 0,
+                            padding: "0 0 0 5px",
+                            fontSize: 10,
+                        },
+                        }}
+                        name='email'
+                        value={email}
+                        onChange={onChange}
+                        required
+                    />
+                    </div>
+                    <div style={{ marginBottom: "1.3em" }}>
+                    <CssTextField
+                        label='Organization'
+                        placeholder='Organization'
+                        size='small'
+                        focusColor='rgb(0, 145, 255)'
+                        InputLabelProps={{
+                        style: textFieldInputLabelStyle,
+                        }}
+                        inputProps={{
+                        style: textFieldStyle,
+                        }}
+                        FormHelperTextProps={{
+                        style: {
+                            margin: 0,
+                            padding: "0 0 0 5px",
+                            fontSize: 10,
+                        },
+                        }}
+                        name='organisation'
+                        value={organisation}
+                        onChange={onChange}
+                    />
+                    </div>
+                    <div style={{ marginBottom: "1.3em" }}>
+                    <CssTextField
+                        multiline
+                        label='Message'
+                        placeholder='Message'
+                        size='small'
+                        focusColor='rgb(0, 145, 255)'
+                        InputLabelProps={{
+                        style: textFieldInputLabelStyle,
+                        }}
+                        inputProps={{
+                        style: {
+                            width: "230px"
+                        },
+                        maxLength: CHARACTER_LIMIT,
+                        }}
+                        FormHelperTextProps={{
+                            style: {
+                                margin: 0,
+                                padding: '0 0 0 5px',
+                                fontSize: 10,
+                            },
+                        }}
+                        error={
+                            message.length >
+                            CHARACTER_LIMIT - 1 || messageEmptyError
+                        }
+                        helperText={
+                            !(
+                                message.length >
+                                CHARACTER_LIMIT - 1
+                            )
+                                ? `${message.length}/${CHARACTER_LIMIT}`
+                                : 'Max length exceeded'
+                        }
+                        name='message'
+                        value={message}
+                        onChange={onChange}
+                        required
+                    />
+                    </div>
+                    <div>
+                    <LoadingButton
+                        size='small'
+                        // loading={loginLoading}
+                        loadingPosition='end'
+                        endIcon={
+                        <ArrowForwardIosIcon
+                            style={{
+                            fontSize: 12,
+                            color: "rgb(0, 145, 255)",
+                            }}
+                        />
+                        }
+                        variant='outlined'
+                        onClick={onSubmit}
+                        className={iconButtonStyle.root}
+                    >
+                        <div
+                        style={{
+                            margin: "0em 0.5em 0em 0em",
+                            color: "rgb(0, 145, 255)",
+                        }}
+                        >
+                        Send
+                        </div>
+                    </LoadingButton>
+                    </div>
                 </div>
-              </div>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-      </div>
       <div>
           <Me />
       </div>
