@@ -18,7 +18,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 
-import Me from "./Me";
+import Me from "./MeMain";
 
 import { sendEmail } from "../../redux/actions/contact";
 
@@ -65,6 +65,9 @@ const textFieldStyle = {
 };
 
 const Contact = ({
+  reference,
+  show,
+  changeDialog,
   // Redux State
   contact: { emailLoading, emailError, emailSuccess, emailMessage },
   // Redux Actions
@@ -117,10 +120,7 @@ const Contact = ({
   return (
     <>
       <div className='app'>
-        <div
-          className='contact'
-          data-aos='fade-in'
-        >
+        <div className='contact' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />
@@ -332,6 +332,9 @@ const Contact = ({
           success={emailSuccess}
           message={emailMessage}
           loading={emailLoading}
+          reference={reference}
+          show={show}
+          changeDialog={changeDialog}
         />
       </div>
     </>

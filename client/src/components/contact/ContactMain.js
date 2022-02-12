@@ -18,7 +18,7 @@ import Footer from '../layout/Footer';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Background from '../main/Background';
-import Me from './Me';
+import MeMain from './MeMain';
 
 import {
     sendEmail
@@ -331,7 +331,7 @@ const ContactMain = ({
         </div>
       </div>
       <div>
-        <Me
+        <MeMain
           error={emailError}
           success={emailSuccess}
           message={emailMessage}

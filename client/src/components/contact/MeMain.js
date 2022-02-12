@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 
 import body from '../../resources/images/onlyBodyedit.png'
 
-const Me = ({ error, success, message, loading, reference, show, changeDialog }) => {
+const Me = ({ error, success, message, loading }) => {
+    const [showDialog, setShowDialog] = useState(false);
 
-    // useEffect(() => setTimeout(() => setShowDialog(true), 2000), [])
+
+    useEffect(() => setTimeout(() => setShowDialog(true), 2000), [])
 
     const changeDialogAction = () => {
-        changeDialog(!show)
+        setShowDialog(!showDialog);
     }
   return (
     <>
       <div className='all-about' onClick={changeDialogAction}>
-        {show ? (
+        {showDialog ? (
           <>
             {loading && (
               <>

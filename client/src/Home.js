@@ -21,6 +21,8 @@ import './App.css'
 const Home = (props) => {
 	const [fixedContent, setFixedContent] = useState(true);
 	const [showContact, setShowContact] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+
 
   useEffect(() => setTimeout(() => setShowContact(true), 4000))
 
@@ -47,9 +49,29 @@ const Home = (props) => {
     }
   }, []);
 
- const goToMain = () => {
-    goMain.current.scrollIntoView({ behavior: "smooth" });
-  };
+  const refElement2 = useCallback((node) => {
+    if (checker.current) {
+      checker.current.disconnect();
+    }
+    const options = {
+      root: null,
+      threshold: 0,
+    };
+    checker.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setFixedContent(false);
+      } else {
+        setFixedContent(true);
+      }
+    }, options);
+    if (node) {
+      checker.current.observe(node);
+    }
+  }, []);
+
+//  const goToMain = () => {
+//     goMain.current.scrollIntoView({ behavior: "smooth" });
+//   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -72,7 +94,7 @@ const Home = (props) => {
       <Projects />
       <Articles />
       <Skills />
-      <Contact />
+      <Contact reference={refElement2} show={showDialog} changeDialog={setShowDialog} />
       <Footer />
       {/* {fixedContent && (
         <div>
