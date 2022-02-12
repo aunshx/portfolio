@@ -14,7 +14,7 @@ const Articles = (props) => {
         Articles
       </div>
     </div>
-    <div className="body flex_middle">
+    <div className="body">
        <div className="flex_middle">
         <ArticleOne delay={0} technology={['react', 'redux']} />
      </div>
