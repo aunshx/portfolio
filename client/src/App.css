@@ -711,13 +711,14 @@ pre {
   /* position: fixed; */
   bottom: 0px;
   height: 30px;
+  z-index: -5;
   /* background-color: var(--navbar-color); */
   width: 100%;
   /* border-top: 1px solid var(--light-grey-color); */
 }
 .footer .text {
   font-size: 1em;
-  color: var(--lighter-dark-font-color);
+  color: rgb(167, 167, 167);
   font-weight: bold;
   font-family: 'Comfortaa', cursive;
 }

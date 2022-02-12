@@ -13,32 +13,27 @@ import body1 from '../../resources/images/onlyBody2.png'
 import body2 from '../../resources/images/onlyBody3.png'
 
 const AboutMain = (props) => {
-  return<>
-  <Navbar />
-  <Sidebar />
-  <Background />
-      <div className="all-about">
-           <div className='image'>
-         <img src={body} alt="Face of Me" />
-     </div>
-          <div className="app">
-           <div className='about-main'>
-    <div className="title flex_middle" data-aos='flip-up'>
-      <div style={{ marginRight: '0.5em' }}>
-        <FontAwesomeIcon icon={faNewspaper} />
+  return (
+    <>
+      <Navbar />
+      <Sidebar />
+      <Background />
+      <div className='app'>
+        <div className='about-main'>
+          <div className='title flex_middle' data-aos='flip-up'>
+            <div style={{ marginRight: "0.5em" }}>
+              <FontAwesomeIcon icon={faNewspaper} />
+            </div>
+            <div>About</div>
+          </div>
+          <div className='body flex_middle'>iiiiiiiiiiiiiiiiii</div>
+        </div>
       </div>
-      <div>
-        About
+      <div style={{ position: "fixed", bottom: "0", right: "45%" }}>
+        <Footer />
       </div>
-    </div>
-    <div className="body flex_middle">
-  
-     iiiiiiiiiiiiiiiiii
-    </div>
-  </div>
-      </div>
-      </div>
-  </>
+    </>
+  );
 };
 
 AboutMain.propTypes = {};
