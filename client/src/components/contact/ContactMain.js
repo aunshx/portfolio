@@ -124,7 +124,7 @@ const ContactMain = ({
       <Sidebar />
       <Background />
       <div className='app'>
-        <div className='contact'>
+        <div className='contact' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />
@@ -306,7 +306,7 @@ const ContactMain = ({
             </div>
           </div>
         </div>
-        <div className='card-contact'>
+        <div className='card-contact' data-aos='fade-up'>
           <div className='title flex_middle'>Details</div>
           <div className='info'>
             <div className='title'>
