@@ -119,7 +119,7 @@ const Contact = ({
 
   return (
     <>
-      <div className='app'>
+      <div className='app' ref={reference}>
         <div className='contact' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
@@ -326,17 +326,18 @@ const Contact = ({
           </div>
         </div>
       </div>
-      <div>
-        <Me
-          error={emailError}
-          success={emailSuccess}
-          message={emailMessage}
-          loading={emailLoading}
-          reference={reference}
-          show={show}
-          changeDialog={changeDialog}
-        />
-      </div>
+      {show && (
+        <div>
+          <Me
+            error={emailError}
+            success={emailSuccess}
+            message={emailMessage}
+            loading={emailLoading}
+            show={show}
+            changeDialog={changeDialog}
+          />
+        </div>
+      )}
     </>
   );
 };

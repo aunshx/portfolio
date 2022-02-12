@@ -27,6 +27,7 @@ const Home = (props) => {
   useEffect(() => setTimeout(() => setShowContact(true), 4000))
 
 	const checker = useRef();
+	const me = useRef();
 	const goMain = useRef();
 
   const refElement = useCallback((node) => {
@@ -50,22 +51,24 @@ const Home = (props) => {
   }, []);
 
   const refElement2 = useCallback((node) => {
-    if (checker.current) {
-      checker.current.disconnect();
+    if (me.current) {
+      me.current.disconnect();
     }
     const options = {
       root: null,
       threshold: 0,
     };
-    checker.current = new IntersectionObserver((entries) => {
+    me.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        setFixedContent(false);
+        setShowDialog(true);
+        console.log('YY')
       } else {
-        setFixedContent(true);
+        setShowDialog(false);
+        console.log("nn");
       }
     }, options);
     if (node) {
-      checker.current.observe(node);
+      me.current.observe(node);
     }
   }, []);
 
