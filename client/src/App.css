@@ -1284,6 +1284,39 @@ from {
   text-align: center;
 }
 
+.card-contact {
+   width: 310px;
+  color: var(--lighter-dark-font-color);
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  min-height: 150px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 0.5em 0.5em 1.3em 0.5em;
+  margin: 0px 0 50px 50px;
+}
+
+.card-contact .title {
+  font-size: 1em;
+  color: var(--logo-color);
+}
+
+.card-contact .info .title {
+  color: grey;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.card-contact .info  {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 4em;
+  padding-top: 1em;
+}
+
 /* -------------------------------- Go Up ---------------------------- */
 
 .contact-button {

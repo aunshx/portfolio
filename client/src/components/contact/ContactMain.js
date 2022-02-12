@@ -6,7 +6,7 @@ import validator from 'email-validator'
 import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMobileAlt, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import LoadingButton from "@mui/lab/LoadingButton";
 import TextField from "@mui/material/TextField";
@@ -123,7 +123,7 @@ const ContactMain = ({
       <Navbar />
       <Sidebar />
       <Background />
-      <div className='flex_middle'>
+      <div className='app'>
         <div className='contact'>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
@@ -306,9 +306,37 @@ const ContactMain = ({
             </div>
           </div>
         </div>
+        <div className='card-contact'>
+          <div className='title flex_middle'>Details</div>
+          <div className='info'>
+            <div className='title'>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </div>
+            <div style={{ fontSize: "0.85em" }}>aunsh.sb@gmail.com</div>
+          </div>
+          <div className='info'>
+            <div className='title'>
+              <FontAwesomeIcon icon={faMobileAlt} />
+            </div>
+            <div style={{ fontSize: "0.85em" }}>+91 79721 46825</div>
+          </div>
+          <div className='info'>
+            <div className='title'>
+              <FontAwesomeIcon icon={faUser} />
+            </div>
+            <div style={{ fontSize: "0.85em" }} className='flex_left'>
+              Aunsh Bandivadekar
+            </div>
+          </div>
+        </div>
       </div>
       <div>
-        <Me error={emailError} success={emailSuccess} message={emailMessage} loading={emailLoading} />
+        <Me
+          error={emailError}
+          success={emailSuccess}
+          message={emailMessage}
+          loading={emailLoading}
+        />
       </div>
       <div style={{ position: "fixed", bottom: "0", right: "45%" }}>
         <Footer />
