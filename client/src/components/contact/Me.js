@@ -1,19 +1,8 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
-
-import Navbar from '../navbar/Navbar';
-import Sidebar from '../navbar/Sidebar';
-import Footer from '../layout/Footer';
-import Background from '../main/Background';
+import React, { useEffect, useState } from "react";
 
 import body from '../../resources/images/onlyBodyedit.png'
-import body1 from '../../resources/images/onlyBody2.png'
-import body2 from '../../resources/images/onlyBody3.png'
-import { useState } from 'react';
 
-const Me = (props) => {
+const Me = ({ error, success, message }) => {
     const [showDialog, setShowDialog] = useState(false)
 
     useEffect(() => setTimeout(() => setShowDialog(true), 2000), [])

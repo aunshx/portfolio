@@ -1,10 +1,11 @@
 import { EMAIL_LOADING, EMAIL_LOADING_COMPLETE, EMAIL_RESET, EMAIL_ERROR } from '../actions/types'
 //
 const initialState = {
-    emailLoading: false,
-    emailError: false,
-    emailSuccess: false
-}
+  emailLoading: false,
+  emailError: false,
+  emailSuccess: false,
+  emailMessage: ''
+};
 // kk
 function authReducer(state = initialState, action) {
     const { type, payload } = action
@@ -23,15 +24,17 @@ function authReducer(state = initialState, action) {
             }
         case EMAIL_RESET:
             return {
-                ...state,
-                emailLoading: false,
-                emailError: false,
-                emailSuccess: false
-            }
+              ...state,
+              emailLoading: false,
+              emailError: false,
+              emailSuccess: false,
+              emailMessage: ''
+            };
         case EMAIL_ERROR:
             return {
                 ...state,
                 emailError: true,
+                emailMessage: payload
             }
         default:
             return state

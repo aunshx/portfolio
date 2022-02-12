@@ -1,9 +1,8 @@
 import api from '../../utils/api'
-import moment from 'moment'
 
 import {
     // Email 
-    EMAIL_LOADING, EMAIL_LOADING_COMPLETE, EMAIL_RESET, EMAIL_ERROR, EMAIL_ERROR_RESET
+    EMAIL_LOADING, EMAIL_LOADING_COMPLETE, EMAIL_RESET, EMAIL_ERROR
 } from './types'
 
 // Get details of challenge creator
@@ -14,8 +13,6 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
         name, email, organisation, message
     })
 
-    const res = await api.post()
-
     try {
         dispatch({
             type: EMAIL_LOADING,
@@ -25,27 +22,31 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             type: EMAIL_LOADING_COMPLETE,
         })
 
+        const res = await api.post("/contact/send-email", body)
+
         setTimeout(
-                () =>
-                    dispatch({
-                        type: EMAIL_RESET,
-                    }),
-                5000
-            )
+            () =>
+                dispatch({
+                    type: EMAIL_RESET,
+                }),
+            5000
+        )
 
     } catch (error) {
-        
+        value.message = error.response.data.errors[0].msg;
+        value.type = "error";
+
         dispatch({
             type: EMAIL_ERROR,
+            payload: value
         })
 
         setTimeout(
-                () =>
-                    dispatch({
-                        type: EMAIL_RESET,
-                    }),
-                5000
+            () =>
+                dispatch({
+                    type: EMAIL_RESET,
+                }),
+            5000
         )
-        
     }
 }
