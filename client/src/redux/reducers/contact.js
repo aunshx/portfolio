@@ -32,10 +32,11 @@ function authReducer(state = initialState, action) {
             };
         case EMAIL_ERROR:
             return {
-                ...state,
-                emailError: true,
-                emailMessage: payload.message
-            }
+              ...state,
+              emailError: true,
+              emailSuccess: false,
+              emailMessage: payload.message,
+            };
         default:
             return state
     }

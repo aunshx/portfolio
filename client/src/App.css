@@ -1028,6 +1028,25 @@ pre {
      animation: aboutImageInputDialog 2s 1 linear;
 }
 
+.all-about .bubble-error {
+  position: fixed;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  width: 170px;
+  height: 120px;
+  background: var(--navbar-color);
+  border-radius: 10px;
+  padding: 13px;
+  text-align: center;
+  color: var(--lighter-dark-font-color);
+  font-family: 'Comfortaa', cursive ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    top: 60%;
+  right: 80px;
+     animation: aboutImageInputDialog 2s 1 linear;
+}
+
 
 .all-about .bubble-bottom-left:before {
   content: "";

@@ -25,8 +25,8 @@ const Me = ({ error, success, message, loading }) => {
             )}
             {error && (
               <>
-                <div class='bubble bubble-bottom-left flex_middle' style={{ color: "red" }}>
-                  {message}
+                <div class='bubble-error bubble-bottom-left flex_middle' style={{ color: "red" }}>
+                  Oops! We encountered an error :( Please try again after some time!
                 </div>
               </>
             )}
@@ -37,7 +37,7 @@ const Me = ({ error, success, message, loading }) => {
                 </div>
               </>
             )}
-            {(!error || !success || !loading) && (
+            {(!error && !success && !loading) && (
               <>
                 <div class='bubble bubble-bottom-left'>
                   Send{" "}

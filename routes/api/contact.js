@@ -23,12 +23,12 @@ router.post(
 
     try {
 
-      let ans = new Message({
-          email,
-          name,
-          organisation,
-          message
-      })
+      // let ans = new Message({
+      //     email,
+      //     name,
+      //     organisation,
+      //     message
+      // })
 
       await ans.save()
 
