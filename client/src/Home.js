@@ -15,6 +15,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrow, faChevronCircleUp, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 import About from './components/about/About';
 
+import './App.css'
+
 
 const Home = (props) => {
 	const [fixedContent, setFixedContent] = useState(true);

@@ -41,7 +41,6 @@ router.post(
         return res.status(200).send({ msg: 'Email Sent' });
 
     } catch (err) {
-      console.log(err)
       res.status(400).send({ errors:[{ msg: 'Some error' }] });
     }
   }

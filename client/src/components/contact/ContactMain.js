@@ -308,7 +308,7 @@ const ContactMain = ({
         </div>
       </div>
       <div>
-        <Me error={emailError} success={emailSuccess} message={emailMessage} />
+        <Me error={emailError} success={emailSuccess} message={emailMessage} loading={emailLoading} />
       </div>
       <div style={{ position: "fixed", bottom: "0", right: "45%" }}>
         <Footer />

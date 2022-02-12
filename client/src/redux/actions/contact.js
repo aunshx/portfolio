@@ -33,20 +33,67 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
         )
 
     } catch (error) {
-        value.message = error.response.data.errors[0].msg;
-        value.type = "error";
-
-        dispatch({
+        if (error.response.status === 500) {
+          value.message = "Oops! Something went wrong. Please reload!";
+          
+          dispatch({
             type: EMAIL_ERROR,
-            payload: value
-        })
+            payload: value,
+          });
 
-        setTimeout(
+          setTimeout(
             () =>
-                dispatch({
-                    type: EMAIL_RESET,
-                }),
+              dispatch({
+                type: EMAIL_RESET,
+              }),
             5000
-        )
+          );
+        } else if (error.response.status === 400) {
+          value.message = error.response.data.errors[0].msg;
+          
+          dispatch({
+            type: EMAIL_ERROR,
+            payload: value,
+          });
+
+          setTimeout(
+            () =>
+              dispatch({
+                type: EMAIL_RESET,
+              }),
+            5000
+          );
+        } else if (error.response.status === 401) {
+          value.message = "Your session has expired. Please login again.";
+          
+          dispatch({
+            type: EMAIL_ERROR,
+            payload: value,
+          });
+
+          setTimeout(
+            () =>
+              dispatch({
+                type: EMAIL_RESET,
+              }),
+            5000
+          );
+        } else {
+          value.message =
+            "Oops! Looks like something went wrong. Please reload!";
+            
+          dispatch({
+            type: EMAIL_ERROR,
+            payload: value,
+          });
+
+          setTimeout(
+            () =>
+              dispatch({
+                type: EMAIL_RESET,
+              }),
+            5000
+          );
+        }
     }
 }

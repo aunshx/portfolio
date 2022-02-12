@@ -34,7 +34,7 @@ function authReducer(state = initialState, action) {
             return {
                 ...state,
                 emailError: true,
-                emailMessage: payload
+                emailMessage: payload.message
             }
         default:
             return state
