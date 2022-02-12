@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import './App.css';
+import { Provider } from "react-redux";
+
 import ArticlesMain from './components/articles/ArticlesMain';
 import AboutMain from './components/about/AboutMain';
 import Home from './Home';
@@ -8,9 +9,13 @@ import NotFound from './components/layout/NotFound';
 import SkillsMain from './components/skills/SkillsMain';
 import ContactMain from './components/contact/ContactMain';
 
+import "./App.css";
+import store from "./store";
+
 function App() {
   return (
-    <Router>
+    <Provider store={store}>
+      <Router>
         <>
           <Switch>
             <Route exact path='/' component={Home} />
@@ -23,6 +28,7 @@ function App() {
           </Switch>
         </>
       </Router>
+    </Provider>
   );
 }
 

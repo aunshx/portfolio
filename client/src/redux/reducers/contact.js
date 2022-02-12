@@ -1,4 +1,4 @@
-import { EMAIL_LOADING, EMAIL_LOADING_COMPLETE, EMAIL_RESET, EMAIL_ERROR, EMAIL_ERROR_RESET } from '../actions/types'
+import { EMAIL_LOADING, EMAIL_LOADING_COMPLETE, EMAIL_RESET, EMAIL_ERROR } from '../actions/types'
 //
 const initialState = {
     emailLoading: false,
@@ -32,11 +32,6 @@ function authReducer(state = initialState, action) {
             return {
                 ...state,
                 emailError: true,
-            }
-        case EMAIL_ERROR_RESET:
-            return {
-                ...state,
-                emailError: false,
             }
         default:
             return state

@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import validator from 'email-validator'
+
+import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
 import LoadingButton from "@mui/lab/LoadingButton";
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 
-import contactImage from '../../resources/images/contactImage.png'
 import Footer from '../layout/Footer';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Background from '../main/Background';
 import Me from './Me';
+
+import {
+    sendEmail
+} from '../../redux/actions/contact'
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -64,7 +67,12 @@ const textFieldStyle = {
 };
 
 
-const ContactMain = (props) => {
+const ContactMain = ({
+    // Redux State
+    contact: {emailLoading, emailError, emailSuccess},
+    // Redux Actions 
+    sendEmail 
+}) => {
 
   const CHARACTER_LIMIT = 144
 
@@ -305,6 +313,17 @@ const ContactMain = (props) => {
   )
 }
 
-ContactMain.propTypes = {};
+ContactMain.propTypes = {
+    contact: PropTypes.object.isRequired,
+    sendEmail: PropTypes.func.isRequired
+};
 
-export default ContactMain;
+const mapStateToProps = (state) => ({
+    contact: state.contact
+})
+
+const mapActionsToProps = {
+    sendEmail
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(ContactMain);

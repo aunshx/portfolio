@@ -18,12 +18,14 @@
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "express-sanitizer": "^1.0.6",
     "express-session": "^1.17.2",
     "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "mongoose": "^6.1.8",
+    "node-mailjet": "^3.3.5",
     "normalize-url": "^7.0.2",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
@@ -32,7 +34,7 @@
     "sendpulse-api": "^1.1.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14",
+    "nodemon": "^2.0.15",
     "prettier": "2.4.1"
   }
 }
