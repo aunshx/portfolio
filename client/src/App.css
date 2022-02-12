@@ -554,7 +554,6 @@ pre {
   height: 90vh;
   padding: 1em;
   margin: 50px 0 50px 50px;
-  /* position: relative; */
 }
 
 .main .double_grid {
@@ -562,35 +561,20 @@ pre {
   grid-template-columns: 1fr;
   height: 100%;
   width: 100%;
-  /* border: 1px solid red; */
 }
 
 .main .double_grid .title {
-  /* color: var(--lighter-dark-font-color); */
   font-family: 'Comfortaa', cursive;
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
-.main .double_grid .title .first {
-  font-size: 4em;
-  font-weight: bold;
-}
-
-
 .main .double_grid .title .second {
   font-size: 8.8em;
-   /* background: -webkit-linear-gradient(rgb(255, 255, 255), rgb(27, 153, 221));
-   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
   text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-   /* border: 1px solid red; */
    position: relative;
    cursor:context-menu;
-   /* z-index: -1; */
-    /* animation: shake 0.3s 1 linear; */
-
 }
 
 .main .double_grid .title .second .alternate {
@@ -621,6 +605,10 @@ pre {
 .main .double_grid .title .second .one {
   z-index: 10;
   color: var(--lighter-dark-font-color);
+}
+
+.main .double_grid .title .second .exclamation {
+  font-size: 170px;
 }
 
 .main .double_grid .title .second .one:hover {
@@ -670,7 +658,6 @@ pre {
   font-size: 5em;
   text-align: center;
   font-weight: 600;
-  /* color: #cb3126; */
 }
 
 .third span span {
@@ -704,6 +691,33 @@ pre {
 		opacity: 1;
     /* color: #cb3126; */
 	}
+}
+
+@media only screen and (max-width: 786px) {
+  .main .double_grid .title .second {
+  font-size: 6em;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   position: relative;
+   cursor:context-menu;
+}
+
+.main .double_grid .title .second .alternate {
+ color: var(--logo-color);
+}
+
+.main .double_grid .title .second .pronunciation {
+  content: 'pronunced as: Aaoooonsh';
+ color: var(--logo-color);
+ font-size: 10px; 
+ position: absolute;
+ bottom: 70px;
+ right: 70px;
+}
+
+.main .double_grid .title .second .exclamation {
+  font-size: 116px;
+}
+
 }
 
 /* ------------------------------------- FOOTER --------------------------------- */

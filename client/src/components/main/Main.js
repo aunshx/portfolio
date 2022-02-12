@@ -164,8 +164,8 @@ const Main = ({}) => {
                     h
                   </span>
                   <span
-                    style={{ fontSize: "170px", display: "inline-block" }}
-                    className='one'
+                    style={{ display: "inline-block" }}
+                    className='one exclamation'
                     data-aos='fade-left'
                     data-aos-delay='1000'
                   >
