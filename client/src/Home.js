@@ -32,6 +32,7 @@ const Home = ({
   const checker = useRef();
   const me = useRef();
   const goMain = useRef();
+  const goContact = useRef();
 
   const refElement = useCallback((node) => {
     if (checker.current) {
@@ -75,21 +76,9 @@ const Home = ({
     }
   }, []);
 
-  //  const goToMain = () => {
-  //     goMain.current.scrollIntoView({ behavior: "smooth" });
-  //   };
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
+   const goToContact = () => {
+     goContact.current.scrollIntoView({ behavior: "smooth" });
+   };
 
   return (
     <div className='app '>
@@ -104,25 +93,14 @@ const Home = ({
         reference={refElement2}
         show={showDialog}
         changeDialog={setShowDialog}
+        goContact={goContact}
       />
       <Footer />
-      {/* {fixedContent && (
-        <div>
-          <FontAwesomeIcon
-            icon={faChevronCircleUp}
-            className='go-up'
-            style={{ fontSize: 30 }}
-            onClick={goToMain}
-          />
-        </div>
-      )} */}
       {showContact && (
         <>
-          <div className='appear_contact'>
+          <div className='appear_contact' onClick={goToContact}>
             <div
               className='contact-button'
-              onMouseEnter={handlePopoverOpen}
-              onMouseLeave={handlePopoverClose}
             >
               <FontAwesomeIcon
                 icon={faMobileAlt}
@@ -131,27 +109,6 @@ const Home = ({
               />
             </div>
           </div>
-          <Popover
-            arrow
-            id='mouse-over-popover'
-            sx={{
-              pointerEvents: "none",
-            }}
-            open={open}
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            onClose={handlePopoverClose}
-            disableRestoreFocus
-          >
-            I jsjsjsjsj
-          </Popover>
         </>
       )}
     </div>

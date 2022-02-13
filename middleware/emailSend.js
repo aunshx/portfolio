@@ -22,7 +22,7 @@ const emailSend = async (email, name, organisation, message) => {
     "1758d2cffa591f6d9ed0ef8a81c428c6"
   );
 
-  try {
+  // try {
       const request = mailjet.post("send", { version: "v3.1" }).request({
         "Messages": [
           {
@@ -32,7 +32,7 @@ const emailSend = async (email, name, organisation, message) => {
             },
             "To": [
               {
-                "Email": "aunsh.tech@gmail.com",
+                "Email": "aunsh0310@gmail.com",
                 "Name": "Aunsh",
               },
             ],
@@ -105,18 +105,18 @@ const emailSend = async (email, name, organisation, message) => {
           },
         ],
       });
-    let result = await request
-    console.log(result.body)
-  } catch (error) {
-    console.log(error.body)
-  }
-  // request
-  //   .then((result) => {
-  //     console.log(result.body);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err.statusCode);
-  //   });
+  //   let result = await request
+  //   console.log(result.body)
+  // } catch (error) {
+  //   console.log(error.body)
+  // }
+  request
+    .then((result) => {
+      console.log(result.body);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 module.exports = {

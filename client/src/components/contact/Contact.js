@@ -68,6 +68,7 @@ const Contact = ({
   reference,
   show,
   changeDialog,
+  goContact,
   // Redux State
   contact: { emailLoading, emailError, emailSuccess, emailMessage },
   // Redux Actions
@@ -120,7 +121,7 @@ const Contact = ({
   return (
     <>
       <div className='app' ref={reference}>
-        <div className='contact' data-aos='fade-in'>
+        <div className='contact' data-aos='fade-in' ref={goContact}>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />

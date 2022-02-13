@@ -1053,104 +1053,10 @@ pre {
 
 
 /* ----------------------------------- ABOUT ---------------------------- */
-.all-about {
-  height: auto;
-  width: 100vw;
-}
-
-.all-about .image {
-  position: fixed;
-  top: 63%;
-  right: -60px;
-  transform: rotate(-35deg);
-  animation: aboutImageInput 1s 1 forwards;
-}
-
-.all-about .bubble {
-  position: fixed;
-  font-family: sans-serif;
-  font-size: 13px;
-  line-height: 24px;
-  width: 150px;
-  height: 100px;
-  background: var(--navbar-color);
-  border-radius: 10px;
-  padding: 13px;
-  text-align: center;
-  color: var(--lighter-dark-font-color);
-  font-family: 'Comfortaa', cursive ;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    top: 60%;
-  right: 80px;
-     animation: aboutImageInputDialog 2s 1 linear;
-     z-index: 5;
-}
-
-.all-about .bubble-error {
-  position: fixed;
-  font-family: sans-serif;
-  font-size: 13px;
-  line-height: 24px;
-  width: 170px;
-  height: 120px;
-  background: var(--navbar-color);
-  border-radius: 10px;
-  padding: 13px;
-  text-align: center;
-  color: var(--lighter-dark-font-color);
-  font-family: 'Comfortaa', cursive ;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    top: 60%;
-  right: 80px;
-     animation: aboutImageInputDialog 2s 1 linear;
-}
-
-
-.all-about .bubble-bottom-left:before {
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  border-right: 24px solid #fff;
-  border-left: 20px solid transparent;
-  border-top: 12px solid #fff;
-  border-bottom: 20px solid transparent;
-  right: -10px;
-  bottom: -12px;
-  z-index: 5;
-  transform: rotate(-45deg);
-   animation: aboutImageInputDialog 2s 1 linear;
-}
-
-
-@keyframes aboutImageInputDialog {
-from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes aboutImageInput {
-from {
-    transform: rotate(0deg) translateX(20px);
-  }
-  to {
-    transform: rotate(-35deg) translateX(0px);
-  }
-}
-
-.all-about .image img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-}
-
 .about {
   color: var(--grey-color);
    width: 80vw;
-  height: auto;
+  height: calc(100vh - 50px);
   padding: 0em 1em 1em 1em;
   margin: 0px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
@@ -1159,11 +1065,11 @@ from {
 .about-main {
   color: var(--grey-color);
    width: 80vw;
-  height: auto;
+  height: calc(100vh - 50px);
   padding: 0em 1em 0em 1em;
   margin: 60px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .about .title, 
@@ -1180,6 +1086,29 @@ from {
   margin-top: 2em;
   column-gap: 30px;
    color: var(--lighter-dark-font-color);
+   border: 1px solid red;
+}
+
+.about .body .text,
+.about-main .body .text {
+  font-size: 0.9em;
+  padding: 0.5em;
+}
+
+.about .body .text .para,
+.about-main .body .text .para {
+  margin: 1em 0;
+}
+
+.about .body .text .para-link,
+.about-main .body .text .para-link {
+  margin: 1em 0;
+  color: var(--light-logo-color);
+}
+
+.about .body .text .para-link:hover,
+.about-main .body .text .para-link:hover {
+  color: var(--links-hover-color);
 }
 
 .about .body .individual, 
@@ -1199,6 +1128,8 @@ from {
   object-fit: contain;
   height: 200px;
 }
+
+
 
 
 /* ----------------------------------- SKILLS --------------------------------- */
@@ -1482,4 +1413,99 @@ from {
   87.5% {
     box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
   }
+}
+
+/* -------------------------------- ALL ABOUT EMOJI ---------------------------- */
+.all-about {
+  height: auto;
+  width: 100vw;
+}
+
+.all-about .image {
+  position: fixed;
+  top: 63%;
+  right: -60px;
+  transform: rotate(-35deg);
+  animation: aboutImageInput 1s 1 forwards;
+}
+
+.all-about .bubble {
+  position: fixed;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  width: 150px;
+  height: 100px;
+  background: var(--navbar-color);
+  border-radius: 10px;
+  padding: 13px;
+  text-align: center;
+  color: var(--lighter-dark-font-color);
+  font-family: 'Comfortaa', cursive ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    top: 60%;
+  right: 80px;
+     animation: aboutImageInputDialog 2s 1 linear;
+     z-index: 5;
+}
+
+.all-about .bubble-error {
+  position: fixed;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  width: 170px;
+  height: 120px;
+  background: var(--navbar-color);
+  border-radius: 10px;
+  padding: 13px;
+  text-align: center;
+  color: var(--lighter-dark-font-color);
+  font-family: 'Comfortaa', cursive ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    top: 60%;
+  right: 80px;
+     animation: aboutImageInputDialog 2s 1 linear;
+}
+
+
+.all-about .bubble-bottom-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 24px solid #fff;
+  border-left: 20px solid transparent;
+  border-top: 12px solid #fff;
+  border-bottom: 20px solid transparent;
+  right: -10px;
+  bottom: -12px;
+  z-index: 5;
+  transform: rotate(-45deg);
+   animation: aboutImageInputDialog 2s 1 linear;
+}
+
+
+@keyframes aboutImageInputDialog {
+from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aboutImageInput {
+from {
+    transform: rotate(0deg) translateX(20px);
+  }
+  to {
+    transform: rotate(-35deg) translateX(0px);
+  }
+}
+
+.all-about .image img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
 }
