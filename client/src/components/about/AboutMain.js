@@ -8,12 +8,11 @@ import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
 import Background from '../main/Background';
 
-import body from '../../resources/images/onlyBodyedit.png'
-import body1 from '../../resources/images/onlyBody2.png'
-import body2 from '../../resources/images/onlyBody3.png'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cools from '../layout/Cools';
+
+import imgLogo from '../../resources/images/sketLogo.png'
 
 const AboutMain = ({ sidebar: { hover } }) => {
   return (
@@ -22,16 +21,17 @@ const AboutMain = ({ sidebar: { hover } }) => {
       <Sidebar hover={hover} />
       <Background />
       <div className='flex_middle'>
-        <div className='about-main'>
-          <div className='title app' data-aos='flip-up'>
+        <div className='about-main app' style={{ justifyContent: "center" }}>
+          <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faUser} />
             </div>
-            <div>This is me.</div>
+            <div>About</div>
           </div>
           <div className='body'>
             <div className='flex_middle'>
               <div className='app text'>
+                <div className='title'>C'est moi</div>
                 <div className='para'>
                   I’m an engineer, teacher and full stack web developer from
                   India. Ever since venturing into the field of web development

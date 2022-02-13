@@ -4,17 +4,17 @@ import TagCloud from "react3dtagcloud_withclick";
 const Cools = () => {
  
     let tagName = [
-      { id: "java", name: "java" },
+      { id: "java", name: "Figma" },
       { id: "javscript", name: "javscript" },
       { id: "C", name: "CSS" },
       { id: "C++", name: "Html" },
-      { id: "fe", name: "node" },
+      { id: "fe", name: "Node" },
       { id: "React", name: "React" },
       { id: "Vue", name: "express" },
       { id: "redux", name: "postgres" },
       { id: "writing", name: "mongodb" },
-      { id: "programmer", name: "dsa" },
-      { id: "programme", name: "inspire" }
+      { id: "programmer", name: "algo" },
+      { id: "programme", name: "es5/es6" }
     ];
     tagName = [...tagName, ...tagName, ...tagName];
  

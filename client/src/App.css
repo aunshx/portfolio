@@ -1067,9 +1067,7 @@ pre {
    width: 80vw;
   height: calc(100vh - 50px);
   padding: 0em 1em 0em 1em;
-  margin: 60px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  /* border: 1px solid red; */
 }
 
 .about .title, 
@@ -1092,6 +1090,28 @@ pre {
 .about-main .body .text {
   font-size: 0.9em;
   padding: 0.5em;
+}
+
+.about .body .text .title,
+.about-main .body .text .title {
+  color: var(--logo-color);
+}
+
+.about .body .text .image img,
+.about-main .body .text .image img {
+  object-fit: contain;
+  width: 70px;
+  height: 70px;
+  padding-right: 0.5em;
+}
+
+.about .body .text .image,
+.about-main .body .text .image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid var(--logo-color);
+  padding: 1em;
 }
 
 .about .body .text .para,

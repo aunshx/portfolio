@@ -1,19 +1,9 @@
 import React from 'react';
-import Typed from 'react-typed';
 
-import mainImg from '../../resources/images/home.png'
 import second from '../../resources/images/giffy6.gif'
-import Cools from '../layout/Cools'
 
-import { animated, useSpring } from 'react-spring';
-import Cools2 from '../layout/Cools2';
 import Background from './Background';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrow,
-  faChevronCircleUp,
-  faMobileAlt,
-} from "@fortawesome/free-solid-svg-icons";
+
 
 
 
