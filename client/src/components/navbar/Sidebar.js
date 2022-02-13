@@ -426,14 +426,4 @@ const Sidebar = ({
   );
 };
 
-Sidebar.propTypes = {
-  sidebar: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  sidebar: state.sidebar
-})
-
-const mapActionsToProps = {}
-
-export default connect(mapStateToProps, mapActionsToProps)(Sidebar);
+export default Sidebar

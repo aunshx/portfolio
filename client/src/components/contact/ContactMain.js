@@ -70,6 +70,7 @@ const textFieldStyle = {
 const ContactMain = ({
     // Redux State
     contact: {emailLoading, emailError, emailSuccess, emailMessage},
+    sidebar: { hover },
     // Redux Actions 
     sendEmail 
 }) => {
@@ -121,7 +122,7 @@ const ContactMain = ({
   return (
     <>
       <Navbar />
-      <Sidebar />
+      <Sidebar hover={hover} />
       <Background />
       <div className='app'>
         <div className='contact' data-aos='fade-in'>
@@ -347,11 +348,13 @@ const ContactMain = ({
 
 ContactMain.propTypes = {
     contact: PropTypes.object.isRequired,
+    sidebar: PropTypes.object.isRequired,
     sendEmail: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-    contact: state.contact
+    contact: state.contact,
+    sidebar: state.sidebar
 })
 
 const mapActionsToProps = {

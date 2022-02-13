@@ -21,12 +21,15 @@ import passportLogo from '../../resources/images/passportLogo.png'
 import mongoLogo from '../../resources/images/mongoLogo.png'
 import css3Logo from '../../resources/images/css3Logo.png'
 import htmlLogo from '../../resources/images/htmlLogo.png'
+import { connect } from 'react-redux';
 
-const SkillsMain = (props) => {
+const SkillsMain = ({
+  sidebar: { hover }
+}) => {
   return<>
   <Background />
   <Navbar />
-  <Sidebar />
+  <Sidebar hover={hover} />
       <div className="app">
         <div className='skills-main'>
     <div className="title flex_middle" data-aos='flip-down'>
@@ -60,6 +63,15 @@ const SkillsMain = (props) => {
   </>
 };
 
-SkillsMain.propTypes = {};
+SkillsMain.propTypes = {
+  sidebar: PropTypes.object.isRequired,
+};
 
-export default SkillsMain;
+const mapStateToProps = (state) => ({
+  sidebar: state.sidebar,
+});
+
+const mapActionsToProps = {};
+
+export default connect(mapStateToProps, mapActionsToProps)(SkillsMain);
+

@@ -11,12 +11,13 @@ import Background from '../main/Background';
 import body from '../../resources/images/onlyBodyedit.png'
 import body1 from '../../resources/images/onlyBody2.png'
 import body2 from '../../resources/images/onlyBody3.png'
+import { connect } from 'react-redux';
 
-const AboutMain = (props) => {
+const AboutMain = ({ sidebar: { hover } }) => {
   return (
     <>
       <Navbar />
-      <Sidebar />
+      <Sidebar hover={hover} />
       <Background />
       <div className='app'>
         <div className='about-main'>
@@ -36,6 +37,15 @@ const AboutMain = (props) => {
   );
 };
 
-AboutMain.propTypes = {};
 
-export default AboutMain;
+AboutMain.propTypes = {
+  sidebar: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  sidebar: state.sidebar,
+});
+
+const mapActionsToProps = {};
+
+export default connect(mapStateToProps, mapActionsToProps)(AboutMain);

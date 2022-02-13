@@ -1,26 +1,44 @@
 const moment = require('moment');
+const MailjetClient = require('node-mailjet');
 
-const emailSend = (email, name, organisation, message) => {
+
+let u = new MailjetClient({
+  config: {
+    url: "api.mailjet.com",
+    version: "v3",
+    output: "json",
+    perform_api_call: true,
+  },
+  perform_api_call: false,
+  version: "3.3.5",
+  options: {},
+  apiKey: "6899d8eca2c5adbab6c3b06b5e5e151a",
+  apiSecret: "1758d2cffa591f6d9ed0ef8a81c428c6",
+});
+
+const emailSend = async (email, name, organisation, message) => {
   const mailjet = require("node-mailjet").connect(
     "6899d8eca2c5adbab6c3b06b5e5e151a",
     "1758d2cffa591f6d9ed0ef8a81c428c6"
   );
-  const request = mailjet.post("send", { version: "v3.1" }).request({
-    Messages: [
-      {
-        From: {
-          Email: "aunsh0310@gmail.com",
-          Name: "aunsh.com",
-        },
-        To: [
+
+  try {
+      const request = mailjet.post("send", { version: "v3.1" }).request({
+        "Messages": [
           {
-            Email: "aunsh.tech@gmail.com",
-            Name: "Aunsh",
-          },
-        ],
-        Subject: "New Message",
-        TextPart: "aunsh.com has a new message!!",
-        HTMLPart: `
+            "From": { 
+              "Email": "me@aunsh.com",
+              "Name": "aunsh.com",
+            },
+            "To": [
+              {
+                "Email": "aunsh.tech@gmail.com",
+                "Name": "Aunsh",
+              },
+            ],
+            "Subject": "New Message",
+            "TextPart": "aunsh.com has a new message!!",
+            "HTMLPart": `
         <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -84,16 +102,21 @@ const emailSend = (email, name, organisation, message) => {
 </body>
 </html>
         `,
-      },
-    ],
-  });
-  request
-    .then((result) => {
-      console.log('Email Sent');
-    })
-    .catch((err) => {
-      console.log(err.statusCode);
-    });
+          },
+        ],
+      });
+    let result = await request
+    console.log(result.body)
+  } catch (error) {
+    console.log(error.body)
+  }
+  // request
+  //   .then((result) => {
+  //     console.log(result.body);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.statusCode);
+  //   });
 }
 
 module.exports = {

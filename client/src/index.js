@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Mega from './Mega';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Mega />
   </React.StrictMode>,
   document.getElementById('root')
 )

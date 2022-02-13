@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import { Provider } from "react-redux";
+import { connect, Provider } from "react-redux";
+import PropTypes from "prop-types";
 
 import ArticlesMain from './components/articles/ArticlesMain';
 import AboutMain from './components/about/AboutMain';
@@ -10,11 +11,9 @@ import SkillsMain from './components/skills/SkillsMain';
 import ContactMain from './components/contact/ContactMain';
 
 import "./App.css";
-import store from "./store";
 
-function App() {
+function App({ sidebar: { hover } }) {
   return (
-    <Provider store={store}>
       <Router>
         <>
           <Switch>
@@ -28,8 +27,19 @@ function App() {
           </Switch>
         </>
       </Router>
-    </Provider>
   );
 }
 
-export default App;
+App.propTypes = {
+  sidebar: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  sidebar: state.sidebar,
+});
+
+const mapActionsToProps = {};
+
+export default connect(mapStateToProps, mapActionsToProps)(App);
+
+
