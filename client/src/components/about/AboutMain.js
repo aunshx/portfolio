@@ -13,6 +13,7 @@ import body1 from '../../resources/images/onlyBody2.png'
 import body2 from '../../resources/images/onlyBody3.png'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Cools from '../layout/Cools';
 
 const AboutMain = ({ sidebar: { hover } }) => {
   return (
@@ -29,23 +30,28 @@ const AboutMain = ({ sidebar: { hover } }) => {
             <div>This is me.</div>
           </div>
           <div className='body'>
-            <div className='app text'>
-              <div className='para'>
-                I’m an engineer, teacher and full stack web developer from
-                India. Ever since venturing into the field of web development I
-                have become smitten with the process of designing, developing
-                and bringing to life a product from scratch.
+            <div className='flex_middle'>
+              <div className='app text'>
+                <div className='para'>
+                  I’m an engineer, teacher and full stack web developer from
+                  India. Ever since venturing into the field of web development
+                  I have become smitten with the process of designing,
+                  developing and bringing to life a product from scratch.
+                </div>
+                <div className='para'>
+                  A highly-motivated individual with a problem solving mindset,
+                  I like to solve challenges efficiently. Fan of cycling,
+                  cooking and exploring new music on YT :) A tween with a knack
+                  of randomly creating new web-apps and working on ambitious
+                  projects with like minded people.
+                </div>
+                <Link to='/contact'>
+                  <div className='para-link'>Let's get going!</div>
+                </Link>
               </div>
-              <div className='para'>
-                A highly-motivated individual with a problem solving mindset, I
-                like to solve challenges efficiently. Fan of cycling, cooking
-                and exploring new music on YT :) A tween with a knack of
-                randomly creating new web-apps and working on ambitious projects
-                with like minded people.
-              </div>
-              <Link to='/contact'>
-                <div className='para-link'>Let's get going!</div>
-              </Link>
+            </div>
+            <div className='cloud flex_middle'>
+              <Cools />
             </div>
           </div>
         </div>

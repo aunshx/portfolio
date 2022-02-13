@@ -1086,7 +1086,6 @@ pre {
   margin-top: 2em;
   column-gap: 30px;
    color: var(--lighter-dark-font-color);
-   border: 1px solid red;
 }
 
 .about .body .text,
@@ -1098,6 +1097,12 @@ pre {
 .about .body .text .para,
 .about-main .body .text .para {
   margin: 1em 0;
+}
+
+.about .body .cloud,
+.about-main .body .cloud {
+  /* margin: 1em 0; */
+  margin-bottom: 10em;
 }
 
 .about .body .text .para-link,

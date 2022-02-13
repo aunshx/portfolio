@@ -2,9 +2,6 @@ import React from "react";
 import TagCloud from "react3dtagcloud_withclick";
  
 const Cools = () => {
-  const handleClick = (tag) => {
-    // alert(`id:${tag.id};name:${tag.name}`);
-  }
  
     let tagName = [
       { id: "java", name: "java" },
@@ -33,7 +30,6 @@ const Cools = () => {
         <TagCloud
           tagName={tagName}
           radius={200}
-          onClick={handleClick}
         ></TagCloud>
       </div>
     );
