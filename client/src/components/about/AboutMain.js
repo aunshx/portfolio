@@ -14,6 +14,8 @@ import Cools from '../layout/Cools';
 
 import windowSize from '../../utils/windowSize';
 
+// import imgLogo 
+
 const AboutMain = ({ sidebar: { hover } }) => {
 
   const { width, height } = windowSize()
@@ -54,7 +56,9 @@ const AboutMain = ({ sidebar: { hover } }) => {
             <div className='flex_middle'>
               <div className='app text'>
                 <div className='title'>
-                  <FontAwesomeIcon icon={faInfo} />
+                  <div className="image">
+                    <img src="" alt="" />
+                  </div>
                 </div>
                 <div className='para'>
                   I’m an engineer, teacher and full stack web developer from

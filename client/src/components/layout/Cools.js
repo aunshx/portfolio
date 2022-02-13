@@ -21,8 +21,8 @@ const Cools = ({ radius }) => {
     return (
       <div
         style={{
-          width: "300px",
-          height: "300px",
+          width: "250px",
+          height: "250px",
           padding: "100px",
           color: "black",
         }}
