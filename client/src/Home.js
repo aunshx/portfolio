@@ -65,10 +65,8 @@ const Home = ({
     me.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setShowDialog(true);
-        console.log("YY");
       } else {
         setShowDialog(false);
-        console.log("nn");
       }
     }, options);
     if (node) {

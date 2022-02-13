@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TagCloud from "react3dtagcloud_withclick";
  
-const Cools = () => {
- 
+const Cools = ({ radius }) => {
+  
     let tagName = [
       { id: "java", name: "Figma" },
       { id: "javscript", name: "javscript" },
@@ -24,13 +24,10 @@ const Cools = () => {
           width: "300px",
           height: "300px",
           padding: "100px",
-          color: 'black'
+          color: "black",
         }}
       >
-        <TagCloud
-          tagName={tagName}
-          radius={200}
-        ></TagCloud>
+        <TagCloud tagName={tagName} radius={radius}></TagCloud>
       </div>
     );
 }

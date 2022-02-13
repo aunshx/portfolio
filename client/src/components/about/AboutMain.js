@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faInfo, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
@@ -12,9 +12,31 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cools from '../layout/Cools';
 
-import imgLogo from '../../resources/images/sketLogo.png'
+import windowSize from '../../utils/windowSize';
 
 const AboutMain = ({ sidebar: { hover } }) => {
+
+  const { width, height } = windowSize()
+
+  const[radius, setRadius] = useState(0)
+
+  useEffect(() => {
+    switch(true){
+
+      case 787 < width && width <= 1200:
+          return setRadius(250)
+
+      case width > 1200:
+          return setRadius(500)
+
+      case width <= 786:
+          return setRadius(100)
+
+      default:
+        return null
+    }
+  },[width])
+
   return (
     <>
       <Navbar />
@@ -31,7 +53,9 @@ const AboutMain = ({ sidebar: { hover } }) => {
           <div className='body'>
             <div className='flex_middle'>
               <div className='app text'>
-                <div className='title'>C'est moi</div>
+                <div className='title'>
+                  <FontAwesomeIcon icon={faInfo} />
+                </div>
                 <div className='para'>
                   I’m an engineer, teacher and full stack web developer from
                   India. Ever since venturing into the field of web development
@@ -51,7 +75,7 @@ const AboutMain = ({ sidebar: { hover } }) => {
               </div>
             </div>
             <div className='cloud flex_middle'>
-              <Cools />
+              <Cools radius={radius} />
             </div>
           </div>
         </div>
