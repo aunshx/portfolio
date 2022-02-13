@@ -18,7 +18,9 @@ import mongoLogo from '../../resources/images/mongoLogo.png'
 import css3Logo from '../../resources/images/css3Logo.png'
 import htmlLogo from '../../resources/images/htmlLogo.png'
 
+
 const Skills = (props) => {
+
   return <div className='skills'>
     <div className="title flex_middle" data-aos='flip-down'>
       <div style={{ marginRight: '0.5em' }}>

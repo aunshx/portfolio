@@ -12,7 +12,10 @@ import nodeLogo from '../../resources/images/nodeLogo.png'
 import psqlLogo from '../../resources/images/psqlLogo.png'
 import bodingaLogo from '../../resources/images/bodingaLogo.png'
 
+import useWindow from '../../utils/windowSize';
+
 const ArticleOne = ({ delay, technology }) => {
+  const { width, height } = useWindow()
   const [colorBorder, setColorBorder] = useState('')  
 
   useEffect(() => 
@@ -53,33 +56,41 @@ const ArticleOne = ({ delay, technology }) => {
     }
   , [])
 
-  return <div className='individual' data-aos="fade-in" data-aos-delay={delay}>
-      <div className="image"style={{ borderBottom: '2px solid rgb(97, 219, 251) ' }} >
-        <img src={articleImage} alt="Article default" />
+  return (
+    <div
+      className='individual'
+      data-aos={width < 787 ? "fade-in" : "fade-in"}
+      data-aos-offset={width < 787 && 30}
+    >
+      <div
+        className='image'
+        style={{ borderBottom: "2px solid rgb(97, 219, 251) " }}
+      >
+        <img src={articleImage} alt='Article default' />
       </div>
-      <div className="tags flex_right">
-        <div style={{ marginRight: '0.3em' }}>
-          <img src={reactLogo} alt="React Logo" />
+      <div className='tags flex_right'>
+        <div style={{ marginRight: "0.3em" }}>
+          <img src={reactLogo} alt='React Logo' />
         </div>
         <div>
-          <img src={reduxLogo} alt="Redux Logo" />
+          <img src={reduxLogo} alt='Redux Logo' />
         </div>
       </div>
-      <div className="title">
-        This is the title of an imaginary yet to do post 
+      <div className='title'>
+        This is the title of an imaginary yet to do post
       </div>
-      <div className="description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam temporibus odio voluptatum, reprehenderit alias in. 
+      <div className='description'>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
+        temporibus odio voluptatum, reprehenderit alias in.
       </div>
-      <div className="checkout flex_middle">
-        <div>
-          Read full article
-        </div>
-        <div style={{ marginLeft: '0.5em' }}>
+      <div className='checkout flex_middle'>
+        <div>Read full article</div>
+        <div style={{ marginLeft: "0.5em" }}>
           <FontAwesomeIcon icon={faArrowRight} />
         </div>
       </div>
-  </div>;
+    </div>
+  );
 };
 
 ArticleOne.propTypes = {};
