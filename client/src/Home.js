@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
 
 import Popover from "@mui/material/Popover";
 
@@ -18,17 +19,19 @@ import About from './components/about/About';
 import './App.css'
 
 
-const Home = (props) => {
-	const [fixedContent, setFixedContent] = useState(true);
-	const [showContact, setShowContact] = useState(false);
+const Home = ({
+  // Redux State
+  sidebar: { hover },
+}) => {
+  const [fixedContent, setFixedContent] = useState(true);
+  const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
 
+  useEffect(() => setTimeout(() => setShowContact(true), 4000));
 
-  useEffect(() => setTimeout(() => setShowContact(true), 4000))
-
-	const checker = useRef();
-	const me = useRef();
-	const goMain = useRef();
+  const checker = useRef();
+  const me = useRef();
+  const goMain = useRef();
 
   const refElement = useCallback((node) => {
     if (checker.current) {
@@ -61,7 +64,7 @@ const Home = (props) => {
     me.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setShowDialog(true);
-        console.log('YY')
+        console.log("YY");
       } else {
         setShowDialog(false);
         console.log("nn");
@@ -72,9 +75,9 @@ const Home = (props) => {
     }
   }, []);
 
-//  const goToMain = () => {
-//     goMain.current.scrollIntoView({ behavior: "smooth" });
-//   };
+  //  const goToMain = () => {
+  //     goMain.current.scrollIntoView({ behavior: "smooth" });
+  //   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -91,13 +94,17 @@ const Home = (props) => {
   return (
     <div className='app '>
       <Navbar reference={goMain} refMain={refElement} />
-      <Sidebar />
+      <Sidebar hover={hover} />
       <Main />
       <About />
       <Projects />
       <Articles />
       <Skills />
-      <Contact reference={refElement2} show={showDialog} changeDialog={setShowDialog} />
+      <Contact
+        reference={refElement2}
+        show={showDialog}
+        changeDialog={setShowDialog}
+      />
       <Footer />
       {/* {fixedContent && (
         <div>
@@ -151,6 +158,15 @@ const Home = (props) => {
   );
 };
 
-Home.propTypes = {};
+Home.propTypes = {
+  sidebar: PropTypes.object.isRequired,
+};
 
-export default (Home);
+const mapStateToProps = (state) => ({
+  sidebar: state.sidebar,
+});
+
+const mapActionsToProps = {};
+
+export default connect(mapStateToProps, mapActionsToProps)(Home);
+

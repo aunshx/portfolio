@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrain, faComment, faHome, faMobileAlt, faNewspaper, faTools, faUser } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,6 +21,9 @@ import githubLogoHover from '../../resources/images/githubLogoHover.png'
 import linkedInLogo from '../../resources/images/linkedInLogo.png'
 import linkedInLogoHover from '../../resources/images/linkedInLogoHover.png'
 
+import store from '../../store'
+import { MOUSE_ENTER, MOUSE_LEAVE } from '../../redux/actions/types';
+
 const useStyles = makeStyles(theme => ({
   customTooltip: {
     backgroundColor: 'rgb(245, 245, 245)',
@@ -28,20 +32,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Sidebar = (props) => {
+const Sidebar = ({
+  hover
+}) => {
     const classes = useStyles()
 
-    const [hover, setHover] = useState(false)
     const [githubHover, setGithubHover] = useState(false)
     const [mediumHover, setMediumHover] = useState(false)
     const [linkedInHover, setLinkedInHover] = useState(false)
 
     const maximize = () => {
-        setHover(true)
+        store.dispatch({
+          type: MOUSE_ENTER
+        })
     }
 
     const minimize = () => {
-        setHover(false)
+         store.dispatch({
+           type: MOUSE_LEAVE,
+         });
     }
 
     const githubHoverMoveEnter = () => {
@@ -417,6 +426,14 @@ const Sidebar = (props) => {
   );
 };
 
-Sidebar.propTypes = {};
+Sidebar.propTypes = {
+  sidebar: PropTypes.object.isRequired
+};
 
-export default Sidebar;
+const mapStateToProps = state => ({
+  sidebar: state.sidebar
+})
+
+const mapActionsToProps = {}
+
+export default connect(mapStateToProps, mapActionsToProps)(Sidebar);

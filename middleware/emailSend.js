@@ -9,12 +9,12 @@ const emailSend = (email, name, organisation, message) => {
     Messages: [
       {
         From: {
-          Email: "aunsh@aunsh.com",
+          Email: "aunsh0310@gmail.com",
           Name: "aunsh.com",
         },
         To: [
           {
-            Email: "aunsh0310@gmail.com",
+            Email: "aunsh.tech@gmail.com",
             Name: "Aunsh",
           },
         ],

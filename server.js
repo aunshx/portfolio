@@ -1,6 +1,7 @@
 const express = require("express");
 const expressSanitizer = require("express-sanitizer");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 const connectDB = require("./config/db");
 
@@ -10,7 +11,8 @@ const app = express();
 connectDB();
 
 // Init Middleware
-app.use(express.json({ extended: false }));
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Mount express-sanitizer middleware here
 app.use(expressSanitizer());
