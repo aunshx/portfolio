@@ -341,6 +341,7 @@ pre {
 @media only screen and (max-width: 786px) {
   .navbar {
   padding: 0 2.5em;
+  border: 1px solid red;
 }
   .navbar .right {
     display: none;
@@ -694,6 +695,12 @@ pre {
 }
 
 @media only screen and (max-width: 786px) {
+  .main {
+    width: 100vw;
+    height: auto;
+    border: 1px solid blue;
+    margin: 50px 0;
+  }
   .main .double_grid .title .second {
   font-size: 6em;
   text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -745,6 +752,7 @@ pre {
   padding: 1em;
   margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
+  border: 1px solid green;
 }
 
 .projects .title {
@@ -893,6 +901,13 @@ pre {
   margin-right: 0.4em;
 }
 
+@media only screen and (max-width: 786px) {
+  .projects {
+    width: 100vw;
+    margin: 50px 0;
+  }
+}
+
 /* ----------------------------------- ARTICLES ---------------------------- */
 .articles {
   color: var(--grey-color);
@@ -1015,8 +1030,9 @@ pre {
    width: 100%;
   height: auto;
   padding: 0em 1em 1em 1em;
-  margin: 0px 0 50px 50px;
+  margin: 50px 0;
   font-family: 'Comfortaa', cursive;
+  border: 1px solid red;
 }
 
 .articles-main {
@@ -1235,6 +1251,14 @@ pre {
   padding-top: 0.6em;
 }
 
+@media only screen and (max-width: 786px) {
+  .skills {
+    width: 100vw;
+    margin: 50px 0;
+    border: 1px solid blue;
+  }
+}
+
 /* --------------------------------- CONTACT ------------------------------ */
 .contact {
   color: var(--grey-color);
@@ -1329,6 +1353,18 @@ pre {
   justify-content: flex-start;
   margin-left: 4em;
   padding-top: 1em;
+}
+
+@media only screen and (max-width: 786px) {
+  .contact {
+    margin: 50px 0;
+    width: 100vw;
+    height: auto;
+  }
+
+  .card-contact {
+   margin: 0px 0 50px 0;
+}
 }
 
 /* -------------------------------- Go Up ---------------------------- */
