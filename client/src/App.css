@@ -1841,26 +1841,39 @@ pre {
    width: 1000px;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 30% 0 50px 50px;
+  margin: 0 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
-.contact .title {
+.contact-main {
+  color: var(--grey-color);
+   width: 1000px;
+  height: auto;
+  padding: 0em 1em 0em 1em;
+  margin: 5% 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.contact .title, 
+.contact-main .title {
   color: var(--lighter-dark-font-color);
   font-size: 2em;
 }
 
+.contact .body,
 .contact .body{
   display: flex;
   margin-top: 5%;
   justify-content: center;
 }
 
-.contact .body .image {
+.contact .body .image,
+.contact-main .body .image {
   border: 1px solid red;
 }
 
-.contact .body .form {
+.contact .body .form,
+.contact-main .body .form {
    width: 310px;
   color: var(--lighter-dark-font-color);
   background-color: var(--navbar-color);
@@ -1870,7 +1883,8 @@ pre {
   z-index: 1;
 }
 
-.contact .body .form .errors {
+.contact .body .form .errors,
+.contact-main .body .form .errors {
   color: var(--light-color);
   background-color: var(--closing-color);
   border-radius: 10px;
@@ -1880,18 +1894,21 @@ pre {
 
 }
 
-.contact .body .form .title {
+.contact .body .form .title,
+.contact-main .body .form .title {
   padding: 0.5em;
   font-size: 1em;
 }
 
-.contact .body .form .title .first {
+.contact .body .form .title .first,
+.contact-main .body .form .title .first {
   font-size: 1.3em;
   color: var(--logo-color);
   /* padding-bottom: 0.5em; */
 }
 
-.contact .body .form .title {
+.contact .body .form .title,
+.contact-main .body .form .title {
   padding: 0.5em;
   margin: 0.5em;
   font-size: 1em;

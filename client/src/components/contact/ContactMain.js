@@ -125,14 +125,14 @@ const ContactMain = ({
       <Sidebar hover={hover} />
       <Background />
       <div className='app'>
-        <div className='contact' data-aos='fade-in'>
+        <div className='contact-main' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />
             </div>
             <div>Contact</div>
           </div>
-          <div className='body'>
+          <div className='body flex_middle' style={{marginTop: '2em'}} data-aos="fade-up" >
             <div className='form'>
               <div className='app title'>
                 <div className='first ft-bold flex_middle'>Get in touch!</div>
@@ -307,7 +307,7 @@ const ContactMain = ({
             </div>
           </div>
         </div>
-        <div className='card-contact' data-aos='fade-up'>
+        <div className='card-contact' data-aos='fade-up' data-aos-offset={30} >
           <div className='title flex_middle'>Details</div>
           <div className='info'>
             <div className='title'>
