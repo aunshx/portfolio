@@ -450,6 +450,12 @@ pre {
   top: 45px;
   font-family: 'Comfortaa', cursive;
   animation: closeSmoothlySidebar 0.3s 1 linear;
+  z-index: 102;
+}
+
+.sidebar_main_maximize {
+  position: absolute;
+  z-index: 102;
 }
 
 .sidebar_main .element,
@@ -975,12 +981,11 @@ pre {
 /* ------------------------------------ PROJECTS ------------------------------------ */
 .projects {
   color: var(--grey-color);
-   width: 90vw;
+   width: 1000px;
   height: auto;
   padding: 1em;
   margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid green;
 }
 
 .projects .title {
@@ -1054,8 +1059,11 @@ pre {
 .projects .individual .double_grid .details .links {
   font-size: 0.8em;
   color: var(--light-logo-color);
-  padding-left: 0.5em;
-  width: 90%;
+  width: 100%;
+  margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
 }
 
 .projects .individual .double_grid .details .links .expand {
@@ -1127,6 +1135,13 @@ pre {
   display: inline-block;
   content: "-";
   margin-right: 0.4em;
+}
+
+@media only screen and (min-width: 786px) and (max-width: 1028px) {
+  .projects {
+    width: 780px;
+    margin: 50px 0;
+  }
 }
 
 @media only screen and (max-width: 786px) {

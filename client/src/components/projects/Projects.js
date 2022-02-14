@@ -8,21 +8,24 @@ import YedaEngineerCard from './YedaengineerCard';
 import GotuuCard from './GotuuCard';
 
 const Projects = ({  }) => {
-  return <div className='projects'>
-    <div className="title flex_middle" data-aos='flip-down'>
-      <div style={{ marginRight: '0.5em' }}>
-        <FontAwesomeIcon icon={faTools} />
+  return (
+    <div className='app'>
+      <div className='projects'>
+        <div className='title flex_middle' data-aos='flip-down'>
+          <div style={{ marginRight: "0.5em" }}>
+            <FontAwesomeIcon icon={faTools} />
+          </div>
+          <div>Projects</div>
+        </div>
+        <div className='body app'>
+          <BodingaCard />
+          <YedaEngineerCard />
+          <GotuuCard />
+        </div>
       </div>
-      <div>
-        Projects
-      </div>
+      ;
     </div>
-    <div className="body app">
-      <BodingaCard />
-      <YedaEngineerCard />
-      <GotuuCard />
-    </div>
-  </div>;
+  );
 };
 
 Projects.propTypes = {};
