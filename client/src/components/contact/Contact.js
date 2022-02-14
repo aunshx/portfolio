@@ -19,8 +19,11 @@ import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 
 import Me from "./MeMain";
+import MeSmall from "./MeSmall";
 
 import { sendEmail } from "../../redux/actions/contact";
+
+import useWindow from "../../utils/windowSize";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -74,6 +77,7 @@ const Contact = ({
   // Redux Actions
   sendEmail,
 }) => {
+  const { width, height } = useWindow()
   const CHARACTER_LIMIT = 144;
 
   const [formData, setFormData] = useState({
@@ -128,6 +132,18 @@ const Contact = ({
             </div>
             <div>Contact</div>
           </div>
+          {show && width < 651 && (
+            <div>
+              <MeSmall
+                error={emailError}
+                success={emailSuccess}
+                message={emailMessage}
+                loading={emailLoading}
+                show={show}
+                changeDialog={changeDialog}
+              />
+            </div>
+          )}
           <div className='body'>
             <div className='form'>
               <div className='app title'>
@@ -327,7 +343,7 @@ const Contact = ({
           </div>
         </div>
       </div>
-      {show && (
+      {show && width > 651 && (
         <div>
           <Me
             error={emailError}

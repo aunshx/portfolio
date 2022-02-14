@@ -1031,7 +1031,7 @@ pre {
   color: var(--grey-color);
    width: 100%;
   height: auto;
-  padding: 0em 1em 1em 1em;
+  padding: 0em 1em 0.5em 1em;
   margin: 50px 0;
   font-family: 'Comfortaa', cursive;
   border: 1px solid red;
@@ -1067,6 +1067,45 @@ pre {
   /* z-index: -1; */
 }
 
+}
+
+@media only screen and (max-width: 650px) {
+  .articles {
+  color: var(--grey-color);
+   width: 100%;
+  height: auto;
+  padding: 0em 1em 0.5em 1em;
+  margin: 50px 0;
+  font-family: 'Comfortaa', cursive;
+}
+
+.articles-main {
+  color: var(--grey-color);
+   width: 100%;
+  height: auto;
+  padding: 0em 1em 0em 1em;
+  margin: 60px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.articles .body,
+.articles-main .body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 2em;
+}
+
+.articles .body .individual, 
+.articles-main .body .individual {
+  width: 280px;
+  color: var(--lighter-dark-font-color);
+  min-height: 300px;
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 1em 0;
+}
 }
 
 
@@ -1261,13 +1300,59 @@ pre {
   }
 }
 
+
+@media only screen and (max-width: 650px) {
+  .skills,
+.skills-main {
+  width: 100vw;
+  margin: 50px 0;
+}
+
+  .skills .body-one,
+.skills-main .body-one {
+  display: grid;
+  margin-top: 2em;
+  /* column-gap: 50px; */
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.skills .body-two,
+.skills-main .body-two {
+  display: grid;
+  column-gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.skills .body-one .individual,
+.skills-main .body-one .individual,
+.skills .body-two .individual,
+.skills-main .body-two .individual {
+  width: 100%;
+  color: var(--lighter-dark-font-color);
+  /* min-height: 100px; */
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+}
+
+.skills .body-one .individual .image img, 
+.skills-main .body-one .individual .image img, 
+.skills .body-two .individual .image img,
+.skills-main .body-two .individual .image img {
+  object-fit: contain;
+  width: 100%;
+  height: 50px;
+}
+
+}
+
 /* --------------------------------- CONTACT ------------------------------ */
 .contact {
   color: var(--grey-color);
    width: 1000px;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 60px 0 50px 50px;
+  margin: 30% 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1404,6 +1489,12 @@ pre {
   }
   100%{
     transform: rotate(20deg);
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .contact-button {
+    display: none;
   }
 }
 
@@ -1572,3 +1663,92 @@ from {
   height: 150px;
   object-fit: contain;
 }
+
+/* ----------------------------------- all about small ---------------------------- */
+
+.all-about-small {
+  height: auto;
+  width: 100vw;
+  position: relative;
+  margin-top: 5em;
+}
+
+.all-about-small .image {
+  margin-left: 3em;
+  width: 66%;
+}
+
+.all-about-small .bubble {
+  position: absolute;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  width: 150px;
+  height: 100px;
+  background: var(--navbar-color);
+  border-radius: 10px;
+  padding: 13px;
+  text-align: center;
+  color: var(--lighter-dark-font-color);
+  font-family: 'Comfortaa', cursive ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    top: -14%;
+  right: 150px;
+     /* animation: aboutImageInputDialog 2s 1 linear; */
+     z-index: 5;
+}
+
+.all-about-small .bubble-error {
+  position: fixed;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 24px;
+  width: 170px;
+  height: 120px;
+  background: var(--navbar-color);
+  border-radius: 10px;
+  padding: 13px;
+  text-align: center;
+  color: var(--lighter-dark-font-color);
+  font-family: 'Comfortaa', cursive ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    top: 60%;
+  right: 80px;
+     /* animation: aboutImageInputDialog 2s 1 linear; */
+}
+
+
+.all-about-small .bubble-bottom-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 24px solid #fff;
+  border-left: 20px solid transparent;
+  border-top: 12px solid #fff;
+  border-bottom: 20px solid transparent;
+  right: -10px;
+  bottom: -12px;
+  z-index: 5;
+  transform: rotate(-45deg);
+   animation: aboutImageInputDialog 2s 1 linear;
+}
+
+
+@keyframes aboutImageInputDialog {
+from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.all-about-small .image img {
+  width: 230px;
+  height: 230px;
+  object-fit: contain;
+}
+
+
