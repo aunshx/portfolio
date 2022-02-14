@@ -1164,9 +1164,11 @@ pre {
 .projects .individual .double_grid .details .links {
   font-size: 0.8em;
   color: var(--light-logo-color);
-  padding-left: 0.5em;
-  width: 90%;
+  width: 100%;
   margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
 }
 
 .projects .individual .double_grid .image  {

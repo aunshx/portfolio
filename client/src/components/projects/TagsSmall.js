@@ -12,7 +12,7 @@ const Tags = ({ logo, text, classGiven }) => {
           <div
             style={{ objectFit: "contain", width: "17px", marginTop: "0.3em" }}
           >
-            <img src={logo} alt='Redux Logo' />
+            <img src={logo} alt={`${text} logo`} />
           </div>
         </div>
       )}

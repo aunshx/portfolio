@@ -88,8 +88,8 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
             A web-app to manage business operations, customer and vendor
             management for medical companies in the veterinary field.
           </div>
-          <div className='links flex_around'>
-            <div>
+          <div className='links'>
+            <div className='flex_middle'>
               <a
                 href='https://github.com/aunshx/bodinga'
                 target={"_blank"}
@@ -97,11 +97,11 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                 alt='Github Repo link'
                 className='indi'
               >
-                Github Repo
+                Repo
               </a>
             </div>
             <Tooltip title='Show More Details' placement='top'>
-              <div className='indi'>
+              <div className='indi flex_middle'>
                 <ExpandMore
                   expand={expanded}
                   aria-expanded={expanded}
@@ -117,12 +117,12 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                 </ExpandMore>
               </div>
             </Tooltip>
-            <div>
+            <div className='flex_middle'>
               <a
                 href=''
                 target={"_blank"}
                 rel='noreferrer nofollow'
-                alt='Live Demo Link'
+                alt='Live Demo'
                 className='indi'
               >
                 Live Demo
@@ -145,7 +145,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
               <div className='app' style={{ justifyContent: "center" }}>
                 <div className='title'>Tech Stack</div>
                 {width <= 650 && (
-                  <div className={width <= 650 ? 'flex_middle' : ''}>
+                  <div className={width <= 650 ? "flex_middle" : ""}>
                     <TagsSmall
                       text={"React"}
                       logo={reactLogo}
