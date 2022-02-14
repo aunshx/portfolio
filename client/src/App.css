@@ -341,7 +341,6 @@ pre {
 @media only screen and (max-width: 786px) {
   .navbar {
   padding: 0 2.5em;
-  border: 1px solid red;
 }
   .navbar .right {
     display: none;
@@ -1419,7 +1418,6 @@ pre {
   padding: 0em 1em 0.5em 1em;
   margin: 50px 0;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .articles-main {
