@@ -24,6 +24,7 @@ import MeSmall from "./MeSmall";
 import { sendEmail } from "../../redux/actions/contact";
 
 import useWindow from "../../utils/windowSize";
+import Footer from "../layout/Footer";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -69,9 +70,10 @@ const textFieldStyle = {
 
 const Contact = ({
   reference,
+  refSec,
   show,
   changeDialog,
-  goContact,
+  innerRef,
   // Redux State
   contact: { emailLoading, emailError, emailSuccess, emailMessage },
   // Redux Actions
@@ -125,8 +127,8 @@ const Contact = ({
   return (
     <>
       <div className='app' ref={reference}>
-        <div className='contact' data-aos='fade-in' ref={goContact}>
-          <div className='title flex_middle' data-aos='flip-up'>
+        <div className='contact' data-aos='fade-in' ref={innerRef}>
+          <div className='title flex_middle' data-aos='flip-up' ref={refSec}>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />
             </div>
@@ -355,6 +357,7 @@ const Contact = ({
           />
         </div>
       )}
+      <Footer />
     </>
   );
 };

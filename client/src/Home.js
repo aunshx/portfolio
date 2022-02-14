@@ -13,7 +13,7 @@ import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrow, faChevronCircleUp, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrow, faUp, faChevronCircleUp, faCircle, faMobileAlt, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import About from './components/about/About';
 
 import './App.css'
@@ -23,34 +23,30 @@ const Home = ({
   // Redux State
   sidebar: { hover },
 }) => {
-  const [fixedContent, setFixedContent] = useState(true);
   const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
 
-  useEffect(() => setTimeout(() => setShowContact(true), 4000));
-
-  const checker = useRef();
   const me = useRef();
-  const goMain = useRef();
   const goContact = useRef();
+  const goNavbar  = useRef()
 
   const refElement = useCallback((node) => {
-    if (checker.current) {
-      checker.current.disconnect();
+    if (goContact.current) {
+      goContact.current.disconnect();
     }
     const options = {
       root: null,
       threshold: 0,
     };
-    checker.current = new IntersectionObserver((entries) => {
+    goContact.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        setFixedContent(false);
+        setShowContact(false);
       } else {
-        setFixedContent(true);
+        setShowContact(true);
       }
     }, options);
     if (node) {
-      checker.current.observe(node);
+      goContact.current.observe(node);
     }
   }, []);
 
@@ -60,7 +56,7 @@ const Home = ({
     }
     const options = {
       root: null,
-      threshold: 0,
+      threshold: 0.4,
     };
     me.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
@@ -75,12 +71,20 @@ const Home = ({
   }, []);
 
    const goToContact = () => {
-     goContact.current.scrollIntoView({ behavior: "smooth" });
+     if(goContact.current){
+       goContact.current.scrollIntoView({ behavior: "smooth" })
+     }
+   };
+
+   const goToNavbar = () => {
+     if(goNavbar.current){
+       goNavbar.current.scrollIntoView({ behavior: "smooth" })
+     }
    };
 
   return (
     <div className='app '>
-      <Navbar reference={goMain} refMain={refElement} />
+      <Navbar innerRef={goNavbar} />
       <Sidebar hover={hover} />
       <Main />
       <About />
@@ -89,19 +93,30 @@ const Home = ({
       <Skills />
       <Contact
         reference={refElement2}
+        refSec={refElement}
         show={showDialog}
         changeDialog={setShowDialog}
-        goContact={goContact}
+        innerRef={goContact}
       />
-      <Footer />
       {showContact && (
         <>
           <div className='appear_contact' onClick={goToContact}>
-            <div
-              className='contact-button'
-            >
+            <div className='contact-button'>
               <FontAwesomeIcon
                 icon={faMobileAlt}
+                className='go-up'
+                style={{ fontSize: 23 }}
+              />
+            </div>
+          </div>
+        </>
+      )}
+      {!showContact && (
+        <>
+          <div className='appear_contact'>
+            <div className='contact-button' onClick={goToNavbar}>
+              <FontAwesomeIcon
+                icon={faArrowUp}
                 className='go-up'
                 style={{ fontSize: 23 }}
               />

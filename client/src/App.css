@@ -706,7 +706,6 @@ pre {
     width: calc(100vw - 50px);
     height: 90vh;
     margin: 50px 0 0 50px;
-    border: 1px solid red;
   }
 
   .main .double_grid .title .second {
@@ -964,13 +963,10 @@ pre {
 
 /* ------------------------------------- FOOTER --------------------------------- */
 .footer {
-  /* position: fixed; */
-  bottom: 0px;
-  height: 30px;
+  height: 10px;
   z-index: -5;
-  /* background-color: var(--navbar-color); */
-  width: 100%;
-  /* border-top: 1px solid var(--light-grey-color); */
+  margin-left: 2.8%;
+  margin-bottom: 20px;
 }
 .footer .text {
   font-size: 1em;
@@ -1142,7 +1138,6 @@ pre {
   .projects {
     width: 780px;
     margin: 50px 0 0 50px;
-    border: 1px solid red;
   }
 }
 
@@ -1421,7 +1416,6 @@ pre {
   padding: 0em 1em 0.5em 1em;
   margin: 50px 0 0 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .articles-main {
@@ -1674,7 +1668,6 @@ pre {
   padding: 0em 1em 1em 1em;
   margin: 20px 0 40px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .about-main {
@@ -1827,7 +1820,6 @@ pre {
   padding: 0em 1em 1em 1em;
   margin: 50px 0 0px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .skills-main {
