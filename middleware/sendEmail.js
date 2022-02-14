@@ -1,43 +1,17 @@
 const moment = require("moment");
-const MailjetClient = require("node-mailjet");
+const config = require("config");
+const sgMail = require("@sendgrid/mail")
 
-let u = new MailjetClient({
-  config: {
-    url: "api.mailjet.com",
-    version: "v3",
-    output: "json",
-    perform_api_call: true,
-  },
-  perform_api_call: false,
-  version: "3.3.5",
-  options: {},
-  apiKey: "6899d8eca2c5adbab6c3b06b5e5e151a",
-  apiSecret: "1758d2cffa591f6d9ed0ef8a81c428c6",
-});
+const sendGridKey = config.get("sendGridAPIKeyEmail");
 
-const emailSend = async (email, name, organisation, message) => {
-  const mailjet = require("node-mailjet").connect(
-    "6899d8eca2c5adbab6c3b06b5e5e151a",
-    "1758d2cffa591f6d9ed0ef8a81c428c6"
-  );
-
-  // try {
-  const request = mailjet.post("send", { version: "v3.1" }).request({
-    Messages: [
-      {
-        From: {
-          Email: "aunsh0310@gmail.com",
-          Name: "aunsh.com",
-        },
-        To: [
-          {
-            Email: "aunsh.tech@gmail.com",
-            Name: "Aunsh",
-          },
-        ],
-        Subject: "New Message",
-        TextPart: "aunsh.com has a new message!!",
-        HTMLPart: `
+const sendEmail = async (email, name, organisation, message) => {
+    sgMail.setApiKey(sendGridKey);
+    const msg = {
+      to: "aunsh.tech@gmail.com", // Change to your recipient
+      from: "ceo@aunsh.com", // Change to your verified sender
+      subject: "Test",
+      text: "New Message",
+      html: `
         <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -100,14 +74,13 @@ const emailSend = async (email, name, organisation, message) => {
   </table>
 </body>
 </html>
-        `,
-      },
-    ],
-  });
+      `,
+    };
 
-  request
-    .then((result) => {
-      console.log(result.body);
+
+  sgMail.send(msg)
+    .then(() => {
+      console.log('Email Sent');
     })
     .catch((err) => {
       console.log(err);
@@ -115,5 +88,5 @@ const emailSend = async (email, name, organisation, message) => {
 };
 
 module.exports = {
-  emailSend,
+  sendEmail,
 };

@@ -1,6 +1,6 @@
 {
     "mongoURI": "mongodb+srv://myadmin:MyAdmin123@cluster0.8abo3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "sendGridAPIKeyEmail": "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",
+    "sendGridAPIKeyEmail": "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",
     "sendPulseSecret": "a3bf57b97072691d37580a1cf2d6543d",
     "sendPulseId": "fcd961d4d63e3c79fd74e92d928ee8d9"
 }
