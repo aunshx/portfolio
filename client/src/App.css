@@ -699,7 +699,6 @@ pre {
   .main {
     width: 100vw;
     height: 90vh;
-    border: 1px solid blue;
     margin: 50px 0;
   }
 
@@ -725,6 +724,199 @@ pre {
 
 .main .double_grid .title .second .exclamation {
   font-size: 116px;
+}
+
+}
+
+@media only screen and (max-width: 650px) {
+
+  .main {
+    width: 100vw;
+    height: 90vh;
+    margin: 50px 0;
+  }
+
+  .main .double_grid .title .second {
+  font-size: 5em;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   position: relative;
+   cursor:context-menu;
+}
+
+.main .double_grid .title .second .alternate {
+ color: var(--logo-color);
+}
+
+.main .double_grid .title .second .pronunciation {
+  content: 'pronunced as: Aaoooonsh';
+ color: var(--logo-color);
+ font-size: 10px; 
+ position: absolute;
+ bottom: 60px; 
+ right: 50px;
+}
+
+.main .double_grid .title .second .exclamation {
+  font-size: 100px;
+}
+
+.boopie img {
+  margin-top: -27px;
+  margin-left: -0.03em;
+  width: 0.7em;
+  z-index: -2;
+  position: relative;
+}
+
+
+.main .double_grid .title .second .third {
+  font-size:30px;
+  position: absolute;
+  bottom: 0px;
+}
+
+}
+
+@media only screen and (max-width: 546px) {
+
+  .main {
+    width: 100vw;
+    height: 90vh;
+    margin: 50px 0;
+  }
+
+  .main .double_grid .title .second {
+  font-size: 4.3em;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   position: relative;
+   cursor:context-menu;
+}
+
+.main .double_grid .title .second .alternate {
+ color: var(--logo-color);
+}
+
+.main .double_grid .title .second .pronunciation {
+  content: 'pronunced as: Aaoooonsh';
+ color: var(--logo-color);
+ font-size: 10px; 
+ position: absolute;
+ bottom: 50px; 
+ right: 50px;
+}
+
+.main .double_grid .title .second .exclamation {
+  font-size: 100px;
+}
+
+.boopie img {
+  margin-left: -0.05em;
+  width: 0.8em;
+  z-index: -2;
+  position: relative;
+}
+
+
+.main .double_grid .title .second .third {
+  font-size:20px;
+  position: absolute;
+  bottom: -10px;
+}
+
+}
+
+@media only screen and (max-width: 485px) {
+
+  .main {
+    width: 100vw;
+    height: 90vh;
+    margin: 50px 0;
+  }
+
+  .main .double_grid .title .second {
+  font-size: 3.8em;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   position: relative;
+   cursor:context-menu;
+}
+
+.main .double_grid .title .second .alternate {
+ color: var(--logo-color);
+}
+
+.main .double_grid .title .second .pronunciation {
+  content: 'pronunced as: Aaoooonsh';
+ color: var(--logo-color);
+ font-size: 9px; 
+ position: absolute;
+ bottom: 40px; 
+ right: 50px;
+}
+
+.main .double_grid .title .second .exclamation {
+  font-size: 100px;
+}
+
+.boopie img {
+  margin-left: -0.09em;
+  width: 0.9em;
+  z-index: -2;
+  position: relative;
+}
+
+
+.main .double_grid .title .second .third {
+  font-size:20px;
+  position: absolute;
+  bottom: -10px;
+}
+
+}
+
+@media only screen and (max-width: 443px) {
+
+  .main {
+    width: 100vw;
+    height: 90vh;
+    margin: 50px 0;
+  }
+
+ .main .double_grid .title .second .first {
+  font-size: 0.4em;
+  position: absolute;
+  top: 10px;
+}
+  .main .double_grid .title .second {
+  font-size: 2.7em;
+  text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+   position: relative;
+   cursor:context-menu;
+}
+
+.main .double_grid .title .second .alternate {
+ color: var(--logo-color);
+}
+
+.main .double_grid .title .second .pronunciation {
+    display: none;
+}
+
+.main .double_grid .title .second .exclamation {
+  font-size: 60px;
+}
+
+.boopie img {
+  margin-left: -0.09em;
+  width: 0.8em;
+  z-index: -2;
+  position: relative;
+}
+
+
+.main .double_grid .title .second .third {
+  font-size:14px;
+  position: absolute;
+  bottom: -20px;
 }
 
 }
@@ -1296,7 +1488,6 @@ pre {
   .skills {
     width: 100vw;
     margin: 50px 0;
-    border: 1px solid blue;
   }
 }
 
