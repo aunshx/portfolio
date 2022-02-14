@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Navbar = ({ innerRef }) => {
+const Navbar = ({ }) => {
   const classes = useStyles();
 
   const [menu, setMenu] = useState(false);
@@ -49,8 +49,8 @@ const Navbar = ({ innerRef }) => {
   };
   return (
     <>
-      <div className='navbar flex_between' ref={innerRef}>
-        <div className='cursor_pointer'>
+      <div className='navbar flex_between' >
+        <div className='cursor_pointer' >
           <NavLink to='/'>
             <div className='left'>aunsh.</div>
           </NavLink>

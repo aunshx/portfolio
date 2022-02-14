@@ -28,7 +28,6 @@ const Home = ({
 
   const me = useRef();
   const goContact = useRef();
-  const goNavbar  = useRef()
 
   const refElement = useCallback((node) => {
     if (goContact.current) {
@@ -76,15 +75,9 @@ const Home = ({
      }
    };
 
-   const goToNavbar = () => {
-     if(goNavbar.current){
-       goNavbar.current.scrollIntoView({ behavior: "smooth" })
-     }
-   };
-
   return (
     <div className='app '>
-      <Navbar innerRef={goNavbar} />
+      <Navbar />
       <Sidebar hover={hover} />
       <Main />
       <About />
@@ -92,6 +85,7 @@ const Home = ({
       <Articles />
       <Skills />
       <Contact
+      
         reference={refElement2}
         refSec={refElement}
         show={showDialog}
@@ -104,19 +98,6 @@ const Home = ({
             <div className='contact-button'>
               <FontAwesomeIcon
                 icon={faMobileAlt}
-                className='go-up'
-                style={{ fontSize: 23 }}
-              />
-            </div>
-          </div>
-        </>
-      )}
-      {!showContact && (
-        <>
-          <div className='appear_contact'>
-            <div className='contact-button' onClick={goToNavbar}>
-              <FontAwesomeIcon
-                icon={faArrowUp}
                 className='go-up'
                 style={{ fontSize: 23 }}
               />
