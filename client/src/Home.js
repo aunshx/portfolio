@@ -85,7 +85,6 @@ const Home = ({
       <Articles />
       <Skills />
       <Contact
-      
         reference={refElement2}
         refSec={refElement}
         show={showDialog}

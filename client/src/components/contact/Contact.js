@@ -324,7 +324,7 @@ const Contact = ({
         <div className='card-contact' data-aos='fade-up'>
           <div className='title flex_middle'>Details</div>
           <div className='info'>
-            <div className='title'>
+            <div className='title'> 
               <FontAwesomeIcon icon={faEnvelope} />
             </div>
             <div style={{ fontSize: "0.85em" }}>aunsh.sb@gmail.com</div>
@@ -344,6 +344,7 @@ const Contact = ({
             </div>
           </div>
         </div>
+        <Footer />
       </div>
       {show && width > 651 && (
         <div>
@@ -357,7 +358,6 @@ const Contact = ({
           />
         </div>
       )}
-      <Footer />
     </>
   );
 };

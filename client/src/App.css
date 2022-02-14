@@ -1677,7 +1677,6 @@ pre {
   padding: 0em 1em 0em 1em;
   margin: 0px 0 40px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .about .body,
@@ -1915,11 +1914,6 @@ pre {
   display: flex;
   margin-top: 5%;
   justify-content: center;
-}
-
-.contact .body .image,
-.contact-main .body .image {
-  border: 1px solid red;
 }
 
 .contact .body .form,

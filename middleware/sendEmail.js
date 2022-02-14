@@ -1,6 +1,5 @@
-const moment = require('moment');
-const MailjetClient = require('node-mailjet');
-
+const moment = require("moment");
+const MailjetClient = require("node-mailjet");
 
 let u = new MailjetClient({
   config: {
@@ -23,22 +22,22 @@ const emailSend = async (email, name, organisation, message) => {
   );
 
   // try {
-      const request = mailjet.post("send", { version: "v3.1" }).request({
-        "Messages": [
+  const request = mailjet.post("send", { version: "v3.1" }).request({
+    Messages: [
+      {
+        From: {
+          Email: "aunsh0310@gmail.com",
+          Name: "aunsh.com",
+        },
+        To: [
           {
-            "From": { 
-              "Email": "aunsh0310@gmail.com",
-              "Name": "aunsh.com",
-            },
-            "To": [
-              {
-                "Email": "aunsh.tech@gmail.com",
-                "Name": "Aunsh",
-              },
-            ],
-            "Subject": "New Message",
-            "TextPart": "aunsh.com has a new message!!",
-            "HTMLPart": `
+            Email: "aunsh.tech@gmail.com",
+            Name: "Aunsh",
+          },
+        ],
+        Subject: "New Message",
+        TextPart: "aunsh.com has a new message!!",
+        HTMLPart: `
         <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -102,9 +101,9 @@ const emailSend = async (email, name, organisation, message) => {
 </body>
 </html>
         `,
-          },
-        ],
-      });
+      },
+    ],
+  });
 
   request
     .then((result) => {
@@ -113,7 +112,7 @@ const emailSend = async (email, name, organisation, message) => {
     .catch((err) => {
       console.log(err);
     });
-}
+};
 
 module.exports = {
   emailSend,
