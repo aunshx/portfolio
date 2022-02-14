@@ -1,11 +1,10 @@
-import React from 'react';
-
-import second from '../../resources/images/giffy6.gif'
+import React, { useState } from 'react';
 
 import Background from './Background';
 
-
-
+import second from "../../resources/images/giffy6.gif";
+import useWindow from "../../utils/windowSize";
+import { useEffect } from 'react';
 
 const SplitText = ({ copy, role }) => {
     return(
@@ -38,43 +37,50 @@ const SplitText = ({ copy, role }) => {
         </span>
     )
 }
-const SplitTextMain = ({ copy, role }) => {
-    return(
-      <span aria-label={copy} role={role}>
-          {copy.split("").map(function(char, index){
-            let style1 = {"animation-delay": (0.5 + index / 10) + "s"}
-            let style2 = {"animation-delay": (0.5 + index / 10) + "s", 'color': 'black'}
-            return (
-              <>
-                {index > 4 && index < 10 ? (
-                <span
-              aria-hidden="true"
-              key={index}
-              className='u shake2'
-              style={style2}>
-              {char}
-            </span>
-              ) : (
-                <span
-              aria-hidden="true"
-              key={index}
-              className='uu shake2'
-              style={style1}>
-              {char}
-            </span>
-              )}
-              </>
-            )
-          })}
-        </span>
-    )
-}
 
 const Main = ({}) => {
+  const { width, height } = useWindow()
+  const [particles, setParticles] = useState(0)
+
+  useEffect(() => {
+    switch(true){
+
+      case width <= 320:
+        setParticles(50)
+        break
+
+      case width <= 450:
+        setParticles(70)
+        break
+
+      case width <= 650:
+        setParticles(100)
+        break
+
+      case width <= 850:
+        setParticles(130)
+        break
+
+      case width <= 1050:
+        setParticles(150)
+        break
+
+      case width <= 1250:
+        setParticles(220)
+        break
+
+      case width <= 1450:
+        setParticles(300)
+        break
+
+      default:
+        return null
+    }
+  }, [width])
   return (
     <div className='main'>
       <div>
-        <Background />
+        <Background particleValue={particles} particleLimit={400} />
       </div>
       <div className='double_grid'>
         <div className='title app' style={{ justifyContent: "center" }}>
