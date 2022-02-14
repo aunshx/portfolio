@@ -225,7 +225,7 @@ pre {
   top: 0;
   font-family: 'Comfortaa', cursive;
   padding: 0 5em;
-  z-index: 100;
+  z-index: 103;
 }
 
 .navbar .left {
@@ -441,7 +441,7 @@ pre {
   background-color: var(--navbar-color);
   color: var(--dark-font-color);
   width: 50px;
-  height: calc(100vh - 45px);
+  height: 100vh;
   border-right: 1px solid var(--light-grey-color);
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
   position: fixed;
@@ -490,6 +490,10 @@ pre {
   top: 45px;
   font-family: 'Comfortaa', cursive;
   animation: openSmoothlySidebar 0.3s 1 linear;
+}
+
+@media only screen and (min-width: 786px) and (max-width: 1028px)  {
+
 }
 
 @media only screen and (max-width: 786px) {
