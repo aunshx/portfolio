@@ -1452,6 +1452,19 @@ pre {
   .card-contact {
    margin: 0px 0 50px 0;
 }
+
+.card-contact {
+   width: 285px;
+  color: var(--lighter-dark-font-color);
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  min-height: 150px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 0.5em 0.5em 1.3em 0.5em;
+  margin: 0px 0 50px 0px;
+}
 }
 
 /* -------------------------------- Go Up ---------------------------- */
