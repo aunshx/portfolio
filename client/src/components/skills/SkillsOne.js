@@ -11,7 +11,7 @@ const SkillOne = ({ delay, logo, title }) => {
     <div className='imp'>
       <div
         className='individual app'
-        data-aos={width < 787 ? "fade-in" : "fade-left"}
+        data-aos={width < 787 ? "fade-in" : "fade-in"}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
       >
