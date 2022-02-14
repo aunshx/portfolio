@@ -1636,17 +1636,18 @@ pre {
    width: 90vw;
   height: auto;
   padding: 0em 1em 1em 1em;
-  margin: 0px 0 50px 50px;
+  margin: -20px 0 40px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
 .about-main {
   color: var(--grey-color);
-   width: 90vw;
+   width: 750px;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: -20px 0 50px 0;
+  margin: -20px 0 40px 50px;
   font-family: 'Comfortaa', cursive;
+  border: 1px solid red;
 }
 
 .about .body,
@@ -1654,14 +1655,15 @@ pre {
   display: grid;
   grid-template-columns:1fr;
   grid-template-rows: minmax(100px, auto);
-  margin-top: 2em;
+  margin-top: 3em;
   column-gap: 30px;
    color: var(--lighter-dark-font-color);
 }
 
 .about .body .cloud,
 .about-main .body .cloud {
-  display: none;
+  margin-top: 2em;
+  margin-right: 4em;
 }
 
 }
@@ -1689,7 +1691,7 @@ pre {
   display: grid;
   grid-template-columns:1fr;
   grid-template-rows: minmax(100px, auto);
-  margin-top: 2em;
+  margin-top: 3em;
   column-gap: 30px;
    color: var(--lighter-dark-font-color);
 }
