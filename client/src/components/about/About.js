@@ -41,9 +41,6 @@ const About = ({ sidebar: { hover } }) => {
 
   return (
     <>
-      <Navbar />
-      <Sidebar hover={hover} />
-      <Background />
       <div className='app'>
         <div className='about-main' style={{ justifyContent: "center" }}>
           <div

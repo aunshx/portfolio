@@ -1630,6 +1630,41 @@ pre {
   height: 200px;
 }
 
+@media only screen and (min-width: 786px) and (max-width: 1028px) {
+  .about {
+  color: var(--grey-color);
+   width: 90vw;
+  height: auto;
+  padding: 0em 1em 1em 1em;
+  margin: 0px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.about-main {
+  color: var(--grey-color);
+   width: 90vw;
+  height: auto;
+  padding: 0em 1em 0em 1em;
+  margin: -20px 0 50px 0;
+  font-family: 'Comfortaa', cursive;
+}
+
+.about .body,
+.about-main .body {
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 2em;
+  column-gap: 30px;
+   color: var(--lighter-dark-font-color);
+}
+
+.about .body .cloud,
+.about-main .body .cloud {
+  display: none;
+}
+
+}
 @media only screen and (max-width: 786px) {
   .about {
   color: var(--grey-color);
