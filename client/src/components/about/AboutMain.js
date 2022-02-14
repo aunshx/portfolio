@@ -81,7 +81,7 @@ const AboutMain = ({ sidebar: { hover } }) => {
               </div>
             </div>
             <div className='cloud flex_middle'>
-              <Cools radius={radius} />
+              <Cools radius={200} />
             </div>
           </div>
         </div>

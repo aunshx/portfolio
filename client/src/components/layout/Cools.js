@@ -26,6 +26,7 @@ const Cools = ({ radius }) => {
           padding: "100px",
           color: "black",
         }}
+        data-aos='fade-in'
       >
         <TagCloud tagName={tagName} radius={radius}></TagCloud>
       </div>
