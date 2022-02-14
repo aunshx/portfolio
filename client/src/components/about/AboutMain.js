@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Cools from '../layout/Cools';
 
+import logo from '../../resources/images/sketLogo.png'
+
 import windowSize from '../../utils/windowSize';
 
 // import imgLogo 
@@ -57,7 +59,7 @@ const AboutMain = ({ sidebar: { hover } }) => {
               <div className='app text'>
                 <div className='title'>
                   <div className="image">
-                    <img src="" alt="" />
+                    <img src={logo} alt="" />
                   </div>
                 </div>
                 <div className='para'>

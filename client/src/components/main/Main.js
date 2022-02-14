@@ -40,7 +40,7 @@ const SplitText = ({ copy, role }) => {
 
 const Main = ({}) => {
   const { width, height } = useWindow()
-  const [particles, setParticles] = useState(0)
+  const [particles, setParticles] = useState(250)
 
   useEffect(() => {
     switch(true){
@@ -62,11 +62,11 @@ const Main = ({}) => {
         break
 
       case width <= 1050:
-        setParticles(150)
+        setParticles(200)
         break
 
       case width <= 1250:
-        setParticles(220)
+        setParticles(250)
         break
 
       case width <= 1450:
