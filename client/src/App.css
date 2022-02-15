@@ -1584,7 +1584,7 @@ pre {
    width: 1000px;
   height: auto;
   padding: 0em 1em 1em 1em;
-  margin: 0px 0 50px 0px;
+  margin: 50px 0 50px 0px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1593,7 +1593,7 @@ pre {
    width: 1000px;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 0px 0 50px 50px;
+  margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1705,7 +1705,7 @@ pre {
    width: 90vw;
   height: auto;
   padding: 0em 1em 1em 1em;
-  margin: 20px 0 40px 50px;
+  margin: 50px 0 40px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1741,7 +1741,7 @@ pre {
    width: 90vw;
   height: auto;
   padding: 0em 1em 1em 1em;
-  margin: 0px 0 50px 50px;
+  margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1750,7 +1750,7 @@ pre {
    width: 90vw;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: -20px 0 50px 0;
+  margin: 50px 0 50px 0;
   font-family: 'Comfortaa', cursive;
 }
 

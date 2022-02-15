@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
+import useSound from "use-sound";
 import { connect } from 'react-redux';
 
 import second from "../../resources/images/giffy6.gif";
-import useWindow from "../../utils/windowSize";
+
+import swoosh from "../../resources/sounds/swoosh.mp3";
 
 const SplitText = ({ copy, role }) => {
     return(
@@ -42,6 +44,8 @@ const Main = ({
   settings: { sound }
 }) => {
 
+  const [playOn] = useSound(swoosh, { volume: 1 })
+
   let timer;
 
   function mouseStopped() {
@@ -49,11 +53,12 @@ const Main = ({
   }
 
   const makeSomeNoise = () => {
-    console.log("ON");
+     if (sound) {
+       playOn();
+     }
     clearTimeout(timer);
     timer = setTimeout(mouseStopped, 200);
   }
-
   
   return (
     <>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useSound from "use-sound";
 import { connect } from "react-redux";
 
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
@@ -53,7 +53,7 @@ const Navbar = ({
 }) => {
   const classes = useStyles();
 
-  const [playOn] = useSound(toggle, { volume: 1 });
+  const [playOn] = useSound(toggle, { volume: 0.2 });
 
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);

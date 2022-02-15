@@ -16,10 +16,13 @@ import {
 
 import mediumLogo from '../../resources/images/mediumLogo.png'
 import mediumLogoHover from '../../resources/images/mediumLogoHover.png'
+import mediumLogoDark from '../../resources/images/mediumLogoDark.png'
 import githubLogo from '../../resources/images/githubLogo.png'
 import githubLogoHover from '../../resources/images/githubLogoHover.png'
+import githubLogoDark from '../../resources/images/githubLogoDark.png'
 import linkedInLogo from '../../resources/images/linkedInLogo.png'
 import linkedInLogoHover from '../../resources/images/linkedInLogoHover.png'
+import linkedInLogoDark from '../../resources/images/linkedInLogoDark.png'
 
 import store from '../../store'
 import { MOUSE_ENTER, MOUSE_LEAVE } from '../../redux/actions/types';
@@ -33,7 +36,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Sidebar = ({
-  hover
+  hover,
+  // Redux State
+  settings: { displayMode }
 }) => {
     const classes = useStyles()
 
@@ -80,7 +85,11 @@ const Sidebar = ({
   return (
     <>
       {hover ? (
-        <div className='sidebar_main_maximize' onMouseLeave={minimize} onClick={minimize}>
+        <div
+          className='sidebar_main_maximize'
+          onMouseLeave={minimize}
+          onClick={minimize}
+        >
           <div className='app'>
             <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }} exact>
               <div className='element flex_between'>
@@ -190,7 +199,10 @@ const Sidebar = ({
                     {githubHover ? (
                       <img src={githubLogoHover} alt='Github Logo' />
                     ) : (
-                      <img src={githubLogo} alt='Github Logo' />
+                      <img
+                        src={displayMode ? githubLogoDark : githubLogo}
+                        alt='Github Logo'
+                      />
                     )}
                   </div>
                 </Tooltip>
@@ -219,7 +231,10 @@ const Sidebar = ({
                     {mediumHover ? (
                       <img src={mediumLogoHover} alt='Medium Logo' />
                     ) : (
-                      <img src={mediumLogo} alt='Medium Logo' />
+                      <img
+                        src={displayMode ? mediumLogoDark : mediumLogo}
+                        alt='Medium Logo'
+                      />
                     )}
                   </div>
                 </Tooltip>
@@ -248,7 +263,10 @@ const Sidebar = ({
                     {linkedInHover ? (
                       <img src={linkedInLogoHover} alt='LinkedIn Logo' />
                     ) : (
-                      <img src={linkedInLogo} alt='LinkedIn Logo' />
+                      <img
+                        src={displayMode ? linkedInLogoDark : linkedInLogo}
+                        alt='LinkedIn Logo'
+                      />
                     )}
                   </div>
                 </Tooltip>
@@ -257,7 +275,11 @@ const Sidebar = ({
           </div>
         </div>
       ) : (
-        <div className='sidebar_main' onMouseEnter={maximize} onClick={maximize}>
+        <div
+          className='sidebar_main'
+          onMouseEnter={maximize}
+          onClick={maximize}
+        >
           <div className='app'>
             <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }} exact>
               <div className='element flex_between'>
@@ -355,7 +377,10 @@ const Sidebar = ({
                     {githubHover ? (
                       <img src={githubLogoHover} alt='Github Logo' />
                     ) : (
-                      <img src={githubLogo} alt='Github Logo' />
+                      <img
+                        src={displayMode ? githubLogoDark : githubLogo}
+                        alt='Github Logo'
+                      />
                     )}
                   </div>
                 </Tooltip>
@@ -384,7 +409,10 @@ const Sidebar = ({
                     {mediumHover ? (
                       <img src={mediumLogoHover} alt='Medium Logo' />
                     ) : (
-                      <img src={mediumLogo} alt='Medium Logo' />
+                      <img
+                        src={displayMode ? mediumLogoDark : mediumLogo}
+                        alt='Medium Logo'
+                      />
                     )}
                   </div>
                 </Tooltip>
@@ -413,7 +441,10 @@ const Sidebar = ({
                     {linkedInHover ? (
                       <img src={linkedInLogoHover} alt='LinkedIn Logo' />
                     ) : (
-                      <img src={linkedInLogo} alt='LinkedIn Logo' />
+                      <img
+                        src={displayMode ? linkedInLogoDark : linkedInLogo}
+                        alt='LinkedIn Logo'
+                      />
                     )}
                   </div>
                 </Tooltip>
@@ -426,4 +457,15 @@ const Sidebar = ({
   );
 };
 
-export default Sidebar
+Sidebar.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {};
+
+export default connect(mapStateToProps, mapStateToActions)(Sidebar);
+
