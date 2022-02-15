@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,17 +8,29 @@ import ArticleOne from './ArticleOne';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
-import Background from '../main/Background';
-import { connect } from 'react-redux';
+
+import BackgroundLarge from "../main/BackgroundLarge";
+import BackgroundMedium from "../main/BackgroundMedium";
+import BackgroundSmall from "../main/BackgroundSmall";
+import BackgroundTiny from "../main/BackgroundTiny";
+
+import windowSize from "../../utils/windowSize";
 
 const ArticlesMain = ({
   sidebar: { hover }
 }) => {
+
+  const { width, height } = windowSize();
   return (
     <>
-      <Background />
       <Navbar />
       <Sidebar hover={hover} />
+      <div>
+        {width > 1280 && <BackgroundLarge />}
+        {900 > width && width <= 1280 && <BackgroundMedium />}
+        {600 > width && width <= 900 && <BackgroundSmall />}
+        {width <= 600 && <BackgroundTiny />}
+      </div>
       <div className='app'>
         <div className='articles-main'>
           <div className='title flex_middle' data-aos='flip-up'>

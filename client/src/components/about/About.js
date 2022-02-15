@@ -3,11 +3,6 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo, faUser } from "@fortawesome/free-solid-svg-icons";
 
-import Navbar from "../navbar/Navbar";
-import Sidebar from "../navbar/Sidebar";
-import Footer from "../layout/Footer";
-import Background from "../main/Background";
-
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Cools from "../layout/Cools";

@@ -665,7 +665,7 @@ pre {
 .shake2:hover{ 
   animation: shake2 75ms infinite;
   animation-timing-function: linear; 
-  color: black;  
+  color: var(--light-color);  
 }
 
 /* ---------------- moving text ------------------- */
@@ -683,7 +683,7 @@ pre {
 }
 
 .u { 
-  color: black;
+  color: var(--dark-font-color);
 }
 .uu { 
   color: var(--logo-color);
@@ -2228,9 +2228,9 @@ pre {
   width: 0px;
   height: 0px;
   position: absolute;
-  border-right: 24px solid #fff;
+  border-right: 24px solid var(--navbar-color);
   border-left: 20px solid transparent;
-  border-top: 12px solid #fff;
+  border-top: 12px solid var(--navbar-color);
   border-bottom: 20px solid transparent;
   right: -10px;
   bottom: -12px;

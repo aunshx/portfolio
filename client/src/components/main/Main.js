@@ -5,13 +5,17 @@ import Background from './Background';
 import second from "../../resources/images/giffy6.gif";
 import useWindow from "../../utils/windowSize";
 import { useEffect } from 'react';
+import BackgroundLarge from './BackgroundLarge';
+import BackgroundSmall from './BackgroundSmall';
+import BackgroundMedium from './BackgroundMedium';
+import BackgroundTiny from './BackgroundTiny';
 
 const SplitText = ({ copy, role }) => {
     return(
       <span aria-label={copy} role={role}>
           {copy.split("").map(function(char, index){
             let style1 = {"animation-delay": (0.5 + index / 10) + "s"}
-            let style2 = {"animation-delay": (0.5 + index / 10) + "s", 'color': 'black'}
+            let style2 = {"animation-delay": (0.5 + index / 10) + "s"}
             return (
               <>
                 {index > 4 && index < 10 ? (
@@ -80,7 +84,10 @@ const Main = ({}) => {
   return (
     <div className='main'>
       <div>
-        <Background particleValue={particles} particleLimit={400} />
+        {width > 1280 && <BackgroundLarge />}
+        {900 > width && width <= 1280 && <BackgroundMedium />}
+        {600 > width && width <= 900 && <BackgroundSmall />}
+        {width <= 600 && <BackgroundTiny />}
       </div>
       <div className='double_grid'>
         <div className='title app' style={{ justifyContent: "center" }}>

@@ -1,7 +1,7 @@
 import React from "react";
 import Particles from "react-tsparticles";
 
-export default function Background({ particleValue, particleLimit }) {
+export default function BackgroundLarge() {
   return (
     <Particles
       options={{
@@ -11,8 +11,8 @@ export default function Background({ particleValue, particleLimit }) {
         },
         particles: {
           number: {
-            value: particleValue,
-            limit: particleLimit,
+            value: 100,
+            limit: 200,
           },
           color: {
             value: "#262626",
@@ -64,10 +64,10 @@ export default function Background({ particleValue, particleLimit }) {
               color: "#ff0000",
             },
             bubble: {
-              opacity: 0.8,
+              opacity: 0.9,
               size: 3,
               color: {
-                value: "#3f6cf2",
+                value: "#3694ff",
               },
             },
           },

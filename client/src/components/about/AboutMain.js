@@ -6,7 +6,10 @@ import { faInfo, faUser } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
-import Background from '../main/Background';
+import BackgroundLarge from '../main/BackgroundLarge';
+import BackgroundMedium from '../main/BackgroundMedium';
+import BackgroundSmall from '../main/BackgroundSmall';
+import BackgroundTiny from '../main/BackgroundTiny';
 
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -45,7 +48,12 @@ const AboutMain = ({ sidebar: { hover } }) => {
     <>
       <Navbar />
       <Sidebar hover={hover} />
-      <Background />
+      <div>
+        {width > 1280 && <BackgroundLarge />}
+        {900 > width && width <= 1280 && <BackgroundMedium />}
+        {600 > width && width <= 900 && <BackgroundSmall />}
+        {width <= 600 && <BackgroundTiny />}
+      </div>
       <div className='flex_middle'>
         <div className='about-main app' style={{ justifyContent: "center" }}>
           <div className='title flex_middle' data-aos='flip-up'>
@@ -58,8 +66,8 @@ const AboutMain = ({ sidebar: { hover } }) => {
             <div className='flex_middle'>
               <div className='app text'>
                 <div className='title'>
-                  <div className="image">
-                    <img src={logo} alt="" />
+                  <div className='image'>
+                    <img src={logo} alt='' />
                   </div>
                 </div>
                 <div className='para'>
