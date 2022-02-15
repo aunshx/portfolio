@@ -7,9 +7,9 @@ const sendGridKey = config.get("sendGridAPIKeyEmail");
 const sendEmail = async (email, name, organisation, message) => {
     sgMail.setApiKey(sendGridKey);
     const msg = {
-      to: "aunsh.tech@gmail.com", // Change to your recipient
-      from: "ceo@aunsh.com", // Change to your verified sender
-      subject: "Test",
+      to: "aunsh.tech@gmail.com",
+      from: "ceo@aunsh.com", 
+      subject: "Somebody has messaged you!!",
       text: "New Message",
       html: `
         <!DOCTYPE html>
