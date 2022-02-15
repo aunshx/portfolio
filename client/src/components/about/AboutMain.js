@@ -48,12 +48,10 @@ const AboutMain = ({ sidebar: { hover } }) => {
     <>
       <Navbar />
       <Sidebar hover={hover} />
-      <div>
-        {width > 1280 && <BackgroundLarge />}
-        {900 > width && width <= 1280 && <BackgroundMedium />}
-        {600 > width && width <= 900 && <BackgroundSmall />}
-        {width <= 600 && <BackgroundTiny />}
-      </div>
+      {width > 1280 && <BackgroundLarge />}
+      {900 < width && width <= 1280 && <BackgroundMedium />}
+      {600 < width && width <= 900 && <BackgroundSmall />}
+      {width <= 600 && <BackgroundTiny />}
       <div className='flex_middle'>
         <div className='about-main app' style={{ justifyContent: "center" }}>
           <div className='title flex_middle' data-aos='flip-up'>
@@ -94,8 +92,18 @@ const AboutMain = ({ sidebar: { hover } }) => {
           </div>
         </div>
       </div>
-      <div style={{ position: "fixed", bottom: "0", right: "45%" }}>
-        <Footer />
+      <div className='flex_middle'>
+        <div
+          style={{
+            position: "fixed",
+            bottom: "-12px",
+            width: "20%",
+            alignItems: 'end'
+          }}
+          className='flex_middle' 
+        >
+          <Footer />
+        </div>
       </div>
     </>
   );

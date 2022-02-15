@@ -91,7 +91,7 @@ const Sidebar = ({
           onClick={minimize}
         >
           <div className='app'>
-            <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }} exact>
+            <NavLink to='/' activeStyle={{ color: "rgb(0, 145, 255)" }} exact>
               <div className='element flex_between'>
                 <div>
                   <FontAwesomeIcon
@@ -104,10 +104,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/user'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faUser}
@@ -119,9 +120,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/projects'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faTools}
@@ -133,9 +136,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/articles'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faNewspaper}
@@ -145,8 +150,10 @@ const Sidebar = ({
                 <div className='writing'>Articles</div>
               </div>
             </NavLink>
-            <NavLink to='/skills' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-              <div className='element flex_between'>
+            <NavLink to='/skills' className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faBrain}
@@ -158,9 +165,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/contact'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faMobileAlt}
@@ -281,8 +290,10 @@ const Sidebar = ({
           onClick={maximize}
         >
           <div className='app'>
-            <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }} exact>
-              <div className='element flex_between'>
+            <NavLink to='/' className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact exact>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faHome}
@@ -293,10 +304,12 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/user'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
               exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faUser}
@@ -307,9 +320,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/projects'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faTools}
@@ -320,9 +335,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/articles'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faNewspaper}
@@ -331,8 +348,10 @@ const Sidebar = ({
                 </div>
               </div>
             </NavLink>
-            <NavLink to='/skills' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-              <div className='element flex_between'>
+            <NavLink to='/skills' className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faBrain}
@@ -343,9 +362,11 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/contact'
-              activeStyle={{ color: "rgb(105, 182, 242)" }}
+              className={'element'}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
             >
-              <div className='element flex_between'>
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faMobileAlt}
