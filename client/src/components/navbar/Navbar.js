@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useSound from "use-sound";
+import { connect } from "react-redux";
 
 import { NavLink, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,6 +15,25 @@ import SidebarMini from './SidebarMini'
 
 import windowSize from '../../utils/windowSize'
 
+import toggle from "../../resources/sounds/toggle.mp3";
+
+import {
+  toggleLightMode,
+  toggleDarkMode,
+  soundOn,
+  soundOff,
+} from "../../redux/actions/settings";
+
+const setDark = () => {
+  localStorage.setItem("theme", "dark");
+  document.documentElement.setAttribute("data-theme", "dark");
+};
+
+const setLight = () => {
+  localStorage.setItem("theme", "light");
+  document.documentElement.setAttribute("data-theme", "light");
+};
+
 const useStyles = makeStyles(theme => ({
   customTooltip: {
     backgroundColor: 'rgb(245, 245, 245)',
@@ -21,12 +42,21 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Navbar = ({ }) => {
+const Navbar = ({
+  // Redux State
+  settings: { displayMode, sound },
+  // Redux Actions
+  soundOn,
+  soundOff,
+  toggleLightMode,
+  toggleDarkMode,
+}) => {
   const classes = useStyles();
+
+  const [playOn] = useSound(toggle, { volume: 1 });
 
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
-  const [displayMoon, setDisplayMoon] = useState(true);
   const [displayDownload, setDisplayDownload] = useState(false);
 
   const { width, height } = windowSize();
@@ -36,10 +66,6 @@ const Navbar = ({ }) => {
     setDrawer(!drawer);
   };
 
-  const changeMoon = () => {
-    setDisplayMoon(!displayMoon);
-  };
-
   const changeDownloadEnter = () => {
     setDisplayDownload(true);
   };
@@ -47,44 +73,61 @@ const Navbar = ({ }) => {
   const changeDownloadLeave = () => {
     setDisplayDownload(false);
   };
+
+  const toggleThemeToDark = (e) => {
+    setDark();
+    toggleDarkMode();
+    if (sound) {
+      playOn();
+    }
+  };
+
+  const toggleThemeToLight = (e) => {
+    setLight();
+    toggleLightMode();
+    if (sound) {
+      playOn();
+    }
+  };
+  
   return (
     <>
-      <div className='navbar flex_between' >
-        <div className='cursor_pointer' >
+      <div className='navbar flex_between'>
+        <div className='cursor_pointer'>
           <NavLink to='/'>
             <div className='left'>aunsh.</div>
           </NavLink>
         </div>
         <div className='right flex_evenly'>
-          {displayMoon ? (
-            <div className='sun cursor_pointer' onClick={changeMoon}>
-              <Tooltip title='Light' placement='left'>
+          {displayMode ? (
+            <div className='moon cursor_pointer'>
+              <Tooltip title='Dark' placement='left'>
                 <div>
                   <FontAwesomeIcon
-                    icon={faSun}
+                    icon={faMoon}
                     className={"mobile_logo--tilted"}
-                    // onClick={verticalMenu}
+                    onClick={toggleThemeToLight}
                     style={{
-                      fontSize: 19,
+                      fontSize: 17,
                       marginTop: "0.3em",
-                      color: "orange",
+                      color: "grey",
                     }}
                   />
                 </div>
               </Tooltip>
             </div>
           ) : (
-            <div className='moon cursor_pointer' onClick={changeMoon}>
-              <Tooltip title='Dark' placement='left'>
+            <div className='sun cursor_pointer'>
+              <Tooltip title='Light' placement='left'>
                 <div>
                   <FontAwesomeIcon
-                    icon={faMoon}
+                    icon={faSun}
                     className={"mobile_logo--tilted"}
-                    // onClick={verticalMenu}
+                    onClick={toggleThemeToDark}
                     style={{
-                      fontSize: 17,
+                      fontSize: 19,
                       marginTop: "0.3em",
-                      color: "grey",
+                      color: "orange",
                     }}
                   />
                 </div>
@@ -164,6 +207,23 @@ const Navbar = ({ }) => {
   );
 };
 
-Navbar.propTypes = {};
+Navbar.propTypes = {
+  settings: PropTypes.object.isRequired,
+  toggleLightMode: PropTypes.func.isRequired,
+  toggleDarkMode: PropTypes.func.isRequired,
+  soundOn: PropTypes.func.isRequired,
+  soundOff: PropTypes.func.isRequired,
+};
 
-export default withRouter(Navbar);
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {
+  toggleLightMode,
+  toggleDarkMode,
+  soundOn,
+  soundOff,
+};
+
+export default connect(mapStateToProps, mapStateToActions)(Navbar)
