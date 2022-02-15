@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Background from './Background';
+import BackgroundLarge from "../main/BackgroundLarge";
+import BackgroundMedium from "../main/BackgroundMedium";
+import BackgroundSmall from "../main/BackgroundSmall";
+import BackgroundTiny from "../main/BackgroundTiny";
+
 
 import second from "../../resources/images/giffy6.gif";
 import useWindow from "../../utils/windowSize";
-import { useEffect } from 'react';
-import BackgroundLarge from './BackgroundLarge';
-import BackgroundSmall from './BackgroundSmall';
-import BackgroundMedium from './BackgroundMedium';
-import BackgroundTiny from './BackgroundTiny';
 
 const SplitText = ({ copy, role }) => {
     return(

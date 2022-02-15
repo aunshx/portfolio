@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBrain } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
-import Background from '../main/Background';
 import SkillOne from './SkillsOne';
+
+import BackgroundLarge from "../main/BackgroundLarge";
+import BackgroundMedium from "../main/BackgroundMedium";
+import BackgroundSmall from "../main/BackgroundSmall";
+import BackgroundTiny from "../main/BackgroundTiny";
+
+import windowSize from "../../utils/windowSize";
 
 import defaultImg from '../../resources/images/default.jpg'
 import reduxLogo from '../../resources/images/reduxLogo.png'
@@ -21,46 +28,53 @@ import passportLogo from '../../resources/images/passportLogo.png'
 import mongoLogo from '../../resources/images/mongoLogo.png'
 import css3Logo from '../../resources/images/css3Logo.png'
 import htmlLogo from '../../resources/images/htmlLogo.png'
-import { connect } from 'react-redux';
 
 const SkillsMain = ({
   sidebar: { hover }
 }) => {
-  return<>
-  <Background />
-  <Navbar />
-  <Sidebar hover={hover} />
-      <div className="app">
-        <div className='skills-main'>
-    <div className="title flex_middle" data-aos='flip-down'>
-      <div style={{ marginRight: '0.5em' }}>
-        <FontAwesomeIcon icon={faBrain} />
-      </div>
+  const { width, height } = windowSize()
+  
+  return (
+    <>
+      <Navbar />
+      <Sidebar hover={hover} />
       <div>
-        Skills
+        {width > 1280 && <BackgroundLarge />}
+        {900 > width && width <= 1280 && <BackgroundMedium />}
+        {600 > width && width <= 900 && <BackgroundSmall />}
+        {width <= 600 && <BackgroundTiny />}
       </div>
-    </div>
-    <div className="body-one">
-      <SkillOne delay={0} title={'React'} logo={reactLogo} />
-      <SkillOne delay={200} title={'Node.js'} logo={nodeLogo} />
-      <SkillOne delay={400} title={'Postgres'} logo={psqlLogo} />
-    </div>
-    <div className="body-two">
-      <SkillOne delay={0} title={'MongoDb'} logo={mongoLogo} />
-      <SkillOne delay={200} title={'CSS'} logo={css3Logo} />
-      <SkillOne delay={400} title={'HTML'} logo={htmlLogo} />
-      <SkillOne delay={600} title={'JS'} logo={jsLogo} />
-    </div>
-    <div className="body-two"  data-aos-offset='10'>
-      <SkillOne delay={0} title={'Git'} logo={gitLogo} />
-      <SkillOne delay={200} title={'Redux'} logo={reduxLogo} />
-      <SkillOne delay={400} title={'Mui'} logo={muiLogo} />
-      <SkillOne delay={600} title={'Passport'} logo={passportLogo} />
-    </div>
-  </div>;
+      <div className='app'>
+        <div className='skills-main'>
+          <div className='title flex_middle' data-aos='flip-down'>
+            <div style={{ marginRight: "0.5em" }}>
+              <FontAwesomeIcon icon={faBrain} />
+            </div>
+            <div>Skills</div>
+          </div>
+          <div className='body-one'>
+            <SkillOne delay={0} title={"React"} logo={reactLogo} />
+            <SkillOne delay={200} title={"Node.js"} logo={nodeLogo} />
+            <SkillOne delay={400} title={"Postgres"} logo={psqlLogo} />
+          </div>
+          <div className='body-two'>
+            <SkillOne delay={0} title={"MongoDb"} logo={mongoLogo} />
+            <SkillOne delay={200} title={"CSS"} logo={css3Logo} />
+            <SkillOne delay={400} title={"HTML"} logo={htmlLogo} />
+            <SkillOne delay={600} title={"JS"} logo={jsLogo} />
+          </div>
+          <div className='body-two' data-aos-offset='10'>
+            <SkillOne delay={0} title={"Git"} logo={gitLogo} />
+            <SkillOne delay={200} title={"Redux"} logo={reduxLogo} />
+            <SkillOne delay={400} title={"Mui"} logo={muiLogo} />
+            <SkillOne delay={600} title={"Passport"} logo={passportLogo} />
+          </div>
+        </div>
+        ;
       </div>
-  <Footer />
-  </>
+      <Footer />
+    </>
+  );
 };
 
 SkillsMain.propTypes = {

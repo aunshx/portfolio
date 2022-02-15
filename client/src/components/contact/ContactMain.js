@@ -17,8 +17,14 @@ import { makeStyles } from "@mui/styles";
 import Footer from '../layout/Footer';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
-import Background from '../main/Background';
 import MeMain from './MeMain';
+
+import BackgroundLarge from "../main/BackgroundLarge";
+import BackgroundMedium from "../main/BackgroundMedium";
+import BackgroundSmall from "../main/BackgroundSmall";
+import BackgroundTiny from "../main/BackgroundTiny";
+
+import windowSize from "../../utils/windowSize";
 
 import {
     sendEmail
@@ -75,6 +81,8 @@ const ContactMain = ({
     sendEmail 
 }) => {
 
+  const { width, height } = windowSize()
+
   const CHARACTER_LIMIT = 144
 
   const [formData, setFormData] = useState({
@@ -123,7 +131,12 @@ const ContactMain = ({
     <>
       <Navbar />
       <Sidebar hover={hover} />
-      <Background />
+      <div>
+        {width > 1280 && <BackgroundLarge />}
+        {900 > width && width <= 1280 && <BackgroundMedium />}
+        {600 > width && width <= 900 && <BackgroundSmall />}
+        {width <= 600 && <BackgroundTiny />}
+      </div>
       <div className='app'>
         <div className='contact-main' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
@@ -132,7 +145,11 @@ const ContactMain = ({
             </div>
             <div>Contact</div>
           </div>
-          <div className='body flex_middle' style={{marginTop: '2em'}} data-aos="fade-up" >
+          <div
+            className='body flex_middle'
+            style={{ marginTop: "2em" }}
+            data-aos='fade-up'
+          >
             <div className='form'>
               <div className='app title'>
                 <div className='first ft-bold flex_middle'>Get in touch!</div>
@@ -307,7 +324,7 @@ const ContactMain = ({
             </div>
           </div>
         </div>
-        <div className='card-contact' data-aos='fade-up' data-aos-offset={30} >
+        <div className='card-contact' data-aos='fade-up' data-aos-offset={30}>
           <div className='title flex_middle'>Details</div>
           <div className='info'>
             <div className='title'>
