@@ -22,6 +22,7 @@ import gotuuLogo from '../../resources/images/gotuuLogo.png'
 import mongoLogo from '../../resources/images/mongoLogo.png'
 
 import useWindow from '../../utils/windowSize';
+import { connect } from 'react-redux';
 
 const style = {
     position: 'fixed',
@@ -50,7 +51,10 @@ const ExpandMore = styled((props) => {
 }));
 
 
-const GotuuCard = (props) => {
+const GotuuCard = ({
+  // Redux State
+  settings: { displayMode }
+}) => {
 const { width, height } = useWindow()
 
 const [expanded, setExpanded] = useState(false);
@@ -60,7 +64,12 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
     setExpanded(!expanded);
   };
   return (
-    <div className='individual' data-aos='fade-up'>
+    <div
+      className={
+        displayMode ? "individual individual--projects--dark--gotuu" : "individual"
+      }
+      data-aos='fade-up'
+    >
       <div className='double_grid'>
         <div className='image' onClick={() => setIsPhotoOpen(true)}>
           <img src={defaultImg} alt='Bodinga Home Page' />
@@ -262,6 +271,15 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   );
 };
 
-GotuuCard.propTypes = {};
 
-export default GotuuCard;
+GotuuCard.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {};
+
+export default connect(mapStateToProps, mapStateToActions)(GotuuCard);

@@ -19,6 +19,7 @@ import psqlLogo from '../../resources/images/psqlLogo.png'
 import yedaengineerLogo from '../../resources/images/yedaengineerLogo.png'
 
 import useWindow from '../../utils/windowSize';
+import { connect } from 'react-redux';
 
 const style = {
     position: 'fixed',
@@ -47,7 +48,10 @@ const ExpandMore = styled((props) => {
 }));
 
 
-const YedaEngineerCard = (props) => {
+const YedaEngineerCard = ({
+  // Redux State
+  settings: { displayMode }
+}) => {
 const { width, height } = useWindow()
 
 const [expanded, setExpanded] = useState(false);
@@ -57,7 +61,12 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
     setExpanded(!expanded);
   };
   return (
-    <div className='individual' data-aos='fade-up'>
+    <div
+      className={
+        displayMode ? "individual individual--projects--dark--ye" : "individual"
+      }
+      data-aos='fade-up'
+    >
       <div className='double_grid'>
         <div className='image' onClick={() => setIsPhotoOpen(true)}>
           <img src={defaultImg} alt='Bodinga Home Page' />
@@ -259,6 +268,15 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   );
 };
 
-YedaEngineerCard.propTypes = {};
 
-export default YedaEngineerCard;
+YedaEngineerCard.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {};
+
+export default connect(mapStateToProps, mapStateToActions)(YedaEngineerCard);
