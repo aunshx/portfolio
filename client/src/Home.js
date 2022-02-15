@@ -2,7 +2,13 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
-import Popover from "@mui/material/Popover";
+
+import BackgroundLarge from "./components/main/BackgroundLarge";
+import BackgroundMedium from "./components/main/BackgroundMedium";
+import BackgroundSmall from "./components/main/BackgroundSmall";
+import BackgroundTiny from "./components/main/BackgroundTiny";
+
+import windowSize from "./utils/windowSize";
 
 import Navbar from './components/navbar/Navbar';
 import Main from './components/main/Main';
@@ -23,6 +29,8 @@ const Home = ({
   // Redux State
   sidebar: { hover },
 }) => {
+  const { width, height } = windowSize()
+
   const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
 
@@ -79,6 +87,10 @@ const Home = ({
     <div className='app '>
       <Navbar />
       <Sidebar hover={hover} />
+      {width > 1280 && <BackgroundLarge />}
+      {900 < width && width <= 1280 && <BackgroundMedium />}
+      {600 < width && width <= 900 && <BackgroundSmall />}
+      {width <= 600 && <BackgroundTiny />}
       <Main />
       <About />
       <Projects />

@@ -81,119 +81,114 @@ const Main = ({}) => {
     }
   }, [width])
   return (
-    <div className='main'>
-      <div>
-        {width > 1280 && <BackgroundLarge />}
-        {900 > width && width <= 1280 && <BackgroundMedium />}
-        {600 > width && width <= 900 && <BackgroundSmall />}
-        {width <= 600 && <BackgroundTiny />}
-      </div>
-      <div className='double_grid'>
-        <div className='title app' style={{ justifyContent: "center" }}>
-          <div className='second app ft-bold'>
-            <div
-              className='first one'
-              data-aos='fade-left'
-              data-aos-delay='100'
-            >
-              Hi,
-            </div>
-            <div>
-              <div className='flex_middle boopie'>
-                <div style={{ padding: "-1em" }}>
-                  <span
-                    className='one'
-                    style={{ display: "inline-block" }}
-                    data-aos='fade-left'
-                    data-aos-delay='200'
-                  >
-                    I
-                  </span>
-                  <span
-                    className='one'
-                    style={{ display: "inline-block" }}
-                    data-aos='fade-left'
-                    data-aos-delay='300'
-                  >
-                    '
-                  </span>
-                  <span
-                    className='one'
-                    style={{ display: "inline-block" }}
-                    data-aos='fade-left'
-                    data-aos-delay='400'
-                  >
-                    m
-                  </span>{" "}
-                  <span
-                    className='letter-a'
-                    style={{ display: "inline-block" }}
-                    data-aos='fade-left'
-                    data-aos-delay='500'
-                  >
-                    a
-                  </span>
-                  <span
-                    className='one'
-                    style={{ display: "inline-block" }}
-                    data-aos='fade-left'
-                    data-aos-delay='600'
-                  >
-                    u
-                  </span>
-                  <span
-                    style={{ display: "inline-block" }}
-                    className='one'
-                    data-aos='fade-left'
-                    data-aos-delay='700'
-                  >
-                    n
-                  </span>
-                  <span
-                    style={{ display: "inline-block" }}
-                    className='one'
-                    data-aos='fade-left'
-                    data-aos-delay='800'
-                  >
-                    s
-                  </span>
-                  <span
-                    style={{ display: "inline-block" }}
-                    className='one'
-                    data-aos='fade-left'
-                    data-aos-delay='900'
-                  >
-                    h
-                  </span>
-                  <span
-                    style={{ display: "inline-block" }}
-                    className='one exclamation'
-                    data-aos='fade-left'
-                    data-aos-delay='1000'
-                  >
-                    !
-                  </span>
-                  <span
-                    style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
-                    data-aos='fade-in'
-                    data-aos-delay='1050'
-                  >
-                    <img src={second} alt='Dude sitting and programming' />
-                  </span>
+    <>
+      <div className='main'>
+        <div className='double_grid'>
+          <div className='title app' style={{ justifyContent: "center" }}>
+            <div className='second app ft-bold'>
+              <div
+                className='first one'
+                data-aos='fade-left'
+                data-aos-delay='100'
+              >
+                Hi,
+              </div>
+              <div>
+                <div className='flex_middle boopie'>
+                  <div style={{ padding: "-1em" }}>
+                    <span
+                      className='one'
+                      style={{ display: "inline-block" }}
+                      data-aos='fade-left'
+                      data-aos-delay='200'
+                    >
+                      I
+                    </span>
+                    <span
+                      className='one'
+                      style={{ display: "inline-block" }}
+                      data-aos='fade-left'
+                      data-aos-delay='300'
+                    >
+                      '
+                    </span>
+                    <span
+                      className='one'
+                      style={{ display: "inline-block" }}
+                      data-aos='fade-left'
+                      data-aos-delay='400'
+                    >
+                      m
+                    </span>{" "}
+                    <span
+                      className='letter-a'
+                      style={{ display: "inline-block" }}
+                      data-aos='fade-left'
+                      data-aos-delay='500'
+                    >
+                      a
+                    </span>
+                    <span
+                      className='one'
+                      style={{ display: "inline-block" }}
+                      data-aos='fade-left'
+                      data-aos-delay='600'
+                    >
+                      u
+                    </span>
+                    <span
+                      style={{ display: "inline-block" }}
+                      className='one'
+                      data-aos='fade-left'
+                      data-aos-delay='700'
+                    >
+                      n
+                    </span>
+                    <span
+                      style={{ display: "inline-block" }}
+                      className='one'
+                      data-aos='fade-left'
+                      data-aos-delay='800'
+                    >
+                      s
+                    </span>
+                    <span
+                      style={{ display: "inline-block" }}
+                      className='one'
+                      data-aos='fade-left'
+                      data-aos-delay='900'
+                    >
+                      h
+                    </span>
+                    <span
+                      style={{ display: "inline-block" }}
+                      className='one exclamation'
+                      data-aos='fade-left'
+                      data-aos-delay='1000'
+                    >
+                      !
+                    </span>
+                    <span
+                      style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
+                      data-aos='fade-in'
+                      data-aos-delay='1050'
+                    >
+                      <img src={second} alt='Dude sitting and programming' />
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className='pronunciation'>
-              <span style={{ color: "grey" }}>pronunciation:</span>{" "}
-              Aaaoooonsshhhh
-            </div>
-            <div className='third' data-splitting>
-              <SplitText copy='Full Stack Developer' role='heading' />
+              <div className='pronunciation'>
+                <span style={{ color: "grey" }}>pronunciation:</span>{" "}
+                Aaaoooonsshhhh
+              </div>
+              <div className='third' data-splitting>
+                <SplitText copy='Full Stack Developer' role='heading' />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* <div className='contact-button' data-aos='fade-in' data-aos-delay='1200'>
+        {/* <div className='contact-button' data-aos='fade-in' data-aos-delay='1200'>
         <FontAwesomeIcon
           icon={faMobileAlt}
           className='go-up'
@@ -201,7 +196,8 @@ const Main = ({}) => {
           onClick={goToMain}
         />
       </div> */}
-    </div>
+      </div>
+    </>
   );
 };
 
