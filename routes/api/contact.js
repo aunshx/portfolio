@@ -3,7 +3,6 @@ const router = express.Router();
 const config = require("config");
 const { check, validationResult } = require("express-validator")
 const Message = require('../../models/Message')
-const { emailSend } = require('../../middleware/emailSend')
 const { sendEmail } = require('../../middleware/sendEmail')
 
 // @route    POST api/contact
@@ -38,11 +37,6 @@ router.post(
           organisation,
           message
         );
-    // await emailSend( email,
-    //       name,
-    //       organisation,
-    //       message
-    //     );
 
         return res.status(200).send({ msg: 'Email Sent' });
 
