@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
-
-import BackgroundLarge from "../main/BackgroundLarge";
-import BackgroundMedium from "../main/BackgroundMedium";
-import BackgroundSmall from "../main/BackgroundSmall";
-import BackgroundTiny from "../main/BackgroundTiny";
-
+import React, { useState } from 'react';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 
 import second from "../../resources/images/giffy6.gif";
 import useWindow from "../../utils/windowSize";
@@ -41,48 +37,27 @@ const SplitText = ({ copy, role }) => {
     )
 }
 
-const Main = ({}) => {
-  const { width, height } = useWindow()
-  const [particles, setParticles] = useState(250)
+const Main = ({
+  // Redux State 
+  settings: { sound }
+}) => {
 
-  useEffect(() => {
-    switch(true){
+  let timer;
 
-      case width <= 320:
-        setParticles(50)
-        break
+  function mouseStopped() {
+    console.log('OFF')
+  }
 
-      case width <= 450:
-        setParticles(70)
-        break
+  const makeSomeNoise = () => {
+    console.log("ON");
+    clearTimeout(timer);
+    timer = setTimeout(mouseStopped, 200);
+  }
 
-      case width <= 650:
-        setParticles(100)
-        break
-
-      case width <= 850:
-        setParticles(130)
-        break
-
-      case width <= 1050:
-        setParticles(200)
-        break
-
-      case width <= 1250:
-        setParticles(250)
-        break
-
-      case width <= 1450:
-        setParticles(300)
-        break
-
-      default:
-        return null
-    }
-  }, [width])
+  
   return (
     <>
-      <div className='main'>
+      <div className='main' onMouseMove={makeSomeNoise}>
         <div className='double_grid'>
           <div className='title app' style={{ justifyContent: "center" }}>
             <div className='second app ft-bold'>
@@ -203,6 +178,16 @@ const Main = ({}) => {
 
 
 
-Main.propTypes = {}; 
+Main.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
 
-export default Main;
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {
+
+};
+
+export default connect(mapStateToProps, mapStateToActions)(Main);
