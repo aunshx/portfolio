@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { NavLink, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSun, faMoon, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
 import {
     makeStyles,
@@ -89,6 +89,14 @@ const Navbar = ({
       playOn();
     }
   };
+
+  const soundTurnOff = () => {
+    soundOff()
+  }
+
+  const soundTurnOn = () => {
+    soundOn()
+  }
   
   return (
     <>
@@ -99,6 +107,39 @@ const Navbar = ({
           </NavLink>
         </div>
         <div className='right flex_evenly'>
+          {sound ? (
+            <div className='sound-on cursor_pointer'>
+              <Tooltip title='Sound-On' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVolumeUp}
+                    className={"mobile_logo--tilted"}
+                    onClick={soundTurnOff}
+                    style={{
+                      fontSize: 17,
+                      marginTop: "0.3em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='sound-off cursor_pointer'>
+              <Tooltip title='Sound-Off' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVolumeMute}
+                    className={"mobile_logo--tilted"}
+                    onClick={soundTurnOn}
+                    style={{
+                      fontSize: 19,
+                      marginTop: "0.3em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
           {displayMode ? (
             <div className='moon cursor_pointer'>
               <Tooltip title='Dark' placement='left'>

@@ -323,6 +323,16 @@ pre {
   animation: moonEntry 0.3s 1 linear;
 }
 
+.navbar .right .sound-on {
+  color: var(--light-logo-color);
+  margin-right: 1.9em;
+}
+
+.navbar .right .sound-off {
+  color: var(--lighter-dark-font-color);
+  margin-right: 1.9em;
+}
+
 @keyframes sunEntry {
   from {
     opacity: 0;
