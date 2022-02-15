@@ -162,12 +162,10 @@ const ContactMain = ({
     <>
       <Navbar />
       <Sidebar hover={hover} />
-      <div>
         {width > 1280 && <BackgroundLarge />}
         {900 > width && width <= 1280 && <BackgroundMedium />}
         {600 > width && width <= 900 && <BackgroundSmall />}
         {width <= 600 && <BackgroundTiny />}
-      </div>
       <div className='app'>
         <div className='contact-main' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
