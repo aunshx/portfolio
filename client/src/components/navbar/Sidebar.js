@@ -80,7 +80,7 @@ const Sidebar = ({
   return (
     <>
       {hover ? (
-        <div className='sidebar_main_maximize' onMouseLeave={minimize}>
+        <div className='sidebar_main_maximize' onMouseLeave={minimize} onClick={minimize}>
           <div className='app'>
             <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }} exact>
               <div className='element flex_between'>
@@ -257,7 +257,7 @@ const Sidebar = ({
           </div>
         </div>
       ) : (
-        <div className='sidebar_main' onMouseEnter={maximize}>
+        <div className='sidebar_main' onMouseEnter={maximize} onClick={maximize}>
           <div className='app'>
             <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }} exact>
               <div className='element flex_between'>

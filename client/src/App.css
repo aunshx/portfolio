@@ -1948,6 +1948,17 @@ pre {
 
 }
 
+.contact .body .form .errors-one,
+.contact-main .body .form .errors-one {
+  color: var(--light-color);
+  background-color: var(--navbar-color);
+  border-radius: 10px;
+  padding: 0 0.5em;
+  font-size: 0.7em;
+  margin-bottom: 0.8em;
+}
+
+
 .contact .body .form .title,
 .contact-main .body .form .title {
   padding: 0.5em;
