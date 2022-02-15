@@ -401,6 +401,8 @@ pre {
 .sidebar {
   width: 170px;
   font-family: 'Comfortaa', cursive;
+  background-color: var(--navbar-color);
+  height: 100vh;
 }
 
 .sidebar .title {
