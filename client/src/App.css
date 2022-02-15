@@ -17,7 +17,15 @@
 }
 
 [data-theme="dark"] {
-  --background-color: rgb(0, 0, 0);
+  --background-color: rgb(8, 8, 8);
+  --background-dots-color: rgb(17, 17, 17);
+   --navbar-color: rgb(7, 7, 7);
+   --light-grey-color: rgb(25, 25, 25);
+   --dark-font-color: rgb(238, 238, 238);
+  --light-dark-font-color: rgb(204, 204, 204);
+  --lighter-dark-font-color: rgb(220, 220, 220);
+   --expand-more-color: rgb(191, 191, 191);
+    --light-color: rgb(0, 0, 0);
 }
 
 * {

@@ -2,7 +2,7 @@ import { DARK_MODE_ON, DARK_MODE_OFF, SOUND_ON, SOUND_OFF } from "../actions/typ
 //
 const initialState = {
   displayMode: false,
-  sound: false
+  sound: true
 };
 // kk
 function authReducer(state = initialState, action) {
