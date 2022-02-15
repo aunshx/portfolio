@@ -380,16 +380,15 @@ pre {
 
 .navbar .right-mini .moon {
   animation: moonEntry 0.3s 1 linear;
+  margin: 0 25px;
 }
 
 .navbar .right-mini .sound-on {
   color: var(--light-logo-color);
-  /* margin-right: 1.9em; */
 }
 
 .navbar .right-mini .sound-off {
   color: var(--lighter-dark-font-color);
-  /* margin-right: 1.9em; */
 }
 
     .navbar .mobile_logo {
