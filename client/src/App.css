@@ -363,15 +363,40 @@ pre {
 
 @media only screen and (max-width: 786px) {
   .navbar {
-  padding: 0 2.5em;
+  padding: 0 1em;
 }
   .navbar .right {
     display: none;
   }
+
+  .navbar .right-mini {
+    width: auto;
+  }
+
+  .navbar .right-mini .sun {
+  animation: sunEntry 0.3s 1 linear;
+  margin: 0 25px;
+}
+
+.navbar .right-mini .moon {
+  animation: moonEntry 0.3s 1 linear;
+}
+
+.navbar .right-mini .sound-on {
+  color: var(--light-logo-color);
+  /* margin-right: 1.9em; */
+}
+
+.navbar .right-mini .sound-off {
+  color: var(--lighter-dark-font-color);
+  /* margin-right: 1.9em; */
+}
+
     .navbar .mobile_logo {
         cursor: pointer;
         animation: verticalToHorizontal 0.3s 1 linear;
         color: var(--light-dark-font-color);
+        padding-top: 0.1em;
     }
 
    .navbar .mobile_logo--tilted {

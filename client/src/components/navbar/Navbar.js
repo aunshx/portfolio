@@ -196,39 +196,105 @@ const Navbar = ({
           </Tooltip>
         </div>
         {width < 787 && (
-          <div>
-            {menu ? (
-              <div className='flex_middle'>
-                <Tooltip title='Menu' placement='left'>
+          <div className='right-mini flex_evenly'>
+            {sound ? (
+              <div className='sound-on cursor_pointer'>
+                <Tooltip title='Sound-On' placement='left'>
                   <div>
                     <FontAwesomeIcon
-                      icon={faBars}
-                      className={"mobile_logo--tilted"}
-                      onClick={verticalMenu}
+                      icon={faVolumeUp}
+                      onClick={soundTurnOff}
                       style={{
-                        fontSize: 17,
+                        fontSize: 15,
+                        marginTop: "0.3em",
                       }}
                     />
                   </div>
                 </Tooltip>
               </div>
             ) : (
-              <div className='flex_middle'>
-                <Tooltip title='Menu' placement='left'>
+              <div className='sound-off cursor_pointer'>
+                <Tooltip title='Sound-Off' placement='left'>
                   <div>
                     <FontAwesomeIcon
-                      icon={faBars}
-                      className={"mobile_logo"}
-                      onClick={verticalMenu}
+                      icon={faVolumeMute}
+                      onClick={soundTurnOn}
                       style={{
                         fontSize: 17,
+                        marginTop: "0.3em",
                       }}
                     />
                   </div>
                 </Tooltip>
               </div>
             )}
-            <div></div>
+            {displayMode ? (
+              <div className='moon cursor_pointer'>
+                <Tooltip title='Dark' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faMoon}
+                      onClick={toggleThemeToLight}
+                      style={{
+                        fontSize: 15,
+                        marginTop: "0.3em",
+                        color: "grey",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            ) : (
+              <div className='sun cursor_pointer'>
+                <Tooltip title='Light' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faSun}
+                      onClick={toggleThemeToDark}
+                      style={{
+                        fontSize: 17,
+                        marginTop: "0.3em",
+                        color: "orange",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            )}
+            <div>
+              {menu ? (
+                <div className='flex_middle'>
+                  <Tooltip title='Menu' placement='left'>
+                    <div>
+                      <FontAwesomeIcon
+                        icon={faBars}
+                        className={"mobile_logo--tilted"}
+                        onClick={verticalMenu}
+                        style={{
+                          fontSize: 17,
+                        }}
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              ) : (
+                <div className='flex_middle'>
+                  <Tooltip title='Menu' placement='left'>
+                    <div>
+                      <FontAwesomeIcon
+                        icon={faBars}
+                        className={"mobile_logo"}
+                        onClick={verticalMenu}
+                        style={{
+                          fontSize: 17,
+                        }}
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              )}
+              <div></div>
+            </div>
           </div>
         )}
       </div>

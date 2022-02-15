@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,10 +13,13 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import mediumLogo from "../../resources/images/mediumLogo.png";
 import mediumLogoHover from "../../resources/images/mediumLogoHover.png";
+import mediumLogoDark from "../../resources/images/mediumLogoDark.png";
 import githubLogo from "../../resources/images/githubLogo.png";
 import githubLogoHover from "../../resources/images/githubLogoHover.png";
+import githubLogoDark from "../../resources/images/githubLogoDark.png";
 import linkedInLogo from "../../resources/images/linkedInLogo.png";
 import linkedInLogoHover from "../../resources/images/linkedInLogoHover.png";
+import linkedInLogoDark from "../../resources/images/linkedInLogoDark.png";
 
 const useStyles = makeStyles((theme) => ({
   customTooltip: {
@@ -26,7 +30,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SidebarMini = ({ close }) => {
+const SidebarMini = ({ close,
+  // Redux State
+  settings: { displayMode }
+}) => {
   const classes = useStyles();
 
   const [githubHover, setGithubHover] = useState(false);
@@ -130,7 +137,7 @@ const SidebarMini = ({ close }) => {
             <div>Contact</div>
           </div>
         </NavLink>
-        <div className="element ft-bold" style={{ marginTop: '0em' }}>
+        <div className='element ft-bold' style={{ marginTop: "0em" }}>
           Socials
         </div>
         <a
@@ -156,7 +163,10 @@ const SidebarMini = ({ close }) => {
                 {githubHover ? (
                   <img src={githubLogoHover} alt='Github Logo' />
                 ) : (
-                  <img src={githubLogo} alt='Github Logo' />
+                  <img
+                    src={displayMode ? githubLogoDark : githubLogo}
+                    alt='Github Logo'
+                  />
                 )}
               </div>
             </Tooltip>
@@ -185,7 +195,10 @@ const SidebarMini = ({ close }) => {
                 {mediumHover ? (
                   <img src={mediumLogoHover} alt='Medium Logo' />
                 ) : (
-                  <img src={mediumLogo} alt='Medium Logo' />
+                  <img
+                    src={displayMode ? mediumLogoDark : mediumLogo}
+                    alt='Medium Logo'
+                  />
                 )}
               </div>
             </Tooltip>
@@ -214,7 +227,10 @@ const SidebarMini = ({ close }) => {
                 {linkedInHover ? (
                   <img src={linkedInLogoHover} alt='LinkedIn Logo' />
                 ) : (
-                  <img src={linkedInLogo} alt='LinkedIn Logo' />
+                  <img
+                    src={displayMode ? linkedInLogoDark : linkedInLogo}
+                    alt='LinkedIn Logo'
+                  />
                 )}
               </div>
             </Tooltip>
@@ -228,6 +244,14 @@ const SidebarMini = ({ close }) => {
   );
 };
 
-SidebarMini.propTypes = {};
+SidebarMini.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
 
-export default SidebarMini;
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {};
+
+export default connect(mapStateToProps, mapStateToActions)(SidebarMini);
