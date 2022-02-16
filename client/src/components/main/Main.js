@@ -72,16 +72,19 @@ const Main = ({
   }
 
   const onHoverImage = () => {
-    setWooActive(true)
-    setTimeout(() => {
-      if (sound) {
+    if(sound) {
+      setWooActive(true);
+      setTimeout(() => {
         playOn();
-      }
-    }, 200)
+      }, 200);
+      setTimeout(() => {
+        setWooActive(false);
+      }, 500);
+    }
   }
 
   const onHoverImageDeactive = () => {
-    setWooActive(false)
+    setWooActive(false);
   }
   
   return (
