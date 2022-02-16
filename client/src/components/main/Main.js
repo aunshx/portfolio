@@ -4,8 +4,9 @@ import useSound from "use-sound";
 import { connect } from 'react-redux';
 
 import second from "../../resources/images/giffy6.gif";
+import wooDude from "../../resources/images/woo.png";
 
-import swoosh from "../../resources/sounds/swoosh.mp3";
+import woo from "../../resources/sounds/woo.mp3";
 import keyboard from "../../resources/sounds/keyboard.mp3";
 
 const SplitText = ({ copy, role }) => {
@@ -50,6 +51,8 @@ const Main = ({
 }) => {
 
   const [playOn2] = useSound(keyboard, { volume: 0.15 })
+  const [playOn] = useSound(woo, { volume: 0.15 })
+  const [wooActive, setWooActive] = useState(false)
 
   let timer;
 
@@ -67,6 +70,19 @@ const Main = ({
       playOn2()
     }
   }
+
+  const onHoverImage = () => {
+    setWooActive(true)
+    setTimeout(() => {
+      if (sound) {
+        playOn();
+      }
+    }, 200)
+  }
+
+  const onHoverImageDeactive = () => {
+    setWooActive(false)
+  }
   
   return (
     <>
@@ -83,7 +99,11 @@ const Main = ({
                 Hi,
               </div>
               <div>
-                <div className='flex_middle boopie'>
+                <div
+                  className={
+                    wooActive ? "flex_middle boopie-two" : "flex_middle boopie"
+                  }
+                >
                   <div style={{ padding: "-1em" }}>
                     <span
                       className='one'
@@ -170,8 +190,14 @@ const Main = ({
                       style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
                       data-aos='fade-in'
                       data-aos-delay='1050'
+                      onMouseEnter={onHoverImage}
+                      onMouseLeave={onHoverImageDeactive}
                     >
-                      <img src={second} alt='Dude sitting and programming' />
+                      {wooActive ? (
+                        <img src={wooDude} alt='Dude shouting woooo' />
+                      ) : (
+                        <img src={second} alt='Dude sitting and programming' />
+                      )}
                     </span>
                   </div>
                 </div>
@@ -186,14 +212,6 @@ const Main = ({
             </div>
           </div>
         </div>
-        {/* <div className='contact-button' data-aos='fade-in' data-aos-delay='1200'>
-        <FontAwesomeIcon
-          icon={faMobileAlt}
-          className='go-up'
-          style={{ fontSize: 23 }}
-          onClick={goToMain}
-        />
-      </div> */}
       </div>
     </>
   );
