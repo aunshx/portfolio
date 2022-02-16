@@ -19,6 +19,8 @@ import toggle from "../../resources/sounds/toggle.mp3";
 import lightBackground from "../../resources/sounds/lightBackground.mp3";
 import darkBackground from "../../resources/sounds/darkBackground.mp3";
 
+import resume from '../../resources/articles/aunsh_resume.pdf'
+
 import {
   toggleLightMode,
   toggleDarkMode,
@@ -202,25 +204,27 @@ const Navbar = ({
               </Tooltip>
             </div>
           )}
-          <Tooltip
-            title='Download Resume'
-            placement='left'
-            classes={{ tooltip: classes.customTooltip }}
-          >
-            <div
-              className='resume flex_middle'
-              onMouseEnter={changeDownloadEnter}
-              onMouseLeave={changeDownloadLeave}
+          <a href={resume} download='aunsh_resume.pdf'>
+            <Tooltip
+              title='Download Resume'
+              placement='left'
+              classes={{ tooltip: classes.customTooltip }}
             >
-              {displayDownload ? (
-                <div>
-                  <FontAwesomeIcon icon={faDownload} className='icon' />
-                </div>
-              ) : (
-                <div className='text'>Resume</div>
-              )}
-            </div>
-          </Tooltip>
+              <div
+                className='resume flex_middle'
+                onMouseEnter={changeDownloadEnter}
+                onMouseLeave={changeDownloadLeave}
+              >
+                {displayDownload ? (
+                  <div>
+                    <FontAwesomeIcon icon={faDownload} className='icon' />
+                  </div>
+                ) : (
+                  <div className='text'>Resume</div>
+                )}
+              </div>
+            </Tooltip>
+          </a>
         </div>
         {width < 787 && (
           <div className='right-mini flex_evenly'>

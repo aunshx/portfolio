@@ -21,6 +21,8 @@ import linkedInLogo from "../../resources/images/linkedInLogo.png";
 import linkedInLogoHover from "../../resources/images/linkedInLogoHover.png";
 import linkedInLogoDark from "../../resources/images/linkedInLogoDark.png";
 
+import resume from '../../resources/articles/aunsh_resume.pdf'
+
 const useStyles = makeStyles((theme) => ({
   customTooltip: {
     backgroundColor: "rgb(245, 245, 245)",
@@ -237,7 +239,9 @@ const SidebarMini = ({ close,
           </div>
         </a>
         <div className='element'>
-          <div className='resume'>Resume</div>
+          <a href={resume} download='aunsh_resume.pdf'>
+            <div className='resume'>Resume</div>
+          </a>
         </div>
       </div>
     </div>
