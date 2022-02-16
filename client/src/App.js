@@ -12,8 +12,29 @@ import ContactMain from './components/contact/ContactMain';
 
 import "./App.css";
 import Sidebar from './components/navbar/Sidebar';
+import { useEffect } from 'react';
+
+import {
+  DARK_MODE_ON,
+  DARK_MODE_OFF
+} from './redux/actions/types.js'
+import store from './store';
 
 function App({ sidebar: { hover } }) {
+   useEffect(() => {
+     // check for token in LS
+     if (localStorage.getItem('theme') === 'dark') {
+       store.dispatch({
+         type: DARK_MODE_ON
+       })
+        document.documentElement.setAttribute("data-theme", "dark");
+     } else {
+       store.dispatch({
+         type: DARK_MODE_OFF,
+       });
+        document.documentElement.setAttribute("data-theme", "light");
+     }
+   }, []);
   return (
     <Router>
       <>
