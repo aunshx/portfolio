@@ -9,7 +9,7 @@ import {
 //
 const initialState = {
   displayMode: false,
-  sound: false,
+  sound: true,
   music: false
 };
 // kk
