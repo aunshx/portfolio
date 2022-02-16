@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBrain } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../navbar/Navbar';
-import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
 import SkillOne from './SkillsOne';
 
@@ -16,7 +15,6 @@ import BackgroundTiny from "../main/BackgroundTiny";
 
 import windowSize from "../../utils/windowSize";
 
-import defaultImg from '../../resources/images/default.jpg'
 import reduxLogo from '../../resources/images/reduxLogo.png'
 import reactLogo from '../../resources/images/reactLogo.png'
 import jsLogo from '../../resources/images/jsLogo.png'
@@ -30,6 +28,8 @@ import css3Logo from '../../resources/images/css3Logo.png'
 import htmlLogo from '../../resources/images/htmlLogo.png'
 
 const SkillsMain = ({
+  Sidebar,
+  // Redux State
   sidebar: { hover }
 }) => {
   const { width, height } = windowSize()
@@ -37,7 +37,7 @@ const SkillsMain = ({
   return (
     <>
       <Navbar />
-      <Sidebar hover={hover} />
+      {Sidebar}
       <div>
         {width > 1280 && <BackgroundLarge />}
         {900 > width && width <= 1280 && <BackgroundMedium />}

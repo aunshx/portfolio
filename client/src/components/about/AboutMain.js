@@ -17,11 +17,10 @@ import Cools from '../layout/Cools';
 import logo from '../../resources/images/sketLogo.png'
 
 import windowSize from '../../utils/windowSize';
-import Sidebar from '../navbar/Sidebar';
 
 // import imgLogo 
 
-const AboutMain = ({ sidebar }) => {
+const AboutMain = ({ Sidebar }) => {
 
   // const Sidebaro = sidebar
 
@@ -49,8 +48,7 @@ const AboutMain = ({ sidebar }) => {
   return (
     <>
       <Navbar />
-      {/* {sidebar} */}
-      <Sidebar />
+      {Sidebar}
       {width > 1280 && <BackgroundLarge />}
       {900 < width && width <= 1280 && <BackgroundMedium />}
       {600 < width && width <= 900 && <BackgroundSmall />}

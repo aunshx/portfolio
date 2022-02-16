@@ -6,7 +6,6 @@ import { faBook, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 import ArticleOne from './ArticleOne';
 import Navbar from '../navbar/Navbar';
-import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
 
 import BackgroundLarge from "../main/BackgroundLarge";
@@ -17,6 +16,8 @@ import BackgroundTiny from "../main/BackgroundTiny";
 import windowSize from "../../utils/windowSize";
 
 const ArticlesMain = ({
+  Sidebar,
+  // Redux State
   sidebar: { hover }
 }) => {
 
@@ -24,7 +25,7 @@ const ArticlesMain = ({
   return (
     <>
       <Navbar />
-      <Sidebar hover={hover} />
+      {Sidebar}
       <div>
         {width > 1280 && <BackgroundLarge />}
         {900 > width && width <= 1280 && <BackgroundMedium />}

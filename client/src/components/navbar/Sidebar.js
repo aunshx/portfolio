@@ -86,7 +86,7 @@ const Sidebar = ({
     <>
       {hover ? (
         <div
-          className='sidebar_main_maximize'
+          className={hover ? "sidebar_main_maximize" : "sidebar_main_maximize sidebar_main-active"}
           onMouseLeave={minimize}
           onClick={minimize}
         >
@@ -99,10 +99,7 @@ const Sidebar = ({
                     style={{ marginRight: "0.5em", marginTop: "0.7em" }}
                   />
                 </div>
-                <div
-                  className='writing'
-                  style={{ marginTop: "0.5em" }}
-                >
+                <div className='writing' style={{ marginTop: "0.5em" }}>
                   Home
                 </div>
               </div>

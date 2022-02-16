@@ -67,25 +67,25 @@ const Navbar = ({
   const { width, height } = windowSize();
   
   useEffect(() => {
-    if (sound && displayMode) {
-      stopLight()
-      playBackgroundDark()
-    }
+    // if (sound && displayMode) {
+    //   stopLight()
+    //   playBackgroundDark()
+    // }
 
-    if (!sound && displayMode) {
-      stop();
-      stopLight()
-    }
+    // if (!sound && displayMode) {
+    //   stop();
+    //   stopLight()
+    // }
 
-    if (!sound && !displayMode) {
-      stop()
-      stopLight()
-    }
+    // if (!sound && !displayMode) {
+    //   stop()
+    //   stopLight()
+    // }m, 
 
-    if (sound && !displayMode) {
-      stop()
-      playLight()
-    }
+    // if (sound && !displayMode) {
+    //   stop()
+    //   playLight()
+    // }
   }, [sound, displayMode])
 
   const verticalMenu = () => {

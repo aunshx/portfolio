@@ -497,8 +497,11 @@ pre {
   left: 0;
   top: 45px;
   font-family: 'Comfortaa', cursive;
-  animation: closeSmoothlySidebar 0.3s 1 linear;
   z-index: 102;
+}
+
+.sidebar_main-active {
+  animation: closeSmoothlySidebar 0.3s 1 linear;
 }
 
 .sidebar_main_maximize {

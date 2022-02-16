@@ -11,22 +11,44 @@ import SkillsMain from './components/skills/SkillsMain';
 import ContactMain from './components/contact/ContactMain';
 
 import "./App.css";
+import Sidebar from './components/navbar/Sidebar';
 
 function App({ sidebar: { hover } }) {
   return (
-      <Router>
-        <>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/user' render={(props) => <AboutMain {...props} />} />
-            <Route path='/projects' component={Projects} />
-            <Route path='/articles' component={ArticlesMain} />
-            <Route path='/skills' component={SkillsMain} />
-            <Route path='/contact' component={ContactMain} />
-            <Route component={NotFound} />
-          </Switch>
-        </>
-      </Router>
+    <Router>
+      <>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/user'
+            render={(props) => (
+              <AboutMain Sidebar={<Sidebar hover={hover} />} />
+            )}
+          />
+          <Route path='/projects' component={Projects} />
+          <Route
+            path='/articles'
+            render={(props) => (
+              <ArticlesMain Sidebar={<Sidebar hover={hover} />} />
+            )}
+          />
+          <Route
+            path='/skills'
+            render={(props) => (
+              <SkillsMain Sidebar={<Sidebar hover={hover} />} />
+            )}
+          />
+          <Route
+            path='/contact'
+            render={(props) => (
+              <ContactMain Sidebar={<Sidebar hover={hover} />} />
+            )}
+          />
+          <Route component={NotFound} />
+        </Switch>
+      </>
+    </Router>
   );
 }
 
