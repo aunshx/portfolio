@@ -61,10 +61,9 @@ const Navbar = ({
   musicOff,
 }) => {
   const [playOn2] = useSound(resumeSwoosh, { volume: 1 })
-  const classes = useStyles();
-
   const [playOn] = useSound(toggle, { volume: 1 });
-  // const [playBackgroundDark, {stop}] = useSound(darkBackground, { volume: 0.2 });
+
+  const classes = useStyles();
 
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -106,6 +105,9 @@ const Navbar = ({
 
   const soundTurnOff = () => {
     soundOff();
+    if (sound) {
+      playOn();
+    }
   };
 
   const soundTurnOn = () => {
@@ -114,10 +116,16 @@ const Navbar = ({
 
   const musicTurnOff = () => {
     musicOff();
+    if (sound) {
+      playOn();
+    }
   };
 
   const musicTurnOn = () => {
     musicOn();
+    if (sound) {
+      playOn();
+    }
   };
 
 
