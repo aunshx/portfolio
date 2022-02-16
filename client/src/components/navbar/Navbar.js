@@ -61,7 +61,7 @@ const Navbar = ({
 }) => {
   const classes = useStyles();
 
-  const [playOn] = useSound(toggle, { volume: 0.2 });
+  const [playOn] = useSound(toggle, { volume: 1 });
   // const [playBackgroundDark, {stop}] = useSound(darkBackground, { volume: 0.2 });
 
   const [menu, setMenu] = useState(false);

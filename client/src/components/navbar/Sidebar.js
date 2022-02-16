@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import useSound from 'use-sound'
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +24,8 @@ import linkedInLogo from '../../resources/images/linkedInLogo.png'
 import linkedInLogoHover from '../../resources/images/linkedInLogoHover.png'
 import linkedInLogoDark from '../../resources/images/linkedInLogoDark.png'
 
+import pop from '../../resources/sounds/pop.mp3'
+
 import store from '../../store'
 import { MOUSE_ENTER, MOUSE_LEAVE } from '../../redux/actions/types';
 
@@ -41,6 +43,8 @@ const Sidebar = ({
   // Redux State
   settings: { displayMode }
 }) => {
+  const [playOn] = useSound(pop, { volume: 1 });
+
     const classes = useStyles()
 
     const [githubHover, setGithubHover] = useState(false)
@@ -61,6 +65,7 @@ const Sidebar = ({
 
     const githubHoverMoveEnter = () => {
         setGithubHover(true)
+        playOn()
     }
 
     const githubHoverMoveLeave = () => {
@@ -69,6 +74,7 @@ const Sidebar = ({
 
     const mediumHoverMoveEnter = () => {
         setMediumHover(true)
+        playOn();
     }
 
     const mediumHoverMoveLeave = () => {
@@ -77,10 +83,15 @@ const Sidebar = ({
 
     const linkedInHoverMoveEnter = () => {
         setLinkedInHover(true)
+        playOn();
     }
 
     const linkedInHoverMoveLeave = () => {
         setLinkedInHover(false)
+    }
+
+    const elementHover = () => {
+      playOn();
     }
 
   return (
@@ -102,7 +113,7 @@ const Sidebar = ({
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='flex_between'>
+              <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
                   <FontAwesomeIcon
                     icon={faHome}
@@ -120,7 +131,7 @@ const Sidebar = ({
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='flex_between'>
+              <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
                   <FontAwesomeIcon
                     icon={faUser}
@@ -136,7 +147,7 @@ const Sidebar = ({
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='flex_between'>
+              <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
                   <FontAwesomeIcon
                     icon={faTools}
@@ -152,7 +163,7 @@ const Sidebar = ({
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='flex_between'>
+              <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
                   <FontAwesomeIcon
                     icon={faNewspaper}
@@ -168,7 +179,7 @@ const Sidebar = ({
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='flex_between'>
+              <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
                   <FontAwesomeIcon
                     icon={faBrain}
@@ -184,7 +195,7 @@ const Sidebar = ({
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
-              <div className='flex_between'>
+              <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
                   <FontAwesomeIcon
                     icon={faMobileAlt}
