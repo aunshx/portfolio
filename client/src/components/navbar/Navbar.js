@@ -10,6 +10,8 @@ import { Drawer, Tooltip } from "@mui/material";
 import {
     makeStyles,
 } from "@mui/styles";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import MusicOffIcon from "@mui/icons-material/MusicOff";
 
 import SidebarMini from './SidebarMini'
 
@@ -24,6 +26,8 @@ import {
   toggleDarkMode,
   soundOn,
   soundOff,
+  musicOn,
+  musicOff
 } from "../../redux/actions/settings";
 
 const setDark = () => {
@@ -46,12 +50,14 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar = ({
   // Redux State
-  settings: { displayMode, sound },
+  settings: { displayMode, sound, music },
   // Redux Actions
   soundOn,
   soundOff,
   toggleLightMode,
   toggleDarkMode,
+  musicOn,
+  musicOff,
 }) => {
   const classes = useStyles();
 
@@ -63,7 +69,6 @@ const Navbar = ({
   const [displayDownload, setDisplayDownload] = useState(false);
 
   const { width } = windowSize();
-  
 
   const verticalMenu = () => {
     setMenu(!menu);
@@ -95,13 +100,21 @@ const Navbar = ({
   };
 
   const soundTurnOff = () => {
-    soundOff()
-  }
+    soundOff();
+  };
 
   const soundTurnOn = () => {
-    soundOn()
-  }
-  
+    soundOn();
+  };
+
+  const musicTurnOff = () => {
+    musicOff();
+  };
+
+  const musicTurnOn = () => {
+    musicOn();
+  };
+
   return (
     <>
       <div className='navbar flex_between'>
@@ -117,7 +130,6 @@ const Navbar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faVolumeUp}
-                    className={"mobile_logo--tilted"}
                     onClick={soundTurnOff}
                     style={{
                       fontSize: 17,
@@ -133,8 +145,36 @@ const Navbar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faVolumeMute}
-                    className={"mobile_logo--tilted"}
                     onClick={soundTurnOn}
+                    style={{
+                      fontSize: 19,
+                      marginTop: "0.3em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+          {music ? (
+            <div className='sound-on cursor_pointer'>
+              <Tooltip title='Music-On' placement='left'>
+                <div>
+                  <MusicNoteIcon
+                    onClick={musicTurnOff}
+                    style={{
+                      fontSize: 17,
+                      marginTop: "0.3em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='sound-off cursor_pointer'>
+              <Tooltip title='Music-Off' placement='left'>
+                <div>
+                  <MusicOffIcon
+                    onClick={musicTurnOn}
                     style={{
                       fontSize: 19,
                       marginTop: "0.3em",
@@ -326,6 +366,8 @@ Navbar.propTypes = {
   toggleDarkMode: PropTypes.func.isRequired,
   soundOn: PropTypes.func.isRequired,
   soundOff: PropTypes.func.isRequired,
+  musicOn: PropTypes.func.isRequired,
+  musicOff: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -337,6 +379,8 @@ const mapStateToActions = {
   toggleDarkMode,
   soundOn,
   soundOff,
+  musicOn,
+  musicOff,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Navbar)

@@ -22,7 +22,7 @@ import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
 import Navbar from "./components/navbar/Navbar";
 
-function App({ sidebar: { hover }, settings: { sound, displayMode } }) {
+function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
     volume: 0.2,
   })
@@ -44,26 +44,26 @@ function App({ sidebar: { hover }, settings: { sound, displayMode } }) {
       document.documentElement.setAttribute("data-theme", "light");
     }
 
-    if (sound && displayMode) {
+    if (music && displayMode) {
       stop()
       playBackgroundDark();
     }
 
-    if (!sound && displayMode) {
+    if (!music && displayMode) {
       stop();
       stop2()
     }
 
-    if (!sound && !displayMode) {
+    if (!music && !displayMode) {
       stop();
       stop2()
     }
 
-    if (sound && !displayMode) {
+    if (music && !displayMode) {
       stop2();
       playBackgroundLight();
     }
-  }, [sound, displayMode]);
+  }, [music, displayMode]);
 
   return (
     <Router>

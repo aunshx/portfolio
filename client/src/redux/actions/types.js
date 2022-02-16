@@ -16,3 +16,7 @@ export const SOUND_OFF = "SOUND_OFF";
 // Settings - Dark Mode
 export const DARK_MODE_ON = "DARK_MODE_ON";
 export const DARK_MODE_OFF = "DARK_MODE_OFF";
+
+// Music
+export const MUSIC_ON = "MUSIC_ON";
+export const MUSIC_OFF = "MUSIC_OFF";

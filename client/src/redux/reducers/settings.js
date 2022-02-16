@@ -1,14 +1,23 @@
-import { DARK_MODE_ON, DARK_MODE_OFF, SOUND_ON, SOUND_OFF } from "../actions/types";
+import {
+  DARK_MODE_ON,
+  DARK_MODE_OFF,
+  SOUND_ON,
+  SOUND_OFF,
+  MUSIC_ON,
+  MUSIC_OFF,
+} from "../actions/types";
 //
 const initialState = {
   displayMode: false,
-  sound: false
+  sound: false,
+  music: false
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    // Dark Mode
     case DARK_MODE_ON:
       return {
         ...state,
@@ -19,6 +28,7 @@ function authReducer(state = initialState, action) {
         ...state,
         displayMode: false,
       };
+      // Sound
     case SOUND_ON:
       return {
         ...state,
@@ -28,6 +38,17 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         sound: false,
+      };
+    // Music
+    case MUSIC_ON:
+      return {
+        ...state,
+        music: true,
+      };
+    case MUSIC_OFF:
+      return {
+        ...state,
+        music: false,
       };
     default:
       return state;
