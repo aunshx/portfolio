@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 const Sidebar = ({
   hover,
   // Redux State
-  settings: { displayMode }
+  settings: { displayMode, sound }
 }) => {
   const [playOn] = useSound(pop, { volume: 1 });
 
@@ -65,8 +65,9 @@ const Sidebar = ({
 
     const githubHoverMoveEnter = () => {
         setGithubHover(true)
-        playOn()
-    }
+        if(sound){
+          playOn()
+        }    }
 
     const githubHoverMoveLeave = () => {
         setGithubHover(false)
@@ -74,7 +75,9 @@ const Sidebar = ({
 
     const mediumHoverMoveEnter = () => {
         setMediumHover(true)
-        playOn();
+        if(sound){
+          playOn()
+        }
     }
 
     const mediumHoverMoveLeave = () => {
@@ -83,7 +86,9 @@ const Sidebar = ({
 
     const linkedInHoverMoveEnter = () => {
         setLinkedInHover(true)
-        playOn();
+        if(sound){
+          playOn()
+        }
     }
 
     const linkedInHoverMoveLeave = () => {
@@ -91,7 +96,9 @@ const Sidebar = ({
     }
 
     const elementHover = () => {
-      playOn();
+      if(sound){
+        playOn()
+      }
     }
 
   return (

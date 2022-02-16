@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useSound from "use-sound";
 import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
@@ -22,6 +23,8 @@ import githubLogoDark from "../../resources/images/githubLogoDark.png";
 import linkedInLogo from "../../resources/images/linkedInLogo.png";
 import linkedInLogoHover from "../../resources/images/linkedInLogoHover.png";
 import linkedInLogoDark from "../../resources/images/linkedInLogoDark.png";
+
+import pop from "../../resources/sounds/pop.mp3";
 
 import resume from '../../resources/articles/aunsh_resume.pdf'
 
@@ -51,6 +54,7 @@ const SidebarMini = ({
   musicOn,
   musicOff,
 }) => {
+  const [playOn] = useSound(pop, { volume: 1 })
   const classes = useStyles();
 
   const [githubHover, setGithubHover] = useState(false);
@@ -59,6 +63,9 @@ const SidebarMini = ({
 
   const githubHoverMoveEnter = () => {
     setGithubHover(true);
+    if (sound) {
+      playOn();
+    }
   };
 
   const githubHoverMoveLeave = () => {
@@ -67,6 +74,9 @@ const SidebarMini = ({
 
   const mediumHoverMoveEnter = () => {
     setMediumHover(true);
+    if (sound) {
+      playOn();
+    }
   };
 
   const mediumHoverMoveLeave = () => {
@@ -75,10 +85,19 @@ const SidebarMini = ({
 
   const linkedInHoverMoveEnter = () => {
     setLinkedInHover(true);
+    if (sound) {
+      playOn();
+    }
   };
 
   const linkedInHoverMoveLeave = () => {
     setLinkedInHover(false);
+  };
+
+  const elementHover = () => {
+    if (sound) {
+      playOn();
+    }
   };
 
   const soundTurnOff = () => {
@@ -178,7 +197,7 @@ const SidebarMini = ({
           activeStyle={{ color: "rgb(0, 145, 255)" }}
           exact
         >
-          <div className='flex_between'>
+          <div className='flex_between' onMouseEnter={elementHover}>
             <div>
               <FontAwesomeIcon icon={faHome} style={{ marginRight: "0.5em" }} />
             </div>
@@ -190,7 +209,7 @@ const SidebarMini = ({
           className={"element"}
           activeStyle={{ color: "rgb(0, 145, 255)" }}
         >
-          <div className='flex_between'>
+          <div className='flex_between' onMouseEnter={elementHover}>
             <div>
               <FontAwesomeIcon icon={faUser} style={{ marginRight: "0.5em" }} />
             </div>
@@ -202,7 +221,7 @@ const SidebarMini = ({
           className={"element"}
           activeStyle={{ color: "rgb(0, 145, 255)" }}
         >
-          <div className='flex_between'>
+          <div className='flex_between' onMouseEnter={elementHover}>
             <div>
               <FontAwesomeIcon
                 icon={faTools}
@@ -232,7 +251,7 @@ const SidebarMini = ({
           className={"element"}
           activeStyle={{ color: "rgb(0, 145, 255)" }}
         >
-          <div className='flex_between'>
+          <div className='flex_between' onMouseEnter={elementHover}>
             <div>
               <FontAwesomeIcon
                 icon={faBrain}
@@ -247,7 +266,7 @@ const SidebarMini = ({
           className={"element"}
           activeStyle={{ color: "rgb(0, 145, 255)" }}
         >
-          <div className='flex_between'>
+          <div className='flex_between' onMouseEnter={elementHover}>
             <div>
               <FontAwesomeIcon
                 icon={faMobileAlt}
