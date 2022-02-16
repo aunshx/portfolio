@@ -6,8 +6,11 @@ import { connect } from 'react-redux';
 import second from "../../resources/images/giffy6.gif";
 
 import swoosh from "../../resources/sounds/swoosh.mp3";
+import keyboard from "../../resources/sounds/keyboard.mp3";
 
 const SplitText = ({ copy, role }) => {
+
+
     return(
       <span aria-label={copy} role={role}>
           {copy.split("").map(function(char, index){
@@ -16,24 +19,26 @@ const SplitText = ({ copy, role }) => {
             return (
               <>
                 {index > 4 && index < 10 ? (
-                <span
-              aria-hidden="true"
-              key={index}
-              className='u'
-              style={style2}>
-              {char}
-            </span>
-              ) : (
-                <span
-              aria-hidden="true"
-              key={index}
-              className='uu'
-              style={style1}>
-              {char}
-            </span>
-              )}
+                  <span
+                    aria-hidden='true'
+                    key={index}
+                    className='u'
+                    style={style2}
+                  >
+                    {char}
+                  </span>
+                ) : (
+                  <span
+                    aria-hidden='true'
+                    key={index}
+                    className='uu'
+                    style={style1}
+                  >
+                    {char}
+                  </span>
+                )}
               </>
-            )
+            );
           })}
         </span>
     )
@@ -44,20 +49,23 @@ const Main = ({
   settings: { sound }
 }) => {
 
-  const [playOn] = useSound(swoosh, { volume: 1 })
+  const [playOn2] = useSound(keyboard, { volume: 1 })
 
   let timer;
 
   function mouseStopped() {
-    console.log('OFF')
+    // console.log('OFF')
   }
 
   const makeSomeNoise = () => {
-    //  if (sound) {
-    //    playOn();
-    //  }
     clearTimeout(timer);
     timer = setTimeout(mouseStopped, 200);
+  }
+
+  const onHoverOnElement = () => {
+    if(sound){
+      playOn2()
+    }
   }
   
   return (
@@ -70,6 +78,7 @@ const Main = ({
                 className='first one'
                 data-aos='fade-left'
                 data-aos-delay='100'
+                onMouseEnter={onHoverOnElement}
               >
                 Hi,
               </div>
@@ -81,6 +90,7 @@ const Main = ({
                       style={{ display: "inline-block" }}
                       data-aos='fade-left'
                       data-aos-delay='200'
+                      onMouseEnter={onHoverOnElement}
                     >
                       I
                     </span>
@@ -89,6 +99,7 @@ const Main = ({
                       style={{ display: "inline-block" }}
                       data-aos='fade-left'
                       data-aos-delay='300'
+                      onMouseEnter={onHoverOnElement}
                     >
                       '
                     </span>
@@ -97,6 +108,7 @@ const Main = ({
                       style={{ display: "inline-block" }}
                       data-aos='fade-left'
                       data-aos-delay='400'
+                      onMouseEnter={onHoverOnElement}
                     >
                       m
                     </span>{" "}
@@ -105,6 +117,7 @@ const Main = ({
                       style={{ display: "inline-block" }}
                       data-aos='fade-left'
                       data-aos-delay='500'
+                      onMouseEnter={onHoverOnElement}
                     >
                       a
                     </span>
@@ -113,6 +126,7 @@ const Main = ({
                       style={{ display: "inline-block" }}
                       data-aos='fade-left'
                       data-aos-delay='600'
+                      onMouseEnter={onHoverOnElement}
                     >
                       u
                     </span>
@@ -121,6 +135,7 @@ const Main = ({
                       className='one'
                       data-aos='fade-left'
                       data-aos-delay='700'
+                      onMouseEnter={onHoverOnElement}
                     >
                       n
                     </span>
@@ -129,6 +144,7 @@ const Main = ({
                       className='one'
                       data-aos='fade-left'
                       data-aos-delay='800'
+                      onMouseEnter={onHoverOnElement}
                     >
                       s
                     </span>
@@ -137,6 +153,7 @@ const Main = ({
                       className='one'
                       data-aos='fade-left'
                       data-aos-delay='900'
+                      onMouseEnter={onHoverOnElement}
                     >
                       h
                     </span>
@@ -145,6 +162,7 @@ const Main = ({
                       className='one exclamation'
                       data-aos='fade-left'
                       data-aos-delay='1000'
+                      onMouseEnter={onHoverOnElement}
                     >
                       !
                     </span>
