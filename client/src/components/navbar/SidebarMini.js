@@ -79,24 +79,27 @@ const SidebarMini = ({ close,
         </div>
       </div>
       <div className='app'>
-        <NavLink to='/' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-          <div className='element flex_between'>
+        <NavLink to='/' className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }} exact>
+          <div className='flex_between'>
             <div>
               <FontAwesomeIcon icon={faHome} style={{ marginRight: "0.5em" }} />
             </div>
             <div>Home</div>
           </div>
         </NavLink>
-        <NavLink to='/user' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-          <div className='element flex_between'>
+        <NavLink to='/user' className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+          <div className='flex_between'>
             <div>
               <FontAwesomeIcon icon={faUser} style={{ marginRight: "0.5em" }} />
             </div>
             <div>About</div>
           </div>
         </NavLink>
-        <NavLink to='/projects' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-          <div className='element flex_between'>
+        <NavLink to='/projects' className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+          <div className='flex_between'>
             <div>
               <FontAwesomeIcon
                 icon={faTools}
@@ -106,8 +109,9 @@ const SidebarMini = ({ close,
             <div>Projects</div>
           </div>
         </NavLink>
-        <NavLink to='/articles' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-          <div className='element flex_between'>
+        <NavLink to='/articles' className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+          <div className='flex_between'>
             <div>
               <FontAwesomeIcon
                 icon={faNewspaper}
@@ -117,8 +121,9 @@ const SidebarMini = ({ close,
             <div>Articles</div>
           </div>
         </NavLink>
-        <NavLink to='/skills' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-          <div className='element flex_between'>
+        <NavLink to='/skills' className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+          <div className='flex_between'>
             <div>
               <FontAwesomeIcon
                 icon={faBrain}
@@ -128,8 +133,9 @@ const SidebarMini = ({ close,
             <div>Skills</div>
           </div>
         </NavLink>
-        <NavLink to='/contact' activeStyle={{ color: "rgb(105, 182, 242)" }}>
-          <div className='element flex_between'>
+        <NavLink to='/contact' className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+          <div className='flex_between'>
             <div>
               <FontAwesomeIcon
                 icon={faMobileAlt}
