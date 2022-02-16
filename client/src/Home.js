@@ -86,7 +86,7 @@ const Home = ({
    };
 
      const [playOn, { stop }] = useSound(bellRing, {
-       volume: 1,
+       volume: 0.2,
      });
 
     const onHoverMobile = () => {

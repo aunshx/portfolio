@@ -43,7 +43,7 @@ const Sidebar = ({
   // Redux State
   settings: { displayMode, sound }
 }) => {
-  const [playOn] = useSound(pop, { volume: 1 });
+  const [playOn] = useSound(pop, { volume: 0.2 });
 
     const classes = useStyles()
 

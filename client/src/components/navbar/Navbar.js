@@ -60,8 +60,8 @@ const Navbar = ({
   musicOn,
   musicOff,
 }) => {
-  const [playOn2] = useSound(resumeSwoosh, { volume: 1 })
-  const [playOn] = useSound(toggle, { volume: 1 });
+  const [playOn2] = useSound(resumeSwoosh, { volume: 0.2 })
+  const [playOn] = useSound(toggle, { volume: 0.2 });
 
   const classes = useStyles();
 

@@ -49,7 +49,7 @@ const Main = ({
   settings: { sound }
 }) => {
 
-  const [playOn2] = useSound(keyboard, { volume: 1 })
+  const [playOn2] = useSound(keyboard, { volume: 0.15 })
 
   let timer;
 
