@@ -1,75 +1,134 @@
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import { connect, Provider } from "react-redux";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import useSound from "use-sound";
 
-import ArticlesMain from './components/articles/ArticlesMain';
-import AboutMain from './components/about/AboutMain';
-import Home from './Home';
-import Projects from './components/projects/Projects';
-import NotFound from './components/layout/NotFound';
-import SkillsMain from './components/skills/SkillsMain';
-import ContactMain from './components/contact/ContactMain';
+import ArticlesMain from "./components/articles/ArticlesMain";
+import AboutMain from "./components/about/AboutMain";
+import Home from "./Home";
+import NotFound from "./components/layout/NotFound";
+import SkillsMain from "./components/skills/SkillsMain";
+import ContactMain from "./components/contact/ContactMain";
+import Sidebar from "./components/navbar/Sidebar";
+import ProjectsMain from "./components/projects/ProjectsMain";
 
 import "./App.css";
-import Sidebar from './components/navbar/Sidebar';
-import { useEffect } from 'react';
 
-import {
-  DARK_MODE_ON,
-  DARK_MODE_OFF
-} from './redux/actions/types.js'
-import store from './store';
-import ProjectsMain from './components/projects/ProjectsMain';
+import { DARK_MODE_ON, DARK_MODE_OFF } from "./redux/actions/types.js";
+import store from "./store";
 
-function App({ sidebar: { hover } }) {
-   useEffect(() => {
-     // check for token in LS
-     if (localStorage.getItem('theme') === 'dark') {
-       store.dispatch({
-         type: DARK_MODE_ON
-       })
-        document.documentElement.setAttribute("data-theme", "dark");
-     } else {
-       store.dispatch({
-         type: DARK_MODE_OFF,
-       });
-        document.documentElement.setAttribute("data-theme", "light");
-     }
-   }, []);
+import lightBackground from "./resources/sounds/lightBackground.mp3";
+import Navbar from "./components/navbar/Navbar";
+
+function App({ sidebar: { hover }, settings: { sound, displayMode } }) {
+  const [playBackgroundLight, { stop }] = useSound(lightBackground, {
+    volume: 0.2,
+  })
+
+  useEffect(() => {
+    // check for token in LS
+    if (localStorage.getItem("theme") === "dark") {
+      store.dispatch({
+        type: DARK_MODE_ON,
+      });
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      store.dispatch({
+        type: DARK_MODE_OFF,
+      });
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+
+    if (sound && displayMode) {
+      // stopLight();
+      // playBackgroundDark();
+    }
+
+    if (!sound && displayMode) {
+      stop();
+    }
+
+    if (!sound && !displayMode) {
+      stop();
+    }
+
+    if (sound && !displayMode) {
+      stop();
+      playBackgroundLight();
+    }
+  }, [sound, displayMode]);
+
   return (
     <Router>
       <>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/'
+            render={(props) => (
+              <Home
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
+            )}
+          />
           <Route
             exact
             path='/user'
             render={(props) => (
-              <AboutMain Sidebar={<Sidebar hover={hover} />} />
+              <AboutMain
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
             )}
           />
           <Route
             path='/projects'
             render={(props) => (
-              <ProjectsMain Sidebar={<Sidebar hover={hover} />} />
+              <ProjectsMain
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
             )}
           />
           <Route
             path='/articles'
             render={(props) => (
-              <ArticlesMain Sidebar={<Sidebar hover={hover} />} />
+              <ArticlesMain
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
             )}
           />
           <Route
             path='/skills'
             render={(props) => (
-              <SkillsMain Sidebar={<Sidebar hover={hover} />} />
+              <SkillsMain
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
             )}
           />
           <Route
             path='/contact'
             render={(props) => (
-              <ContactMain Sidebar={<Sidebar hover={hover} />} />
+              <ContactMain
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
             )}
           />
           <Route component={NotFound} />
@@ -81,14 +140,14 @@ function App({ sidebar: { hover } }) {
 
 App.propTypes = {
   sidebar: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   sidebar: state.sidebar,
+  settings: state.settings,
 });
 
 const mapActionsToProps = {};
 
 export default connect(mapStateToProps, mapActionsToProps)(App);
-
-

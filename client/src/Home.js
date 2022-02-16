@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import useSound from "use-sound";
@@ -10,30 +10,27 @@ import BackgroundTiny from "./components/main/BackgroundTiny";
 
 import windowSize from "./utils/windowSize";
 
-import Navbar from './components/navbar/Navbar';
 import Main from './components/main/Main';
-import Sidebar from './components/navbar/Sidebar';
-import Footer from './components/layout/Footer'
 import Projects from './components/projects/Projects';
 import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrow, faUp, faChevronCircleUp, faCircle, faMobileAlt, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 import About from './components/about/About';
 
 import './App.css'
 
-import lightBackground from "./resources/sounds/lightBackground.mp3";
-
+import lightBackground from "./resources/sounds/lightBackground.mp3"
 
 const Home = ({
+  Navbar,
+  Sidebar,
   // Redux State
   sidebar: { hover },
 }) => {
-  const [playBackgroundLight, { stop }] = useSound(lightBackground, { volume: 0.2 });
 
-  const { width, height } = windowSize()
+  const { width } = windowSize()
 
   const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
@@ -87,10 +84,14 @@ const Home = ({
      }
    };
 
+     const [playBackgroundLight, { stop }] = useSound(lightBackground, {
+       volume: 0.2,
+     });
+
   return (
     <div className='app '>
-      <Navbar stopLight={stop} playLight={playBackgroundLight} />
-      <Sidebar hover={hover} />
+      {Navbar}
+      {Sidebar}
       {width > 1280 && <BackgroundLarge />}
       {900 < width && width <= 1280 && <BackgroundMedium />}
       {600 < width && width <= 900 && <BackgroundSmall />}

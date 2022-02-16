@@ -27,6 +27,7 @@ import linkedInLogoDark from '../../resources/images/linkedInLogoDark.png'
 import store from '../../store'
 import { MOUSE_ENTER, MOUSE_LEAVE } from '../../redux/actions/types';
 
+
 const useStyles = makeStyles(theme => ({
   customTooltip: {
     backgroundColor: 'rgb(245, 245, 245)',
@@ -86,13 +87,22 @@ const Sidebar = ({
     <>
       {hover ? (
         <div
-          className={hover ? "sidebar_main_maximize" : "sidebar_main_maximize sidebar_main-active"}
+          className={
+            hover
+              ? "sidebar_main_maximize"
+              : "sidebar_main_maximize sidebar_main-active"
+          }
           onMouseLeave={minimize}
           onClick={minimize}
         >
           <div className='app'>
-            <NavLink to='/' activeStyle={{ color: "rgb(0, 145, 255)" }} exact>
-              <div className='element flex_between'>
+            <NavLink
+              to='/'
+              className={"element"}
+              activeStyle={{ color: "rgb(0, 145, 255)" }}
+              exact
+            >
+              <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
                     icon={faHome}

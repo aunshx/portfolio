@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 
 import ArticleOne from './ArticleOne';
-import Navbar from '../navbar/Navbar';
-import Footer from '../layout/Footer';
 
 import BackgroundLarge from "../main/BackgroundLarge";
 import BackgroundMedium from "../main/BackgroundMedium";
@@ -17,6 +15,7 @@ import windowSize from "../../utils/windowSize";
 
 const ArticlesMain = ({
   Sidebar,
+  Navbar,
   // Redux State
   sidebar: { hover }
 }) => {
@@ -24,7 +23,7 @@ const ArticlesMain = ({
   const { width, height } = windowSize();
   return (
     <>
-      <Navbar />
+      {Navbar}
       {Sidebar}
       <div>
         {width > 1280 && <BackgroundLarge />}

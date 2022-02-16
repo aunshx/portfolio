@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useSound from "use-sound";
 import { connect } from "react-redux";
@@ -16,8 +16,6 @@ import SidebarMini from './SidebarMini'
 import windowSize from '../../utils/windowSize'
 
 import toggle from "../../resources/sounds/toggle.mp3";
-import lightBackground from "../../resources/sounds/lightBackground.mp3";
-import darkBackground from "../../resources/sounds/darkBackground.mp3";
 
 import resume from '../../resources/articles/aunsh_resume.pdf'
 
@@ -47,8 +45,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Navbar = ({
-  playLight,
-  stopLight,
   // Redux State
   settings: { displayMode, sound },
   // Redux Actions
@@ -60,35 +56,14 @@ const Navbar = ({
   const classes = useStyles();
 
   const [playOn] = useSound(toggle, { volume: 0.2 });
-  const [playBackgroundDark, {stop}] = useSound(darkBackground, { volume: 0.2 });
+  // const [playBackgroundDark, {stop}] = useSound(darkBackground, { volume: 0.2 });
 
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [displayDownload, setDisplayDownload] = useState(false);
 
-  const { width, height } = windowSize();
+  const { width } = windowSize();
   
-  useEffect(() => {
-    // if (sound && displayMode) {
-    //   stopLight()
-    //   playBackgroundDark()
-    // }
-
-    // if (!sound && displayMode) {
-    //   stop();
-    //   stopLight()
-    // }
-
-    // if (!sound && !displayMode) {
-    //   stop()
-    //   stopLight()
-    // }m, 
-
-    // if (sound && !displayMode) {
-    //   stop()
-    //   playLight()
-    // }
-  }, [sound, displayMode])
 
   const verticalMenu = () => {
     setMenu(!menu);
