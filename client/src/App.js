@@ -19,10 +19,14 @@ import { DARK_MODE_ON, DARK_MODE_OFF } from "./redux/actions/types.js";
 import store from "./store";
 
 import lightBackground from "./resources/sounds/lightBackground.mp3";
+import darkBackground from "./resources/sounds/darkBackground.mp3";
 import Navbar from "./components/navbar/Navbar";
 
 function App({ sidebar: { hover }, settings: { sound, displayMode } }) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
+    volume: 0.2,
+  })
+  const [playBackgroundDark, { stop: stop2 }] = useSound(darkBackground, {
     volume: 0.2,
   })
 
@@ -41,20 +45,22 @@ function App({ sidebar: { hover }, settings: { sound, displayMode } }) {
     }
 
     if (sound && displayMode) {
-      // stopLight();
-      // playBackgroundDark();
+      stop()
+      playBackgroundDark();
     }
 
     if (!sound && displayMode) {
       stop();
+      stop2()
     }
 
     if (!sound && !displayMode) {
       stop();
+      stop2()
     }
 
     if (sound && !displayMode) {
-      stop();
+      stop2();
       playBackgroundLight();
     }
   }, [sound, displayMode]);
