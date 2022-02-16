@@ -18,6 +18,7 @@ import SidebarMini from './SidebarMini'
 import windowSize from '../../utils/windowSize'
 
 import toggle from "../../resources/sounds/toggle.mp3";
+import resumeSwoosh from "../../resources/sounds/resumeSwoosh.mp3";
 
 import resume from '../../resources/articles/aunsh_resume.pdf'
 
@@ -59,6 +60,7 @@ const Navbar = ({
   musicOn,
   musicOff,
 }) => {
+  const [playOn2] = useSound(resumeSwoosh, { volume: 1 })
   const classes = useStyles();
 
   const [playOn] = useSound(toggle, { volume: 1 });
@@ -77,6 +79,9 @@ const Navbar = ({
 
   const changeDownloadEnter = () => {
     setDisplayDownload(true);
+    if (sound) {
+      playOn2();
+    }
   };
 
   const changeDownloadLeave = () => {
@@ -114,6 +119,7 @@ const Navbar = ({
   const musicTurnOn = () => {
     musicOn();
   };
+
 
   return (
     <>

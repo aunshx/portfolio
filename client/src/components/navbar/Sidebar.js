@@ -4,7 +4,7 @@ import useSound from 'use-sound'
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faComment, faHome, faMobileAlt, faNewspaper, faTools, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import {
     Tooltip
@@ -100,7 +100,6 @@ const Sidebar = ({
         playOn()
       }
     }
-
   return (
     <>
       {hover ? (
