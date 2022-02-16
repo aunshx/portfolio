@@ -28,8 +28,8 @@ const ArticlesMain = ({
       {Sidebar}
       <div>
         {width > 1280 && <BackgroundLarge />}
-        {900 > width && width <= 1280 && <BackgroundMedium />}
-        {600 > width && width <= 900 && <BackgroundSmall />}
+        {900 < width && width <= 1280 && <BackgroundMedium />}
+        {600 < width && width <= 900 && <BackgroundSmall />}
         {width <= 600 && <BackgroundTiny />}
       </div>
       <div className='app'>
@@ -80,7 +80,19 @@ const ArticlesMain = ({
           </div>
         </div>
       </div>
-      <Footer />
+      <div className='flex_middle'>
+        <div
+          style={{
+            position: "fixed",
+            bottom: "-12px",
+            width: "20%",
+            alignItems: "end",
+          }}
+          className='flex_middle'
+        >
+          <Footer />
+        </div>
+      </div>
     </>
   );
 };

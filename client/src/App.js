@@ -19,6 +19,7 @@ import {
   DARK_MODE_OFF
 } from './redux/actions/types.js'
 import store from './store';
+import ProjectsMain from './components/projects/ProjectsMain';
 
 function App({ sidebar: { hover } }) {
    useEffect(() => {
@@ -47,7 +48,12 @@ function App({ sidebar: { hover } }) {
               <AboutMain Sidebar={<Sidebar hover={hover} />} />
             )}
           />
-          <Route path='/projects' component={Projects} />
+          <Route
+            path='/projects'
+            render={(props) => (
+              <ProjectsMain Sidebar={<Sidebar hover={hover} />} />
+            )}
+          />
           <Route
             path='/articles'
             render={(props) => (
