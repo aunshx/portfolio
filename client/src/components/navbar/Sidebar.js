@@ -96,15 +96,20 @@ const Sidebar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faHome}
-                    style={{ marginRight: "0.5em" }}
+                    style={{ marginRight: "0.5em", marginTop: "0.7em" }}
                   />
                 </div>
-                <div className='writing'>Home</div>
+                <div
+                  className='writing'
+                  style={{ marginTop: "0.5em" }}
+                >
+                  Home
+                </div>
               </div>
             </NavLink>
             <NavLink
               to='/user'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -120,7 +125,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/projects'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -136,7 +141,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/articles'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -150,9 +155,12 @@ const Sidebar = ({
                 <div className='writing'>Articles</div>
               </div>
             </NavLink>
-            <NavLink to='/skills' className={'element'}
+            <NavLink
+              to='/skills'
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact>
+              exact
+            >
               <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
@@ -165,7 +173,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/contact'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -290,9 +298,13 @@ const Sidebar = ({
           onClick={maximize}
         >
           <div className='app'>
-            <NavLink to='/' className={'element'}
+            <NavLink
+              to='/'
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact exact>
+              exact
+              exact
+            >
               <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
@@ -304,7 +316,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/user'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
               exact
@@ -320,7 +332,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/projects'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -335,7 +347,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/articles'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -348,9 +360,12 @@ const Sidebar = ({
                 </div>
               </div>
             </NavLink>
-            <NavLink to='/skills' className={'element'}
+            <NavLink
+              to='/skills'
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact>
+              exact
+            >
               <div className='flex_between'>
                 <div>
                   <FontAwesomeIcon
@@ -362,7 +377,7 @@ const Sidebar = ({
             </NavLink>
             <NavLink
               to='/contact'
-              className={'element'}
+              className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
             >
@@ -380,11 +395,9 @@ const Sidebar = ({
               target={"_blank"}
               rel='noreferrer nofollow'
               alt='Github Logo'
+              className='element'
             >
-              <div
-                className='element flex_between'
-                style={{ padding: "0.7em", marginTop: "1.1em" }}
-              >
+              <div className='flex_between' style={{ paddingRight: "0.5em" }}>
                 <Tooltip
                   title='Go To Github Profile'
                   placement='right'
@@ -412,10 +425,11 @@ const Sidebar = ({
               target={"_blank"}
               rel='noreferrer nofollow'
               alt='Medium Logo'
+              className='element'
             >
               <div
-                className='element flex_between'
-                style={{ padding: "0.7em", marginTop: "1em" }}
+                className='flex_between'
+                style={{ paddingRight: "0.5em", marginTop: "-0.8em" }}
               >
                 <Tooltip
                   title='Go To Medium Profile'
@@ -444,10 +458,11 @@ const Sidebar = ({
               target={"_blank"}
               rel='noreferrer nofollow'
               alt='Medium Logo'
+              className='element'
             >
               <div
-                className='element flex_between'
-                style={{ padding: "0.7em", marginTop: "1.2em" }}
+                className='flex_between'
+                style={{ paddingRight: "0.5em", marginTop: "-0.5em" }}
               >
                 <Tooltip
                   title='Go To LinkedIn Profile'

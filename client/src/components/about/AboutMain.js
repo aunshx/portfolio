@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faUser } from '@fortawesome/free-solid-svg-icons';
 
 import Navbar from '../navbar/Navbar';
-import Sidebar from '../navbar/Sidebar';
 import Footer from '../layout/Footer';
 import BackgroundLarge from '../main/BackgroundLarge';
 import BackgroundMedium from '../main/BackgroundMedium';
@@ -18,10 +17,13 @@ import Cools from '../layout/Cools';
 import logo from '../../resources/images/sketLogo.png'
 
 import windowSize from '../../utils/windowSize';
+import Sidebar from '../navbar/Sidebar';
 
 // import imgLogo 
 
-const AboutMain = ({ sidebar: { hover } }) => {
+const AboutMain = ({ sidebar }) => {
+
+  // const Sidebaro = sidebar
 
   const { width, height } = windowSize()
 
@@ -47,7 +49,8 @@ const AboutMain = ({ sidebar: { hover } }) => {
   return (
     <>
       <Navbar />
-      <Sidebar hover={hover} />
+      {/* {sidebar} */}
+      <Sidebar />
       {width > 1280 && <BackgroundLarge />}
       {900 < width && width <= 1280 && <BackgroundMedium />}
       {600 < width && width <= 900 && <BackgroundSmall />}

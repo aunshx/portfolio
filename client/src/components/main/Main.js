@@ -53,9 +53,9 @@ const Main = ({
   }
 
   const makeSomeNoise = () => {
-     if (sound) {
-       playOn();
-     }
+    //  if (sound) {
+    //    playOn();
+    //  }
     clearTimeout(timer);
     timer = setTimeout(mouseStopped, 200);
   }

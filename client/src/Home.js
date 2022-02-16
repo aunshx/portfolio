@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-
+import useSound from "use-sound";
 
 import BackgroundLarge from "./components/main/BackgroundLarge";
 import BackgroundMedium from "./components/main/BackgroundMedium";
@@ -24,11 +24,15 @@ import About from './components/about/About';
 
 import './App.css'
 
+import lightBackground from "./resources/sounds/lightBackground.mp3";
+
 
 const Home = ({
   // Redux State
   sidebar: { hover },
 }) => {
+  const [playBackgroundLight, { stop }] = useSound(lightBackground, { volume: 0.2 });
+
   const { width, height } = windowSize()
 
   const [showContact, setShowContact] = useState(false);
@@ -85,7 +89,7 @@ const Home = ({
 
   return (
     <div className='app '>
-      <Navbar />
+      <Navbar stopLight={stop} playLight={playBackgroundLight} />
       <Sidebar hover={hover} />
       {width > 1280 && <BackgroundLarge />}
       {900 < width && width <= 1280 && <BackgroundMedium />}

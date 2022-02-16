@@ -18,7 +18,7 @@ function App({ sidebar: { hover } }) {
         <>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/user' component={AboutMain} />
+            <Route exact path='/user' render={(props) => <AboutMain {...props} />} />
             <Route path='/projects' component={Projects} />
             <Route path='/articles' component={ArticlesMain} />
             <Route path='/skills' component={SkillsMain} />
