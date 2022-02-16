@@ -79,7 +79,7 @@ const Main = ({
       }, 200);
       setTimeout(() => {
         setWooActive(false);
-      }, 500);
+      }, 550);
     }
   }
 
