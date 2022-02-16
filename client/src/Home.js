@@ -21,13 +21,14 @@ import About from './components/about/About';
 
 import './App.css'
 
-import lightBackground from "./resources/sounds/lightBackground.mp3"
+import bellRing from "./resources/sounds/bellRing.mp3"
 
 const Home = ({
   Navbar,
   Sidebar,
   // Redux State
   sidebar: { hover },
+  settings: { sound }
 }) => {
 
   const { width } = windowSize()
@@ -84,9 +85,15 @@ const Home = ({
      }
    };
 
-     const [playBackgroundLight, { stop }] = useSound(lightBackground, {
-       volume: 0.2,
+     const [playOn, { stop }] = useSound(bellRing, {
+       volume: 1,
      });
+
+    const onHoverMobile = () => {
+      if(sound) {
+        playOn()
+      }
+    }
 
   return (
     <div className='app '>
@@ -111,7 +118,7 @@ const Home = ({
       {showContact && (
         <>
           <div className='appear_contact' onClick={goToContact}>
-            <div className='contact-button'>
+            <div className='contact-button' onMouseEnter={onHoverMobile}>
               <FontAwesomeIcon
                 icon={faMobileAlt}
                 className='go-up'
@@ -127,10 +134,12 @@ const Home = ({
 
 Home.propTypes = {
   sidebar: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   sidebar: state.sidebar,
+  settings: state.settings,
 });
 
 const mapActionsToProps = {};
