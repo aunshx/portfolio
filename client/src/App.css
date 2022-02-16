@@ -552,7 +552,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12% 0.5em 12% 1em;
+  padding: 10% 0.5em 10% 1em;
 }
 
 .sidebar_main .element:hover,
