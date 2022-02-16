@@ -14,6 +14,7 @@
    --closing-color: rgb(243, 47, 47);
    --light-grey-color: rgb(230, 230, 230);
    --background-dots-color: rgb(240, 240, 240);
+   --light-icon-color: rgb(167, 165, 165);
    --links-hover-color: rgb(133, 228, 78);
    --bodinga-color: #ff5252;
    --ye-color: rgb(255, 180, 41);
@@ -334,7 +335,7 @@ pre {
 }
 
 .navbar .right .sound-off {
-  color: var(--lighter-dark-font-color);
+  color: var(--light-icon-color);
   margin-right: 1.9em;
 }
 
@@ -396,7 +397,7 @@ pre {
 }
 
 .navbar .right-mini .sound-off {
-  color: var(--lighter-dark-font-color);
+  color: var(--light-icon-color);
 }
 
     .navbar .mobile_logo {
@@ -498,7 +499,7 @@ pre {
 }
 
 .sidebar .music-off {
-   color: var(--lighter-dark-font-color);
+   color: var(--light-icon-color);
 }
 
   .sidebar .sound-on {
@@ -508,7 +509,7 @@ pre {
 
 .sidebar .sound-off {
   margin: 0 20px 0 0;
-   color: var(--lighter-dark-font-color);
+   color: var(--light-icon-color);
 }
 
   /* --------------------------------------- SIDEBAR MAIN ----------------------------- */
