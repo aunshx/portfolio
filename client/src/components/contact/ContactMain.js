@@ -561,9 +561,6 @@ const ContactMain = ({
           loading={emailLoading}
         />
       </div>
-      <div style={{ position: "fixed", bottom: "0", right: "45%" }}>
-        <Footer />
-      </div>
     </>
   );
 }

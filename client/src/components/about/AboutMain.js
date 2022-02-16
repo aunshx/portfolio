@@ -93,19 +93,6 @@ const AboutMain = ({ Sidebar }) => {
           </div>
         </div>
       </div>
-      <div className='flex_middle'>
-        <div
-          style={{
-            position: "fixed",
-            bottom: "-12px",
-            width: "20%",
-            alignItems: 'end'
-          }}
-          className='flex_middle' 
-        >
-          <Footer />
-        </div>
-      </div>
     </>
   );
 };
