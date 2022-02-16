@@ -243,37 +243,6 @@ const Navbar = ({
         </div>
         {width < 787 && (
           <div className='right-mini flex_evenly'>
-            {sound ? (
-              <div className='sound-on cursor_pointer'>
-                <Tooltip title='Sound-On' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faVolumeUp}
-                      onClick={soundTurnOff}
-                      style={{
-                        fontSize: 15,
-                        marginTop: "0.3em",
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div className='sound-off cursor_pointer'>
-                <Tooltip title='Sound-Off' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faVolumeMute}
-                      onClick={soundTurnOn}
-                      style={{
-                        fontSize: 17,
-                        marginTop: "0.3em",
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
             {displayMode ? (
               <div className='moon cursor_pointer'>
                 <Tooltip title='Dark' placement='left'>

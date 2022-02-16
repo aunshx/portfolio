@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
 
 import CloseIcon from '@mui/icons-material/Close';
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import MusicOffIcon from "@mui/icons-material/MusicOff"
 
 import mediumLogo from "../../resources/images/mediumLogo.png";
 import mediumLogoHover from "../../resources/images/mediumLogoHover.png";
@@ -23,6 +25,13 @@ import linkedInLogoDark from "../../resources/images/linkedInLogoDark.png";
 
 import resume from '../../resources/articles/aunsh_resume.pdf'
 
+import {
+  soundOn,
+  soundOff,
+  musicOn,
+  musicOff,
+} from "../../redux/actions/settings";
+
 const useStyles = makeStyles((theme) => ({
   customTooltip: {
     backgroundColor: "rgb(245, 245, 245)",
@@ -32,9 +41,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SidebarMini = ({ close,
+const SidebarMini = ({
+  close,
   // Redux State
-  settings: { displayMode }
+  settings: { displayMode, music, sound },
+  // Redux Actions
+  soundOn,
+  soundOff,
+  musicOn,
+  musicOff,
 }) => {
   const classes = useStyles();
 
@@ -65,6 +80,22 @@ const SidebarMini = ({ close,
   const linkedInHoverMoveLeave = () => {
     setLinkedInHover(false);
   };
+
+  const soundTurnOff = () => {
+    soundOff();
+  };
+
+  const soundTurnOn = () => {
+    soundOn();
+  };
+
+  const musicTurnOff = () => {
+    musicOff();
+  };
+
+  const musicTurnOn = () => {
+    musicOn();
+  };
   return (
     <div className='sidebar'>
       <div className='title flex_around'>
@@ -79,8 +110,74 @@ const SidebarMini = ({ close,
         </div>
       </div>
       <div className='app'>
-        <NavLink to='/' className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }} exact>
+        <div className='flex_evenly'>
+          {sound ? (
+            <div className='sound-on cursor_pointer'>
+              <Tooltip title='Sound-On' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVolumeUp}
+                    onClick={soundTurnOff}
+                    style={{
+                      fontSize: 15,
+                      marginBottom: "0.05em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='sound-off cursor_pointer'>
+              <Tooltip title='Sound-Off' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVolumeMute}
+                    onClick={soundTurnOn}
+                    style={{
+                      fontSize: 15,
+                      marginBottom: "0.05em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+          {music ? (
+            <div className='music-on cursor_pointer'>
+              <Tooltip title='Music-On' placement='left'>
+                <div>
+                  <MusicNoteIcon
+                    onClick={musicTurnOff}
+                    style={{
+                      fontSize: 16,
+                      marginTop: "0.2em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='music-off cursor_pointer'>
+              <Tooltip title='Music-Off' placement='left'>
+                <div>
+                  <MusicOffIcon
+                    onClick={musicTurnOn}
+                    style={{
+                      fontSize: 16,
+                      marginTop: "0.2em",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+        </div>
+        <NavLink
+          to='/'
+          className={"element"}
+          activeStyle={{ color: "rgb(0, 145, 255)" }}
+          exact
+        >
           <div className='flex_between'>
             <div>
               <FontAwesomeIcon icon={faHome} style={{ marginRight: "0.5em" }} />
@@ -88,8 +185,11 @@ const SidebarMini = ({ close,
             <div>Home</div>
           </div>
         </NavLink>
-        <NavLink to='/user' className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+        <NavLink
+          to='/user'
+          className={"element"}
+          activeStyle={{ color: "rgb(0, 145, 255)" }}
+        >
           <div className='flex_between'>
             <div>
               <FontAwesomeIcon icon={faUser} style={{ marginRight: "0.5em" }} />
@@ -97,8 +197,11 @@ const SidebarMini = ({ close,
             <div>About</div>
           </div>
         </NavLink>
-        <NavLink to='/projects' className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+        <NavLink
+          to='/projects'
+          className={"element"}
+          activeStyle={{ color: "rgb(0, 145, 255)" }}
+        >
           <div className='flex_between'>
             <div>
               <FontAwesomeIcon
@@ -109,8 +212,11 @@ const SidebarMini = ({ close,
             <div>Projects</div>
           </div>
         </NavLink>
-        <NavLink to='/articles' className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+        <NavLink
+          to='/articles'
+          className={"element"}
+          activeStyle={{ color: "rgb(0, 145, 255)" }}
+        >
           <div className='flex_between'>
             <div>
               <FontAwesomeIcon
@@ -121,8 +227,11 @@ const SidebarMini = ({ close,
             <div>Articles</div>
           </div>
         </NavLink>
-        <NavLink to='/skills' className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+        <NavLink
+          to='/skills'
+          className={"element"}
+          activeStyle={{ color: "rgb(0, 145, 255)" }}
+        >
           <div className='flex_between'>
             <div>
               <FontAwesomeIcon
@@ -133,8 +242,11 @@ const SidebarMini = ({ close,
             <div>Skills</div>
           </div>
         </NavLink>
-        <NavLink to='/contact' className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}>
+        <NavLink
+          to='/contact'
+          className={"element"}
+          activeStyle={{ color: "rgb(0, 145, 255)" }}
+        >
           <div className='flex_between'>
             <div>
               <FontAwesomeIcon
@@ -256,12 +368,21 @@ const SidebarMini = ({ close,
 
 SidebarMini.propTypes = {
   settings: PropTypes.object.isRequired,
+  soundOn: PropTypes.func.isRequired,
+  soundOff: PropTypes.func.isRequired,
+  musicOn: PropTypes.func.isRequired,
+  musicOff: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
 });
 
-const mapStateToActions = {};
+const mapStateToActions = {
+  soundOn,
+  soundOff,
+  musicOn,
+  musicOff,
+};
 
 export default connect(mapStateToProps, mapStateToActions)(SidebarMini);

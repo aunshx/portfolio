@@ -375,11 +375,19 @@ pre {
 
   .navbar .right-mini .sun {
   animation: sunEntry 0.3s 1 linear;
-  margin: 0 25px;
+  margin: 0 25px 0 0;
 }
 
 .navbar .right-mini .moon {
   animation: moonEntry 0.3s 1 linear;
+  margin: 0 25px 0 0;
+}
+
+  .navbar .right-mini .music-on {
+  margin: 0 25px;
+}
+
+.navbar .right-mini .music-off {
   margin: 0 25px;
 }
 
@@ -461,7 +469,7 @@ pre {
 .sidebar .element {
   color: var(--lighter-dark-font-color);
   padding: 0.7em;
-  margin: 0.3em;
+  margin: 0.2em;
   cursor: pointer;
   font-size: 0.9em;
 }
@@ -484,6 +492,24 @@ pre {
   border: 1px solid var(--light-logo-color);
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   }
+
+  .sidebar .music-on {
+   color: var(--light-logo-color);
+}
+
+.sidebar .music-off {
+   color: var(--lighter-dark-font-color);
+}
+
+  .sidebar .sound-on {
+  margin: 0 20px 0 0;
+   color: var(--light-logo-color);
+}
+
+.sidebar .sound-off {
+  margin: 0 20px 0 0;
+   color: var(--lighter-dark-font-color);
+}
 
   /* --------------------------------------- SIDEBAR MAIN ----------------------------- */
   .sidebar_main {
