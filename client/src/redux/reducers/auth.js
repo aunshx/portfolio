@@ -6,7 +6,11 @@ import {
   LOGOUT,
   LOGIN_LOADING_COMPLETE,
   LOGIN_LOADING,
+  SNACKBAR_RESET,
+  ERROR_SNACKBAR,
 } from "../actions/types";
+
+import { nanoid } from "nanoid";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -14,12 +18,31 @@ const initialState = {
   loading: true,
   user: null,
   loginLoading: false,
+  message: "",
+  type: "info",
+  key: "",
+  errorSnackbar: false,
 };
 
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case ERROR_SNACKBAR:
+      return {
+        ...state,
+        message: payload.message,
+        type: payload.type,
+        key: nanoid(),
+        errorSnackbar: true
+      };
+    case SNACKBAR_RESET:
+      return {
+        ...state,
+        message: "",
+        key: "",
+        errorSnackbar: false,
+      };
     // Login Loading
     case LOGIN_LOADING:
       return {

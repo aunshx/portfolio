@@ -2709,3 +2709,56 @@ from {
   text-align: center;
 }
 
+/* --------------------- SNACKBAR ------------------------ */
+.MuiSnackbar-anchorOriginBottomCenter:nth-child(2) {
+    bottom: 92px !important;
+}
+
+.MuiSnackbar-root .MuiAlert-root {
+    height: 40px;
+    padding-top: 2px;
+    margin-bottom: 10px;
+}
+
+.MuiSnackbar-root .MuiAlert-root .MuiAlert-message {
+    padding-top: 10px;
+}
+
+.MuiSnackbar-root .MuiAlert-filledSuccess {
+    background-color: #2ebf06;
+}
+
+.MuiSnackbar-root .MuiAlert-filledError {
+    background-color: #f71717;
+}
+
+.MuiSnackbar-root .MuiAlert-filledInfo {
+    background-color: #219be7;
+}
+
+.MuiSnackbar-root .snackbar_alert_info {
+    box-shadow: 2px 2px 7px -3px rgba(15, 15, 15, 0.75);
+    background-color: #5a5a5a;
+    font-weight: 600;
+    color: rgba(245, 245, 245);
+    height: 30px;
+    padding: 0em 1.5em 3.5em 1em;
+}
+
+.MuiSnackbar-root .snackbar_alert_error {
+    box-shadow: 2px 2px 7px -3px rgba(15, 15, 15, 0.75);
+    background-color: #ee2525;
+    font-weight: 600;
+    color: rgba(245, 245, 245);
+    height: 30px;
+    padding: 0em 1.5em 3.5em 1em;
+}
+
+.MuiSnackbar-root .snackbar_alert_success {
+    box-shadow: 2px 2px 7px -3px rgba(15, 15, 15, 0.75);
+    background-color: #31c10a;
+    font-weight: 600;
+    color: rgba(245, 245, 245);
+    height: 30px;
+    padding: 0em 1.5em 3.5em 1em;
+}

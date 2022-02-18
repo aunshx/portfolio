@@ -20,6 +20,7 @@ import { login } from "../../redux/actions/auth";
 import windowSize from "../../utils/windowSize";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Alerts from '../layout/Alerts';
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -383,6 +384,9 @@ const Login = ({
               </div>
             )}
           </div>
+        </div>
+        <div>
+            <Alerts />
         </div>
       </div>
     </>

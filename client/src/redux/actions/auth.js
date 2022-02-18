@@ -20,6 +20,12 @@ import {
   ERROR_SNACKBAR,
 } from "./types";
 
+export const snackbarDeactivate = (value) => async (dispatch) => {
+  dispatch({
+    type: SNACKBAR_RESET,
+  });
+};
+
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
