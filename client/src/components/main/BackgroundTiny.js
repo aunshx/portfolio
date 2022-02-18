@@ -22,7 +22,7 @@ export default function Background() {
               value: "#a9aaab",
             },
             enable: true,
-            opacity: 0.1,
+            opacity: 0.2,
           },
           opacity: {
             value: 0.1,
@@ -64,10 +64,10 @@ export default function Background() {
               color: "#ff0000",
             },
             bubble: {
-              opacity: 0.8,
-              size: 3,
+              opacity: 0.9,
+              size: 4,
               color: {
-                value: "#3f6cf2",
+                value: "#3694ff",
               },
             },
           },

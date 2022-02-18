@@ -22,9 +22,9 @@
 }
 
 [data-theme="dark"] {
-  --background-color: rgb(8, 8, 8);
-  --background-dots-color: rgb(17, 17, 17);
-   --navbar-color: rgb(7, 7, 7);
+  --background-color: rgb(15, 15, 15);
+  --background-dots-color: rgb(25, 25, 25);
+   --navbar-color: rgb(13, 13, 13);
    --card-color: rgb(10, 10, 10);
    --light-grey-color: rgb(25, 25, 25);
    --dark-font-color: rgb(238, 238, 238);
@@ -1906,6 +1906,13 @@ pre {
   border-radius: 10px;
   margin: 1em 0;
   padding: 1em;
+}
+
+.skills .body-one .individual--dark,
+.skills-main .body-one .individual--dark,
+.skills .body-two .individual--dark,
+.skills-main .body-two .individual--dark {
+  box-shadow: none;
 }
 
 .skills .body-one .imp:hover, 

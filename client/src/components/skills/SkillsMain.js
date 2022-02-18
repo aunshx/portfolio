@@ -53,7 +53,11 @@ const SkillsMain = ({
             <div>Skills</div>
           </div>
           <div className='body-one'>
-            <SkillOne delay={0} title={"React"} logo={reactLogo} />
+            <SkillOne
+              delay={0}
+              title={"React"}
+              logo={reactLogo}
+            />
             <SkillOne delay={200} title={"Node.js"} logo={nodeLogo} />
             <SkillOne delay={400} title={"Postgres"} logo={psqlLogo} />
           </div>

@@ -22,7 +22,7 @@ export default function BackgroundLarge() {
               value: "#a9aaab",
             },
             enable: true,
-            opacity: 0.1,
+            opacity: 0.2,
           },
           opacity: {
             value: 0.1,
@@ -65,7 +65,7 @@ export default function BackgroundLarge() {
             },
             bubble: {
               opacity: 0.9,
-              size: 3,
+              size: 4,
               color: {
                 value: "#3694ff",
               },
@@ -78,6 +78,6 @@ export default function BackgroundLarge() {
           resize: true,
         },
       }}
-    />
+      />
   );
 }
