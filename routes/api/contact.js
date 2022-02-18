@@ -24,7 +24,13 @@ router.post(
         { $and: [{ userId: req.user.id }, { _id: messageId }] },
       )
 
-      return res.status(200).send('Message is deleted!');
+      if (!ans) {
+        return res
+          .status(400)
+          .send({ errors: [{ msg: "Message does not exist" }] });
+      } else {
+        return res.status(200).send("Message is deleted!");
+      }
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot Delete Message" }] });
     }
@@ -54,7 +60,13 @@ router.post(
         }
       )
 
-      return res.status(200).send('Message is replied to!');
+      if (!ans) {
+        return res
+          .status(400)
+          .send({ errors: [{ msg: "Message does not exist" }] });
+      } else {
+        return res.status(200).send("Message is replied!");
+      }
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
     }
@@ -84,7 +96,11 @@ router.post(
         }
       )
 
-      return res.status(200).send('Message is seen!');
+      if(!ans){
+        return res.status(400).send({ errors: [{ msg: 'Message does not exist' }] })
+      } else {
+        return res.status(200).send("Message is seen!");
+      }
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
     }
@@ -157,6 +173,7 @@ router.post(
   auth,
   check("email", "Please include a valid email").isEmail(),
   check("name", "Name cannot be empty").notEmpty(),
+  check("message", "Message cannot be empty").notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
