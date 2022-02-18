@@ -13,6 +13,14 @@ const MessageSchema = new mongoose.Schema(
       type: String,
       maxLength: 145,
     },
+    seen: {
+      type: Boolean,
+      default: false
+    },
+    replied: {
+      type: Boolean,
+      default: false
+    },
     organisation: {
       type: String,
     },

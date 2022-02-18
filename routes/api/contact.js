@@ -6,6 +6,66 @@ const Message = require('../../models/Message')
 const auth = require('../../middleware/auth')
 
 // @route    POST api/contact
+// @desc     Message Replied
+// @access   Private
+router.post(
+  "/message-replied",
+  auth,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).send({ errors: errors.array() });
+    }
+
+    const { messageId } = req.body
+
+    try {
+      let ans = await Message.findOneAndUpdate(
+        { $and: [{ userId: req.user.id }, { _id: messageId }] },
+        { replied: true },
+        {
+          returnOriginal: false,
+        }
+      )
+
+      return res.status(200).send('Message is replied to!');
+    } catch (err) {
+      res.status(400).send({ errors: [{ msg: "Cannot retrieve messages" }] });
+    }
+  }
+);
+
+// @route    POST api/contact
+// @desc     Message Seen
+// @access   Private
+router.post(
+  "/message-seen",
+  auth,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).send({ errors: errors.array() });
+    }
+
+    const { messageId } = req.body
+
+    try {
+      let ans = await Message.findOneAndUpdate(
+        { $and: [{ userId: req.user.id }, { _id: messageId }] },
+        { seen: true },
+        {
+          returnOriginal: false,
+        }
+      )
+
+      return res.status(200).send('Message is seen!');
+    } catch (err) {
+      res.status(400).send({ errors: [{ msg: "Cannot retrieve messages" }] });
+    }
+  }
+);
+
+// @route    POST api/contact
 // @desc     Get Messages Oldest
 // @access   Private
 router.post(
