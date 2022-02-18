@@ -14,11 +14,13 @@ router.post("/page-viewed", async (req, res) => {
   try {
 
     let ans = await Visits.updateOne(
-      { common: 0310266 },
-      { $set: { $inc: { count: 1 } } }
+      { common: '0310266' },
+    { $inc: { count: 1 } } 
     );
 
-    if (!ans) {
+    console.log(ans)
+
+    if (ans.upsertedId === null) {
       let ans2 = new Visits({
           count: 1
       })

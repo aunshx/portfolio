@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const VisitsSchema = new mongoose.Schema(
   {
     common: {
-      type: Number,
-      default: 0310266
+      type: String,
+      default: '0310266'
     },
     count: {
       type: Number,
