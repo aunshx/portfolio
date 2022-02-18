@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import useSound from "use-sound";
 import { connect } from "react-redux";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -18,6 +18,7 @@ import { Drawer, Tooltip } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BubbleChartIcon from "@mui/icons-material/BubbleChart";
 
@@ -26,7 +27,6 @@ import SidebarMini from "./SidebarMini";
 import windowSize from "../../../utils/windowSize";
 
 import toggle from "../../../resources/sounds/toggle.mp3";
-import resumeSwoosh from "../../../resources/sounds/resumeSwoosh.mp3";
 
 import {
   toggleLightMode,
@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = ({
   // Redux State
+  auth: { isAuthenticated },
   settings: { displayMode, sound, music },
   // Redux Actions
   soundOn,
@@ -141,65 +142,82 @@ const Navbar = ({
               </Tooltip>
             </div>
           )}
-          <div className='sun cursor_pointer'>
-            <Tooltip title='Notifications' placement='left'>
-              <div>
-                <FontAwesomeIcon
-                  icon={faBell}
-                  className={"element--admin"}
-                  onClick={toggleThemeToDark}
-                  style={{
-                    fontSize: 18,
-                    marginTop: "0.3em",
-                    marginRight: '0.9em',
-                    marginLeft: '0.9em'
-                  }}
-                />
+          {!isAuthenticated && (
+            <div className='cursor_pointer'>
+              <Link to='/admin/login'>
+                <Tooltip title='Login' placement='left'>
+                  <div>
+                    <LoginIcon
+                      className={"element--admin"}
+                      style={{
+                        fontSize: 21,
+                        marginTop: "0.3em",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
+              </Link>
+            </div>
+          )}
+          {isAuthenticated && (
+            <>
+              <div className='cursor_pointer'>
+                <Tooltip title='Notifications' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faBell}
+                      className={"element--admin"}
+                      style={{
+                        fontSize: 18,
+                        marginTop: "0.3em",
+                        marginRight: "0.9em",
+                        marginLeft: "0.9em",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
-          </div>
-          <div className='sun cursor_pointer'>
-            <Tooltip title='Dashboard' placement='left'>
-              <div>
-                <DashboardIcon
-                  className={"element--admin"}
-                  onClick={toggleThemeToDark}
-                  style={{
-                    fontSize: 21,
-                    marginTop: "0.3em",
-                  }}
-                />
+              <div className='cursor_pointer'>
+                <Tooltip title='Dashboard' placement='left'>
+                  <div>
+                    <DashboardIcon
+                      className={"element--admin"}
+                      style={{
+                        fontSize: 21,
+                        marginTop: "0.3em",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
-          </div>
-          <div className='sun cursor_pointer'>
-            <Tooltip title='Stats' placement='left'>
-              <div>
-                <BubbleChartIcon
-                  className={"element--admin"}
-                  onClick={toggleThemeToDark}
-                  style={{
-                    fontSize: 23,
-                    marginTop: "0.3em",
-                  }}
-                />
+              <div className='cursor_pointer'>
+                <Tooltip title='Stats' placement='left'>
+                  <div>
+                    <BubbleChartIcon
+                      className={"element--admin"}
+                      style={{
+                        fontSize: 23,
+                        marginTop: "0.3em",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
-          </div>
-          <div className='sun cursor_pointer'>
-            <Tooltip title='Logout' placement='left'>
-              <div>
-                <LoginIcon
-                  className={"element--admin"}
-                  onClick={toggleThemeToDark}
-                  style={{
-                    fontSize: 21,
-                    marginTop: "0.3em",
-                  }}
-                />
+              <div className='cursor_pointer'>
+                <Tooltip title='Logout' placement='left'>
+                  <div>
+                    <LogoutIcon
+                      className={"element--admin"}
+                      style={{
+                        fontSize: 21,
+                        marginTop: "0.3em",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
-          </div>
+            </>
+          )}
         </div>
         {width < 787 && (
           <div className='right-mini flex_evenly'>
@@ -290,6 +308,7 @@ const Navbar = ({
 };
 
 Navbar.propTypes = {
+  auth: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
   toggleLightMode: PropTypes.func.isRequired,
   toggleDarkMode: PropTypes.func.isRequired,
@@ -301,6 +320,7 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
+  auth: state.auth
 });
 
 const mapStateToActions = {
