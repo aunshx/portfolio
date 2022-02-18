@@ -82,30 +82,10 @@ pre {
     padding: 10px;
 }
 
-.homely-1 {
-   background-image: url('./resources/images/bodingaTransLogo.png'), url('./resources/images/transGotuuLogo.png');
-    background-repeat:no-repeat, no-repeat;
-    background-size: 500px 500px;
-    background-position:100% 1000px,0% 1450px;
+
+.cursor_pointer {
+  cursor: pointer;
 }
-
-.homely-2 {
-   background-image: url('./resources/images/sketLogo2.js.png');
-    background-repeat:no-repeat;
-    background-size: 50vw 100vh;
-    background-position: 120% 0%;
-}
-
-/* .homely-3 {
-   background-image: url('./resources/images/25331.jpg');
-    background-repeat:no-repeat;
-    background-size: 100vw 100vh;
-    background-position: 0% 0%;
-    position: relative;
-    z-index: -100;
-     background-attachment: fixed;
-} */
-
 /* ------------------------------------- BASICS ----------------------------------- */
 .mrg-r-point-5 {
   margin-right: 0.5em;
@@ -1071,13 +1051,26 @@ pre {
 /* ------------------------------------- FOOTER --------------------------------- */
 .footer {
   height: 10px;
-  z-index: -5;
   margin-left: 2.8%;
   margin-bottom: 20px;
 }
 .footer .text {
   font-size: 1em;
   color: rgb(167, 167, 167);
+  font-weight: bold;
+  font-family: 'Comfortaa', cursive;
+}
+
+.footer .text a {
+  font-size: 1em;
+  color: rgb(167, 167, 167);
+  font-weight: bold;
+  font-family: 'Comfortaa', cursive;
+}
+
+.footer .text a:hover {
+  font-size: 1em;
+  color: var(--logo-color);
   font-weight: bold;
   font-family: 'Comfortaa', cursive;
 }
