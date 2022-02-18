@@ -6,7 +6,7 @@ import App from "./App";
 function Mega() {
   return (
     <Provider store={store}>
-     <App />
+      <App />
     </Provider>
   );
 }

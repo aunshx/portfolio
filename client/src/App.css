@@ -309,6 +309,15 @@ pre {
   animation: moonEntry 0.3s 1 linear;
 }
 
+.navbar .right .element--admin {
+  color: var(--lighter-dark-font-color);
+  margin: 0 0.6em;
+}
+
+.navbar .right .element--admin:hover {
+  color: var(--light-logo-color);
+}
+
 .navbar .right .sound-on {
   color: var(--light-logo-color);
   margin-right: 1.9em;
@@ -2598,8 +2607,105 @@ from {
   padding: 0.2em 0.5em;
   font-size: 0.6em;
 }
+}
 
+/* ----------------- SPinner ------------------------- */
+.spinner-new {
+  display: flex;
+  width: 3.5em;
+  height: 3.5em;
+  border: 3px solid transparent;
+  border-top-color: var(--logo-color);
+  border-bottom-color: var(--logo-color);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.spinner-new:before {
+  content: '';
+  display: block;
+  margin: auto;
+  width: 0.75em;
+  height: 0.75em;
+  border: 3px solid var(--logo-color);
+  border-radius: 50%;
+  animation: pulse 1s alternate ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 
+/* --------------------- ADMIN ----------------------------- */
+.login {
+  color: var(--logo-color);
+   width: 1200px;
+  height: calc(100vh - 100px);
+    padding: 0em 0em 0em 2em;
+  margin: 60px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.login .form {
+  width: 300px;
+  color: var(--lighter-dark-font-color);
+  background-color: var(--navbar-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  min-height: 280px;
+  z-index: 1;
+}
+
+.login .form--dark {
+  border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
+}
+
+.login .form .errors {
+  color: var(--light-color);
+  background-color: var(--closing-color);
+  border-radius: 10px;
+  padding: 0 0.5em;
+  font-size: 0.7em;
+  margin-bottom: 0.8em;
+}
+
+.login .form .errors-one {
+  color: var(--light-color);
+  background-color: var(--navbar-color);
+  border-radius: 10px;
+  padding: 0 0.5em;
+  font-size: 0.7em;
+  margin-bottom: 0.8em;
+}
+
+.login .form .title {
+  padding: 0.5em;
+  font-size: 1em;
+}
+
+.login .form .title .first {
+  font-size: 1.3em;
+  color: var(--logo-color);
+  /* padding-bottom: 0.5em; */
+}
+
+.login .form .title {
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 1em;
+  text-align: center;
+}
 

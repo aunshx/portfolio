@@ -12,6 +12,8 @@ import SkillsMain from "./components/skills/SkillsMain";
 import ContactMain from "./components/contact/ContactMain";
 import Sidebar from "./components/navbar/Sidebar";
 import ProjectsMain from "./components/projects/ProjectsMain";
+import Navbar from "./components/navbar/Navbar";
+import Login from "./components/admin/Login";
 
 import "./App.css";
 
@@ -20,7 +22,7 @@ import store from "./store";
 
 import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
-import Navbar from "./components/navbar/Navbar";
+import PrivateRoute from './utils/PrivateRoute'
 
 function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
@@ -137,9 +139,20 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
               />
             )}
           />
+          <Route
+            path='/admin/login'
+            render={(props) => (
+              <Login
+                Sidebar={<Sidebar hover={hover} />}
+                Navbar={
+                  <Navbar />
+                }
+              />
+            )}
+          />
           <Route component={NotFound} />
         </Switch>
-      </>
+     </>
     </Router>
   );
 }
