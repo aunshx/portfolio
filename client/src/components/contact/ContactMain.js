@@ -161,10 +161,10 @@ const ContactMain = ({
     <>
       <Navbar />
       <Sidebar hover={hover} />
-        {width > 1280 && <BackgroundLarge />}
-        {900 < width && width <= 1280 && <BackgroundMedium />}
-        {600 < width && width <= 900 && <BackgroundSmall />}
-        {width <= 600 && <BackgroundTiny />}
+      {width > 1280 && <BackgroundLarge />}
+      {900 < width && width <= 1280 && <BackgroundMedium />}
+      {600 < width && width <= 900 && <BackgroundSmall />}
+      {width <= 600 && <BackgroundTiny />}
       <div className='app'>
         <div className='contact-main' data-aos='fade-in'>
           <div className='title flex_middle' data-aos='flip-up'>
@@ -179,7 +179,7 @@ const ContactMain = ({
             data-aos='fade-up'
           >
             {displayMode ? (
-              <div className='form'>
+              <div className={"form form--dark"}>
                 <div className='app title'>
                   <div className='first ft-bold flex_middle'>Get in touch!</div>
                 </div>
@@ -187,13 +187,7 @@ const ContactMain = ({
                   {!messageEmptyError &&
                     !emailEmptyError &&
                     !nameEmptyError &&
-                    !emailInvalidError && (
-                      <div
-                        className="errors-one"
-                      >
-                        .
-                      </div>
-                    )}
+                    !emailInvalidError && <div className='errors-one'>.</div>}
                   {messageEmptyError && (
                     <div className='errors'>Message cannot be empty</div>
                   )}
@@ -528,7 +522,11 @@ const ContactMain = ({
             )}
           </div>
         </div>
-        <div className='card-contact' data-aos='fade-up' data-aos-offset={30}>
+        <div
+          className={displayMode ? "card-contact card-contact--dark" : "card-contact"}
+          data-aos='fade-up'
+          data-aos-offset={30}
+        >
           <div className='title flex_middle'>Details</div>
           <div className='info'>
             <div className='title'>

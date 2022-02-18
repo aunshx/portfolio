@@ -182,7 +182,7 @@ const Contact = ({
             data-aos='fade-up'
           >
             {displayMode ? (
-              <div className='form'>
+              <div className='form form--dark'>
                 <div className='app title'>
                   <div className='first ft-bold flex_middle'>Get in touch!</div>
                 </div>
@@ -525,7 +525,12 @@ const Contact = ({
             )}
           </div>
         </div>
-        <div className='card-contact' data-aos='fade-up'>
+        <div
+          className={
+            displayMode ? "card-contact card-contact--dark" : "card-contact"
+          }
+          data-aos='fade-up'
+        >
           <div className='title flex_middle'>Details</div>
           <div className='info'>
             <div className='title'>

@@ -2055,6 +2055,12 @@ pre {
   z-index: 1;
 }
 
+.contact-main .body .form--dark,
+.contact .body .form--dark {
+  border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
+}
+
 .contact .body .form .errors,
 .contact-main .body .form .errors {
   color: var(--light-color);
@@ -2068,7 +2074,7 @@ pre {
 .contact .body .form .errors-one,
 .contact-main .body .form .errors-one {
   color: var(--light-color);
-  background-color: var(--card-color);
+  background-color: var(--navbar-color);
   border-radius: 10px;
   padding: 0 0.5em;
   font-size: 0.7em;
@@ -2107,6 +2113,11 @@ pre {
   font-family: 'Comfortaa', cursive;
   padding: 0.5em 0.5em 1.3em 0.5em;
   margin: 0px 0 50px 50px;
+}
+
+.card-contact--dark {
+  border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
 }
 
 .card-contact .title {
