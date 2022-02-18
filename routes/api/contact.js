@@ -38,10 +38,10 @@ router.post(
 );
 
 // @route    POST api/contact
-// @desc     Message Replied
+// @desc     Message Status
 // @access   Private
 router.post(
-  "/message-replied",
+  "/message-status-replied",
   auth,
   async (req, res) => {
     const errors = validationResult(req);
@@ -49,12 +49,12 @@ router.post(
       return res.status(400).send({ errors: errors.array() });
     }
 
-    const { messageId } = req.body
+    const { messageId, status } = req.body
 
     try {
       let ans = await Message.findOneAndUpdate(
         { $and: [{ userId: req.user.id }, { _id: messageId }] },
-        { replied: true },
+        { status },
         {
           returnOriginal: false,
         }
@@ -65,7 +65,7 @@ router.post(
           .status(400)
           .send({ errors: [{ msg: "Message does not exist" }] });
       } else {
-        return res.status(200).send("Message is replied!");
+        return res.status(200).send("Message status updated!");
       }
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });

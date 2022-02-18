@@ -17,9 +17,12 @@ const MessageSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
-    replied: {
-      type: Boolean,
-      default: false
+    status: {
+      type: String,
+      default: 'not-replied'
+    },
+    comment: {
+      type: String
     },
     organisation: {
       type: String,
