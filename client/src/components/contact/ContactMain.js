@@ -163,8 +163,8 @@ const ContactMain = ({
       <Navbar />
       <Sidebar hover={hover} />
         {width > 1280 && <BackgroundLarge />}
-        {900 > width && width <= 1280 && <BackgroundMedium />}
-        {600 > width && width <= 900 && <BackgroundSmall />}
+        {900 < width && width <= 1280 && <BackgroundMedium />}
+        {600 < width && width <= 900 && <BackgroundSmall />}
         {width <= 600 && <BackgroundTiny />}
       <div className='app'>
         <div className='contact-main' data-aos='fade-in'>

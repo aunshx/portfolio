@@ -2494,12 +2494,53 @@ from {
     opacity: 1;
   }
 }
-
-
 .all-about-small .image img {
   width: 230px;
   height: 230px;
   object-fit: contain;
 }
+
+/* ------------------------- NOT FOUND ----------------------------- */
+.not-found {
+   font-family: 'Comfortaa', cursive;
+   width: 90%;
+   height: 97vh;
+   padding: 1em;
+   margin-top: 1em;
+}
+
+.not-found .image img {
+  width: 60%;
+}
+
+.not-found .writing {
+  font-size: 5em;
+  color: var(--light-dark-font-color);
+}
+
+.not-found .writing .middle {
+  color: var(--logo-color);
+}
+
+.not-found .subwriting {
+  color: var(--light-dark-font-color);
+  font-size: 1.5em;
+}
+
+.not-found .button {
+  border: 1px solid var(--light-dark-font-color);
+  padding: 0.2em 0.5em;
+  margin-top: 2em;
+  border-radius: 10px;
+  color: var(--light-dark-font-color);
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.not-found .button:hover {
+  border: 1px solid var(--logo-color);
+  color: var(--logo-color);
+}
+
 
 
