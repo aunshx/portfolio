@@ -6,6 +6,32 @@ const Message = require('../../models/Message')
 const auth = require('../../middleware/auth')
 
 // @route    POST api/contact
+// @desc     Message Delete
+// @access   Private
+router.post(
+  "/message-delete",
+  auth,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).send({ errors: errors.array() });
+    }
+
+    const { messageId } = req.body
+
+    try {
+      let ans = await Message.findOneAndDelete(
+        { $and: [{ userId: req.user.id }, { _id: messageId }] },
+      )
+
+      return res.status(200).send('Message is deleted!');
+    } catch (err) {
+      res.status(400).send({ errors: [{ msg: "Cannot Delete Message" }] });
+    }
+  }
+);
+
+// @route    POST api/contact
 // @desc     Message Replied
 // @access   Private
 router.post(
@@ -30,7 +56,7 @@ router.post(
 
       return res.status(200).send('Message is replied to!');
     } catch (err) {
-      res.status(400).send({ errors: [{ msg: "Cannot retrieve messages" }] });
+      res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
     }
   }
 );
@@ -60,7 +86,7 @@ router.post(
 
       return res.status(200).send('Message is seen!');
     } catch (err) {
-      res.status(400).send({ errors: [{ msg: "Cannot retrieve messages" }] });
+      res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
     }
   }
 );
