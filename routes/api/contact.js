@@ -3,7 +3,6 @@ const router = express.Router();
 const config = require("config");
 const { check, validationResult } = require("express-validator")
 const Message = require('../../models/Message')
-const { sendEmail } = require('../../middleware/sendEmail')
 
 // @route    POST api/contact
 // @desc     Send Email
@@ -32,13 +31,7 @@ router.post(
 
       await ans.save()
 
-    await sendEmail( email,
-          name,
-          organisation,
-          message
-        );
-
-        return res.status(200).send({ msg: 'Email Sent' });
+      return res.status(200).send({ msg: 'Email Sent' });
 
     } catch (err) {
       res.status(400).send({ errors:[{ msg: 'Some error' }] });

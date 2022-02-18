@@ -26,6 +26,7 @@ app.post("/", function (req, res, next) {
 
 // Define Routes
 app.use("/api/contact", require("./routes/api/contact"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
