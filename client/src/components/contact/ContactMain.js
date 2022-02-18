@@ -72,7 +72,6 @@ const CssTextFieldDark = styled(TextField, {
 const loginIconButtonStyle = makeStyles({
   root: {
     color: "rgb(0, 145, 255)",
-    border: "1px solid green",
     backgroundColor: "none",
     fontSize: "10px",
     height: '27px',
