@@ -25,16 +25,16 @@ const NotFound = (props) => {
       {width <= 600 && <BackgroundTiny />}
       <div className='app'>
         <div className='not-found flex_middle'>
-          <div className='flex_middle'>
+          <div
+            className={width < 769 ? "app" : "flex_middle"}
+          >
             <div className='image'>
               <img src={body} alt='Me standing up' />
             </div>
             <div className='app'>
-              <div className='writing'>error 4
-              <span className='middle'>
-                0
-              </span>
-              4</div>
+              <div className='writing'>
+                error 4<span className='middle'>0</span>4
+              </div>
               <div className='subwriting'>not found</div>
               <Link to='/'>
                 <div className='button flex_evenly'>

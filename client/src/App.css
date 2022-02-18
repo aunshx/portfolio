@@ -2542,5 +2542,60 @@ from {
   color: var(--logo-color);
 }
 
+@media only screen and (max-width: 860px) {
+  .not-found .image img {
+  width: 50%;
+}
+
+.not-found .writing {
+  font-size: 3.5em;
+  color: var(--light-dark-font-color);
+}
+
+}
+
+@media only screen and (max-width: 768px) {
+  .not-found .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .not-found .image img {
+  width: 35%;
+}
+
+.not-found .writing {
+  font-size: 3.5em;
+  color: var(--light-dark-font-color);
+  margin-top: 1em;
+}
+}
+
+@media only screen and (max-width: 340px) {
+  .not-found .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .not-found .image img {
+  width: 35%;
+}
+
+.not-found .writing {
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+.not-found .subwriting {
+  font-size: 1em;
+}
+
+.not-found .button {
+  padding: 0.2em 0.5em;
+  font-size: 0.6em;
+}
+
+}
+
 
 
