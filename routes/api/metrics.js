@@ -1,35 +1,60 @@
 const express = require("express");
+const axios = require('axios');
 const router = express.Router();
 const config = require("config");
 const { check, validationResult } = require("express-validator");
-const Message = require("../../models/Message");
+const Visits = require("../../models/Visits");
+const Ip = require("../../models/Ip");
 const auth = require("../../middleware/auth");
 
-// @route    POST api/contact
-// @desc     Message Delete
+// @route    POST api/metrics
+// @desc     Visitor on Page
 // @access   Private
-router.post("/message-delete", auth, async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).send({ errors: errors.array() });
-  }
-
-  const { messageId } = req.body;
-
+router.post("/page-viewed", async (req, res) => {
   try {
-    let ans = await Message.findOneAndDelete({
-      $and: [{ userId: req.user.id }, { _id: messageId }],
-    });
+
+    let ans = await Visits.updateOne(
+      { common: 0310266 },
+      { $set: { $inc: { count: 1 } } }
+    );
 
     if (!ans) {
-      return res
-        .status(400)
-        .send({ errors: [{ msg: "Message does not exist" }] });
+      let ans2 = new Visits({
+          count: 1
+      })
+      await ans2.save()
+
+      return res.status(200).send("Visit counted!");
     } else {
-      return res.status(200).send("Message is deleted!");
+      return res.status(200).send("Visit counted!");
     }
   } catch (err) {
-    res.status(400).send({ errors: [{ msg: "Cannot Delete Message" }] });
+    res.status(400).send({ errors: [{ msg: "Visit could not be counted" }] });
+  }
+});
+
+// @route    POST api/metrics
+// @desc     Ip of visitor
+// @access   Private
+router.post("/capture-ip", async (req, res) => {
+
+  try {
+
+     const ipDeets = await axios.get("https://geolocation-db.com/json/");
+
+      let ans = new Ip({
+          ip: ipDeets.data.IPv4,
+          country: ipDeets.data.country_name,
+          countryCode: ipDeets.data.country_code,
+          city: ipDeets.data.city
+      })
+
+      await ans.save()
+
+      return res.status(200).send("Ip captured");
+  } catch (err) {
+      console.log(err)
+    res.status(400).send({ errors: [{ msg: "Visit could not be counted" }] });
   }
 });
 

@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 
 const VisitsSchema = new mongoose.Schema(
   {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    common: {
+      type: Number,
+      default: 0310266
     },
     count: {
       type: Number,
+      default: 0
     },
   },
   {

@@ -15,6 +15,9 @@ const IpSchema = new mongoose.Schema(
     city: {
       type: String,
     },
+    countryCode: {
+      type: String,
+    },
   },
   {
     timestamps: {
