@@ -2762,3 +2762,129 @@ from {
     height: 30px;
     padding: 0em 1.5em 3.5em 1em;
 }
+
+/* ------------------------------ ADMIN - MAIN ----------------------- */
+.admin-main {
+  width: 1000px;
+  height: auto;
+  border: 1px solid red;
+  margin: 50px;
+  padding: 20px;
+}
+
+/* ------------------------------ CARD - ADMIN ----------------------------- */
+.card-admin {
+   width: 310px;
+  color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  min-height: 150px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 0.5em 0.5em 1.3em 0.5em;
+  margin: 0px 0 50px 50px;
+}
+
+.card-admin--dark {
+  border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
+}
+
+.card-admin .first {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.card-admin .first .dateTime {
+  font-size: 0.7em;
+  color: var(--light-dark-font-color);
+}
+
+/* --------------------------- Tag ---------------------------------- */
+
+.card-admin .first .tag {
+  font-size: 0.7em;
+  border-radius: 10px;
+}
+
+.card-admin .first .not-replied {
+  border: 1px solid red;
+}
+
+
+/*  --------------------------------------------------------------------- */
+
+.card-admin .title {
+  font-size: 1em;
+  color: var(--logo-color);
+}
+
+.card-admin .info .title {
+  color: grey;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.card-admin .info  {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 4em;
+  padding-top: 1em;
+}
+
+@media only screen and (min-width: 786px) and (max-width: 1028px) {
+  .admin {
+  color: var(--grey-color);
+   width: 750px;
+  height: auto;
+  padding: 0em 1em 0em 1em;
+  margin: 50px 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.admin-main {
+  color: var(--grey-color);
+   width: 750px;
+  height: auto;
+  padding: 0em 1em 0em 1em;
+  margin: 5% 0 50px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+}
+
+@media only screen and (max-width: 786px) {
+  .admin {
+    margin: 50px 0;
+    width: 100vw;
+    height: auto;
+  }
+
+  .card-admin {
+   margin: 0px 0 50px 0;
+}
+
+.card-admin {
+   width: 285px;
+  color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  min-height: 150px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 0.5em 0.9em 1.3em 0em;
+  margin: 0px 0 50px 0px;
+}
+
+.card-admin .info  {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left:3.5em;
+  padding-top: 1em;
+}
+
+}

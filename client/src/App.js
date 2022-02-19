@@ -19,11 +19,13 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 import "./App.css";
 
-import { DARK_MODE_ON, DARK_MODE_OFF } from "./redux/actions/types.js";
+import { DARK_MODE_ON, DARK_MODE_OFF, LOGOUT } from "./redux/actions/types.js";
 import store from "./store";
 
 import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
+import setAuthToken from "./utils/setAuthToken";
+import { loadUser } from "./redux/actions/auth";
 
 function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
@@ -34,6 +36,15 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
   })
 
   useEffect(() => {
+    // check for token in LS
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    store.dispatch(loadUser());
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener("storage", () => {
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
     // check for token in LS
     if (localStorage.getItem("theme") === "dark") {
       store.dispatch({
@@ -48,18 +59,18 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
     }
 
     if (music && displayMode) {
-      stop()
+      stop();
       playBackgroundDark();
     }
 
     if (!music && displayMode) {
       stop();
-      stop2()
+      stop2();
     }
 
     if (!music && !displayMode) {
       stop();
-      stop2()
+      stop2();
     }
 
     if (music && !displayMode) {
