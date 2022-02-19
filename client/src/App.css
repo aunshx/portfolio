@@ -19,6 +19,7 @@
    --bodinga-color: #ff5252;
    --ye-color: rgb(255, 180, 41);
    --gotuu-color: #7ed957;
+   --grey-color: grey;
 }
 
 [data-theme="dark"] {
@@ -202,6 +203,7 @@ pre {
 
 .cancel:hover {
   color: var(--closing-color);
+  cursor: pointer;
 }
 
 .invisible {
@@ -2838,19 +2840,42 @@ from {
   color: var(--logo-color);
 }
 
-.card-admin .info .title {
-  color: grey;
-  font-size: 0.9em;
-  font-weight: bold;
-  margin-right: 1em;
+.card-admin .second {
+  margin-top: 25px;
+  font-size: 0.95em;
 }
 
-.card-admin .info  {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: 4em;
-  padding-top: 1em;
+.card-admin .second .org {
+  font-size: 0.8em;
+  color: var(--grey-color);
+}
+
+.card-admin .third {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 25px;
+  padding: 0 0.2em;
+}
+
+.card-admin .third .icons {
+ color: var(--grey-color);
+ cursor: pointer;
+}
+
+.card-admin .third .icons:hover {
+ color: var(--light-dark-font-color);
+ cursor: pointer;
+}
+
+.card-admin .third .delete:hover {
+ color: var(--closing-color);
+}
+
+.card-admin .expanded-message {
+ font-size: 0.8em;
+ padding: 0.5em 0.3em 0.5em 0.5em;
+ margin-top: 1.5em;
+ color: var(--light-dark-font-color);
 }
 
 @media only screen and (min-width: 786px) and (max-width: 1028px) {
