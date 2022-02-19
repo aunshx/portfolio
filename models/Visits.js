@@ -10,12 +10,6 @@ const VisitsSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-  },
-  {
-    timestamps: {
-      createdAt: true,
-      updatedAt: true,
-    },
   }
 );
 
