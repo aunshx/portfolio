@@ -2832,6 +2832,11 @@ from {
   color: var(--gotuu-color);
 }
 
+.tag-small {
+  width: 70%;
+  padding: 0.3em 0;
+}
+
 .tag-small .not-replied {
   border: 1px solid var(--closing-color);
   color: var(--closing-color);
@@ -2868,6 +2873,10 @@ from {
   border-radius: 5px;
 }
 
+.tag-small-menu:hover {
+  background-color: rgb(20, 20, 20);
+  cursor: pointer;
+}
 
 /*  --------------------------------------------------------------------- */
 
