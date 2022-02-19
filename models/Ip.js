@@ -18,12 +18,6 @@ const IpSchema = new mongoose.Schema(
     countryCode: {
       type: String,
     },
-  },
-  {
-    timestamps: {
-      createdAt: true,
-      updatedAt: true,
-    },
   }
 );
 

@@ -13,12 +13,10 @@ const auth = require("../../middleware/auth");
 router.post("/page-viewed", async (req, res) => {
   try {
 
-    let ans = await Visits.updateOne(
+    let ans = await Visits.findOneAndUpdate(
       { common: '0310266' },
     { $inc: { count: 1 } } 
     );
-
-    console.log(ans)
 
     if (ans.upsertedId === null) {
       let ans2 = new Visits({
