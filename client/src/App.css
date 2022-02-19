@@ -2774,7 +2774,7 @@ from {
 
 /* ------------------------------ CARD - ADMIN ----------------------------- */
 .card-admin {
-   width: 310px;
+   width: 320px;
   color: var(--lighter-dark-font-color);
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -2793,7 +2793,7 @@ from {
 
 .card-admin .first {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }
 
 .card-admin .first .dateTime {
@@ -2804,12 +2804,30 @@ from {
 /* --------------------------- Tag ---------------------------------- */
 
 .card-admin .first .tag {
-  font-size: 0.7em;
+  font-size: 0.65em;
   border-radius: 10px;
+  padding: 0.2em 0.5em;
 }
 
 .card-admin .first .not-replied {
-  border: 1px solid red;
+  border: 1px solid var(--closing-color);
+  color: var(--closing-color);
+}
+.card-admin .first .unseen{
+  border: 1px solid var(--logo-color);
+  color: var(--logo-color);
+}
+.card-admin .first .ongoing {
+  border: 1px solid var(--ye-color);
+  color: var(--ye-color);
+}
+.card-admin .first .cold {
+  border: 1px solid var(--light-dark-font-color);
+  color: var(--light-dark-font-color);
+}
+.card-admin .first .success {
+  border: 1px solid var(--gotuu-color);
+  color: var(--gotuu-color);
 }
 
 

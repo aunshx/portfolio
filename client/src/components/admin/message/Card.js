@@ -12,7 +12,7 @@ const Card = ({ status, settings: { displayMode } }) => {
         className={displayMode ? "card-admin card-admin--dark" : "card-admin"}
       >
         <div className='first'>
-          <div className='' style={{ border: '1px solid red', justifyContent: 'flex-start' }}>
+          <div className='' style={{ justifyContent: 'flex-start' }}>
             <div className='title flex_left'>Name</div>
             <div className="dateTime">
                 {moment().format('DD/MM/YY')} | {moment().toNow()}
