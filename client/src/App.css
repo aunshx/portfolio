@@ -20,6 +20,7 @@
    --ye-color: rgb(255, 180, 41);
    --gotuu-color: #7ed957;
    --grey-color: grey;
+   --faint-hover-color: rgb(245, 245, 245);
 }
 
 [data-theme="dark"] {
@@ -33,6 +34,7 @@
   --lighter-dark-font-color: rgb(220, 220, 220);
    --expand-more-color: rgb(191, 191, 191);
     --light-color: rgb(0, 0, 0);
+    --faint-hover-color: rgb(35, 35, 35);
 }
 
 * {
@@ -2874,7 +2876,7 @@ from {
 }
 
 .tag-small-menu:hover {
-  background-color: rgb(20, 20, 20);
+  background-color: var(--faint-hover-color);
   cursor: pointer;
 }
 
