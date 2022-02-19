@@ -2832,6 +2832,42 @@ from {
   color: var(--gotuu-color);
 }
 
+.tag-small .not-replied {
+  border: 1px solid var(--closing-color);
+  color: var(--closing-color);
+   padding: 0.1em 0.4em;
+  font-size: 0.7em;
+  border-radius: 5px;
+}
+.tag-small .unseen{
+  border: 1px solid var(--logo-color);
+  color: var(--logo-color);
+   padding: 0.1em 0.4em;
+  font-size: 0.7em;
+  border-radius: 5px;
+}
+.tag-small .ongoing {
+  border: 1px solid var(--ye-color);
+  color: var(--ye-color);
+   padding: 0.1em 0.4em;
+  font-size: 0.7em;
+  border-radius: 5px;
+}
+.tag-small .cold {
+  border: 1px solid var(--light-dark-font-color);
+  color: var(--light-dark-font-color);
+   padding: 0.1em 0.4em;
+  font-size: 0.7em;
+  border-radius: 5px;
+}
+.tag-small .success {
+  border: 1px solid var(--gotuu-color);
+  color: var(--gotuu-color);
+   padding: 0.1em 0.4em;
+  font-size: 0.7em;
+  border-radius: 5px;
+}
+
 
 /*  --------------------------------------------------------------------- */
 

@@ -17,6 +17,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
 import Tag from "./Tag";
+import StatusSelector from './StatusSelector';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -33,11 +34,22 @@ const ExpandMore = styled((props) => {
 
 const Card = ({ status, settings: { displayMode } }) => {
 
+        const [anchorEl, setAnchorEl] = useState(null);
+
     const [expanded, setExpanded] = useState(false);
+  const open = Boolean(anchorEl);
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
     };
+
+      const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
 
   return (
     <>
@@ -57,9 +69,7 @@ const Card = ({ status, settings: { displayMode } }) => {
         </div>
         <div className='second app'>
           <div>aunsh.tech@gmail.com</div>
-          <div className='org'>
-              Organisation
-          </div>
+          <div className='org'>Organisation</div>
         </div>
         <div className='third'>
           <Tooltip title='Delete Message' placement='top'>
@@ -94,9 +104,17 @@ const Card = ({ status, settings: { displayMode } }) => {
                 icon={faCube}
                 style={{ fontSize: 14 }}
                 className='icons'
+                onClick={handleClick}
               />
             </div>
           </Tooltip>
+          <div>
+            <StatusSelector
+              handleClose={handleClose}
+              open={open}
+              anchorEl={anchorEl}
+            />
+          </div>
         </div>
         <div>
           <Collapse
