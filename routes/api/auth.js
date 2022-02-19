@@ -13,6 +13,7 @@ const { verify } = require("crypto");
 // @desc     Get user by token
 // @access   Private
 router.get("/get-data", auth, async (req, res) => {
+  console.log('HIT')
   try {
     const user = await User.findById(req.user.id)
       .select("-password")
@@ -33,7 +34,7 @@ router.post(
   check("email", "Please include a valid email").isEmail(),
   check("password", "Password is required").exists(),
   async (req, res) => {
-    
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).send({ errors: errors.array() });

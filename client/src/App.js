@@ -128,14 +128,7 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
           <PrivateRoute
             path='/admin'
             exact
-            render={(props) => (
-              <Main
-              // Sidebar={<Sidebar hover={hover} />}
-              // Navbar={
-              //   <Navbar />
-              // }
-              />
-            )}
+            component = {Main}
           />
           <Route
             path='/admin/login'

@@ -1,4 +1,6 @@
 import api from "../../utils/api";
+import setAuthToken from "../../utils/setAuthToken";
+import moment from "moment";
 
 import {
     // Auth
@@ -28,8 +30,11 @@ export const snackbarDeactivate = (value) => async (dispatch) => {
 
 // Load User
 export const loadUser = () => async (dispatch) => {
+    if (localStorage.token) {
+        setAuthToken(localStorage.token);
+    }
   try {
-    const res = await api.get("/users/get-data");
+    const res = await api.get("/auth/get-data");
 
     dispatch({
       type: USER_LOADED,
@@ -57,6 +62,10 @@ export const login = (email, password) => async (dispatch) => {
         });
 
       const res = await api.post("/auth/login", body);
+
+        dispatch({
+        type: LOGIN_LOADING_COMPLETE,
+        });
 
       dispatch({
         type: LOGIN_SUCCESS,
