@@ -11,8 +11,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// import DurationSelector from "../DurationSelector";
-// import NothingToShow from "../../NothingToShow";
 import { connect } from "react-redux";
 
 // import {
@@ -26,12 +24,12 @@ import NothingToShow from "./NothingToShow";
 import DurationSelector from "./DurationSelector";
 
 const data = [
-//   { name: "Group A", value: 400 },
-//   { name: "Group B", value: 300 },
-//   { name: "Group C", value: 300 },
-//   { name: "Group D", value: 200 },
-//   { name: "Group D", value: 200 },
-//   { name: "Group D", value: 200 },
+  { name: "Group A", value: 400 },
+  { name: "Group B", value: 300 },
+  { name: "Group C", value: 300 },
+  { name: "Group D", value: 200 },
+  { name: "Group D", value: 200 },
+  { name: "Group D", value: 200 },
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
@@ -65,9 +63,9 @@ const renderCustomizedLabel = ({
 
 
 const VisitorChart = ({
-//   data,
-  dataHours,
-  loading,
+// Redux State
+    loadingVisitorChart,
+    settings: { displayMode }
 
 }) => {
   const { width, height } = windowSize();
@@ -88,15 +86,21 @@ const VisitorChart = ({
 
   return (
     <div className='charts flex_middle'>
-      <div className='app card' style={{ width: "90%", height: "90%" }}>
+      <div
+        className={displayMode ? "app card card--dark" : "app card"}
+        style={{ width: "90%", height: "90%" }}
+      >
         <div className='triple_grid'>
           <div></div>
           <div className='title flex_middle'>Country Origins</div>
-          <div className="flex_middle">
-            <DurationSelector onChangeDuration={onChangeDuration} duration={duration} />
+          <div className='flex_middle'>
+            <DurationSelector
+              onChangeDuration={onChangeDuration}
+              duration={duration}
+            />
           </div>
         </div>
-        {loading ? (
+        {loadingVisitorChart ? (
           <div className='spinner-new'></div>
         ) : (
           <>
@@ -146,18 +150,16 @@ const VisitorChart = ({
   );
 };
 
-// VisitorChart.propTypes = {
-//   getAvgDurationOfTuusPerDayPerYear: PropTypes.func.isRequired,
-//   getAvgDurationOfTuusPerDayPerMonth: PropTypes.func.isRequired,
-//   getAvgDurationOfTuusPerDay: PropTypes.func.isRequired,
-// };
+VisitorChart.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    settings: state.settings
+});
 
 const mapStateToActions = {
-//   getAvgDurationOfTuusPerDayPerYear,
-//   getAvgDurationOfTuusPerDayPerMonth,
-//   getAvgDurationOfTuusPerDay,
+
 };
 
 export default connect(mapStateToProps, mapStateToActions)(VisitorChart);
