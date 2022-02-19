@@ -178,6 +178,7 @@ const Navbar = ({
                   <div>
                     <NavLink
                       to='/admin'
+                      exact
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
                     >

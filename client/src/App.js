@@ -16,6 +16,7 @@ import Navbar from "./components/navbar/Navbar";
 import Login from "./components/admin/auth/Login";
 import Main from "./components/admin/main/Main";
 import PrivateRoute from "./utils/PrivateRoute";
+import Stats from "./components/admin/stats/Stats";
 
 import "./App.css";
 
@@ -140,6 +141,10 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             path='/admin'
             exact
             component = {Main}
+          />
+          <PrivateRoute
+            path='/admin/stats'
+            component = {Stats}
           />
           <Route
             path='/admin/login'
