@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import moment from 'moment';
@@ -35,6 +35,7 @@ const ExpandMore = styled((props) => {
 const Card = ({ status, settings: { displayMode } }) => {
 
         const [anchorEl, setAnchorEl] = useState(null);
+        const [delay, setDelay] = useState(0);
 
     const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);

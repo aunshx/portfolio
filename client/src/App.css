@@ -2769,11 +2769,9 @@ from {
 
 /* ------------------------------ ADMIN - MAIN ----------------------- */
 .admin-main {
-  width: 1000px;
+  width: 1200px;
   height: auto;
-  border: 1px solid red;
   margin: 50px;
-  padding: 20px;
 }
 
 /* ------------------------------ CARD - ADMIN ----------------------------- */
@@ -2787,7 +2785,7 @@ from {
   z-index: 1;
   font-family: 'Comfortaa', cursive;
   padding: 0.5em 0.5em 1.3em 0.5em;
-  margin: 0px 0 50px 50px;
+  margin: 50px 0;
 }
 
 .card-admin--dark {
@@ -2977,4 +2975,11 @@ from {
   padding-top: 1em;
 }
 
+}
+
+/* ------------------------ MESSAGES - ADMIN --------------------------------- */
+.messages-admin {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
 }
