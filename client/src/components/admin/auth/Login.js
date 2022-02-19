@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import validator from "email-validator";
 
-import Navbar from './navbar/Navbar'
+import Navbar from '../navbar/Navbar'
 
 
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -15,12 +15,12 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 
-import { login } from "../../redux/actions/auth";
+import { login } from "../../../redux/actions/auth";
 
-import windowSize from "../../utils/windowSize";
+import windowSize from "../../../utils/windowSize";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Alerts from '../layout/Alerts';
+import Alerts from '../../layout/Alerts';
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -157,7 +157,7 @@ const Login = ({
         <div className='login flex_middle'>
           <div className='flex_middle'>
             {displayMode ? (
-              <div className={"form form--dark"} data-aos='fade-up'>
+              <div className={"form form--dark"}>
                 <div className='app title'>
                   <div className='first ft-bold flex_middle'>Login</div>
                 </div>
@@ -331,26 +331,47 @@ const Login = ({
                   </div>
                   <div>
                     <CssTextField
-                      label='Organization'
-                      placeholder='Organization'
+                      error={passwordEmptyError || errorSnackbar}
+                      label='Password'
                       size='small'
-                      focusColor='rgb(0, 145, 255)'
+                      variant='outlined'
+                      type={showPassword ? "text" : "password"}
                       InputLabelProps={{
-                        style: textFieldInputLabelStyle,
+                        style: textFieldInputLabelStyleDark,
                       }}
                       inputProps={{
-                        style: textFieldStyle,
-                      }}
-                      FormHelperTextProps={{
                         style: {
-                          margin: 0,
-                          padding: "0 0 0 5px",
-                          fontSize: 10,
+                          height: "20px",
+                          width: "186px",
                         },
                       }}
                       name='password'
                       value={password}
                       onChange={onChange}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position='end'>
+                            <IconButton
+                              aria-label='toggle password visibility'
+                              onClick={handleClickShowPassword}
+                            >
+                              {showPassword ? (
+                                <Visibility
+                                  style={{
+                                    fontSize: 18,
+                                  }}
+                                />
+                              ) : (
+                                <VisibilityOff
+                                  style={{
+                                    fontSize: 18,
+                                  }}
+                                />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
                     />
                   </div>
                   <div style={{ marginTop: "1.5em" }}>
@@ -386,7 +407,7 @@ const Login = ({
           </div>
         </div>
         <div>
-            <Alerts />
+          <Alerts />
         </div>
       </div>
     </>

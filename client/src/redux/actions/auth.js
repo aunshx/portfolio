@@ -43,9 +43,7 @@ export const loadUser = () => async (dispatch) => {
 }
 
 // Login User
-export const login =
-  ({ email, password }) =>
-  async (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
     let value = {
       message: '1',
       type: 'info'

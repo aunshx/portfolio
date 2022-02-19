@@ -13,7 +13,9 @@ import ContactMain from "./components/contact/ContactMain";
 import Sidebar from "./components/navbar/Sidebar";
 import ProjectsMain from "./components/projects/ProjectsMain";
 import Navbar from "./components/navbar/Navbar";
-import Login from "./components/admin/Login";
+import Login from "./components/admin/auth/Login";
+import Main from "./components/admin/main/Main";
+import PrivateRoute from "./utils/PrivateRoute";
 
 import "./App.css";
 
@@ -22,7 +24,6 @@ import store from "./store";
 
 import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
-import PrivateRoute from './utils/PrivateRoute'
 
 function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
@@ -75,12 +76,7 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             exact
             path='/'
             render={(props) => (
-              <Home
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
-              />
+              <Home Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
             )}
           />
           <Route
@@ -89,9 +85,7 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             render={(props) => (
               <AboutMain
                 Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
+                Navbar={<Navbar />}
               />
             )}
           />
@@ -100,9 +94,7 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             render={(props) => (
               <ProjectsMain
                 Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
+                Navbar={<Navbar />}
               />
             )}
           />
@@ -111,9 +103,7 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             render={(props) => (
               <ArticlesMain
                 Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
+                Navbar={<Navbar />}
               />
             )}
           />
@@ -122,9 +112,7 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             render={(props) => (
               <SkillsMain
                 Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
+                Navbar={<Navbar />}
               />
             )}
           />
@@ -133,26 +121,32 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             render={(props) => (
               <ContactMain
                 Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
+                Navbar={<Navbar />}
+              />
+            )}
+          />
+          <PrivateRoute
+            path='/admin'
+            exact
+            render={(props) => (
+              <Main
+              // Sidebar={<Sidebar hover={hover} />}
+              // Navbar={
+              //   <Navbar />
+              // }
               />
             )}
           />
           <Route
             path='/admin/login'
             render={(props) => (
-              <Login
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={
-                  <Navbar />
-                }
-              />
+              <Login Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
             )}
           />
           <Route component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
-     </>
+      </>
     </Router>
   );
 }
