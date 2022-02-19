@@ -13,10 +13,11 @@ const Messages = props => {
           {index % 2 === 0 && (
             <div
               className='one flex_middle'
-              style={{ alignItems:"flex-start" }}
+              style={{ alignItems: "flex-start" }}
               key={index}
               data-aos='fade-in'
               data-aos-delay={100 * index}
+              data-aos-offset={60}
             >
               <Card status={element.status} index={index} />
             </div>
@@ -24,10 +25,11 @@ const Messages = props => {
           {index % 2 === 1 && (
             <div
               className='two flex_middle'
-              style={{ alignItems:"flex-start" }}
+              style={{ alignItems: "flex-start" }}
               key={index}
               data-aos='fade-in'
               data-aos-delay={100 * index}
+              data-aos-offset={60}
             >
               <Card status={element.status} index={index} />
             </div>
@@ -35,10 +37,11 @@ const Messages = props => {
           {index % 2 === 2 && (
             <div
               className='three flex_middle'
-              style={{ alignItems:"flex-start" }}
+              style={{ alignItems: "flex-start" }}
               key={index}
               data-aos='fade-in'
               data-aos-delay={100 * index}
+              data-aos-offset={60}
             >
               <Card status={element.status} index={index} />
             </div>

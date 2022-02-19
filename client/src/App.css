@@ -2774,6 +2774,22 @@ from {
   margin: 50px;
 }
 
+@media only screen and (min-width: 1028px) and (max-width: 1250px) {
+  .admin-main {
+  width: 1000px;
+  height: auto;
+  margin: 50px;
+}
+}
+
+@media only screen and (min-width: 786px) and (max-width: 1028px) {
+  .admin-main {
+  width: 700px;
+  height: auto;
+  margin: 50px;
+}
+}
+
 /* ------------------------------ CARD - ADMIN ----------------------------- */
 .card-admin {
    width: 320px;
@@ -2951,29 +2967,9 @@ from {
   }
 
   .card-admin {
-   margin: 0px 0 50px 0;
+   margin: 50px 0 0px 0;
 }
 
-.card-admin {
-   width: 285px;
-  color: var(--lighter-dark-font-color);
-  background-color: var(--card-color);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 10px;
-  min-height: 150px;
-  z-index: 1;
-  font-family: 'Comfortaa', cursive;
-  padding: 0.5em 0.9em 1.3em 0em;
-  margin: 0px 0 50px 0px;
-}
-
-.card-admin .info  {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left:3.5em;
-  padding-top: 1em;
-}
 
 }
 
@@ -2982,4 +2978,19 @@ from {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;
+}
+
+@media only screen and (min-width: 786px) and (max-width: 1028px) {
+  .messages-admin {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+}
+}
+
+@media only screen and (max-width: 786px) {
+  .messages-admin {
+  display: grid;
+  grid-template-columns: 1fr
+}
 }
