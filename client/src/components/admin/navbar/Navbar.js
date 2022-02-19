@@ -176,26 +176,36 @@ const Navbar = ({
               <div className='cursor_pointer'>
                 <Tooltip title='Dashboard' placement='left'>
                   <div>
-                    <DashboardIcon
-                      className={"element--admin"}
-                      style={{
-                        fontSize: 21,
-                        marginTop: "0.3em",
-                      }}
-                    />
+                    <NavLink
+                      to='/admin'
+                      activeStyle={{ color: "rgb(0, 145, 255)" }}
+                      className='element--admin'
+                    >
+                      <DashboardIcon
+                        style={{
+                          fontSize: 21,
+                          marginTop: "0.3em",
+                        }}
+                      />
+                    </NavLink>
                   </div>
                 </Tooltip>
               </div>
               <div className='cursor_pointer'>
                 <Tooltip title='Stats' placement='left'>
                   <div>
-                    <BubbleChartIcon
-                      className={"element--admin"}
-                      style={{
-                        fontSize: 23,
-                        marginTop: "0.3em",
-                      }}
-                    />
+                    <NavLink
+                      to='/admin/stats'
+                      activeStyle={{ color: "rgb(0, 145, 255)" }}
+                      className='element--admin'
+                    >
+                      <BubbleChartIcon
+                        style={{
+                          fontSize: 23,
+                          marginTop: "0.3em",
+                        }}
+                      />
+                    </NavLink>
                   </div>
                 </Tooltip>
               </div>
