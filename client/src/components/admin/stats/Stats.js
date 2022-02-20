@@ -5,7 +5,7 @@ import Navbar from '../navbar/Navbar'
 import { connect } from 'react-redux';
 
 import windowSize from '../../../utils/windowSize';
-import VisitorGraph from './VisitorGraph';
+import VisitorGraph from './charts/VisitorGraph';
 import Alerts from '../../layout/Alerts';
 
 const Stats = ({
