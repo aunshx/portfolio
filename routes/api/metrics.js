@@ -46,14 +46,25 @@ router.get("/capture-ip", async (req, res) => {
 
      const ipDeets = await axios.get("https://geolocation-db.com/json/");
 
-      let ans = new Ip({
+      if(ipDeets){
+        let ans = new Ip({
           ip: ipDeets.data.IPv4,
           country: ipDeets.data.country_name,
           countryCode: ipDeets.data.country_code,
-          city: ipDeets.data.city
-      })
+          city: ipDeets.data.city,
+        });
 
-      await ans.save()
+        await ans.save();
+      } else {
+        let ans = new Ip({
+          ip: '000',
+          country: 'no-country',
+          countryCode: 'NC',
+          city: 'no-city',
+        });
+
+        await ans.save();
+      }
 
       return res.status(200).send("Ip captured");
   } catch (err) {
@@ -296,6 +307,156 @@ router.get("/visitors-per-country-all-time", auth, async (req, res) => {
   }
 });
 
+// ------------------------ TOTAL HITS - CHART ------------------------------
+
+// @route    GET api/metrics
+// @desc     Total Hits 
+// @access   Private
+// @duration 7 DAYS
+router.get("/total-hits-chart-seven-days", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Ip.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            date: {
+              $dateToString: {
+                date: "$createdAt",
+                format: "%d/%m/%Y",
+              },
+            },
+            month: {
+              $month: { date: "$createdAt" },
+            },
+            day: {
+              $dayOfMonth: { date: "$createdAt" },
+            },
+            year: {
+              $year: { date: "$createdAt" },
+            },
+          },
+          value: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          name: "$_id.date",
+          value: 1,
+          _id: 0,
+        },
+      },
+    ]).sort({ "date.year": 1, "date.month": 1, "date.day": 1 });
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).send("Something went wrong!");
+  }
+});
+
+// @route    GET api/metrics
+// @desc     Total Hits
+// @access   Private
+// @duration MONTH
+router.get("/total-hits-chart-monthly", auth, async (req, res) => {
+  let ans = {};
+  let selectMonth = moment().month() + 1;
+
+  console.log(selectMonth)
+
+  try {
+    ans = await Ip.aggregate([
+      {
+        $match: {
+          $expr: { $eq: [{ $month: "$createdAt" }, selectMonth] },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            date: {
+              $dateToString: {
+                date: "$createdAt",
+                format: "%m",
+              },
+            },
+            month: {
+              $month: { date: "$createdAt" },
+            },
+          },
+          value: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          name: "$_id.date",
+          value: 1,
+          _id: 0,
+        },
+      },
+    ]).sort({ "date.month": 1 });
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).send("Something went wrong!");
+  }
+});
+
+// @route    GET api/metrics
+// @desc     Total Hits    
+// @access   Private
+// @duration YEAR
+router.get("/total-hits-chart-yearly", auth, async (req, res) => {
+  let ans = {};
+  let selectYear = moment().year();
+
+  try {
+     ans = await Ip.aggregate([
+       {
+         $match: {
+           $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
+         },
+       },
+       {
+         $group: {
+           _id: {
+             date: {
+               $dateToString: {
+                 date: "$createdAt",
+                 format: "%Y",
+               },
+             },
+             year: {
+               $year: { date: "$createdAt" },
+             },
+           },
+           value: { $sum: 1 },
+         },
+       },
+       {
+         $project: {
+           name: "$_id.date",
+           value: 1,
+           _id: 0,
+         },
+       },
+     ]).sort({ "date.year": 1 });
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).send("Something went wrong!");
+  }
+});
 // -----------------------------------------------------------------------
 
 module.exports = router;
