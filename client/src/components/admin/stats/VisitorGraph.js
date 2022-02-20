@@ -63,24 +63,29 @@ const renderCustomizedLabel = ({
 
 
 const VisitorChart = ({
-// Redux State
-    loadingVisitorChart,
-    settings: { displayMode }
-
+  // Redux State
+  metrics: { visitorPieChartLoading },
+  settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
   const [duration, setDuration] = useState("week");
 
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
-    if (e.target.value === "month") {
-    //   getAvgDurationOfTuusPerDayPerMonth();
+    if (e.target.value === "today") {
+      getVisitorsPerCountryToday();
     }
     if (e.target.value === "week") {
-    //   getAvgDurationOfTuusPerDay();
+      getAvgDurationOfTuusSevenDays();
+    }
+    if (e.target.value === "month") {
+      getAvgDurationOfTuusMonth();
     }
     if (e.target.value === "year") {
-    //   getAvgDurationOfTuusPerDayPerYear();
+      getAgDurationOfTuusYear();
+    }
+    if (e.target.value === "all-time") {
+      getAvgDurationOfTuusAllTime();
     }
   };
 
@@ -100,7 +105,7 @@ const VisitorChart = ({
             />
           </div>
         </div>
-        {loadingVisitorChart ? (
+        {visitorPieChartLoading ? (
           <div className='spinner-new'></div>
         ) : (
           <>
@@ -152,10 +157,12 @@ const VisitorChart = ({
 
 VisitorChart.propTypes = {
   settings: PropTypes.object.isRequired,
+  metrics: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-    settings: state.settings
+    settings: state.settings,
+    metrics: state.metrics
 });
 
 const mapStateToActions = {

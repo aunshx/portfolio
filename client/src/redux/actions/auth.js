@@ -1,6 +1,5 @@
 import api from "../../utils/api";
 import setAuthToken from "../../utils/setAuthToken";
-import moment from "moment";
 
 import {
     // Auth
