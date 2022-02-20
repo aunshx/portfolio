@@ -124,7 +124,7 @@ router.get("/messages-status", auth, async (req, res) => {
   }
 });
 
-// ------------------------ Visitor from countries - PIE CHART ------------------------------
+// ------------------------ Visitor from countries - PIE CHART -----------------------------
 
 // @route    GET api/metrics
 // @desc     Visitors from country
@@ -368,17 +368,8 @@ router.get("/total-hits-chart-seven-days", auth, async (req, res) => {
 // @duration MONTH
 router.get("/total-hits-chart-monthly", auth, async (req, res) => {
   let ans = {};
-  let selectMonth = moment().month() + 1;
-
-  console.log(selectMonth)
-
   try {
     ans = await Ip.aggregate([
-      {
-        $match: {
-          $expr: { $eq: [{ $month: "$createdAt" }, selectMonth] },
-        },
-      },
       {
         $group: {
           _id: {
@@ -417,15 +408,9 @@ router.get("/total-hits-chart-monthly", auth, async (req, res) => {
 // @duration YEAR
 router.get("/total-hits-chart-yearly", auth, async (req, res) => {
   let ans = {};
-  let selectYear = moment().year();
 
   try {
      ans = await Ip.aggregate([
-       {
-         $match: {
-           $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
-         },
-       },
        {
          $group: {
            _id: {
@@ -457,6 +442,143 @@ router.get("/total-hits-chart-yearly", auth, async (req, res) => {
     res.status(400).send("Something went wrong!");
   }
 });
-// -----------------------------------------------------------------------
 
+// ------------------------ TYPES OF MESSAGES - CHART ------------------------------
+
+// @route    GET api/metrics
+// @desc     Types of message 
+// @access   Private
+// @duration 7 DAYS
+router.get("/types-of-messages-seven-days", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            date: {
+              $dateToString: {
+                date: "$createdAt",
+                format: "%d/%m/%Y",
+              },
+            },
+            month: {
+              $month: { date: "$createdAt" },
+            },
+            day: {
+              $dayOfMonth: { date: "$createdAt" },
+            },
+            year: {
+              $year: { date: "$createdAt" },
+            },
+          },
+          value: { $sum: 1 },
+          status: { '$status': "$status" },
+        },
+      },
+      {
+        $project: {
+          name: "$_id",
+          value: 1,
+          _id: 0,
+        },
+      },
+    ]).sort({ "date.year": 1, "date.month": 1, "date.day": 1 });
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).send("Something went wrong!");
+  }
+});
+
+// @route    GET api/metrics
+// @desc     Total Hits
+// @access   Private
+// @duration MONTH
+router.get("/total-hits-chart-monthly", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Ip.aggregate([
+      {
+        $group: {
+          _id: {
+            date: {
+              $dateToString: {
+                date: "$createdAt",
+                format: "%m",
+              },
+            },
+            month: {
+              $month: { date: "$createdAt" },
+            },
+          },
+          value: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          name: "$_id.date",
+          value: 1,
+          _id: 0,
+        },
+      },
+    ]).sort({ "date.month": 1 });
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).send("Something went wrong!");
+  }
+});
+
+// @route    GET api/metrics
+// @desc     Total Hits    
+// @access   Private
+// @duration YEAR
+router.get("/total-hits-chart-yearly", auth, async (req, res) => {
+  let ans = {};
+
+  try {
+     ans = await Ip.aggregate([
+       {
+         $group: {
+           _id: {
+             date: {
+               $dateToString: {
+                 date: "$createdAt",
+                 format: "%Y",
+               },
+             },
+             year: {
+               $year: { date: "$createdAt" },
+             },
+           },
+           value: { $sum: 1 },
+         },
+       },
+       {
+         $project: {
+           name: "$_id.date",
+           value: 1,
+           _id: 0,
+         },
+       },
+     ]).sort({ "date.year": 1 });
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).send("Something went wrong!");
+  }
+});
+
+// -----------------------------------------------------------------------
 module.exports = router;

@@ -12,10 +12,6 @@ router.post(
   "/message-delete",
   auth,
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
-    }
 
     const { messageId } = req.body
 
@@ -35,19 +31,15 @@ router.post(
       res.status(400).send({ errors: [{ msg: "Cannot Delete Message" }] });
     }
   }
-);
+); 
 
 // @route    POST api/contact
 // @desc     Message Status
 // @access   Private
 router.post(
-  "/message-status-replied",
+  "/message-status-change",
   auth,
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
-    }
 
     const { messageId, status } = req.body
 
@@ -80,11 +72,6 @@ router.post(
   "/message-add-comment",
   auth,
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
-    }
-
     const { messageId, comment } = req.body
 
     try {
@@ -116,11 +103,6 @@ router.post(
   "/message-seen",
   auth,
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
-    }
-
     const { messageId } = req.body
 
     try {
@@ -150,11 +132,6 @@ router.post(
   "/retrieve-messages-oldest",
   auth,
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
-    }
-
     const { skipNow } = req.body
 
     try {
@@ -179,11 +156,6 @@ router.post(
   "/retrieve-messages-latest",
   auth,
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
-    }
-
     const { skipNow } = req.body
 
     try {
