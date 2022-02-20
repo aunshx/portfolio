@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server --ignore client",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "a": "npm start jssoup"
   },
   "author": "Aunsh B",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "express-session": "^1.17.2",
     "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.5.1",
+    "jssoup": "^0.0.15",
     "moment": "^2.29.1",
     "mongoose": "^6.1.8",
     "node-mailjet": "^3.3.5",

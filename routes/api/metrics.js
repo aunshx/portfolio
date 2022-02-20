@@ -136,13 +136,13 @@ router.get("/visitors-per-country-today", auth, async (req, res) => {
       {
         $group: {
           _id: "$country",
-          count: { $sum: 1 },
+          value: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id",
-          count: 1,
+          value: 1,
           _id: 0
         }
       }
@@ -173,13 +173,13 @@ router.get("/visitors-per-country-seven-days", auth, async (req, res) => {
       {
         $group: {
           _id: "$country",
-          count: { $sum: 1 },
+          value: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id",
-          count: 1,
+          value: 1,
           _id: 0,
         },
       },
@@ -210,13 +210,13 @@ router.get("/visitors-per-country-monthly", auth, async (req, res) => {
       {
         $group: {
           _id: "$country",
-          count: { $sum: 1 },
+          value: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id",
-          count: 1,
+          value: 1,
           _id: 0,
         },
       },
@@ -247,13 +247,13 @@ router.get("/visitors-per-country-yearly", auth, async (req, res) => {
       {
         $group: {
           _id: "$country",
-          count: { $sum: 1 },
+          value: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id",
-          count: 1,
+          value: 1,
           _id: 0,
         },
       },
@@ -277,13 +277,13 @@ router.get("/visitors-per-country-all-time", auth, async (req, res) => {
       {
         $group: {
           _id: "$country",
-          count: { $sum: 1 },
+          value: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id",
-          count: 1,
+          value: 1,
           _id: 0,
         },
       },

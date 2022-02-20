@@ -21,7 +21,6 @@ const CssTextField = styled(TextField, {
   },
   border: "1px solid gray",
   height: "18px",
-  width: "100%",
   borderRadius: "10px",
   color: "grey",
 }));
@@ -42,7 +41,6 @@ const CssTextFieldDark = styled(TextField, {
   },
   border: "1px solid grey",
   height: "18px",
-  width: "100%",
   borderRadius: "10px",
   color: "grey",
 }));
@@ -81,8 +79,8 @@ const DurationSelector = ({
               },
             }}
             sx={{
-              width: 100,
-              padding: "0em 0em 0em 2em",
+              width: 80,
+              textAlign: "right",
             }}
             InputProps={{
               style: {
@@ -157,15 +155,15 @@ const DurationSelector = ({
               },
             }}
             sx={{
-              width: 100,
-              padding: "0em 0em 0em 2em",
+              width: 80,
+              textAlign: "right",
             }}
             InputProps={{
               style: {
                 border: "none",
                 fontSize: "0.7em",
                 padding: "0 0 0em 0",
-                color: 'grey'
+                color: "grey",
               },
               disableUnderline: true,
             }}

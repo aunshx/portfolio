@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import windowSize from '../../../utils/windowSize';
 import VisitorGraph from './VisitorGraph';
+import Alerts from '../../layout/Alerts';
 
 const Stats = ({
     // Redux State
@@ -25,6 +26,9 @@ const { width, height } = windowSize()
           <div className='three' style={{ border: "1px solid red" }}></div>
           <div className='four' style={{ border: "1px solid red" }}></div>
         </div>
+      </div>
+      <div>
+          <Alerts />
       </div>
     </>
   );

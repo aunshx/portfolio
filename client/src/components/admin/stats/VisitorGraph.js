@@ -16,23 +16,23 @@ import { connect } from "react-redux";
 import {
   getVisitorsPerCountryToday,
   getVisitorsPerCountryWeek,
-  getVisitorsPerCountryMonth,
-  getVisitorsPerCountryYear,
-  getVisitorsPerCountryAllTime,
+//   getVisitorsPerCountryMonth,
+//   getVisitorsPerCountryYear,
+//   getVisitorsPerCountryAllTime,
 } from "../../../redux/actions/metrics";
 
 import windowSize from "../../../utils/windowSize";
 import NothingToShow from "./NothingToShow";
 import DurationSelector from "./DurationSelector";
 
-const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-  { name: "Group D", value: 200 },
-  { name: "Group D", value: 200 },
-];
+// const data = [
+//   { name: "Group A", value: 400 },
+//   { name: "Group B", value: 300 },
+//   { name: "Group C", value: 300 },
+//   { name: "Group D", value: 200 },
+//   { name: "Group D", value: 200 },
+//   { name: "Group D", value: 200 },
+// ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -65,18 +65,18 @@ const renderCustomizedLabel = ({
 
 
 const VisitorChart = ({
-  // Redux Actions 
+  // Redux Actions
   getVisitorsPerCountryToday,
   getVisitorsPerCountryWeek,
   getVisitorsPerCountryMonth,
   getVisitorsPerCountryYear,
   getVisitorsPerCountryAllTime,
   // Redux State
-  metrics: { visitorPieChartLoading },
+  metrics: { visitorPieChartLoading, visitorPieChart },
   settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
-  const [duration, setDuration] = useState("week");
+  const [duration, setDuration] = useState("today");
 
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
@@ -114,17 +114,17 @@ const VisitorChart = ({
           </div>
         </div>
         {visitorPieChartLoading ? (
-          <div className='spinner-new'></div>
+          <div className='spinner-new' style={{ marginTop: '7em' }}></div>
         ) : (
           <>
-            {data.length > 0 ? (
+            {visitorPieChart.length > 0 ? (
               <ResponsiveContainer
                 width='99%'
                 height={width < 480 ? 240 : "99%"}
               >
                 <PieChart>
                   <Pie
-                    data={data}
+                    data={visitorPieChart}
                     cx='50%'
                     cy='50%'
                     labelLine={false}
@@ -133,7 +133,7 @@ const VisitorChart = ({
                     fill='#8884d8'
                     dataKey='value'
                   >
-                    {data.map((entry, index) => (
+                    {visitorPieChart.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}
@@ -168,9 +168,9 @@ VisitorChart.propTypes = {
   metrics: PropTypes.object.isRequired,
   getVisitorsPerCountryToday: PropTypes.func.isRequired,
   getVisitorsPerCountryWeek: PropTypes.func.isRequired,
-  getVisitorsPerCountryMonth: PropTypes.func.isRequired,
-  getVisitorsPerCountryYear: PropTypes.func.isRequired,
-  getVisitorsPerCountryAllTime: PropTypes.func.isRequired,
+//   getVisitorsPerCountryMonth: PropTypes.func.isRequired,
+//   getVisitorsPerCountryYear: PropTypes.func.isRequired,
+//   getVisitorsPerCountryAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -181,9 +181,9 @@ const mapStateToProps = (state) => ({
 const mapStateToActions = {
   getVisitorsPerCountryToday,
   getVisitorsPerCountryWeek,
-  getVisitorsPerCountryMonth,
-  getVisitorsPerCountryYear,
-  getVisitorsPerCountryAllTime,
+//   getVisitorsPerCountryMonth,
+//   getVisitorsPerCountryYear,
+//   getVisitorsPerCountryAllTime,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(VisitorChart);

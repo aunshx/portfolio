@@ -16,7 +16,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 
 //
 
-const Alerts = ({ auth: { message, type, key } }) => {
+const Alerts = ({ auth: { message, type, key }, settings: { displayMode } }) => {
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -41,10 +41,12 @@ const Alerts = ({ auth: { message, type, key } }) => {
 
 Alerts.propTypes = {
   auth: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  settings: state.settings,
 });
 
 export default connect(mapStateToProps)(Alerts);
