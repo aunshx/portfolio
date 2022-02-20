@@ -13,11 +13,13 @@ import {
 
 import { connect } from "react-redux";
 
-// import {
-//   getAvgDurationOfTuusPerDayPerYear,
-//   getAvgDurationOfTuusPerDayPerMonth,
-//   getAvgDurationOfTuusPerDay,
-// } from "../../../../redux/actions/metrics";
+import {
+  getVisitorsPerCountryToday,
+  getVisitorsPerCountryWeek,
+  getVisitorsPerCountryMonth,
+  getVisitorsPerCountryYear,
+  getVisitorsPerCountryAllTime,
+} from "../../../redux/actions/metrics";
 
 import windowSize from "../../../utils/windowSize";
 import NothingToShow from "./NothingToShow";
@@ -63,6 +65,12 @@ const renderCustomizedLabel = ({
 
 
 const VisitorChart = ({
+  // Redux Actions 
+  getVisitorsPerCountryToday,
+  getVisitorsPerCountryWeek,
+  getVisitorsPerCountryMonth,
+  getVisitorsPerCountryYear,
+  getVisitorsPerCountryAllTime,
   // Redux State
   metrics: { visitorPieChartLoading },
   settings: { displayMode },
@@ -76,16 +84,16 @@ const VisitorChart = ({
       getVisitorsPerCountryToday();
     }
     if (e.target.value === "week") {
-      getAvgDurationOfTuusSevenDays();
+      getVisitorsPerCountryWeek();
     }
     if (e.target.value === "month") {
-      getAvgDurationOfTuusMonth();
+      getVisitorsPerCountryMonth();
     }
     if (e.target.value === "year") {
-      getAgDurationOfTuusYear();
+      getVisitorsPerCountryYear();
     }
     if (e.target.value === "all-time") {
-      getAvgDurationOfTuusAllTime();
+      getVisitorsPerCountryAllTime();
     }
   };
 
@@ -158,6 +166,11 @@ const VisitorChart = ({
 VisitorChart.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
+  getVisitorsPerCountryToday: PropTypes.func.isRequired,
+  getVisitorsPerCountryWeek: PropTypes.func.isRequired,
+  getVisitorsPerCountryMonth: PropTypes.func.isRequired,
+  getVisitorsPerCountryYear: PropTypes.func.isRequired,
+  getVisitorsPerCountryAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -166,7 +179,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-
+  getVisitorsPerCountryToday,
+  getVisitorsPerCountryWeek,
+  getVisitorsPerCountryMonth,
+  getVisitorsPerCountryYear,
+  getVisitorsPerCountryAllTime,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(VisitorChart);

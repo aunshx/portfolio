@@ -139,6 +139,13 @@ router.get("/visitors-per-country-today", auth, async (req, res) => {
           count: { $sum: 1 },
         },
       },
+      {
+        $project: {
+          name: "$_id",
+          count: 1,
+          _id: 0
+        }
+      }
     ]);
 
     return res.status(200).send(ans);
@@ -169,6 +176,13 @@ router.get("/visitors-per-country-seven-days", auth, async (req, res) => {
           count: { $sum: 1 },
         },
       },
+      {
+        $project: {
+          name: "$_id",
+          count: 1,
+          _id: 0,
+        },
+      },
     ]);
 
     return res.status(200).send(ans);
@@ -190,15 +204,20 @@ router.get("/visitors-per-country-monthly", auth, async (req, res) => {
     ans = await Ip.aggregate([
       {
         $match: {
-          $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] }
+          $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] },
         },
       },
       {
         $group: {
-          _id: {
-            country: "$country",
-          },
+          _id: "$country",
           count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          name: "$_id",
+          count: 1,
+          _id: 0,
         },
       },
     ]).sort({ count: 1 });
@@ -227,10 +246,15 @@ router.get("/visitors-per-country-yearly", auth, async (req, res) => {
       },
       {
         $group: {
-          _id: {
-            country: "$country",
-          },
+          _id: "$country",
           count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          name: "$_id",
+          count: 1,
+          _id: 0,
         },
       },
     ]).sort({ count: 1 });
@@ -252,10 +276,15 @@ router.get("/visitors-per-country-all-time", auth, async (req, res) => {
     ans = await Ip.aggregate([
       {
         $group: {
-          _id: {
-            country: "$country",
-          },
+          _id: "$country",
           count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          name: "$_id",
+          count: 1,
+          _id: 0,
         },
       },
     ]).sort({ count: 1 });
