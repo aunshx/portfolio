@@ -16,9 +16,9 @@ import { connect } from "react-redux";
 import {
   getVisitorsPerCountryToday,
   getVisitorsPerCountryWeek,
-//   getVisitorsPerCountryMonth,
-//   getVisitorsPerCountryYear,
-//   getVisitorsPerCountryAllTime,
+  getVisitorsPerCountryMonth,
+  getVisitorsPerCountryYear,
+  getVisitorsPerCountryAllTime,
 } from "../../../redux/actions/metrics";
 
 import windowSize from "../../../utils/windowSize";
@@ -168,9 +168,9 @@ VisitorChart.propTypes = {
   metrics: PropTypes.object.isRequired,
   getVisitorsPerCountryToday: PropTypes.func.isRequired,
   getVisitorsPerCountryWeek: PropTypes.func.isRequired,
-//   getVisitorsPerCountryMonth: PropTypes.func.isRequired,
-//   getVisitorsPerCountryYear: PropTypes.func.isRequired,
-//   getVisitorsPerCountryAllTime: PropTypes.func.isRequired,
+  getVisitorsPerCountryMonth: PropTypes.func.isRequired,
+  getVisitorsPerCountryYear: PropTypes.func.isRequired,
+  getVisitorsPerCountryAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -181,9 +181,9 @@ const mapStateToProps = (state) => ({
 const mapStateToActions = {
   getVisitorsPerCountryToday,
   getVisitorsPerCountryWeek,
-//   getVisitorsPerCountryMonth,
-//   getVisitorsPerCountryYear,
-//   getVisitorsPerCountryAllTime,
+  getVisitorsPerCountryMonth,
+  getVisitorsPerCountryYear,
+  getVisitorsPerCountryAllTime,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(VisitorChart);
