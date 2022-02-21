@@ -21,9 +21,7 @@ import {
   ERROR_SNACKBAR,
 } from "./types";
 
-import {
-  getVisitorsPerCountryToday
-} from './metrics'
+import { getVisitorsPerCountryToday, getTotalHitsChartWeek } from "./metrics";
 
 export const snackbarDeactivate = (value) => async (dispatch) => {
   dispatch({
@@ -45,6 +43,7 @@ export const loadUser = () => async (dispatch) => {
     });
 
     dispatch(getVisitorsPerCountryToday());
+    dispatch(getTotalHitsChartWeek());
     
   } catch (err) {
     dispatch({

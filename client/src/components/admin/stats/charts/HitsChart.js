@@ -134,7 +134,11 @@ const VisitorChart = ({
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line type='monotone' dataKey='hits' stroke='#8884d8' />
+                  <Line
+                    type='monotone'
+                    dataKey='hits'
+                    stroke='rgb(0, 145, 255)'
+                  />
                 </LineChart>
               </ResponsiveContainer>
             ) : (
