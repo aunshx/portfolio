@@ -29,7 +29,547 @@ import {
   TOTAL_ONGOING_MESSAGE_LOADING,
   TOTAL_ONGOING_MESSAGE,
   TOTAL_ONGOING_MESSAGE_LOADING_COMPLETE,
+
+  // Total Success Message Block
+  TOTAL_SUCCESS_MESSAGE_LOADING,
+  TOTAL_SUCCESS_MESSAGE,
+  TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
 } from "./types";
+
+// ----------------------------- TOTAL ONGOING BLOCK -----------------------------
+// Total Success Messages - today
+export const getTotalSuccessMessagesToday = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-success-messages-today");
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+// Total Success Messages - seven days
+export const getTotalSuccessMessagesWeek = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-success-messages-seven-days");
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+// Total Success Messages - monthly
+export const getTotalSuccessMessagesMonth = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-success-messages-monthly");
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
+// Total Success Messages - yearly
+export const getTotalSuccessMessagesYear = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-success-messages-yearly");
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
+// Total Success Messages - All Time
+export const getTotalSuccessMessagesAllTime = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-success-messages-all-time");
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
 
 // ----------------------------- TOTAL ONGOING BLOCK -----------------------------
 // Total Ongoing Messages - today
