@@ -3133,6 +3133,13 @@ from {
   font-weight: bold;
 }
 
+.charts .block .value--change--text {
+  color: var(--lighter-dark-font-color);
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: center;
+}
+
 @media only screen and (max-width: 786px) {
   .charts .triple_grid {
   display: flex;
