@@ -5,37 +5,10 @@ const config = require("config");
 const moment = require('moment');
 const mongoose = require('mongoose');
 const { check, validationResult } = require("express-validator");
-const Visits = require("../../models/Visits");
 const Ip = require("../../models/Ip");
+const Count = require("../../models/Count");
 const auth = require("../../middleware/auth");
 
-// @route    GET api/metrics
-// @desc     Visitor on Page
-// @access   Private
-router.get("/page-viewed", async (req, res) => {
-  try {
-
-    let ans = await Visits.findOneAndUpdate(
-      { common: '0310266' },
-    { $inc: { count: 1 } } 
-    );
-
-    if (!ans) {
-      let ans2 = new Visits({
-          count: 1
-      })
-
-      await ans2.save()
-
-      return res.status(200).send("Visit counted!");
-    } else {
-      return res.status(200).send("Visit counted!");
-    }
-  } catch (err) {
-      console.log(err)
-    res.status(400).send({ errors: [{ msg: "Visit could not be counted" }] });
-  }
-});
 
 // @route    GET api/metrics
 // @desc     Ip of visitor
@@ -43,6 +16,10 @@ router.get("/page-viewed", async (req, res) => {
 router.get("/capture-ip", async (req, res) => {
 
   try {
+
+      let ans2 = new Count();
+
+      await ans2.save();
 
      const ipDeets = await axios.get("https://api.ipify.org?format=json/");
      const ipDetails = await axios.get(`http://ip-api.com/json/${ipDeets.data}`)
@@ -478,7 +455,7 @@ router.get("/total-hits-today", auth, async (req, res) => {
     const todayEnd = moment().endOf("day");
 
   try {
-    ans = await Ip.find(
+    ans = await Count.find(
       { createdAt: {
         $gte: new Date(todayStart),
         $lte: new Date(todayEnd)
@@ -498,7 +475,7 @@ router.get("/total-hits-today", auth, async (req, res) => {
 router.get("/total-hits-seven-days", auth, async (req, res) => {
   let ans = {};
   try {
-    ans = await Ip.find({
+    ans = await Count.find({
           createdAt: {
             $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
           },
@@ -520,7 +497,7 @@ router.get("/total-hits-monthly", auth, async (req, res) => {
   let selectMonth = moment().month();
 
   try {
-    ans = await Ip.find({
+    ans = await Count.find({
           $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] },
         },
      ).count();
@@ -540,7 +517,7 @@ router.get("/total-hits-yearly", auth, async (req, res) => {
   let selectYear = moment().year();
 
   try {
-    ans = await Ip.find({
+    ans = await Count.find({
           $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
         },
       ).count();
@@ -558,7 +535,7 @@ router.get("/total-hits-yearly", auth, async (req, res) => {
 router.get("/total-hits-all-time", auth, async (req, res) => {
   let ans = {};
   try {
-    ans = await Ip.find().count();
+    ans = await Count.find().count();
 
     return res.status(200).send(ans.toString());
   } catch (error) {
@@ -1237,6 +1214,24 @@ router.get("/total-unseen-messages-all-time", auth, async (req, res) => {
     return res.status(200).send(ans.toString());
   } catch (error) {
     res.status(400).send({ errors: [{ msg: "Cannot fetch unseen messages" }] });
+  }
+});
+
+// -------------------------------- RECENT ORGANISATIONS -----------------------
+// @route    GET api/metrics
+// @desc     Recent messages
+// @access   Private
+// @duration RECENT
+
+router.get("/recent-messages-limit", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+    }).limit(3).select('email').select('createdAt').select('organisation')
+
+    return res.status(200).send(ans);
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch recent messages" }] });
   }
 });
 

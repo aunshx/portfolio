@@ -49,7 +49,120 @@ import {
   TOTAL_HITS_SYNOPSIS_ALL_TIME,
   TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
   TOTAL_HITS_TYPE,
+
+  // Recent Messages 
+  RECENT_MESSAGES_LIMIT,
+  RECENT_MESSAGES_LIMIT_LOADING,
+  RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
 } from "./types";
+
+// ----------------------------- RECENT MESSAGES -----------------------------
+// Total No Reply Messages - today
+export const getRecentMessagesLimit = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: RECENT_MESSAGES_LIMIT_LOADING,
+    });
+
+    const res = await api.get("/metrics/recent-messages-limit");
+
+    dispatch({
+      type: RECENT_MESSAGES_LIMIT,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
 
 // ----------------------------- TOTAL NOT REPLIED BLOCK -----------------------------
 // Total No Reply Messages - today
@@ -158,6 +271,7 @@ export const getTotalNoReplyMessagesToday = () => async (dispatch) => {
     }
   }
 };
+
 // Total No Reply Messages - seven days
 export const getTotalNoReplyMessagesWeek = () => async (dispatch) => {
   let value = {
@@ -3455,8 +3569,6 @@ export const getTotalHitsChartWeek = () => async (dispatch) => {
     });
 
     const res = await api.get("/metrics/total-hits-chart-seven-days");
-
-    console.log(res.data)
 
     dispatch({
       type: TOTAL_HITS_CHART,

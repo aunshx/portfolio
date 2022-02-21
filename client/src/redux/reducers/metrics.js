@@ -44,7 +44,12 @@ import {
   TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
 
   // Total Hits Type
-  TOTAL_HITS_TYPE
+  TOTAL_HITS_TYPE,
+
+  // Recent Messages 
+  RECENT_MESSAGES_LIMIT,
+  RECENT_MESSAGES_LIMIT_LOADING,
+  RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
 } from "../actions/types";
 //
 const initialState = {
@@ -83,49 +88,79 @@ const initialState = {
   totalHitsSynopsisMonth: '0',
   totalHitsSynopsisYear: '0',
   totalHitsSynopsisAllTime: '0',
-  totalHitsType: ''
+  totalHitsType: '',
+
+  // Recent Messages Limit 
+  recentMessagesLimit: [],
+  recentMessagesLimitLoading: false
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    // Recent Messages Limit
+    case RECENT_MESSAGES_LIMIT:
+      return {
+        ...state,
+        recentMessagesLimit: payload,
+      };
+
+    case RECENT_MESSAGES_LIMIT_LOADING:
+      return {
+        ...state,
+        recentMessagesLimitLoading: true,
+      };
+
+    case RECENT_MESSAGES_LIMIT_LOADING_COMPLETE:
+      return {
+        ...state,
+        recentMessagesLimitLoading: false,
+      };
+
     //   Total Hits Synopsis
     case TOTAL_HITS_SYNOPSIS_TODAY:
       return {
         ...state,
         totalHitsSynopsisToday: payload,
       };
+
     case TOTAL_HITS_SYNOPSIS_WEEK:
       return {
         ...state,
         totalHitsSynopsisWeek: payload,
       };
+
     case TOTAL_HITS_SYNOPSIS_MONTH:
       return {
         ...state,
         totalHitsSynopsisMonth: payload,
       };
+
     case TOTAL_HITS_SYNOPSIS_YEAR:
       return {
         ...state,
         totalHitsSynopsisYear: payload,
       };
+
     case TOTAL_HITS_SYNOPSIS_ALL_TIME:
       return {
         ...state,
         totalHitsSynopsisAllTime: payload,
       };
+
     case TOTAL_HITS_SYNOPSIS_LOADING:
       return {
         ...state,
         totalHitsSynopsisLoading: true,
       };
+
     case TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE:
       return {
         ...state,
         totalHitsSynopsisLoading: false,
       };
+
     case TOTAL_HITS_TYPE:
       return {
         ...state,

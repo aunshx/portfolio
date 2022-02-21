@@ -3110,12 +3110,26 @@ from {
   height: 120px;
 }
 
-.charts .block--dark {
+.charts .block-long {
+  color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 10px;
+  width: 80%;
+  min-height: 120px;
+}
+
+.charts .block--dark,
+.charts .block-long--dark {
   border: 1px solid var(--light-dark-font-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.charts .block .title {
+.charts .block .title, 
+.charts .block-long .title {
   color: var(--lighter-dark-font-color);
   font-size: 1em;
   font-weight: bold;
@@ -3138,6 +3152,12 @@ from {
   font-size: 0.8em;
   font-weight: bold;
   text-align: center;
+}
+
+.charts .three_grid {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 3fr;
+  width: 95%;
 }
 
 @media only screen and (max-width: 786px) {
