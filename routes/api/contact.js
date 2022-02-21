@@ -46,11 +46,11 @@ router.post(
     try {
       let ans = await Message.findOneAndUpdate(
         { $and: [{ userId: req.user.id }, { _id: messageId }] },
-        { status },
+        { status: status, seen: true },
         {
           returnOriginal: false,
         }
-      )
+      );
 
       if (!ans) {
         return res
@@ -77,11 +77,11 @@ router.post(
     try {
       let ans = await Message.findOneAndUpdate(
         { $and: [{ userId: req.user.id }, { _id: messageId }] },
-        { comment },
+        { comment: comment, seen: true },
         {
           returnOriginal: false,
         }
-      )
+      );
 
       if (!ans) {
         return res
