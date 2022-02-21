@@ -22,30 +22,33 @@ const RecentEmails = ({
   return (
     <div className='charts flex_middle'>
       <div
-        className={displayMode ? "app block-long block-long--dark" : "app block-long"}
-        style={{ justifyContent: "space-between" }}
+        className={
+          displayMode ? "app block-long block-long--dark" : "app block-long"
+        }
       >
         <div className='title flex_middle'>Recent Messages</div>
         {recentMessagesLimitLoading ? (
-          <div className='spinner-new-block'></div>
+          <div
+            className='spinner-new-block'
+            style={{ marginTop: "1.5em" }}
+          ></div>
         ) : (
           <>
             {recentMessagesLimit.length > 0 && (
-                <>
-                    {recentMessagesLimit.map((element, index) => {
-                        <div className="three_grid" key={index}>
-                            <div className="flex_middle">
-                                {index+1}
-                            </div>
-                            <div className="flex_middle">
-                                {element.email}
-                            </div>
-                            <div className="flex_middle">
-                                {moment(element.createdAt).fromNow()}
-                            </div>
-                        </div>
-                })}
-                </>
+              <>
+                {recentMessagesLimit.map((element, index) => (
+                  <div className='third_grid' key={index}>
+                    <div className='flex_middle element'>{index + 1}</div>
+                    <div className='flex_middle element'>{element.email}</div>
+                    <div
+                      className='flex_middle element'
+                      style={{ fontSize: "0.75em" }}
+                    >
+                      {moment(element.createdAt).fromNow()}
+                    </div>
+                  </div>
+                ))}
+              </>
             )}
           </>
         )}
