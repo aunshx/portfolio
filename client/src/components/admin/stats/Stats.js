@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import windowSize from '../../../utils/windowSize';
 import VisitorGraph from './charts/VisitorGraph';
 import Alerts from '../../layout/Alerts';
+import HitsChart from './charts/HitsChart';
 
 const Stats = ({
     // Redux State
@@ -20,15 +21,17 @@ const { width, height } = windowSize()
       <div className='app'>
         <div className={width < 787 ? "stats-main-mobile" : "stats-main"}>
           <div className='one flex_middle' style={{ border: "1px solid red" }}>
-              <VisitorGraph />
+            <VisitorGraph />
           </div>
           <div className='two' style={{ border: "1px solid red" }}></div>
-          <div className='three' style={{ border: "1px solid red" }}></div>
+          <div className='three' style={{ border: "1px solid red" }}>
+            <HitsChart />
+          </div>
           <div className='four' style={{ border: "1px solid red" }}></div>
         </div>
       </div>
       <div>
-          <Alerts />
+        <Alerts />
       </div>
     </>
   );

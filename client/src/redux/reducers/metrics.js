@@ -8,6 +8,11 @@ import {
   TOTAL_HITS_BLOCK_LOADING,
   TOTAL_HITS_BLOCK_LOADING_COMPLETE,
   TOTAL_HITS_BLOCK,
+
+  // Total Hits CHART
+  TOTAL_HITS_CHART_LOADING,
+  TOTAL_HITS_CHART,
+  TOTAL_HITS_CHART_LOADING_COMPLETE,
 } from "../actions/types";
 //
 const initialState = {
@@ -18,12 +23,33 @@ const initialState = {
   // Total Hits Block
   totalHitsBlockLoading: false,
   totalHitsBlock: [],
+
+  // Total Hits Chart
+  totalHitsChartLoading: false,
+  totalHitsChart: [],
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    //   Total Hits CHART
+    case TOTAL_HITS_CHART:
+      return {
+        ...state,
+        totalHitsChart: payload,
+      };
+    case TOTAL_HITS_CHART_LOADING:
+      return {
+        ...state,
+        totalHitsChartLoading: true,
+      };
+    case TOTAL_HITS_CHART_LOADING_COMPLETE:
+      return {
+        ...state,
+        totalHitsChartLoading: false,
+      };
+
     //   Total Hits Block
     case TOTAL_HITS_BLOCK:
       return {

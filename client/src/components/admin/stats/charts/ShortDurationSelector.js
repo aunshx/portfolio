@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DurationSelector = ({
+const ShortDurationSelector = ({
   duration,
   onChangeDuration,
   // Redux State
@@ -97,15 +97,6 @@ const DurationSelector = ({
                 fontSize: "0.9em",
                 height: "20px",
               }}
-              value={"today"}
-            >
-              Today
-            </MenuItem>
-            <MenuItem
-              style={{
-                fontSize: "0.9em",
-                height: "20px",
-              }}
               value={"week"}
             >
               7 Days
@@ -127,15 +118,6 @@ const DurationSelector = ({
               }}
             >
               Year
-            </MenuItem>
-            <MenuItem
-              value={"all-time"}
-              style={{
-                fontSize: "0.9em",
-                height: "20px",
-              }}
-            >
-              All Time
             </MenuItem>
           </CssTextFieldDark>
         </FormControl>
@@ -173,15 +155,6 @@ const DurationSelector = ({
                 fontSize: "0.9em",
                 height: "20px",
               }}
-              value={"today"}
-            >
-              Today
-            </MenuItem>
-            <MenuItem
-              style={{
-                fontSize: "0.9em",
-                height: "20px",
-              }}
               value={"week"}
             >
               7 Days
@@ -204,15 +177,6 @@ const DurationSelector = ({
             >
               Year
             </MenuItem>
-            <MenuItem
-              value={"all-time"}
-              style={{
-                fontSize: "0.9em",
-                height: "20px",
-              }}
-            >
-              All Time
-            </MenuItem>
           </CssTextField>
         </FormControl>
       )}
@@ -220,7 +184,7 @@ const DurationSelector = ({
   );
 };
 
-DurationSelector.propTypes = {
+ShortDurationSelector.propTypes = {
   settings: PropTypes.object.isRequired,
 };
 
@@ -230,4 +194,4 @@ const mapStateToProps = (state) => ({
 
 const mapStateToActions = {};
 
-export default connect(mapStateToProps, mapStateToActions)(DurationSelector);
+export default connect(mapStateToProps, mapStateToActions)(ShortDurationSelector);

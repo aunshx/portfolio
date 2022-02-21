@@ -365,13 +365,13 @@ router.get("/total-hits-chart-seven-days", auth, async (req, res) => {
               $year: { date: "$createdAt" },
             },
           },
-          value: { $sum: 1 },
+          hits: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id.date",
-          value: 1,
+          hits: 1,
           _id: 0,
         },
       },

@@ -3,96 +3,95 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
-  Legend,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
-  PieChart,
-  Pie,
-  Cell,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 
 import { connect } from "react-redux";
 
 import {
-  getVisitorsPerCountryToday,
-  getVisitorsPerCountryWeek,
-  getVisitorsPerCountryMonth,
-  getVisitorsPerCountryYear,
-  getVisitorsPerCountryAllTime,
+  getTotalHitsChartYear,
+  getTotalHitsChartMonth,
+  getTotalHitsChartWeek,
 } from "../../../../redux/actions/metrics";
 
 import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
-import DurationSelector from "../DurationSelector";
+import ShortDurationSelector from "./ShortDurationSelector";
 
-const COLORS = [
-  "#0088FE",
-  "#00C49F",
-  "#0FBB28",
-  "#FF8042",
-  "#FD8042",
-  "#AF0042",
-  "#HF0042",
-  "#FF0032",
+const data = [
+  {
+    name: "Page A",
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: "Page B",
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: "Page C",
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: "Page D",
+    uv: 2780,
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    name: "Page E",
+    uv: 1890,
+    pv: 4800,
+    amt: 2181,
+  },
+  {
+    name: "Page F",
+    uv: 2390,
+    pv: 3800,
+    amt: 2500,
+  },
+  {
+    name: "Page G",
+    uv: 3490,
+    pv: 4300,
+    amt: 2100,
+  },
 ];
-
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-}) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill='white'
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline='central'
-    >
-      {`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
 
 const VisitorChart = ({
   // Redux Actions
-  getVisitorsPerCountryToday,
-  getVisitorsPerCountryWeek,
-  getVisitorsPerCountryMonth,
-  getVisitorsPerCountryYear,
-  getVisitorsPerCountryAllTime,
+  getTotalHitsChartYear,
+  getTotalHitsChartMonth,
+  getTotalHitsChartWeek,
   // Redux State
-  metrics: { visitorPieChartLoading, visitorPieChart },
+  metrics: { totalHitsChartLoading, totalHitsChart },
   settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
-  const [duration, setDuration] = useState("today");
+  const [duration, setDuration] = useState("week");
 
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
-    if (e.target.value === "today") {
-      getVisitorsPerCountryToday();
-    }
     if (e.target.value === "week") {
-      getVisitorsPerCountryWeek();
+      getTotalHitsChartWeek();
     }
     if (e.target.value === "month") {
-      getVisitorsPerCountryMonth();
+      getTotalHitsChartMonth();
     }
     if (e.target.value === "year") {
-      getVisitorsPerCountryYear();
-    }
-    if (e.target.value === "all-time") {
-      getVisitorsPerCountryAllTime();
+      getTotalHitsChartYear();
     }
   };
 
@@ -104,48 +103,43 @@ const VisitorChart = ({
       >
         <div className='triple_grid'>
           <div></div>
-          <div className='title flex_middle'>Country Origins</div>
+          <div className='title flex_middle'>Traffic</div>
           <div className='flex_middle'>
-            <DurationSelector
+            <ShortDurationSelector
               onChangeDuration={onChangeDuration}
               duration={duration}
             />
           </div>
         </div>
-        {visitorPieChartLoading ? (
+        {totalHitsChartLoading ? (
           <div className='spinner-new' style={{ marginTop: "7em" }}></div>
         ) : (
           <>
-            {visitorPieChart.length > 0 ? (
+            {totalHitsChart.length > 0 ? (
               <ResponsiveContainer
                 width='99%'
                 height={width < 480 ? 240 : "99%"}
               >
-                <PieChart>
-                  <Pie
-                    data={visitorPieChart}
-                    cx='50%'
-                    cy='50%'
-                    labelLine={false}
-                    label={renderCustomizedLabel}
-                    outerRadius={80}
-                    fill='#8884d8'
-                    dataKey='value'
-                  >
-                    {visitorPieChart.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
+                <LineChart
+                  data={totalHitsChart}
+                  margin={{
+                    top: 20,
+                    right: 50,
+                    left: 0,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray='3 3' />
+                  <XAxis dataKey='name' />
+                  <YAxis />
                   <Tooltip />
-                  <Legend
-                    layout='horizontal'
-                    verticalAlign='bottom'
-                    align='center'
+                  <Legend />
+                  <Line
+                    type='monotone'
+                    dataKey='hits'
+                    stroke='#8884d8'
                   />
-                </PieChart>
+                </LineChart>
               </ResponsiveContainer>
             ) : (
               <div style={{ marginTop: "6em" }}>
@@ -165,11 +159,9 @@ const VisitorChart = ({
 VisitorChart.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
-  getVisitorsPerCountryToday: PropTypes.func.isRequired,
-  getVisitorsPerCountryWeek: PropTypes.func.isRequired,
-  getVisitorsPerCountryMonth: PropTypes.func.isRequired,
-  getVisitorsPerCountryYear: PropTypes.func.isRequired,
-  getVisitorsPerCountryAllTime: PropTypes.func.isRequired,
+  getTotalHitsChartWeek: PropTypes.func.isRequired,
+  getTotalHitsChartMonth: PropTypes.func.isRequired,
+  getTotalHitsChartYear: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -178,11 +170,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-  getVisitorsPerCountryToday,
-  getVisitorsPerCountryWeek,
-  getVisitorsPerCountryMonth,
-  getVisitorsPerCountryYear,
-  getVisitorsPerCountryAllTime,
+  getTotalHitsChartYear,
+  getTotalHitsChartMonth,
+  getTotalHitsChartWeek,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(VisitorChart);
