@@ -9,6 +9,7 @@ import VisitorGraph from './charts/VisitorGraph';
 import Alerts from '../../layout/Alerts';
 import HitsChart from './charts/HitsChart';
 import TotalHits from './blocks/TotalHits';
+import TotalColds from './blocks/TotalColds';
 
 const Stats = ({
     // Redux State
@@ -25,17 +26,36 @@ const { width, height } = windowSize()
             <VisitorGraph />
           </div>
           <div className='two' style={{ border: "1px solid red" }}>
-            <div className="two-one" style={{ border: '1px solid red' }}>
+            <div className='two-one' style={{ border: "1px solid red" }}>
               <TotalHits />
             </div>
-            <div className="two-two" style={{ border: '1px solid red' }}>l</div>
-            <div className="two-three" style={{ border: '1px solid red' }}>l</div>
-            <div className="two-four" style={{ border: '1px solid red' }}>l</div>
+            <div className='two-two' style={{ border: "1px solid red" }}>
+              l
+            </div>
+            <div className='two-three' style={{ border: "1px solid red" }}>
+              l
+            </div>
+            <div className='two-four' style={{ border: "1px solid red" }}>
+              l
+            </div>
           </div>
           <div className='three' style={{ border: "1px solid red" }}>
             <HitsChart />
           </div>
-          <div className='four' style={{ border: "1px solid red" }}></div>
+          <div className='four' style={{ border: "1px solid red" }}>
+            <div className='four-one' style={{ border: "1px solid red" }}>
+              <TotalColds />
+            </div>
+            <div className='four-two' style={{ border: "1px solid red" }}>
+              l
+            </div>
+            <div className='four-three' style={{ border: "1px solid red" }}>
+              l
+            </div>
+            <div className='four-four' style={{ border: "1px solid red" }}>
+              l
+            </div>
+          </div>
         </div>
       </div>
       <div>

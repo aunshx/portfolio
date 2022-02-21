@@ -19,7 +19,546 @@ import {
   TOTAL_HITS_CHART_LOADING,
   TOTAL_HITS_CHART,
   TOTAL_HITS_CHART_LOADING_COMPLETE,
+
+  // Total Cold Message Block
+  TOTAL_COLD_MESSAGE_LOADING,
+  TOTAL_COLD_MESSAGE,
+  TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
 } from "./types";
+
+// ----------------------------- TOTAL COLDS BLOCK -----------------------------
+// Total Hits - today
+export const getTotalColdMessagesToday = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-cold-messages-today");
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+// Total COld Messages - seven days
+export const getTotalColdMessagesWeek = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-cold-messages-seven-days");
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+// Total Cold Messages - monthly
+export const getTotalColdMessagesMonth = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-cold-messages-monthly");
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
+// Total Cold Messages - yearly
+export const getTotalColdMessagesYear = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-cold-messages-yearly");
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
+// Total Cold Messages - All Time
+export const getTotalColdMessagesAllTime = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-cold-messages-all-time");
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+    });
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
 
 // ----------------------------- TOTAL HITS BLOCK -----------------------------
 // Total Hits - today

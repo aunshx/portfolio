@@ -6,26 +6,26 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import {
-  getTotalHitsToday,
-  getTotalHitsWeek,
-  getTotalHitsMonth,
-  getTotalHitsYear,
-  getTotalHitsAllTime,
+  getTotalColdMessagesToday,
+  getTotalColdMessagesWeek,
+  getTotalColdMessagesMonth,
+  getTotalColdMessagesYear,
+  getTotalColdMessagesAllTime,
 } from "../../../../redux/actions/metrics";
 
 import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
 import DurationSelector from "../DurationSelector";
 
-const TotalHits = ({
+const TotalColds = ({
   // Redux Actions
-  getTotalHitsToday,
-  getTotalHitsWeek,
-  getTotalHitsMonth,
-  getTotalHitsYear,
-  getTotalHitsAllTime,
+  getTotalColdMessagesToday,
+  getTotalColdMessagesWeek,
+  getTotalColdMessagesMonth,
+  getTotalColdMessagesYear,
+  getTotalColdMessagesAllTime,
   // Redux State
-  metrics: { totalHitsBlockLoading, totalHitsBlock },
+  metrics: { totalColdsBlockLoading, totalColdMessagesBlock },
   settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
@@ -34,19 +34,19 @@ const TotalHits = ({
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
     if (e.target.value === "today") {
-      getTotalHitsToday();
+      getTotalColdMessagesToday();
     }
     if (e.target.value === "week") {
-      getTotalHitsWeek();
+      getTotalColdMessagesWeek();
     }
     if (e.target.value === "month") {
-      getTotalHitsMonth();
+      getTotalColdMessagesMonth();
     }
     if (e.target.value === "year") {
-      getTotalHitsYear();
+      getTotalColdMessagesYear();
     }
     if (e.target.value === "all-time") {
-      getTotalHitsAllTime();
+      getTotalColdMessagesAllTime();
     }
   };
 
@@ -58,14 +58,14 @@ const TotalHits = ({
       >
         <div className='triple_grid'>
           <div></div>
-          <div className='title flex_middle'>Total Hits</div>
+          <div className='title flex_middle'>Total Colds</div>
           <div className='flex_middle'></div>
         </div>
-        {totalHitsBlockLoading ? (
+        {totalColdsBlockLoading ? (
           <div className='spinner-new-block'></div>
         ) : (
           <>
-            <div className='value'>{totalHitsBlock}</div>
+            <div className='value'>{totalColdMessagesBlock}</div>
           </>
         )}
         <div>
@@ -79,14 +79,14 @@ const TotalHits = ({
   );
 };
 
-TotalHits.propTypes = {
+TotalColds.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
-  getTotalHitsToday: PropTypes.func.isRequired,
-  getTotalHitsWeek: PropTypes.func.isRequired,
-  getTotalHitsMonth: PropTypes.func.isRequired,
-  getTotalHitsYear: PropTypes.func.isRequired,
-  getTotalHitsAllTime: PropTypes.func.isRequired,
+  getTotalColdMessagesToday: PropTypes.func.isRequired,
+  getTotalColdMessagesWeek: PropTypes.func.isRequired,
+  getTotalColdMessagesMonth: PropTypes.func.isRequired,
+  getTotalColdMessagesYear: PropTypes.func.isRequired,
+  getTotalColdMessagesAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -95,11 +95,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-  getTotalHitsToday,
-  getTotalHitsWeek,
-  getTotalHitsMonth,
-  getTotalHitsYear,
-  getTotalHitsAllTime,
+  getTotalColdMessagesToday,
+  getTotalColdMessagesWeek,
+  getTotalColdMessagesMonth,
+  getTotalColdMessagesYear,
+  getTotalColdMessagesAllTime,
 };
 
-export default connect(mapStateToProps, mapStateToActions)(TotalHits);
+export default connect(mapStateToProps, mapStateToActions)(TotalColds);

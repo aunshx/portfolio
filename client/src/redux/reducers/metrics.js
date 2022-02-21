@@ -13,6 +13,11 @@ import {
   TOTAL_HITS_CHART_LOADING,
   TOTAL_HITS_CHART,
   TOTAL_HITS_CHART_LOADING_COMPLETE,
+
+  // Total Cold Message Block
+  TOTAL_COLD_MESSAGE_LOADING,
+  TOTAL_COLD_MESSAGE,
+  TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
 } from "../actions/types";
 //
 const initialState = {
@@ -20,19 +25,40 @@ const initialState = {
   visitorPieChartLoading: false,
   visitorPieChart: [],
 
+  // Total Hits Chart
+  totalHitsChartLoading: false,
+  totalHitsChart: [],
+
   // Total Hits Block
   totalHitsBlockLoading: false,
   totalHitsBlock: 0,
 
-  // Total Hits Chart
-  totalHitsChartLoading: false,
-  totalHitsChart: [],
+  // Total Cold Messages Block
+  totalColdMessagesLoading: false,
+  totalColdMessagesBlock: 0,
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    //   Total Cold Messages
+    case TOTAL_COLD_MESSAGE:
+      return {
+        ...state,
+        totalColdMessagesBlock: payload,
+      };
+    case TOTAL_COLD_MESSAGE_LOADING:
+      return {
+        ...state,
+        totalColdMessagesLoading: true,
+      };
+    case TOTAL_COLD_MESSAGE_LOADING_COMPLETE:
+      return {
+        ...state,
+        totalColdMessagesLoading: false,
+      };
+
     //   Total Hits CHART
     case TOTAL_HITS_CHART:
       return {

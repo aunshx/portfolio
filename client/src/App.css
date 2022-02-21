@@ -3023,6 +3023,14 @@ from {
   grid-template-rows: 1fr 1fr;
 }
 
+.stats-main .four {
+  display: grid;
+  grid-template-areas: 'four-one four-two'
+  'four-three' 'four-four';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
 @media only screen and (min-width: 1028px) and (max-width: 1250px) {
   .stats-main {
   width: 1000px;
@@ -3109,7 +3117,7 @@ from {
 
 .charts .block .title {
   color: var(--lighter-dark-font-color);
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
 }
 

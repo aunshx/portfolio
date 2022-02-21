@@ -32,6 +32,7 @@
     "jssoup": "^0.0.15",
     "moment": "^2.29.1",
     "mongoose": "^6.1.8",
+    "node-cron": "^3.0.0",
     "node-mailjet": "^3.3.5",
     "normalize-url": "^7.0.2",
     "passport": "^0.5.2",
