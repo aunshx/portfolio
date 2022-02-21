@@ -33,6 +33,15 @@ import {
   TOTAL_NOT_REPLIED_MESSAGE_LOADING,
   TOTAL_NOT_REPLIED_MESSAGE,
   TOTAL_NOT_REPLIED_MESSAGE_LOADING_COMPLETE,
+
+  // Total Not Replied Message Block
+  TOTAL_HITS_SYNOPSIS_LOADING,
+  TOTAL_HITS_SYNOPSIS_TODAY,
+  TOTAL_HITS_SYNOPSIS_WEEK,
+  TOTAL_HITS_SYNOPSIS_MONTH,
+  TOTAL_HITS_SYNOPSIS_YEAR,
+  TOTAL_HITS_SYNOPSIS_ALL_TIME,
+  TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
 } from "../actions/types";
 //
 const initialState = {
@@ -63,13 +72,58 @@ const initialState = {
   // Total Not Replied Messages Block
   totalNoReplyMessagesLoading: false,
   totalNoReplyMessagesBlock: 0,
+
+  // Total Hits Synopsis
+  totalHitsSynopsisLoading: false,
+  totalHitsSynopsisToday: '',
+  totalHitsSynopsisWeek: '',
+  totalHitsSynopsisMonth: '',
+  totalHitsSynopsisYear: '',
+  totalHitsSynopsisAllTime: '',
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    //   Total No Reply Messages
+    //   Total Hits Synopsis
+    case TOTAL_HITS_SYNOPSIS_TODAY:
+      return {
+        ...state,
+        totalHitsSynopsisToday: payload,
+      };
+    case TOTAL_HITS_SYNOPSIS_WEEK:
+      return {
+        ...state,
+        totalHitsSynopsisWeek: payload,
+      };
+    case TOTAL_HITS_SYNOPSIS_MONTH:
+      return {
+        ...state,
+        totalHitsSynopsisMonth: payload,
+      };
+    case TOTAL_HITS_SYNOPSIS_YEAR:
+      return {
+        ...state,
+        totalHitsSynopsisYear: payload,
+      };
+    case TOTAL_HITS_SYNOPSIS_ALL_TIME:
+      return {
+        ...state,
+        totalHitsSynopsisAllTime: payload,
+      };
+    case TOTAL_HITS_SYNOPSIS_LOADING:
+      return {
+        ...state,
+        totalHitsSynopsisLoading: true,
+      };
+    case TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE:
+      return {
+        ...state,
+        totalHitsSynopsisLoading: false,
+      };
+
+    // Total Not Replied Messages
     case TOTAL_NOT_REPLIED_MESSAGE:
       return {
         ...state,
