@@ -5,51 +5,22 @@ import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 
-import {
-  getTotalHitsToday,
-  getTotalHitsWeek,
-  getTotalHitsMonth,
-  getTotalHitsYear,
-  getTotalHitsAllTime,
-} from "../../../../../redux/actions/metrics";
-
 import windowSize from "../../../../../utils/windowSize";
-import DurationSelector from "../../DurationSelector";
 
 const SynopsisHits = ({
-  // Redux Actions
-  getTotalHitsToday,
-  getTotalHitsWeek,
-  getTotalHitsMonth,
-  getTotalHitsYear,
-  getTotalHitsAllTime,
   // Redux State
-  metrics: { totalHitsBlockLoading, totalHitsBlock },
+  metrics: { 
+    totalHitsBlock,
+    totalHitsSynopsisLoading,
+    totalHitsSynopsisToday,
+    totalHitsSynopsisWeek,
+    totalHitsSynopsisMonth,
+    totalHitsSynopsisYear,
+    totalHitsSynopsisAllTime,
+  },
   settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
-  const [duration, setDuration] = useState("today");
-
-  useEffect(() => getTotalHitsToday(), []);
-
-  const onChangeDuration = (e) => {
-    setDuration(e.target.value);
-    if (e.target.value === "today") {
-      getTotalHitsToday();
-    }
-    if (e.target.value === "week") {
-      getTotalHitsWeek();
-    }
-    if (e.target.value === "month") {
-      getTotalHitsMonth();
-    }
-    if (e.target.value === "year") {
-      getTotalHitsYear();
-    }
-    if (e.target.value === "all-time") {
-      getTotalHitsAllTime();
-    }
-  };
 
   return (
     <div className='charts flex_middle'>
@@ -58,19 +29,13 @@ const SynopsisHits = ({
         style={{ justifyContent: "space-between" }}
       >
         <div className='title flex_middle'>Total Hits</div>
-        {totalHitsBlockLoading ? (
+        {totalHitsSynopsisLoading ? (
           <div className='spinner-new-block'></div>
         ) : (
           <>
             <div className='value'>{totalHitsBlock}</div>
           </>
         )}
-        <div>
-          <DurationSelector
-            onChangeDuration={onChangeDuration}
-            duration={duration}
-          />
-        </div>
       </div>
     </div>
   );
@@ -79,11 +44,6 @@ const SynopsisHits = ({
 SynopsisHits.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
-  getTotalHitsToday: PropTypes.func.isRequired,
-  getTotalHitsWeek: PropTypes.func.isRequired,
-  getTotalHitsMonth: PropTypes.func.isRequired,
-  getTotalHitsYear: PropTypes.func.isRequired,
-  getTotalHitsAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -92,11 +52,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-  getTotalHitsToday,
-  getTotalHitsWeek,
-  getTotalHitsMonth,
-  getTotalHitsYear,
-  getTotalHitsAllTime,
+
 };
 
 export default connect(mapStateToProps, mapStateToActions)(SynopsisHits);

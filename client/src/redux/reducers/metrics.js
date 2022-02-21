@@ -75,11 +75,11 @@ const initialState = {
 
   // Total Hits Synopsis
   totalHitsSynopsisLoading: false,
-  totalHitsSynopsisToday: '',
-  totalHitsSynopsisWeek: '',
-  totalHitsSynopsisMonth: '',
-  totalHitsSynopsisYear: '',
-  totalHitsSynopsisAllTime: '',
+  totalHitsSynopsisToday: 0,
+  totalHitsSynopsisWeek: 0,
+  totalHitsSynopsisMonth: 0,
+  totalHitsSynopsisYear: 0,
+  totalHitsSynopsisAllTime: 0,
 };
 // kk
 function authReducer(state = initialState, action) {

@@ -39,6 +39,15 @@ import {
   TOTAL_NOT_REPLIED_MESSAGE_LOADING,
   TOTAL_NOT_REPLIED_MESSAGE,
   TOTAL_NOT_REPLIED_MESSAGE_LOADING_COMPLETE,
+
+  // Total Not Replied Message Block
+  TOTAL_HITS_SYNOPSIS_LOADING,
+  TOTAL_HITS_SYNOPSIS_TODAY,
+  TOTAL_HITS_SYNOPSIS_WEEK,
+  TOTAL_HITS_SYNOPSIS_MONTH,
+  TOTAL_HITS_SYNOPSIS_YEAR,
+  TOTAL_HITS_SYNOPSIS_ALL_TIME,
+  TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
 } from "./types";
 
 // ----------------------------- TOTAL NOT REPLIED BLOCK -----------------------------
@@ -1662,8 +1671,6 @@ export const getTotalColdMessagesToday = () => async (dispatch) => {
 
     const res = await api.get("/metrics/total-cold-messages-today");
 
-    console.log('Helo bit')
-
     dispatch({
       type: TOTAL_COLD_MESSAGE,
       payload: res.data,
@@ -2196,7 +2203,13 @@ export const getTotalHitsToday = () => async (dispatch) => {
       type: TOTAL_HITS_BLOCK_LOADING,
     });
 
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_LOADING,
+    });
+
     const res = await api.get("/metrics/total-hits-today");
+
+    const res2 = await api.get("/metrics/total-hits-synopsis-today");
 
     dispatch({
       type: TOTAL_HITS_BLOCK,
@@ -2205,6 +2218,15 @@ export const getTotalHitsToday = () => async (dispatch) => {
 
     dispatch({
       type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_TODAY,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
     });
   } catch (error) {
     if (error.response.status === 500) {
