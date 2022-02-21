@@ -565,6 +565,97 @@ router.get("/total-hits-all-time", auth, async (req, res) => {
   }
 });
 
+// ------------------------ TOTAL HITS SYNOPSIS - Block-----------------------------
+
+// @route    GET api/metrics
+// @desc     Total Hits Synopsis Block
+// @access   Private
+// @duration TODAY
+router.get("/total-hits-synopsis-today", auth, async (req, res) => {
+  let ans = {};
+  const yesterDayStart = moment().startOf("day").subtract(1, 'days');
+  const yesterDayEnd = moment().endOf("day").subtract(1, "days");
+
+  try {
+    ans = await Ip.find(
+      { createdAt: {
+        $gte: new Date(yesterDayStart),
+        $lte: new Date(yesterDayEnd)
+      }}
+    ).count()
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res
+      .status(400)
+      .send({ errors: [{ msg: "Cannot fetch total hits' synopsis" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc      Total Hits Synopsis Block
+// @access   Private
+// @duration 7 DAYS
+router.get("/total-hits-synopsis-seven-days", auth, async (req, res) => {
+  let ans = {};
+
+  try {
+    ans = await Ip.find({
+          createdAt: {
+            $lte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+            $gte: new Date(new Date() - 2 * 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+      ).count()
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [ { msg: "Cannot fetch total hits' synopsis" } ] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     Total Hits Synopsis Block
+// @access   Private
+// @duration MONTH
+router.get("/total-hits-synopsis-monthly", auth, async (req, res) => {
+  let ans = {};
+  let selectMonth = moment().month();
+
+  try {
+    ans = await Ip.find({
+      $expr: { $eq: [{ $month: "$createdAt" }, selectMonth ] },
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res
+      .status(400)
+      .send({ errors: [{ msg: "Cannot fetch total hits' synopsis" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     Total Hits Synopsis Block
+// @access   Private
+// @duration YEAR
+router.get("/total-hits-synopsis-yearly", auth, async (req, res) => {
+  let ans = {};
+  let selectYear = moment().year();
+
+  try {
+    ans = await Ip.find({
+      $expr: { $eq: [{ $year: "$createdAt" }, selectYear - 1] },
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res
+      .status(400)
+      .send({ errors: [{ msg: "Cannot fetch total hits' synopsis" }] });
+  }
+});
+
 // ------------------------ Types of Messages - COLD - Block-----------------------------
 
 // @route    GET api/metrics
