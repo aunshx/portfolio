@@ -58,7 +58,7 @@ const TotalColds = ({
         className={displayMode ? "app block block--dark" : "app block"}
         style={{ justifyContent: "space-between" }}
       >
-        <div className='title flex_middle'>Total Colds</div>
+        <div className='title flex_middle'>Cold</div>
         {totalColdsBlockLoading ? (
           <div className='spinner-new-block'></div>
         ) : (

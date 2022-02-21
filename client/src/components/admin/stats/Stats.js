@@ -12,6 +12,7 @@ import TotalHits from './blocks/TotalHits';
 import TotalColds from './blocks/TotalColds';
 import TotalOngoings from './blocks/TotalOngoings';
 import TotalSuccess from './blocks/TotalSuccess';
+import TotalNotReplied from './blocks/TotalNotReplied';
 
 const Stats = ({
     // Redux State
@@ -46,16 +47,16 @@ const { width, height } = windowSize()
           </div>
           <div className='four' style={{ border: "1px solid red" }}>
             <div className='four-one' style={{ border: "1px solid red" }}>
-              <TotalColds />
-            </div>
-            <div className='four-two' style={{ border: "1px solid red" }}>
               <TotalSuccess />
             </div>
-            <div className='four-three' style={{ border: "1px solid red" }}>
+            <div className='four-two' style={{ border: "1px solid red" }}>
               <TotalOngoings />
             </div>
+            <div className='four-three' style={{ border: "1px solid red" }}>
+              <TotalNotReplied />
+            </div>
             <div className='four-four' style={{ border: "1px solid red" }}>
-              l
+              <TotalColds />
             </div>
           </div>
         </div>

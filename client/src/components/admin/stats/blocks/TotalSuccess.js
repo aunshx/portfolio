@@ -58,7 +58,7 @@ const TotalSuccesses = ({
         className={displayMode ? "app block block--dark" : "app block"}
         style={{ justifyContent: "space-between" }}
       >
-        <div className='title flex_middle'>Total Successes</div>
+        <div className='title flex_middle'>Success</div>
         {totalSuccessMessagesLoading ? (
           <div className='spinner-new-block'></div>
         ) : (

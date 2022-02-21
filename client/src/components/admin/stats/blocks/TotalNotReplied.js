@@ -6,49 +6,49 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import {
-  getTotalOngoingMessagesToday,
-  getTotalOngoingMessagesWeek,
-  getTotalOngoingMessagesMonth,
-  getTotalOngoingMessagesYear,
-  getTotalOngoingMessagesAllTime,
+  getTotalNoReplyMessagesToday,
+  getTotalNoReplyMessagesWeek,
+  getTotalNoReplyMessagesMonth,
+  getTotalNoReplyMessagesYear,
+  getTotalNoReplyMessagesAllTime,
 } from "../../../../redux/actions/metrics";
 
 import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
 import DurationSelector from "../DurationSelector";
 
-const TotalOngoings = ({
+const TotalNoReply = ({
   // Redux Actions
-  getTotalOngoingMessagesToday,
-  getTotalOngoingMessagesWeek,
-  getTotalOngoingMessagesMonth,
-  getTotalOngoingMessagesYear,
-  getTotalOngoingMessagesAllTime,
+  getTotalNoReplyMessagesToday,
+  getTotalNoReplyMessagesWeek,
+  getTotalNoReplyMessagesMonth,
+  getTotalNoReplyMessagesYear,
+  getTotalNoReplyMessagesAllTime,
   // Redux State
-  metrics: { totalOngoingMessagesLoading, totalOngoingMessagesBlock },
+  metrics: { totalNoReplyMessagesLoading, totalNoReplyMessagesBlock },
   settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
-  useEffect(() => getTotalOngoingMessagesToday(), [])
+  useEffect(() => getTotalNoReplyMessagesToday(), []);
 
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
     if (e.target.value === "today") {
-      getTotalOngoingMessagesToday();
+      getTotalNoReplyMessagesToday();
     }
     if (e.target.value === "week") {
-      getTotalOngoingMessagesWeek();
+      getTotalNoReplyMessagesWeek();
     }
     if (e.target.value === "month") {
-      getTotalOngoingMessagesMonth();
+      getTotalNoReplyMessagesMonth();
     }
     if (e.target.value === "year") {
-      getTotalOngoingMessagesYear();
+      getTotalNoReplyMessagesYear();
     }
     if (e.target.value === "all-time") {
-      getTotalOngoingMessagesAllTime();
+      getTotalNoReplyMessagesAllTime();
     }
   };
 
@@ -58,13 +58,13 @@ const TotalOngoings = ({
         className={displayMode ? "app block block--dark" : "app block"}
         style={{ justifyContent: "space-between" }}
       >
-        <div className='title flex_middle'>Ongoing</div>
-        {totalOngoingMessagesLoading ? (
+        <div className='title flex_middle'>Not Replied</div>
+        {totalNoReplyMessagesLoading ? (
           <div className='spinner-new-block'></div>
         ) : (
           <>
-            <div className='value' style={{ color: "#ffb429" }}>
-              {totalOngoingMessagesBlock}
+            <div className='value' style={{ color: "#ff5252" }}>
+              {totalNoReplyMessagesBlock}
             </div>
           </>
         )}
@@ -79,14 +79,14 @@ const TotalOngoings = ({
   );
 };
 
-TotalOngoings.propTypes = {
+TotalNoReply.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
-  getTotalOngoingMessagesToday: PropTypes.func.isRequired,
-  getTotalOngoingMessagesWeek: PropTypes.func.isRequired,
-  getTotalOngoingMessagesMonth: PropTypes.func.isRequired,
-  getTotalOngoingMessagesYear: PropTypes.func.isRequired,
-  getTotalOngoingMessagesAllTime: PropTypes.func.isRequired,
+  getTotalNoReplyMessagesToday: PropTypes.func.isRequired,
+  getTotalNoReplyMessagesWeek: PropTypes.func.isRequired,
+  getTotalNoReplyMessagesMonth: PropTypes.func.isRequired,
+  getTotalNoReplyMessagesYear: PropTypes.func.isRequired,
+  getTotalNoReplyMessagesAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -95,11 +95,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-  getTotalOngoingMessagesToday,
-  getTotalOngoingMessagesWeek,
-  getTotalOngoingMessagesMonth,
-  getTotalOngoingMessagesYear,
-  getTotalOngoingMessagesAllTime,
+  getTotalNoReplyMessagesToday,
+  getTotalNoReplyMessagesWeek,
+  getTotalNoReplyMessagesMonth,
+  getTotalNoReplyMessagesYear,
+  getTotalNoReplyMessagesAllTime,
 };
 
-export default connect(mapStateToProps, mapStateToActions)(TotalOngoings);
+export default connect(mapStateToProps, mapStateToActions)(TotalNoReply);

@@ -28,6 +28,11 @@ import {
   TOTAL_SUCCESS_MESSAGE_LOADING,
   TOTAL_SUCCESS_MESSAGE,
   TOTAL_SUCCESS_MESSAGE_LOADING_COMPLETE,
+
+  // Total Not Replied Message Block
+  TOTAL_NOT_REPLIED_MESSAGE_LOADING,
+  TOTAL_NOT_REPLIED_MESSAGE,
+  TOTAL_NOT_REPLIED_MESSAGE_LOADING_COMPLETE,
 } from "../actions/types";
 //
 const initialState = {
@@ -54,12 +59,33 @@ const initialState = {
   // Total Success Messages Block
   totalSuccessMessagesLoading: false,
   totalSuccessMessagesBlock: 0,
+
+  // Total Not Replied Messages Block
+  totalNoReplyMessagesLoading: false,
+  totalNoReplyMessagesBlock: 0,
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    //   Total No Reply Messages
+    case TOTAL_NOT_REPLIED_MESSAGE:
+      return {
+        ...state,
+        totalNoReplyMessagesBlock: payload,
+      };
+    case TOTAL_NOT_REPLIED_MESSAGE_LOADING:
+      return {
+        ...state,
+        totalNoReplyMessagesLoading: true,
+      };
+    case TOTAL_NOT_REPLIED_MESSAGE_LOADING_COMPLETE:
+      return {
+        ...state,
+        totalNoReplyMessagesLoading: false,
+      };
+
     //   Total Success Messages
     case TOTAL_SUCCESS_MESSAGE:
       return {
