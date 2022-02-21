@@ -405,13 +405,13 @@ router.get("/total-hits-chart-monthly", auth, async (req, res) => {
               $month: { date: "$createdAt" },
             },
           },
-          value: { $sum: 1 },
+          hits: { $sum: 1 },
         },
       },
       {
         $project: {
           name: "$_id.date",
-          value: 1,
+          hits: 1,
           _id: 0,
         },
       },
@@ -446,13 +446,13 @@ router.get("/total-hits-chart-yearly", auth, async (req, res) => {
                $year: { date: "$createdAt" },
              },
            },
-           value: { $sum: 1 },
+           hits: { $sum: 1 },
          },
        },
        {
          $project: {
            name: "$_id.date",
-           value: 1,
+           hits: 1,
            _id: 0,
          },
        },

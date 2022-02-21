@@ -1215,9 +1215,93 @@ export const getTotalHitsChartMonth = () => async (dispatch) => {
 
     const res = await api.get("/metrics/total-hits-chart-monthly");
 
+    let ans = []
+
+    for(let i=0; i<res.data.length; i++){
+      switch(res.data[i].name){
+        case '01':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'J'
+          })
+          break
+        case '02':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'F'
+          })
+          break
+        case '03':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'M'
+          })
+          break
+        case '04':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'A'
+          })
+          break
+        case '05':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'M'
+          })
+          break
+        case '06':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'J'
+          })
+          break
+        case '07':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'JU'
+          })
+          break
+        case '08':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'A'
+          })
+          break
+        case '09':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'S'
+          })
+          break
+        case '10':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'O'
+          })
+          break
+
+        case '11':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'N'
+          })
+          break
+
+        case '12':
+          ans.push({
+            hits: res.data[i].hits,
+            name: 'D'
+          })
+          break
+
+        default:
+          return 'None'
+      }
+    }
+
     dispatch({
       type: TOTAL_HITS_CHART,
-      payload: res.data,
+      payload: ans,
     });
 
     dispatch({
