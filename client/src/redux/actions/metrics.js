@@ -2784,34 +2784,21 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
       type: TOTAL_HITS_BLOCK_LOADING,
     });
 
-    dispatch({
-      type: TOTAL_HITS_SYNOPSIS_LOADING,
-    });
-
     const res = await api.get("/metrics/total-hits-all-time");
-    const res2 = await api.get("/metrics/total-hits-today");
 
     dispatch({
       type: TOTAL_HITS_BLOCK,
       payload: res.data,
     });
 
-    dispatch({
+        dispatch({
       type: TOTAL_HITS_TYPE,
       payload: "all-time",
     });
 
+
     dispatch({
       type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
-    });
-
-    dispatch({
-      type: TOTAL_HITS_SYNOPSIS_ALL_TIME,
-      payload: res2.data,
-    });
-
-    dispatch({
-      type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
     });
 
   } catch (error) {

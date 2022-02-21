@@ -10,6 +10,8 @@ import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 
 import windowSize from "../../../../../utils/windowSize";
 
+import {sayings} from './sayings'
+
 const SynopsisHits = ({
   // Redux State
   metrics: {
@@ -19,7 +21,6 @@ const SynopsisHits = ({
     totalHitsSynopsisWeek,
     totalHitsSynopsisMonth,
     totalHitsSynopsisYear,
-    totalHitsSynopsisAllTime,
     totalHitsType,
   },
   settings: { displayMode },
@@ -85,20 +86,6 @@ const SynopsisHits = ({
         );
       }
     }
-    if (totalHitsType === "all-time") {
-      if (totalHitsSynopsisAllTime === 0) {
-        setCurrentValue((parseInt(totalHitsBlock) * 100).toFixed(1));
-      } else {
-              setCurrentValue(
-                (
-                  ((parseInt(totalHitsBlock) -
-                    parseInt(totalHitsSynopsisAllTime)) /
-                    parseInt(totalHitsSynopsisAllTime)) *
-                  100
-                ).toFixed(1)
-              );
-      }
-    }
   }, [totalHitsType, totalHitsBlock]);
 
   return (
@@ -112,33 +99,45 @@ const SynopsisHits = ({
           <div className='spinner-new-block'></div>
         ) : (
           <>
-            {currentValue == 0 ? (
-              <div className='value--change'>
-                <div style={{ color: "grey" }} className='flex_middle'>
-                  <div style={{ marginRight: "0.3em", marginTop: "0.3em" }}>
-                    <TrendingFlatIcon />
-                  </div>
-                  <div>0%</div>
-                </div>
+            {totalHitsType === "all-time" ? (
+              <div className='value--change--text'>
+                {sayings[Math.floor(Math.random() * 10)] || 'What a Number!'}
               </div>
             ) : (
-              <div className='value--change'>
-                {currentValue[0] === "-" ? (
-                  <div style={{ color: "#ff5252" }} className='flex_middle'>
-                    <div style={{ marginRight: "0.3em", marginTop: "0.3em" }}>
-                      <TrendingDownIcon />
+              <>
+                {currentValue == 0 ? (
+                  <div className='value--change'>
+                    <div style={{ color: "grey" }} className='flex_middle'>
+                      <div style={{ marginRight: "0.3em", marginTop: "0.3em" }}>
+                        <TrendingFlatIcon />
+                      </div>
+                      <div>0%</div>
                     </div>
-                    <div>{Math.abs(currentValue)}%</div>
                   </div>
                 ) : (
-                  <div style={{ color: "#7ed957" }} className='flex_middle'>
-                    <div style={{ marginRight: "0.3em", marginTop: "0.3em" }}>
-                      <TrendingUpIcon />
-                    </div>
-                    <div>{Math.abs(currentValue)}%</div>
+                  <div className='value--change'>
+                    {currentValue[0] === "-" ? (
+                      <div style={{ color: "#ff5252" }} className='flex_middle'>
+                        <div
+                          style={{ marginRight: "0.3em", marginTop: "0.3em" }}
+                        >
+                          <TrendingDownIcon />
+                        </div>
+                        <div>{Math.abs(currentValue)}%</div>
+                      </div>
+                    ) : (
+                      <div style={{ color: "#7ed957" }} className='flex_middle'>
+                        <div
+                          style={{ marginRight: "0.3em", marginTop: "0.3em" }}
+                        >
+                          <TrendingUpIcon />
+                        </div>
+                        <div>{Math.abs(currentValue)}%</div>
+                      </div>
+                    )}
                   </div>
                 )}
-              </div>
+              </>
             )}
           </>
         )}
@@ -251,30 +250,7 @@ const SynopsisHits = ({
               )}
             </>
           )}
-          {totalHitsType === "all-time" && (
-            <>
-              {currentValue == 0 ? (
-                <div className='value--change--text'>
-                  No. of hits has remained{" "}
-                  <span style={{ color: "grey" }}>constant</span>
-                </div>
-              ) : (
-                <div className='value--change--text flex_left'>
-                  {currentValue[0] === "-" ? (
-                    <div>
-                      No. of hits has{" "}
-                      <span style={{ color: "#ff5252" }}>reduced</span>
-                    </div>
-                  ) : (
-                    <div>
-                      No. of hits has{" "}
-                      <span style={{ color: "#7ed957" }}>increased</span>
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
-          )}
+          {totalHitsType === "all-time" && <></>}
         </div>
       </div>
     </div>
