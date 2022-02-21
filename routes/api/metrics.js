@@ -678,4 +678,456 @@ router.get("/total-cold-messages-all-time", auth, async (req, res) => {
   }
 });
 
+// ------------------------ Types of Messages - ONGOING - Block-----------------------------
+
+// @route    GET api/metrics
+// @desc     Types of Messages - ongoing
+// @access   Private
+// @duration TODAY
+router.get("/total-ongoing-messages-today", auth, async (req, res) => {
+  let ans = {};
+  const todayStart = moment().startOf("day");
+    const todayEnd = moment().endOf("day");
+
+  try {
+    ans = await Message.find(
+      { $and: [ {createdAt: {
+        $gte: new Date(todayStart),
+        $lte: new Date(todayEnd)
+      } }, { status: 'ongoing' }]}
+    ).count()
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch ongoing messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc      ongoing messages Block
+// @access   Private
+// @duration 7 DAYS
+router.get("/total-ongoing-messages-seven-days", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          createdAt: {
+            $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+        {
+          status: "ongoing",
+        },
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch ongoing messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     ongoing messages
+// @access   Private
+// @duration MONTH
+router.get("/total-ongoing-messages-monthly", auth, async (req, res) => {
+  let ans = {};
+  let selectMonth = moment().month();
+
+  try {
+    ans = await Message.find({
+      $and: [{ $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] }}, { status: 'ongoing' }],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch ongoing messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     ongoing messages
+// @access   Private
+// @duration YEAR
+router.get("/total-ongoing-messages-yearly", auth, async (req, res) => {
+  let ans = {};
+  let selectYear = moment().year();
+
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
+        },
+        {
+          status: 'ongoing'
+        }
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch ongoing messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     ongoing messages
+// @access   Private
+// @duration ALL TIME
+router.get("/total-ongoing-messages-all-time", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      status: 'ongoing'
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch ongoing messages" }] });
+  }
+});
+
+// ------------------------ Types of Messages - SUCCESS - Block-----------------------------
+
+// @route    GET api/metrics
+// @desc     Types of Messages - success
+// @access   Private
+// @duration TODAY
+router.get("/total-success-messages-today", auth, async (req, res) => {
+  let ans = {};
+  const todayStart = moment().startOf("day");
+    const todayEnd = moment().endOf("day");
+
+  try {
+    ans = await Message.find(
+      { $and: [ {createdAt: {
+        $gte: new Date(todayStart),
+        $lte: new Date(todayEnd)
+      } }, { status: 'success' }]}
+    ).count()
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch success messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc      success messages Block
+// @access   Private
+// @duration 7 DAYS
+router.get("/total-success-messages-seven-days", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          createdAt: {
+            $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+        {
+          status: "success",
+        },
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch success messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     success messages
+// @access   Private
+// @duration MONTH
+router.get("/total-success-messages-monthly", auth, async (req, res) => {
+  let ans = {};
+  let selectMonth = moment().month();
+
+  try {
+    ans = await Message.find({
+      $and: [{ $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] }}, { status: 'success' }],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch success messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     success messages
+// @access   Private
+// @duration YEAR
+router.get("/total-success-messages-yearly", auth, async (req, res) => {
+  let ans = {};
+  let selectYear = moment().year();
+
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
+        },
+        {
+          status: 'success'
+        }
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch success messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     success messages
+// @access   Private
+// @duration ALL TIME
+router.get("/total-success-messages-all-time", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      status: 'success'
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch success messages" }] });
+  }
+});
+
+// ------------------------ Types of Messages - NOT REPLIED - Block-----------------------------
+
+// @route    GET api/metrics
+// @desc     Types of Messages - not-replied
+// @access   Private
+// @duration TODAY
+router.get("/total-not-replied-messages-today", auth, async (req, res) => {
+  let ans = {};
+  const todayStart = moment().startOf("day");
+    const todayEnd = moment().endOf("day");
+
+  try {
+    ans = await Message.find(
+      { $and: [ {createdAt: {
+        $gte: new Date(todayStart),
+        $lte: new Date(todayEnd)
+      } }, { status: 'not-replied' }]}
+    ).count()
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch not-replied messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc      not-replied messages Block
+// @access   Private
+// @duration 7 DAYS
+router.get("/total-not-replied-messages-seven-days", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          createdAt: {
+            $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+        {
+          status: "not-replied",
+        },
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch not-replied messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     not-replied messages
+// @access   Private
+// @duration MONTH
+router.get("/total-not-replied-messages-monthly", auth, async (req, res) => {
+  let ans = {};
+  let selectMonth = moment().month();
+
+  try {
+    ans = await Message.find({
+      $and: [{ $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] }}, { status: 'not-replied' }],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch not-replied messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     not-replied messages
+// @access   Private
+// @duration YEAR
+router.get("/total-not-replied-messages-yearly", auth, async (req, res) => {
+  let ans = {};
+  let selectYear = moment().year();
+
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
+        },
+        {
+          status: 'not-replied'
+        }
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch not-replied messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     not-replied messages
+// @access   Private
+// @duration ALL TIME
+router.get("/total-not-replied-messages-all-time", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      status: 'not-replied'
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch not-replied messages" }] });
+  }
+});
+
+// ------------------------ Types of Messages - UNSEEN - Block-----------------------------
+
+// @route    GET api/metrics
+// @desc     Types of Messages - unseen
+// @access   Private
+// @duration TODAY
+router.get("/total-unseen-messages-today", auth, async (req, res) => {
+  let ans = {};
+  const todayStart = moment().startOf("day");
+    const todayEnd = moment().endOf("day");
+
+  try {
+    ans = await Message.find(
+      { $and: [ {createdAt: {
+        $gte: new Date(todayStart),
+        $lte: new Date(todayEnd)
+      } }, { seen: false }]}
+    ).count()
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch unseen messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc      unseen messages Block
+// @access   Private
+// @duration 7 DAYS
+router.get("/total-unseen-messages-seven-days", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          createdAt: {
+            $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
+          },
+        },
+        {
+          seen: false,
+        },
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch unseen messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     unseen messages
+// @access   Private
+// @duration MONTH
+router.get("/total-unseen-messages-monthly", auth, async (req, res) => {
+  let ans = {};
+  let selectMonth = moment().month();
+
+  try {
+    ans = await Message.find({
+      $and: [{ $expr: { $eq: [{ $month: "$createdAt" }, selectMonth + 1] }}, { seen: false }],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch unseen messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     unseen messages
+// @access   Private
+// @duration YEAR
+router.get("/total-unseen-messages-yearly", auth, async (req, res) => {
+  let ans = {};
+  let selectYear = moment().year();
+
+  try {
+    ans = await Message.find({
+      $and: [
+        {
+          $expr: { $eq: [{ $year: "$createdAt" }, selectYear] },
+        },
+        {
+          seen: false
+        }
+      ],
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch unseen messages" }] });
+  }
+});
+
+// @route    GET api/metrics
+// @desc     unseen messages
+// @access   Private
+// @duration ALL TIME
+router.get("/total-unseen-messages-all-time", auth, async (req, res) => {
+  let ans = {};
+  try {
+    ans = await Message.find({
+      seen: false
+    }).count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res.status(400).send({ errors: [{ msg: "Cannot fetch unseen messages" }] });
+  }
+});
+
 module.exports = router;
