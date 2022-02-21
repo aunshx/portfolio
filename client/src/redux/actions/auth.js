@@ -21,6 +21,10 @@ import {
   ERROR_SNACKBAR,
 } from "./types";
 
+import {
+  getTotalHitsSynopsis
+} from '../actions/metrics'
+
 export const snackbarDeactivate = (value) => async (dispatch) => {
   dispatch({
     type: SNACKBAR_RESET,
@@ -39,6 +43,8 @@ export const loadUser = () => async (dispatch) => {
       type: USER_LOADED,
       payload: res.data,
     });
+
+    dispatch(getTotalHitsSynopsis());
 
   } catch (err) {
     dispatch({

@@ -656,6 +656,24 @@ router.get("/total-hits-synopsis-yearly", auth, async (req, res) => {
   }
 });
 
+// @route    GET api/metrics
+// @desc     Total Hits Synopsis Block
+// @access   Private
+// @duration YEAR
+router.get("/total-hits-synopsis-all-time", auth, async (req, res) => {
+  let ans = {};
+
+  try {
+    ans = await Ip.find().count();
+
+    return res.status(200).send(ans.toString());
+  } catch (error) {
+    res
+      .status(400)
+      .send({ errors: [{ msg: "Cannot fetch total hits' synopsis" }] });
+  }
+});
+
 // ------------------------ Types of Messages - COLD - Block-----------------------------
 
 // @route    GET api/metrics

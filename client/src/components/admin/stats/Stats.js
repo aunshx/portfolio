@@ -13,6 +13,7 @@ import TotalColds from './blocks/lower/TotalColds';
 import TotalOngoings from "./blocks/lower/TotalOngoings";
 import TotalSuccess from "./blocks/lower/TotalSuccess";
 import TotalNotReplied from './blocks/lower/TotalNotReplied';
+import SynopsisHits from './blocks/upper/SynopsisHits';
 
 const Stats = ({
     // Redux State
@@ -33,7 +34,7 @@ const { width, height } = windowSize()
               <TotalHits />
             </div>
             <div className='two-two' style={{ border: "1px solid red" }}>
-              l
+              <SynopsisHits />
             </div>
             <div className='two-three' style={{ border: "1px solid red" }}>
               l

@@ -48,6 +48,7 @@ import {
   TOTAL_HITS_SYNOPSIS_YEAR,
   TOTAL_HITS_SYNOPSIS_ALL_TIME,
   TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+  TOTAL_HITS_TYPE,
 } from "./types";
 
 // ----------------------------- TOTAL NOT REPLIED BLOCK -----------------------------
@@ -2191,6 +2192,138 @@ export const getTotalColdMessagesAllTime = () => async (dispatch) => {
 };
 
 // ----------------------------- TOTAL HITS BLOCK -----------------------------
+// Total Hits Synopsis - All
+export const getTotalHitsSynopsis = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_LOADING,
+    });
+
+    const res = await api.get("/metrics/total-hits-synopsis-today");
+    const res2 = await api.get("/metrics/total-hits-synopsis-seven-days");
+    const res3 = await api.get("/metrics/total-hits-synopsis-monthly");
+    const res4 = await api.get("/metrics/total-hits-synopsis-yearly");
+    const res5 = await api.get("/metrics/total-hits-synopsis-all-time");
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_TODAY,
+      payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_WEEK,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_MONTH,
+      payload: res3.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_YEAR,
+      payload: res4.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_ALL_TIME,
+      payload: res5.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+    });
+
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
 // Total Hits - today
 export const getTotalHitsToday = () => async (dispatch) => {
   let value = {
@@ -2203,13 +2336,7 @@ export const getTotalHitsToday = () => async (dispatch) => {
       type: TOTAL_HITS_BLOCK_LOADING,
     });
 
-    dispatch({
-      type: TOTAL_HITS_SYNOPSIS_LOADING,
-    });
-
     const res = await api.get("/metrics/total-hits-today");
-
-    const res2 = await api.get("/metrics/total-hits-synopsis-today");
 
     dispatch({
       type: TOTAL_HITS_BLOCK,
@@ -2217,17 +2344,14 @@ export const getTotalHitsToday = () => async (dispatch) => {
     });
 
     dispatch({
+      type: TOTAL_HITS_TYPE,
+      payload: 'today',
+    });
+
+    dispatch({
       type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
     });
 
-    dispatch({
-      type: TOTAL_HITS_SYNOPSIS_TODAY,
-      payload: res2.data,
-    });
-
-    dispatch({
-      type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
-    });
   } catch (error) {
     if (error.response.status === 500) {
       value.message = "Something went wrong. Pl reload!";
@@ -2332,8 +2456,14 @@ export const getTotalHitsWeek = () => async (dispatch) => {
     });
 
     dispatch({
+      type: TOTAL_HITS_TYPE,
+      payload: "week",
+    });
+
+    dispatch({
       type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
     });
+
   } catch (error) {
     if (error.response.status === 500) {
       value.message = "Something went wrong. Pl reload!";
@@ -2435,6 +2565,11 @@ export const getTotalHitsMonth = () => async (dispatch) => {
     dispatch({
       type: TOTAL_HITS_BLOCK,
       payload: res.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_TYPE,
+      payload: "month",
     });
 
     dispatch({
@@ -2545,6 +2680,11 @@ export const getTotalHitsYear = () => async (dispatch) => {
     });
 
     dispatch({
+      type: TOTAL_HITS_TYPE,
+      payload: "year",
+    });
+
+    dispatch({
       type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
     });
   } catch (error) {
@@ -2644,7 +2784,12 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
       type: TOTAL_HITS_BLOCK_LOADING,
     });
 
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_LOADING,
+    });
+
     const res = await api.get("/metrics/total-hits-all-time");
+    const res2 = await api.get("/metrics/total-hits-today");
 
     dispatch({
       type: TOTAL_HITS_BLOCK,
@@ -2652,8 +2797,23 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
     });
 
     dispatch({
+      type: TOTAL_HITS_TYPE,
+      payload: "all-time",
+    });
+
+    dispatch({
       type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
     });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_ALL_TIME,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+    });
+
   } catch (error) {
     if (error.response.status === 500) {
       value.message = "Something went wrong. Pl reload!";
@@ -2667,6 +2827,10 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
       dispatch({
         type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
       });
+
+          dispatch({
+            type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+          });
 
       setTimeout(
         () =>
@@ -2688,6 +2852,10 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
         type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
       });
 
+          dispatch({
+            type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+          });
+
       setTimeout(
         () =>
           dispatch({
@@ -2708,6 +2876,10 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
         type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
       });
 
+          dispatch({
+            type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+          });
+
       setTimeout(
         () =>
           dispatch({
@@ -2727,6 +2899,10 @@ export const getTotalHitsAllTime = () => async (dispatch) => {
       dispatch({
         type: TOTAL_HITS_BLOCK_LOADING_COMPLETE,
       });
+
+          dispatch({
+            type: TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+          });
 
       setTimeout(
         () =>

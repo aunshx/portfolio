@@ -42,6 +42,9 @@ import {
   TOTAL_HITS_SYNOPSIS_YEAR,
   TOTAL_HITS_SYNOPSIS_ALL_TIME,
   TOTAL_HITS_SYNOPSIS_LOADING_COMPLETE,
+
+  // Total Hits Type
+  TOTAL_HITS_TYPE
 } from "../actions/types";
 //
 const initialState = {
@@ -55,31 +58,32 @@ const initialState = {
 
   // Total Hits Block
   totalHitsBlockLoading: false,
-  totalHitsBlock: 0,
+  totalHitsBlock: '0',
 
   // Total Cold Messages Block
   totalColdMessagesLoading: false,
-  totalColdMessagesBlock: 0,
+  totalColdMessagesBlock: '0',
 
   // Total Ongoing Messages Block
   totalOngoingMessagesLoading: false,
-  totalOngoingMessagesBlock: 0,
+  totalOngoingMessagesBlock: '0',
 
   // Total Success Messages Block
   totalSuccessMessagesLoading: false,
-  totalSuccessMessagesBlock: 0,
+  totalSuccessMessagesBlock: '0',
 
   // Total Not Replied Messages Block
   totalNoReplyMessagesLoading: false,
-  totalNoReplyMessagesBlock: 0,
+  totalNoReplyMessagesBlock: '0',
 
   // Total Hits Synopsis
   totalHitsSynopsisLoading: false,
-  totalHitsSynopsisToday: 0,
-  totalHitsSynopsisWeek: 0,
-  totalHitsSynopsisMonth: 0,
-  totalHitsSynopsisYear: 0,
-  totalHitsSynopsisAllTime: 0,
+  totalHitsSynopsisToday: '0',
+  totalHitsSynopsisWeek: '0',
+  totalHitsSynopsisMonth: '0',
+  totalHitsSynopsisYear: '0',
+  totalHitsSynopsisAllTime: '0',
+  totalHitsType: ''
 };
 // kk
 function authReducer(state = initialState, action) {
@@ -121,6 +125,11 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         totalHitsSynopsisLoading: false,
+      };
+    case TOTAL_HITS_TYPE:
+      return {
+        ...state,
+        totalHitsType: payload,
       };
 
     // Total Not Replied Messages
