@@ -11,11 +11,10 @@ import {
   getTotalNoReplyMessagesMonth,
   getTotalNoReplyMessagesYear,
   getTotalNoReplyMessagesAllTime,
-} from "../../../../redux/actions/metrics";
+} from "../../../../../redux/actions/metrics";
 
-import windowSize from "../../../../utils/windowSize";
-import NothingToShow from "../NothingToShow";
-import DurationSelector from "../DurationSelector";
+import windowSize from "../../../../../utils/windowSize";
+import DurationSelector from "../../DurationSelector";
 
 const TotalNoReply = ({
   // Redux Actions

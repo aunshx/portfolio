@@ -82,7 +82,7 @@ const VisitorChart = ({
   const { width, height } = windowSize();
   const [duration, setDuration] = useState("week");
 
-  useEffect(() => getTotalHitsChartYear(), []);
+  useEffect(() => getTotalHitsChartWeek(), []);
 
   const onChangeDuration = (e) => {
     setDuration(e.target.value);

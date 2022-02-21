@@ -8,11 +8,11 @@ import windowSize from '../../../utils/windowSize';
 import VisitorGraph from './charts/VisitorGraph';
 import Alerts from '../../layout/Alerts';
 import HitsChart from './charts/HitsChart';
-import TotalHits from './blocks/TotalHits';
-import TotalColds from './blocks/TotalColds';
-import TotalOngoings from './blocks/TotalOngoings';
-import TotalSuccess from './blocks/TotalSuccess';
-import TotalNotReplied from './blocks/TotalNotReplied';
+import TotalHits from "./blocks/upper/TotalHits";
+import TotalColds from './blocks/lower/TotalColds';
+import TotalOngoings from "./blocks/lower/TotalOngoings";
+import TotalSuccess from "./blocks/lower/TotalSuccess";
+import TotalNotReplied from './blocks/lower/TotalNotReplied';
 
 const Stats = ({
     // Redux State
