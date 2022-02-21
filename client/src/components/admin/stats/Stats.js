@@ -11,6 +11,7 @@ import HitsChart from './charts/HitsChart';
 import TotalHits from './blocks/TotalHits';
 import TotalColds from './blocks/TotalColds';
 import TotalOngoings from './blocks/TotalOngoings';
+import TotalSuccess from './blocks/TotalSuccess';
 
 const Stats = ({
     // Redux State
@@ -48,10 +49,10 @@ const { width, height } = windowSize()
               <TotalColds />
             </div>
             <div className='four-two' style={{ border: "1px solid red" }}>
-              <TotalOngoings />
+              <TotalSuccess />
             </div>
             <div className='four-three' style={{ border: "1px solid red" }}>
-              l
+              <TotalOngoings />
             </div>
             <div className='four-four' style={{ border: "1px solid red" }}>
               l

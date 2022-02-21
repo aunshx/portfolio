@@ -63,7 +63,7 @@ const TotalSuccesses = ({
           <div className='spinner-new-block'></div>
         ) : (
           <>
-            <div className='value' style={{ color: "#ffb429" }}>
+            <div className='value' style={{ color: "#7ed957" }}>
               {totalSuccessMessagesBlock}
             </div>
           </>
