@@ -1109,6 +1109,8 @@ export const getTotalHitsChartWeek = () => async (dispatch) => {
 
     const res = await api.get("/metrics/total-hits-chart-seven-days");
 
+    console.log(res.data)
+
     dispatch({
       type: TOTAL_HITS_CHART,
       payload: res.data,

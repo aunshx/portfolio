@@ -375,7 +375,7 @@ router.get("/total-hits-chart-seven-days", auth, async (req, res) => {
           _id: 0,
         },
       },
-    ]).sort({ "date.year": 1, "date.month": 1, "date.day": 1 });
+    ]).sort({ "name":1 });
 
     return res.status(200).send(ans);
   } catch (error) {
