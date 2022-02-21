@@ -44,14 +44,15 @@ router.get("/capture-ip", async (req, res) => {
 
   try {
 
-     const ipDeets = await axios.get("https://geolocation-db.com/json/");
+     const ipDeets = await axios.get("https://api.ipify.org?format=json/");
+     const ipDetails = await axios.get(`http://ip-api.com/json/${ipDeets.data}`)
 
-      if(ipDeets){
+      if(ipDetails){
         let ans = new Ip({
-          ip: ipDeets.data.IPv4,
-          country: ipDeets.data.country_name,
-          countryCode: ipDeets.data.country_code,
-          city: ipDeets.data.city,
+          ip: ipDeets.data,
+          country: ipDetails.data.country,
+          countryCode: ipDetails.data.countryCode,
+          city: ipDetails.data.city,
         });
 
         await ans.save();

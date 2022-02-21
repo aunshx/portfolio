@@ -24,9 +24,7 @@ const SynopsisHits = ({
   },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
   const [currentValue, setCurrentValue] = useState(0)
-  const [currentValueSign, setCurrentValueSign] = useState(false)
 
   useEffect(() => {
     if (totalHitsType === "today") {
