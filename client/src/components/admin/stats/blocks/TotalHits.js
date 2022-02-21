@@ -17,45 +17,7 @@ import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
 import DurationSelector from "../DurationSelector";
 
-const COLORS = [
-  "#0088FE",
-  "#00C49F",
-  "#0FBB28",
-  "#FF8042",
-  "#FD8042",
-  "#AF0042",
-  "#HF0042",
-  "#FF0032",
-];
-
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-}) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill='white'
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline='central'
-    >
-      {`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
-
-const VisitorChart = ({
+const TotalHits = ({
   // Redux Actions
   getTotalHitsToday,
   getTotalHitsWeek,
@@ -91,8 +53,8 @@ const VisitorChart = ({
   return (
     <div className='charts flex_middle'>
       <div
-        className={displayMode ? "app card card--dark" : "app card"}
-        style={{ width: "90%", height: "90%" }}
+        className={displayMode ? "app block block--dark" : "app block"}
+        style={{ justifyContent: "space-between" }}
       >
         <div className='triple_grid'>
           <div></div>
@@ -100,15 +62,13 @@ const VisitorChart = ({
           <div className='flex_middle'></div>
         </div>
         {totalHitsBlockLoading ? (
-          <div className='spinner-new'></div>
+          <div className='spinner-new-block'></div>
         ) : (
           <>
             {totalHitsBlock.length > 0 ? (
               <></>
             ) : (
-              <div>
-                  0
-              </div>
+              <div className='value'>{totalHitsBlock}</div>
             )}
           </>
         )}
@@ -123,7 +83,7 @@ const VisitorChart = ({
   );
 };
 
-VisitorChart.propTypes = {
+TotalHits.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
   getTotalHitsToday: PropTypes.func.isRequired,
@@ -146,4 +106,4 @@ const mapStateToActions = {
   getTotalHitsAllTime,
 };
 
-export default connect(mapStateToProps, mapStateToActions)(VisitorChart);
+export default connect(mapStateToProps, mapStateToActions)(TotalHits);

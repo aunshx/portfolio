@@ -8,6 +8,7 @@ import windowSize from '../../../utils/windowSize';
 import VisitorGraph from './charts/VisitorGraph';
 import Alerts from '../../layout/Alerts';
 import HitsChart from './charts/HitsChart';
+import TotalHits from './blocks/TotalHits';
 
 const Stats = ({
     // Redux State
@@ -23,7 +24,14 @@ const { width, height } = windowSize()
           <div className='one flex_middle' style={{ border: "1px solid red" }}>
             <VisitorGraph />
           </div>
-          <div className='two' style={{ border: "1px solid red" }}></div>
+          <div className='two' style={{ border: "1px solid red" }}>
+            <div className="two-one" style={{ border: '1px solid red' }}>
+              <TotalHits />
+            </div>
+            <div className="two-two" style={{ border: '1px solid red' }}>l</div>
+            <div className="two-three" style={{ border: '1px solid red' }}>l</div>
+            <div className="two-four" style={{ border: '1px solid red' }}>l</div>
+          </div>
           <div className='three' style={{ border: "1px solid red" }}>
             <HitsChart />
           </div>

@@ -22,7 +22,7 @@ const initialState = {
 
   // Total Hits Block
   totalHitsBlockLoading: false,
-  totalHitsBlock: [],
+  totalHitsBlock: 0,
 
   // Total Hits Chart
   totalHitsChartLoading: false,

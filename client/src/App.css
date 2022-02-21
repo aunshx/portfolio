@@ -2636,6 +2636,28 @@ from {
   animation: pulse 1s alternate ease-in-out infinite;
 }
 
+.spinner-new-block {
+  display: flex;
+  width: 2em;
+  height: 2em;
+  border: 3px solid transparent;
+  border-top-color: var(--logo-color);
+  border-bottom-color: var(--logo-color);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+.spinner-new-block:before {
+  content: '';
+  display: block;
+  margin: auto;
+  width: 0.75em;
+  height: 0.75em;
+  border: 3px solid var(--logo-color);
+  border-radius: 50%;
+  animation: pulse 1s alternate ease-in-out infinite;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -2987,10 +3009,18 @@ from {
   /* height: auto; */
   margin: 50px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, 45vh);
   column-gap: 10px;
   /* border: 1px solid red; */
+}
+
+.stats-main .two {
+  display: grid;
+  grid-template-areas: 'two-one two-two'
+  'two-three' 'two-four';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 @media only screen and (min-width: 1028px) and (max-width: 1250px) {
@@ -3057,6 +3087,35 @@ from {
 .charts .card .title {
   color: var(--lighter-dark-font-color);
   font-size: 1.2em;
+  font-weight: bold;
+}
+
+.charts .block {
+  color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 10px;
+  width: 80%;
+  height: 120px;
+}
+
+.charts .block--dark {
+  border: 1px solid var(--light-dark-font-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.charts .block .title {
+  color: var(--lighter-dark-font-color);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.charts .block .value {
+  color: var(--lighter-dark-font-color);
+  font-size: 1.5em;
   font-weight: bold;
 }
 
