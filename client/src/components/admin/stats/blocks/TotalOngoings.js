@@ -6,49 +6,49 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import {
-  getTotalColdMessagesToday,
-  getTotalColdMessagesWeek,
-  getTotalColdMessagesMonth,
-  getTotalColdMessagesYear,
-  getTotalColdMessagesAllTime,
+  getTotalOngoingMessagesToday,
+  getTotalOngoingMessagesWeek,
+  getTotalOngoingMessagesMonth,
+  getTotalOngoingMessagesYear,
+  getTotalOngoingMessagesAllTime,
 } from "../../../../redux/actions/metrics";
 
 import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
 import DurationSelector from "../DurationSelector";
 
-const TotalColds = ({
+const TotalOngoings = ({
   // Redux Actions
-  getTotalColdMessagesToday,
-  getTotalColdMessagesWeek,
-  getTotalColdMessagesMonth,
-  getTotalColdMessagesYear,
-  getTotalColdMessagesAllTime,
+  getTotalOngoingMessagesToday,
+  getTotalOngoingMessagesWeek,
+  getTotalOngoingMessagesMonth,
+  getTotalOngoingMessagesYear,
+  getTotalOngoingMessagesAllTime,
   // Redux State
-  metrics: { totalColdsBlockLoading, totalColdMessagesBlock },
+  metrics: { totalOngoingMessagesLoading, totalOngoingMessagesBlock },
   settings: { displayMode },
 }) => {
   const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
-  useEffect(() => getTotalColdMessagesToday(), []);
+  useEffect(() => getTotalOngoingMessagesToday(), [])
 
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
     if (e.target.value === "today") {
-      getTotalColdMessagesToday();
+      getTotalOngoingMessagesToday();
     }
     if (e.target.value === "week") {
-      getTotalColdMessagesWeek();
+      getTotalOngoingMessagesWeek();
     }
     if (e.target.value === "month") {
-      getTotalColdMessagesMonth();
+      getTotalOngoingMessagesMonth();
     }
     if (e.target.value === "year") {
-      getTotalColdMessagesYear();
+      getTotalOngoingMessagesYear();
     }
     if (e.target.value === "all-time") {
-      getTotalColdMessagesAllTime();
+      getTotalOngoingMessagesAllTime();
     }
   };
 
@@ -58,13 +58,13 @@ const TotalColds = ({
         className={displayMode ? "app block block--dark" : "app block"}
         style={{ justifyContent: "space-between" }}
       >
-        <div className='title flex_middle'>Total Colds</div>
-        {totalColdsBlockLoading ? (
+        <div className='title flex_middle'>Total Ongoings</div>
+        {totalOngoingMessagesLoading ? (
           <div className='spinner-new-block'></div>
         ) : (
           <>
-            <div className='value' style={{ color: "#c0c0c0" }}>
-              {totalColdMessagesBlock}
+            <div className='value' style={{ color: "#ffb429" }}>
+              {totalOngoingMessagesBlock}
             </div>
           </>
         )}
@@ -79,14 +79,14 @@ const TotalColds = ({
   );
 };
 
-TotalColds.propTypes = {
+TotalOngoings.propTypes = {
   settings: PropTypes.object.isRequired,
   metrics: PropTypes.object.isRequired,
-  getTotalColdMessagesToday: PropTypes.func.isRequired,
-  getTotalColdMessagesWeek: PropTypes.func.isRequired,
-  getTotalColdMessagesMonth: PropTypes.func.isRequired,
-  getTotalColdMessagesYear: PropTypes.func.isRequired,
-  getTotalColdMessagesAllTime: PropTypes.func.isRequired,
+  getTotalOngoingMessagesToday: PropTypes.func.isRequired,
+  getTotalOngoingMessagesWeek: PropTypes.func.isRequired,
+  getTotalOngoingMessagesMonth: PropTypes.func.isRequired,
+  getTotalOngoingMessagesYear: PropTypes.func.isRequired,
+  getTotalOngoingMessagesAllTime: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -95,11 +95,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-  getTotalColdMessagesToday,
-  getTotalColdMessagesWeek,
-  getTotalColdMessagesMonth,
-  getTotalColdMessagesYear,
-  getTotalColdMessagesAllTime,
+  getTotalOngoingMessagesToday,
+  getTotalOngoingMessagesWeek,
+  getTotalOngoingMessagesMonth,
+  getTotalOngoingMessagesYear,
+  getTotalOngoingMessagesAllTime,
 };
 
-export default connect(mapStateToProps, mapStateToActions)(TotalColds);
+export default connect(mapStateToProps, mapStateToActions)(TotalOngoings);

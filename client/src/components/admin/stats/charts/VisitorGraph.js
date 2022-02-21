@@ -78,6 +78,8 @@ const VisitorChart = ({
   const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
+  useEffect(() => getVisitorsPerCountryToday(), []);
+
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
     if (e.target.value === "today") {

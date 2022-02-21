@@ -21,13 +21,6 @@ import {
   ERROR_SNACKBAR,
 } from "./types";
 
-import {
-  getVisitorsPerCountryToday,
-  getTotalHitsChartWeek,
-  getTotalHitsToday,
-  getTotalColdMessagesToday,
-} from "./metrics";
-
 export const snackbarDeactivate = (value) => async (dispatch) => {
   dispatch({
     type: SNACKBAR_RESET,
@@ -47,11 +40,6 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
 
-    dispatch(getVisitorsPerCountryToday());
-    dispatch(getTotalHitsChartWeek());
-    dispatch(getTotalHitsToday());
-    dispatch(getTotalColdMessagesToday());
-    
   } catch (err) {
     dispatch({
       type: AUTH_ERROR,

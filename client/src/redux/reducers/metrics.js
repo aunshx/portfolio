@@ -18,6 +18,11 @@ import {
   TOTAL_COLD_MESSAGE_LOADING,
   TOTAL_COLD_MESSAGE,
   TOTAL_COLD_MESSAGE_LOADING_COMPLETE,
+
+  // Total Ongoing Message Block
+  TOTAL_ONGOING_MESSAGE_LOADING,
+  TOTAL_ONGOING_MESSAGE,
+  TOTAL_ONGOING_MESSAGE_LOADING_COMPLETE,
 } from "../actions/types";
 //
 const initialState = {
@@ -36,12 +41,33 @@ const initialState = {
   // Total Cold Messages Block
   totalColdMessagesLoading: false,
   totalColdMessagesBlock: 0,
+
+  // Total Cold Messages Block
+  totalOngoingMessagesLoading: false,
+  totalOngoingMessagesBlock: 0,
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    //   Total Ongoing Messages
+    case TOTAL_ONGOING_MESSAGE:
+      return {
+        ...state,
+        totalOngoingMessagesBlock: payload,
+      };
+    case TOTAL_ONGOING_MESSAGE_LOADING:
+      return {
+        ...state,
+        totalOngoingMessagesLoading: true,
+      };
+    case TOTAL_ONGOING_MESSAGE_LOADING_COMPLETE:
+      return {
+        ...state,
+        totalOngoingMessagesLoading: false,
+      };
+
     //   Total Cold Messages
     case TOTAL_COLD_MESSAGE:
       return {

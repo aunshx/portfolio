@@ -31,6 +31,8 @@ const TotalHits = ({
   const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
+  useEffect(() => getTotalHitsToday(), []);
+
   const onChangeDuration = (e) => {
     setDuration(e.target.value);
     if (e.target.value === "today") {
@@ -56,11 +58,7 @@ const TotalHits = ({
         className={displayMode ? "app block block--dark" : "app block"}
         style={{ justifyContent: "space-between" }}
       >
-        <div className='triple_grid'>
-          <div></div>
-          <div className='title flex_middle'>Total Hits</div>
-          <div className='flex_middle'></div>
-        </div>
+        <div className='title flex_middle'>Total Hits</div>
         {totalHitsBlockLoading ? (
           <div className='spinner-new-block'></div>
         ) : (
