@@ -27,37 +27,87 @@ const { width, height } = windowSize()
       <Navbar />
       <div className='app'>
         <div className={width < 787 ? "stats-main-mobile" : "stats-main"}>
-          <div className='one flex_middle' style={{ border: "1px solid red" }}>
+          <div
+            className='one flex_middle'
+            style={{ border: "1px solid red" }}
+            data-aos='fade-up'
+            data-aos-delay={100}
+          >
             <VisitorGraph />
           </div>
           <div className='two' style={{ border: "1px solid red" }}>
-            <div className='two-one' style={{ border: "1px solid red" }}>
+            <div
+              className='two-one'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={100}
+            >
               <TotalHits />
             </div>
-            <div className='two-two' style={{ border: "1px solid red" }}>
+            <div
+              className='two-two'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={200}
+            >
               <SynopsisHits />
             </div>
-            <div className='two-three' style={{ border: "1px solid red" }}>
+            <div
+              className='two-three'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={300}
+            >
               <RecentEmails />
             </div>
-            <div className='two-four' style={{ border: "1px solid red" }}>
+            <div
+              className='two-four'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={400}
+            >
               l
             </div>
           </div>
-          <div className='three' style={{ border: "1px solid red" }}>
+          <div
+            className='three'
+            style={{ border: "1px solid red" }}
+            data-aos='fade-up'
+            data-aos-delay={200}
+          >
             <HitsChart />
           </div>
           <div className='four' style={{ border: "1px solid red" }}>
-            <div className='four-one' style={{ border: "1px solid red" }}>
+            <div
+              className='four-one'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={500}
+            >
               <TotalSuccess />
             </div>
-            <div className='four-two' style={{ border: "1px solid red" }}>
+            <div
+              className='four-two'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={600}
+            >
               <TotalOngoings />
             </div>
-            <div className='four-three' style={{ border: "1px solid red" }}>
+            <div
+              className='four-three'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={700}
+            >
               <TotalNotReplied />
             </div>
-            <div className='four-four' style={{ border: "1px solid red" }}>
+            <div
+              className='four-four'
+              style={{ border: "1px solid red" }}
+              data-aos='fade-up'
+              data-aos-delay={800}
+            >
               <TotalColds />
             </div>
           </div>
