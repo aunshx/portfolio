@@ -3172,3 +3172,7 @@ from {
   align-items: center;
 }
 }
+
+.grabbing {
+  cursor: -webkit-grab; cursor: grab;
+}
