@@ -6,16 +6,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSkullCrossbones
 } from "@fortawesome/free-solid-svg-icons";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import {
     deleteMessage
 } from '../../../redux/actions/contact'
 
-const DeleteMessage = ({ close, name, messageId,
-    // Redux Actions 
-    deleteMessage,
-    // Redux State
-    settings: { displayMode } 
+const DeleteMessage = ({
+  close,
+  name,
+  messageId,
+  // Redux Actions
+  deleteMessage,
+  // Redux State
+  settings: { displayMode },
+  contact: { deleteMessageLoading },
 }) => {
   return (
     <div
@@ -42,8 +47,21 @@ const DeleteMessage = ({ close, name, messageId,
       <div className='flex_right' style={{ width: "100%" }}>
         <div className='flex_middle'>
           <div style={{ marginRight: "1.3em" }}>
-            <button className='button-yes' onClick={() => deleteMessage(messageId)}>
-              Yes
+            <button
+              className='button-yes flex_middle'
+              onClick={() => deleteMessage(messageId)}
+            >
+              <div className='flex_middle'>
+                <div style={{ marginRight: "-0.5em" }}>Yes</div>
+                {/* <div style={{ width: 10 }}>
+                  {deleteMessageLoading && (
+                    <CircularProgress
+                      color='success'
+                      style={{ padding: "14px" }}
+                    />
+                  )}
+                </div> */}
+              </div>
             </button>
           </div>
           <div>
@@ -55,15 +73,17 @@ const DeleteMessage = ({ close, name, messageId,
       </div>
     </div>
   );
-}
+};
 
 DeleteMessage.propTypes = {
   settings: PropTypes.object.isRequired,
+  contact: PropTypes.object.isRequired,
   deleteMessage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
+  contact: state.contact,
 });
 
 const mapActionsToProps = {

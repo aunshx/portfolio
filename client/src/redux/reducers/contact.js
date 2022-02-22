@@ -31,7 +31,7 @@ messages: [],
 messagesLoading: false,
 
 // Delete Message
-deleteMessageLoading: false
+deleteMessageLoading: true
 };
 // kk
 function authReducer(state = initialState, action) {
@@ -51,11 +51,11 @@ function authReducer(state = initialState, action) {
           deleteMessageLoading: true,
         };
 
-      case DELETE_MESSAGE_LOADING_COMPLETE:
-        return {
-          ...state,
-          deleteMessageLoading: false,
-        };
+      // case DELETE_MESSAGE_LOADING_COMPLETE:
+      //   return {
+      //     ...state,
+      //     deleteMessageLoading: false,
+      //   };
 
       // Messages - Update Status
       case UPDATE_MESSAGE_STATUS:
