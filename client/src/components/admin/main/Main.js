@@ -1,24 +1,51 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Navbar from '../navbar/Navbar'
 import Messages from '../message/Messages';
+import FooterAdmin from '../../layout/FooterAdmin';
+import Footer from '../../layout/Footer';
+import { connect } from 'react-redux';
 
-const Main = props => {
-    // useEffect(() => {
-    
-    // }, []);
+import {
+  getMessages
+} from '../../../redux/actions/contact'
+
+const Main = ({
+  // Redux Actions
+  getMessages,
+  // Redux State
+  contact: { messages }
+}) => {
+
+  const [limit, setLimit] = useState(0)
+
+  useEffect(() => {
+    getMessages(limit)
+  }, []);
+  
   return (
     <>
       <Navbar />
       <div className='app'>
         <div className='admin-main'>
-            <Messages />
+          <Messages messages={messages} />
         </div>
       </div>
     </>
   );
-}
+};
 
-Main.propTypes = {}
+Main.propTypes = {
+  contact: PropTypes.object.isRequired,
+  getMessages: PropTypes.func.isRequired,
+};
 
-export default Main
+const mapStateToProps = (state) => ({
+  contact: state.contact
+});
+
+const mapStateToActions = {
+  getMessages,
+};
+
+export default connect(mapStateToProps, mapStateToActions)(Main);

@@ -32,7 +32,7 @@ const Tag = ({ status }) => {
             default:
                 return null  
         }
-    },[])
+    },[status])
   return (
     <>
       <div className={`tag ${statusState}`}>{statusMessage}</div>

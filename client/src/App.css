@@ -3221,6 +3221,7 @@ from {
 }
 
 @media only screen and (max-width: 786px) {
+
   .stats-main .first-half {
   display: flex;
   flex-direction: column;

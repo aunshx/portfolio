@@ -3,24 +3,19 @@ import PropTypes from 'prop-types'
 import { Menu, MenuItem, Tooltip } from '@mui/material';
 import { connect } from 'react-redux';
 
-const StatusSelector = ({ anchorEl, open, handleClose, settings: { displayMode } }) => {
+import { updateMessageStatus } from "../../../redux/actions/contact";
+
+const StatusSelector = ({ anchorEl, open, handleClose, 
+  messageId,
+  status,
+  // Redux Actions 
+  updateMessageStatus,
+  // Redux State
+  settings: { displayMode } 
+}) => {
 
     const changeStatus  = (stat) => {
-        if(stat === 'success') {
-            
-        }
-        if(stat === 'ongoing') {
-            
-        }
-        if(stat === 'cold') {
-            
-        }
-        if(stat === 'unseen') {
-            
-        }
-        if(stat === 'not-replied') {
-            
-        }
+      updateMessageStatus(stat, messageId, status);
     }
   return (
     <>
@@ -194,10 +189,15 @@ const StatusSelector = ({ anchorEl, open, handleClose, settings: { displayMode }
 
 StatusSelector.propTypes = {
   settings: PropTypes.object.isRequired,
+  updateMessageStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
 });
 
-export default connect(mapStateToProps)(StatusSelector);
+const mapActionsToProps = {
+  updateMessageStatus,
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(StatusSelector);

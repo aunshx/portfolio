@@ -13,7 +13,6 @@ const { verify } = require("crypto");
 // @desc     Get user by token
 // @access   Private
 router.get("/get-data", auth, async (req, res) => {
-  console.log('HIT')
   try {
     const user = await User.findById(req.user.id)
       .select("-password")

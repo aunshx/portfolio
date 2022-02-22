@@ -57,7 +57,11 @@ router.post(
           .status(400)
           .send({ errors: [{ msg: "Message does not exist" }] });
       } else {
-        return res.status(200).send("Message status updated!");
+        let ans2 = await Message.find(
+          {$and: [{_id: messageId}, {userId: req.user.id }]}
+        ).select('status')
+
+        return res.status(200).send(ans2);
       }
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
