@@ -120,7 +120,7 @@ const VisitorChart = ({
             {totalHitsChart.length > 0 ? (
               <ResponsiveContainer
                 width='99%'
-                height={width < 480 ? 240 : "99%"}
+                height={width < 768 ? 270 : "99%"}
               >
                 <LineChart
                   data={totalHitsChart}

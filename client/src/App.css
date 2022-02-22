@@ -3006,13 +3006,10 @@ from {
 /* ------------------------------ STATS - MAIN ----------------------- */
 .stats-main {
   width: 1200px;
-  /* height: auto; */
-  margin: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: repeat(2, 45vh); */
   column-gap: 10px;
-  /* border: 1px solid red; */
+  height: 100%;
 }
 
 .stats-main .first-half {
@@ -3029,32 +3026,22 @@ from {
 @media only screen and (min-width: 1028px) and (max-width: 1250px) {
   .stats-main {
   width: 1000px;
-  height: auto;
-  margin: 50px;
 }
 }
 
 @media only screen and (min-width: 786px) and (max-width: 1028px) {
-  .stats-main-mobile {
-  width: 95vw;
-  height: auto;
-  margin: 50px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid red;
+  .stats-main {
+  width: 770px;
 }
 }
 
 @media only screen and (max-width: 786px) {
-  .stats-main-mobile {
-  width: 95vw;
-  height: auto;
-  margin: 50px;
+  .stats-main {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  border: 1px solid red;
+  align-items: center;
+  width: 100vw;
+  height: auto;
 }
 }
 
@@ -3102,7 +3089,7 @@ from {
   font-family: 'Comfortaa', cursive;
   padding: 10px;
   min-width: 250px;
-  height: 130px;
+  min-height: 130px;
 }
 
 .charts .block-long {
@@ -3114,8 +3101,12 @@ from {
   font-family: 'Comfortaa', cursive;
   padding: 10px;
   width: 80%;
-  height: 130px;
+  min-height: 130px;
   min-width: 250px;
+}
+
+.charts .block-message {
+  width: 220px;
 }
 
 .charts .block--dark,
@@ -3162,14 +3153,114 @@ from {
   margin: 0.5em 0;
 }
 
+.grabbing {
+  cursor: -webkit-grab; cursor: grab;
+}
+
+@media only screen and (min-width: 1028px) and (max-width: 1250px) {
+  .charts .card .title {
+  font-size: 1em;
+}
+
+.charts .block .title, 
+.charts .block-long .title {
+  font-size: 0.9em;
+}
+  .charts .block {
+  min-width: 210px;
+  min-height: 100px;
+}
+
+.charts .block .value--change {
+  font-size: 1em;
+}
+
+.charts .block-message {
+  width: 210px;
+  height: 100px;
+}
+
+.charts .block-long {
+  min-height: 130px;
+  min-width: 220px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1028px) {
+
+    .charts .card .title {
+  font-size: 0.9em;
+}
+
+.charts .block .title, 
+.charts .block-long .title {
+  font-size: 0.8em;
+}
+  .charts .block {
+  min-width: 150px;
+  min-height: 100px;
+}
+
+.charts .block-message {
+  width: 150px;
+  height: 100px;
+}
+
+.charts .block .value--change {
+  font-size: 1em;
+}
+
+.charts .block-long {
+  min-height: 130px;
+  min-width: 190px;
+}
+}
+
 @media only screen and (max-width: 786px) {
-  .charts .triple_grid {
+  .stats-main .first-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  width: 95vw;
+}
+.stats-main .second-half {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+  .charts .card .title {
+  font-size: 0.9em;
 }
 
-.grabbing {
-  cursor: -webkit-grab; cursor: grab;
+.charts .block .title, 
+.charts .block-long .title {
+  font-size: 0.8em;
+}
+  .charts .block {
+  width: 220px;
+  height: 100px;
+  margin: 20px 0;
+}
+
+.charts .block-message {
+  width: 220px;
+  height: 100px;
+    margin: 20px 0;
+
+}
+
+.charts .block .value--change {
+  font-size: 1em;
+}
+
+.charts .block-long {
+  height: 150px;
+  width: 240px;
+    margin: 20px 0;
+
+}
 }

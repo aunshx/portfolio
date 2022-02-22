@@ -21,7 +21,7 @@ const MessageUpdates = ({
     <div className='charts flex_middle'>
       <div
         className={
-          displayMode ? "app block-long block-long--dark" : "app block-long"
+          displayMode ? "app block block--dark block-message" : "app block block-message"
         }
         style={{ justifyContent: "space-between" }}
       >
@@ -33,7 +33,7 @@ const MessageUpdates = ({
             {totalNoReplyMessagesBlock > 0 ? (
               <div
                 className='value--change--text ft-bold'
-                style={{ textAlign: "center", fontSize: "0.85em" }}
+                style={{ textAlign: "center", fontSize: "0.8em" }}
               >
                 You have <span style={{ color: "#ff5252" }}>unreplied</span>{" "}
                 messages. Please reply to them!

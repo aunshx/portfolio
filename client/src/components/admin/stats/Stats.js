@@ -56,26 +56,22 @@ const Stats = ({}) => {
               style={{ marginTop: "45px", width: "100%", height: "20px" }}
             ></div>
             <div
-              className={width < 787 ? "stats-main-mobile" : "stats-main"}
+              className={"stats-main"}
               style={{
-                border: "1px solid red",
-                height: "100%",
                 margin: "0",
               }}
             >
               <div className='first-half'>
                 <div
                   className='one flex_middle'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
+                  // data-aos='fade-up'
                   data-aos-delay={100}
                 >
                   <VisitorGraph />
                 </div>
                 <div
                   className='three'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
+                  // data-aos='fade-up'
                   data-aos-delay={200}
                 >
                   <HitsChart />
@@ -90,28 +86,28 @@ const Stats = ({}) => {
                 >
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={100}
                   >
                     <TotalHits />
                   </div>
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={200}
                   >
                     <TotalSuccess />
                   </div>
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={300}
                   >
                     <TotalNotReplied />
                   </div>
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={400}
                   >
                     <RecentEmails />
@@ -125,28 +121,28 @@ const Stats = ({}) => {
                 >
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={500}
                   >
                     <SynopsisHits />
                   </div>
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={600}
                   >
                     <TotalOngoings />
                   </div>
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={700}
                   >
                     <TotalColds />
                   </div>
                   <div
                     className='flex_middle'
-                    data-aos='fade-up'
+                    // data-aos='fade-up'
                     data-aos-delay={800}
                   >
                     <MessageUpdates />

@@ -122,7 +122,7 @@ const VisitorChart = ({
             {visitorPieChart.length > 0 ? (
               <ResponsiveContainer
                 width='99%'
-                height={width < 480 ? 240 : "99%"}
+                height={width < 768 ? 270 : "99%"}
               >
                 <PieChart>
                   <Pie
