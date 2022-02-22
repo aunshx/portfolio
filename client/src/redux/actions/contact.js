@@ -4,6 +4,7 @@ import {
   // Snackbar
   SNACKBAR_RESET,
   ERROR_SNACKBAR,
+  SUCCESS_200,
 
   // Email
   EMAIL_LOADING,
@@ -22,7 +23,137 @@ import {
   // Messages - Delete
   DELETE_MESSAGE_LOADING,
   DELETE_MESSAGE_LOADING_COMPLETE,
+  REMOVE_MESSAGE_FROM_ARRAY
 } from "./types";
+
+//  Delete Message
+export const deleteMessage = (messageId) => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  const body = JSON.stringify({
+    messageId,
+  });
+
+  try {
+    dispatch({
+      type: DELETE_MESSAGE_LOADING,
+    });
+
+    const res = await api.post("/contact/message-delete", body);
+
+    dispatch({
+      type: REMOVE_MESSAGE_FROM_ARRAY,
+      payload: messageId
+    });
+
+    value={
+      message: 'Message deleted successfully!',
+      type: 'success'
+    }
+
+    dispatch({
+      type: SUCCESS_200,
+      payload: value
+    });
+
+    dispatch({
+      type: DELETE_MESSAGE_LOADING_COMPLETE,
+    });
+
+    setTimeout(
+      () =>
+        dispatch({
+          type: SNACKBAR_RESET,
+        }),
+      5000
+    );
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: DELETE_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: DELETE_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: DELETE_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: DELETE_MESSAGE_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
 
 // Retrieve Latest Messages
 export const updateMessageStatus = (status, messageId, previousStatus) => async (dispatch) => {

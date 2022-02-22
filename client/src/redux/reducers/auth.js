@@ -8,6 +8,7 @@ import {
   LOGIN_LOADING,
   SNACKBAR_RESET,
   ERROR_SNACKBAR,
+  SUCCESS_200,
 } from "../actions/types";
 
 import { nanoid } from "nanoid";
@@ -28,13 +29,20 @@ function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case SUCCESS_200:
+      return {
+        ...state,
+        message: payload.message,
+        type: payload.type,
+        key: nanoid(),
+      };
     case ERROR_SNACKBAR:
       return {
         ...state,
         message: payload.message,
         type: payload.type,
         key: nanoid(),
-        errorSnackbar: true
+        errorSnackbar: true,
       };
     case SNACKBAR_RESET:
       return {

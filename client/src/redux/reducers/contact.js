@@ -12,6 +12,11 @@ import {
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
+
+  // Messages - Delete
+  DELETE_MESSAGE_LOADING,
+  DELETE_MESSAGE_LOADING_COMPLETE,
+  REMOVE_MESSAGE_FROM_ARRAY,
 } from "../actions/types";
 //
 const initialState = {
@@ -25,12 +30,33 @@ const initialState = {
 messages: [],
 messagesLoading: false,
 
+// Delete Message
+deleteMessageLoading: false
 };
 // kk
 function authReducer(state = initialState, action) {
     const { type, payload } = action
 
     switch (type) {
+      // Messages - Delete
+      case REMOVE_MESSAGE_FROM_ARRAY:
+        return {
+          ...state,
+          messages: state.messages.filter((element, map) => element._id !== payload ),
+        };
+
+      case DELETE_MESSAGE_LOADING:
+        return {
+          ...state,
+          deleteMessageLoading: true,
+        };
+
+      case DELETE_MESSAGE_LOADING_COMPLETE:
+        return {
+          ...state,
+          deleteMessageLoading: false,
+        };
+
       // Messages - Update Status
       case UPDATE_MESSAGE_STATUS:
         return {
