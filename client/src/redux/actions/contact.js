@@ -18,6 +18,10 @@ import {
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
+
+  // Messages - Delete
+  DELETE_MESSAGE_LOADING,
+  DELETE_MESSAGE_LOADING_COMPLETE,
 } from "./types";
 
 // Retrieve Latest Messages

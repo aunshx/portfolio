@@ -9,7 +9,7 @@ import {
   faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
-import { Collapse, IconButton, Tooltip } from '@mui/material';
+import { Collapse, IconButton, Tooltip, Modal, Fade, Box } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
@@ -18,6 +18,7 @@ import Tag from "./Tag";
 import StatusSelector from './StatusSelector';
 
 import { updateMessageStatus } from "../../../redux/actions/contact";
+import DeleteMessage from './DeleteMessage';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,6 +32,17 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
+const style = {
+  position: "fixed",
+  top: "50%",
+  left: "48%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  border: "none",
+  p: 4,
+};
 
 const Card = ({ 
   name,
@@ -48,7 +60,8 @@ updateMessageStatus,
   settings: { displayMode } 
 }) => {
 
-  useEffect(() => {}, [])
+    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
 
         const [anchorEl, setAnchorEl] = useState(null);
 
@@ -71,6 +84,14 @@ updateMessageStatus,
         if(status === 'unseen'){
           updateMessageStatus('not-replied', messageId, status)
         }
+      }
+
+      const openDeleteBox = () => {
+        setIsDeleteOpen(true)
+      }
+
+      const closeDeleteBox = () => {
+        setIsDeleteOpen(false)
       }
 
   return (
@@ -102,6 +123,7 @@ updateMessageStatus,
                 icon={faTrash}
                 style={{ fontSize: 11 }}
                 className='delete icons'
+                onClick={openDeleteBox}
               />
             </div>
           </Tooltip>
@@ -155,6 +177,23 @@ updateMessageStatus,
           </Collapse>
         </div>
       </div>
+      <Modal
+        open={isDeleteOpen}
+        onClose={!isDeleteOpen}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+          style: {
+            backgroundColor: "rgba(0,0,0,0.8)",
+          },
+        }}
+      >
+        <Fade in={isDeleteOpen}>
+          <Box style={style}>
+            <DeleteMessage name={name} close={closeDeleteBox} messageId={messageId} />
+          </Box>
+        </Fade>
+      </Modal>
     </>
   );
 }

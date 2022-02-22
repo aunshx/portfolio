@@ -17,8 +17,10 @@
    --light-icon-color: rgb(141, 141, 141);
    --links-hover-color: rgb(133, 228, 78);
    --bodinga-color: #ff5252;
+   --light-bodinga-color: #fbe1e1;
    --ye-color: rgb(255, 180, 41);
    --gotuu-color: #7ed957;
+   --light-gotuu-color: #f1ffeb;
    --grey-color: grey;
    --faint-hover-color: rgb(245, 245, 245);
 }
@@ -34,7 +36,9 @@
   --lighter-dark-font-color: rgb(220, 220, 220);
    --expand-more-color: rgb(191, 191, 191);
     --light-color: rgb(0, 0, 0);
-    --faint-hover-color: rgb(35, 35, 35);
+    --faint-hover-color: rgb(32, 31, 31);
+     --light-bodinga-color: #252020;
+     --light-gotuu-color: #20221f;
 }
 
 * {
@@ -3268,4 +3272,74 @@ from {
     margin: 20px 0;
 
 }
+}
+
+/* ------------------------ DELETE CARD -------------------- */
+.delete-card {
+  color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 10px;
+  width: 400px;
+  min-height: 130px;
+  font-size: 0.8em;
+}
+
+.delete-card .title {
+  font-size: 1.2em;
+  color: var(--bodinga-color);
+}
+
+.delete-card--dark {
+  border: 1px solid var(--light-dark-font-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.delete-card .button {
+  background-color: transparent;
+  box-shadow: none;
+
+}
+
+.delete-card .button-yes{
+display:inline-block;
+padding:0.2em 1em;
+border:0.1em solid var(--gotuu-color);
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color: var(--gotuu-color);
+text-align:center;
+transition: all 0.2s;
+border-radius: 5px;
+cursor: pointer;
+background-color:var(--card-color);
+}
+
+.delete-card .button-yes:hover{
+background-color:var(--light-gotuu-color);
+}
+
+.delete-card .button-no{
+display:inline-block;
+padding:0.2em 1em;
+border:0.1em solid var(--bodinga-color);
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color:var(--bodinga-color);
+text-align:center;
+transition: all 0.2s;
+border-radius: 5px;
+cursor: pointer;
+background-color:var(--card-color);
+}
+
+.delete-card .button-no:hover{
+background-color:var(--light-bodinga-color);
 }
