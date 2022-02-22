@@ -1227,7 +1227,7 @@ router.get("/recent-messages-limit", auth, async (req, res) => {
   let ans = {};
   try {
     ans = await Message.find({
-    }).limit(3).select('email').select('createdAt').select('organisation')
+    }).sort({ 'createdAt': -1 }).limit(3).select('email').select('createdAt').select('organisation')
 
     return res.status(200).send(ans);
   } catch (error) {
