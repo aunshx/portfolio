@@ -12,7 +12,7 @@ const MessageUpdates = ({
   // Redux Actions
   getRecentMessagesLimit,
   // Redux State
-  metrics: { recentMessagesLimitLoading, recentMessagesLimit },
+  metrics: { totalNoReplyMessagesLoading, totalNoReplyMessagesBlock },
   settings: { displayMode },
 }) => {
   useEffect(() => getRecentMessagesLimit(), []);
@@ -23,33 +23,33 @@ const MessageUpdates = ({
         className={
           displayMode ? "app block-long block-long--dark" : "app block-long"
         }
+        style={{ justifyContent: "space-between" }}
       >
         <div className='title flex_middle'>Message Advice</div>
-        {recentMessagesLimitLoading ? (
-          <div
-            className='spinner-new-block'
-            style={{ marginTop: "1.5em" }}
-          ></div>
+        {totalNoReplyMessagesLoading ? (
+          <div className='spinner-new-block'></div>
         ) : (
           <>
-            {recentMessagesLimit.length > 0 && (
-              <>
-                {recentMessagesLimit.map((element, index) => (
-                  <div className='third_grid' key={index}>
-                    <div className='flex_middle element'>{index + 1}</div>
-                    <div className='flex_middle element'>{element.email}</div>
-                    <div
-                      className='flex_middle element'
-                      style={{ fontSize: "0.75em" }}
-                    >
-                      {moment(element.createdAt).fromNow()}
-                    </div>
-                  </div>
-                ))}
-              </>
+            {totalNoReplyMessagesBlock > 0 ? (
+              <div
+                className='value--change--text ft-bold'
+                style={{ textAlign: "center", fontSize: "0.85em" }}
+              >
+                You have <span style={{ color: "#ff5252" }}>unreplied</span>{" "}
+                messages. Please reply to them!
+              </div>
+            ) : (
+              <div
+                className='value--change--text ft-bold'
+                style={{ textAlign: "center", fontSize: "0.85em" }}
+              >
+                You have <span style={{ color: "#7ed957" }}>replied</span> to
+                all messages. <span style={{ color: "#f5bd25" }}>Cheers!</span>
+              </div>
             )}
           </>
         )}
+        <div></div>
       </div>
     </div>
   );

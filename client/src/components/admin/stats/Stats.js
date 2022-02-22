@@ -16,12 +16,10 @@ import TotalSuccess from "./blocks/lower/TotalSuccess";
 import TotalNotReplied from './blocks/lower/TotalNotReplied';
 import SynopsisHits from './blocks/upper/SynopsisHits';
 import RecentEmails from './blocks/mid/RecentEmails';
-import { Button } from '@mui/material';
 import Spinner from "../../layout/Spinner";
 
-import RefreshIcon from "@mui/icons-material/Refresh"
-
 import {getTotalHitsToday} from '../../../redux/actions/metrics'
+import MessageUpdates from './blocks/mid/MessageUpdates';
 
 const Stats = ({}) => {
   const { width } = windowSize();
@@ -90,7 +88,7 @@ const Stats = ({}) => {
                   data-aos='fade-up'
                   data-aos-delay={400}
                 >
-
+                  <MessageUpdates />
                 </div>
               </div>
               <div
