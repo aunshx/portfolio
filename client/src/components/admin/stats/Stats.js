@@ -17,6 +17,7 @@ import TotalNotReplied from './blocks/lower/TotalNotReplied';
 import SynopsisHits from './blocks/upper/SynopsisHits';
 import RecentEmails from './blocks/mid/RecentEmails';
 import Spinner from "../../layout/Spinner";
+import Footer from '../../layout/Footer'
 
 import {getTotalHitsToday} from '../../../redux/actions/metrics'
 import MessageUpdates from './blocks/mid/MessageUpdates';
@@ -44,93 +45,112 @@ const Stats = ({}) => {
         <PullToRefresh
           onRefresh={refreshingFeed}
           refreshingContent={false}
-          pullingContent={'Refreshing...'}
+          pullingContent={"Refreshing..."}
         >
-          <div className='app'>
-            <div className={'grabbing'} style={{ marginTop: '45px' , width: '100%', height: '20px'}}></div>
-            <div className={width < 787 ? "stats-main-mobile" : "stats-main"} style={{ marginTop: '0' }}>
-              <div
-                className='one flex_middle'
-                style={{ border: "1px solid red" }}
-                data-aos='fade-up'
-                data-aos-delay={100}
-              >
-                <VisitorGraph />
-              </div>
-              <div className='two' style={{ border: "1px solid red" }}>
+          <div
+            className='app'
+            style={{ height: "97vh" }}
+          >
+            <div
+              className={"grabbing"}
+              style={{ marginTop: "45px", width: "100%", height: "20px" }}
+            ></div>
+            <div
+              className={width < 787 ? "stats-main-mobile" : "stats-main"}
+              style={{
+                border: "1px solid red",
+                height: "100%",
+                margin: "0",
+              }}
+            >
+              <div className='first-half'>
                 <div
-                  className='two-one'
+                  className='one flex_middle'
                   style={{ border: "1px solid red" }}
                   data-aos='fade-up'
                   data-aos-delay={100}
                 >
-                  <TotalHits />
+                  <VisitorGraph />
                 </div>
                 <div
-                  className='two-two'
+                  className='three'
                   style={{ border: "1px solid red" }}
                   data-aos='fade-up'
                   data-aos-delay={200}
                 >
-                  <SynopsisHits />
-                </div>
-                <div
-                  className='two-three'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
-                  data-aos-delay={300}
-                >
-                  <RecentEmails />
-                </div>
-                <div
-                  className='two-four'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
-                  data-aos-delay={400}
-                >
-                  <MessageUpdates />
+                  <HitsChart />
                 </div>
               </div>
-              <div
-                className='three'
-                style={{ border: "1px solid red" }}
-                data-aos='fade-up'
-                data-aos-delay={200}
-              >
-                <HitsChart />
-              </div>
-              <div className='four' style={{ border: "1px solid red" }}>
+              <div className='second-half'>
                 <div
-                  className='four-one'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
-                  data-aos-delay={500}
+                  className='app'
+                  style={{
+                    justifyContent: "space-around",
+                  }}
                 >
-                  <TotalSuccess />
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={100}
+                  >
+                    <TotalHits />
+                  </div>
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={200}
+                  >
+                    <TotalSuccess />
+                  </div>
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={300}
+                  >
+                    <TotalNotReplied />
+                  </div>
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={400}
+                  >
+                    <RecentEmails />
+                  </div>
                 </div>
                 <div
-                  className='four-two'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
-                  data-aos-delay={600}
+                  className='app'
+                  style={{
+                    justifyContent: "space-around",
+                  }}
                 >
-                  <TotalOngoings />
-                </div>
-                <div
-                  className='four-three'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
-                  data-aos-delay={700}
-                >
-                  <TotalNotReplied />
-                </div>
-                <div
-                  className='four-four'
-                  style={{ border: "1px solid red" }}
-                  data-aos='fade-up'
-                  data-aos-delay={800}
-                >
-                  <TotalColds />
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={500}
+                  >
+                    <SynopsisHits />
+                  </div>
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={600}
+                  >
+                    <TotalOngoings />
+                  </div>
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={700}
+                  >
+                    <TotalColds />
+                  </div>
+                  <div
+                    className='flex_middle'
+                    data-aos='fade-up'
+                    data-aos-delay={800}
+                  >
+                    <MessageUpdates />
+                  </div>
                 </div>
               </div>
             </div>
@@ -143,6 +163,9 @@ const Stats = ({}) => {
           </div>
         </div>
       )}
+      <div>
+        <Footer />
+      </div>
       <div>
         <Alerts />
       </div>

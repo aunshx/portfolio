@@ -3010,25 +3010,20 @@ from {
   margin: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, 45vh);
+  /* grid-template-rows: repeat(2, 45vh); */
   column-gap: 10px;
   /* border: 1px solid red; */
 }
 
-.stats-main .two {
+.stats-main .first-half {
   display: grid;
-  grid-template-areas: 'two-one two-two'
-  'two-three' 'two-four';
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
 }
 
-.stats-main .four {
+.stats-main .second-half {
   display: grid;
-  grid-template-areas: 'four-one four-two'
-  'four-three' 'four-four';
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
 }
 
 @media only screen and (min-width: 1028px) and (max-width: 1250px) {
@@ -3106,8 +3101,8 @@ from {
   z-index: 1;
   font-family: 'Comfortaa', cursive;
   padding: 10px;
-  width: 80%;
-  height: 120px;
+  min-width: 250px;
+  height: 130px;
 }
 
 .charts .block-long {
@@ -3119,7 +3114,8 @@ from {
   font-family: 'Comfortaa', cursive;
   padding: 10px;
   width: 80%;
-  min-height: 120px;
+  height: 130px;
+  min-width: 250px;
 }
 
 .charts .block--dark,
@@ -3159,6 +3155,7 @@ from {
   grid-template-columns: 0.2fr 2.5fr 1fr;
   width: 100%;
   font-size: 0.78em;
+  column-gap: 5px;
 }
 
 .charts .third_grid .element {

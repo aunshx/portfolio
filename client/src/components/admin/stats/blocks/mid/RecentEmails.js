@@ -25,13 +25,11 @@ const RecentEmails = ({
         className={
           displayMode ? "app block-long block-long--dark" : "app block-long"
         }
+        style={{ wordBreak: "break-all", justifyContent: "space-between" }}
       >
         <div className='title flex_middle'>Recent Messages</div>
         {recentMessagesLimitLoading ? (
-          <div
-            className='spinner-new-block'
-            style={{ marginTop: "1.5em" }}
-          ></div>
+          <div className='spinner-new-block'></div>
         ) : (
           <>
             {recentMessagesLimit.length > 0 && (
@@ -39,10 +37,15 @@ const RecentEmails = ({
                 {recentMessagesLimit.map((element, index) => (
                   <div className='third_grid' key={index}>
                     <div className='flex_middle element'>{index + 1}</div>
-                    <div className='flex_middle element'>{element.email}</div>
                     <div
                       className='flex_middle element'
-                      style={{ fontSize: "0.75em", textAlign: 'center' }}
+                      style={{ fontSize: "0.75em", textAlign: "center" }}
+                    >
+                      {element.email}
+                    </div>
+                    <div
+                      className='flex_middle element'
+                      style={{ fontSize: "0.75em", textAlign: "center" }}
                     >
                       {moment(element.createdAt).fromNow()}
                     </div>
@@ -52,6 +55,7 @@ const RecentEmails = ({
             )}
           </>
         )}
+        <div></div>
       </div>
     </div>
   );

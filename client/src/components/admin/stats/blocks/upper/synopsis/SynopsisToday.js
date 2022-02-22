@@ -32,7 +32,6 @@ const SynopsisHits = ({
   }, []);
 
   return (
-    <>
       <>
         {currentValue == 0 ? (
           <div className='value--change'>
@@ -62,7 +61,6 @@ const SynopsisHits = ({
             )}
           </div>
         )}
-      </>
       <div>
             {currentValue == 0 ? (
               <div className='value--change--text'>
@@ -87,7 +85,7 @@ const SynopsisHits = ({
               </div>
             )}
       </div>
-    </>
+      </>
   );
 };
 

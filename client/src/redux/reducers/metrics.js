@@ -84,10 +84,10 @@ const initialState = {
   // Total Hits Synopsis
   totalHitsSynopsisLoading: false,
   totalHitsSynopsisToday: 0,
-  totalHitsSynopsisWeek: '0',
-  totalHitsSynopsisMonth: '0',
-  totalHitsSynopsisYear: '0',
-  totalHitsSynopsisAllTime: '0',
+  totalHitsSynopsisWeek: 0,
+  totalHitsSynopsisMonth: 0,
+  totalHitsSynopsisYear: 0,
+  totalHitsSynopsisAllTime: 0,
   totalHitsType: '',
 
   // Recent Messages Limit 
