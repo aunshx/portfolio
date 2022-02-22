@@ -2324,6 +2324,10 @@ export const getTotalHitsSynopsis = () => async (dispatch) => {
     const res4 = await api.get("/metrics/total-hits-synopsis-yearly");
     const res5 = await api.get("/metrics/total-hits-synopsis-all-time");
 
+    console.log(
+      'today', res.data
+    )
+
     dispatch({
       type: TOTAL_HITS_SYNOPSIS_TODAY,
       payload: res.data,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Navbar from '../navbar/Navbar'
@@ -15,12 +15,26 @@ import TotalSuccess from "./blocks/lower/TotalSuccess";
 import TotalNotReplied from './blocks/lower/TotalNotReplied';
 import SynopsisHits from './blocks/upper/SynopsisHits';
 import RecentEmails from './blocks/mid/RecentEmails';
+import { Button } from '@mui/material';
+
+import {getTotalHitsToday} from '../../../redux/actions/metrics'
 
 const Stats = ({
-    // Redux State
-    settings: { displayMode }
+  getTotalHitsToday,
+  // Redux State
+  settings: { displayMode },
+  auth: { isAuthenticated },
+  metrics: { totalHitsSynopsisToday },
 }) => {
-const { width, height } = windowSize()
+  const { width } = windowSize();
+
+  useEffect(() => {
+    // getTotalHitsToday()
+  }, [])
+
+  const letsReload = () => {
+    // getTotalHitsToday()
+  };
 
   return (
     <>
@@ -50,7 +64,7 @@ const { width, height } = windowSize()
               data-aos='fade-up'
               data-aos-delay={200}
             >
-              <SynopsisHits />
+              <SynopsisHits totalHitsSynopsisToday={totalHitsSynopsisToday} />
             </div>
             <div
               className='two-three'
@@ -66,7 +80,9 @@ const { width, height } = windowSize()
               data-aos='fade-up'
               data-aos-delay={400}
             >
-              l
+              <Button style={{ color: "red" }} onClick={() => letsReload()}>
+                Click to reload!
+              </Button>
             </div>
           </div>
           <div
@@ -118,17 +134,23 @@ const { width, height } = windowSize()
       </div>
     </>
   );
-}
+};
 
 Stats.propTypes = {
   settings: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  metrics: PropTypes.object.isRequired,
+  getTotalHitsToday: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
+  auth: state.auth,
+  metrics: state.metrics,
 });
 
 const mapStateToActions = {
-}
+  getTotalHitsToday,
+};
 
 export default connect(mapStateToProps, mapStateToActions)(Stats)

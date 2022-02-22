@@ -316,7 +316,7 @@ router.get("/visitors-per-country-all-time", auth, async (req, res) => {
 router.get("/total-hits-chart-seven-days", auth, async (req, res) => {
   let ans = {};
   try {
-    ans = await Ip.aggregate([
+    ans = await Count.aggregate([
       {
         $match: {
           createdAt: {
@@ -369,7 +369,7 @@ router.get("/total-hits-chart-seven-days", auth, async (req, res) => {
 router.get("/total-hits-chart-monthly", auth, async (req, res) => {
   let ans = {};
   try {
-    ans = await Ip.aggregate([
+    ans = await Count.aggregate([
       {
         $group: {
           _id: {
@@ -410,7 +410,7 @@ router.get("/total-hits-chart-yearly", auth, async (req, res) => {
   let ans = {};
 
   try {
-     ans = await Ip.aggregate([
+     ans = await Count.aggregate([
        {
          $group: {
            _id: {

@@ -13,20 +13,22 @@ const PrivateRoute = ({
   <Route
     {...rest}
     render={(props) =>
-      isAuthenticated ? (
-        loading ? (
-          <>
+      loading ? (
+         <>
             <div className='flex_middle'>
               <div className='not-found flex_middle'>
                 <Spinner />
               </div>
             </div>
           </>
-        ) : (
-          <Component {...props} />
-        )
       ) : (
-        <Redirect to='/admin/login' />
+        <>
+          {isAuthenticated ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to='/admin/login' />
+          )}
+        </>
       )
     }
   />

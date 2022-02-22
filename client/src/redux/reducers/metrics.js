@@ -83,7 +83,7 @@ const initialState = {
 
   // Total Hits Synopsis
   totalHitsSynopsisLoading: false,
-  totalHitsSynopsisToday: '0',
+  totalHitsSynopsisToday: 0,
   totalHitsSynopsisWeek: '0',
   totalHitsSynopsisMonth: '0',
   totalHitsSynopsisYear: '0',

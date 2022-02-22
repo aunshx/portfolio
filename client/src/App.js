@@ -153,7 +153,6 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
             )}
           />
           <Route component={NotFound} />
-          <Route component={NotFound} />
         </Switch>
       </>
     </Router>
