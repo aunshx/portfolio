@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Navbar from '../navbar/Navbar'
@@ -19,116 +19,114 @@ import { Button } from '@mui/material';
 
 import {getTotalHitsToday} from '../../../redux/actions/metrics'
 
-const Stats = ({
-  getTotalHitsToday,
-  // Redux State
-  settings: { displayMode },
-  auth: { isAuthenticated },
-  metrics: { totalHitsSynopsisToday },
-}) => {
+const Stats = ({}) => {
   const { width } = windowSize();
 
+  const [change, setChange] = useState(false)
+
   useEffect(() => {
-    // getTotalHitsToday()
-  }, [])
+    setChange(true)
+  }, [change])
 
   const letsReload = () => {
-    // getTotalHitsToday()
+    setChange(false)
   };
 
   return (
     <>
       <Navbar />
-      <div className='app'>
-        <div className={width < 787 ? "stats-main-mobile" : "stats-main"}>
-          <div
-            className='one flex_middle'
-            style={{ border: "1px solid red" }}
-            data-aos='fade-up'
-            data-aos-delay={100}
-          >
-            <VisitorGraph />
-          </div>
-          <div className='two' style={{ border: "1px solid red" }}>
+      {change && (
+        <div className='app'>
+          <div className={width < 787 ? "stats-main-mobile" : "stats-main"}>
             <div
-              className='two-one'
+              className='one flex_middle'
               style={{ border: "1px solid red" }}
               data-aos='fade-up'
               data-aos-delay={100}
             >
-              <TotalHits />
+              <VisitorGraph />
+            </div>
+            <div className='two' style={{ border: "1px solid red" }}>
+              <div
+                className='two-one'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={100}
+              >
+                <TotalHits />
+              </div>
+              <div
+                className='two-two'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={200}
+              >
+                <SynopsisHits />
+              </div>
+              <div
+                className='two-three'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={300}
+              >
+                <RecentEmails />
+              </div>
+              <div
+                className='two-four'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={400}
+              >
+                <Button style={{ color: "red" }} onClick={() => letsReload()}>
+                  Click to reload!
+                </Button>
+              </div>
             </div>
             <div
-              className='two-two'
+              className='three'
               style={{ border: "1px solid red" }}
               data-aos='fade-up'
               data-aos-delay={200}
             >
-              <SynopsisHits totalHitsSynopsisToday={totalHitsSynopsisToday} />
+              <HitsChart />
             </div>
-            <div
-              className='two-three'
-              style={{ border: "1px solid red" }}
-              data-aos='fade-up'
-              data-aos-delay={300}
-            >
-              <RecentEmails />
-            </div>
-            <div
-              className='two-four'
-              style={{ border: "1px solid red" }}
-              data-aos='fade-up'
-              data-aos-delay={400}
-            >
-              <Button style={{ color: "red" }} onClick={() => letsReload()}>
-                Click to reload!
-              </Button>
-            </div>
-          </div>
-          <div
-            className='three'
-            style={{ border: "1px solid red" }}
-            data-aos='fade-up'
-            data-aos-delay={200}
-          >
-            <HitsChart />
-          </div>
-          <div className='four' style={{ border: "1px solid red" }}>
-            <div
-              className='four-one'
-              style={{ border: "1px solid red" }}
-              data-aos='fade-up'
-              data-aos-delay={500}
-            >
-              <TotalSuccess />
-            </div>
-            <div
-              className='four-two'
-              style={{ border: "1px solid red" }}
-              data-aos='fade-up'
-              data-aos-delay={600}
-            >
-              <TotalOngoings />
-            </div>
-            <div
-              className='four-three'
-              style={{ border: "1px solid red" }}
-              data-aos='fade-up'
-              data-aos-delay={700}
-            >
-              <TotalNotReplied />
-            </div>
-            <div
-              className='four-four'
-              style={{ border: "1px solid red" }}
-              data-aos='fade-up'
-              data-aos-delay={800}
-            >
-              <TotalColds />
+            <div className='four' style={{ border: "1px solid red" }}>
+              <div
+                className='four-one'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={500}
+              >
+                <TotalSuccess />
+              </div>
+              <div
+                className='four-two'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={600}
+              >
+                <TotalOngoings />
+              </div>
+              <div
+                className='four-three'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={700}
+              >
+                <TotalNotReplied />
+              </div>
+              <div
+                className='four-four'
+                style={{ border: "1px solid red" }}
+                data-aos='fade-up'
+                data-aos-delay={800}
+              >
+                <TotalColds />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <div>
         <Alerts />
       </div>

@@ -42,7 +42,7 @@ const RecentEmails = ({
                     <div className='flex_middle element'>{element.email}</div>
                     <div
                       className='flex_middle element'
-                      style={{ fontSize: "0.75em" }}
+                      style={{ fontSize: "0.75em", textAlign: 'center' }}
                     >
                       {moment(element.createdAt).fromNow()}
                     </div>
