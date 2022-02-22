@@ -56,11 +56,10 @@ router.get("/capture-ip", async (req, res) => {
 // @access   Private
 router.post("/mark-messages-as-cold", async (req, res) => {
    let thirdDay = moment().startOf("days").subtract(3, "days");
-   console.log(thirdDay)
   try {
 
         let ans = await Message.updateMany(
-          { $and: [{ createdAt: { $lte: new Date(thirdDay) }}, { seen: false }] },
+          { $and: [{ createdAt: { $lte: new Date(thirdDay) }}, { status: 'ongoing' }] },
           { $set: { status: "cold" } }
         );
 
@@ -71,7 +70,7 @@ router.post("/mark-messages-as-cold", async (req, res) => {
         }
   } catch (err) {
       console.log(err)
-    res.status(400).send({ errors: [{ msg: "Visit could not be counted" }] });
+    res.status(400).send({ errors: [{ msg: "Cold status could not be changed" }] });
   }
 });
 
@@ -99,7 +98,7 @@ router.get("/messages-unseen-count", auth, async (req, res) => {
 
   try {
     let ans = await Message.find(
-      { $and: [{ userId: req.user.id }, { seen: false }] },
+      { $and: [{ userId: req.user.id }, { status: 'unseen' }] },
     ).count()
 
     return res.status(200).send(ans.toString())
@@ -109,22 +108,6 @@ router.get("/messages-unseen-count", auth, async (req, res) => {
   }
 });
 
-// @route    GET api/metrics
-// @desc     Message Status
-// @access   Private
-router.get("/messages-status", auth, async (req, res) => {
-
-  try {
-    let ans = await Message.find(
-      { userId: req.user.id }
-    ).select('seen').select('name').select('createdAt')
-
-    return res.status(200).send(ans);
-    
-  } catch (err) {
-    res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
-  }
-});
 
 // ------------------------ Visitor from countries - PIE CHART -----------------------------
 
