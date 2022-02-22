@@ -1067,21 +1067,25 @@ pre {
   margin-left: 2.8%;
   margin-bottom: 20px;
 }
-.footer .text {
+
+.footer .text,
+.footer--admin .text {
   font-size: 1em;
   color: rgb(167, 167, 167);
   font-weight: bold;
   font-family: 'Comfortaa', cursive;
 }
 
-.footer .text a {
+.footer .text a,
+.footer--admin .text a {
   font-size: 1em;
   color: rgb(167, 167, 167);
   font-weight: bold;
   font-family: 'Comfortaa', cursive;
 }
 
-.footer .text a:hover {
+.footer .text a:hover,
+.footer--admin .text a:hover {
   font-size: 1em;
   color: var(--logo-color);
   font-weight: bold;

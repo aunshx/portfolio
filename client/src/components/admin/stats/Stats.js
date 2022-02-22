@@ -21,6 +21,7 @@ import Footer from '../../layout/Footer'
 
 import {getTotalHitsToday} from '../../../redux/actions/metrics'
 import MessageUpdates from './blocks/mid/MessageUpdates';
+import FooterAdmin from '../../layout/FooterAdmin';
 
 const Stats = ({}) => {
   const { width } = windowSize();
@@ -47,10 +48,7 @@ const Stats = ({}) => {
           refreshingContent={false}
           pullingContent={"Refreshing..."}
         >
-          <div
-            className='app'
-            style={{ height: "97vh" }}
-          >
+          <div className='app' style={{ height: "97vh" }}>
             <div
               className={"grabbing"}
               style={{ marginTop: "45px", width: "100%", height: "20px" }}
@@ -150,6 +148,9 @@ const Stats = ({}) => {
                 </div>
               </div>
             </div>
+            <div>
+              <FooterAdmin />
+            </div>
           </div>
         </PullToRefresh>
       ) : (
@@ -159,9 +160,6 @@ const Stats = ({}) => {
           </div>
         </div>
       )}
-      <div>
-        <Footer />
-      </div>
       <div>
         <Alerts />
       </div>
