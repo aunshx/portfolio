@@ -46,7 +46,7 @@ router.post(
     try {
       let ans = await Message.findOneAndUpdate(
         { $and: [{ userId: req.user.id }, { _id: messageId }] },
-        { status: status, seen: true },
+        { status: status },
         {
           returnOriginal: false,
         }
@@ -81,7 +81,7 @@ router.post(
     try {
       let ans = await Message.findOneAndUpdate(
         { $and: [{ userId: req.user.id }, { _id: messageId }] },
-        { comment: comment, seen: true },
+        { comment: comment },
         {
           returnOriginal: false,
         }
@@ -93,35 +93,6 @@ router.post(
           .send({ errors: [{ msg: "Message does not exist" }] });
       } else {
         return res.status(200).send("Message comment added!");
-      }
-    } catch (err) {
-      res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });
-    }
-  }
-);
-
-// @route    POST api/contact
-// @desc     Message Seen
-// @access   Private
-router.post(
-  "/message-seen",
-  auth,
-  async (req, res) => {
-    const { messageId } = req.body
-
-    try {
-      let ans = await Message.findOneAndUpdate(
-        { $and: [{ userId: req.user.id }, { _id: messageId }] },
-        { seen: true },
-        {
-          returnOriginal: false,
-        }
-      )
-
-      if(!ans){
-        return res.status(400).send({ errors: [{ msg: 'Message does not exist' }] })
-      } else {
-        return res.status(200).send("Message is seen!");
       }
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot update message status" }] });

@@ -13,13 +13,9 @@ const MessageSchema = new mongoose.Schema(
       type: String,
       maxLength: 145,
     },
-    seen: {
-      type: Boolean,
-      default: false
-    },
     status: {
       type: String,
-      default: 'not-replied'
+      default: 'unseen'
     },
     comment: {
       type: String

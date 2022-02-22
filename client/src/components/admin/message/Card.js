@@ -17,6 +17,8 @@ import { styled } from "@mui/material/styles";
 import Tag from "./Tag";
 import StatusSelector from './StatusSelector';
 
+import { updateMessageStatus } from "../../../redux/actions/contact";
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -65,10 +67,17 @@ updateMessageStatus,
         setAnchorEl(null);
       };
 
+      const changeSeenStatus = () => {
+        if(status === 'unseen'){
+          updateMessageStatus('not-replied', messageId, status)
+        }
+      }
+
   return (
     <>
       <div
         className={displayMode ? "card-admin card-admin--dark" : "card-admin"}
+        onClick={changeSeenStatus}
       >
         <div className='first'>
           <div className='' style={{ justifyContent: "flex-start" }}>
@@ -152,6 +161,7 @@ updateMessageStatus,
 
 Card.propTypes = {
   settings: PropTypes.object.isRequired,
+  updateMessageStatus: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -159,6 +169,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
+  updateMessageStatus,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Card)
