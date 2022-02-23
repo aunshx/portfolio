@@ -139,21 +139,30 @@ const Navbar = ({
             </div>
           )}
           {!isAuthenticated && (
-            <div className='cursor_pointer'>
-              <Link to='/admin/login'>
-                <Tooltip title='Login' placement='left'>
-                  <div>
-                    <LoginIcon
-                      className={"element--admin"}
-                      style={{
-                        fontSize: 21,
-                        marginTop: "0.3em",
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </Link>
-            </div>
+            <>
+              <div className='cursor_pointer'>
+                <Link to='/'>
+                  <Tooltip title='Portfolio' placement='left'>
+                    <div className='element-letter--admin'>a.</div>
+                  </Tooltip>
+                </Link>
+              </div>
+              <div className='cursor_pointer'>
+                <Link to='/admin/login'>
+                  <Tooltip title='Login' placement='left'>
+                    <div>
+                      <LoginIcon
+                        className={"element--admin"}
+                        style={{
+                          fontSize: 21,
+                          marginTop: "0.3em",
+                        }}
+                      />
+                    </div>
+                  </Tooltip>
+                </Link>
+              </div>
+            </>
           )}
           {isAuthenticated && (
             <>

@@ -26,9 +26,9 @@
 }
 
 [data-theme="dark"] {
-  --background-color: rgb(30, 30, 30);
+  --background-color: rgb(32, 32, 32);
   --background-dots-color: rgb(15, 15, 15);
-   --navbar-color: rgb(22, 22, 22);
+   --navbar-color: rgb(26, 26, 26);
    --card-color: rgb(10, 10, 10);
    --light-grey-color: rgb(25, 25, 25);
    --dark-font-color: rgb(238, 238, 238);
@@ -315,6 +315,18 @@ pre {
 
 .navbar .right .moon {
   animation: moonEntry 0.3s 1 linear;
+}
+
+.navbar .right .element-letter--admin {
+  color: var(--lighter-dark-font-color);
+  margin: 0 0.4em 0.1em 0.6em;
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.navbar .right .element-letter--admin:hover {
+  color: var(--light-logo-color);
 }
 
 .navbar .right .element--admin {
