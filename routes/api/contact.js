@@ -139,7 +139,7 @@ router.post(
           createdAt: -1,
         })
         .skip(skipNow)
-        .limit(30);
+        .limit(8);
 
       return res.status(200).send(ans);
     } catch (err) {

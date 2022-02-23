@@ -15,6 +15,10 @@ import {
 
   // Messages - Delete
   REMOVE_MESSAGE_FROM_ARRAY,
+
+  // Set Renderer False
+  SET_RENDERER_MESSAGE_FALSE,
+  SET_RENDERER_MESSAGE_TRUE,
 } from "../actions/types";
 //
 const initialState = {
@@ -28,17 +32,35 @@ const initialState = {
 messages: [],
 messagesLoading: false,
 
+// Lazy Loading 
+rendererMessages: false,
+lazyLoading: false
+
 };
 // kk
 function authReducer(state = initialState, action) {
     const { type, payload } = action
 
     switch (type) {
+      // Renderer Message
+      case SET_RENDERER_MESSAGE_TRUE:
+        return {
+          ...state,
+          rendererMessages: true,
+        };
+      case SET_RENDERER_MESSAGE_FALSE:
+        return {
+          ...state,
+          rendererMessages: false,
+        };
+
       // Messages - Delete
       case REMOVE_MESSAGE_FROM_ARRAY:
         return {
           ...state,
-          messages: state.messages.filter((element, map) => element._id !== payload ),
+          messages: state.messages.filter(
+            (element, map) => element._id !== payload
+          ),
         };
 
       // Messages - Update Status
@@ -59,7 +81,8 @@ function authReducer(state = initialState, action) {
       case MESSAGES:
         return {
           ...state,
-          messages: payload,
+          messages: [...state.messages, ...payload.data],
+          lazyLoading: payload.lazyLoading,
         };
       case MESSAGES_LOADING:
         return {

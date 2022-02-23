@@ -17,7 +17,6 @@ import TotalNotReplied from './blocks/lower/TotalNotReplied';
 import SynopsisHits from './blocks/upper/SynopsisHits';
 import RecentEmails from './blocks/mid/RecentEmails';
 import Spinner from "../../layout/Spinner";
-import Footer from '../../layout/Footer'
 
 import {getTotalHitsToday} from '../../../redux/actions/metrics'
 import MessageUpdates from './blocks/mid/MessageUpdates';

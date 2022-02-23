@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import Card from './Card'
 
 import { connect } from 'react-redux'
 
-const Messages = ({
-  messages
-}) => {
+const Messages = ({ messages, lastBookElementRef }) => {
   return (
     <div className='messages-admin'>
       {messages.length > 0 &&
@@ -21,6 +19,7 @@ const Messages = ({
                 data-aos='fade-in'
                 data-aos-delay={100 * index}
                 data-aos-offset={60}
+                ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 <Card
                   name={element.name}
@@ -42,6 +41,7 @@ const Messages = ({
                 data-aos='fade-in'
                 data-aos-delay={100 * index}
                 data-aos-offset={60}
+                ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 <Card
                   name={element.name}
@@ -63,6 +63,7 @@ const Messages = ({
                 data-aos='fade-in'
                 data-aos-delay={100 * index}
                 data-aos-offset={60}
+                ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 <Card
                   name={element.name}
@@ -80,7 +81,7 @@ const Messages = ({
         ))}
     </div>
   );
-}
+};
 
 Messages.propTypes = {
   contact: PropTypes.object.isRequired,

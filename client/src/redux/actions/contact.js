@@ -21,8 +21,19 @@ import {
   UPDATE_MESSAGE_STATUS,
 
   // Messages - Delete
-  REMOVE_MESSAGE_FROM_ARRAY
+  REMOVE_MESSAGE_FROM_ARRAY,
+
+  // Set Renderer False
+  SET_RENDERER_MESSAGE_FALSE,
+  SET_RENDERER_MESSAGE_TRUE,
 } from "./types";
+
+// Set Renderer False 
+export const setRendererMessagesFalse = (messageId) => async (dispatch) => {
+  dispatch({
+    type: SET_RENDERER_MESSAGE_FALSE
+  })
+};
 
 //  Delete Message
 export const deleteMessage = (messageId) => async (dispatch) => {
@@ -268,16 +279,39 @@ export const getMessages = (skipNow) => async (dispatch) => {
 
     const res = await api.post("/contact/retrieve-messages-latest", body);
 
-    console.log(res.data);
-
-    dispatch({
-      type: MESSAGES,
-      payload: res.data,
-    });
+    console.log(res.data)
 
     dispatch({
       type: MESSAGES_LOADING_COMPLETE,
     });
+
+    dispatch({
+      type: SET_RENDERER_MESSAGE_TRUE,
+    });
+
+     const dataPack = {};
+
+     dataPack.data = res.data;     
+
+     if (dataPack.data.length < 8) {
+       dataPack.lazyLoading = false;
+
+    dispatch({
+      type: MESSAGES,
+      payload: dataPack,
+    });
+
+     } else {
+
+       dataPack.lazyLoading = true;
+
+    dispatch({
+      type: MESSAGES,
+      payload: dataPack,
+    });
+
+     }
+
   } catch (error) {
     if (error.response.status === 500) {
       value.message = "Something went wrong. Pl reload!";
