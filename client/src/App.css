@@ -2790,20 +2790,20 @@ from {
 .admin-main {
   width: 1200px;
   height: auto;
-  margin: 0px 0 50px 0;
+  margin: 30px 0 50px 0;
 }
 
 .admin-main-settings {
   width: auto;
   height: auto;
-  margin: 50px 0px 0px 0;
+  margin: 60px 0px -30px 0;
 }
 
 .admin-main-settings .icons {
   color: grey;
   cursor: pointer;
-  margin-top: 0.3em;
-  margin-right: 0.2em;
+  margin-top: 0.34em;
+  margin-right: 0.25em;
 }
 
 .admin-main-settings .icons:hover {

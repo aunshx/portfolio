@@ -12,17 +12,20 @@ import Alerts from '../../layout/Alerts'
 import {
   getMessages,
   setRendererMessagesFalse,
-} from '../../../redux/actions/contact'
+  getMessagesOnReload,
+} from "../../../redux/actions/contact";
 import { Tooltip } from '@mui/material';
 
 const Main = ({
   // Redux Actions
   getMessages,
   setRendererMessagesFalse,
+  getMessagesOnReload,
   // Redux State
   contact: { messages, messagesLoading, lazyLoading, rendererMessages },
 }) => {
   const [offset, setOffset] = useState(0);
+  const [change, setChange] = useState(false);
 
   const observer = useRef();
   const lastBookElementRef = useCallback(
@@ -49,8 +52,17 @@ const Main = ({
   );
 
   useEffect(() => {
+    setChange(true);
+  }, [change]);
+
+  useEffect(() => {
     if (rendererMessages === false) getMessages(offset);
   }, [offset, getMessages])
+
+  const reload = () => {
+    getMessagesOnReload(0);
+    setChange(false);
+  }
 
   return (
     <>
@@ -61,30 +73,32 @@ const Main = ({
       >
         <div className='admin-main-settings flex_middle'>
           <div>
-            <RefreshIcon className='icons' />
+            <RefreshIcon className='icons' onClick={() => reload(offset)} />
           </div>
-            <Tooltip title='Not Replied' placement='left'>
-                <div className='not-replied cursor_pointer'>N</div>
-            </Tooltip>
-            <Tooltip title='Unseen' placement='left'>
-                <div className='unseen cursor_pointer'>U</div>
-            </Tooltip>
-            <Tooltip title='Ongoing' placement='left'>
-                <div className='ongoing cursor_pointer'>O</div>
-            </Tooltip>
-            <Tooltip title='Success' placement='left'>
-                <div className='success cursor_pointer'>S</div>
-            </Tooltip>
-            <Tooltip title='Cold' placement='left'>
-                <div className='cold cursor_pointer'>C</div>
-            </Tooltip>
+          <Tooltip title='Not Replied' placement='left'>
+            <div className='not-replied cursor_pointer'>N</div>
+          </Tooltip>
+          <Tooltip title='Unseen' placement='left'>
+            <div className='unseen cursor_pointer'>U</div>
+          </Tooltip>
+          <Tooltip title='Ongoing' placement='left'>
+            <div className='ongoing cursor_pointer'>O</div>
+          </Tooltip>
+          <Tooltip title='Success' placement='left'>
+            <div className='success cursor_pointer'>S</div>
+          </Tooltip>
+          <Tooltip title='Cold' placement='left'>
+            <div className='cold cursor_pointer'>C</div>
+          </Tooltip>
         </div>
-        <div className='admin-main'>
-          <Messages
-            messages={messages}
-            lastBookElementRef={lastBookElementRef}
-          />
-        </div>
+        {change && (
+          <div className='admin-main'>
+            <Messages
+              messages={messages}
+              lastBookElementRef={lastBookElementRef}
+            />
+          </div>
+        )}
       </div>
       <div>
         <Alerts />
@@ -97,6 +111,7 @@ Main.propTypes = {
   contact: PropTypes.object.isRequired,
   getMessages: PropTypes.func.isRequired,
   setRendererMessagesFalse: PropTypes.func.isRequired,
+  getMessagesOnReload: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -106,6 +121,7 @@ const mapStateToProps = (state) => ({
 const mapStateToActions = {
   getMessages,
   setRendererMessagesFalse,
+  getMessagesOnReload,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Main);

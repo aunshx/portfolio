@@ -14,6 +14,7 @@ import {
 
   // Messages
   MESSAGES,
+  MESSAGES_ON_RELOAD,
   MESSAGES_LOADING,
   MESSAGES_LOADING_COMPLETE,
 
@@ -29,7 +30,7 @@ import {
 } from "./types";
 
 // Set Renderer False 
-export const setRendererMessagesFalse = (messageId) => async (dispatch) => {
+export const setRendererMessagesFalse = () => async (dispatch) => {
   dispatch({
     type: SET_RENDERER_MESSAGE_FALSE
   })
@@ -174,7 +175,7 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
     };
 
     if (error.response.status === 500) {
-      
+
       value.message = "Something went wrong. Pl reload!";
       value.type = "error";
 
@@ -262,6 +263,115 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
   }
 };
 
+//  Retrieve Latest Messages ON RELOAD
+export const getMessagesOnReload = (skipNow) => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  const body = JSON.stringify({
+    skipNow,
+  });
+
+  try {
+
+    const res = await api.post("/contact/retrieve-messages-latest", body);
+
+    dispatch({
+      type: SET_RENDERER_MESSAGE_TRUE,
+    });
+
+    dispatch({
+      type: MESSAGES_ON_RELOAD,
+      payload: res.data,
+    });
+
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
 // Retrieve Latest Messages
 export const getMessages = (skipNow) => async (dispatch) => {
   let value = {
@@ -291,8 +401,8 @@ export const getMessages = (skipNow) => async (dispatch) => {
 
      const dataPack = {};
 
-     dataPack.data = res.data;     
-
+     dataPack.data = res.data;
+     
      if (dataPack.data.length < 8) {
        dataPack.lazyLoading = false;
 

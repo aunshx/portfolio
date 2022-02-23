@@ -7,6 +7,7 @@ import {
 
   // Messages
   MESSAGES,
+  MESSAGES_ON_RELOAD,
   MESSAGES_LOADING,
   MESSAGES_LOADING_COMPLETE,
 
@@ -83,6 +84,11 @@ function authReducer(state = initialState, action) {
           ...state,
           messages: [...state.messages, ...payload.data],
           lazyLoading: payload.lazyLoading,
+        };
+      case MESSAGES_ON_RELOAD:
+        return {
+          ...state,
+          messages: payload
         };
       case MESSAGES_LOADING:
         return {
