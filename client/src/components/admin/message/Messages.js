@@ -5,7 +5,15 @@ import Card from './Card'
 
 import { connect } from 'react-redux'
 
-const Messages = ({ messages, lastBookElementRef }) => {
+const Messages = ({
+  messages,
+  lastBookElementRef,
+  notRepliedOn,
+  ongoingOn,
+  successOn,
+  unseenOn,
+  coldOn,
+}) => {
   return (
     <div className='messages-admin'>
       {messages.length > 0 &&
@@ -21,16 +29,66 @@ const Messages = ({ messages, lastBookElementRef }) => {
                 data-aos-offset={60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
-                <Card
-                  name={element.name}
-                  createdAt={element.createdAt}
-                  message={element.message}
-                  organisation={element.organisation}
-                  messageId={element._id}
-                  email={element.email}
-                  status={element.status}
-                  index={index}
-                />
+                {element.status === "not-replied" && notRepliedOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "ongoing" && ongoingOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "success" && successOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "unseen" && unseenOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "cold" && coldOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
               </div>
             )}
             {index % 2 === 1 && (
@@ -43,16 +101,66 @@ const Messages = ({ messages, lastBookElementRef }) => {
                 data-aos-offset={60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
-                <Card
-                  name={element.name}
-                  createdAt={element.createdAt}
-                  message={element.message}
-                  organisation={element.organisation}
-                  messageId={element._id}
-                  email={element.email}
-                  status={element.status}
-                  index={index}
-                />
+                {element.status === "not-replied" && notRepliedOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "ongoing" && ongoingOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "success" && successOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "unseen" && unseenOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "cold" && coldOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
               </div>
             )}
             {index % 2 === 2 && (
@@ -65,16 +173,66 @@ const Messages = ({ messages, lastBookElementRef }) => {
                 data-aos-offset={60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
-                <Card
-                  name={element.name}
-                  createdAt={element.createdAt}
-                  message={element.message}
-                  organisation={element.organisation}
-                  messageId={element._id}
-                  email={element.email}
-                  status={element.status}
-                  index={index}
-                />
+                {element.status === "not-replied" && notRepliedOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "ongoing" && ongoingOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "success" && successOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "unseen" && unseenOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
+                {element.status === "cold" && coldOn && (
+                  <Card
+                    name={element.name}
+                    createdAt={element.createdAt}
+                    message={element.message}
+                    organisation={element.organisation}
+                    messageId={element._id}
+                    email={element.email}
+                    status={element.status}
+                    index={index}
+                  />
+                )}
               </div>
             )}
           </>

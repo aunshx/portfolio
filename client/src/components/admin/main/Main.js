@@ -26,6 +26,11 @@ const Main = ({
 }) => {
   const [offset, setOffset] = useState(0);
   const [change, setChange] = useState(false);
+  const [notRepliedOn, setNotRepliedOn] = useState(true);
+  const [ongoingOn, setOngoingOn] = useState(true);
+  const [successOn, setSuccessOn] = useState(true);
+  const [unseenOn, setUnseenOn] = useState(true);
+  const [coldOn, setColdOn] = useState(true);
 
   const observer = useRef();
   const lastBookElementRef = useCallback(
@@ -76,19 +81,60 @@ const Main = ({
             <RefreshIcon className='icons' onClick={() => reload(offset)} />
           </div>
           <Tooltip title='Not Replied' placement='left'>
-            <div className='not-replied cursor_pointer'>N</div>
+            <div
+              className={
+                notRepliedOn
+                  ? "not-replied cursor_pointer"
+                  : "unselected-bigger cursor_pointer"
+              }
+              onClick={() => setNotRepliedOn(!notRepliedOn)}
+            >
+              N
+            </div>
           </Tooltip>
           <Tooltip title='Unseen' placement='left'>
-            <div className='unseen cursor_pointer'>U</div>
+            <div
+              className={
+                unseenOn ? "unseen cursor_pointer" : "unselected-bigger cursor_pointer"
+              }
+              onClick={() => setUnseenOn(!unseenOn)}
+            >
+              U
+            </div>
           </Tooltip>
           <Tooltip title='Ongoing' placement='left'>
-            <div className='ongoing cursor_pointer'>O</div>
+            <div
+              className={
+                ongoingOn
+                  ? "ongoing cursor_pointer"
+                  : "unselected cursor_pointer"
+              }
+              onClick={() => setOngoingOn(!ongoingOn)}
+            >
+              O
+            </div>
           </Tooltip>
           <Tooltip title='Success' placement='left'>
-            <div className='success cursor_pointer'>S</div>
+            <div
+              className={
+                successOn
+                  ? "success cursor_pointer"
+                  : "unselected-bigger cursor_pointer"
+              }
+              onClick={() => setSuccessOn(!successOn)}
+            >
+              S
+            </div>
           </Tooltip>
           <Tooltip title='Cold' placement='left'>
-            <div className='cold cursor_pointer'>C</div>
+            <div
+              className={
+                coldOn ? "cold cursor_pointer" : "unselected-bigger cursor_pointer"
+              }
+              onClick={() => setColdOn(!coldOn)}
+            >
+              C
+            </div>
           </Tooltip>
         </div>
         {change && (
@@ -96,6 +142,11 @@ const Main = ({
             <Messages
               messages={messages}
               lastBookElementRef={lastBookElementRef}
+              notRepliedOn={notRepliedOn}
+              ongoingOn={ongoingOn}
+              successOn={successOn}
+              unseenOn={unseenOn}
+              coldOn={coldOn}
             />
           </div>
         )}

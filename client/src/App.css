@@ -2824,10 +2824,28 @@ from {
   color: var(--closing-color);
 }
 
+.admin-main-settings .unselected {
+  border: 2px solid var(--grey-color);
+  color: var(--grey-color);
+   padding: 0em 0.4em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
 .admin-main-settings .unseen{
   border: 2px solid var(--logo-color);
   color: var(--logo-color);
-      padding: 0em 0.45em;
+      padding: 0em 0.5em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
+.admin-main-settings .unselected-bigger {
+  border: 2px solid var(--grey-color);
+  color: var(--grey-color);
+   padding: 0em 0.5em;
   font-size: 0.7em;
   border-radius: 50%;
    margin: 0 0.8em;
@@ -2879,16 +2897,6 @@ from {
   border: 2px solid var(--gotuu-color);
   color: var(--gotuu-color);
 }
-
-.admin-main-settings .unselected {
-  border: 2px solid var(--grey-color);
-  color: var(--grey-color);
-   padding: 0em 0.4em;
-  font-size: 0.7em;
-  border-radius: 50%;
-   margin: 0 0.8em;
-}
-
 
 @media only screen and (min-width: 1028px) and (max-width: 1250px) {
   .admin-main {
