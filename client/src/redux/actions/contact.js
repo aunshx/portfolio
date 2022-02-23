@@ -174,6 +174,7 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
     };
 
     if (error.response.status === 500) {
+      
       value.message = "Something went wrong. Pl reload!";
       value.type = "error";
 
@@ -273,13 +274,12 @@ export const getMessages = (skipNow) => async (dispatch) => {
   });
 
   try {
+
     dispatch({
       type: MESSAGES_LOADING,
     });
 
     const res = await api.post("/contact/retrieve-messages-latest", body);
-
-    console.log(res.data)
 
     dispatch({
       type: MESSAGES_LOADING_COMPLETE,
