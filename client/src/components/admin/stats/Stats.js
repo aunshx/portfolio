@@ -5,7 +5,6 @@ import PullToRefresh from "react-simple-pull-to-refresh";
 import Navbar from '../navbar/Navbar'
 import { connect } from 'react-redux';
 
-import windowSize from '../../../utils/windowSize';
 import VisitorGraph from './charts/VisitorGraph';
 import Alerts from '../../layout/Alerts';
 import HitsChart from './charts/HitsChart';
@@ -22,14 +21,14 @@ import {getTotalHitsToday} from '../../../redux/actions/metrics'
 import MessageUpdates from './blocks/mid/MessageUpdates';
 import FooterAdmin from '../../layout/FooterAdmin';
 
-const Stats = ({}) => {
-  const { width } = windowSize();
+const Stats = ({
 
-  const [change, setChange] = useState(false)
+}) => {
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
-    setChange(true)
-  }, [change])
+    setChange(true);
+  }, [change]);
 
   const refreshingFeed = (offset) => {
     setChange(false);
@@ -167,20 +166,14 @@ const Stats = ({}) => {
 };
 
 Stats.propTypes = {
-  settings: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
-  metrics: PropTypes.object.isRequired,
-  getTotalHitsToday: PropTypes.func.isRequired
+
 };
 
 const mapStateToProps = (state) => ({
-  settings: state.settings,
-  auth: state.auth,
-  metrics: state.metrics,
+
 });
 
 const mapStateToActions = {
-  getTotalHitsToday,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Stats)

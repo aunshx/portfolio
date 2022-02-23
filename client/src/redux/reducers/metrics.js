@@ -50,6 +50,7 @@ import {
   RECENT_MESSAGES_LIMIT,
   RECENT_MESSAGES_LIMIT_LOADING,
   RECENT_MESSAGES_LIMIT_LOADING_COMPLETE,
+  
 } from "../actions/types";
 //
 const initialState = {
