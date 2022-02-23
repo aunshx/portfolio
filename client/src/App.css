@@ -2790,8 +2790,105 @@ from {
 .admin-main {
   width: 1200px;
   height: auto;
-  margin: 50px;
+  margin: 0px 0 50px 0;
 }
+
+.admin-main-settings {
+  width: auto;
+  height: auto;
+  margin: 50px 0px 0px 0;
+}
+
+.admin-main-settings .icons {
+  color: grey;
+  cursor: pointer;
+  margin-top: 0.3em;
+  margin-right: 0.2em;
+}
+
+.admin-main-settings .icons:hover {
+  color: var(--logo-color);
+}
+
+.admin-main-settings .not-replied {
+  border: 2px solid var(--closing-color);
+  color: var(--closing-color);
+     padding: 0em 0.5em;
+  font-size: 0.7em;
+  border-radius: 50%;
+  margin: 0 0.8em;
+}
+
+.admin-main-settings .not-replied:hover {
+  border: 2px solid var(--closing-color);
+  color: var(--closing-color);
+}
+
+.admin-main-settings .unseen{
+  border: 2px solid var(--logo-color);
+  color: var(--logo-color);
+      padding: 0em 0.45em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
+.admin-main-settings .unseen:hover {
+  border: 2px solid var(--logo-color);
+  color: var(--logo-color);
+}
+
+.admin-main-settings .ongoing {
+  border: 2px solid var(--ye-color);
+  color: var(--ye-color);
+     padding: 0em 0.4em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
+.admin-main-settings .ongoing:hover {
+  border: 2px solid var(--ye-color);
+  color: var(--ye-color);
+}
+
+.admin-main-settings .cold {
+  border: 2px solid var(--light-dark-font-color);
+  color: var(--light-dark-font-color);
+   padding: 0em 0.45em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
+.admin-main-settings .cold:hover {
+  border: 2px solid var(--light-dark-font-color);
+  color: var(--light-dark-font-color);
+}
+
+.admin-main-settings .success {
+  border: 2px solid var(--gotuu-color);
+  color: var(--gotuu-color);
+   padding: 0em 0.5em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
+.admin-main-settings .success:hover {
+  border: 2px solid var(--gotuu-color);
+  color: var(--gotuu-color);
+}
+
+.admin-main-settings .unselected {
+  border: 2px solid var(--grey-color);
+  color: var(--grey-color);
+   padding: 0em 0.4em;
+  font-size: 0.7em;
+  border-radius: 50%;
+   margin: 0 0.8em;
+}
+
 
 @media only screen and (min-width: 1028px) and (max-width: 1250px) {
   .admin-main {
@@ -2879,6 +2976,7 @@ from {
   font-size: 0.7em;
   border-radius: 5px;
 }
+
 .tag-small .unseen{
   border: 1px solid var(--logo-color);
   color: var(--logo-color);
@@ -2886,6 +2984,7 @@ from {
   font-size: 0.7em;
   border-radius: 5px;
 }
+
 .tag-small .ongoing {
   border: 1px solid var(--ye-color);
   color: var(--ye-color);
@@ -2893,6 +2992,7 @@ from {
   font-size: 0.7em;
   border-radius: 5px;
 }
+
 .tag-small .cold {
   border: 1px solid var(--light-dark-font-color);
   color: var(--light-dark-font-color);
@@ -2900,6 +3000,7 @@ from {
   font-size: 0.7em;
   border-radius: 5px;
 }
+
 .tag-small .success {
   border: 1px solid var(--gotuu-color);
   color: var(--gotuu-color);

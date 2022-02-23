@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
-import PullToRefresh from "react-simple-pull-to-refresh";
+
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 import Navbar from '../navbar/Navbar'
 import Messages from '../message/Messages';
@@ -12,6 +13,7 @@ import {
   getMessages,
   setRendererMessagesFalse,
 } from '../../../redux/actions/contact'
+import { Tooltip } from '@mui/material';
 
 const Main = ({
   // Redux Actions
@@ -48,12 +50,35 @@ const Main = ({
 
   useEffect(() => {
     if (rendererMessages === false) getMessages(offset);
-  }, [offset, getMessages]);
+  }, [offset, getMessages])
 
   return (
     <>
       <Navbar />
-      <div className='app'>
+      <div
+        className='app
+      margin'
+      >
+        <div className='admin-main-settings flex_middle'>
+          <div>
+            <RefreshIcon className='icons' />
+          </div>
+            <Tooltip title='Not Replied' placement='left'>
+                <div className='not-replied cursor_pointer'>N</div>
+            </Tooltip>
+            <Tooltip title='Unseen' placement='left'>
+                <div className='unseen cursor_pointer'>U</div>
+            </Tooltip>
+            <Tooltip title='Ongoing' placement='left'>
+                <div className='ongoing cursor_pointer'>O</div>
+            </Tooltip>
+            <Tooltip title='Success' placement='left'>
+                <div className='success cursor_pointer'>S</div>
+            </Tooltip>
+            <Tooltip title='Cold' placement='left'>
+                <div className='cold cursor_pointer'>C</div>
+            </Tooltip>
+        </div>
         <div className='admin-main'>
           <Messages
             messages={messages}

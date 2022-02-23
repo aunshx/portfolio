@@ -17,7 +17,6 @@ import SynopsisHits from './blocks/upper/SynopsisHits';
 import RecentEmails from './blocks/mid/RecentEmails';
 import Spinner from "../../layout/Spinner";
 
-import {getTotalHitsToday} from '../../../redux/actions/metrics'
 import MessageUpdates from './blocks/mid/MessageUpdates';
 import FooterAdmin from '../../layout/FooterAdmin';
 
