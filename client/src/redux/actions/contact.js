@@ -21,8 +21,6 @@ import {
   UPDATE_MESSAGE_STATUS,
 
   // Messages - Delete
-  DELETE_MESSAGE_LOADING,
-  DELETE_MESSAGE_LOADING_COMPLETE,
   REMOVE_MESSAGE_FROM_ARRAY
 } from "./types";
 
@@ -38,10 +36,6 @@ export const deleteMessage = (messageId) => async (dispatch) => {
   });
 
   try {
-    dispatch({
-      type: DELETE_MESSAGE_LOADING,
-    });
-
     const res = await api.post("/contact/message-delete", body);
 
     dispatch({
@@ -57,10 +51,6 @@ export const deleteMessage = (messageId) => async (dispatch) => {
     dispatch({
       type: SUCCESS_200,
       payload: value
-    });
-
-    dispatch({
-      type: DELETE_MESSAGE_LOADING_COMPLETE,
     });
 
     setTimeout(
@@ -80,10 +70,6 @@ export const deleteMessage = (messageId) => async (dispatch) => {
         payload: value,
       });
 
-      dispatch({
-        type: DELETE_MESSAGE_LOADING_COMPLETE,
-      });
-
       setTimeout(
         () =>
           dispatch({
@@ -98,10 +84,6 @@ export const deleteMessage = (messageId) => async (dispatch) => {
       dispatch({
         type: ERROR_SNACKBAR,
         payload: value,
-      });
-
-      dispatch({
-        type: DELETE_MESSAGE_LOADING_COMPLETE,
       });
 
       setTimeout(
@@ -120,10 +102,6 @@ export const deleteMessage = (messageId) => async (dispatch) => {
         payload: value,
       });
 
-      dispatch({
-        type: DELETE_MESSAGE_LOADING_COMPLETE,
-      });
-
       setTimeout(
         () =>
           dispatch({
@@ -138,10 +116,6 @@ export const deleteMessage = (messageId) => async (dispatch) => {
       dispatch({
         type: ERROR_SNACKBAR,
         payload: value,
-      });
-
-      dispatch({
-        type: DELETE_MESSAGE_LOADING_COMPLETE,
       });
 
       setTimeout(

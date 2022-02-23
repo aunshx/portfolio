@@ -6,6 +6,8 @@ import FooterAdmin from '../../layout/FooterAdmin';
 import Footer from '../../layout/Footer';
 import { connect } from 'react-redux';
 
+import Alerts from '../../layout/Alerts'
+
 import {
   getMessages
 } from '../../../redux/actions/contact'
@@ -30,6 +32,9 @@ const Main = ({
         <div className='admin-main'>
           <Messages messages={messages} />
         </div>
+      </div>
+      <div>
+        <Alerts />
       </div>
     </>
   );

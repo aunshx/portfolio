@@ -22,6 +22,10 @@ const DeleteMessage = ({
   settings: { displayMode },
   contact: { deleteMessageLoading },
 }) => {
+  const messageDeletion = (messageId) => {
+    deleteMessage(messageId)
+    close()
+  }
   return (
     <div
       className={
@@ -49,18 +53,10 @@ const DeleteMessage = ({
           <div style={{ marginRight: "1.3em" }}>
             <button
               className='button-yes flex_middle'
-              onClick={() => deleteMessage(messageId)}
+              onClick={() => messageDeletion(messageId)}
             >
               <div className='flex_middle'>
-                <div style={{ marginRight: "-0.5em" }}>Yes</div>
-                {/* <div style={{ width: 10 }}>
-                  {deleteMessageLoading && (
-                    <CircularProgress
-                      color='success'
-                      style={{ padding: "14px" }}
-                    />
-                  )}
-                </div> */}
+                <div>Yes</div>
               </div>
             </button>
           </div>

@@ -35,6 +35,7 @@ function authReducer(state = initialState, action) {
         message: payload.message,
         type: payload.type,
         key: nanoid(),
+        errorSnackbar: true
       };
     case ERROR_SNACKBAR:
       return {
@@ -49,6 +50,7 @@ function authReducer(state = initialState, action) {
         ...state,
         message: "",
         key: "",
+        type: 'info',
         errorSnackbar: false,
       };
     // Login Loading
