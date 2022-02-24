@@ -71,13 +71,14 @@ const Articles = (props) => {
           <div className='flex_middle'>
             <ArticleOne
               delay={600}
-              technology={["react", "cloudinary"]}
+              technology={["node", "axios", "node-cron"]}
               imagesArray={[
-                { image: reactLogo, alt: "React Logo" },
-                { image: cloudinaryLogo, alt: "Cloudinary Logo" },
+                { image: nodeLogo, alt: "Node Logo" },
+                { image: axiosLogo, alt: "Axios Logo" },
+                { image: nodeCronLogo, alt: "Node Cron Logo" },
               ]}
               articleImage={articleImage}
-              title={"Upload profile pic to website using cloudinary api"}
+              title={"Web-parser to analyse best restaurant offers on Zomato"}
             />
           </div>
           <div className='flex_middle'>
@@ -87,10 +88,11 @@ const Articles = (props) => {
               imagesArray={[
                 { image: redditLogo, alt: "Reddit Logo" },
                 { image: nodeLogo, alt: "Node Logo" },
+                { image: psqlLogo, alt: "Postgres Logo" },
                 { image: reactLogo, alt: "React Logo" },
               ]}
               articleImage={articleImage}
-              title={'Showcase memes using reddit api in react app'}
+              title={"Showcase and store memes using reddit api in react app"}
             />
           </div>
           <div className='flex_middle'>
@@ -98,11 +100,13 @@ const Articles = (props) => {
               delay={1000}
               technology={["react", "redux", "jwt"]}
               imagesArray={[
+                { image: psqlLogo, alt: "Postgres Logo" },
                 { image: reactLogo, alt: "React Logo" },
                 { image: reduxLogo, alt: "Redux Logo" },
-                { image: jwtLogo, alt: "JWT Logo" },
+                { image: nodeLogo, alt: "Node Logo" },
               ]}
               articleImage={articleImage}
+              title={'Live search in app using postgres'}
             />
           </div>
         </div>
