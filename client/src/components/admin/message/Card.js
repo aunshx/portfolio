@@ -6,7 +6,8 @@ import moment from 'moment';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCube,
-  faTrash
+  faTrash,
+  faComment
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Collapse, IconButton, Tooltip, Modal, Fade, Box } from "@mui/material";
@@ -22,6 +23,7 @@ import {
   updateMessageStatus,
   reduceSeenValue,
 } from "../../../redux/actions/contact";
+import CommentMessage from './CommentMessage';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -57,6 +59,7 @@ const Card = ({
   email,
   status,
   index,
+  comment,
   // Reduc Actions
   updateMessageStatus,
   reduceSeenValue,
@@ -64,6 +67,7 @@ const Card = ({
   settings: { displayMode },
   contact: { messagesUnseenCount },
 }) => {
+  const [isCommentOpen, setIsCommentOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -100,6 +104,14 @@ const Card = ({
 
   const closeDeleteBox = () => {
     setIsDeleteOpen(false);
+  };
+  
+  const openCommentBox = () => {
+    setIsCommentOpen(true);
+  };
+
+  const closeCommentBox = () => {
+    setIsCommentOpen(false);
   };
 
   return (
@@ -152,16 +164,28 @@ const Card = ({
               </ExpandMore>
             </div>
           </Tooltip>
-          <Tooltip title='Change Status' placement='top'>
-            <div className='flex_right'>
-              <FontAwesomeIcon
-                icon={faCube}
-                style={{ fontSize: 14 }}
-                className='icons'
-                onClick={handleClick}
-              />
-            </div>
-          </Tooltip>
+          <div className='flex_right'>
+            <Tooltip title='Change Comment' placement='top'>
+              <div className='flex_middle' style={{ marginRight: "0.2em" }}>
+                <FontAwesomeIcon
+                  icon={faComment}
+                  style={{ fontSize: 14 }}
+                  className='icons'
+                  onClick={openCommentBox}
+                />
+              </div>
+            </Tooltip>
+            <Tooltip title='Change Status' placement='top'>
+              <div className='flex_middle'>
+                <FontAwesomeIcon
+                  icon={faCube}
+                  style={{ fontSize: 14 }}
+                  className='icons'
+                  onClick={handleClick}
+                />
+              </div>
+            </Tooltip>
+          </div>
           <div>
             <StatusSelector
               handleClose={handleClose}
@@ -187,7 +211,7 @@ const Card = ({
       </div>
       <Modal
         open={isDeleteOpen}
-        onClose={!isDeleteOpen}
+        onClose={closeDeleteBox}
         closeAfterTransition
         BackdropProps={{
           timeout: 500,
@@ -201,6 +225,27 @@ const Card = ({
             <DeleteMessage
               name={name}
               close={closeDeleteBox}
+              messageId={messageId}
+            />
+          </Box>
+        </Fade>
+      </Modal>
+      <Modal
+        open={isCommentOpen}
+        onClose={closeCommentBox}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+          style: {
+            backgroundColor: "rgba(0,0,0,0.8)",
+          },
+        }}
+      >
+        <Fade in={isCommentOpen}>
+          <Box style={style}>
+            <CommentMessage
+              comment={comment}
+              close={closeCommentBox}
               messageId={messageId}
             />
           </Box>

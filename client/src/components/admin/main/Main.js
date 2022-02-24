@@ -16,8 +16,6 @@ import {
   getMessagesOnReload,
   getMessagesOldest,
   getMessagesOldestOnReload,
-  getCountTotalMessages,
-  getCountUnseenMessages,
 } from "../../../redux/actions/contact";
 import { Tooltip } from '@mui/material';
 import MessagesOldest from '../message/MessagesOldest';
@@ -29,8 +27,6 @@ const Main = ({
   getMessagesOnReload,
   getMessagesOldest,
   getMessagesOldestOnReload,
-  getCountTotalMessages,
-  getCountUnseenMessages,
   // Redux State
   contact: {
     messages,
@@ -90,11 +86,12 @@ const Main = ({
     if (rendererMessages === false && seeOldest === false) getMessages(offset);
     if (rendererMessages === false && seeOldest === true)
       getMessagesOldest(offsetOldest);
-    if (rendererMessages === false) {
-      getCountTotalMessages();
-      getCountUnseenMessages();
-    }
-  }, [offset, offsetOldest, getMessages]);
+  }, [
+    offset,
+    offsetOldest,
+    getMessages,
+    getMessagesOldest,
+  ]);
 
   const reload = () => {
     if (seeOldest) {
@@ -258,8 +255,6 @@ Main.propTypes = {
   getMessagesOnReload: PropTypes.func.isRequired,
   getMessagesOldest: PropTypes.func.isRequired,
   getMessagesOldestOnReload: PropTypes.func.isRequired,
-  getCountTotalMessages: PropTypes.func.isRequired,
-  getCountUnseenMessages: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -273,8 +268,6 @@ const mapStateToActions = {
   getMessagesOnReload,
   getMessagesOldest,
   getMessagesOldestOnReload,
-  getCountTotalMessages,
-  getCountUnseenMessages,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Main);

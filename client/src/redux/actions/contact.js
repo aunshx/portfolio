@@ -21,6 +21,7 @@ import {
   MESSAGES_OLDEST_RESET,
   MESSAGES_RESET,
   MESSAGES_ON_RELOAD_OLDEST,
+  COMMENT_ON_MESSAGE,
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
@@ -37,6 +38,99 @@ import {
   SET_MESSAGES_UNSEEN_COUNT,
   SET_MESSAGES_UNSEEN_COUNT_INCREASE,
 } from "./types";
+
+// Comment on message 
+export const commentOnMessage = (messageId, comment) => async (dispatch) => {
+   let value = {
+     message: "1",
+     type: "info",
+   };
+
+   const body = JSON.stringify({
+     messageId,
+     comment
+   });
+
+   try {
+      dispatch({
+        type: COMMENT_ON_MESSAGE,
+        payload: {
+          id: messageId,
+          comment,
+        },
+      });
+
+     const res = await api.post("/contact/message-add-comment", body);
+
+   } catch (error) {
+     if (error.response.status === 500) {
+       value.message = "Something went wrong. Pl reload!";
+       value.type = "error";
+
+       dispatch({
+         type: ERROR_SNACKBAR,
+         payload: value,
+       });
+
+       setTimeout(
+         () =>
+           dispatch({
+             type: SNACKBAR_RESET,
+           }),
+         5000
+       );
+     } else if (error.response.status === 400) {
+       value.message = error.response.data.errors[0].msg;
+       value.type = "error";
+
+       dispatch({
+         type: ERROR_SNACKBAR,
+         payload: value,
+       });
+
+       setTimeout(
+         () =>
+           dispatch({
+             type: SNACKBAR_RESET,
+           }),
+         5000
+       );
+     } else if (error.response.status === 401) {
+       value.message = "Session expired. Pl login again.";
+       value.type = "error";
+
+       dispatch({
+         type: ERROR_SNACKBAR,
+         payload: value,
+       });
+
+       setTimeout(
+         () =>
+           dispatch({
+             type: SNACKBAR_RESET,
+           }),
+         5000
+       );
+     } else {
+       value.message = "Something went wrong. Pl reload!";
+       value.type = "error";
+
+       dispatch({
+         type: ERROR_SNACKBAR,
+         payload: value,
+       });
+
+       setTimeout(
+         () =>
+           dispatch({
+             type: SNACKBAR_RESET,
+           }),
+         5000
+       );
+     }
+   }
+}
+
 
 // Reduce Unseen Messages Value
 export const reduceSeenValue = (count) => async (dispatch) => {
@@ -65,176 +159,6 @@ export const setRendererMessagesTrue = () => async (dispatch) => {
   dispatch({
     type: SET_RENDERER_MESSAGE_TRUE
   })
-};
-
- // Get count total messages
-export const getCountTotalMessages = () => async (dispatch) => {
-  let value = {
-    message: "1",
-    type: "info",
-  };
-
-  try {
-
-    const res = await api.get("/metrics/messages-total-count");
-
-    dispatch({
-      type: SET_MESSAGES_TOTAL_COUNT,
-      payload: res.data,
-    });
-
-  } catch (error) {
-    if (error.response.status === 500) {
-      value.message = "Something went wrong. Pl reload!";
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    } else if (error.response.status === 400) {
-      value.message = error.response.data.errors[0].msg;
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    } else if (error.response.status === 401) {
-      value.message = "Session expired. Pl login again.";
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    } else {
-      value.message = "Something went wrong. Pl reload!";
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    }
-  }
-};
-
- // Get count unseen messages
-export const getCountUnseenMessages = () => async (dispatch) => {
-  let value = {
-    message: "1",
-    type: "info",
-  };
-
-  try {
-
-    const res = await api.get("/metrics/messages-unseen-count");
-
-    dispatch({
-      type: SET_MESSAGES_UNSEEN_COUNT,
-      payload: res.data,
-    });
-
-  } catch (error) {
-    if (error.response.status === 500) {
-      value.message = "Something went wrong. Pl reload!";
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    } else if (error.response.status === 400) {
-      value.message = error.response.data.errors[0].msg;
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    } else if (error.response.status === 401) {
-      value.message = "Session expired. Pl login again.";
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    } else {
-      value.message = "Something went wrong. Pl reload!";
-      value.type = "error";
-
-      dispatch({
-        type: ERROR_SNACKBAR,
-        payload: value,
-      });
-
-      setTimeout(
-        () =>
-          dispatch({
-            type: SNACKBAR_RESET,
-          }),
-        5000
-      );
-    }
-  }
 };
 
 //  Delete Message
@@ -483,6 +407,20 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
 
     const res = await api.post("/contact/retrieve-messages-latest", body);
 
+    
+    const res2 = await api.get("/metrics/messages-total-count");
+    const res3 = await api.get("/metrics/messages-unseen-count");
+
+    dispatch({
+      type: SET_MESSAGES_TOTAL_COUNT,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: SET_MESSAGES_UNSEEN_COUNT,
+      payload: res3.data,
+    });
+
     dispatch({
       type: SET_RENDERER_MESSAGE_TRUE,
     });
@@ -597,6 +535,20 @@ export const getMessagesOldestOnReload = (skipNow) => async (dispatch) => {
   try {
 
     const res = await api.post("/contact/retrieve-messages-oldest", body);
+
+    
+    const res2 = await api.get("/metrics/messages-total-count");
+    const res3 = await api.get("/metrics/messages-unseen-count");
+
+    dispatch({
+      type: SET_MESSAGES_TOTAL_COUNT,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: SET_MESSAGES_UNSEEN_COUNT,
+      payload: res3.data,
+    });
 
     dispatch({
       type: SET_RENDERER_MESSAGE_TRUE,
@@ -723,6 +675,19 @@ export const getMessages = (skipNow) => async (dispatch) => {
     });
 
     const res = await api.post("/contact/retrieve-messages-latest", body);
+
+    const res2 = await api.get("/metrics/messages-total-count");
+    const res3 = await api.get("/metrics/messages-unseen-count");
+
+    dispatch({
+      type: SET_MESSAGES_TOTAL_COUNT,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: SET_MESSAGES_UNSEEN_COUNT,
+      payload: res3.data,
+    });
 
     dispatch({
       type: MESSAGES_LOADING_COMPLETE,
@@ -862,6 +827,20 @@ export const getMessagesOldest = (skipNow) => async (dispatch) => {
     });
 
     const res = await api.post("/contact/retrieve-messages-oldest", body);
+
+    
+    const res2 = await api.get("/metrics/messages-total-count");
+    const res3 = await api.get("/metrics/messages-unseen-count");
+
+    dispatch({
+      type: SET_MESSAGES_TOTAL_COUNT,
+      payload: res2.data,
+    });
+
+    dispatch({
+      type: SET_MESSAGES_UNSEEN_COUNT,
+      payload: res3.data,
+    });
 
 
     dispatch({

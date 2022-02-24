@@ -39,6 +39,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "ongoing" && ongoingOn && (
@@ -51,6 +52,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "success" && successOn && (
@@ -63,6 +65,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "unseen" && unseenOn && (
@@ -75,6 +78,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "cold" && coldOn && (
@@ -87,6 +91,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
               </div>
@@ -111,6 +116,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "ongoing" && ongoingOn && (
@@ -123,6 +129,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "success" && successOn && (
@@ -135,6 +142,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "unseen" && unseenOn && (
@@ -147,6 +155,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "cold" && coldOn && (
@@ -159,6 +168,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
               </div>
@@ -183,6 +193,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "ongoing" && ongoingOn && (
@@ -195,6 +206,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "success" && successOn && (
@@ -207,6 +219,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "unseen" && unseenOn && (
@@ -219,6 +232,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "cold" && coldOn && (
@@ -231,6 +245,7 @@ const Messages = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
               </div>

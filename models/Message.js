@@ -18,7 +18,8 @@ const MessageSchema = new mongoose.Schema(
       default: 'unseen'
     },
     comment: {
-      type: String
+      type: String,
+      default: ''
     },
     organisation: {
       type: String,

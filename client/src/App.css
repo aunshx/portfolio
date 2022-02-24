@@ -26,10 +26,10 @@
 }
 
 [data-theme="dark"] {
-  --background-color: rgb(28, 28, 28);
+  --background-color: rgb(24, 24, 24);
   --background-dots-color: rgb(15, 15, 15);
-   --navbar-color: rgb(15, 15, 15);
-   --card-color: rgb(15, 15, 15);
+   --navbar-color: rgb(18, 18, 18);
+   --card-color: rgb(18, 18, 18);
    --light-grey-color: rgb(25, 25, 25);
    --dark-font-color: rgb(238, 238, 238);
   --light-dark-font-color: rgb(204, 204, 204);
@@ -3515,4 +3515,55 @@ background-color:var(--card-color);
 
 .delete-card .button-no:hover{
 background-color:var(--light-bodinga-color);
+}
+
+/* ------------------------ COMMENT CARD -------------------- */
+.comment-card {
+  color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  z-index: 1;
+  font-family: 'Comfortaa', cursive;
+  padding: 10px;
+  width: 400px;
+  min-height: 130px;
+  font-size: 0.8em;
+}
+
+.comment-card .title {
+  font-size: 1.2em;
+  color: var(--logo-color);
+}
+
+.comment-card--dark {
+  border: 1px solid var(--light-dark-font-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.comment-card .button {
+  background-color: transparent;
+  box-shadow: none;
+
+}
+
+.comment-card .button-yes{
+display:inline-block;
+padding:0.2em 1em;
+border:0.1em solid var(--light-dark-font-color);
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Roboto',sans-serif;
+font-weight:300;
+color: var(--light-dark-font-color);
+text-align:center;
+transition: all 0.2s;
+border-radius: 5px;
+cursor: pointer;
+background-color:var(--card-color);
+}
+
+.comment-card .button-yes:hover{
+color: var(--logo-color);
+border-color: var(--logo-color);
 }

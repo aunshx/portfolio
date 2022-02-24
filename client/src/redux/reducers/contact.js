@@ -14,6 +14,7 @@ import {
   MESSAGES_OLDEST_RESET,
   MESSAGES_RESET,
   MESSAGES_ON_RELOAD_OLDEST,
+  COMMENT_ON_MESSAGE,
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
@@ -104,6 +105,20 @@ function authReducer(state = initialState, action) {
               ? {
                   ...element,
                   status: payload.status,
+                }
+              : element
+          ),
+        };
+
+      // Messages - Comment Update
+      case COMMENT_ON_MESSAGE:
+        return {
+          ...state,
+          messages: state.messages.map((element, index) =>
+            element._id === payload.id
+              ? {
+                  ...element,
+                  comment: payload.comment,
                 }
               : element
           ),
