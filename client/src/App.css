@@ -194,6 +194,10 @@ pre {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+.triple_grid--comment {
+  display: grid;
+  grid-template-columns: 0.5fr 4fr 0.5fr;
+}
 
 @media only screen and (max-width: 479px) {
   .triple_grid {
@@ -3541,29 +3545,6 @@ background-color:var(--light-bodinga-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.comment-card .button {
-  background-color: transparent;
-  box-shadow: none;
-
-}
-
-.comment-card .button-yes{
-display:inline-block;
-padding:0.2em 1em;
-border:0.1em solid var(--light-dark-font-color);
-box-sizing: border-box;
-text-decoration:none;
-font-family:'Roboto',sans-serif;
-font-weight:300;
-color: var(--light-dark-font-color);
-text-align:center;
-transition: all 0.2s;
-border-radius: 5px;
-cursor: pointer;
-background-color:var(--card-color);
-}
-
-.comment-card .button-yes:hover{
-color: var(--logo-color);
-border-color: var(--logo-color);
+.comment-card .text {
+  margin-top: 2em;
 }

@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-
-import { commentOnMessage } from "../../../redux/actions/contact";
-
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
+
+import CloseIcon from "@mui/icons-material/Close";
+
+import { commentOnMessage } from "../../../redux/actions/contact";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -64,8 +65,8 @@ const textFieldInputLabelStyleDark = {
 };
 
 const textFieldStyle = {
-  height: "20px",
   width: "230px",
+  fontSize: '0.8em'
 };
  
 
@@ -79,6 +80,8 @@ const CommentMessage = ({
   settings: { displayMode },
 }) => {
 
+    const CHARACTER_LIMIT = 100
+
     const writeComment = (e) => {
         commentOnMessage(messageId, e.target.value);
     }
@@ -87,30 +90,38 @@ const CommentMessage = ({
     <div
       className={
         displayMode
-          ? "comment-card comment-card--dark ft-bold app"
-          : "comment-card ft-bold app"
+          ? "comment-card comment-card--dark ft-bold "
+          : "comment-card ft-bold"
       }
       style={{ justifyContent: "space-around" }}
     >
-      <div className='title flex_middle'>
-        <div style={{ marginRight: "0.6em" }}>
-          <FontAwesomeIcon icon={faComment} style={{ marginBottom: "1px" }} />
+      <div className='triple_grid--comment'>
+        <div></div>
+        <div className='title flex_middle'>
+          <div style={{ marginRight: "0.6em" }}>
+            <FontAwesomeIcon icon={faComment} style={{ marginBottom: "1px" }} />
+          </div>
+          <div>Comment</div>
         </div>
-        <div>Comment</div>
+        <div className="flex_middle">
+            <CloseIcon className="cancel" style={{ fontSize: 16 }} onClick={close} />
+        </div>
       </div>
-      <div className='text'>
+      <div className='text flex_middle'>
         {displayMode ? (
           <>
             <div style={{ marginBottom: "1.3em" }}>
               <CssTextFieldDark
+                multiline
+                maxRows={4}
                 label='Comment'
                 placeholder='Comment'
                 size='small'
-                focusColor='rgb(0, 145, 255)'
                 InputLabelProps={{
                   style: textFieldInputLabelStyleDark,
                 }}
                 inputProps={{
+                  maxLength: CHARACTER_LIMIT,
                   style: textFieldStyle,
                 }}
                 FormHelperTextProps={{
@@ -118,26 +129,36 @@ const CommentMessage = ({
                     margin: 0,
                     padding: "0 0 0 5px",
                     fontSize: 10,
+                    color: "grey",
                   },
                 }}
+                error={comment.length > CHARACTER_LIMIT - 1}
+                helperText={
+                  <div style={{ fontSize: "0.8em" }}>
+                    {!(comment.length > CHARACTER_LIMIT - 1)
+                      ? `${comment.length}/${CHARACTER_LIMIT}`
+                      : "Length exceeded"}
+                  </div>
+                }
                 name='comment'
                 value={comment}
                 onChange={writeComment}
-                required
               />
             </div>
           </>
         ) : (
           <>
             <CssTextField
+              multiline
+              maxRows={4}
               label='Comment'
               placeholder='Comment'
               size='small'
-              focusColor='rgb(0, 145, 255)'
               InputLabelProps={{
-                style: textFieldInputLabelStyle,
+                style: textFieldInputLabelStyleDark,
               }}
               inputProps={{
+                maxLength: CHARACTER_LIMIT,
                 style: textFieldStyle,
               }}
               FormHelperTextProps={{
@@ -145,8 +166,17 @@ const CommentMessage = ({
                   margin: 0,
                   padding: "0 0 0 5px",
                   fontSize: 10,
+                  color: "grey",
                 },
               }}
+              error={comment.length > CHARACTER_LIMIT - 1}
+              helperText={
+                <div style={{ fontSize: "0.8em" }}>
+                  {!(comment.length > CHARACTER_LIMIT - 1)
+                    ? `${comment.length}/${CHARACTER_LIMIT}`
+                    : "Length exceeded"}
+                </div>
+              }
               name='comment'
               value={comment}
               onChange={writeComment}
@@ -154,16 +184,6 @@ const CommentMessage = ({
             />
           </>
         )}
-      </div>
-      <div className='flex_middle'>
-        <button
-          className='button-yes flex_middle'
-          //   onClick={() => messageDeletion(messageId)}
-        >
-          <div className='flex_middle'>
-            <div>Submit</div>
-          </div>
-        </button>
       </div>
     </div>
   );
