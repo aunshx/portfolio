@@ -1174,7 +1174,6 @@ pre {
   height: 230px;
   border-radius: 10px;
   z-index: 5;
-  /* object-fit: contain; */
 }
 
 .projects .individual .double_grid .image .image-needs-fit {
@@ -1205,6 +1204,7 @@ pre {
 .projects .individual .double_grid .image .text .main-carousel {
   height: 20%;
   width: 92%;
+  animation: subtleChangeOverImage 0.3s 1 linear;
 }
 .projects .individual .double_grid .image .text .icon-carousel {
  margin-right: 0.1em;
@@ -1239,6 +1239,7 @@ color: var(--light-logo-color);
   z-index: 10;
   color: var(--image-navigate-color);
   cursor: pointer;
+  animation: subtleChangeOverImage 0.3s 1 linear;
 }
 
 .projects .individual .double_grid .image .next:hover, 
@@ -1253,6 +1254,16 @@ color: var(--light-logo-color);
   z-index: 10;
   color: var(--image-navigate-color);
   cursor: pointer;
+  animation: subtleChangeOverImage 0.3s 1 linear;
+}
+
+@keyframes subtleChangeOverImage {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 }
 
 .projects .individual .double_grid .details {
@@ -1354,6 +1365,82 @@ color: var(--light-logo-color);
   display: inline-block;
   content: "-";
   margin-right: 0.4em;
+}
+
+.big-pic .individual {
+   color: var(--lighter-dark-font-color);
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  width: 90%;
+  height: 100%;
+}
+
+.big-pic .individual--dark {
+   box-shadow: none;
+   border: 1px solid var(--light-dark-font-color);
+}
+
+.big-pic .individual .image {
+  position: relative;
+  padding: 1em;
+}
+
+.big-pic .individual .image img {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  object-fit: contain;
+  border: 1px solid var(--light-bodinga-color);
+}
+
+
+.big-pic .individual .moon:hover,
+.big-pic .individual .sun:hover {
+ color: var(--light-dark-font-color);
+ cursor: pointer;
+}
+
+.big-pic .individual .moon {
+ color: var(--grey-color);
+  margin: 0 1em 0 0;
+}
+
+.big-pic .individual .sun {
+ color: var(--ye-color);
+ margin: 0 1em 0 0;
+}
+
+.big-pic .individual .image .next  {
+  position: absolute;
+  top: 45%;
+  right: 20px;
+  z-index: 10;
+  color: var(--image-navigate-color);
+  cursor: pointer;
+  animation: subtleChangeOverImage 0.3s 1 linear;
+}
+
+.big-pic .individual .image .next:hover, 
+.big-pic .individual .image .before:hover {
+  color: var(--light-logo-color);
+}
+
+.big-pic .individual .image .before  {
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  z-index: 10;
+  color: var(--image-navigate-color);
+  cursor: pointer;
+  animation: subtleChangeOverImage 0.3s 1 linear;
+}
+
+.big-pic .individual .text  {
+  font-size: 1em;
+  color: var(--light-dark-font-color);
+  padding: 0 0 1em 0;
+  font-family: 'Comfortaa', cursive;
 }
 
 @media only screen and (min-width: 786px) and (max-width: 1028px) {

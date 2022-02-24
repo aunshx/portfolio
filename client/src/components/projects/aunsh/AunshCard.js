@@ -11,7 +11,6 @@ import {
   Tooltip,
 } from "@mui/material";
 
-import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -38,11 +37,12 @@ import useWindow from "../../../utils/windowSize";
 import { connect } from "react-redux";
 
 import { detailsLight, detailsDark } from "./details";
+import BigPic from "./BigPic";
 
 const style = {
   position: "fixed",
   top: "50%",
-  left: "50%",
+  left: "54%",
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
@@ -71,7 +71,7 @@ const AunshCard = ({
 }) => {
   const { width, height } = useWindow();
   const [expanded, setExpanded] = useState(false);
-  // const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+  const [isBigPicOpen, setIsBigPicOpen] = useState(false);
   const [carousel, setCarousel] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [darkModePics, setDarkModePics] = useState(0);
@@ -111,6 +111,14 @@ const AunshCard = ({
       setCurrentIndex(currentIndex - 1);
     }
   }
+
+  const bigPicClose = () => {
+    setIsBigPicOpen(false)
+  }
+
+  const bigPicOpen = () => {
+    setIsBigPicOpen(true)
+  }
   return (
     <div
       className={
@@ -144,7 +152,9 @@ const AunshCard = ({
                 : detailsLight[currentIndex].imgSource || defaultImg
             }
             alt='Bodinga Home Page'
-            className={detailsLight[currentIndex].needsFit ? 'image-needs-fit' : ''}
+            className={
+              detailsLight[currentIndex].needsFit ? "image-needs-fit" : ""
+            }
           />
           {carousel && (
             <div className={darkModePics ? "text text--dark" : "text"}>
@@ -155,7 +165,7 @@ const AunshCard = ({
               </div>
               <div className='icon-carousel flex_middle'>
                 <Tooltip title='Expand Photo' placement='top'>
-                  <div style={{ marginRight: "0.5em" }}>
+                  <div style={{ marginRight: "0.5em" }} onClick={bigPicOpen}>
                     <OpenInFullIcon
                       className='expand-carousel'
                       style={{ fontSize: 13, marginTop: "0.2em" }}
@@ -364,9 +374,9 @@ const AunshCard = ({
           </div>
         </Collapse>
       </div>
-      {/* <Modal
-        open={isPhotoOpen}
-        onClose={() => setIsPhotoOpen(false)}
+      <Modal
+        open={isBigPicOpen}
+        onClose={bigPicClose}
         closeAfterTransition
         BackdropProps={{
           timeout: 500,
@@ -375,23 +385,23 @@ const AunshCard = ({
           },
         }}
       >
-        <Fade in={isPhotoOpen}>
+        <Fade in={isBigPicOpen}>
           <Box style={style}>
-            <Card style={{ padding: "0.2em" }}>
-              <div className='flex_right'>
-                <CloseIcon
-                  onClick={() => setIsPhotoOpen(false)}
-                  className='cancel cursor_pointer'
-                  style={{ marginRight: "0.3em" }}
-                />
-              </div>
-              <div style={{ padding: "0.3em 0.6em 0.6em 0.6em" }}>
-                <img src={defaultImg} alt='Bodinga Home Page' />
-              </div>
-            </Card>
+            <BigPic
+              close={bigPicClose}
+              detailsLight={detailsLight}
+              detailsDark={detailsDark}
+              currentIndex={currentIndex}
+              darkModePics={darkModePics}
+              increaseCurrentIndex={increaseCurrentIndex}
+              decreaseCurrentIndex={decreaseCurrentIndex}
+              showDarkModePicsAndArray={showDarkModePicsAndArray}
+              showLightModePicsAndArray={showLightModePicsAndArray}
+              displayMode={displayMode}
+            />
           </Box>
         </Fade>
-      </Modal> */}
+      </Modal>
     </div>
   );
 };
