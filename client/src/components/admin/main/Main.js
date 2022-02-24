@@ -16,6 +16,8 @@ import {
   getMessagesOnReload,
   getMessagesOldest,
   getMessagesOldestOnReload,
+  getCountTotalMessages,
+  getCountUnseenMessages,
 } from "../../../redux/actions/contact";
 import { Tooltip } from '@mui/material';
 import MessagesOldest from '../message/MessagesOldest';
@@ -27,6 +29,8 @@ const Main = ({
   getMessagesOnReload,
   getMessagesOldest,
   getMessagesOldestOnReload,
+  getCountTotalMessages,
+  getCountUnseenMessages,
   // Redux State
   contact: {
     messages,
@@ -34,6 +38,8 @@ const Main = ({
     lazyLoading,
     rendererMessages,
     messagesOldest,
+    messagesTotalCount,
+    messagesUnseenCount,
   },
   auth: { isAuthenticated },
 }) => {
@@ -84,6 +90,10 @@ const Main = ({
     if (rendererMessages === false && seeOldest === false) getMessages(offset);
     if (rendererMessages === false && seeOldest === true)
       getMessagesOldest(offsetOldest);
+    if (rendererMessages === false) {
+      getCountTotalMessages();
+      getCountUnseenMessages();
+    }
   }, [offset, offsetOldest, getMessages]);
 
   const reload = () => {
@@ -197,6 +207,15 @@ const Main = ({
               C
             </div>
           </Tooltip>
+          <Tooltip title='Unread/Total Messages' placement='left'>
+            <div
+              className={
+                'unread_total_messages'
+              }
+            >
+              ({messagesUnseenCount}/{messagesTotalCount})
+            </div>
+          </Tooltip>
         </div>
         {change && (
           <div className='admin-main'>
@@ -239,6 +258,8 @@ Main.propTypes = {
   getMessagesOnReload: PropTypes.func.isRequired,
   getMessagesOldest: PropTypes.func.isRequired,
   getMessagesOldestOnReload: PropTypes.func.isRequired,
+  getCountTotalMessages: PropTypes.func.isRequired,
+  getCountUnseenMessages: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -252,6 +273,8 @@ const mapStateToActions = {
   getMessagesOnReload,
   getMessagesOldest,
   getMessagesOldestOnReload,
+  getCountTotalMessages,
+  getCountUnseenMessages,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Main);

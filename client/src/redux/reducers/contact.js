@@ -24,6 +24,11 @@ import {
   // Set Renderer False
   SET_RENDERER_MESSAGE_FALSE,
   SET_RENDERER_MESSAGE_TRUE,
+
+  // Set Counts
+  SET_MESSAGES_TOTAL_COUNT,
+  SET_MESSAGES_UNSEEN_COUNT,
+  SET_MESSAGES_UNSEEN_COUNT_INCREASE,
 } from "../actions/types";
 //
 const initialState = {
@@ -40,7 +45,11 @@ messagesOldest: [],
 
 // Lazy Loading 
 rendererMessages: false,
-lazyLoading: false
+lazyLoading: false,
+
+// Messages total Count 
+messagesTotalCount: 0,
+messagesUnseenCount: 0
 
 };
 // kk
@@ -48,6 +57,23 @@ function authReducer(state = initialState, action) {
     const { type, payload } = action
 
     switch (type) {
+      // Set Count
+      case SET_MESSAGES_TOTAL_COUNT:
+        return {
+          ...state,
+          messagesTotalCount: payload,
+        };
+      case SET_MESSAGES_UNSEEN_COUNT:
+        return {
+          ...state,
+          messagesUnseenCount: payload,
+        };
+      case SET_MESSAGES_UNSEEN_COUNT_INCREASE:
+        return {
+          ...state,
+          messagesUnseenCount: state.messagesUnseenCount + 1,
+        };
+
       // Renderer Message
       case SET_RENDERER_MESSAGE_TRUE:
         return {

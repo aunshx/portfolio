@@ -81,7 +81,6 @@ router.get("/messages-total-count", auth, async (req, res) => {
 
   try {
     let ans = await Message.find(
-      { userId: req.user.id }
     ).count()
 
     return res.status(200).send(ans.toString());
@@ -98,7 +97,7 @@ router.get("/messages-unseen-count", auth, async (req, res) => {
 
   try {
     let ans = await Message.find(
-      { $and: [{ userId: req.user.id }, { status: 'unseen' }] },
+      { status: 'unseen' },
     ).count()
 
     return res.status(200).send(ans.toString())

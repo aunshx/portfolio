@@ -31,7 +31,27 @@ import {
   // Set Renderer False
   SET_RENDERER_MESSAGE_FALSE,
   SET_RENDERER_MESSAGE_TRUE,
+
+  // Set Counts
+  SET_MESSAGES_TOTAL_COUNT,
+  SET_MESSAGES_UNSEEN_COUNT,
+  SET_MESSAGES_UNSEEN_COUNT_INCREASE,
 } from "./types";
+
+// Reduce Unseen Messages Value
+export const reduceSeenValue = (count) => async (dispatch) => {
+  dispatch({
+    type: SET_MESSAGES_UNSEEN_COUNT,
+    payload: count - 1
+  });
+};
+
+// Increase Unseen Messages Value
+export const increaseSeenValue = (count) => async (dispatch) => {
+  dispatch({
+    type: SET_MESSAGES_UNSEEN_COUNT_INCREASE,
+  });
+};
 
 // Set Renderer False 
 export const setRendererMessagesFalse = () => async (dispatch) => {
@@ -45,6 +65,176 @@ export const setRendererMessagesTrue = () => async (dispatch) => {
   dispatch({
     type: SET_RENDERER_MESSAGE_TRUE
   })
+};
+
+ // Get count total messages
+export const getCountTotalMessages = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+
+    const res = await api.get("/metrics/messages-total-count");
+
+    dispatch({
+      type: SET_MESSAGES_TOTAL_COUNT,
+      payload: res.data,
+    });
+
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
+ // Get count unseen messages
+export const getCountUnseenMessages = () => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  try {
+
+    const res = await api.get("/metrics/messages-unseen-count");
+
+    dispatch({
+      type: SET_MESSAGES_UNSEEN_COUNT,
+      payload: res.data,
+    });
+
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
 };
 
 //  Delete Message
@@ -177,6 +367,10 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
     });
 
     const res = await api.post("/contact/message-status-change", body);
+
+    if(status === 'unseen') {
+      dispatch(increaseSeenValue())
+    }
 
   } catch (error) {
 

@@ -2860,6 +2860,15 @@ from {
   }
 }
 
+.admin-main-settings .unread_total_messages {
+  color: var(--grey-color);
+  font-size: 0.9em;
+  font-family: 'Comfortaa', cursive;
+  margin-left: 0.5em;
+  margin-top: 0.1em;
+  cursor: context-menu;
+}
+
 .admin-main-settings .icons-2:hover, 
 .admin-main-settings .icons-2-active:hover {
   color: var(--logo-color);

@@ -16,9 +16,12 @@ import { styled } from "@mui/material/styles";
 
 import Tag from "./Tag";
 import StatusSelector from './StatusSelector';
+import DeleteMessage from "./DeleteMessage";
 
-import { updateMessageStatus } from "../../../redux/actions/contact";
-import DeleteMessage from './DeleteMessage';
+import {
+  updateMessageStatus,
+  reduceSeenValue,
+} from "../../../redux/actions/contact";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -44,55 +47,60 @@ const style = {
   p: 4,
 };
 
-const Card = ({ 
+const Card = ({
   name,
-createdAt,
-message,
-organisation,
-seen,
-messageId,
-email,
-status,
-index,
-// Reduc Actions 
-updateMessageStatus,
+  createdAt,
+  message,
+  organisation,
+  seen,
+  messageId,
+  email,
+  status,
+  index,
+  // Reduc Actions
+  updateMessageStatus,
+  reduceSeenValue,
   // Redux State
-  settings: { displayMode } 
+  settings: { displayMode },
+  contact: { messagesUnseenCount },
 }) => {
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-    const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-
-        const [anchorEl, setAnchorEl] = useState(null);
-
-    const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const open = Boolean(anchorEl);
 
-    const handleExpandClick = () => {
-      setExpanded(!expanded);
-    };
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
-      const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-      };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-      const handleClose = () => {
-        setAnchorEl(null);
-      };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-      const changeSeenStatus = () => {
-        if(status === 'unseen'){
-          updateMessageStatus('not-replied', messageId, status)
-        }
-      }
+  const changeSeenStatus = () => {
+    if (status === "unseen") {
+      updateMessageStatus(
+        "not-replied",
+        messageId,
+        status,
+      );
+      reduceSeenValue(messagesUnseenCount);
+    }
+  };
 
-      const openDeleteBox = () => {
-        setIsDeleteOpen(true)
-      }
+  const openDeleteBox = () => {
+    setIsDeleteOpen(true);
+  };
 
-      const closeDeleteBox = () => {
-        setIsDeleteOpen(false)
-      }
+  const closeDeleteBox = () => {
+    setIsDeleteOpen(false);
+  };
 
   return (
     <>
@@ -190,25 +198,33 @@ updateMessageStatus,
       >
         <Fade in={isDeleteOpen}>
           <Box style={style}>
-            <DeleteMessage name={name} close={closeDeleteBox} messageId={messageId} />
+            <DeleteMessage
+              name={name}
+              close={closeDeleteBox}
+              messageId={messageId}
+            />
           </Box>
         </Fade>
       </Modal>
     </>
   );
-}
+};
 
 Card.propTypes = {
   settings: PropTypes.object.isRequired,
-  updateMessageStatus: PropTypes.func.isRequired
+  contact: PropTypes.object.isRequired,
+  updateMessageStatus: PropTypes.func.isRequired,
+  reduceSeenValue: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-    settings: state.settings
+    settings: state.settings,
+    contact: state.contact,
 })
 
 const mapActionsToProps = {
   updateMessageStatus,
+  reduceSeenValue,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Card)
