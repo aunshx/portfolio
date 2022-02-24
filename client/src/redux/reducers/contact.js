@@ -88,7 +88,8 @@ function authReducer(state = initialState, action) {
       case MESSAGES_ON_RELOAD:
         return {
           ...state,
-          messages: payload
+          messages: payload.data,
+          lazyLoading: payload.lazyLoading
         };
       case MESSAGES_LOADING:
         return {

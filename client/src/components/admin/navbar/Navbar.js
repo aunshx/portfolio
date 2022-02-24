@@ -15,8 +15,6 @@ import {
 
 import { Drawer, Tooltip } from "@mui/material";
 
-import { makeStyles } from "@mui/styles";
-
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -167,22 +165,6 @@ const Navbar = ({
           {isAuthenticated && (
             <>
               <div className='cursor_pointer'>
-                <Tooltip title='Notifications' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faBell}
-                      className={"element--admin"}
-                      style={{
-                        fontSize: 18,
-                        marginTop: "0.3em",
-                        marginRight: "0.9em",
-                        marginLeft: "0.9em",
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-              <div className='cursor_pointer'>
                 <Tooltip title='Dashboard' placement='left'>
                   <div>
                     <NavLink
@@ -218,6 +200,13 @@ const Navbar = ({
                     </NavLink>
                   </div>
                 </Tooltip>
+              </div>
+              <div className='cursor_pointer'>
+                <Link to='/'>
+                  <Tooltip title='Portfolio' placement='left'>
+                    <div className='element-letter--admin'>a.</div>
+                  </Tooltip>
+                </Link>
               </div>
               <div className='cursor_pointer'>
                 <Tooltip title='Logout' placement='left'>

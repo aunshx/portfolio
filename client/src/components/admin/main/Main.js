@@ -23,6 +23,7 @@ const Main = ({
   getMessagesOnReload,
   // Redux State
   contact: { messages, messagesLoading, lazyLoading, rendererMessages },
+  auth: { isAuthenticated }
 }) => {
   const [offset, setOffset] = useState(0);
   const [change, setChange] = useState(false);
@@ -43,6 +44,7 @@ const Main = ({
         root: null,
         threshold: 0,
       };
+
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && lazyLoading) {
           setRendererMessagesFalse();
@@ -66,6 +68,7 @@ const Main = ({
 
   const reload = () => {
     getMessagesOnReload(0);
+    setOffset(0)
     setChange(false);
   }
 
@@ -160,13 +163,15 @@ const Main = ({
 
 Main.propTypes = {
   contact: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   getMessages: PropTypes.func.isRequired,
   setRendererMessagesFalse: PropTypes.func.isRequired,
   getMessagesOnReload: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  contact: state.contact
+  contact: state.contact,
+  auth: state.auth
 });
 
 const mapStateToActions = {

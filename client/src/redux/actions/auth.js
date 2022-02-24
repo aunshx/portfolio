@@ -23,7 +23,8 @@ import {
 
 import {
   getTotalHitsSynopsis
-} from '../actions/metrics'
+} from './metrics'
+import { getMessages } from "./contact";
 
 export const snackbarDeactivate = (value) => async (dispatch) => {
   dispatch({

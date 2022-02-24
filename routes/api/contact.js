@@ -129,12 +129,12 @@ router.post(
 // @access   Private
 router.post(
   "/retrieve-messages-latest",
-  auth,
+  // auth,
   async (req, res) => {
     const { skipNow } = req.body
 
     try {
-      let ans = await Message.find({ userId: req.user.id })
+      let ans = await Message.find()
         .sort({
           createdAt: -1,
         })
@@ -143,6 +143,7 @@ router.post(
 
       return res.status(200).send(ans);
     } catch (err) {
+      console.log(err)
       res.status(400).send({ errors: [{ msg: "Cannot retrieve messages" }] });
     }
   }

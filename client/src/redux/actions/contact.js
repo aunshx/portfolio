@@ -34,6 +34,7 @@ export const setRendererMessagesFalse = () => async (dispatch) => {
   dispatch({
     type: SET_RENDERER_MESSAGE_FALSE
   })
+  console.log('kckckkckcckckckckkcc')
 };
 
 //  Delete Message
@@ -282,9 +283,15 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
       type: SET_RENDERER_MESSAGE_TRUE,
     });
 
+    const dataPack = {};
+
+    dataPack.data = res.data;
+    dataPack.lazyLoading = true
+
+
     dispatch({
       type: MESSAGES_ON_RELOAD,
-      payload: res.data,
+      payload: dataPack,
     });
 
   } catch (error) {
