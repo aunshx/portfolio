@@ -5,6 +5,8 @@ import Card from './Card'
 
 import { connect } from 'react-redux'
 
+import windowSize from '../../../utils/windowSize'
+
 const Messages = ({
   messages,
   lastBookElementRef,
@@ -14,6 +16,7 @@ const Messages = ({
   unseenOn,
   coldOn,
 }) => {
+  const { width } = windowSize()
   return (
     <div className='messages-admin'>
       {messages.length > 0 &&
@@ -24,9 +27,9 @@ const Messages = ({
                 className='one flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos='fade-in'
-                data-aos-delay={100 * index}
-                data-aos-offset={60}
+                data-aos={width < 400 ? 'fade-up' : 'fade-up'}
+                data-aos-delay={width < 768 ? 50 * index : 100 * index}
+                data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 {element.status === "not-replied" && notRepliedOn && (
@@ -101,9 +104,9 @@ const Messages = ({
                 className='two flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos='fade-in'
-                data-aos-delay={100 * index}
-                data-aos-offset={60}
+                data-aos={width < 400 ? '' : 'fade-up'}
+                                data-aos-delay={width < 768 ? 50 * index : 100 * index}
+                data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 {element.status === "not-replied" && notRepliedOn && (
@@ -178,9 +181,9 @@ const Messages = ({
                 className='three flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos='fade-in'
-                data-aos-delay={100 * index}
-                data-aos-offset={60}
+                data-aos={width < 400 ? '' : 'fade-up'}
+                                data-aos-delay={width < 768 ? 50 * index : 100 * index}
+                data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 {element.status === "not-replied" && notRepliedOn && (
