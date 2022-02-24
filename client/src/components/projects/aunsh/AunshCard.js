@@ -1,41 +1,56 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-import { Collapse, IconButton, Tooltip, Box, Fade, Modal, Card } from '@mui/material';
+import {
+  Box,
+  Card,
+  Collapse,
+  Fade,
+  IconButton,
+  Modal,
+  Tooltip,
+} from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSun,
+  faMoon,
+} from "@fortawesome/free-solid-svg-icons";
 
-import { useState } from 'react';
+import Tags from "../Tags";
+import TagsSmall from "../TagsSmall";
 
-import Tags from './Tags';
-import TagsSmall from './TagsSmall';
+import defaultImg from "../../../resources/images/default.jpg";
+import reduxLogo from "../../../resources/images/reduxLogo.png";
+import reactLogo from "../../../resources/images/reactLogo.png";
+import jsLogo from "../../../resources/images/jsLogo.png";
+import nodeLogo from "../../../resources/images/nodeLogo.png";
+import psqlLogo from "../../../resources/images/psqlLogo.png";
+import aunshLogo from "../../../resources/images/aunshLogo.png";
 
-import defaultImg from '../../resources/images/default.jpg'
-import reduxLogo from '../../resources/images/reduxLogo.png'
-import reactLogo from '../../resources/images/reactLogo.png'
-import jsLogo from '../../resources/images/jsLogo.png'
-import nodeLogo from '../../resources/images/nodeLogo.png'
-import psqlLogo from '../../resources/images/psqlLogo.png'
-import gotuuLogo from '../../resources/images/gotuuLogo.png'
-import mongoLogo from '../../resources/images/mongoLogo.png'
+import useWindow from "../../../utils/windowSize";
+import { connect } from "react-redux";
 
-import useWindow from '../../utils/windowSize';
-import { connect } from 'react-redux';
+import {detailsLight} from './details'
 
 const style = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    bgcolor: 'white',
-    boxShadow: 24,
-    border: 'none',
-    padding: '1em',
-    width:'70%',
-    height: '60%',
-}
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "white",
+  boxShadow: 24,
+  border: "none",
+  padding: "1em",
+  width: "70%",
+  height: "60%",
+};
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -50,33 +65,142 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-
-const GotuuCard = ({
+const AunshCard = ({
   // Redux State
-  settings: { displayMode }
+  settings: { displayMode },
 }) => {
-const { width } = useWindow()
-
-const [expanded, setExpanded] = useState(false);
-const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+  const { width, height } = useWindow();
+  const [expanded, setExpanded] = useState(false);
+  // const [isPhotoOpen, setIsPhotoOpen] = useState(false);
+  const [carousel, setCarousel] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [darkModePics, setDarkModePics] = useState(0);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const activateCarousel = () => {
+    setCarousel(true)
+  }
+
+  const deactivateCarousel = () => {
+    setCarousel(false);
+  };
+
+  const showDarkModePicsAndArray = () => {
+    setDarkModePics(true);
+  };
+
+  const showLightModePicsAndArray = () => {
+    setDarkModePics(false);
+  };
+
+  const increaseCurrentIndex = () => {
+    if(currentIndex === detailsLight.length - 1) {
+      setCurrentIndex(0)
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
+  }
+
+  const decreaseCurrentIndex = () => {
+    if(currentIndex === 0) {
+      setCurrentIndex(detailsLight.length - 1);
+    } else {
+      setCurrentIndex(currentIndex - 1);
+    }
+  }
   return (
     <div
       className={
-        displayMode ? "individual individual--projects--dark--gotuu" : "individual"
+        displayMode
+          ? "individual individual--projects--dark--bodinga"
+          : "individual"
       }
       data-aos='fade-up'
+      onMouseEnter={activateCarousel}
+      onMouseLeave={deactivateCarousel}
     >
       <div className='double_grid'>
-        <div className='image' onClick={() => setIsPhotoOpen(true)}>
-          <img src={defaultImg} alt='Bodinga Home Page' />
+        <div>
+          {darkModePics ? (
+            <></>
+          ) : (
+            <div
+              className='image'
+              // onClick={() => setIsPhotoOpen(true)}
+            >
+              {carousel && (
+                <div className='next' onClick={increaseCurrentIndex}>
+                  <NavigateNextIcon style={{ fontSize: 30 }} />
+                </div>
+              )}
+              {carousel && (
+                <div className='before' onClick={decreaseCurrentIndex}>
+                  <NavigateBeforeIcon style={{ fontSize: 30 }} />
+                </div>
+              )}
+              <img
+                src={detailsLight[currentIndex].imgSource || defaultImg}
+                alt='Bodinga Home Page'
+              />
+              {carousel && (
+                <div className='text'>
+                  <div className='main-carousel'>
+                    {detailsLight[currentIndex].imgText}
+                  </div>
+                  <div className='icon-carousel flex_middle'>
+                    <Tooltip title='Expand Photo' placement='top'>
+                      <div style={{ marginRight: "0.5em" }}>
+                        <OpenInFullIcon
+                          className='expand-carousel'
+                          style={{ fontSize: 13, marginTop: "0.2em" }}
+                        />
+                      </div>
+                    </Tooltip>
+                    {darkModePics ? (
+                      <div className='moon cursor_pointer'>
+                        <Tooltip title='Dark mode pics' placement='left'>
+                          <div>
+                            <FontAwesomeIcon
+                              icon={faMoon}
+                              className={"mobile_logo--tilted"}
+                              onClick={showLightModePicsAndArray}
+                              style={{
+                                fontSize: 13,
+                                marginTop: "3px",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </div>
+                    ) : (
+                      <div className='sun cursor_pointer'>
+                        <Tooltip title='Light mode pics' placement='left'>
+                          <div>
+                            <FontAwesomeIcon
+                              icon={faSun}
+                              className={"mobile_logo--tilted"}
+                              onClick={showDarkModePicsAndArray}
+                              style={{
+                                fontSize: 13,
+                                marginTop: "3px",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <div className='details app' style={{ justifyContent: "space-around" }}>
           <a
-            href='https://gotuu.in'
+            href='https://aunsh.com'
             target={"_blank"}
             rel='noreferrer nofollow'
           >
@@ -87,23 +211,23 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
               <div
                 style={{
                   objectFit: "contain",
-                  width: "33px",
-                  margin: "0.6em 0.6em 0 0",
+                  width: "35px",
+                  margin: "0.4em 0.5em 0 0",
                 }}
               >
-                <img src={gotuuLogo} alt='Gotuu Logo' />
+                <img src={aunshLogo} alt='Bodinga Logo' />
               </div>
-              <div>gotuu.in</div>
+              <div>aunsh.com</div>
             </div>
           </a>
           <div className='description'>
-            A web-app to manage business operations, customer and vendor
-            management for medical companies in the veterinary field.
+            My portfolio website including projects and contact for a visitor
+            and an admin dashboard for statistics and messages received.
           </div>
-          <div className='links '>
+          <div className='links'>
             <div className='flex_middle'>
               <a
-                href='https://github.com/aunshx/gotuu'
+                href='https://github.com/aunshx/portfolio'
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Github Repo link'
@@ -134,7 +258,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                 href=''
                 target={"_blank"}
                 rel='noreferrer nofollow'
-                alt='Live Demo Link'
+                alt='Live Demo'
                 className='indi'
               >
                 Live Demo
@@ -175,9 +299,9 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                       classGiven={"node"}
                     />
                     <TagsSmall
-                      text={"MongoDb"}
-                      logo={mongoLogo}
-                      classGiven={"node"}
+                      text={"Postgres"}
+                      logo={psqlLogo}
+                      classGiven={"express"}
                     />
                     <TagsSmall
                       text={"Express"}
@@ -201,9 +325,9 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                     />
                     <Tags text={"Node"} logo={nodeLogo} classGiven={"node"} />
                     <Tags
-                      text={"MongoDb"}
-                      logo={mongoLogo}
-                      classGiven={"node"}
+                      text={"Postgres"}
+                      logo={psqlLogo}
+                      classGiven={"express"}
                     />
                     <Tags text={"Express"} logo={""} classGiven={"postgres"} />
                   </>
@@ -239,7 +363,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
           </div>
         </Collapse>
       </div>
-      <Modal
+      {/* <Modal
         open={isPhotoOpen}
         onClose={() => setIsPhotoOpen(false)}
         closeAfterTransition
@@ -266,13 +390,12 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
             </Card>
           </Box>
         </Fade>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
 
-
-GotuuCard.propTypes = {
+AunshCard.propTypes = {
   settings: PropTypes.object.isRequired,
 };
 
@@ -282,4 +405,4 @@ const mapStateToProps = (state) => ({
 
 const mapStateToActions = {};
 
-export default connect(mapStateToProps, mapStateToActions)(GotuuCard);
+export default connect(mapStateToProps, mapStateToActions)(AunshCard);

@@ -6,6 +6,7 @@ import { faTools } from '@fortawesome/free-solid-svg-icons';
 import BodingaCard from './BodingaCard';
 import YedaEngineerCard from './YedaengineerCard';
 import GotuuCard from './GotuuCard';
+import AunshCard from './aunsh/AunshCard';
 
 const Projects = ({  }) => {
   return (
@@ -21,6 +22,7 @@ const Projects = ({  }) => {
           <BodingaCard />
           <YedaEngineerCard />
           <GotuuCard />
+          <AunshCard />
         </div>
       </div>
       ;
