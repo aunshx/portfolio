@@ -58,7 +58,7 @@ const SkillOne = ({ delay, logo, title,
         </div>
         <div className='title'>{title}</div>
       </div>
-      ;
+      <div></div>
     </div>
   );
 };

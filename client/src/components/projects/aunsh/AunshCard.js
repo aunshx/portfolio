@@ -131,7 +131,7 @@ const AunshCard = ({
     <div
       className={
         displayMode
-          ? "individual individual--projects--dark--bodinga"
+          ? "individual individual--projects--dark--aunsh"
           : "individual"
       }
       data-aos='fade-up'

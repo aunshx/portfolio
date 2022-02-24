@@ -1159,6 +1159,11 @@ pre {
   box-shadow: none;
 }
 
+.projects .individual--projects--dark--aunsh {
+  border: 1px solid var(--logo-color);
+  box-shadow: none;
+}
+
 .projects .individual .double_grid {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
@@ -2065,7 +2070,7 @@ color: var(--light-logo-color);
   color: var(--grey-color);
    width: 80vw;
   height: auto;
-  padding: 0em 1em 1em 1em;
+  padding: 0em 0em 1em 1em;
   margin: 0px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
@@ -3157,6 +3162,11 @@ from {
   margin: 50px;
 }
 }
+
+.MuiLoadingButton-loadingIndicator {
+  color: var(--grey-color)
+}
+
 
 /* ------------------------------ CARD - ADMIN ----------------------------- */
 .card-admin {
