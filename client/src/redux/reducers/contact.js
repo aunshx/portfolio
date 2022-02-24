@@ -13,6 +13,7 @@ import {
   MESSAGES_OLDEST,
   MESSAGES_OLDEST_RESET,
   MESSAGES_RESET,
+  MESSAGES_ON_RELOAD_OLDEST,
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
@@ -109,6 +110,12 @@ function authReducer(state = initialState, action) {
         return {
           ...state,
           messages: payload.data,
+          lazyLoading: payload.lazyLoading,
+        };
+      case MESSAGES_ON_RELOAD_OLDEST:
+        return {
+          ...state,
+          messagesOldest: payload.data,
           lazyLoading: payload.lazyLoading,
         };
       case MESSAGES_LOADING:

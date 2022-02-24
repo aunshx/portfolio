@@ -20,6 +20,7 @@ import {
   MESSAGES_OLDEST,
   MESSAGES_OLDEST_RESET,
   MESSAGES_RESET,
+  MESSAGES_ON_RELOAD_OLDEST,
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
@@ -37,7 +38,6 @@ export const setRendererMessagesFalse = () => async (dispatch) => {
   dispatch({
     type: SET_RENDERER_MESSAGE_FALSE
   })
-  console.log('kckckkckcckckckckkcc')
 };
 
 //  Delete Message
@@ -294,6 +294,121 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
 
     dispatch({
       type: MESSAGES_ON_RELOAD,
+      payload: dataPack,
+    });
+
+  } catch (error) {
+    if (error.response.status === 500) {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 400) {
+      value.message = error.response.data.errors[0].msg;
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else if (error.response.status === 401) {
+      value.message = "Session expired. Pl login again.";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    } else {
+      value.message = "Something went wrong. Pl reload!";
+      value.type = "error";
+
+      dispatch({
+        type: ERROR_SNACKBAR,
+        payload: value,
+      });
+
+      dispatch({
+        type: MESSAGES_LOADING_COMPLETE,
+      });
+
+      setTimeout(
+        () =>
+          dispatch({
+            type: SNACKBAR_RESET,
+          }),
+        5000
+      );
+    }
+  }
+};
+
+//  Retrieve Oldest Messages ON RELOAD
+export const getMessagesOldestOnReload = (skipNow) => async (dispatch) => {
+  let value = {
+    message: "1",
+    type: "info",
+  };
+
+  const body = JSON.stringify({
+    skipNow,
+  });
+
+  try {
+
+    const res = await api.post("/contact/retrieve-messages-oldest", body);
+
+    dispatch({
+      type: SET_RENDERER_MESSAGE_TRUE,
+    });
+
+    const dataPack = {};
+
+    dataPack.data = res.data;
+    dataPack.lazyLoading = true
+
+
+    dispatch({
+      type: MESSAGES_ON_RELOAD_OLDEST,
       payload: dataPack,
     });
 

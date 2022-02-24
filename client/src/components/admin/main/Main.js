@@ -15,6 +15,7 @@ import {
   setRendererMessagesFalse,
   getMessagesOnReload,
   getMessagesOldest,
+  getMessagesOldestOnReload,
 } from "../../../redux/actions/contact";
 import { Tooltip } from '@mui/material';
 import MessagesOldest from '../message/MessagesOldest';
@@ -25,6 +26,7 @@ const Main = ({
   setRendererMessagesFalse,
   getMessagesOnReload,
   getMessagesOldest,
+  getMessagesOldestOnReload,
   // Redux State
   contact: {
     messages,
@@ -60,7 +62,7 @@ const Main = ({
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && lazyLoading) {
           setRendererMessagesFalse();
-          if(seeOldest) {
+          if (seeOldest) {
             setOffsetOldest(offsetOldest + 8);
           } else {
             setOffset(offset + 8);
@@ -76,30 +78,35 @@ const Main = ({
 
   useEffect(() => {
     setChange(true);
-    setSeeOldest(false);
   }, [change]);
 
   useEffect(() => {
     if (rendererMessages === false && seeOldest === false) getMessages(offset);
-    if (rendererMessages === false && seeOldest === true) getMessagesOldest(offsetOldest);
+    if (rendererMessages === false && seeOldest === true)
+      getMessagesOldest(offsetOldest);
   }, [offset, offsetOldest, getMessages]);
 
   const reload = () => {
-    getMessagesOnReload(0);
-    setOffset(0);
+    if (seeOldest) {
+      getMessagesOldestOnReload(0);
+      setOffsetOldest(0);
+    } else {
+      getMessagesOnReload(0);
+      setOffset(0);
+    }
     setChange(false);
   };
 
   const fetchNewest = () => {
     setSeeOldest(false);
     getMessages(0);
-    setOffsetOldest(0)
+    setOffsetOldest(0);
   };
 
   const fetchOldest = () => {
     setSeeOldest(true);
     getMessagesOldest(0);
-    setOffset(0)
+    setOffset(0);
   };
 
   return (
@@ -110,9 +117,26 @@ const Main = ({
       margin'
       >
         <div className='admin-main-settings flex_middle'>
-          <div>
-            <RefreshIcon className='icons' onClick={() => reload(offset)} />
-          </div>
+          <Tooltip title='Reload' placement='left'>
+            <div>
+              <RefreshIcon className='icons' onClick={() => reload(offset)} />
+            </div>
+          </Tooltip>
+          <Tooltip
+            title={seeOldest ? "Oldest Messages" : "Newest Messages"}
+            placement='left'
+          >
+            <div
+              className={
+                seeOldest
+                  ? "icons-2-active cursor_pointer"
+                  : "icons-2 cursor_pointer"
+              }
+              onClick={seeOldest ? fetchNewest : fetchOldest}
+            >
+              <CableIcon style={{ fontSize: 21 }} />
+            </div>
+          </Tooltip>
           <Tooltip title='Not Replied' placement='left'>
             <div
               className={
@@ -173,21 +197,6 @@ const Main = ({
               C
             </div>
           </Tooltip>
-          <Tooltip
-            title={seeOldest ? "Oldest Messages" : "Newest Messages"}
-            placement='left'
-          >
-            <div
-              className={
-                seeOldest
-                  ? "icons-2-active cursor_pointer"
-                  : "icons-2 cursor_pointer"
-              }
-              onClick={seeOldest ? fetchNewest : fetchOldest}
-            >
-              <CableIcon style={{ fontSize: 21 }} />
-            </div>
-          </Tooltip>
         </div>
         {change && (
           <div className='admin-main'>
@@ -229,6 +238,7 @@ Main.propTypes = {
   setRendererMessagesFalse: PropTypes.func.isRequired,
   getMessagesOnReload: PropTypes.func.isRequired,
   getMessagesOldest: PropTypes.func.isRequired,
+  getMessagesOldestOnReload: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -241,6 +251,7 @@ const mapStateToActions = {
   setRendererMessagesFalse,
   getMessagesOnReload,
   getMessagesOldest,
+  getMessagesOldestOnReload,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Main);

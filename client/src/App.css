@@ -2815,7 +2815,8 @@ from {
   color: grey;
   cursor: pointer;
   margin-top: 0.34em;
-  margin-right: 0.25em;
+  margin-right: 0.35em;
+  margin-left: 0.35em;
 }
 
 .admin-main-settings .icons:hover {
@@ -2826,7 +2827,8 @@ from {
   color: grey;
   cursor: pointer;
   margin-top: 0.42em;
-  margin-left: 0.3em;
+  margin-right: 0.5em;
+  margin-left: 0.4em;
   animation: rotateIconsTwoInvert 0.3s 1 linear;
 }
 
@@ -2834,7 +2836,8 @@ from {
   color: grey;
   cursor: pointer;
   /* margin-top: 0.42em; */
-  margin-left: 0.4em;
+  margin-left: 0.6em;
+  margin-right: 0.5em;
   transform: rotate(-90deg);
   animation: rotateIconsTwo 0.3s 1 linear;
 }
