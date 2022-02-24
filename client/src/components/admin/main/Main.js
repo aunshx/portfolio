@@ -20,6 +20,8 @@ import {
 import { Tooltip } from '@mui/material';
 import MessagesOldest from '../message/MessagesOldest';
 
+import windowSize from '../../../utils/windowSize';
+
 const Main = ({
   // Redux Actions
   getMessages,
@@ -39,6 +41,7 @@ const Main = ({
   },
   auth: { isAuthenticated },
 }) => {
+  const { width, height } = windowSize()
   const [offset, setOffset] = useState(0);
   const [offsetOldest, setOffsetOldest] = useState(0);
   const [change, setChange] = useState(false);
@@ -119,101 +122,194 @@ const Main = ({
   return (
     <>
       <Navbar />
-      <div
-        className='app
-      margin'
-      >
-        <div className='admin-main-settings flex_middle'>
-          <Tooltip title='Reload' placement='left'>
-            <div>
-              <RefreshIcon className='icons' onClick={() => reload(offset)} />
+      <div className='app'>
+        {width < 370 ? (
+          <div className='admin-main-settings app'>
+            <div className='flex_middle'>
+              <Tooltip title='Reload' placement='left'>
+                <div>
+                  <RefreshIcon
+                    className='icons'
+                    onClick={() => reload(offset)}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip
+                title={seeOldest ? "Oldest Messages" : "Newest Messages"}
+                placement='left'
+              >
+                <div
+                  className={
+                    seeOldest
+                      ? "icons-2-active cursor_pointer"
+                      : "icons-2 cursor_pointer"
+                  }
+                  onClick={seeOldest ? fetchNewest : fetchOldest}
+                >
+                  <CableIcon style={{ fontSize: 21 }} />
+                </div>
+              </Tooltip>
             </div>
-          </Tooltip>
-          <Tooltip
-            title={seeOldest ? "Oldest Messages" : "Newest Messages"}
-            placement='left'
-          >
-            <div
-              className={
-                seeOldest
-                  ? "icons-2-active cursor_pointer"
-                  : "icons-2 cursor_pointer"
-              }
-              onClick={seeOldest ? fetchNewest : fetchOldest}
+            <div className='flex_middle' style={{ marginTop: "0.3em" }}>
+              <Tooltip title='Not Replied' placement='left'>
+                <div
+                  className={
+                    notRepliedOn
+                      ? "not-replied cursor_pointer"
+                      : "unselected-bigger cursor_pointer"
+                  }
+                  onClick={() => setNotRepliedOn(!notRepliedOn)}
+                >
+                  N
+                </div>
+              </Tooltip>
+              <Tooltip title='Unseen' placement='left'>
+                <div
+                  className={
+                    unseenOn
+                      ? "unseen cursor_pointer"
+                      : "unselected-bigger cursor_pointer"
+                  }
+                  onClick={() => setUnseenOn(!unseenOn)}
+                >
+                  U
+                </div>
+              </Tooltip>
+              <Tooltip title='Ongoing' placement='left'>
+                <div
+                  className={
+                    ongoingOn
+                      ? "ongoing cursor_pointer"
+                      : "unselected cursor_pointer"
+                  }
+                  onClick={() => setOngoingOn(!ongoingOn)}
+                >
+                  O
+                </div>
+              </Tooltip>
+              <Tooltip title='Success' placement='left'>
+                <div
+                  className={
+                    successOn
+                      ? "success cursor_pointer"
+                      : "unselected-bigger cursor_pointer"
+                  }
+                  onClick={() => setSuccessOn(!successOn)}
+                >
+                  S
+                </div>
+              </Tooltip>
+              <Tooltip title='Cold' placement='left'>
+                <div
+                  className={
+                    coldOn
+                      ? "cold cursor_pointer"
+                      : "unselected-bigger cursor_pointer"
+                  }
+                  onClick={() => setColdOn(!coldOn)}
+                >
+                  C
+                </div>
+              </Tooltip>
+            </div>
+            <Tooltip title='Unread/Total Messages' placement='left'>
+              <div
+                className={"unread_total_messages"}
+                style={{ marginTop: "0.7em" }}
+              >
+                ({messagesUnseenCount}/{messagesTotalCount})
+              </div>
+            </Tooltip>
+          </div>
+        ) : (
+          <div className='admin-main-settings flex_middle'>
+            <Tooltip title='Reload' placement='left'>
+              <div>
+                <RefreshIcon className='icons' onClick={() => reload(offset)} />
+              </div>
+            </Tooltip>
+            <Tooltip
+              title={seeOldest ? "Oldest Messages" : "Newest Messages"}
+              placement='left'
             >
-              <CableIcon style={{ fontSize: 21 }} />
-            </div>
-          </Tooltip>
-          <Tooltip title='Not Replied' placement='left'>
-            <div
-              className={
-                notRepliedOn
-                  ? "not-replied cursor_pointer"
-                  : "unselected-bigger cursor_pointer"
-              }
-              onClick={() => setNotRepliedOn(!notRepliedOn)}
-            >
-              N
-            </div>
-          </Tooltip>
-          <Tooltip title='Unseen' placement='left'>
-            <div
-              className={
-                unseenOn
-                  ? "unseen cursor_pointer"
-                  : "unselected-bigger cursor_pointer"
-              }
-              onClick={() => setUnseenOn(!unseenOn)}
-            >
-              U
-            </div>
-          </Tooltip>
-          <Tooltip title='Ongoing' placement='left'>
-            <div
-              className={
-                ongoingOn
-                  ? "ongoing cursor_pointer"
-                  : "unselected cursor_pointer"
-              }
-              onClick={() => setOngoingOn(!ongoingOn)}
-            >
-              O
-            </div>
-          </Tooltip>
-          <Tooltip title='Success' placement='left'>
-            <div
-              className={
-                successOn
-                  ? "success cursor_pointer"
-                  : "unselected-bigger cursor_pointer"
-              }
-              onClick={() => setSuccessOn(!successOn)}
-            >
-              S
-            </div>
-          </Tooltip>
-          <Tooltip title='Cold' placement='left'>
-            <div
-              className={
-                coldOn
-                  ? "cold cursor_pointer"
-                  : "unselected-bigger cursor_pointer"
-              }
-              onClick={() => setColdOn(!coldOn)}
-            >
-              C
-            </div>
-          </Tooltip>
-          <Tooltip title='Unread/Total Messages' placement='left'>
-            <div
-              className={
-                'unread_total_messages'
-              }
-            >
-              ({messagesUnseenCount}/{messagesTotalCount})
-            </div>
-          </Tooltip>
-        </div>
+              <div
+                className={
+                  seeOldest
+                    ? "icons-2-active cursor_pointer"
+                    : "icons-2 cursor_pointer"
+                }
+                onClick={seeOldest ? fetchNewest : fetchOldest}
+              >
+                <CableIcon style={{ fontSize: 21 }} />
+              </div>
+            </Tooltip>
+            <Tooltip title='Not Replied' placement='left'>
+              <div
+                className={
+                  notRepliedOn
+                    ? "not-replied cursor_pointer"
+                    : "unselected-bigger cursor_pointer"
+                }
+                onClick={() => setNotRepliedOn(!notRepliedOn)}
+              >
+                N
+              </div>
+            </Tooltip>
+            <Tooltip title='Unseen' placement='left'>
+              <div
+                className={
+                  unseenOn
+                    ? "unseen cursor_pointer"
+                    : "unselected-bigger cursor_pointer"
+                }
+                onClick={() => setUnseenOn(!unseenOn)}
+              >
+                U
+              </div>
+            </Tooltip>
+            <Tooltip title='Ongoing' placement='left'>
+              <div
+                className={
+                  ongoingOn
+                    ? "ongoing cursor_pointer"
+                    : "unselected cursor_pointer"
+                }
+                onClick={() => setOngoingOn(!ongoingOn)}
+              >
+                O
+              </div>
+            </Tooltip>
+            <Tooltip title='Success' placement='left'>
+              <div
+                className={
+                  successOn
+                    ? "success cursor_pointer"
+                    : "unselected-bigger cursor_pointer"
+                }
+                onClick={() => setSuccessOn(!successOn)}
+              >
+                S
+              </div>
+            </Tooltip>
+            <Tooltip title='Cold' placement='left'>
+              <div
+                className={
+                  coldOn
+                    ? "cold cursor_pointer"
+                    : "unselected-bigger cursor_pointer"
+                }
+                onClick={() => setColdOn(!coldOn)}
+              >
+                C
+              </div>
+            </Tooltip>
+            <Tooltip title='Unread/Total Messages' placement='left'>
+              <div className={"unread_total_messages"}>
+                ({messagesUnseenCount}/{messagesTotalCount})
+              </div>
+            </Tooltip>
+          </div>
+        )}
         {change && (
           <div className='admin-main'>
             {seeOldest ? (

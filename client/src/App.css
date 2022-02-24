@@ -3178,6 +3178,20 @@ from {
    margin: 50px 0 0px 0;
 }
 }
+
+@media only screen and (max-width: 370px) {
+  .admin {
+    margin: 50px 0;
+    width: 100vw;
+    height: auto;
+  }
+
+
+.card-admin {
+   width: 270px;
+  margin: 50px 0 0px 0;
+}
+}
 /* ------------------------ MESSAGES - ADMIN --------------------------------- */
 .messages-admin {
   display: grid;
@@ -3559,4 +3573,10 @@ background-color:var(--light-bodinga-color);
 
 .comment-card .text {
   margin-top: 2em;
+}
+
+@media only screen and (max-width: 550px) {
+  .comment-card {
+  width: 270px;
+}
 }
