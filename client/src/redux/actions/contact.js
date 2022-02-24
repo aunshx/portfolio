@@ -40,6 +40,13 @@ export const setRendererMessagesFalse = () => async (dispatch) => {
   })
 };
 
+// Set Renderer True 
+export const setRendererMessagesTrue = () => async (dispatch) => {
+  dispatch({
+    type: SET_RENDERER_MESSAGE_TRUE
+  })
+};
+
 //  Delete Message
 export const deleteMessage = (messageId) => async (dispatch) => {
   let value = {

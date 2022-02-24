@@ -39,6 +39,8 @@ import {
   logout
 } from "../../../redux/actions/auth";
 
+import { setRendererMessagesTrue } from "../../../redux/actions/contact";
+
 const setDark = () => {
   localStorage.setItem("theme", "dark");
   document.documentElement.setAttribute("data-theme", "dark");
@@ -60,7 +62,8 @@ const Navbar = ({
   toggleDarkMode,
   musicOn,
   musicOff,
-  logout
+  logout,
+  setRendererMessagesTrue,
 }) => {
   const [playOn] = useSound(toggle, { volume: 0.2 });
 
@@ -185,7 +188,7 @@ const Navbar = ({
               </div>
               <div className='cursor_pointer'>
                 <Tooltip title='Stats' placement='left'>
-                  <div>
+                  <div onClick={() => setRendererMessagesTrue()}>
                     <NavLink
                       to='/admin/stats'
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
@@ -323,6 +326,7 @@ Navbar.propTypes = {
   musicOn: PropTypes.func.isRequired,
   musicOff: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
+  setRendererMessagesTrue: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -337,7 +341,8 @@ const mapStateToActions = {
   soundOff,
   musicOn,
   musicOff,
-  logout
+  logout,
+  setRendererMessagesTrue,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Navbar);
