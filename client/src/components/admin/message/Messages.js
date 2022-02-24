@@ -27,7 +27,7 @@ const Messages = ({
                 className='one flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos={width < 400 ? 'fade-up' : 'fade-up'}
+                data-aos={width < 400 ? '' : 'fade-up'}
                 data-aos-delay={width < 768 ? 50 * index : 100 * index}
                 data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
