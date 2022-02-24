@@ -37,7 +37,7 @@ import aunshLogo from "../../../resources/images/aunshLogo.png";
 import useWindow from "../../../utils/windowSize";
 import { connect } from "react-redux";
 
-import {detailsLight} from './details'
+import { detailsLight, detailsDark } from "./details";
 
 const style = {
   position: "fixed",
@@ -123,78 +123,79 @@ const AunshCard = ({
       onMouseLeave={deactivateCarousel}
     >
       <div className='double_grid'>
-        <div>
-          {darkModePics ? (
-            <></>
-          ) : (
-            <div
-              className='image'
-              // onClick={() => setIsPhotoOpen(true)}
-            >
-              {carousel && (
-                <div className='next' onClick={increaseCurrentIndex}>
-                  <NavigateNextIcon style={{ fontSize: 30 }} />
-                </div>
-              )}
-              {carousel && (
-                <div className='before' onClick={decreaseCurrentIndex}>
-                  <NavigateBeforeIcon style={{ fontSize: 30 }} />
-                </div>
-              )}
-              <img
-                src={detailsLight[currentIndex].imgSource || defaultImg}
-                alt='Bodinga Home Page'
-              />
-              {carousel && (
-                <div className='text'>
-                  <div className='main-carousel'>
-                    {detailsLight[currentIndex].imgText}
+        <div
+          className='image'
+          // onClick={() => setIsPhotoOpen(true)}
+        >
+          {carousel && (
+            <div className='next' onClick={increaseCurrentIndex}>
+              <NavigateNextIcon style={{ fontSize: 30 }} />
+            </div>
+          )}
+          {carousel && (
+            <div className='before' onClick={decreaseCurrentIndex}>
+              <NavigateBeforeIcon style={{ fontSize: 30 }} />
+            </div>
+          )}
+          <img
+            src={
+              darkModePics
+                ? detailsDark[currentIndex].imgSource || defaultImg
+                : detailsLight[currentIndex].imgSource || defaultImg
+            }
+            alt='Bodinga Home Page'
+            className={detailsLight[currentIndex].needsFit ? 'image-needs-fit' : ''}
+          />
+          {carousel && (
+            <div className={darkModePics ? "text text--dark" : "text"}>
+              <div className='main-carousel'>
+                {darkModePics
+                  ? detailsDark[currentIndex].imgText || defaultImg
+                  : detailsLight[currentIndex].imgText || defaultImg}
+              </div>
+              <div className='icon-carousel flex_middle'>
+                <Tooltip title='Expand Photo' placement='top'>
+                  <div style={{ marginRight: "0.5em" }}>
+                    <OpenInFullIcon
+                      className='expand-carousel'
+                      style={{ fontSize: 13, marginTop: "0.2em" }}
+                    />
                   </div>
-                  <div className='icon-carousel flex_middle'>
-                    <Tooltip title='Expand Photo' placement='top'>
-                      <div style={{ marginRight: "0.5em" }}>
-                        <OpenInFullIcon
-                          className='expand-carousel'
-                          style={{ fontSize: 13, marginTop: "0.2em" }}
+                </Tooltip>
+                {darkModePics ? (
+                  <div className='moon cursor_pointer'>
+                    <Tooltip title='Dark mode pics' placement='left'>
+                      <div>
+                        <FontAwesomeIcon
+                          icon={faMoon}
+                          className={"mobile_logo--tilted"}
+                          onClick={showLightModePicsAndArray}
+                          style={{
+                            fontSize: 13,
+                            marginTop: "3px",
+                          }}
                         />
                       </div>
                     </Tooltip>
-                    {darkModePics ? (
-                      <div className='moon cursor_pointer'>
-                        <Tooltip title='Dark mode pics' placement='left'>
-                          <div>
-                            <FontAwesomeIcon
-                              icon={faMoon}
-                              className={"mobile_logo--tilted"}
-                              onClick={showLightModePicsAndArray}
-                              style={{
-                                fontSize: 13,
-                                marginTop: "3px",
-                              }}
-                            />
-                          </div>
-                        </Tooltip>
-                      </div>
-                    ) : (
-                      <div className='sun cursor_pointer'>
-                        <Tooltip title='Light mode pics' placement='left'>
-                          <div>
-                            <FontAwesomeIcon
-                              icon={faSun}
-                              className={"mobile_logo--tilted"}
-                              onClick={showDarkModePicsAndArray}
-                              style={{
-                                fontSize: 13,
-                                marginTop: "3px",
-                              }}
-                            />
-                          </div>
-                        </Tooltip>
-                      </div>
-                    )}
                   </div>
-                </div>
-              )}
+                ) : (
+                  <div className='sun cursor_pointer'>
+                    <Tooltip title='Light mode pics' placement='left'>
+                      <div>
+                        <FontAwesomeIcon
+                          icon={faSun}
+                          className={"mobile_logo--tilted"}
+                          onClick={showDarkModePicsAndArray}
+                          style={{
+                            fontSize: 13,
+                            marginTop: "3px",
+                          }}
+                        />
+                      </div>
+                    </Tooltip>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
