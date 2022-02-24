@@ -5,6 +5,8 @@ import Card from "./Card";
 
 import { connect } from "react-redux";
 
+import windowSize from "../../../utils/windowSize";
+
 const MessagesOldest = ({
   messages,
   lastBookElementRef,
@@ -14,6 +16,7 @@ const MessagesOldest = ({
   unseenOn,
   coldOn,
 }) => {
+  const { width } = windowSize();
   return (
     <div className='messages-admin'>
       {messages.length > 0 &&
@@ -24,9 +27,9 @@ const MessagesOldest = ({
                 className='one flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos='fade-in'
-                data-aos-delay={100 * index}
-                data-aos-offset={60}
+                data-aos={width < 400 ? "" : "fade-up"}
+                data-aos-delay={width < 768 ? 50 * index : 100 * index}
+                data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 {element.status === "not-replied" && notRepliedOn && (
@@ -39,6 +42,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "ongoing" && ongoingOn && (
@@ -51,6 +55,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "success" && successOn && (
@@ -63,6 +68,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "unseen" && unseenOn && (
@@ -75,6 +81,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "cold" && coldOn && (
@@ -87,6 +94,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
               </div>
@@ -96,9 +104,9 @@ const MessagesOldest = ({
                 className='two flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos='fade-in'
-                data-aos-delay={100 * index}
-                data-aos-offset={60}
+                data-aos={width < 400 ? "" : "fade-up"}
+                data-aos-delay={width < 768 ? 50 * index : 100 * index}
+                data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 {element.status === "not-replied" && notRepliedOn && (
@@ -111,6 +119,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "ongoing" && ongoingOn && (
@@ -123,6 +132,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "success" && successOn && (
@@ -135,6 +145,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "unseen" && unseenOn && (
@@ -147,6 +158,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "cold" && coldOn && (
@@ -159,6 +171,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
               </div>
@@ -168,9 +181,9 @@ const MessagesOldest = ({
                 className='three flex_middle'
                 style={{ alignItems: "flex-start" }}
                 key={index}
-                data-aos='fade-in'
-                data-aos-delay={100 * index}
-                data-aos-offset={60}
+                data-aos={width < 400 ? "" : "fade-up"}
+                data-aos-delay={width < 768 ? 50 * index : 100 * index}
+                data-aos-offset={width < 768 ? 20 : 60}
                 ref={index % 7 === 0 ? lastBookElementRef : null}
               >
                 {element.status === "not-replied" && notRepliedOn && (
@@ -183,6 +196,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "ongoing" && ongoingOn && (
@@ -195,6 +209,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "success" && successOn && (
@@ -207,6 +222,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "unseen" && unseenOn && (
@@ -219,6 +235,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
                 {element.status === "cold" && coldOn && (
@@ -231,6 +248,7 @@ const MessagesOldest = ({
                     email={element.email}
                     status={element.status}
                     index={index}
+                    comment={element.comment}
                   />
                 )}
               </div>
