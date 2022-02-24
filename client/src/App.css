@@ -28,8 +28,8 @@
 [data-theme="dark"] {
   --background-color: rgb(28, 28, 28);
   --background-dots-color: rgb(15, 15, 15);
-   --navbar-color: rgb(20, 20, 20);
-   --card-color: rgb(10, 10, 10);
+   --navbar-color: rgb(15, 15, 15);
+   --card-color: rgb(15, 15, 15);
    --light-grey-color: rgb(25, 25, 25);
    --dark-font-color: rgb(238, 238, 238);
   --light-dark-font-color: rgb(204, 204, 204);
