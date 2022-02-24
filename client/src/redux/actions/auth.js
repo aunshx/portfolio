@@ -36,22 +36,21 @@ export const snackbarDeactivate = (value) => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
+        try {
+          const res = await api.get("/auth/get-data");
+
+          dispatch({
+            type: USER_LOADED,
+            payload: res.data,
+          });
+
+          dispatch(getTotalHitsSynopsis());
+        } catch (err) {
+          dispatch({
+            type: AUTH_ERROR,
+          });
+        }
     }
-  try {
-    const res = await api.get("/auth/get-data");
-
-    dispatch({
-      type: USER_LOADED,
-      payload: res.data,
-    });
-
-    dispatch(getTotalHitsSynopsis());
-
-  } catch (err) {
-    dispatch({
-      type: AUTH_ERROR,
-    });
-  }
 }
 
 // Login User
