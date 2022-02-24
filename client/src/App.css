@@ -3135,6 +3135,18 @@ from {
  color: var(--light-dark-font-color);
 }
 
+.card-admin .expanded-comment {
+ font-size: 0.7em;
+ padding: 0.5em 0.3em 0.5em 0.5em;
+ margin-top: 1.5em;
+ color: var(--light-dark-font-color);
+ font-style: italic;
+}
+
+.card-admin .expanded-comment:hover {
+ color: var(--light-logo-color);
+}
+
 @media only screen and (min-width: 786px) and (max-width: 1028px) {
   .admin {
   color: var(--grey-color);

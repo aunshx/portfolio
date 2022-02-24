@@ -206,6 +206,14 @@ const Card = ({
             }}
           >
             <div className='expanded-message'>{message}</div>
+            {comment.length > 0 && (
+              <div
+                className='expanded-comment flex_middle cursor_pointer'
+                onClick={openCommentBox}
+              >
+                "{comment}"
+              </div>
+            )}
           </Collapse>
         </div>
       </div>
