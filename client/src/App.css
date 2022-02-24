@@ -1647,6 +1647,7 @@ color: var(--light-logo-color);
 .articles-main .title {
   color: var(--lighter-dark-font-color);
   font-size: 2em;
+  margin-top: 0.5em;
 }
 
 .articles .body,
@@ -1654,7 +1655,7 @@ color: var(--light-logo-color);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: minmax(100px, auto);
-  margin-top: 2em;
+  margin-top: 1.5em;
   column-gap: 30px;
 }
 
@@ -1662,7 +1663,7 @@ color: var(--light-logo-color);
 .articles-main .body .individual {
   width: 75%;
   color: var(--lighter-dark-font-color);
-  min-height: 300px;
+  min-height: 400px;
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
@@ -1718,8 +1719,8 @@ color: var(--light-logo-color);
 .articles .body .individual .tags img, 
 .articles-main .body .individual .tags img {
  object-fit: contain;
- width: 18px;
- height: 18px;
+ width: 15px;
+ height: 15px;
 }
 
 .articles .body .individual .description, 

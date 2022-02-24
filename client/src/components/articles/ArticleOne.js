@@ -2,59 +2,40 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {Tooltip} from '@mui/material'
 
-import articleImage from '../../resources/images/default.jpg'
-import defaultImg from '../../resources/images/default.jpg'
-import reduxLogo from '../../resources/images/reduxLogo.png'
-import reactLogo from '../../resources/images/reactLogo.png'
-import jsLogo from '../../resources/images/jsLogo.png'
-import nodeLogo from '../../resources/images/nodeLogo.png'
-import psqlLogo from '../../resources/images/psqlLogo.png'
-import bodingaLogo from '../../resources/images/bodingaLogo.png'
 
 import useWindow from '../../utils/windowSize';
 
-const ArticleOne = ({ delay, technology }) => {
-  const { width, height } = useWindow()
-  const [colorBorder, setColorBorder] = useState('')  
+const ArticleOne = ({ delay, technology, imagesArray, articleImage, title }) => {
+  const { width, height } = useWindow();
+  const [colorBorder, setColorBorder] = useState("");
 
-  useEffect(() => 
-    {
-      switch(true){
-        case technology[0] === 'react':
-          return (
-            setColorBorder('#61dbfb')
-          )
-        case technology[0] === 'redux':
-          return (
-            setColorBorder('#61dbfb')
-          )
-        case technology[0] === 'node':
-          return (
-            setColorBorder('#61dbfb')
-          )
-        case technology[0] === 'mongo':
-          return (
-            setColorBorder('#61dbfb')
-          )
-        case technology[0] === 'postman':
-          return (
-            setColorBorder('#61dbfb')
-          )
-        case technology[0] === 'postgres':
-          return (
-            setColorBorder('#61dbfb')
-          )
-        case technology[0] === 'passport':
-          return (
-            setColorBorder('#61dbfb')
-          )
+  useEffect(() => {
+    switch (true) {
+      case technology[0] === "react":
+        return setColorBorder("#61dbfb");
+      case technology[0] === "redux":
+        return setColorBorder("#61dbfb");
+      case technology[0] === "node":
+        return setColorBorder("#0fb825");
+      case technology[0] === "mongo":
+        return setColorBorder("#61dbfb");
+      case technology[0] === "postman":
+        return setColorBorder("#61dbfb");
+      case technology[0] === "postgres":
+        return setColorBorder("#61dbfb");
+      case technology[0] === "passport":
+        return setColorBorder("#61dbfb");
+      case technology[0] === "jwt":
+        return setColorBorder("#eb3474");
+      case technology[0] === "reddit":
+        return setColorBorder("#d15e0d");
 
-        default:
-          return null
-      }
+      default:
+        return null;
     }
-  , [])
+  }, []);
 
   return (
     <div
@@ -64,21 +45,21 @@ const ArticleOne = ({ delay, technology }) => {
     >
       <div
         className='image'
-        style={{ borderBottom: "2px solid rgb(97, 219, 251) " }}
+        style={{ borderBottom: `2px solid ${colorBorder}` }}
       >
         <img src={articleImage} alt='Article default' />
       </div>
       <div className='tags flex_right'>
-        <div style={{ marginRight: "0.3em" }}>
-          <img src={reactLogo} alt='React Logo' />
-        </div>
-        <div>
-          <img src={reduxLogo} alt='Redux Logo' />
-        </div>
+        {imagesArray.length > 0 &&
+          imagesArray.map((element, index) => (
+            <Tooltip title={element.alt} placement='top'>
+              <div style={{ marginRight: "0.5em" }} key={index}>
+                <img src={element.image} alt={element.alt} />
+              </div>
+            </Tooltip>
+          ))}
       </div>
-      <div className='title'>
-        This is the title of an imaginary yet to do post
-      </div>
+      <div className='title'>{title}</div>
       <div className='description'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
         temporibus odio voluptatum, reprehenderit alias in.

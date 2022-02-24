@@ -11,6 +11,16 @@ import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
 
+import articleImage from "../../resources/images/default.jpg";
+import defaultImg from "../../resources/images/default.jpg";
+import reduxLogo from "../../resources/images/reduxLogo.png";
+import reactLogo from "../../resources/images/reactLogo.png";
+import jsLogo from "../../resources/images/jsLogo.png";
+import nodeLogo from "../../resources/images/nodeLogo.png";
+import psqlLogo from "../../resources/images/psqlLogo.png";
+import bodingaLogo from "../../resources/images/bodingaLogo.png";
+import jwtLogo from "../../resources/images/jwtLogo.png";
+
 import windowSize from "../../utils/windowSize";
 
 const ArticlesMain = ({
@@ -41,28 +51,75 @@ const ArticlesMain = ({
           </div>
           <div className='body flex_middle'>
             <div className='flex_middle'>
-              <ArticleOne delay={0} technology={["react", "redux"]} />
+              <ArticleOne
+                delay={0}
+                technology={["jwt", "react", "redux"]}
+                imagesArray={[
+                  { image: jwtLogo, alt: "JWT Logo" },
+                  { image: reactLogo, alt: "React Logo" },
+                  { image: reduxLogo, alt: "Redux Logo" },
+                ]}
+              />
             </div>
             <div className='flex_middle'>
-              <ArticleOne delay={200} technology={["react", "redux"]} />
+              <ArticleOne
+                delay={200}
+                technology={["react", "redux", "jwt"]}
+                images={[
+                  { image: reactLogo, alt: "React Logo" },
+                  { image: reduxLogo, alt: "Redux Logo" },
+                  { image: jwtLogo, alt: "JWT Logo" },
+                ]}
+                articleImage={articleImage}
+              />
             </div>
             <div className='flex_middle'>
               <ArticleOne
                 delay={400}
-                technology={["node", "express", "postman"]}
+                technology={["react", "redux", "jwt"]}
+                images={[
+                  { image: reactLogo, alt: "React Logo" },
+                  { image: reduxLogo, alt: "Redux Logo" },
+                  { image: jwtLogo, alt: "JWT Logo" },
+                ]}
+                articleImage={articleImage}
               />
             </div>
             <div className='flex_middle'>
-              <ArticleOne delay={600} technology={["react", "redux"]} />
+              <ArticleOne
+                delay={600}
+                technology={["react", "redux", "jwt"]}
+                images={[
+                  { image: reactLogo, alt: "React Logo" },
+                  { image: reduxLogo, alt: "Redux Logo" },
+                  { image: jwtLogo, alt: "JWT Logo" },
+                ]}
+                articleImage={articleImage}
+              />
             </div>
             <div className='flex_middle'>
               <ArticleOne
                 delay={800}
-                technology={["react", "node", "cloudinary"]}
+                technology={["react", "redux", "jwt"]}
+                images={[
+                  { image: reactLogo, alt: "React Logo" },
+                  { image: reduxLogo, alt: "Redux Logo" },
+                  { image: jwtLogo, alt: "JWT Logo" },
+                ]}
+                articleImage={articleImage}
               />
             </div>
             <div className='flex_middle'>
-              <ArticleOne delay={1000} technology={["node", "cron"]} />
+              <ArticleOne
+                delay={1000}
+                technology={["react", "redux", "jwt"]}
+                images={[
+                  { image: reactLogo, alt: "React Logo" },
+                  { image: reduxLogo, alt: "Redux Logo" },
+                  { image: jwtLogo, alt: "JWT Logo" },
+                ]}
+                articleImage={articleImage}
+              />
             </div>
           </div>
         </div>
