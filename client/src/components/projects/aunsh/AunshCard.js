@@ -41,7 +41,7 @@ import BigPic from "./BigPic";
 
 const style = {
   position: "fixed",
-  top: "50%",
+  top: "40%",
   left: "54%",
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
@@ -119,6 +119,14 @@ const AunshCard = ({
   const bigPicOpen = () => {
     setIsBigPicOpen(true)
   }
+
+  const activation = () => {
+    if(carousel) {
+      setCarousel(false)
+    } else {
+      setCarousel(true)
+    }
+  }
   return (
     <div
       className={
@@ -129,6 +137,7 @@ const AunshCard = ({
       data-aos='fade-up'
       onMouseEnter={activateCarousel}
       onMouseLeave={deactivateCarousel}
+      onClick={activation}
     >
       <div className='double_grid'>
         <div
@@ -164,14 +173,16 @@ const AunshCard = ({
                   : detailsLight[currentIndex].imgText || defaultImg}
               </div>
               <div className='icon-carousel flex_middle'>
-                <Tooltip title='Expand Photo' placement='top'>
-                  <div style={{ marginRight: "0.5em" }} onClick={bigPicOpen}>
-                    <OpenInFullIcon
-                      className='expand-carousel'
-                      style={{ fontSize: 13, marginTop: "0.2em" }}
-                    />
-                  </div>
-                </Tooltip>
+                {width > 650 && (
+                  <Tooltip title='Expand Photo' placement='top'>
+                    <div style={{ marginRight: "0.5em" }} onClick={bigPicOpen}>
+                      <OpenInFullIcon
+                        className='expand-carousel'
+                        style={{ fontSize: 13, marginTop: "0.2em" }}
+                      />
+                    </div>
+                  </Tooltip>
+                )}
                 {darkModePics ? (
                   <div className='moon cursor_pointer'>
                     <Tooltip title='Dark mode pics' placement='left'>
