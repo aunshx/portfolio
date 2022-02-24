@@ -10,6 +10,9 @@ import {
   MESSAGES_ON_RELOAD,
   MESSAGES_LOADING,
   MESSAGES_LOADING_COMPLETE,
+  MESSAGES_OLDEST,
+  MESSAGES_OLDEST_RESET,
+  MESSAGES_RESET,
 
   // Messages  - Update Status
   UPDATE_MESSAGE_STATUS,
@@ -32,6 +35,7 @@ const initialState = {
 // Messages 
 messages: [],
 messagesLoading: false,
+messagesOldest: [],
 
 // Lazy Loading 
 rendererMessages: false,
@@ -85,11 +89,27 @@ function authReducer(state = initialState, action) {
           messages: [...state.messages, ...payload.data],
           lazyLoading: payload.lazyLoading,
         };
+      case MESSAGES_RESET:
+        return {
+          ...state,
+          messages: [],
+        };
+      case MESSAGES_OLDEST:
+        return {
+          ...state,
+          messagesOldest: [...state.messagesOldest, ...payload.data],
+          lazyLoading: payload.lazyLoading,
+        };
+      case MESSAGES_OLDEST_RESET:
+        return {
+          ...state,
+          messagesOldest: [],
+        };
       case MESSAGES_ON_RELOAD:
         return {
           ...state,
           messages: payload.data,
-          lazyLoading: payload.lazyLoading
+          lazyLoading: payload.lazyLoading,
         };
       case MESSAGES_LOADING:
         return {

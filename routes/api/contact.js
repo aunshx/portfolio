@@ -110,12 +110,12 @@ router.post(
     const { skipNow } = req.body
 
     try {
-      let ans = await Message.find({ userId: req.user.id })
+      let ans = await Message.find()
         .sort({
           createdAt: 1,
         })
         .skip(skipNow)
-        .limit(30);
+        .limit(8);
 
       return res.status(200).send(ans);
     } catch (err) {

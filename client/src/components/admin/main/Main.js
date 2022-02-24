@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from "react-redux";
 
 import RefreshIcon from "@mui/icons-material/Refresh";
+import CableIcon from "@mui/icons-material/Cable";
 
 import Navbar from '../navbar/Navbar'
 import Messages from '../message/Messages';
@@ -13,25 +14,36 @@ import {
   getMessages,
   setRendererMessagesFalse,
   getMessagesOnReload,
+  getMessagesOldest,
 } from "../../../redux/actions/contact";
 import { Tooltip } from '@mui/material';
+import MessagesOldest from '../message/MessagesOldest';
 
 const Main = ({
   // Redux Actions
   getMessages,
   setRendererMessagesFalse,
   getMessagesOnReload,
+  getMessagesOldest,
   // Redux State
-  contact: { messages, messagesLoading, lazyLoading, rendererMessages },
-  auth: { isAuthenticated }
+  contact: {
+    messages,
+    messagesLoading,
+    lazyLoading,
+    rendererMessages,
+    messagesOldest,
+  },
+  auth: { isAuthenticated },
 }) => {
   const [offset, setOffset] = useState(0);
+  const [offsetOldest, setOffsetOldest] = useState(0);
   const [change, setChange] = useState(false);
   const [notRepliedOn, setNotRepliedOn] = useState(true);
   const [ongoingOn, setOngoingOn] = useState(true);
   const [successOn, setSuccessOn] = useState(true);
   const [unseenOn, setUnseenOn] = useState(true);
   const [coldOn, setColdOn] = useState(true);
+  const [seeOldest, setSeeOldest] = useState(false);
 
   const observer = useRef();
   const lastBookElementRef = useCallback(
@@ -48,7 +60,11 @@ const Main = ({
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && lazyLoading) {
           setRendererMessagesFalse();
-          setOffset(offset + 8);
+          if(seeOldest) {
+            setOffsetOldest(offsetOldest + 8);
+          } else {
+            setOffset(offset + 8);
+          }
         }
       }, options);
       if (node) {
@@ -60,17 +76,31 @@ const Main = ({
 
   useEffect(() => {
     setChange(true);
+    setSeeOldest(false);
   }, [change]);
 
   useEffect(() => {
-    if (rendererMessages === false) getMessages(offset);
-  }, [offset, getMessages])
+    if (rendererMessages === false && seeOldest === false) getMessages(offset);
+    if (rendererMessages === false && seeOldest === true) getMessagesOldest(offsetOldest);
+  }, [offset, offsetOldest, getMessages]);
 
   const reload = () => {
     getMessagesOnReload(0);
-    setOffset(0)
+    setOffset(0);
     setChange(false);
-  }
+  };
+
+  const fetchNewest = () => {
+    setSeeOldest(false);
+    getMessages(0);
+    setOffsetOldest(0)
+  };
+
+  const fetchOldest = () => {
+    setSeeOldest(true);
+    getMessagesOldest(0);
+    setOffset(0)
+  };
 
   return (
     <>
@@ -98,7 +128,9 @@ const Main = ({
           <Tooltip title='Unseen' placement='left'>
             <div
               className={
-                unseenOn ? "unseen cursor_pointer" : "unselected-bigger cursor_pointer"
+                unseenOn
+                  ? "unseen cursor_pointer"
+                  : "unselected-bigger cursor_pointer"
               }
               onClick={() => setUnseenOn(!unseenOn)}
             >
@@ -132,25 +164,54 @@ const Main = ({
           <Tooltip title='Cold' placement='left'>
             <div
               className={
-                coldOn ? "cold cursor_pointer" : "unselected-bigger cursor_pointer"
+                coldOn
+                  ? "cold cursor_pointer"
+                  : "unselected-bigger cursor_pointer"
               }
               onClick={() => setColdOn(!coldOn)}
             >
               C
             </div>
           </Tooltip>
+          <Tooltip
+            title={seeOldest ? "Oldest Messages" : "Newest Messages"}
+            placement='left'
+          >
+            <div
+              className={
+                seeOldest
+                  ? "icons-2-active cursor_pointer"
+                  : "icons-2 cursor_pointer"
+              }
+              onClick={seeOldest ? fetchNewest : fetchOldest}
+            >
+              <CableIcon style={{ fontSize: 21 }} />
+            </div>
+          </Tooltip>
         </div>
         {change && (
           <div className='admin-main'>
-            <Messages
-              messages={messages}
-              lastBookElementRef={lastBookElementRef}
-              notRepliedOn={notRepliedOn}
-              ongoingOn={ongoingOn}
-              successOn={successOn}
-              unseenOn={unseenOn}
-              coldOn={coldOn}
-            />
+            {seeOldest ? (
+              <MessagesOldest
+                messages={messagesOldest}
+                lastBookElementRef={lastBookElementRef}
+                notRepliedOn={notRepliedOn}
+                ongoingOn={ongoingOn}
+                successOn={successOn}
+                unseenOn={unseenOn}
+                coldOn={coldOn}
+              />
+            ) : (
+              <Messages
+                messages={messages}
+                lastBookElementRef={lastBookElementRef}
+                notRepliedOn={notRepliedOn}
+                ongoingOn={ongoingOn}
+                successOn={successOn}
+                unseenOn={unseenOn}
+                coldOn={coldOn}
+              />
+            )}
           </div>
         )}
       </div>
@@ -167,6 +228,7 @@ Main.propTypes = {
   getMessages: PropTypes.func.isRequired,
   setRendererMessagesFalse: PropTypes.func.isRequired,
   getMessagesOnReload: PropTypes.func.isRequired,
+  getMessagesOldest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -178,6 +240,7 @@ const mapStateToActions = {
   getMessages,
   setRendererMessagesFalse,
   getMessagesOnReload,
+  getMessagesOldest,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Main);

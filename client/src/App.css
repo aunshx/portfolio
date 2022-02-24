@@ -2822,6 +2822,46 @@ from {
   color: var(--logo-color);
 }
 
+.admin-main-settings .icons-2 {
+  color: grey;
+  cursor: pointer;
+  margin-top: 0.42em;
+  margin-left: 0.3em;
+  animation: rotateIconsTwoInvert 0.3s 1 linear;
+}
+
+.admin-main-settings .icons-2-active {
+  color: grey;
+  cursor: pointer;
+  /* margin-top: 0.42em; */
+  margin-left: 0.4em;
+  transform: rotate(-90deg);
+  animation: rotateIconsTwo 0.3s 1 linear;
+}
+
+@keyframes rotateIconsTwo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-90deg);
+  }
+}
+
+@keyframes rotateIconsTwoInvert {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.admin-main-settings .icons-2:hover, 
+.admin-main-settings .icons-2-active:hover {
+  color: var(--logo-color);
+}
+
 .admin-main-settings .not-replied {
   border: 2px solid var(--closing-color);
   color: var(--closing-color);
