@@ -12,17 +12,11 @@ import {
   LOGIN_LOADING,
 
 // Errors
-  ERROR_400,
-  ERROR_401,
-  ERROR_500,
-  SUCCESS_200,
-  ERROR_SOMETHING_ELSE,
   SNACKBAR_RESET,
   ERROR_SNACKBAR,
 } from "./types";
 
-import { getTotalHitsSynopsis, captureIpNow } from "./metrics";
-import { getMessages } from "./contact";
+import { getTotalHitsSynopsis } from "./metrics";
 
 export const snackbarDeactivate = (value) => async (dispatch) => {
   dispatch({
@@ -42,7 +36,6 @@ export const loadUser = () => async (dispatch) => {
             payload: res.data,
           });
 
-          dispatch(captureIpNow());
           dispatch(getTotalHitsSynopsis());
         } catch (err) {
           dispatch({

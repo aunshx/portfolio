@@ -27,6 +27,7 @@ import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./redux/actions/auth";
+import { captureIpNow } from "./redux/actions/metrics";
 
 function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
@@ -78,6 +79,9 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
       stop2();
       playBackgroundLight();
     }
+
+    // Capture Ip
+    captureIpNow();
   }, [music, displayMode]);
 
   return (
@@ -162,13 +166,15 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
 App.propTypes = {
   sidebar: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
+  captureIpNow: PropTypes.func.isRequired
 };
-
 const mapStateToProps = (state) => ({
   sidebar: state.sidebar,
   settings: state.settings,
 });
 
-const mapActionsToProps = {};
+const mapActionsToProps = {
+  captureIpNow
+}
 
 export default connect(mapStateToProps, mapActionsToProps)(App);

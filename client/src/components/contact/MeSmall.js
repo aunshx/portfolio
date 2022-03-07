@@ -13,7 +13,7 @@ const MeSmall = ({ error, success, message, loading, reference, show, changeDial
     }
   return (
     <>
-      <div className='all-about-small flex_right' onClick={changeDialogAction}>
+      <div className='all-about-small' onClick={changeDialogAction}>
         {show ? (
           <>
             {loading && (
@@ -78,7 +78,7 @@ const MeSmall = ({ error, success, message, loading, reference, show, changeDial
                 </div>
               </>
             )}
-            <div className='image'>
+            <div className='image flex_right'>
               <img src={body} alt='Face of Me' />
             </div>
           </>

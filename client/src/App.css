@@ -2646,7 +2646,7 @@ from {
 
 .all-about-small {
   height: auto;
-  width: 100vw;
+  width: 90vw;
   position: relative;
   margin-top: 5em;
 }
@@ -2676,7 +2676,17 @@ from {
      z-index: 5;
 }
 
-@media only screen and (min-width: 450px) {
+@media only screen and (max-width: 370px) {
+  .all-about-small {
+  height: auto;
+  width: 90vw;
+  position: relative;
+  margin-top: 5em;
+}
+  .all-about-small .image {
+  margin-right: 5%;
+  width: auto;
+}
   .all-about-small .bubble {
   position: absolute;
   font-family: sans-serif;
@@ -2692,28 +2702,28 @@ from {
   font-family: 'Comfortaa', cursive ;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     top: -14%;
-  right: 60%;
+  right: 40%;
      /* animation: aboutImageInputDialog 2s 1 linear; */
      z-index: 5;
 }
 }
 
 .all-about-small .bubble-error {
-  position: fixed;
+  position: absolute;
   font-family: sans-serif;
   font-size: 13px;
   line-height: 24px;
   width: 170px;
-  height: 120px;
+  height: 125px;
   background: var(--card-color);
   border-radius: 10px;
-  padding: 13px;
+  padding: 16px 13px;
   text-align: center;
   color: var(--lighter-dark-font-color);
   font-family: 'Comfortaa', cursive ;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    top: 60%;
-  right: 80px;
+    top: -24%;
+  right: 45%;
      /* animation: aboutImageInputDialog 2s 1 linear; */
 }
 
@@ -2744,7 +2754,7 @@ from {
   }
 }
 .all-about-small .image img {
-  width: 230px;
+  width: 100px;
   height: 230px;
   object-fit: contain;
 }
