@@ -21,24 +21,25 @@ router.get("/capture-ip", async (req, res) => {
 
       await ans2.save();
 
-     const ipDeets = await axios.get("https://api.ipify.org?format=json/");
-     const ipDetails = await axios.get(`http://ip-api.com/json/${ipDeets.data}`)
+      const ipDeets = await axios.get(
+        "https://api.geoapify.com/v1/ipinfo?&apiKey=1f24d38acc68459182c5125144ce3fc2"
+      );
 
       if(ipDetails){
         let ans = new Ip({
-          ip: ipDeets.data,
-          country: ipDetails.data.country,
-          countryCode: ipDetails.data.countryCode,
-          city: ipDetails.data.city,
+          country: ipDeets.data.country.name,
+          countryCode: ipDeets.data.country.iso_code,
+          ip: ipDeets.data.ip,
+          city: ipDeets.data.city.name,
         });
 
         await ans.save();
       } else {
         let ans = new Ip({
-          ip: '000',
-          country: 'no-country',
-          countryCode: 'NC',
-          city: 'no-city',
+          country: "no-country",
+          countryCode: "NC",
+          ip: "000",
+          city: "Not Known",
         });
 
         await ans.save();

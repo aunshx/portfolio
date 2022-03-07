@@ -21,9 +21,7 @@ import {
   ERROR_SNACKBAR,
 } from "./types";
 
-import {
-  getTotalHitsSynopsis
-} from './metrics'
+import { getTotalHitsSynopsis, captureIpNow } from "./metrics";
 import { getMessages } from "./contact";
 
 export const snackbarDeactivate = (value) => async (dispatch) => {
@@ -44,6 +42,7 @@ export const loadUser = () => async (dispatch) => {
             payload: res.data,
           });
 
+          dispatch(captureIpNow());
           dispatch(getTotalHitsSynopsis());
         } catch (err) {
           dispatch({
