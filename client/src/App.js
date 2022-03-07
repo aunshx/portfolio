@@ -29,20 +29,26 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./redux/actions/auth";
 import { captureIpNow } from "./redux/actions/metrics";
 
-function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
+function App({
+  sidebar: { hover },
+  // Redux States
+  settings: { sound, displayMode, music },
+  // Redux Actions
+  captureIpNow,
+}) {
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
     volume: 0.2,
-  })
+  });
   const [playBackgroundDark, { stop: stop2 }] = useSound(darkBackground, {
     volume: 0.2,
-  })
+  });
 
   useEffect(() => {
     // check for token in LS
     if (localStorage.token) {
       setAuthToken(localStorage.token);
+      store.dispatch(loadUser());
     }
-    store.dispatch(loadUser());
     // log user out from all tabs if they log out in one tab
     window.addEventListener("storage", () => {
       if (!localStorage.token) store.dispatch({ type: LOGOUT });
@@ -141,15 +147,8 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
               />
             )}
           />
-          <PrivateRoute
-            path='/admin'
-            exact
-            component = {Main}
-          />
-          <PrivateRoute
-            path='/admin/stats'
-            component = {Stats}
-          />
+          <PrivateRoute path='/admin' exact component={Main} />
+          <PrivateRoute path='/admin/stats' component={Stats} />
           <Route
             path='/admin/login'
             render={(props) => (

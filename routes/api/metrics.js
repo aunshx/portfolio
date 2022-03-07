@@ -25,7 +25,6 @@ router.get("/capture-ip", async (req, res) => {
       const ipDeets = await axios.get(
         `https://api.geoapify.com/v1/ipinfo?&apiKey=${process.env.GEOAPIFY_API_KEY}`
       );
-
       if(ipDetails){
         let ans = new Ip({
           country: ipDeets.data.country.name,
@@ -48,7 +47,6 @@ router.get("/capture-ip", async (req, res) => {
 
       return res.status(200).send("Ip captured");
   } catch (err) {
-      console.log(err)
     res.status(400).send({ errors: [{ msg: "Visit could not be counted" }] });
   }
 });

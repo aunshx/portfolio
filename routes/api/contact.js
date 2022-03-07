@@ -166,20 +166,24 @@ router.post(
 
     const { email, message, organisation, name } = req.body;
 
+    console.log(req.body)
+
     try {
       let ans = new Message({
         email,
         name,
         organisation,
         message,
-        userId: req.user.id
       });
 
       await ans.save();
 
+      console.log(ans)
+
       return res.status(200).send({ msg: "Message Saved" });
     } catch (err) {
-      res.status(400).send({ errors: [{ msg: "Some error" }] });
+      console.log(err)
+      res.status(400).send({ errors: [{ msg: err }] });
     }
   }
 );
