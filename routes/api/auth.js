@@ -104,8 +104,6 @@ router.post(
 
     const { name, email, password } = req.body;
 
- 
-
     try {
       let user = await User.findOne({ email });
 
@@ -152,6 +150,3 @@ router.post(
 
 
 module.exports = router;
-
-
-// $2a$10$w1oR6tRJM/A62VU9PWQv4uxroNiJul9N4NRCd6lVMraSt7PgLk5kO

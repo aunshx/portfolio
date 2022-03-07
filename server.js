@@ -12,7 +12,7 @@ connectDB();
 
 // Init Middleware
 app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // Mount express-sanitizer middleware here
 app.use(expressSanitizer());

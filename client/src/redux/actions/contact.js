@@ -970,7 +970,7 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             type: EMAIL_LOADING_COMPLETE,
         })
 
-        const res = await api.post("/contact/send-email", body)
+        const res = await api.post("/contact/save-message", body);
 
         setTimeout(
             () =>
