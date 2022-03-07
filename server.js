@@ -46,5 +46,5 @@ app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
 
-// Mongo -> aunshwebsitea
+// Mongo -> aunshwebsite
 // Sendgrid -> aunshforgodaddy
