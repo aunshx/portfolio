@@ -7,7 +7,7 @@ const Me = ({ error, success, message, loading, reference, show, changeDialog })
     // useEffect(() => setTimeout(() => setShowDialog(true), 2000), [])
 
     const changeDialogAction = () => {
-        changeDialog(!show)
+        // changeDialog(!show)
     }
   return (
     <>

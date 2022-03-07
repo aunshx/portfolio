@@ -9,7 +9,7 @@ const MeSmall = ({ error, success, message, loading, reference, show, changeDial
    const { width, height } = useWindow()
 
     const changeDialogAction = () => {
-        changeDialog(!show)
+        // changeDialog(!show)
     }
   return (
     <>

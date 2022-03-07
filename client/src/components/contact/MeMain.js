@@ -9,7 +9,7 @@ const Me = ({ error, success, message, loading }) => {
     useEffect(() => setTimeout(() => setShowDialog(true), 2000), [])
 
     const changeDialogAction = () => {
-        setShowDialog(!showDialog);
+        // setShowDialog(!showDialog);
     }
   return (
     <>
