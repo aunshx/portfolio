@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://myadmin:MyAdmin123@cluster0.aujf3.mongodb.net/gotuu?retryWrites=true&w=majority",
-    "jwtSecret": "jfjkdglfjgsdjflfjgjeopswprjgmslfgb"
-}

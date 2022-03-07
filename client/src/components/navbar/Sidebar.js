@@ -327,7 +327,6 @@ const Sidebar = ({
               className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
-              exact
             >
               <div className='flex_between'>
                 <div>
@@ -342,7 +341,6 @@ const Sidebar = ({
               to='/user'
               className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
               exact
             >
               <div className='flex_between'>

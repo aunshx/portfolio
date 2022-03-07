@@ -1,13 +1,14 @@
 const express = require("express");
 const axios = require('axios');
 const router = express.Router();
-const config = require("config");
 const moment = require('moment');
 const mongoose = require('mongoose');
 const { check, validationResult } = require("express-validator");
 const Ip = require("../../models/Ip");
 const Count = require("../../models/Count");
 const auth = require("../../middleware/auth");
+
+require('dotenv').config()
 
 
 // @route    GET api/metrics
@@ -22,7 +23,7 @@ router.get("/capture-ip", async (req, res) => {
       await ans2.save();
 
       const ipDeets = await axios.get(
-        "https://api.geoapify.com/v1/ipinfo?&apiKey=1f24d38acc68459182c5125144ce3fc2"
+        `https://api.geoapify.com/v1/ipinfo?&apiKey=${process.env.GEOAPIFY_API_KEY}`
       );
 
       if(ipDetails){

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const config = require("config");
 const { check, validationResult } = require("express-validator")
 const Message = require('../../models/Message')
 const auth = require('../../middleware/auth')
@@ -131,7 +130,7 @@ router.post(
 // @access   Private
 router.post(
   "/retrieve-messages-latest",
-  // auth,
+  auth,
   async (req, res) => {
     const { skipNow } = req.body
 
@@ -153,10 +152,9 @@ router.post(
 
 // @route    POST api/contact
 // @desc     Save Message
-// @access   Private
+// @access   Public
 router.post(
   "/save-message",
-  auth,
   check("email", "Please include a valid email").isEmail(),
   check("name", "Name cannot be empty").notEmpty(),
   check("message", "Message cannot be empty").notEmpty(),

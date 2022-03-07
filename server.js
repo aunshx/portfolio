@@ -1,7 +1,6 @@
 const express = require("express");
 const expressSanitizer = require("express-sanitizer");
 const path = require("path");
-const bodyParser = require("body-parser");
 
 const connectDB = require("./config/db");
 
@@ -17,12 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 // Mount express-sanitizer middleware here
 app.use(expressSanitizer());
 
-// app.post("/", function (req, res, next) {
+app.post("/", function (req, res, next) {
   // replace an HTTP posted body property with the sanitized string
-//   const sanitizedString = req.sanitize(req.body.propertyToSanitize);
-//   // send the response -- res.body.sanitized = " world"
-//   res.send({ sanitized: sanitizedString });
-// });
+  const sanitizedString = req.sanitize(req.body.propertyToSanitize);
+  // send the response -- res.body.sanitized = " world"
+  res.send({ sanitized: sanitizedString });
+});
 
 // Define Routes
 app.use("/api/contact", require("./routes/api/contact"));
