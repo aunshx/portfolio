@@ -3,11 +3,13 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const auth = require("../../middleware/auth.js");
 const jwt = require("jsonwebtoken");
-const config = require("config");
+// const config = require("config");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/User");
 const { verify } = require("crypto");
+
+require('dotenv').config()
 
 // @route    GET api/auth
 // @desc     Get user by token
@@ -50,6 +52,8 @@ router.post(
           .send({ errors: [{ msg: "Invalid Credentials" }] });
       }
 
+      console.log(password, user.password, user.createdAt);
+
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
@@ -66,7 +70,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        process.env.JWT_SECRET,
         { expiresIn: "1d" },
         (err, token) => {
           if (err) throw err;
@@ -100,6 +104,8 @@ router.post(
 
     const { name, email, password } = req.body;
 
+ 
+
     try {
       let user = await User.findOne({ email });
 
@@ -130,12 +136,12 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        process.env.JWT_SECRET,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
           res.send({ token });
-        }
+        }   
       );
     } catch (err) {
       console.log(err);
@@ -146,3 +152,6 @@ router.post(
 
 
 module.exports = router;
+
+
+// $2a$10$w1oR6tRJM/A62VU9PWQv4uxroNiJul9N4NRCd6lVMraSt7PgLk5kO

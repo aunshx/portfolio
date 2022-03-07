@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
     "crypto-browserify": "^3.12.0",
+    "css-minimizer-webpack-plugin": "^3.4.1",
     "email-validator": "^2.0.4",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",

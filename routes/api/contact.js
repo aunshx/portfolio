@@ -117,6 +117,8 @@ router.post(
         .skip(skipNow)
         .limit(8);
 
+        console.log(ans)
+
       return res.status(200).send(ans);
     } catch (err) {
       res.status(400).send({ errors: [{ msg: "Cannot retrieve messages" }] });
