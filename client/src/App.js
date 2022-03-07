@@ -47,16 +47,16 @@ function App({ sidebar: { hover }, settings: { sound, displayMode, music } }) {
       if (!localStorage.token) store.dispatch({ type: LOGOUT });
     });
     // check for token in LS
-    if (localStorage.getItem("theme") === "dark") {
-      store.dispatch({
-        type: DARK_MODE_ON,
-      });
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
+    if (localStorage.getItem("theme") === "light") {
       store.dispatch({
         type: DARK_MODE_OFF,
       });
       document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      store.dispatch({
+        type: DARK_MODE_ON,
+      });
+      document.documentElement.setAttribute("data-theme", "dark");
     }
 
     if (music && displayMode) {
