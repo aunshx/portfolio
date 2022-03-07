@@ -15,6 +15,7 @@ import BackgroundTiny from "../main/BackgroundTiny";
 
 import windowSize from "../../utils/windowSize";
 import Footer from "../layout/Footer";
+import AunshCard from "./aunsh/AunshCard";
 
 const ProjectsMain = ({ Sidebar}) => {
     const { width, height } = windowSize()
@@ -37,9 +38,10 @@ const ProjectsMain = ({ Sidebar}) => {
             <div>Projects</div>
           </div>
           <div className='body app'>
-            <BodingaCard />
-            <YedaEngineerCard />
-            <GotuuCard />
+            <BodingaCard runAos={false} />
+            <YedaEngineerCard runAos={false} />
+            <GotuuCard runAos={false} />
+            <AunshCard runAos={false} />
           </div>
         </div>
       </div>

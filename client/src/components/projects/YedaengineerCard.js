@@ -49,6 +49,7 @@ const ExpandMore = styled((props) => {
 
 
 const YedaEngineerCard = ({
+  runAos,
   // Redux State
   settings: { displayMode }
 }) => {
@@ -65,7 +66,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
       className={
         displayMode ? "individual individual--projects--dark--ye" : "individual"
       }
-      data-aos='fade-up'
+      data-aos={runAos ? "fade-up" : ""}
     >
       <div className='double_grid'>
         <div className='image' onClick={() => setIsPhotoOpen(true)}>

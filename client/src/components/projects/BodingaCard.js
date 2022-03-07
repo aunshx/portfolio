@@ -49,6 +49,7 @@ const ExpandMore = styled((props) => {
 
 
 const BodingaCard = ({
+  runAos,
   // Redux State
   settings: { displayMode }
 }) => {
@@ -66,7 +67,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
           ? "individual individual--projects--dark--bodinga"
           : "individual"
       }
-      data-aos='fade-up'
+      data-aos={runAos ? "fade-up" : ""}
     >
       <div className='double_grid'>
         <div className='image' onClick={() => setIsPhotoOpen(true)}>

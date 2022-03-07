@@ -19,10 +19,10 @@ const Projects = ({  }) => {
           <div>Projects</div>
         </div>
         <div className='body app'>
-          <BodingaCard />
-          <YedaEngineerCard />
-          <GotuuCard />
-          <AunshCard />
+          <BodingaCard runAos={true} />
+          <YedaEngineerCard runAos={true} />
+          <GotuuCard runAos={true} />
+          <AunshCard runAos={true} />
         </div>
       </div>
       ;

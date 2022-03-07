@@ -57,21 +57,52 @@ const SkillsMain = ({
               delay={0}
               title={"React"}
               logo={reactLogo}
+              runAos={false}
             />
-            <SkillOne delay={200} title={"Node.js"} logo={nodeLogo} />
-            <SkillOne delay={400} title={"Postgres"} logo={psqlLogo} />
+            <SkillOne
+              delay={200}
+              title={"Node.js"}
+              logo={nodeLogo}
+              runAos={false}
+            />
+            <SkillOne
+              delay={400}
+              title={"Postgres"}
+              logo={psqlLogo}
+              runAos={false}
+            />
           </div>
           <div className='body-two'>
-            <SkillOne delay={0} title={"MongoDb"} logo={mongoLogo} />
-            <SkillOne delay={200} title={"CSS"} logo={css3Logo} />
-            <SkillOne delay={400} title={"HTML"} logo={htmlLogo} />
-            <SkillOne delay={600} title={"JS"} logo={jsLogo} />
+            <SkillOne
+              delay={0}
+              title={"MongoDb"}
+              logo={mongoLogo}
+              runAos={false}
+            />
+            <SkillOne delay={200} title={"CSS"} logo={css3Logo} runAos={false} />
+            <SkillOne
+              delay={400}
+              title={"HTML"}
+              logo={htmlLogo}
+              runAos={false}
+            />
+            <SkillOne delay={600} title={"JS"} logo={jsLogo} runAos={false} />
           </div>
           <div className='body-two' data-aos-offset='10'>
-            <SkillOne delay={0} title={"Git"} logo={gitLogo} />
-            <SkillOne delay={200} title={"Redux"} logo={reduxLogo} />
-            <SkillOne delay={400} title={"Mui"} logo={muiLogo} />
-            <SkillOne delay={600} title={"Passport"} logo={passportLogo} />
+            <SkillOne delay={0} title={"Git"} logo={gitLogo} runAos={false} />
+            <SkillOne
+              delay={200}
+              title={"Redux"}
+              logo={reduxLogo}
+              runAos={false}
+            />
+            <SkillOne delay={400} title={"Mui"} logo={muiLogo} runAos={false} />
+            <SkillOne
+              delay={600}
+              title={"Passport"}
+              logo={passportLogo}
+              runAos={false}
+            />
           </div>
         </div>
       </div>

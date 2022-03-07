@@ -42,6 +42,7 @@ const Articles = (props) => {
               ]}
               articleImage={articleImage}
               title={"Login authentication using JWT in React"}
+              runAos={true}
             />
           </div>
           <div className='flex_middle'>
@@ -54,6 +55,7 @@ const Articles = (props) => {
               ]}
               articleImage={articleImage}
               title={"Automated tasks in node with node-cron"}
+              runAos={true}
             />
           </div>
           <div className='flex_middle'>
@@ -66,6 +68,7 @@ const Articles = (props) => {
               ]}
               articleImage={articleImage}
               title={"Lazy loading on scroll in react"}
+              runAos={true}
             />
           </div>
           <div className='flex_middle'>
@@ -79,6 +82,7 @@ const Articles = (props) => {
               ]}
               articleImage={articleImage}
               title={"Web-parser to analyse best restaurant offers on Zomato"}
+              runAos={true}
             />
           </div>
           <div className='flex_middle'>
@@ -93,6 +97,7 @@ const Articles = (props) => {
               ]}
               articleImage={articleImage}
               title={"Showcase and store memes using reddit api in react app"}
+              runAos={true}
             />
           </div>
           <div className='flex_middle'>
@@ -106,7 +111,8 @@ const Articles = (props) => {
                 { image: nodeLogo, alt: "Node Logo" },
               ]}
               articleImage={articleImage}
-              title={'Live search in app using postgres'}
+              title={"Live search in app using postgres"}
+              runAos={true}
             />
           </div>
         </div>

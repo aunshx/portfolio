@@ -66,6 +66,7 @@ const ExpandMore = styled((props) => {
 }));
 
 const AunshCard = ({
+  runAos,
   // Redux State
   settings: { displayMode },
 }) => {
@@ -134,7 +135,7 @@ const AunshCard = ({
           ? "individual individual--projects--dark--aunsh"
           : "individual"
       }
-      data-aos='fade-up'
+      data-aos={runAos ? 'fade-up' : ''}
       onMouseEnter={activateCarousel}
       onMouseLeave={deactivateCarousel}
       onClick={activation}

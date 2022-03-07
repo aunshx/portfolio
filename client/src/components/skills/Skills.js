@@ -21,33 +21,43 @@ import htmlLogo from '../../resources/images/htmlLogo.png'
 
 const Skills = (props) => {
 
-  return <div className='skills'>
-    <div className="title flex_middle" data-aos='flip-down'>
-      <div style={{ marginRight: '0.5em' }}>
-        <FontAwesomeIcon icon={faBrain} />
+  return (
+    <div className='skills'>
+      <div className='title flex_middle' data-aos='flip-down'>
+        <div style={{ marginRight: "0.5em" }}>
+          <FontAwesomeIcon icon={faBrain} />
+        </div>
+        <div>Skills</div>
       </div>
-      <div>
-        Skills
+      <div className='body-one'>
+        <SkillOne delay={0} title={"React"} logo={reactLogo} runAos={true} />
+        <SkillOne delay={200} title={"Node.js"} logo={nodeLogo} runAos={true} />
+        <SkillOne
+          delay={400}
+          title={"Postgres"}
+          logo={psqlLogo}
+          runAos={true}
+        />
+      </div>
+      <div className='body-two'>
+        <SkillOne delay={0} title={"MongoDb"} logo={mongoLogo} runAos={true} />
+        <SkillOne delay={200} title={"CSS"} logo={css3Logo} runAos={true} />
+        <SkillOne delay={400} title={"HTML"} logo={htmlLogo} runAos={true} />
+        <SkillOne delay={600} title={"JS"} logo={jsLogo} runAos={true} />
+      </div>
+      <div className='body-two'>
+        <SkillOne delay={0} title={"Git"} logo={gitLogo} runAos={true} />
+        <SkillOne delay={200} title={"Redux"} logo={reduxLogo} runAos={true} />
+        <SkillOne delay={400} title={"Mui"} logo={muiLogo} runAos={true} />
+        <SkillOne
+          delay={600}
+          title={"Passport"}
+          logo={passportLogo}
+          runAos={true}
+        />
       </div>
     </div>
-    <div className="body-one">
-      <SkillOne delay={0} title={'React'} logo={reactLogo} />
-      <SkillOne delay={200} title={'Node.js'} logo={nodeLogo} />
-      <SkillOne delay={400} title={'Postgres'} logo={psqlLogo} />
-    </div>
-    <div className="body-two">
-      <SkillOne delay={0} title={'MongoDb'} logo={mongoLogo} />
-      <SkillOne delay={200} title={'CSS'} logo={css3Logo} />
-      <SkillOne delay={400} title={'HTML'} logo={htmlLogo} />
-      <SkillOne delay={600} title={'JS'} logo={jsLogo} />
-    </div>
-    <div className="body-two">
-      <SkillOne delay={0} title={'Git'} logo={gitLogo} />
-      <SkillOne delay={200} title={'Redux'} logo={reduxLogo} />
-      <SkillOne delay={400} title={'Mui'} logo={muiLogo} />
-      <SkillOne delay={600} title={'Passport'} logo={passportLogo} />
-    </div>
-  </div>;
+  );
 };
 
 Skills.propTypes = {};

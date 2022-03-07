@@ -1663,13 +1663,20 @@ color: var(--light-logo-color);
 .articles-main .body .individual {
   width: 75%;
   color: var(--lighter-dark-font-color);
-  min-height: 400px;
+  height: 430px;
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   margin: 2em 0;
-  /* z-index: -1; */
 }
+
+.articles .body .individual--dark, 
+.articles-main .body .individual--dark {
+   border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
+}
+
+
 
 .read-more,
 .read-more a {
@@ -1753,7 +1760,7 @@ color: var(--light-logo-color);
 
 .articles-main {
   color: var(--grey-color);
-   width: 780px;
+   width: 700px;
   height: auto;
   padding: 0em 1em 0em 1em;
   margin: 60px 0 50px 50px;
@@ -1764,7 +1771,7 @@ color: var(--light-logo-color);
 .articles-main .body .individual {
   width: 300px;
   color: var(--lighter-dark-font-color);
-  min-height: 300px;
+  height: 430px;
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
@@ -1785,10 +1792,10 @@ color: var(--light-logo-color);
 
 .articles-main {
   color: var(--grey-color);
-   width: 100%;
+   width: 100vw;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 60px 0 50px 50px;
+  margin: 70px 0 50px 0px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1830,7 +1837,7 @@ color: var(--light-logo-color);
    width: 100%;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 60px 0 50px 50px;
+  margin: 70px 0 50px 0px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1850,7 +1857,7 @@ color: var(--light-logo-color);
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
-  margin: 1em 0;
+  margin: 1em 0 3em 0;
 }
 
 .projects .individual .expanded .double .tags {
@@ -2078,9 +2085,9 @@ color: var(--light-logo-color);
 
 .skills-main {
   color: var(--grey-color);
-   width: 1000px;
+   width: 900px;
   height: auto;
-    padding: 0em 0em 0em 2em;
+    padding: 0em 0em 0em 1em;
   margin: 60px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
@@ -2163,9 +2170,9 @@ color: var(--light-logo-color);
 
 .skills-main {
   color: var(--grey-color);
-   width: 1000px;
+   width: 700px;
   height: auto;
-    padding: 0em 0em 0em 2em;
+    padding: 0em 0em 0em 0em;
   margin: 60px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
@@ -2176,14 +2183,24 @@ color: var(--light-logo-color);
     width: 100vw;
     margin: 50px 0;
   }
+
+  .skills-main {
+  color: var(--grey-color);
+  width: 90vw;
+  height: auto;
+    padding: 0em 0em 0em 1em;
+  margin: 70px 0 50px 0px;
+  font-family: 'Comfortaa', cursive;
+}
 }
 
 
 @media only screen and (max-width: 650px) {
   .skills,
 .skills-main {
-  width: 100vw;
-  margin: 50px 0;
+  width: 85vw;
+  margin: 70px 0 50px 0px;
+  padding: 0em 0em 0em 0em;
 }
 
   .skills .body-one,
@@ -2258,7 +2275,7 @@ color: var(--light-logo-color);
 
 .contact .body .form,
 .contact-main .body .form {
-  width: 310px;
+  width: 300px;
   color: var(--lighter-dark-font-color);
   background-color: var(--navbar-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -2364,10 +2381,10 @@ color: var(--light-logo-color);
 
 .contact-main {
   color: var(--grey-color);
-   width: 750px;
+   width: 700px;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 5% 0 50px 50px;
+  margin: 70px 0 50px 0px;
   font-family: 'Comfortaa', cursive;
 }
 }
@@ -2378,6 +2395,15 @@ color: var(--light-logo-color);
     width: 100vw;
     height: auto;
   }
+
+  .contact-main {
+  color: var(--grey-color);
+   width: 100vw;
+  height: auto;
+  padding: 0em 0em 0em 0em;
+  margin: 70px 0 50px 0px;
+  font-family: 'Comfortaa', cursive;
+}
 
   .card-contact {
    margin: 0px 0 50px 0;

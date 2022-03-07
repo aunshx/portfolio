@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import useWindow from "../../utils/windowSize";
 import { connect } from 'react-redux';
 
-const SkillOne = ({ delay, logo, title,
+const SkillOne = ({ delay, logo, title, runAos,
   // Redux State
   settings: { displayMode }
 }) => {
@@ -47,11 +47,13 @@ const SkillOne = ({ delay, logo, title,
   return (
     <div className='imp'>
       <div
-        className={displayMode ? "individual individual--dark app" : "individual app"}
-        data-aos={width < 787 ? "fade-in" : "fade-in"}
+        className={
+          displayMode ? "individual individual--dark app" : "individual app"
+        }
+        data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ''}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
-        style={{ border: `1px solid ${borderColorNow}` }}
+        style={displayMode ? { border: `1px solid ${borderColorNow}` } : {}}
       >
         <div className='image'>
           <img src={logo} alt='Logo of Tech' />

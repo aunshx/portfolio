@@ -18,6 +18,7 @@ import Footer from '../layout/Footer';
 import Navbar from '../navbar/Navbar';
 import Sidebar from '../navbar/Sidebar';
 import MeMain from './MeMain';
+import MeSmall from './MeSmall'
 
 import BackgroundLarge from "../main/BackgroundLarge";
 import BackgroundMedium from "../main/BackgroundMedium";
@@ -111,7 +112,7 @@ const ContactMain = ({
     sendEmail 
 }) => {
 
-  const { width, height } = windowSize()
+  const { width } = windowSize()
 
   const CHARACTER_LIMIT = 144
 
@@ -166,17 +167,25 @@ const ContactMain = ({
       {600 < width && width <= 900 && <BackgroundSmall />}
       {width <= 600 && <BackgroundTiny />}
       <div className='app'>
-        <div className='contact-main' data-aos='fade-in'>
-          <div className='title flex_middle' data-aos='flip-up'>
+        <div className='contact-main'>
+          <div className='title flex_middle'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />
             </div>
             <div>Contact</div>
           </div>
+          {width < 651 && (
+              <MeSmall
+                error={emailError}
+                success={emailSuccess}
+                message={emailMessage}
+                loading={emailLoading}
+                show={true}
+              />
+          )}
           <div
             className='body flex_middle'
             style={{ marginTop: "2em" }}
-            data-aos='fade-up'
           >
             {displayMode ? (
               <div className={"form form--dark"}>
@@ -523,9 +532,9 @@ const ContactMain = ({
           </div>
         </div>
         <div
-          className={displayMode ? "card-contact card-contact--dark" : "card-contact"}
-          data-aos='fade-up'
-          data-aos-offset={30}
+          className={
+            displayMode ? "card-contact card-contact--dark" : "card-contact"
+          }
         >
           <div className='title flex_middle'>Details</div>
           <div className='info'>
@@ -551,12 +560,14 @@ const ContactMain = ({
         </div>
       </div>
       <div>
-        <MeMain
-          error={emailError}
-          success={emailSuccess}
-          message={emailMessage}
-          loading={emailLoading}
-        />
+        {width > 651 && (
+          <MeMain
+            error={emailError}
+            success={emailSuccess}
+            message={emailMessage}
+            loading={emailLoading}
+          />
+        )}
       </div>
     </>
   );

@@ -52,6 +52,7 @@ const ExpandMore = styled((props) => {
 
 
 const GotuuCard = ({
+  runAos,
   // Redux State
   settings: { displayMode }
 }) => {
@@ -66,9 +67,11 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   return (
     <div
       className={
-        displayMode ? "individual individual--projects--dark--gotuu" : "individual"
+        displayMode
+          ? "individual individual--projects--dark--gotuu"
+          : "individual"
       }
-      data-aos='fade-up'
+      data-aos={runAos ? "fade-up" : ""}
     >
       <div className='double_grid'>
         <div className='image' onClick={() => setIsPhotoOpen(true)}>

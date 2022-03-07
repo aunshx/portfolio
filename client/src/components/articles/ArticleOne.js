@@ -6,8 +6,18 @@ import {Tooltip} from '@mui/material'
 
 
 import useWindow from '../../utils/windowSize';
+import { connect } from 'react-redux';
 
-const ArticleOne = ({ delay, technology, imagesArray, articleImage, title }) => {
+const ArticleOne = ({
+  delay,
+  technology,
+  imagesArray,
+  articleImage,
+  title,
+  runAos,
+  // Redux States
+  settings: { displayMode },
+}) => {
   const { width, height } = useWindow();
   const [colorBorder, setColorBorder] = useState("");
 
@@ -39,8 +49,8 @@ const ArticleOne = ({ delay, technology, imagesArray, articleImage, title }) => 
 
   return (
     <div
-      className='individual'
-      data-aos={width < 787 ? "fade-in" : "fade-in"}
+      className={displayMode ? "individual individual--dark" : "individual"}
+      data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
       data-aos-offset={width < 787 && 30}
     >
       <div
@@ -59,21 +69,29 @@ const ArticleOne = ({ delay, technology, imagesArray, articleImage, title }) => 
             </Tooltip>
           ))}
       </div>
-      <div className='title'>{title}</div>
-      <div className='description'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
-        temporibus odio voluptatum, reprehenderit alias in.
-      </div>
-      <div className='checkout flex_middle'>
-        <div>Read full article</div>
-        <div style={{ marginLeft: "0.5em" }}>
-          <FontAwesomeIcon icon={faArrowRight} />
+      <div className='app' style={{ justifyContent: 'space-between' }}>
+        <div className='title'>{title}</div>
+        <div className='description'>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
+          temporibus odio voluptatum, reprehenderit alias in.
+        </div>
+        <div className='checkout flex_middle'>
+          <div>Read full article</div>
+          <div style={{ marginLeft: "0.5em" }}>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-ArticleOne.propTypes = {};
+ArticleOne.propTypes = {
+  displayMode: PropTypes.object.isRequired
+};
 
-export default ArticleOne;
+const mapStateToProps = (state) => ({
+  settings: state.settings
+})
+
+export default connect(mapStateToProps)(ArticleOne);
