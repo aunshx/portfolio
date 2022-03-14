@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Suspense } from "react";
 import ReactDOM from 'react-dom';
+import Loader from "./components/layout/Loader";
 import Mega from './Mega';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Mega />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+  <Suspense fallback={<Loader />}>
+    <React.StrictMode>
+      <Mega />
+    </React.StrictMode>
+  </Suspense>,
+  document.getElementById("root")
+);

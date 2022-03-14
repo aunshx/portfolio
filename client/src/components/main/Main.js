@@ -205,10 +205,6 @@ const Main = ({
                   </div>
                 </div>
               </div>
-              <div className='pronunciation'>
-                <span style={{ color: "grey" }}>pronunciation:</span>{" "}
-                Aaaoooonsshhhh
-              </div>
               <div className='third' data-splitting>
                 <SplitText copy='Full Stack Developer' role='heading' />
               </div>
