@@ -23,7 +23,7 @@ router.get("/capture-ip", async (req, res) => {
       await ans2.save();
 
       const ipDeets = await axios.get(
-        `https://api.geoapify.com/v1/ipinfo?&apiKey=${process.env.GEOAPIFY_API_KEY}`
+        'https://api.geoapify.com/v1/ipinfo?&apiKey=1f24d38acc68459182c5125144ce3fc2'
       );
       if(ipDetails){
         let ans = new Ip({
