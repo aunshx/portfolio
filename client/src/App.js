@@ -90,7 +90,26 @@ function App({
     captureIpNow();
   }, [music, displayMode]);
 
-  return (
+  if(window.location.host.split('.')[0] === 'admin') {
+      return (
+    <Router>
+      <>
+        <Switch>
+          <PrivateRoute path='/' exact component={Main} />
+          <PrivateRoute path='/stats' component={Stats} />
+          <Route
+            path='/login'
+            render={(props) => (
+              <Login Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
+            )}
+          />
+          <Route component={NotFound} />
+        </Switch>
+      </>
+    </Router>
+  );
+  } else {
+    return (
     <Router>
       <>
         <Switch>
@@ -160,6 +179,7 @@ function App({
       </>
     </Router>
   );
+  }
 }
 
 App.propTypes = {
