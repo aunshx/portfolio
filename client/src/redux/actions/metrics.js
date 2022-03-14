@@ -173,10 +173,11 @@ export const captureIpNow = () => async (dispatch) => {
   };
 
   try {
-
+    console.log('API HIT')
     const res = await api.get("/metrics/capture-ip");
 
   } catch (error) {
+    console.log(error)
     if (error.response.status === 500) {
       value.message = "Something went wrong. Pl reload!";
       value.type = "error";

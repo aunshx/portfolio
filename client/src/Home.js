@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import useSound from "use-sound";
@@ -22,16 +22,19 @@ import About from './components/about/About';
 import './App.css'
 
 import bellRing from "./resources/sounds/bellRing.mp3"
+import { captureIpNow } from "./redux/actions/metrics";
 
 const Home = ({
   Navbar,
   Sidebar,
   // Redux State
   sidebar: { hover },
-  settings: { sound }
-}) => {
+  settings: { sound },
 
-  const { width } = windowSize()
+  // Redux Actions
+  captureIpNow,
+}) => {
+  const { width } = windowSize();
 
   const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
@@ -79,21 +82,26 @@ const Home = ({
     }
   }, []);
 
-   const goToContact = () => {
-     if(goContact.current){
-       goContact.current.scrollIntoView({ behavior: "smooth" })
-     }
-   };
+  useEffect(() => {
+    // Capture Ip
+    captureIpNow();
+  }, []);
 
-     const [playOn, { stop }] = useSound(bellRing, {
-       volume: 0.2,
-     });
-
-    const onHoverMobile = () => {
-      if(sound) {
-        playOn()
-      }
+  const goToContact = () => {
+    if (goContact.current) {
+      goContact.current.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const [playOn, { stop }] = useSound(bellRing, {
+    volume: 0.2,
+  });
+
+  const onHoverMobile = () => {
+    if (sound) {
+      playOn();
+    }
+  };
 
   return (
     <div className='app '>
@@ -135,6 +143,7 @@ const Home = ({
 Home.propTypes = {
   sidebar: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
+  captureIpNow: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -142,7 +151,9 @@ const mapStateToProps = (state) => ({
   settings: state.settings,
 });
 
-const mapActionsToProps = {};
+const mapActionsToProps = {
+  captureIpNow,
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(Home);
 

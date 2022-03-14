@@ -142,14 +142,14 @@ const Navbar = ({
           {!isAuthenticated && (
             <>
               <div className='cursor_pointer'>
-                <Link to='/'>
+                <Link to='https://aunsh.com'>
                   <Tooltip title='Portfolio' placement='left'>
                     <div className='element-letter--admin'>a.</div>
                   </Tooltip>
                 </Link>
               </div>
               <div className='cursor_pointer'>
-                <Link to='/admin/login'>
+                <Link to='/login'>
                   <Tooltip title='Login' placement='left'>
                     <div>
                       <LoginIcon
@@ -171,7 +171,7 @@ const Navbar = ({
                 <Tooltip title='Dashboard' placement='left'>
                   <div>
                     <NavLink
-                      to='/admin'
+                      to='/'
                       exact
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
@@ -205,7 +205,7 @@ const Navbar = ({
                 </Tooltip>
               </div>
               <div className='cursor_pointer'>
-                <Link to='/'>
+                <Link to='https://aunsh.com'>
                   <Tooltip title='Portfolio' placement='left'>
                     <div className='element-letter--admin'>a.</div>
                   </Tooltip>

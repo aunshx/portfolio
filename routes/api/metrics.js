@@ -25,6 +25,8 @@ router.get("/capture-ip", async (req, res) => {
       const ipDeets = await axios.get(
         'https://api.geoapify.com/v1/ipinfo?&apiKey=1f24d38acc68459182c5125144ce3fc2'
       );
+
+      console.log(ipDeets)
       if(ipDetails){
         let ans = new Ip({
           country: ipDeets.data.country.name,
