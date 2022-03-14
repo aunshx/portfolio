@@ -95,8 +95,8 @@ const Main = ({
   }, [change]);
 
   useEffect(() => {
-    if (rendererMessages === false && seeOldest === false) getMessages(offset);
-    if (rendererMessages === false && seeOldest === true)
+    if (rendererMessages === false && seeOldest === false && isAuthenticated) getMessages(offset);
+    if (rendererMessages === false && seeOldest === true && isAuthenticated)
       getMessagesOldest(offsetOldest);
   }, [
     offset,
