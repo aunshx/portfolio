@@ -9,6 +9,7 @@ import {
   SNACKBAR_RESET,
   ERROR_SNACKBAR,
   SUCCESS_200,
+  LOADING_FALSE,
 } from "../actions/types";
 
 import { nanoid } from "nanoid";
@@ -64,6 +65,12 @@ function authReducer(state = initialState, action) {
         ...state,
         loginLoading: false,
       };
+
+    case LOADING_FALSE:
+      return {
+        ...state,
+        loading: false
+      }
 
     case USER_LOADED:
       return {

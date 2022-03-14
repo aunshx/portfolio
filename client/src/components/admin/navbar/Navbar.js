@@ -142,11 +142,11 @@ const Navbar = ({
           {!isAuthenticated && (
             <>
               <div className='cursor_pointer'>
-                <Link to='https://aunsh.com'>
+                <a href='https://aunsh.com'>
                   <Tooltip title='Portfolio' placement='left'>
                     <div className='element-letter--admin'>a.</div>
                   </Tooltip>
-                </Link>
+                </a>
               </div>
               <div className='cursor_pointer'>
                 <Link to='/login'>
@@ -205,11 +205,11 @@ const Navbar = ({
                 </Tooltip>
               </div>
               <div className='cursor_pointer'>
-                <Link to='https://aunsh.com'>
+                <a href='https://aunsh.com'>
                   <Tooltip title='Portfolio' placement='left'>
                     <div className='element-letter--admin'>a.</div>
                   </Tooltip>
-                </Link>
+                </a>
               </div>
               <div className='cursor_pointer'>
                 <Tooltip title='Logout' placement='left'>

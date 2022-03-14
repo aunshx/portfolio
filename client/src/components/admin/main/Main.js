@@ -22,6 +22,8 @@ import MessagesOldest from '../message/MessagesOldest';
 
 import windowSize from '../../../utils/windowSize';
 import { Redirect } from 'react-router-dom';
+import store from '../../../store';
+import { LOADING_FALSE } from '../../../redux/actions/types';
 
 const Main = ({
   // Redux Actions
@@ -52,6 +54,12 @@ const Main = ({
   const [unseenOn, setUnseenOn] = useState(true);
   const [coldOn, setColdOn] = useState(true);
   const [seeOldest, setSeeOldest] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      return <Redirect to='/login' />;
+    }
+  }, []);
 
   const observer = useRef();
   const lastBookElementRef = useCallback(
@@ -119,10 +127,6 @@ const Main = ({
     getMessagesOldest(0);
     setOffset(0);
   };
-
-   if (!isAuthenticated) {
-     return <Redirect to='/login' />;
-   }
 
   return (
     <>

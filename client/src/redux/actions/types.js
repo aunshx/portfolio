@@ -24,6 +24,7 @@ export const MUSIC_OFF = "MUSIC_OFF";
 // Auth 
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
+export const LOADING_FALSE = "LOADING_FALSE";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
