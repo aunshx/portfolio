@@ -47,6 +47,7 @@ router.get("/capture-ip", async (req, res) => {
 
       return res.status(200).send("Ip captured");
   } catch (err) {
+    console.log(err)
     res.status(400).send({ errors: [{ msg: "Visit could not be counted" }] });
   }
 });

@@ -190,7 +190,7 @@ const Navbar = ({
                 <Tooltip title='Stats' placement='left'>
                   <div onClick={() => setRendererMessagesTrue()}>
                     <NavLink
-                      to='/admin/stats'
+                      to='/stats'
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
                     >
