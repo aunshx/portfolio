@@ -147,7 +147,7 @@ const Login = ({
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/admin' />;
+    return <Redirect to='/' />;
   }
 
   return (

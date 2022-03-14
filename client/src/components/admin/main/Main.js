@@ -21,6 +21,7 @@ import { Tooltip } from '@mui/material';
 import MessagesOldest from '../message/MessagesOldest';
 
 import windowSize from '../../../utils/windowSize';
+import { Redirect } from 'react-router-dom';
 
 const Main = ({
   // Redux Actions
@@ -118,6 +119,10 @@ const Main = ({
     getMessagesOldest(0);
     setOffset(0);
   };
+
+   if (!isAuthenticated) {
+     return <Redirect to='/login' />;
+   }
 
   return (
     <>
