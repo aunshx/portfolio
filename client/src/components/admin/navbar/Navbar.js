@@ -178,7 +178,7 @@ const Navbar = ({
                 <Tooltip title='Dashboard' placement='left'>
                   <div>
                     <NavLink
-                      to='/admin'
+                      to='/'
                       exact
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
@@ -197,7 +197,7 @@ const Navbar = ({
                 <Tooltip title='Stats' placement='left'>
                   <div onClick={() => setRendererMessagesTrue()}>
                     <NavLink
-                      to='/admin/stats'
+                      to='/stats'
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
                     >
@@ -217,8 +217,8 @@ const Navbar = ({
                     <NavLink
                       to={
                         isBlogCheckAuth
-                          ? "/admin/blog"
-                          : "/admin/blog-check-auth"
+                          ? "/blog"
+                          : "/blog-check-auth"
                       }
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'

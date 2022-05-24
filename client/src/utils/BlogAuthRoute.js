@@ -29,7 +29,7 @@ const PrivateRoute = ({
               {isBlogCheckAuth ? (
                 <Component {...props} />
               ) : (
-                <Redirect to='/admin' />
+                <Redirect to='/' />
               )}
             </>
           ) : (

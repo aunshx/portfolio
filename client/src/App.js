@@ -17,6 +17,7 @@ import Login from "./components/admin/auth/Login";
 import Main from "./components/admin/main/Main";
 import PrivateRoute from "./utils/PrivateRoute";
 import Stats from "./components/admin/stats/Stats";
+import Blog from './components/admin/blog/Blog'
 
 import "./App.css";
 
@@ -27,6 +28,8 @@ import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./redux/actions/auth";
+import BlogAuthRoute from "./utils/BlogAuthRoute";
+import CheckAuth from "./components/admin/blog/auth/CheckAuth";
 
 function App({
   sidebar: { hover },
@@ -87,22 +90,34 @@ function App({
 
   if(window.location.host.split('.')[0] === 'admin') {
       return (
-    <Router>
-      <>
-        <Switch>
-          <PrivateRoute path='/' exact component={Main} />
-          <PrivateRoute path='/stats' component={Stats} />
-          <Route
-            path='/login'
-            render={(props) => (
-              <Login Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
-            )}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </>
-    </Router>
-  );
+        <Router>
+          <>
+            <Switch>
+              {/* -------------------- ADMIN ----------------------- */}
+
+              <PrivateRoute path='/' exact component={Main} />
+              <PrivateRoute path='/stats' exact component={Stats} />
+              <BlogAuthRoute path='/blog' exact component={Blog} />
+              <PrivateRoute
+                path='/blog-check-auth'
+                exact
+                component={CheckAuth}
+              />
+              <Route
+                exact
+                path='/admin/login'
+                render={(props) => (
+                  <Login
+                    Sidebar={<Sidebar hover={hover} />}
+                    Navbar={<Navbar />}
+                  />
+                )}
+              />
+              <Route component={NotFound} />
+            </Switch>
+          </>
+        </Router>
+      );
   } else {
     return (
     <Router>
