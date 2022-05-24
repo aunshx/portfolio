@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTools } from "@fortawesome/free-solid-svg-icons";
+import useWindow from "react-window-size-simple";
 
 import BodingaCard from "./BodingaCard";
 import YedaEngineerCard from "./YedaengineerCard";
@@ -13,14 +14,18 @@ import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
 
-import windowSize from "../../utils/windowSize";
-import Footer from "../layout/Footer";
 import AunshCard from "./aunsh/AunshCard";
+import MetaTags from "../layout/MetaTags";
 
 const ProjectsMain = ({ Sidebar}) => {
-    const { width, height } = windowSize()
+    const { width, height } = useWindow()
   return (
     <>
+      <MetaTags
+        title={
+          <title>Projects - Aunsh &middot; Full Stack Developer &middot; Portfolio</title>
+        }
+      />
       <Navbar />
       {Sidebar}
       <div>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBrain } from '@fortawesome/free-solid-svg-icons';
+import useWindow from "react-window-size-simple";
 
 import Navbar from '../navbar/Navbar';
 import Footer from '../layout/Footer';
@@ -12,8 +13,6 @@ import BackgroundLarge from "../main/BackgroundLarge";
 import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
-
-import windowSize from "../../utils/windowSize";
 
 import reduxLogo from '../../resources/images/reduxLogo.png'
 import reactLogo from '../../resources/images/reactLogo.png'
@@ -26,16 +25,22 @@ import passportLogo from '../../resources/images/passportLogo.png'
 import mongoLogo from '../../resources/images/mongoLogo.png'
 import css3Logo from '../../resources/images/css3Logo.png'
 import htmlLogo from '../../resources/images/htmlLogo.png'
+import MetaTags from '../layout/MetaTags';
 
 const SkillsMain = ({
   Sidebar,
   // Redux State
   sidebar: { hover }
 }) => {
-  const { width, height } = windowSize()
+  const { width, height } = useWindow()
   
   return (
     <>
+      <MetaTags
+        title={
+          <title>Skills - Aunsh &middot; Full Stack Developer &middot; Portfolio</title>
+        }
+      />
       <Navbar />
       {Sidebar}
       <div>
@@ -79,7 +84,12 @@ const SkillsMain = ({
               logo={mongoLogo}
               runAos={false}
             />
-            <SkillOne delay={200} title={"CSS"} logo={css3Logo} runAos={false} />
+            <SkillOne
+              delay={200}
+              title={"CSS"}
+              logo={css3Logo}
+              runAos={false}
+            />
             <SkillOne
               delay={400}
               title={"HTML"}

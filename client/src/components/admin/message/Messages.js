@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
+import useWindow from "react-window-size-simple";
 
 import Card from './Card'
 
 import { connect } from 'react-redux'
-
-import windowSize from '../../../utils/windowSize'
 
 const Messages = ({
   messages,
@@ -16,7 +15,7 @@ const Messages = ({
   unseenOn,
   coldOn,
 }) => {
-  const { width } = windowSize()
+  const { width } = useWindow()
   return (
     <div className='messages-admin'>
       {messages.length > 0 &&

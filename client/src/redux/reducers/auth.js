@@ -17,7 +17,7 @@ import { nanoid } from "nanoid";
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: false,
-  loading: true,
+  loading: false,
   user: null,
   loginLoading: false,
   message: "",

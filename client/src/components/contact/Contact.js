@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import useWindow from "react-window-size-simple";
 
 import validator from "email-validator";
 
@@ -23,7 +24,6 @@ import MeSmall from "./MeSmall";
 
 import { sendEmail } from "../../redux/actions/contact";
 
-import useWindow from "../../utils/windowSize";
 import Footer from "../layout/Footer";
 
 const CssTextField = styled(TextField, {

@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import validator from "email-validator";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-import Navbar from '../navbar/Navbar'
-
+import Navbar from "../../navbar/Navbar";
 
 import LoadingButton from "@mui/lab/LoadingButton";
 import IconButton from "@mui/material/IconButton";
@@ -15,12 +13,12 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 
-import { login } from "../../../redux/actions/auth";
+import { blogCheckAuth } from "../../../../redux/actions/blog";
 
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import Alerts from '../../layout/Alerts';
-import MetaTags from '../../layout/MetaTags';
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import Alerts from "../../../layout/Alerts";
+import MetaTags from "../../../layout/MetaTags";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -75,12 +73,6 @@ const loginIconButtonStyle = makeStyles({
   },
 });
 
-const textFieldInputLabelStyle = {
-  fontSize: "0.9em",
-  alignSelf: "center",
-  justifySelf: "center",
-};
-
 const textFieldInputLabelStyleDark = {
   fontSize: "0.9em",
   alignSelf: "center",
@@ -88,33 +80,24 @@ const textFieldInputLabelStyleDark = {
   color: "gray",
 };
 
-const textFieldStyle = {
-  height: "20px",
-  width: "230px",
-};
- 
-
-const Login = ({
+const CheckAuth = ({
   // Redux Actions
-  login,
+  blogCheckAuth,
   // Redux State
   settings: { displayMode },
-  auth: { isAuthenticated, loginLoading, errorSnackbar },
+  auth: { isAuthenticated, errorSnackbar },
+  blog: { blogAuthLoading, isBlogCheckAuth },
 }) => {
-
   const [formData, setFormData] = useState({
     password: "",
-    email: "",
     showPassword: false,
   });
 
   const iconButtonStyle = loginIconButtonStyle();
 
   const [passwordEmptyError, setPasswordEmptyError] = useState(false);
-  const [emailEmptyError, setEmailEmptyError] = useState(false);
-  const [emailInvalidError, setEmailInvalidError] = useState(false);
 
-  const { password, email, showPassword } = formData;
+  const { password, showPassword } = formData;
 
   const onChange = (e) =>
     setFormData({
@@ -132,31 +115,23 @@ const Login = ({
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (email.length === 0) {
-      setEmailEmptyError(true);
-      setTimeout(() => setEmailEmptyError(false), 3000);
-    } else if (!validator.validate(email)) {
-      setEmailInvalidError(true);
-      setTimeout(() => setEmailInvalidError(false), 3000);
-    } else if (password.length === 0) {
+    if (password.length === 0) {
       setPasswordEmptyError(true);
       setTimeout(() => setPasswordEmptyError(false), 3000);
     } else {
-      login(email, password);
+      blogCheckAuth(password);
     }
   };
 
-  if (isAuthenticated) {
-    return <Redirect to='/admin' />;
+  if (isBlogCheckAuth) {
+    return <Redirect to='/admin/blog' />;
   }
 
   return (
     <>
       <MetaTags
         title={
-          <title>
-            Login - Aunsh &middot; Admin &middot; Portfolio
-          </title>
+          <title>Blog Auth - Aunsh &middot; Admin &middot; Portfolio</title>
         }
       />
       <Navbar />
@@ -166,53 +141,26 @@ const Login = ({
             {displayMode ? (
               <div className={"form form--dark"}>
                 <div className='app title'>
-                  <div className='first ft-bold flex_middle'>Login</div>
+                  <div className='first ft-bold flex_middle'>
+                    Blog Auth Check
+                  </div>
                 </div>
                 <div className='app'>
-                  {!emailEmptyError &&
-                    !passwordEmptyError &&
-                    !emailInvalidError && <div className='errors-one'>.</div>}
-                  {emailEmptyError && (
-                    <div className='errors'>Email cannot be empty</div>
-                  )}
+                  {!passwordEmptyError && <div className='errors-one'>.</div>}
                   {passwordEmptyError && (
                     <div className='errors'>Name cannot be empty</div>
                   )}
-                  {emailInvalidError && (
-                    <div className='errors'>Email is invalid.</div>
-                  )}
                 </div>
-                <div style={{ paddingBottom: "1em" }} className='app'>
-                  <div style={{ marginBottom: "1.3em" }}>
-                    <CssTextFieldDark
-                      error={emailEmptyError || emailInvalidError}
-                      label='Email ID'
-                      placeholder='Email ID'
-                      size='small'
-                      focusColor='rgb(0, 145, 255)'
-                      InputLabelProps={{
-                        style: textFieldInputLabelStyleDark,
-                      }}
-                      inputProps={{
-                        style: textFieldStyle,
-                      }}
-                      FormHelperTextProps={{
-                        style: {
-                          margin: 0,
-                          padding: "0 0 0 5px",
-                          fontSize: 10,
-                        },
-                      }}
-                      name='email'
-                      value={email}
-                      onChange={onChange}
-                      required
-                    />
+                <div className='app'>
+                  <div
+                    style={{ margin: "0 0.5em 1em 0.5em", textAlign: "center" }}
+                  >
+                    In order to see your blog, enter the secret key.
                   </div>
                   <div>
                     <CssTextFieldDark
                       error={passwordEmptyError || errorSnackbar}
-                      label='Password'
+                      label='Secret Key'
                       size='small'
                       variant='outlined'
                       type={showPassword ? "text" : "password"}
@@ -259,7 +207,7 @@ const Login = ({
                   <div style={{ marginTop: "1.5em" }}>
                     <LoadingButton
                       size='small'
-                      loading={loginLoading}
+                      loading={blogAuthLoading}
                       loadingPosition='end'
                       endIcon={
                         <ArrowForwardIosIcon
@@ -279,7 +227,7 @@ const Login = ({
                           color: "rgb(0, 145, 255)",
                         }}
                       >
-                        Login
+                        Enter
                       </div>
                     </LoadingButton>
                   </div>
@@ -288,60 +236,33 @@ const Login = ({
             ) : (
               <div className='form'>
                 <div className='app title'>
-                  <div className='first ft-bold flex_middle'>Login</div>
+                  <div className='first ft-bold flex_middle'>
+                    Blog Auth Check
+                  </div>
                 </div>
                 <div className='app'>
-                  {!passwordEmptyError &&
-                    !emailEmptyError &&
-                    !emailInvalidError && (
-                      <div
-                        className='errors'
-                        style={{ backgroundColor: "white" }}
-                      >
-                        .
-                      </div>
-                    )}
-                  {emailEmptyError && (
-                    <div className='errors'>Email cannot be empty</div>
+                  {!passwordEmptyError && (
+                    <div
+                      className='errors'
+                      style={{ backgroundColor: "white" }}
+                    >
+                      .
+                    </div>
                   )}
                   {passwordEmptyError && (
                     <div className='errors'>Password cannot be empty</div>
                   )}
-                  {emailInvalidError && (
-                    <div className='errors'>Email is invalid.</div>
-                  )}
                 </div>
-                <div style={{ paddingBottom: "1em" }} className='app'>
-                  <div style={{ marginBottom: "1.3em" }}>
-                    <CssTextField
-                      error={emailEmptyError || emailInvalidError}
-                      label='Email ID'
-                      placeholder='Email ID'
-                      size='small'
-                      focusColor='rgb(0, 145, 255)'
-                      InputLabelProps={{
-                        style: textFieldInputLabelStyle,
-                      }}
-                      inputProps={{
-                        style: textFieldStyle,
-                      }}
-                      FormHelperTextProps={{
-                        style: {
-                          margin: 0,
-                          padding: "0 0 0 5px",
-                          fontSize: 10,
-                        },
-                      }}
-                      name='email'
-                      value={email}
-                      onChange={onChange}
-                      required
-                    />
+                <div className='app'>
+                  <div
+                    style={{ margin: "0 0.5em 1em 0.5em", textAlign: "center" }}
+                  >
+                    In order to see your blog, enter the secret key.
                   </div>
                   <div>
                     <CssTextField
                       error={passwordEmptyError || errorSnackbar}
-                      label='Password'
+                      label='Secret Key'
                       size='small'
                       variant='outlined'
                       type={showPassword ? "text" : "password"}
@@ -386,7 +307,7 @@ const Login = ({
                   <div style={{ marginTop: "1.5em" }}>
                     <LoadingButton
                       size='small'
-                      loading={loginLoading}
+                      loading={blogAuthLoading}
                       loadingPosition='end'
                       endIcon={
                         <ArrowForwardIosIcon
@@ -406,7 +327,7 @@ const Login = ({
                           color: "rgb(0, 145, 255)",
                         }}
                       >
-                        Send
+                        Enter
                       </div>
                     </LoadingButton>
                   </div>
@@ -423,19 +344,21 @@ const Login = ({
   );
 };
 
-Login.propTypes = {
+CheckAuth.propTypes = {
   auth: PropTypes.object.isRequired,
+  blog: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
+  blogCheckAuth: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.auth, 
+  blog: state.blog, 
   settings: state.settings,
 });
 
 const mapActionsToProps = {
-  login,
+  blogCheckAuth,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(Login);
+export default connect(mapStateToProps, mapActionsToProps)(CheckAuth);

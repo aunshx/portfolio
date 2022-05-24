@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
 import ReactDOM from 'react-dom';
-import Loader from "./components/layout/Loader";
+import Spinner from "./components/layout/Spinner";
 import Mega from './Mega';
 
 ReactDOM.render(
-  <Suspense fallback={<Loader />}>
+  <Suspense fallback={<Spinner />}>
     <React.StrictMode>
       <Mega />
     </React.StrictMode>

@@ -13,7 +13,6 @@ import {
   getTotalColdMessagesAllTime,
 } from "../../../../../redux/actions/metrics";
 
-import windowSize from "../../../../../utils/windowSize";
 import DurationSelector from "../../DurationSelector";
 
 const TotalColds = ({
@@ -27,7 +26,6 @@ const TotalColds = ({
   metrics: { totalColdsBlockLoading, totalColdMessagesBlock },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
   useEffect(() => getTotalColdMessagesToday(), []);

@@ -5,7 +5,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import {Tooltip} from '@mui/material'
 
 
-import useWindow from '../../utils/windowSize';
+import useWindow from "react-window-size-simple";
 import { connect } from 'react-redux';
 
 const ArticleOne = ({

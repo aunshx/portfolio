@@ -8,6 +8,7 @@ import wooDude from "../../resources/images/woo.png";
 
 import woo from "../../resources/sounds/woo.mp3";
 import keyboard from "../../resources/sounds/keyboard.mp3";
+import MetaTags from '../layout/MetaTags';
 
 const SplitText = ({ copy, role }) => {
 
@@ -89,6 +90,9 @@ const Main = ({
   
   return (
     <>
+      <MetaTags
+        title={<title>Aunsh &middot; Full Stack Developer &middot; Portfolio</title>}
+      />
       <div className='main' onMouseMove={makeSomeNoise}>
         <div className='double_grid'>
           <div className='title app' style={{ justifyContent: "center" }}>
@@ -104,7 +108,8 @@ const Main = ({
               <div>
                 <div
                   className={
-                    wooActive ? "flex_middle boopie-two" : "flex_middle boopie"
+                    // wooActive ? "flex_middle boopie-two" : 
+                    "flex_middle boopie"
                   }
                 >
                   <div style={{ padding: "-1em" }}>
@@ -196,11 +201,11 @@ const Main = ({
                       onMouseEnter={onHoverImage}
                       onMouseLeave={onHoverImageDeactive}
                     >
-                      {wooActive ? (
+                      {/* {wooActive ? (
                         <img src={wooDude} alt='Dude shouting woooo' />
-                      ) : (
-                        <img src={second} alt='Dude sitting and programming' />
-                      )}
+                      ) : ( */}
+                        <img src={second} alt='Dude standing and drinking water' />
+                      {/* )} */}
                     </span>
                   </div>
                 </div>

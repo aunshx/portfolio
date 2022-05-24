@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import useWindow from "react-window-size-simple";
 import {
   LineChart,
   Line,
@@ -21,7 +22,6 @@ import {
   getTotalHitsChartWeek,
 } from "../../../../redux/actions/metrics";
 
-import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
 import ShortDurationSelector from "./ShortDurationSelector";
 
@@ -79,7 +79,7 @@ const VisitorChart = ({
   metrics: { totalHitsChartLoading, totalHitsChart },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
+  const { width, height } = useWindow();
   const [duration, setDuration] = useState("week");
 
   useEffect(() => getTotalHitsChartWeek(), []);

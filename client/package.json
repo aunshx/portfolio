@@ -19,6 +19,7 @@
     "crypto-browserify": "^3.12.0",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "email-validator": "^2.0.4",
+    "framer-motion": "^6.3.3",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nanoid": "^3.2.0",
@@ -33,6 +34,7 @@
     "react-spring": "^9.4.2",
     "react-tsparticles": "^1.40.2",
     "react-typed": "^1.2.0",
+    "react-window-size-simple": "^1.0.5",
     "react3dtagcloud_withclick": "^1.0.0",
     "recharts": "^2.1.9",
     "redux": "^4.1.2",
@@ -66,5 +68,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://aunsh.com"
+  "proxy": "http://localhost:8000"
 }

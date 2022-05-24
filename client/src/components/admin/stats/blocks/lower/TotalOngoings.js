@@ -13,7 +13,6 @@ import {
   getTotalOngoingMessagesAllTime,
 } from "../../../../../redux/actions/metrics";
 
-import windowSize from "../../../../../utils/windowSize";
 import DurationSelector from "../../DurationSelector";
 
 const TotalOngoings = ({
@@ -27,7 +26,6 @@ const TotalOngoings = ({
   metrics: { totalOngoingMessagesLoading, totalOngoingMessagesBlock },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
   useEffect(() => getTotalOngoingMessagesToday(), [])

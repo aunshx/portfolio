@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo, faUser } from "@fortawesome/free-solid-svg-icons";
+import useWindow from "react-window-size-simple";
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,12 +10,11 @@ import Cools from "../layout/Cools";
 
 import logo from "../../resources/images/sketLogo.png";
 
-import windowSize from "../../utils/windowSize";
-
 // import imgLogo
 
 const About = ({ sidebar: { hover } }) => {
-  const { width, height } = windowSize();
+  
+  const { width, height } = useWindow();
 
   const [radius, setRadius] = useState(0);
 

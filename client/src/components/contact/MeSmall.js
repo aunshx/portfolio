@@ -1,6 +1,6 @@
 import React  from "react";
 
-import useWindow from "../../utils/windowSize";
+import useWindow from "react-window-size-simple";
 
 import body from '../../resources/images/onlyBody.png'
 

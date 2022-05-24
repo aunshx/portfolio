@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faUser } from '@fortawesome/free-solid-svg-icons';
+import useWindow from "react-window-size-simple";
 
 import Navbar from '../navbar/Navbar';
 import Footer from '../layout/Footer';
@@ -15,8 +16,7 @@ import { Link } from 'react-router-dom';
 import Cools from '../layout/Cools';
 
 import logo from '../../resources/images/sketLogo.png'
-
-import windowSize from '../../utils/windowSize';
+import MetaTags from '../layout/MetaTags';
 
 // import imgLogo 
 
@@ -24,7 +24,7 @@ const AboutMain = ({ Sidebar }) => {
 
   // const Sidebaro = sidebar
 
-  const { width, height } = windowSize()
+  const { width, height } = useWindow()
 
   const[radius, setRadius] = useState(0)
 
@@ -47,6 +47,13 @@ const AboutMain = ({ Sidebar }) => {
 
   return (
     <>
+      <MetaTags
+        title={
+          <title>
+            About - Aunsh &middot; Full Stack Developer &middot; Portfolio
+          </title>
+        }
+      />
       <Navbar />
       {Sidebar}
       {width > 1280 && <BackgroundLarge />}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import useWindow from "react-window-size-simple";
 
 import { Collapse, IconButton, Tooltip, Box, Fade, Modal, Card } from '@mui/material';
 
@@ -21,7 +22,6 @@ import psqlLogo from '../../resources/images/psqlLogo.png'
 import gotuuLogo from '../../resources/images/gotuuLogo.png'
 import mongoLogo from '../../resources/images/mongoLogo.png'
 
-import useWindow from '../../utils/windowSize';
 import { connect } from 'react-redux';
 
 const style = {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import useWindow from "react-window-size-simple";
 
 import ArticleOne from './ArticleOne';
 
@@ -24,8 +25,7 @@ import jwtLogo from "../../resources/images/jwtLogo.png";
 import axiosLogo from "../../resources/images/axiosLogo.png";
 import cloudinaryLogo from "../../resources/images/cloudinaryLogo.png";
 import redditLogo from "../../resources/images/redditLogo.png";
-
-import windowSize from "../../utils/windowSize";
+import MetaTags from '../layout/MetaTags';
 
 const ArticlesMain = ({
   Sidebar,
@@ -34,9 +34,16 @@ const ArticlesMain = ({
   sidebar: { hover }
 }) => {
 
-  const { width, height } = windowSize();
+  const { width, height } = useWindow();
   return (
     <>
+      <MetaTags
+        title={
+          <title>
+            Articles - Aunsh &middot; Full Stack Developer &middot; Portfolio
+          </title>
+        }
+      />
       {Navbar}
       {Sidebar}
       <div>

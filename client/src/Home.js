@@ -2,13 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import useSound from "use-sound";
+import useWindow from "react-window-size-simple";
 
 import BackgroundLarge from "./components/main/BackgroundLarge";
 import BackgroundMedium from "./components/main/BackgroundMedium";
 import BackgroundSmall from "./components/main/BackgroundSmall";
 import BackgroundTiny from "./components/main/BackgroundTiny";
-
-import windowSize from "./utils/windowSize";
 
 import Main from './components/main/Main';
 import Projects from './components/projects/Projects';
@@ -34,7 +33,7 @@ const Home = ({
   // Redux Actions
   captureIpNow,
 }) => {
-  const { width } = windowSize();
+  const { width } = useWindow();
 
   const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);

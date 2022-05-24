@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import useWindow from "../../utils/windowSize";
+import useWindow from "react-window-size-simple";
 import { connect } from 'react-redux';
 
 const SkillOne = ({ delay, logo, title, runAos,

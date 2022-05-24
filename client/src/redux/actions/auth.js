@@ -26,9 +26,9 @@ export const snackbarDeactivate = (value) => async (dispatch) => {
 
 // Load User
 export const loadUser = () => async (dispatch) => {
-    if (localStorage.token) {
+  const value = {}
+    try {
         setAuthToken(localStorage.token);
-        try {
           const res = await api.get("/auth/get-data");
 
           dispatch({
@@ -37,12 +37,94 @@ export const loadUser = () => async (dispatch) => {
           });
 
           dispatch(getTotalHitsSynopsis());
-        } catch (err) {
+    } catch (error) {
+      if (error.response.status === 500) {
+        value.message = "Something went wrong. Please reload!";
+        value.type = "error";
+
+        dispatch({
+          type: ERROR_SNACKBAR,
+          payload: value,
+        });
+
           dispatch({
             type: AUTH_ERROR,
           });
-        }
-    }
+
+        setTimeout(
+          () =>
+            dispatch({
+              type: SNACKBAR_RESET,
+            }),
+          3000
+        );
+      } else if (error.response.status === 400) {
+        value.message = error.response.data.errors[0].msg;
+        value.type = "error";
+
+        dispatch({
+          type: ERROR_SNACKBAR,
+          payload: value,
+        });
+
+                 dispatch({
+            type: AUTH_ERROR,
+          });
+
+        setTimeout(
+          () =>
+            dispatch({
+              type: SNACKBAR_RESET,
+            }),
+          3000
+        );
+      } else if (error.response.status === 401) {
+        value.message = "Session expired. Pl login again.";
+        value.type = "error";
+
+        dispatch({
+          type: ERROR_SNACKBAR,
+          payload: value,
+        });
+
+          dispatch({
+            type: AUTH_ERROR,
+          });
+
+          dispatch({
+            type: LOGOUT
+          })
+
+        setTimeout(
+          () =>
+            dispatch({
+              type: SNACKBAR_RESET,
+            }),
+          3000
+        );
+      } else {
+        value.message = "Oops! Looks like something went wrong. Please reload!";
+        value.type = "error";
+
+        dispatch({
+          type: ERROR_SNACKBAR,
+          payload: value,
+        });
+
+                 dispatch({
+            type: AUTH_ERROR,
+          });
+
+        setTimeout(
+          () =>
+            dispatch({
+              type: SNACKBAR_RESET,
+            }),
+          3000
+        );
+      }
+    }  
+    
 }
 
 // Login User
@@ -94,7 +176,7 @@ export const login = (email, password) => async (dispatch) => {
             dispatch({
               type: SNACKBAR_RESET,
             }),
-          5000
+          3000
         );
       } else if (error.response.status === 400) {
         value.message = error.response.data.errors[0].msg;
@@ -118,10 +200,10 @@ export const login = (email, password) => async (dispatch) => {
             dispatch({
               type: SNACKBAR_RESET,
             }),
-          5000
+          3000
         );
       } else if (error.response.status === 401) {
-        value.message = 'Your session has expired. Please login again.';
+        value.message = 'Session expired. Pl login again.';
         value.type = "error";
 
         dispatch({
@@ -137,12 +219,16 @@ export const login = (email, password) => async (dispatch) => {
                  type: LOGIN_LOADING_COMPLETE,
                });
 
+          dispatch({
+            type: LOGOUT
+          })
+
         setTimeout(
           () =>
             dispatch({
               type: SNACKBAR_RESET,
             }),
-          5000
+          3000
         );
       } else {
         value.message = "Oops! Looks like something went wrong. Please reload!";
@@ -166,7 +252,7 @@ export const login = (email, password) => async (dispatch) => {
             dispatch({
               type: SNACKBAR_RESET,
             }),
-          5000
+          3000
         );
       }
 

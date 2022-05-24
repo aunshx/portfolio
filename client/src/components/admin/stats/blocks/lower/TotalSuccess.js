@@ -13,7 +13,6 @@ import {
   getTotalSuccessMessagesAllTime,
 } from "../../../../../redux/actions/metrics";
 
-import windowSize from "../../../../../utils/windowSize";
 import DurationSelector from "../../DurationSelector";
 
 const TotalSuccesses = ({
@@ -27,7 +26,6 @@ const TotalSuccesses = ({
   metrics: { totalSuccessMessagesLoading, totalSuccessMessagesBlock },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
   useEffect(() => getTotalSuccessMessagesToday(), []);

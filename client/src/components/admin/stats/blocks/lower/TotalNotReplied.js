@@ -13,7 +13,6 @@ import {
   getTotalNoReplyMessagesAllTime,
 } from "../../../../../redux/actions/metrics";
 
-import windowSize from "../../../../../utils/windowSize";
 import DurationSelector from "../../DurationSelector";
 
 const TotalNoReply = ({
@@ -27,7 +26,6 @@ const TotalNoReply = ({
   metrics: { totalNoReplyMessagesLoading, totalNoReplyMessagesBlock },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
   const [duration, setDuration] = useState("today");
 
   useEffect(() => getTotalNoReplyMessagesToday(), []);

@@ -4,11 +4,24 @@ import sidebar from './sidebar'
 import settings from './settings'
 import auth from './auth'
 import metrics from './metrics'
+import blog from './blog'
 
-export default combineReducers({
+const appReducer = combineReducers({
     contact,
     sidebar,
     settings,
     auth,
-    metrics
+    metrics,
+    blog
 })
+
+
+const rootReducer = (state, action) => {
+  if (action.type === "LOGOUT") {
+    return appReducer(undefined, action);
+  }
+
+  return appReducer(state, action);
+};
+
+export default rootReducer

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useSound from "use-sound";
 import { connect } from "react-redux";
+import useWindow from "react-window-size-simple";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,8 +15,6 @@ import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import MusicOffIcon from "@mui/icons-material/MusicOff";
 
 import SidebarMini from './SidebarMini'
-
-import windowSize from '../../utils/windowSize'
 
 import toggle from "../../resources/sounds/toggle.mp3";
 import resumeSwoosh from "../../resources/sounds/resumeSwoosh.mp3";
@@ -69,7 +68,7 @@ const Navbar = ({
   const [drawer, setDrawer] = useState(false);
   const [displayDownload, setDisplayDownload] = useState(false);
 
-  const { width } = windowSize();
+  const { width } = useWindow();
 
   const verticalMenu = () => {
     setMenu(!menu);
@@ -131,7 +130,14 @@ const Navbar = ({
 
   return (
     <>
-      <div className='navbar flex_between'>
+      <div
+        className='navbar flex_between'
+        style={
+          displayMode
+            ? { boxShadow: "2px 2px 2px 1px rgba(80, 80, 80, 0.2)" }
+            : { boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px' }
+        }
+      >
         <div className='cursor_pointer'>
           <NavLink to='/'>
             <div className='left'>aunsh.</div>

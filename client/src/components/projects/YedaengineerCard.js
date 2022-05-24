@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useWindow from "react-window-size-simple";
 
 import { Box, Card, Collapse, Fade, IconButton, Modal, Tooltip } from '@mui/material';
 
@@ -18,7 +19,6 @@ import nodeLogo from '../../resources/images/nodeLogo.png'
 import psqlLogo from '../../resources/images/psqlLogo.png'
 import yedaengineerLogo from '../../resources/images/yedaengineerLogo.png'
 
-import useWindow from '../../utils/windowSize';
 import { connect } from 'react-redux';
 
 const style = {

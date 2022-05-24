@@ -116,7 +116,7 @@ router.post(
         .skip(skipNow)
         .limit(8);
 
-        console.log(ans)
+        console.log(ans, ['d'])
 
       return res.status(200).send(ans);
     } catch (err) {

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
+import useWindow from "react-window-size-simple";
 
 import RefreshIcon from "@mui/icons-material/Refresh";
 import CableIcon from "@mui/icons-material/Cable";
@@ -20,10 +21,9 @@ import {
 import { Tooltip } from '@mui/material';
 import MessagesOldest from '../message/MessagesOldest';
 
-import windowSize from '../../../utils/windowSize';
 import { Redirect } from 'react-router-dom';
-import store from '../../../store';
-import { LOADING_FALSE } from '../../../redux/actions/types';
+
+import Spinner from '../../layout/Spinner'
 
 const Main = ({
   // Redux Actions
@@ -44,7 +44,7 @@ const Main = ({
   },
   auth: { isAuthenticated },
 }) => {
-  const { width, height } = windowSize()
+  const { width, height } = useWindow()
   const [offset, setOffset] = useState(0);
   const [offsetOldest, setOffsetOldest] = useState(0);
   const [change, setChange] = useState(false);
@@ -54,12 +54,6 @@ const Main = ({
   const [unseenOn, setUnseenOn] = useState(true);
   const [coldOn, setColdOn] = useState(true);
   const [seeOldest, setSeeOldest] = useState(false);
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      return <Redirect to='/login' />;
-    }
-  }, []);
 
   const observer = useRef();
   const lastBookElementRef = useCallback(
@@ -101,8 +95,6 @@ const Main = ({
   }, [
     offset,
     offsetOldest,
-    getMessages,
-    getMessagesOldest,
   ]);
 
   const reload = () => {
@@ -127,6 +119,11 @@ const Main = ({
     getMessagesOldest(0);
     setOffset(0);
   };
+
+      if (!isAuthenticated) {
+        return <Redirect to='/admin/login' />;
+      }
+      
 
   return (
     <>
@@ -321,26 +318,34 @@ const Main = ({
         )}
         {change && (
           <div className='admin-main'>
-            {seeOldest ? (
-              <MessagesOldest
-                messages={messagesOldest}
-                lastBookElementRef={lastBookElementRef}
-                notRepliedOn={notRepliedOn}
-                ongoingOn={ongoingOn}
-                successOn={successOn}
-                unseenOn={unseenOn}
-                coldOn={coldOn}
-              />
+            {messagesLoading ? (
+              <div className='center-screen'>
+                <Spinner />
+              </div>
             ) : (
-              <Messages
-                messages={messages}
-                lastBookElementRef={lastBookElementRef}
-                notRepliedOn={notRepliedOn}
-                ongoingOn={ongoingOn}
-                successOn={successOn}
-                unseenOn={unseenOn}
-                coldOn={coldOn}
-              />
+              <>
+                {seeOldest ? (
+                  <MessagesOldest
+                    messages={messagesOldest}
+                    lastBookElementRef={lastBookElementRef}
+                    notRepliedOn={notRepliedOn}
+                    ongoingOn={ongoingOn}
+                    successOn={successOn}
+                    unseenOn={unseenOn}
+                    coldOn={coldOn}
+                  />
+                ) : (
+                  <Messages
+                    messages={messages}
+                    lastBookElementRef={lastBookElementRef}
+                    notRepliedOn={notRepliedOn}
+                    ongoingOn={ongoingOn}
+                    successOn={successOn}
+                    unseenOn={unseenOn}
+                    coldOn={coldOn}
+                  />
+                )}
+              </>
             )}
           </div>
         )}

@@ -8,23 +8,30 @@ import Spinner from "../components/layout/Spinner";
 const PrivateRoute = ({
   component: Component,
   auth: { isAuthenticated, loading },
+  blog: { isBlogCheckAuth },
   ...rest
 }) => (
   <Route
     {...rest}
     render={(props) =>
       loading ? (
-         <>
-            <div className='flex_middle'>
-              <div className='not-found flex_middle'>
-                <Spinner />
-              </div>
+        <>
+          <div className='flex_middle'>
+            <div className='not-found flex_middle'>
+              <Spinner />
             </div>
-          </>
+          </div>
+        </>
       ) : (
         <>
           {isAuthenticated ? (
-            <Component {...props} />
+            <>
+              {isBlogCheckAuth ? (
+                <Component {...props} />
+              ) : (
+                <Redirect to='/admin' />
+              )}
+            </>
           ) : (
             <Redirect to='/admin/login' />
           )}
@@ -36,9 +43,11 @@ const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
   auth: PropTypes.object.isRequired,
+  blog: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  blog: state.blog,
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

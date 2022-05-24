@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useWindow from "react-window-size-simple";
 
 import validator from 'email-validator'
 
@@ -25,11 +26,10 @@ import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
 
-import windowSize from "../../utils/windowSize";
-
 import {
     sendEmail
 } from '../../redux/actions/contact'
+import MetaTags from '../layout/MetaTags';
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -112,7 +112,7 @@ const ContactMain = ({
     sendEmail 
 }) => {
 
-  const { width } = windowSize()
+  const { width } = useWindow()
 
   const CHARACTER_LIMIT = 144
 
@@ -160,6 +160,13 @@ const ContactMain = ({
 
   return (
     <>
+      <MetaTags
+        title={
+          <title>
+            Contact - Aunsh &middot; Full Stack Developer &middot; Portfolio
+          </title>
+        }
+      />
       <Navbar />
       <Sidebar hover={hover} />
       {width > 1280 && <BackgroundLarge />}
@@ -175,18 +182,15 @@ const ContactMain = ({
             <div>Contact</div>
           </div>
           {width < 651 && (
-              <MeSmall
-                error={emailError}
-                success={emailSuccess}
-                message={emailMessage}
-                loading={emailLoading}
-                show={true}
-              />
+            <MeSmall
+              error={emailError}
+              success={emailSuccess}
+              message={emailMessage}
+              loading={emailLoading}
+              show={true}
+            />
           )}
-          <div
-            className='body flex_middle'
-            style={{ marginTop: "2em" }}
-          >
+          <div className='body flex_middle' style={{ marginTop: "2em" }}>
             {displayMode ? (
               <div className={"form form--dark"}>
                 <div className='app title'>

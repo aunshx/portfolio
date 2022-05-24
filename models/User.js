@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    blogPassword: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: {

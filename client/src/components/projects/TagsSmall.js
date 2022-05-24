@@ -1,6 +1,5 @@
 import React from "react";
-
-import useWindow from "../../utils/windowSize";
+import useWindow from "react-window-size-simple";
 
 const Tags = ({ logo, text, classGiven }) => {
   const { width, height } = useWindow();

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import useSound from "use-sound";
 import { connect } from "react-redux";
+import useWindow from "react-window-size-simple";
 
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +11,7 @@ import {
   faBars,
   faSun,
   faMoon,
-  faBell,
+  faBlog,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Drawer, Tooltip } from "@mui/material";
@@ -21,8 +22,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import BubbleChartIcon from "@mui/icons-material/BubbleChart";
 
 import SidebarMini from "./SidebarMini";
-
-import windowSize from "../../../utils/windowSize";
 
 import toggle from "../../../resources/sounds/toggle.mp3";
 
@@ -55,6 +54,7 @@ const Navbar = ({
   // Redux State
   auth: { isAuthenticated },
   settings: { displayMode, sound, music },
+  blog: { isBlogCheckAuth },
   // Redux Actions
   soundOn,
   soundOff,
@@ -70,7 +70,7 @@ const Navbar = ({
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
 
-  const { width } = windowSize();
+  const { width } = useWindow();
 
   const verticalMenu = () => {
     setMenu(!menu);
@@ -95,7 +95,14 @@ const Navbar = ({
 
   return (
     <>
-      <div className='navbar flex_between'>
+      <div
+        className='navbar flex_between'
+        style={
+          displayMode
+            ? { boxShadow: "2px 2px 2px 1px rgba(80, 80, 80, 0.2)" }
+            : { boxShadow: " rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }
+        }
+      >
         <div className='cursor_pointer'>
           <NavLink to='/'>
             <div className='left'>admin.</div>
@@ -113,7 +120,7 @@ const Navbar = ({
                     style={{
                       fontSize: 17,
                       marginTop: "0.3em",
-                      marginRight: "0.7em",
+                      marginRight: "1.5em",
                       color: "grey",
                     }}
                   />
@@ -131,7 +138,7 @@ const Navbar = ({
                     style={{
                       fontSize: 19,
                       marginTop: "0.3em",
-                      marginRight: "0.7em",
+                      marginRight: "1.5em",
                       color: "orange",
                     }}
                   />
@@ -149,7 +156,7 @@ const Navbar = ({
                 </a>
               </div>
               <div className='cursor_pointer'>
-                <Link to='/login'>
+                <Link to='/admin/login'>
                   <Tooltip title='Login' placement='left'>
                     <div>
                       <LoginIcon
@@ -171,7 +178,7 @@ const Navbar = ({
                 <Tooltip title='Dashboard' placement='left'>
                   <div>
                     <NavLink
-                      to='/'
+                      to='/admin'
                       exact
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
@@ -190,13 +197,36 @@ const Navbar = ({
                 <Tooltip title='Stats' placement='left'>
                   <div onClick={() => setRendererMessagesTrue()}>
                     <NavLink
-                      to='/stats'
+                      to='/admin/stats'
                       activeStyle={{ color: "rgb(0, 145, 255)" }}
                       className='element--admin'
                     >
                       <BubbleChartIcon
                         style={{
                           fontSize: 23,
+                          marginTop: "0.3em",
+                        }}
+                      />
+                    </NavLink>
+                  </div>
+                </Tooltip>
+              </div>
+              <div className='cursor_pointer'>
+                <Tooltip title='Blog' placement='left'>
+                  <div onClick={() => setRendererMessagesTrue()}>
+                    <NavLink
+                      to={
+                        isBlogCheckAuth
+                          ? "/admin/blog"
+                          : "/admin/blog-check-auth"
+                      }
+                      activeStyle={{ color: "rgb(0, 145, 255)" }}
+                      className='element--admin'
+                    >
+                      <FontAwesomeIcon
+                        icon={faBlog}
+                        style={{
+                          fontSize: 18,
                           marginTop: "0.3em",
                         }}
                       />
@@ -318,6 +348,7 @@ const Navbar = ({
 
 Navbar.propTypes = {
   auth: PropTypes.object.isRequired,
+  blog: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
   toggleLightMode: PropTypes.func.isRequired,
   toggleDarkMode: PropTypes.func.isRequired,
@@ -331,7 +362,8 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   settings: state.settings,
-  auth: state.auth
+  auth: state.auth,
+  blog: state.blog,
 });
 
 const mapStateToActions = {

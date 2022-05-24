@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
+import useWindow from "react-window-size-simple";
 
 import { Button } from '@mui/material'
 
@@ -11,12 +12,10 @@ import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
 
-import windowSize from "../../utils/windowSize";
-
 import body from '../../resources/images/onlyBody2.png'
 
 const NotFound = (props) => {
-  const { width, height } = windowSize()
+  const { width, height } = useWindow()
   return (
     <>
       {width > 1280 && <BackgroundLarge />}

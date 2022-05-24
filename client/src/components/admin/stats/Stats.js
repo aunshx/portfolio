@@ -19,7 +19,6 @@ import Spinner from "../../layout/Spinner";
 
 import MessageUpdates from './blocks/mid/MessageUpdates';
 import FooterAdmin from '../../layout/FooterAdmin';
-import { Redirect } from 'react-router-dom';
 
 const Stats = ({
 

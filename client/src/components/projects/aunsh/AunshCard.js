@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import useWindow from "react-window-size-simple";
 
 import {
   Box,
@@ -33,7 +34,6 @@ import nodeLogo from "../../../resources/images/nodeLogo.png";
 import psqlLogo from "../../../resources/images/psqlLogo.png";
 import aunshLogo from "../../../resources/images/aunshLogo.png";
 
-import useWindow from "../../../utils/windowSize";
 import { connect } from "react-redux";
 
 import { detailsLight, detailsDark } from "./details";

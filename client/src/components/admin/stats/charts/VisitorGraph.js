@@ -10,6 +10,7 @@ import {
   Cell,
   ResponsiveContainer,
 } from "recharts";
+import useWindow from "react-window-size-simple";
 
 import { connect } from "react-redux";
 
@@ -21,7 +22,6 @@ import {
   getVisitorsPerCountryAllTime,
 } from "../../../../redux/actions/metrics";
 
-import windowSize from "../../../../utils/windowSize";
 import NothingToShow from "../NothingToShow";
 import DurationSelector from "../DurationSelector";
 
@@ -75,7 +75,7 @@ const VisitorChart = ({
   metrics: { visitorPieChartLoading, visitorPieChart },
   settings: { displayMode },
 }) => {
-  const { width, height } = windowSize();
+  const { width, height } = useWindow();
   const [duration, setDuration] = useState("today");
 
   useEffect(() => getVisitorsPerCountryToday(), []);

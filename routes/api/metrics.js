@@ -27,7 +27,8 @@ router.get("/capture-ip", async (req, res) => {
       );
 
       console.log(ipDeets)
-      if(ipDetails){
+      
+      if(ipDeets){
         let ans = new Ip({
           country: ipDeets.data.country.name,
           countryCode: ipDeets.data.country.iso_code,
