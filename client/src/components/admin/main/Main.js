@@ -121,7 +121,7 @@ const Main = ({
   };
 
       if (!isAuthenticated) {
-        return <Redirect to='/admin/login' />;
+        return <Redirect to='/login' />;
       }
       
 

@@ -33,7 +33,7 @@ const PrivateRoute = ({
               )}
             </>
           ) : (
-            <Redirect to='/admin/login' />
+            <Redirect to='/login' />
           )}
         </>
       )

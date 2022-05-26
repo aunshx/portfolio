@@ -124,7 +124,7 @@ const CheckAuth = ({
   };
 
   if (isBlogCheckAuth) {
-    return <Redirect to='/admin/blog' />;
+    return <Redirect to='/blog' />;
   }
 
   return (

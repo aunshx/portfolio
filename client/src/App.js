@@ -105,7 +105,7 @@ function App({
               />
               <Route
                 exact
-                path='/admin/login'
+                path='/login'
                 render={(props) => (
                   <Login
                     Sidebar={<Sidebar hover={hover} />}
