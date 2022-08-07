@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Cools from "../layout/Cools";
 
-import logo from "../../resources/images/sketLogo.png";
+import logo from "../../resources/images/about/sketLogo.png";
 
 // import imgLogo
 

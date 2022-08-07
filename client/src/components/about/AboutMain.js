@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfo, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import useWindow from "react-window-size-simple";
 
 import Navbar from '../navbar/Navbar';
-import Footer from '../layout/Footer';
 import BackgroundLarge from '../main/BackgroundLarge';
 import BackgroundMedium from '../main/BackgroundMedium';
 import BackgroundSmall from '../main/BackgroundSmall';
@@ -13,18 +12,17 @@ import BackgroundTiny from '../main/BackgroundTiny';
 
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Cools from '../layout/Cools';
 
-import logo from '../../resources/images/sketLogo.png'
+import logo from '../../resources/images/about/sketLogo.png'
+
 import MetaTags from '../layout/MetaTags';
-
-// import imgLogo 
+import Cools from "../layout/Cools";
 
 const AboutMain = ({ Sidebar }) => {
 
   // const Sidebaro = sidebar
 
-  const { width, height } = useWindow()
+  const { width } = useWindow()
 
   const[radius, setRadius] = useState(0)
 
@@ -60,8 +58,8 @@ const AboutMain = ({ Sidebar }) => {
       {900 < width && width <= 1280 && <BackgroundMedium />}
       {600 < width && width <= 900 && <BackgroundSmall />}
       {width <= 600 && <BackgroundTiny />}
-      <div className='flex_middle'>
-        <div className='about-main app' style={{ justifyContent: "center" }}>
+      <div className='about-main main_container flex_middle'>
+        <div className='app'>
           <div className='title flex_middle' data-aos='flip-up'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faUser} />

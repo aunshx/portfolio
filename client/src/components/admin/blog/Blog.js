@@ -10,7 +10,7 @@ import MetaTags from "../../layout/MetaTags";
 import Normal from "./tools/Card";
 
 // Images - Normal
-import normalImgOne from "../../../resources/images/sketLogo2.js.png";
+import normalImgOne from "../../../resources/images/about/sketLogo2.png";
 
 const Blog = ({
   // Redux States

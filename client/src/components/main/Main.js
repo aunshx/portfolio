@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 import useSound from "use-sound";
 import { connect } from 'react-redux';
 
-import second from "../../resources/images/giffy6.gif";
-import wooDude from "../../resources/images/woo.png";
+import second from "../../resources/images/main/gifs/drinkingWater.gif";
 
-import woo from "../../resources/sounds/woo.mp3";
 import keyboard from "../../resources/sounds/keyboard.mp3";
 import MetaTags from '../layout/MetaTags';
 
@@ -52,8 +50,6 @@ const Main = ({
 }) => {
 
   const [playOn2] = useSound(keyboard, { volume: 0.15 })
-  const [playOn] = useSound(woo, { volume: 0.15 })
-  const [wooActive, setWooActive] = useState(false)
 
   let timer;
 
@@ -70,22 +66,6 @@ const Main = ({
     if(sound){
       playOn2()
     }
-  }
-
-  const onHoverImage = () => {
-    if(sound) {
-      setWooActive(true);
-      setTimeout(() => {
-        playOn();
-      }, 200);
-      setTimeout(() => {
-        setWooActive(false);
-      }, 550);
-    }
-  }
-
-  const onHoverImageDeactive = () => {
-    setWooActive(false);
   }
   
   return (
@@ -176,8 +156,6 @@ const Main = ({
                     </span>
                     <span
                       style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
-                      onMouseEnter={onHoverImage}
-                      onMouseLeave={onHoverImageDeactive}
                     >
                     <img src={second} alt='Dude standing and drinking water' />
                     </span>

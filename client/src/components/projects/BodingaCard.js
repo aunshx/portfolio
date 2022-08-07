@@ -11,13 +11,13 @@ import { styled } from "@mui/material/styles";
 import Tags from './Tags';
 import TagsSmall from './TagsSmall';
 
-import defaultImg from '../../resources/images/default.jpg'
-import reduxLogo from '../../resources/images/reduxLogo.png'
-import reactLogo from '../../resources/images/reactLogo.png'
-import jsLogo from '../../resources/images/jsLogo.png'
-import nodeLogo from '../../resources/images/nodeLogo.png'
-import psqlLogo from '../../resources/images/psqlLogo.png'
-import bodingaLogo from '../../resources/images/bodingaLogo.png'
+import defaultImg from '../../resources/images/default/default.jpg'
+import reduxLogo from '../../resources/images/skills/logos/reduxLogo.png'
+import reactLogo from '../../resources/images/skills/logos/reactLogo.png'
+import jsLogo from '../../resources/images/skills/logos/jsLogo.png'
+import nodeLogo from '../../resources/images/skills/logos/nodeLogo.png'
+import psqlLogo from '../../resources/images/skills/logos/psqlLogo.png'
+import bodingaLogo from '../../resources/images/work-and-projects/logos/bodingaLogo.png'
 
 import { connect } from 'react-redux';
 
@@ -131,13 +131,13 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
             </Tooltip>
             <div className='flex_middle'>
               <a
-                href=''
+                href='https://bodinga.com'
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Live Demo'
                 className='indi'
               >
-                Live Demo
+                Demo
               </a>
             </div>
           </div>

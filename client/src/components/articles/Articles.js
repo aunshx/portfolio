@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import ArticleOne from './ArticleOne';
 
-import reduxLogo from "../../resources/images/reduxLogo.png";
-import reactLogo from "../../resources/images/reactLogo.png";
-import nodeLogo from "../../resources/images/nodeLogo.png";
-import nodeCronLogo from "../../resources/images/nodeCronLogo.png";
-import redditLogo from "../../resources/images/redditLogo.png";
-import jsLogo from '../../resources/images/jsLogo.png'
+import reduxLogo from "../../resources/images/skills/logos/reduxLogo.png";
+import reactLogo from "../../resources/images/skills/logos/reactLogo.png";
+import nodeLogo from "../../resources/images/skills/logos/nodeLogo.png";
+import nodeCronLogo from "../../resources/images/skills/logos/nodeCronLogo.png";
+import redditLogo from "../../resources/images/skills/logos/redditLogo.png";
+import jsLogo from '../../resources/images/skills/logos/jsLogo.png'
 
 import httpsNodeLogo from '../../resources/images/articles/one.jpeg'
 import sendWhatsappMessages from '../../resources/images/articles/two.jpeg'
@@ -77,10 +77,10 @@ const Articles = (props) => {
               }
               runAos={true}
               link={
-                "https://aunsh.medium.com/automate-tasks-in-node-with-node-cron-fbb276bdaede"
+                "https://aunsh.medium.com/under-the-hood-worst-case-complexities-workings-of-popular-js-array-methods-739d5fef314a"
               }
               description={
-                "Make your life easier by automating mundane tasks with node-cron"
+                "Get to know the Big O if JS array methods and their working"
               }
             />
           </div>

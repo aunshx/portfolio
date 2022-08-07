@@ -1,12 +1,12 @@
-import aunshPortfolioLightOne from "../../../resources/images/aunshPortfolioLightOne.PNG";
-import aunshPortfolioLightTwo from "../../../resources/images/aunshPortfolioLightTwo.PNG";
-import aunshPortfolioLightThree from "../../../resources/images/aunshPortfolioLightThree.PNG";
-import aunshPortfolioLightFour from "../../../resources/images/aunshPortfolioLightFour.PNG";
+import aunshPortfolioLightOne from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightOne.PNG";
+import aunshPortfolioLightTwo from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightTwo.PNG";
+import aunshPortfolioLightThree from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightThree.PNG";
+import aunshPortfolioLightFour from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightFour.PNG";
 
-import aunshPortfolioDarkOne from "../../../resources/images/aunshPortfolioDarkOne.PNG";
-import aunshPortfolioDarkTwo from "../../../resources/images/aunshPortfolioDarkTwo.PNG";
-import aunshPortfolioDarkThree from "../../../resources/images/aunshPortfolioDarkThree.PNG";
-import aunshPortfolioDarkFour from "../../../resources/images/aunshPortfolioDarkFour.PNG";
+import aunshPortfolioDarkOne from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkOne.PNG";
+import aunshPortfolioDarkTwo from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkTwo.PNG";
+import aunshPortfolioDarkThree from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkThree.PNG";
+import aunshPortfolioDarkFour from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkFour.PNG";
 
 export const detailsLight = [
   {

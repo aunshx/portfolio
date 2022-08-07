@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import useWindow from "react-window-size-simple";
-
-import { Button } from '@mui/material'
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
@@ -12,10 +9,10 @@ import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
 
-import body from '../../resources/images/onlyBody2.png'
+import body from '../../resources/images/main/body-shots/smug.png'
 
 const NotFound = (props) => {
-  const { width, height } = useWindow()
+  const { width } = useWindow()
   return (
     <>
       {width > 1280 && <BackgroundLarge />}
@@ -50,7 +47,5 @@ const NotFound = (props) => {
     </>
   );
 };
-
-NotFound.propTypes = {};
 
 export default NotFound;

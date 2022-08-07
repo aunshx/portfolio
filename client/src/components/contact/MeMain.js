@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import body from '../../resources/images/onlyBodyedit.png'
+import body from "../../resources/images/main/body-shots/foldedHandsMini.png";
 
 const Me = ({ error, success, message, loading }) => {
     const [showDialog, setShowDialog] = useState(false);

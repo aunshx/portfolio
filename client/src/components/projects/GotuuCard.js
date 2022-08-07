@@ -13,14 +13,13 @@ import { useState } from 'react';
 import Tags from './Tags';
 import TagsSmall from './TagsSmall';
 
-import defaultImg from '../../resources/images/default.jpg'
-import reduxLogo from '../../resources/images/reduxLogo.png'
-import reactLogo from '../../resources/images/reactLogo.png'
-import jsLogo from '../../resources/images/jsLogo.png'
-import nodeLogo from '../../resources/images/nodeLogo.png'
-import psqlLogo from '../../resources/images/psqlLogo.png'
-import gotuuLogo from '../../resources/images/gotuuLogo.png'
-import mongoLogo from '../../resources/images/mongoLogo.png'
+import defaultImg from '../../resources/images/default/default.jpg'
+import reduxLogo from '../../resources/images/skills/logos/reduxLogo.png'
+import reactLogo from '../../resources/images/skills/logos/reactLogo.png'
+import jsLogo from '../../resources/images/skills/logos/jsLogo.png'
+import nodeLogo from '../../resources/images/skills/logos/nodeLogo.png'
+import gotuuLogo from '../../resources/images/work-and-projects/logos/gotuuLogo.png'
+import mongoLogo from '../../resources/images/skills/logos/mongoLogo.png'
 
 import { connect } from 'react-redux';
 
@@ -134,13 +133,13 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
             </Tooltip>
             <div className='flex_middle'>
               <a
-                href=''
+                href='https://gotuu.in'
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Live Demo Link'
                 className='indi'
               >
-                Live Demo
+                Demo
               </a>
             </div>
           </div>

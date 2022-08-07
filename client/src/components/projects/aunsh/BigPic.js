@@ -7,7 +7,7 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
-import defaultImg from "../../../resources/images/default.jpg";
+import defaultImg from "../../../resources/images/default/default.jpg";
 import { Tooltip } from '@mui/material';
 
 const BigPic = ({

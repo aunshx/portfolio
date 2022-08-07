@@ -26,13 +26,13 @@ import {
 import Tags from "../Tags";
 import TagsSmall from "../TagsSmall";
 
-import defaultImg from "../../../resources/images/default.jpg";
-import reduxLogo from "../../../resources/images/reduxLogo.png";
-import reactLogo from "../../../resources/images/reactLogo.png";
-import jsLogo from "../../../resources/images/jsLogo.png";
-import nodeLogo from "../../../resources/images/nodeLogo.png";
-import psqlLogo from "../../../resources/images/psqlLogo.png";
-import aunshLogo from "../../../resources/images/aunshLogo.png";
+import defaultImg from "../../../resources/images/default/default.jpg";
+import reduxLogo from "../../../resources/images/skills/logos/reduxLogo.png";
+import reactLogo from "../../../resources/images/skills/logos/reactLogo.png";
+import jsLogo from "../../../resources/images/skills/logos/jsLogo.png";
+import nodeLogo from "../../../resources/images/skills/logos/nodeLogo.png";
+import psqlLogo from "../../../resources/images/skills/logos/psqlLogo.png";
+import aunshLogo from "../../../resources/images/work-and-projects/logos/aunshLogo.png";
 
 import { connect } from "react-redux";
 
@@ -278,13 +278,13 @@ const AunshCard = ({
             </Tooltip>
             <div className='flex_middle'>
               <a
-                href=''
+                href='https://aunsh.com'
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Live Demo'
                 className='indi'
               >
-                Live Demo
+                Demo
               </a>
             </div>
           </div>

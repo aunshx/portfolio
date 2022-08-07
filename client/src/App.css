@@ -101,6 +101,13 @@ pre {
 .cursor_pointer {
   cursor: pointer;
 }
+
+.main_container {
+  width: 100%;
+  height: calc(100vh - 50px);
+  border: 1px solid red;
+}
+
 /* ------------------------------------- BASICS ----------------------------------- */
 .mrg-r-point-5 {
   margin-right: 0.5em;

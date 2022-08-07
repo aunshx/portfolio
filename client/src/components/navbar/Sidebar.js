@@ -14,15 +14,15 @@ import {
     makeStyles,
 } from "@mui/styles";
 
-import mediumLogo from '../../resources/images/mediumLogo.png'
-import mediumLogoHover from '../../resources/images/mediumLogoHover.png'
-import mediumLogoDark from '../../resources/images/mediumLogoDark.png'
-import githubLogo from '../../resources/images/githubLogo.png'
-import githubLogoHover from '../../resources/images/githubLogoHover.png'
-import githubLogoDark from '../../resources/images/githubLogoDark.png'
-import linkedInLogo from '../../resources/images/linkedInLogo.png'
-import linkedInLogoHover from '../../resources/images/linkedInLogoHover.png'
-import linkedInLogoDark from '../../resources/images/linkedInLogoDark.png'
+import mediumLogo from '../../resources/images/skills/logos/mediumLogo.png'
+import mediumLogoHover from '../../resources/images/skills/logos/mediumLogoHover.png'
+import mediumLogoDark from '../../resources/images/skills/logos/mediumLogoDark.png'
+import githubLogo from '../../resources/images/skills/logos/githubLogo.png'
+import githubLogoHover from '../../resources/images/skills/logos/githubLogoHover.png'
+import githubLogoDark from '../../resources/images/skills/logos/githubLogoDark.png'
+import linkedInLogo from '../../resources/images/skills/logos/linkedInLogo.png'
+import linkedInLogoHover from '../../resources/images/skills/logos/linkedInLogoHover.png'
+import linkedInLogoDark from '../../resources/images/skills/logos/linkedInLogoDark.png'
 
 import pop from '../../resources/sounds/pop.mp3'
 

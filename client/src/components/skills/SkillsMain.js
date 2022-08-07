@@ -14,17 +14,17 @@ import BackgroundMedium from "../main/BackgroundMedium";
 import BackgroundSmall from "../main/BackgroundSmall";
 import BackgroundTiny from "../main/BackgroundTiny";
 
-import reduxLogo from '../../resources/images/reduxLogo.png'
-import reactLogo from '../../resources/images/reactLogo.png'
-import jsLogo from '../../resources/images/jsLogo.png'
-import nodeLogo from '../../resources/images/nodeLogo.png'
-import psqlLogo from '../../resources/images/psqlLogo.png'
-import gitLogo from '../../resources/images/gitLogo.png'
-import muiLogo from '../../resources/images/muiLogo.png'
-import passportLogo from '../../resources/images/passportLogo.png'
-import mongoLogo from '../../resources/images/mongoLogo.png'
-import css3Logo from '../../resources/images/css3Logo.png'
-import htmlLogo from '../../resources/images/htmlLogo.png'
+import reduxLogo from '../../resources/images/skills/logos/reduxLogo.png'
+import reactLogo from '../../resources/images/skills/logos/reactLogo.png'
+import jsLogo from '../../resources/images/skills/logos/jsLogo.png'
+import nodeLogo from '../../resources/images/skills/logos/nodeLogo.png'
+import psqlLogo from '../../resources/images/skills/logos/psqlLogo.png'
+import gitLogo from '../../resources/images/skills/logos/gitLogo.png'
+import muiLogo from '../../resources/images/skills/logos/muiLogo.png'
+import passportLogo from '../../resources/images/skills/logos/passportLogo.png'
+import mongoLogo from '../../resources/images/skills/logos/mongoLogo.png'
+import css3Logo from '../../resources/images/skills/logos/css3Logo.png'
+import htmlLogo from '../../resources/images/skills/logos/htmlLogo.png'
 import MetaTags from '../layout/MetaTags';
 
 const SkillsMain = ({
