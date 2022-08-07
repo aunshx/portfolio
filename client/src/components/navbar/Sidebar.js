@@ -17,12 +17,10 @@ import {
 import mediumLogo from '../../resources/images/skills/logos/mediumLogo.png'
 import mediumLogoHover from '../../resources/images/skills/logos/mediumLogoHover.png'
 import mediumLogoDark from '../../resources/images/skills/logos/mediumLogoDark.png'
-import githubLogo from '../../resources/images/skills/logos/githubLogo.png'
-import githubLogoHover from '../../resources/images/skills/logos/githubLogoHover.png'
-import githubLogoDark from '../../resources/images/skills/logos/githubLogoDark.png'
-import linkedInLogo from '../../resources/images/skills/logos/linkedInLogo.png'
-import linkedInLogoHover from '../../resources/images/skills/logos/linkedInLogoHover.png'
-import linkedInLogoDark from '../../resources/images/skills/logos/linkedInLogoDark.png'
+
+
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import pop from '../../resources/sounds/pop.mp3'
 
@@ -225,7 +223,7 @@ const Sidebar = ({
             >
               <div
                 className='element flex_between'
-                style={{ padding: "0.7em", marginTop: "0.4em" }}
+                style={{ padding: "0.7em", marginTop: "0.5em" }}
               >
                 <Tooltip
                   title='Go To Github Profile'
@@ -233,17 +231,18 @@ const Sidebar = ({
                   classes={{ tooltip: classes.customTooltip }}
                 >
                   <div
-                    style={{ objectFit: "contain", width: "25px" }}
+                    className='flex_middle'
                     onMouseEnter={githubHoverMoveEnter}
                     onMouseLeave={githubHoverMoveLeave}
                   >
                     {githubHover ? (
-                      <img src={githubLogoHover} alt='Github Logo' />
-                    ) : (
-                      <img
-                        src={displayMode ? githubLogoDark : githubLogo}
-                        alt='Github Logo'
+                      <GitHubIcon
+                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
                       />
+                    ) : displayMode ? (
+                      <GitHubIcon style={{ color: "#fff", fontSize: 18 }} />
+                    ) : (
+                      <GitHubIcon style={{ color: "#000", fontSize: 18 }} />
                     )}
                   </div>
                 </Tooltip>
@@ -297,17 +296,18 @@ const Sidebar = ({
                   classes={{ tooltip: classes.customTooltip }}
                 >
                   <div
-                    style={{ objectFit: "contain", width: "25px" }}
+                    className='flex_middle'
                     onMouseEnter={linkedInHoverMoveEnter}
                     onMouseLeave={linkedInHoverMoveLeave}
                   >
                     {linkedInHover ? (
-                      <img src={linkedInLogoHover} alt='LinkedIn Logo' />
-                    ) : (
-                      <img
-                        src={displayMode ? linkedInLogoDark : linkedInLogo}
-                        alt='LinkedIn Logo'
+                      <LinkedInIcon
+                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
                       />
+                    ) : displayMode ? (
+                      <LinkedInIcon style={{ color: "#fff", fontSize: 18 }} />
+                    ) : (
+                      <LinkedInIcon style={{ color: "#000", fontSize: 18 }} />
                     )}
                   </div>
                 </Tooltip>
@@ -426,17 +426,18 @@ const Sidebar = ({
                   classes={{ tooltip: classes.customTooltip }}
                 >
                   <div
-                    style={{ objectFit: "contain", width: "18px" }}
+                    className='flex_middle'
                     onMouseEnter={githubHoverMoveEnter}
                     onMouseLeave={githubHoverMoveLeave}
                   >
                     {githubHover ? (
-                      <img src={githubLogoHover} alt='Github Logo' />
-                    ) : (
-                      <img
-                        src={displayMode ? githubLogoDark : githubLogo}
-                        alt='Github Logo'
+                      <GitHubIcon
+                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
                       />
+                    ) : displayMode ? (
+                      <GitHubIcon style={{ color: "#fff", fontSize: 18 }} />
+                    ) : (
+                      <GitHubIcon style={{ color: "#000", fontSize: 18 }} />
                     )}
                   </div>
                 </Tooltip>
@@ -451,7 +452,7 @@ const Sidebar = ({
             >
               <div
                 className='flex_between'
-                style={{ paddingRight: "0.5em", marginTop: "-0.8em" }}
+                style={{ paddingRight: "0.5em", marginTop: "-0.5em" }}
               >
                 <Tooltip
                   title='Go To Medium Profile'
@@ -492,17 +493,18 @@ const Sidebar = ({
                   classes={{ tooltip: classes.customTooltip }}
                 >
                   <div
-                    style={{ objectFit: "contain", width: "18px" }}
+                    className='flex_middle'
                     onMouseEnter={linkedInHoverMoveEnter}
                     onMouseLeave={linkedInHoverMoveLeave}
                   >
                     {linkedInHover ? (
-                      <img src={linkedInLogoHover} alt='LinkedIn Logo' />
-                    ) : (
-                      <img
-                        src={displayMode ? linkedInLogoDark : linkedInLogo}
-                        alt='LinkedIn Logo'
+                      <LinkedInIcon
+                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
                       />
+                    ) : displayMode ? (
+                      <LinkedInIcon style={{ color: "#fff", fontSize: 18 }} />
+                    ) : (
+                      <LinkedInIcon style={{ color: "#000", fontSize: 18 }} />
                     )}
                   </div>
                 </Tooltip>

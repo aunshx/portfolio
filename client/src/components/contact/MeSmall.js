@@ -1,12 +1,8 @@
 import React  from "react";
 
-import useWindow from "react-window-size-simple";
-
 import body from "../../resources/images/main/body-shots/foldedHands.png";
 
 const MeSmall = ({ error, success, message, loading, reference, show, changeDialog }) => {
-
-   const { width, height } = useWindow()
 
     const changeDialogAction = () => {
         // changeDialog(!show)
