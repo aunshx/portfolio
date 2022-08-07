@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import {Tooltip} from '@mui/material'
+import { Link } from 'react-router-dom'
 
 
 import useWindow from "react-window-size-simple";
@@ -15,6 +16,8 @@ const ArticleOne = ({
   articleImage,
   title,
   runAos,
+  link,
+  description,
   // Redux States
   settings: { displayMode },
 }) => {
@@ -39,6 +42,8 @@ const ArticleOne = ({
         return setColorBorder("#61dbfb");
       case technology[0] === "jwt":
         return setColorBorder("#eb3474");
+      case technology[0] === "javascript":
+        return setColorBorder("#ffc403");
       case technology[0] === "reddit":
         return setColorBorder("#d15e0d");
 
@@ -48,41 +53,45 @@ const ArticleOne = ({
   }, []);
 
   return (
-    <div
-      className={displayMode ? "individual individual--dark" : "individual"}
-      data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
-      data-aos-offset={width < 787 && 30}
+    <Link
+      to={{
+        pathname: link,
+      }}
+      className='checkout flex_middle'
+      target={"_blank"}
+      rel='noreferrer nofollow'
     >
       <div
-        className='image'
-        style={{ borderBottom: `2px solid ${colorBorder}` }}
+        className={displayMode ? "individual individual--dark" : "individual"}
+        data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
+        data-aos-offset={width < 787 && 30}
       >
-        <img src={articleImage} alt='Article default' />
-      </div>
-      <div className='tags flex_right'>
-        {imagesArray.length > 0 &&
-          imagesArray.map((element, index) => (
-            <Tooltip title={element.alt} placement='top'>
-              <div style={{ marginRight: "0.5em" }} key={index}>
-                <img src={element.image} alt={element.alt} />
-              </div>
-            </Tooltip>
-          ))}
-      </div>
-      <div className='app' style={{ justifyContent: 'space-between' }}>
-        <div className='title'>{title}</div>
-        <div className='description'>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
-          temporibus odio voluptatum, reprehenderit alias in.
+        <div
+          className='image'
+          style={{ borderBottom: `2px solid ${colorBorder}` }}
+        >
+          <div className='check-it-out flex_middle'>Read More</div>
+          <img src={articleImage} alt='Article default' />
         </div>
-        <div className='checkout flex_middle'>
-          <div>Read full article</div>
-          <div style={{ marginLeft: "0.5em" }}>
-            <FontAwesomeIcon icon={faArrowRight} />
+        <div className='tags flex_right'>
+          {imagesArray.length > 0 &&
+            imagesArray.map((element, index) => (
+              <Tooltip title={element.alt} placement='top'>
+                <div style={{ marginRight: "0.5em" }} key={index}>
+                  <img src={element.image} alt={element.alt} />
+                </div>
+              </Tooltip>
+            ))}
+        </div>
+        <div className='app' style={{ justifyContent: "space-between" }}>
+          <div className='title flex_middle'>{title}</div>
+          <div className='description flex_middle'>
+            {description ||
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, maiores."}
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

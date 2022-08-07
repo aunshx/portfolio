@@ -547,8 +547,8 @@ pre {
   top: 45px;
   font-family: 'Comfortaa', cursive;
   z-index: 102;
-  transition: 0.3s ease-out;
-  -webkit-transition: 0.3s ease-out;
+  transition:all 0s linear;
+  -webkit-transition:all 0s linear;
 }
 
 .sidebar_main_maximize {
@@ -597,8 +597,8 @@ pre {
   left: 0;
   top: 45px;
   font-family: 'Comfortaa', cursive;
-  transition: 0.3s ease-in;
-  -webkit-transition: 0.3s ease-in;
+  transition:all 0s linear;
+  -webkit-transition:all 0s linear;
 }
 
 
@@ -1637,32 +1637,40 @@ color: var(--light-logo-color);
   box-shadow: none;
 }
 
-
-
-.read-more,
-.read-more a {
-  color: var(--expand-more-color);
-  font-size: 0.9em;
-  margin-top: -3em;
-  margin-bottom: 2em;
-  cursor: pointer;
-}
-
-.read-more:hover,
-.read-more a:hover {
-  color: var(--logo-color);
-}
-
 .articles .body .individual:hover, 
 .articles-main .body .individual:hover {
+ border: 1px solid var(--logo-color);
+ cursor: pointer;
  transform: scale(1.01);
 }
 
 .articles .body .individual .image, 
 .articles-main .body .individual .image {
-  height: 180px;
+  height: 200px;
   width: 100%;
   border-radius: 10px 10px 0px 0px;
+  position: relative;
+}
+
+.articles .body .individual .image .check-it-out, 
+.articles-main .body .individual .image .check-it-out {
+  visibility: hidden;
+  border-radius: 0px 10px 0 10px;
+  background-color: var(--logo-color);
+  font-weight: 500;
+  color: var(--dark-font-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90px;
+  height: 25px;
+  padding: 0.3em;
+  font-size: 0.8em;
+}
+
+.articles .body .individual:hover .image .check-it-out, 
+.articles-main .body .individual:hover .image .check-it-out {
+  visibility: visible;
 }
 
 .articles .body .individual .image img, 
@@ -1676,7 +1684,9 @@ color: var(--light-logo-color);
 .articles .body .individual .title, 
 .articles-main .body .individual .title {
   font-size: 1.1em;
-  padding: 0em 1.2em 0.5em 1.2em;
+  padding: 0em 1em 0.5em 1em;
+  text-align: center;
+  height: 100px;
 }
 
 .articles .body .individual .tags, 
@@ -1695,18 +1705,34 @@ color: var(--light-logo-color);
 .articles-main .body .individual .description {
   font-size: 0.8em;
   padding: 0.5em 1em 0.5em 1em;
+  text-align: center;
 }
 
 .articles .body .individual .checkout, 
 .articles-main .body .individual .checkout {
   font-size: 0.7em;
   padding: 0.5em 1em 1em 1em;
+  color: #f1ffeb;
 }
 
 .articles .body .individual .checkout:hover, 
 .articles-main .body .individual .checkout:hover {
   cursor: pointer;
   color: var(--logo-color)
+}
+
+.read-more,
+.read-more a {
+  color: var(--expand-more-color);
+  font-size: 0.9em;
+  margin-top: -3em;
+  margin-bottom: 2em;
+  cursor: pointer;
+}
+
+.read-more:hover,
+.read-more a:hover {
+  color: var(--logo-color);
 }
 
 @media only screen and (min-width: 786px) and (max-width: 1028px) {

@@ -99,8 +99,6 @@ const Main = ({
             <div className='second app ft-bold'>
               <div
                 className='first one'
-                data-aos='fade-left'
-                data-aos-delay='100'
                 onMouseEnter={onHoverOnElement}
               >
                 Hi,
@@ -116,8 +114,6 @@ const Main = ({
                     <span
                       className='one'
                       style={{ display: "inline-block" }}
-                      data-aos='fade-left'
-                      data-aos-delay='200'
                       onMouseEnter={onHoverOnElement}
                     >
                       I
@@ -125,8 +121,6 @@ const Main = ({
                     <span
                       className='one'
                       style={{ display: "inline-block" }}
-                      data-aos='fade-left'
-                      data-aos-delay='300'
                       onMouseEnter={onHoverOnElement}
                     >
                       '
@@ -134,8 +128,6 @@ const Main = ({
                     <span
                       className='one'
                       style={{ display: "inline-block" }}
-                      data-aos='fade-left'
-                      data-aos-delay='400'
                       onMouseEnter={onHoverOnElement}
                     >
                       m
@@ -143,8 +135,6 @@ const Main = ({
                     <span
                       className='letter-a'
                       style={{ display: "inline-block" }}
-                      data-aos='fade-left'
-                      data-aos-delay='500'
                       onMouseEnter={onHoverOnElement}
                     >
                       a
@@ -152,8 +142,6 @@ const Main = ({
                     <span
                       className='one'
                       style={{ display: "inline-block" }}
-                      data-aos='fade-left'
-                      data-aos-delay='600'
                       onMouseEnter={onHoverOnElement}
                     >
                       u
@@ -161,8 +149,6 @@ const Main = ({
                     <span
                       style={{ display: "inline-block" }}
                       className='one'
-                      data-aos='fade-left'
-                      data-aos-delay='700'
                       onMouseEnter={onHoverOnElement}
                     >
                       n
@@ -170,8 +156,6 @@ const Main = ({
                     <span
                       style={{ display: "inline-block" }}
                       className='one'
-                      data-aos='fade-left'
-                      data-aos-delay='800'
                       onMouseEnter={onHoverOnElement}
                     >
                       s
@@ -179,8 +163,6 @@ const Main = ({
                     <span
                       style={{ display: "inline-block" }}
                       className='one'
-                      data-aos='fade-left'
-                      data-aos-delay='900'
                       onMouseEnter={onHoverOnElement}
                     >
                       h
@@ -188,24 +170,16 @@ const Main = ({
                     <span
                       style={{ display: "inline-block" }}
                       className='one exclamation'
-                      data-aos='fade-left'
-                      data-aos-delay='1000'
                       onMouseEnter={onHoverOnElement}
                     >
                       !
                     </span>
                     <span
                       style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
-                      data-aos='fade-in'
-                      data-aos-delay='1050'
                       onMouseEnter={onHoverImage}
                       onMouseLeave={onHoverImageDeactive}
                     >
-                      {/* {wooActive ? (
-                        <img src={wooDude} alt='Dude shouting woooo' />
-                      ) : ( */}
-                        <img src={second} alt='Dude standing and drinking water' />
-                      {/* )} */}
+                    <img src={second} alt='Dude standing and drinking water' />
                     </span>
                   </div>
                 </div>
