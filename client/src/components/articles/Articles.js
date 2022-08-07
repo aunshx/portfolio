@@ -3,21 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import ArticleOne from './ArticleOne';
 
-import articleImage from "../../resources/images/default.jpg";
 import reduxLogo from "../../resources/images/reduxLogo.png";
 import reactLogo from "../../resources/images/reactLogo.png";
 import nodeLogo from "../../resources/images/nodeLogo.png";
-import psqlLogo from "../../resources/images/psqlLogo.png";
 import nodeCronLogo from "../../resources/images/nodeCronLogo.png";
-import jwtLogo from "../../resources/images/jwtLogo.png";
-import axiosLogo from "../../resources/images/axiosLogo.png";
 import redditLogo from "../../resources/images/redditLogo.png";
 import jsLogo from '../../resources/images/jsLogo.png'
 
-import httpsNodeLogo from '../../resources/articles/one.jpeg'
-import sendWhatsappMessages from '../../resources/articles/two.jpeg'
-import automateTasks from '../../resources/articles/three.jpeg'
-import underTheHood from '../../resources/articles/four.jpeg'
+import httpsNodeLogo from '../../resources/images/articles/one.jpeg'
+import sendWhatsappMessages from '../../resources/images/articles/two.jpeg'
+import automateTasks from '../../resources/images/articles/three.jpeg'
+import underTheHood from '../../resources/images/articles/four.jpeg'
+import createServerImg from "../../resources/images/articles/five.jpeg";
+import funWithReddit from '../../resources/images/articles/funWithReddit.png'
 
 
 const Articles = (props) => {
@@ -112,27 +110,36 @@ const Articles = (props) => {
               imagesArray={[
                 { image: redditLogo, alt: "Reddit Logo" },
                 { image: nodeLogo, alt: "Node Logo" },
-                { image: psqlLogo, alt: "Postgres Logo" },
                 { image: reactLogo, alt: "React Logo" },
               ]}
-              articleImage={articleImage}
-              title={"Showcase and store memes using reddit api in react app"}
+              articleImage={funWithReddit}
+              title={"Lazy Loading in React using the Reddit API"}
               runAos={true}
+              link={
+                "https://aunsh.medium.com/automate-tasks-in-node-with-node-cron-fbb276bdaede"
+              }
+              description={
+                "Show unlimited posts on scroll from subreddits in your React app"
+              }
             />
           </div>
           <div className='flex_middle'>
             <ArticleOne
               delay={1000}
-              technology={["react", "redux", "jwt"]}
+              technology={["node", "javascript"]}
               imagesArray={[
-                { image: psqlLogo, alt: "Postgres Logo" },
-                { image: reactLogo, alt: "React Logo" },
-                { image: reduxLogo, alt: "Redux Logo" },
                 { image: nodeLogo, alt: "Node Logo" },
+                { image: jsLogo, alt: "Javascript Logo" },
               ]}
-              articleImage={articleImage}
-              title={"Live search in app using postgres"}
+              articleImage={createServerImg}
+              title={"Creating a simple server using node and express"}
               runAos={true}
+              link={
+                "https://aunsh.medium.com/creating-a-server-in-using-node-and-express-1ff36c7fa358"
+              }
+              description={
+                "A simple local server to get you started with backend development"
+              }
             />
           </div>
         </div>

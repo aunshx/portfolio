@@ -19,7 +19,7 @@ import SidebarMini from './SidebarMini'
 import toggle from "../../resources/sounds/toggle.mp3";
 import resumeSwoosh from "../../resources/sounds/resumeSwoosh.mp3";
 
-import resume from '../../resources/articles/aunsh_resume.pdf'
+import resume from '../../resources/articles/Aunsh_Bandivadekar_Resume_22.pdf'
 
 import {
   toggleLightMode,
@@ -239,7 +239,7 @@ const Navbar = ({
               </Tooltip>
             </div>
           )}
-          <a href={resume} download='aunsh_resume.pdf'>
+          <a href={resume} download='Aunsh_Resume.pdf'>
             <Tooltip
               title='Download Resume'
               placement='left'

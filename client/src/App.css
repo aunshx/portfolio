@@ -539,8 +539,8 @@ pre {
   color: var(--dark-font-color);
   width: 50px;
   height: calc(100vh - 45px);
-  border-right: 1px solid var(--light-grey-color);
-  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+  /* border-right: 1px solid var(--light-grey-color); */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: fixed;
   left: 0;
   top: 45px;
@@ -590,7 +590,7 @@ pre {
   color: var(--dark-font-color);
   width: 180px;
   height: calc(100vh - 45px);
-  border-right: 1px solid var(--light-grey-color);
+  /* border-right: 1px solid var(--light-grey-color); */
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: fixed;
   left: 0;

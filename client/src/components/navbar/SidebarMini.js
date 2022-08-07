@@ -26,7 +26,7 @@ import linkedInLogoDark from "../../resources/images/linkedInLogoDark.png";
 
 import pop from "../../resources/sounds/pop.mp3";
 
-import resume from '../../resources/articles/aunsh_resume.pdf'
+import resume from "../../resources/articles/Aunsh_Bandivadekar_Resume_22.pdf";
 
 import {
   soundOn,
