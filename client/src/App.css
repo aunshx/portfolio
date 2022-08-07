@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Inter&display=swap');
 
 :root {
    --light-color: white;
@@ -1639,7 +1638,12 @@ color: var(--light-logo-color);
 
 .articles .body .individual:hover, 
 .articles-main .body .individual:hover {
- border: 1px solid var(--logo-color);
+ cursor: pointer;
+ transform: scale(1.01);
+}
+
+.articles .body .individual--dark:hover, 
+.articles-main .body .individual--dark:hover {
  cursor: pointer;
  transform: scale(1.01);
 }
