@@ -30,6 +30,15 @@ import gotuuSixdark from "../../../resources/images/work-and-projects/gotuu.in/d
 import gotuuSevendark from "../../../resources/images/work-and-projects/gotuu.in/dark/note-page-dark-6.png";
 import gotuuEightdark from "../../../resources/images/work-and-projects/gotuu.in/dark/timeline-page-dark-5.png";
 
+import bodingaOne from '../../../resources/images/work-and-projects/bodinga.com/main-page.png'
+
+export const bodingaPics = [
+  {
+    imgSource: bodingaOne,
+    imgText: 'Landing page of bodinga.com'
+  },
+];
+
 export const gotuuPicsLight = [
   {
     imgSource: gotuuOneLight,

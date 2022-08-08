@@ -16,6 +16,7 @@ import {
   drSbsPics,
   gotuuPicsLight,
   gotuuPicsDark,
+  bodingaPics,
 } from "./data/photos";
 
 const Projects = () => {
@@ -46,8 +47,8 @@ const Projects = () => {
           />
           <Card
             runAos={true}
-            picsLight={aunshPicsLight}
-            picsDark={aunshPicsDark}
+            picsLight={bodingaPics}
+            picsDark={""}
             logo={bodingaLogo}
             details={aunshDetails}
             type={"bodinga"}
