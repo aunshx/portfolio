@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 
-import BodingaCard from './BodingaCard';
-import YedaEngineerCard from './YedaengineerCard';
-import GotuuCard from './GotuuCard';
+import BodingaCard from "./bodinga/BodingaCard";
+import YedaEngineerCard from "./sbvetservices/YedaengineerCard";
+import GotuuCard from "./gotuu/GotuuCard";
 import AunshCard from './aunsh/AunshCard';
 
 const Projects = ({  }) => {
@@ -29,7 +28,5 @@ const Projects = ({  }) => {
     </div>
   );
 };
-
-Projects.propTypes = {};
 
 export default Projects;

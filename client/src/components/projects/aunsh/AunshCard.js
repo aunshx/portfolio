@@ -4,7 +4,6 @@ import useWindow from "react-window-size-simple";
 
 import {
   Box,
-  Card,
   Collapse,
   Fade,
   IconButton,
@@ -23,8 +22,8 @@ import {
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Tags from "../Tags";
-import TagsSmall from "../TagsSmall";
+import Tags from "../tools/Tags";
+import TagsSmall from "../tools/TagsSmall";
 
 import defaultImg from "../../../resources/images/default/default.jpg";
 import reduxLogo from "../../../resources/images/skills/logos/reduxLogo.png";
@@ -70,7 +69,7 @@ const AunshCard = ({
   // Redux State
   settings: { displayMode },
 }) => {
-  const { width, height } = useWindow();
+  const { width } = useWindow();
   const [expanded, setExpanded] = useState(false);
   const [isBigPicOpen, setIsBigPicOpen] = useState(false);
   const [carousel, setCarousel] = useState(false);

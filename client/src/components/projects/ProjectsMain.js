@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTools } from "@fortawesome/free-solid-svg-icons";
 import useWindow from "react-window-size-simple";
 
-import BodingaCard from "./BodingaCard";
-import YedaEngineerCard from "./YedaengineerCard";
-import GotuuCard from "./GotuuCard";
+import BodingaCard from "./bodinga/BodingaCard";
+import YedaEngineerCard from "./sbvetservices/YedaengineerCard";
+import GotuuCard from "./gotuu/GotuuCard";
 import Navbar from "../navbar/Navbar";
 
 import BackgroundLarge from "../main/BackgroundLarge";
@@ -18,7 +17,7 @@ import AunshCard from "./aunsh/AunshCard";
 import MetaTags from "../layout/MetaTags";
 
 const ProjectsMain = ({ Sidebar}) => {
-    const { width, height } = useWindow()
+    const { width } = useWindow()
   return (
     <>
       <MetaTags
@@ -53,7 +52,5 @@ const ProjectsMain = ({ Sidebar}) => {
     </>
   );
 };
-
-ProjectsMain.propTypes = {};
 
 export default ProjectsMain;

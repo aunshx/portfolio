@@ -35,7 +35,7 @@ const ArticlesMain = ({
   sidebar: { hover }
 }) => {
 
-  const { width, height } = useWindow();
+  const { width } = useWindow();
   return (
     <>
       <MetaTags

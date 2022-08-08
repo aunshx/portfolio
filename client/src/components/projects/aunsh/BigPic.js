@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 
 import CloseIcon from "@mui/icons-material/Close";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -22,6 +21,14 @@ const BigPic = ({
   showLightModePicsAndArray,
   showDarkModePicsAndArray,
 }) => {
+
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    const onLoad = () => {
+      setIsLoading(true);
+    };
+
   return (
     <div className='big-pic'>
       <div
@@ -77,17 +84,28 @@ const BigPic = ({
           <div className='before' onClick={decreaseCurrentIndex}>
             <NavigateBeforeIcon style={{ fontSize: 35 }} />
           </div>
-          <img
-            src={
-              darkModePics
-                ? detailsDark[currentIndex].imgSource || defaultImg
-                : detailsLight[currentIndex].imgSource || defaultImg
-            }
-            alt='Demo Website Images'
-            className={
-              detailsLight[currentIndex].needsFit ? "image-needs-fit" : ""
-            }
-          />
+          <div
+            style={{ display: isLoading ? "block" : "none" }}
+            className='flex_middle'
+          >
+            <div className='flex_middle'>
+              <div className='loader-small'></div>
+            </div>
+          </div>
+          <div style={{ display: isLoading ? "none" : "block" }}>
+            <img
+              src={
+                darkModePics
+                  ? detailsDark[currentIndex].imgSource || defaultImg
+                  : detailsLight[currentIndex].imgSource || defaultImg
+              }
+              alt='Img'
+              onLoad={onLoad}
+              className={
+                detailsLight[currentIndex].needsFit ? "image-needs-fit" : ""
+              }
+            />
+          </div>
         </div>
         <div className='text flex_middle'>
           {detailsLight[currentIndex].imgText}
@@ -96,7 +114,5 @@ const BigPic = ({
     </div>
   );
 };
-
-BigPic.propTypes = {}
 
 export default BigPic

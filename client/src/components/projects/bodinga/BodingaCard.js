@@ -1,25 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useWindow from "react-window-size-simple";
 
-import { Collapse, IconButton, Tooltip, Box, Fade, Modal, Card } from '@mui/material';
+import { Box, Card, Collapse, Fade, IconButton, Modal, Tooltip } from '@mui/material';
 
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
-import { useState } from 'react';
+import Tags from '../tools/Tags';
+import TagsSmall from '../tools/TagsSmall';
 
-import Tags from './Tags';
-import TagsSmall from './TagsSmall';
-
-import defaultImg from '../../resources/images/default/default.jpg'
-import reduxLogo from '../../resources/images/skills/logos/reduxLogo.png'
-import reactLogo from '../../resources/images/skills/logos/reactLogo.png'
-import jsLogo from '../../resources/images/skills/logos/jsLogo.png'
-import nodeLogo from '../../resources/images/skills/logos/nodeLogo.png'
-import gotuuLogo from '../../resources/images/work-and-projects/logos/gotuuLogo.png'
-import mongoLogo from '../../resources/images/skills/logos/mongoLogo.png'
+import defaultImg from '../../../resources/images/default/default.jpg'
+import reduxLogo from '../../../resources/images/skills/logos/reduxLogo.png'
+import reactLogo from '../../../resources/images/skills/logos/reactLogo.png'
+import jsLogo from '../../../resources/images/skills/logos/jsLogo.png'
+import nodeLogo from '../../../resources/images/skills/logos/nodeLogo.png'
+import psqlLogo from '../../../resources/images/skills/logos/psqlLogo.png'
+import bodingaLogo from '../../../resources/images/work-and-projects/logos/bodingaLogo.png'
 
 import { connect } from 'react-redux';
 
@@ -50,13 +48,12 @@ const ExpandMore = styled((props) => {
 }));
 
 
-const GotuuCard = ({
+const BodingaCard = ({
   runAos,
   // Redux State
   settings: { displayMode }
 }) => {
 const { width } = useWindow()
-
 const [expanded, setExpanded] = useState(false);
 const [isPhotoOpen, setIsPhotoOpen] = useState(false);
 
@@ -67,7 +64,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
     <div
       className={
         displayMode
-          ? "individual individual--projects--dark--gotuu"
+          ? "individual individual--projects--dark--bodinga"
           : "individual"
       }
       data-aos={runAos ? "fade-up" : ""}
@@ -78,7 +75,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
         </div>
         <div className='details app' style={{ justifyContent: "space-around" }}>
           <a
-            href='https://gotuu.in'
+            href='https://bodinga.com'
             target={"_blank"}
             rel='noreferrer nofollow'
           >
@@ -89,23 +86,24 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
               <div
                 style={{
                   objectFit: "contain",
-                  width: "33px",
-                  margin: "0.6em 0.6em 0 0",
+                  width: "30px",
+                  margin: "0.4em 1em 0 0",
+                  transform: "rotate(3deg)",
                 }}
               >
-                <img src={gotuuLogo} alt='Gotuu Logo' />
+                <img src={bodingaLogo} alt='Bodinga Logo' />
               </div>
-              <div>gotuu.in</div>
+              <div>bodinga.com</div>
             </div>
           </a>
           <div className='description'>
             A web-app to manage business operations, customer and vendor
             management for medical companies in the veterinary field.
           </div>
-          <div className='links '>
+          <div className='links'>
             <div className='flex_middle'>
               <a
-                href='https://github.com/aunshx/gotuu'
+                href='https://github.com/aunshx/bodinga'
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Github Repo link'
@@ -133,10 +131,10 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
             </Tooltip>
             <div className='flex_middle'>
               <a
-                href='https://gotuu.in'
+                href='https://bodinga.com'
                 target={"_blank"}
                 rel='noreferrer nofollow'
-                alt='Live Demo Link'
+                alt='Live Demo'
                 className='indi'
               >
                 Demo
@@ -177,9 +175,9 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                       classGiven={"node"}
                     />
                     <TagsSmall
-                      text={"MongoDb"}
-                      logo={mongoLogo}
-                      classGiven={"node"}
+                      text={"Postgres"}
+                      logo={psqlLogo}
+                      classGiven={"express"}
                     />
                     <TagsSmall
                       text={"Express"}
@@ -203,9 +201,9 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
                     />
                     <Tags text={"Node"} logo={nodeLogo} classGiven={"node"} />
                     <Tags
-                      text={"MongoDb"}
-                      logo={mongoLogo}
-                      classGiven={"node"}
+                      text={"Postgres"}
+                      logo={psqlLogo}
+                      classGiven={"express"}
                     />
                     <Tags text={"Express"} logo={""} classGiven={"postgres"} />
                   </>
@@ -273,8 +271,7 @@ const [isPhotoOpen, setIsPhotoOpen] = useState(false);
   );
 };
 
-
-GotuuCard.propTypes = {
+BodingaCard.propTypes = {
   settings: PropTypes.object.isRequired,
 };
 
@@ -282,6 +279,8 @@ const mapStateToProps = (state) => ({
   settings: state.settings,
 });
 
-const mapStateToActions = {};
+const mapStateToActions = {
 
-export default connect(mapStateToProps, mapStateToActions)(GotuuCard);
+};
+
+export default connect(mapStateToProps, mapStateToActions)(BodingaCard);

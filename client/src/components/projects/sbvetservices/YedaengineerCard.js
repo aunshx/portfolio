@@ -8,16 +8,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
 
-import Tags from './Tags';
-import TagsSmall from './TagsSmall';
+import Tags from '../tools/Tags';
+import TagsSmall from '../tools/TagsSmall';
 
-import defaultImg from '../../resources/images/default/default.jpg'
-import reduxLogo from '../../resources/images/skills/logos/reduxLogo.png'
-import reactLogo from '../../resources/images/skills/logos/reactLogo.png'
-import jsLogo from '../../resources/images/skills/logos/jsLogo.png'
-import nodeLogo from '../../resources/images/skills/logos/nodeLogo.png'
-import psqlLogo from '../../resources/images/skills/logos/psqlLogo.png'
-import yedaengineerLogo from '../../resources/images/work-and-projects/logos/yedaengineerLogo.png'
+import defaultImg from '../../../resources/images/default/default.jpg'
+import reduxLogo from '../../../resources/images/skills/logos/reduxLogo.png'
+import reactLogo from '../../../resources/images/skills/logos/reactLogo.png'
+import jsLogo from '../../../resources/images/skills/logos/jsLogo.png'
+import nodeLogo from '../../../resources/images/skills/logos/nodeLogo.png'
+import psqlLogo from '../../../resources/images/skills/logos/psqlLogo.png'
+import yedaengineerLogo from '../../../resources/images/work-and-projects/logos/yedaengineerLogo.png'
 
 import { connect } from 'react-redux';
 
