@@ -21,7 +21,6 @@ router.get("/get-data", auth, async (req, res) => {
       .select("-updatedAt");
     res.json(user);
   } catch (err) {
-    console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
@@ -51,8 +50,6 @@ router.post(
           .send({ errors: [{ msg: "Invalid Credentials" }] });
       }
 
-      console.log(password, user.password, user.createdAt);
-
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
@@ -77,7 +74,6 @@ router.post(
         }
       );
     } catch (err) {
-      console.log(err);
       res.status(500).send({ errors: [{ msg: "Bad Request" }] });
     }
   }
@@ -141,7 +137,6 @@ router.post(
         }   
       );
     } catch (err) {
-      console.log(err);
       res.status(500).send("Server error");
     }
   }

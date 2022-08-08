@@ -19,6 +19,7 @@ import gotuuFourLight from '../../../resources/images/work-and-projects/gotuu.in
 import gotuuFiveLight from '../../../resources/images/work-and-projects/gotuu.in/light/about-page-light-4.png'
 import gotuuSixLight from "../../../resources/images/work-and-projects/gotuu.in/light/work-page-light-6.png";
 import gotuuSevenLight from "../../../resources/images/work-and-projects/gotuu.in/light/note-page-light-6.png";
+import gotuuEightLight from "../../../resources/images/work-and-projects/gotuu.in/light/timeline-page-light-5.png";
 
 import gotuuOnedark from '../../../resources/images/work-and-projects/gotuu.in/dark/register-page-dark-3.png'
 import gotuuTwodark from '../../../resources/images/work-and-projects/gotuu.in/dark/main-page-dark-1.png'
@@ -27,6 +28,7 @@ import gotuuFourdark from '../../../resources/images/work-and-projects/gotuu.in/
 import gotuuFivedark from '../../../resources/images/work-and-projects/gotuu.in/dark/about-page-dark-4.png'
 import gotuuSixdark from "../../../resources/images/work-and-projects/gotuu.in/dark/work-page-dark-6.png";
 import gotuuSevendark from "../../../resources/images/work-and-projects/gotuu.in/dark/note-page-dark-6.png";
+import gotuuEightdark from "../../../resources/images/work-and-projects/gotuu.in/dark/timeline-page-dark-5.png";
 
 export const gotuuPicsLight = [
   {
@@ -44,6 +46,10 @@ export const gotuuPicsLight = [
   {
     imgSource: gotuuSevenLight,
     imgText: "Including task note for the current time tuu.",
+  },
+  {
+    imgSource: gotuuEightLight,
+    imgText: "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
   },
   {
     imgSource: gotuuThreeLight,
@@ -75,6 +81,11 @@ export const gotuuPicsDark = [
   {
     imgSource: gotuuSevendark,
     imgText: "Including task note for the current time tuu.",
+  },
+  {
+    imgSource: gotuuEightdark,
+    imgText:
+      "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
   },
   {
     imgSource: gotuuThreedark,
