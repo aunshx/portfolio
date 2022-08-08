@@ -10,7 +10,7 @@ import BackgroundSmall from "./components/main/BackgroundSmall";
 import BackgroundTiny from "./components/main/BackgroundTiny";
 
 import Main from './components/main/Main';
-import Projects from './components/projects/Projects';
+import Work from './components/work/Work';
 import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
@@ -112,7 +112,7 @@ const Home = ({
       {width <= 600 && <BackgroundTiny />}
       <Main />
       <About />
-      <Projects />
+      <Work />
       <Articles />
       <Skills />
       <Contact

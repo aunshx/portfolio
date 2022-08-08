@@ -19,6 +19,7 @@ import TagsSmall from "../tools/TagsSmall";
 import defaultImg from "../../../resources/images/default/default.jpg";
 
 import BigPic from "./BigPic";
+import { useEffect } from "react";
 
 const style = {
   position: "fixed",
@@ -57,6 +58,7 @@ const Card = ({
   websiteUrl,
   gitUrl,
   tags,
+  type,
   // Redux State
   settings: { displayMode },
 }) => {
@@ -132,7 +134,7 @@ const Card = ({
     <div
       className={
         displayMode
-          ? "individual individual--projects--dark--aunsh"
+          ? `individual individual--projects--dark--${type}`
           : "individual"
       }
       data-aos={runAos ? "fade-up" : ""}
@@ -230,11 +232,7 @@ const Card = ({
           )}
         </div>
         <div className='details app' style={{ justifyContent: "space-around" }}>
-          <a
-            href={websiteUrl}
-            target={"_blank"}
-            rel='noreferrer nofollow'
-          >
+          <a href={websiteUrl} target={"_blank"} rel='noreferrer nofollow'>
             <div
               className='title flex_middle'
               style={{ marginBottom: "-0.6em" }}
@@ -251,9 +249,7 @@ const Card = ({
               <div>{websiteTitle}</div>
             </div>
           </a>
-          <div className='description'>
-            {description}
-          </div>
+          <div className='description'>{description}</div>
           <div className='links'>
             <div className='flex_middle'>
               <a
@@ -312,28 +308,29 @@ const Card = ({
                 <div className='title'>Tech Stack</div>
                 {width <= 650 && (
                   <div className={width <= 650 ? "flex_middle" : ""}>
-                    {tags.length > 0 && tags.map((element, index) => (
+                    {tags.length > 0 &&
+                      tags.map((element, index) => (
                         <TagsSmall key={index} text={element} />
-                    ))}
+                      ))}
                   </div>
                 )}
                 {width > 650 && (
                   <>
-                    {tags.length > 0 && tags.map((element, index) => (
+                    {tags.length > 0 &&
+                      tags.map((element, index) => (
                         <Tags key={index} text={element} />
-                    ))}
-                </>
+                      ))}
+                  </>
                 )}
               </div>
               <div className='details app'>
                 <div className='title'>Details</div>
                 <div className='list'>
                   <ul>
-                    {details.length > 0 && details.map((element, index) => (
-                        <li key={index} >
-                            {element}
-                        </li>
-                    ))}
+                    {details.length > 0 &&
+                      details.map((element, index) => (
+                        <li key={index}>{element}</li>
+                      ))}
                   </ul>
                 </div>
               </div>

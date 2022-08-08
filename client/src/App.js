@@ -11,7 +11,7 @@ import NotFound from "./components/layout/NotFound";
 import SkillsMain from "./components/skills/SkillsMain";
 import ContactMain from "./components/contact/ContactMain";
 import Sidebar from "./components/navbar/Sidebar";
-import ProjectsMain from "./components/projects/ProjectsMain";
+import WorkMain from "./components/work/WorkMain";
 import Navbar from "./components/navbar/Navbar";
 import Login from "./components/admin/auth/Login";
 import Main from "./components/admin/main/Main";
@@ -120,75 +120,78 @@ function App({
       );
   } else {
     return (
-    <Router>
-      <>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={(props) => (
-              <Home Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
-            )}
-          />
-          <Route
-            exact
-            path='/user'
-            render={(props) => (
-              <AboutMain
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={<Navbar />}
-              />
-            )}
-          />
-          <Route
-            path='/work'
-            render={(props) => (
-              <ProjectsMain
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={<Navbar />}
-              />
-            )}
-          />
-          <Route
-            path='/articles'
-            render={(props) => (
-              <ArticlesMain
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={<Navbar />}
-              />
-            )}
-          />
-          <Route
-            path='/skills'
-            render={(props) => (
-              <SkillsMain
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={<Navbar />}
-              />
-            )}
-          />
-          <Route
-            path='/contact'
-            render={(props) => (
-              <ContactMain
-                Sidebar={<Sidebar hover={hover} />}
-                Navbar={<Navbar />}
-              />
-            )}
-          />
-          <PrivateRoute path='/admin' exact component={Main} />
-          <PrivateRoute path='/admin/stats' component={Stats} />
-          <Route
-            path='/admin/login'
-            render={(props) => (
-              <Login Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
-            )}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </>
-    </Router>
-  );
+      <Router>
+        <>
+          <Switch>
+            <Route
+              exact
+              path='/'
+              render={(props) => (
+                <Home Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
+              )}
+            />
+            <Route
+              exact
+              path='/user'
+              render={(props) => (
+                <AboutMain
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            <Route
+              path='/work'
+              render={(props) => (
+                <WorkMain
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            <Route
+              path='/articles'
+              render={(props) => (
+                <ArticlesMain
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            <Route
+              path='/skills'
+              render={(props) => (
+                <SkillsMain
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            <Route
+              path='/contact'
+              render={(props) => (
+                <ContactMain
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            <PrivateRoute path='/admin' exact component={Main} />
+            <PrivateRoute path='/admin/stats' component={Stats} />
+            <Route
+              path='/admin/login'
+              render={(props) => (
+                <Login
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </>
+      </Router>
+    );
   }
 }
 
