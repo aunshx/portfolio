@@ -10,7 +10,13 @@ import aunshLogo from '../../resources/images/work-and-projects/logos/aunshLogo.
 import drsbsLogo from '../../resources/images/work-and-projects/logos/drsbsLogo.png'
 
 import { aunshDetails } from "./data/details";
-import { aunshPicsLight, aunshPicsDark, drSbsPics } from "./data/photos";
+import {
+  aunshPicsLight,
+  aunshPicsDark,
+  drSbsPics,
+  gotuuPicsLight,
+  gotuuPicsDark,
+} from "./data/photos";
 
 const Projects = () => {
   return (
@@ -55,8 +61,8 @@ const Projects = () => {
           />
           <Card
             runAos={true}
-            picsLight={aunshPicsLight}
-            picsDark={aunshPicsDark}
+            picsLight={gotuuPicsLight}
+            picsDark={gotuuPicsDark}
             logo={gotuuLogo}
             details={aunshDetails}
             type={"gotuu"}
