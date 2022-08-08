@@ -32,37 +32,38 @@ const BigPic = ({
       >
         <div className='flex_right'>
           <div>
-            {darkModePics ? (
-              <div className='moon cursor_pointer'>
-                <Tooltip title='Dark mode pics' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faMoon}
-                      className={"mobile_logo--tilted"}
-                      onClick={showLightModePicsAndArray}
-                      style={{
-                        fontSize: 20,
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div className='sun cursor_pointer'>
-                <Tooltip title='Light mode pics' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faSun}
-                      className={"mobile_logo--tilted"}
-                      onClick={showDarkModePicsAndArray}
-                      style={{
-                        fontSize: 20,
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
+            {picsDark &&
+              (darkModePics ? (
+                <div className='moon cursor_pointer'>
+                  <Tooltip title='Dark mode pics' placement='left'>
+                    <div>
+                      <FontAwesomeIcon
+                        icon={faMoon}
+                        className={"mobile_logo--tilted"}
+                        onClick={showLightModePicsAndArray}
+                        style={{
+                          fontSize: 20,
+                        }}
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              ) : (
+                <div className='sun cursor_pointer'>
+                  <Tooltip title='Light mode pics' placement='left'>
+                    <div>
+                      <FontAwesomeIcon
+                        icon={faSun}
+                        className={"mobile_logo--tilted"}
+                        onClick={showDarkModePicsAndArray}
+                        style={{
+                          fontSize: 20,
+                        }}
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              ))}
           </div>
           <div>
             <CloseIcon

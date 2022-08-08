@@ -10,7 +10,7 @@ import aunshLogo from '../../resources/images/work-and-projects/logos/aunshLogo.
 import drsbsLogo from '../../resources/images/work-and-projects/logos/drsbsLogo.png'
 
 import { aunshDetails } from "./data/details";
-import {aunshPicsLight, aunshPicsDark} from './data/photos'
+import { aunshPicsLight, aunshPicsDark, drSbsPics } from "./data/photos";
 
 const Projects = () => {
   return (
@@ -25,8 +25,8 @@ const Projects = () => {
         <div className='body app'>
           <Card
             runAos={true}
-            picsLight={aunshPicsLight}
-            picsDark={aunshPicsDark}
+            picsLight={drSbsPics}
+            picsDark={""}
             logo={drsbsLogo}
             details={aunshDetails}
             type={"drsbs"}

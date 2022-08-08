@@ -8,6 +8,15 @@ import aunshPortfolioDarkTwo from "../../../resources/images/work-and-projects/a
 import aunshPortfolioDarkThree from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkThree.PNG";
 import aunshPortfolioDarkFour from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkFour.PNG";
 
+import drSbsOne from '../../../resources/images/work-and-projects/dr-sbs/main-page-1.png'
+
+export const drSbsPics = [
+  {
+    imgSource: drSbsOne,
+    imgText: "Home page of Dr SB's vet services"
+  },
+];
+
 export const aunshPicsLight = [
   {
     imgSource: aunshPortfolioLightOne,

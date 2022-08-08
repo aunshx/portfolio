@@ -19,7 +19,6 @@ import TagsSmall from "../tools/TagsSmall";
 import defaultImg from "../../../resources/images/default/default.jpg";
 
 import BigPic from "./BigPic";
-import { useEffect } from "react";
 
 const style = {
   position: "fixed",
@@ -142,59 +141,60 @@ const Card = ({
       onMouseLeave={deactivateCarousel}
       onClick={activation}
     >
-      <div className='double_grid'>
-        <div className='image'>
-          <div
-            style={{
-              display: isLoading ? "block" : "none",
-            }}
-            className='flex_middle'
-          >
-            <div className='loader-me'></div>
+      <div className='image'>
+        <div
+          style={{
+            display: isLoading ? "block" : "none",
+            height: width > 1050 ? "400px" : "230px",
+          }}
+          className='flex_middle'
+        >
+          <div className='loader-me'></div>
+        </div>
+        <div style={{ display: isLoading ? "none" : "block" }}>
+          <img
+            src={
+              darkModePics
+                ? picsDark[currentIndex].imgSource || defaultImg
+                : picsLight[currentIndex].imgSource || defaultImg
+            }
+            alt='Bodinga Home Page'
+            className={
+              picsLight[currentIndex].needsFit ? "image-needs-fit" : ""
+            }
+            onLoad={onLoad}
+          />
+        </div>
+        {carousel && (
+          <div className='next' onClick={increaseCurrentIndex}>
+            <NavigateNextIcon style={{ fontSize: 30 }} />
           </div>
-          <div style={{ display: isLoading ? "none" : "block" }}>
-            <img
-              src={
-                darkModePics
-                  ? picsDark[currentIndex].imgSource || defaultImg
-                  : picsLight[currentIndex].imgSource || defaultImg
-              }
-              alt='Bodinga Home Page'
-              className={
-                picsLight[currentIndex].needsFit ? "image-needs-fit" : ""
-              }
-              onLoad={onLoad}
-            />
+        )}
+        {carousel && (
+          <div className='before' onClick={decreaseCurrentIndex}>
+            <NavigateBeforeIcon style={{ fontSize: 30 }} />
           </div>
-          {carousel && (
-            <div className='next' onClick={increaseCurrentIndex}>
-              <NavigateNextIcon style={{ fontSize: 30 }} />
+        )}
+        {carousel && (
+          <div className={darkModePics ? "text text--dark" : "text"}>
+            <div className='main-carousel'>
+              {darkModePics
+                ? picsDark[currentIndex].imgText || defaultImg
+                : picsLight[currentIndex].imgText || defaultImg}
             </div>
-          )}
-          {carousel && (
-            <div className='before' onClick={decreaseCurrentIndex}>
-              <NavigateBeforeIcon style={{ fontSize: 30 }} />
-            </div>
-          )}
-          {carousel && (
-            <div className={darkModePics ? "text text--dark" : "text"}>
-              <div className='main-carousel'>
-                {darkModePics
-                  ? picsDark[currentIndex].imgText || defaultImg
-                  : picsLight[currentIndex].imgText || defaultImg}
-              </div>
-              <div className='icon-carousel flex_middle'>
-                {width > 650 && (
-                  <Tooltip title='Expand Photo' placement='top'>
-                    <div style={{ marginRight: "0.5em" }} onClick={bigPicOpen}>
-                      <OpenInFullIcon
-                        className='expand-carousel'
-                        style={{ fontSize: 13, marginTop: "0.2em" }}
-                      />
-                    </div>
-                  </Tooltip>
-                )}
-                {darkModePics ? (
+            <div className='icon-carousel flex_middle'>
+              {width > 650 && (
+                <Tooltip title='Expand Photo' placement='top'>
+                  <div style={{ marginRight: "0.7em" }} onClick={bigPicOpen}>
+                    <OpenInFullIcon
+                      className='expand-carousel'
+                      style={{ fontSize: 18, marginTop: "0.3em" }}
+                    />
+                  </div>
+                </Tooltip>
+              )}
+              {picsDark &&
+                (darkModePics ? (
                   <div className='moon cursor_pointer'>
                     <Tooltip title='Dark mode pics' placement='left'>
                       <div>
@@ -203,7 +203,7 @@ const Card = ({
                           className={"mobile_logo--tilted"}
                           onClick={showLightModePicsAndArray}
                           style={{
-                            fontSize: 13,
+                            fontSize: 18,
                             marginTop: "3px",
                           }}
                         />
@@ -219,77 +219,73 @@ const Card = ({
                           className={"mobile_logo--tilted"}
                           onClick={showDarkModePicsAndArray}
                           style={{
-                            fontSize: 13,
+                            fontSize: 18,
                             marginTop: "3px",
                           }}
                         />
                       </div>
                     </Tooltip>
                   </div>
-                )}
-              </div>
+                ))}
             </div>
-          )}
-        </div>
-        <div className='details app' style={{ justifyContent: "space-around" }}>
-          <a href={websiteUrl} target={"_blank"} rel='noreferrer nofollow'>
+          </div>
+        )}
+      </div>
+      <div className='details app' style={{ justifyContent: "space-around" }}>
+        <a href={websiteUrl} target={"_blank"} rel='noreferrer nofollow'>
+          <div className='title flex_middle' style={{ marginBottom: "-0.6em" }}>
             <div
-              className='title flex_middle'
-              style={{ marginBottom: "-0.6em" }}
+              style={{
+                objectFit: "contain",
+                width: "35px",
+                margin: "0.4em 0.5em 0 0",
+              }}
             >
-              <div
-                style={{
-                  objectFit: "contain",
-                  width: "35px",
-                  margin: "0.4em 0.5em 0 0",
-                }}
-              >
-                <img src={logo} alt='Bodinga Logo' />
-              </div>
-              <div>{websiteTitle}</div>
+              <img src={logo} alt='Bodinga Logo' />
             </div>
-          </a>
-          <div className='description'>{description}</div>
-          <div className='links'>
-            <div className='flex_middle'>
-              <a
-                href={gitUrl}
-                target={"_blank"}
-                rel='noreferrer nofollow'
-                alt='Github Repo link'
-                className='indi'
+            <div>{websiteTitle}</div>
+          </div>
+        </a>
+        <div className='description'>{description}</div>
+        <div className='links'>
+          <div className='flex_middle'>
+            <a
+              href={gitUrl}
+              target={"_blank"}
+              rel='noreferrer nofollow'
+              alt='Github Repo link'
+              className='indi'
+            >
+              Repo
+            </a>
+          </div>
+          <Tooltip title='Show More Details' placement='top'>
+            <div className='indi flex_middle'>
+              <ExpandMore
+                expand={expanded}
+                aria-expanded={expanded}
+                aria-label='show more'
               >
-                Repo
-              </a>
+                <ExpandMoreIcon
+                  style={{
+                    fontSize: 28,
+                  }}
+                  className='expand'
+                  onClick={handleExpandClick}
+                />
+              </ExpandMore>
             </div>
-            <Tooltip title='Show More Details' placement='top'>
-              <div className='indi flex_middle'>
-                <ExpandMore
-                  expand={expanded}
-                  aria-expanded={expanded}
-                  aria-label='show more'
-                >
-                  <ExpandMoreIcon
-                    style={{
-                      fontSize: 28,
-                    }}
-                    className='expand'
-                    onClick={handleExpandClick}
-                  />
-                </ExpandMore>
-              </div>
-            </Tooltip>
-            <div className='flex_middle'>
-              <a
-                href={websiteUrl}
-                target={"_blank"}
-                rel='noreferrer nofollow'
-                alt='Live Demo'
-                className='indi'
-              >
-                Demo
-              </a>
-            </div>
+          </Tooltip>
+          <div className='flex_middle'>
+            <a
+              href={websiteUrl}
+              target={"_blank"}
+              rel='noreferrer nofollow'
+              alt='Live Demo'
+              className='indi'
+            >
+              Demo
+            </a>
           </div>
         </div>
       </div>
