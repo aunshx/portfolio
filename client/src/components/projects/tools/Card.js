@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import useWindow from "react-window-size-simple";
+import { connect } from "react-redux";
 
-import {
-  Box,
-  Collapse,
-  Fade,
-  IconButton,
-  Modal,
-  Tooltip,
-} from "@mui/material";
+import { Box, Collapse, Fade, IconButton, Modal, Tooltip } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
@@ -17,26 +11,14 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSun,
-  faMoon,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 import Tags from "../tools/Tags";
 import TagsSmall from "../tools/TagsSmall";
 
 import defaultImg from "../../../resources/images/default/default.jpg";
-import reduxLogo from "../../../resources/images/skills/logos/reduxLogo.png";
-import reactLogo from "../../../resources/images/skills/logos/reactLogo.png";
-import jsLogo from "../../../resources/images/skills/logos/jsLogo.png";
-import nodeLogo from "../../../resources/images/skills/logos/nodeLogo.png";
-import psqlLogo from "../../../resources/images/skills/logos/psqlLogo.png";
-import aunshLogo from "../../../resources/images/work-and-projects/logos/aunshLogo.png";
 
-import { connect } from "react-redux";
-
-import { aunshPicsLight, aunshPicsDark } from "../data/photos";
-import BigPic from "../tools/BigPic";
+import BigPic from "./BigPic";
 
 const style = {
   position: "fixed",
@@ -64,8 +46,17 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-const AunshCard = ({
+const Card = ({
   runAos,
+  picsLight,
+  picsDark,
+  logo,
+  details,
+  description,
+  websiteTitle,
+  websiteUrl,
+  gitUrl,
+  tags,
   // Redux State
   settings: { displayMode },
 }) => {
@@ -82,8 +73,8 @@ const AunshCard = ({
   };
 
   const activateCarousel = () => {
-    setCarousel(true)
-  }
+    setCarousel(true);
+  };
 
   const deactivateCarousel = () => {
     setCarousel(false);
@@ -100,44 +91,42 @@ const AunshCard = ({
   };
 
   const increaseCurrentIndex = () => {
-    if(currentIndex === aunshPicsLight.length - 1) {
-      setCurrentIndex(0)
+    if (currentIndex === picsLight.length - 1) {
+      setCurrentIndex(0);
     } else {
       setCurrentIndex(currentIndex + 1);
     }
-        setIsLoading(true);
-
-  }
+    setIsLoading(true);
+  };
 
   const decreaseCurrentIndex = () => {
-    if(currentIndex === 0) {
-      setCurrentIndex(aunshPicsLight.length - 1);
+    if (currentIndex === 0) {
+      setCurrentIndex(picsLight.length - 1);
     } else {
       setCurrentIndex(currentIndex - 1);
     }
-        setIsLoading(true);
-
-  }
+    setIsLoading(true);
+  };
 
   const bigPicClose = () => {
-    setIsBigPicOpen(false)
-  }
+    setIsBigPicOpen(false);
+  };
 
   const bigPicOpen = () => {
-    setIsBigPicOpen(true)
-  }
+    setIsBigPicOpen(true);
+  };
 
   const activation = () => {
-    if(carousel) {
-      setCarousel(false)
+    if (carousel) {
+      setCarousel(false);
     } else {
-      setCarousel(true)
+      setCarousel(true);
     }
-  }
+  };
 
-    const onLoad = () => {
-      setIsLoading(false);
-    };
+  const onLoad = () => {
+    setIsLoading(false);
+  };
 
   return (
     <div
@@ -152,9 +141,7 @@ const AunshCard = ({
       onClick={activation}
     >
       <div className='double_grid'>
-        <div
-          className='image'
-        >
+        <div className='image'>
           <div
             style={{
               display: isLoading ? "block" : "none",
@@ -167,12 +154,12 @@ const AunshCard = ({
             <img
               src={
                 darkModePics
-                  ? aunshPicsDark[currentIndex].imgSource || defaultImg
-                  : aunshPicsLight[currentIndex].imgSource || defaultImg
+                  ? picsDark[currentIndex].imgSource || defaultImg
+                  : picsLight[currentIndex].imgSource || defaultImg
               }
               alt='Bodinga Home Page'
               className={
-                aunshPicsLight[currentIndex].needsFit ? "image-needs-fit" : ""
+                picsLight[currentIndex].needsFit ? "image-needs-fit" : ""
               }
               onLoad={onLoad}
             />
@@ -191,8 +178,8 @@ const AunshCard = ({
             <div className={darkModePics ? "text text--dark" : "text"}>
               <div className='main-carousel'>
                 {darkModePics
-                  ? aunshPicsDark[currentIndex].imgText || defaultImg
-                  : aunshPicsLight[currentIndex].imgText || defaultImg}
+                  ? picsDark[currentIndex].imgText || defaultImg
+                  : picsLight[currentIndex].imgText || defaultImg}
               </div>
               <div className='icon-carousel flex_middle'>
                 {width > 650 && (
@@ -244,7 +231,7 @@ const AunshCard = ({
         </div>
         <div className='details app' style={{ justifyContent: "space-around" }}>
           <a
-            href='https://aunsh.com'
+            href={websiteUrl}
             target={"_blank"}
             rel='noreferrer nofollow'
           >
@@ -259,19 +246,18 @@ const AunshCard = ({
                   margin: "0.4em 0.5em 0 0",
                 }}
               >
-                <img src={aunshLogo} alt='Bodinga Logo' />
+                <img src={logo} alt='Bodinga Logo' />
               </div>
-              <div>aunsh.com</div>
+              <div>{websiteTitle}</div>
             </div>
           </a>
           <div className='description'>
-            My portfolio website including projects and contact for a visitor
-            and an admin dashboard for statistics and messages received.
+            {description}
           </div>
           <div className='links'>
             <div className='flex_middle'>
               <a
-                href='https://github.com/aunshx/portfolio'
+                href={gitUrl}
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Github Repo link'
@@ -299,7 +285,7 @@ const AunshCard = ({
             </Tooltip>
             <div className='flex_middle'>
               <a
-                href='https://aunsh.com'
+                href={websiteUrl}
                 target={"_blank"}
                 rel='noreferrer nofollow'
                 alt='Live Demo'
@@ -326,74 +312,28 @@ const AunshCard = ({
                 <div className='title'>Tech Stack</div>
                 {width <= 650 && (
                   <div className={width <= 650 ? "flex_middle" : ""}>
-                    <TagsSmall
-                      text={"React"}
-                      logo={reactLogo}
-                      classGiven={"react"}
-                    />
-                    <TagsSmall text={"JS"} logo={jsLogo} classGiven={"js"} />
-                    <TagsSmall
-                      text={"Redux"}
-                      logo={reduxLogo}
-                      classGiven={"redux"}
-                    />
-                    <TagsSmall
-                      text={"Node"}
-                      logo={nodeLogo}
-                      classGiven={"node"}
-                    />
-                    <TagsSmall
-                      text={"Postgres"}
-                      logo={psqlLogo}
-                      classGiven={"express"}
-                    />
-                    <TagsSmall
-                      text={"Express"}
-                      logo={""}
-                      classGiven={"postgres"}
-                    />
+                    {tags.length > 0 && tags.map((element, index) => (
+                        <TagsSmall key={index} text={element} />
+                    ))}
                   </div>
                 )}
                 {width > 650 && (
                   <>
-                    <Tags
-                      text={"React"}
-                      logo={reactLogo}
-                      classGiven={"react"}
-                    />
-                    <Tags text={"JS"} logo={jsLogo} classGiven={"js"} />
-                    <Tags
-                      text={"Redux"}
-                      logo={reduxLogo}
-                      classGiven={"redux"}
-                    />
-                    <Tags text={"Node"} logo={nodeLogo} classGiven={"node"} />
-                    <Tags
-                      text={"Postgres"}
-                      logo={psqlLogo}
-                      classGiven={"express"}
-                    />
-                    <Tags text={"Express"} logo={""} classGiven={"postgres"} />
-                  </>
+                    {tags.length > 0 && tags.map((element, index) => (
+                        <Tags key={index} text={element} />
+                    ))}
+                </>
                 )}
               </div>
               <div className='details app'>
                 <div className='title'>Details</div>
                 <div className='list'>
                   <ul>
-                    <li>
-                    </li>
-                    <li>
-              
-                    </li>
-                    <li>
-                  
-                    </li>
-                    <li>
-                 
-                    </li>
-                    <li>
-                    </li>
+                    {details.length > 0 && details.map((element, index) => (
+                        <li key={index} >
+                            {element}
+                        </li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -416,8 +356,8 @@ const AunshCard = ({
           <Box style={style}>
             <BigPic
               close={bigPicClose}
-              picsLight={aunshPicsLight}
-              picsDark={aunshPicsDark}
+              picsLight={picsLight}
+              picsDark={picsDark}
               currentIndex={currentIndex}
               darkModePics={darkModePics}
               increaseCurrentIndex={increaseCurrentIndex}
@@ -436,7 +376,7 @@ const AunshCard = ({
   );
 };
 
-AunshCard.propTypes = {
+Card.propTypes = {
   settings: PropTypes.object.isRequired,
 };
 
@@ -446,4 +386,4 @@ const mapStateToProps = (state) => ({
 
 const mapStateToActions = {};
 
-export default connect(mapStateToProps, mapStateToActions)(AunshCard);
+export default connect(mapStateToProps, mapStateToActions)(Card);

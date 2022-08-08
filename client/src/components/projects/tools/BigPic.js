@@ -11,8 +11,8 @@ import { Tooltip } from '@mui/material';
 
 const BigPic = ({
   close,
-  detailsLight,
-  detailsDark,
+  picsLight,
+  picsDark,
   currentIndex,
   darkModePics,
   increaseCurrentIndex,
@@ -20,15 +20,10 @@ const BigPic = ({
   displayMode,
   showLightModePicsAndArray,
   showDarkModePicsAndArray,
+  isLoading,
+  onLoad,
+  width,
 }) => {
-
-    const [isLoading, setIsLoading] = useState(true);
-
-
-    const onLoad = () => {
-      setIsLoading(true);
-    };
-
   return (
     <div className='big-pic'>
       <div
@@ -85,30 +80,31 @@ const BigPic = ({
             <NavigateBeforeIcon style={{ fontSize: 35 }} />
           </div>
           <div
-            style={{ display: isLoading ? "block" : "none" }}
+            style={{
+              display: isLoading ? "block" : "none",
+              height: width > 1050 ? "500px" : "350px",
+            }}
             className='flex_middle'
           >
-            <div className='flex_middle'>
-              <div className='loader-small'></div>
-            </div>
+            <div className='loader-me'></div>
           </div>
           <div style={{ display: isLoading ? "none" : "block" }}>
             <img
               src={
                 darkModePics
-                  ? detailsDark[currentIndex].imgSource || defaultImg
-                  : detailsLight[currentIndex].imgSource || defaultImg
+                  ? picsDark[currentIndex].imgSource || defaultImg
+                  : picsLight[currentIndex].imgSource || defaultImg
               }
               alt='Img'
               onLoad={onLoad}
               className={
-                detailsLight[currentIndex].needsFit ? "image-needs-fit" : ""
+                picsLight[currentIndex].needsFit ? "image-needs-fit" : ""
               }
             />
           </div>
         </div>
         <div className='text flex_middle'>
-          {detailsLight[currentIndex].imgText}
+          {picsLight[currentIndex].imgText}
         </div>
       </div>
     </div>

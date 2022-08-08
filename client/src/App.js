@@ -141,7 +141,7 @@ function App({
             )}
           />
           <Route
-            path='/projects'
+            path='/work'
             render={(props) => (
               <ProjectsMain
                 Sidebar={<Sidebar hover={hover} />}

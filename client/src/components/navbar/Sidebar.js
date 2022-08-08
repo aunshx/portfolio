@@ -146,7 +146,7 @@ const Sidebar = ({
               </div>
             </NavLink>
             <NavLink
-              to='/projects'
+              to='/work'
               className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact
@@ -158,7 +158,7 @@ const Sidebar = ({
                     style={{ marginRight: "0.5em" }}
                   />
                 </div>
-                <div className='writing'>Projects</div>
+                <div className='writing'>Work</div>
               </div>
             </NavLink>
             <NavLink
@@ -353,7 +353,7 @@ const Sidebar = ({
               </div>
             </NavLink>
             <NavLink
-              to='/projects'
+              to='/work'
               className={"element"}
               activeStyle={{ color: "rgb(0, 145, 255)" }}
               exact

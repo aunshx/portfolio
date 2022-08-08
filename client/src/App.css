@@ -2476,14 +2476,14 @@ color: var(--light-logo-color);
 
 /* ------------------------------------- LOADER ---------------------------------- */
 .loader-me {
-  color: var(--grey-color);
+  color: var(--logo-color);
   font-size: 6px;
-  margin: 100px auto;
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  position: relative;
-  text-indent: -9999em;
+  position: absolute;
+  top: 45%;
+  left: 50%;
   -webkit-animation: load4 1.3s infinite linear;
   animation: load4 1.3s infinite linear;
   -webkit-transform: translateZ(0);
