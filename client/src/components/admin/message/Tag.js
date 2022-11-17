@@ -20,13 +20,9 @@ const Tag = ({ status }) => {
                 setStatusState('ongoing')
                 setStatusMessage("ongoing");
                 break
-            case status === 'cold':
-                setStatusState('cold')
-                setStatusMessage("cold");
-                break
-            case status === 'success':
-                setStatusState('success')
-                setStatusMessage("success");
+            case status === 'done':
+                setStatusState('done')
+                setStatusMessage("done");
                 break
             
             default:
