@@ -23,7 +23,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import pop from "../../resources/sounds/pop.mp3";
 
-import resume from "../../resources/articles/Aunsh_Bandivadekar_Resume_22.pdf";
+import resume from "../../resources/articles/resume.pdf";
 
 import {
   soundOn,
