@@ -8,6 +8,7 @@ import ArticlesMain from "./components/articles/ArticlesMain";
 import AboutMain from "./components/about/AboutMain";
 import Home from "./Home";
 import NotFound from "./components/layout/NotFound";
+import WillBeLive from "./components/layout/WillBeLive";
 import SkillsMain from "./components/skills/SkillsMain";
 import ContactMain from "./components/contact/ContactMain";
 import Sidebar from "./components/navbar/Sidebar";
@@ -127,7 +128,20 @@ function App({
               exact
               path='/'
               render={(props) => (
-                <Home Sidebar={<Sidebar hover={hover} />} Navbar={<Navbar />} />
+                <WillBeLive
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
+              )}
+            />
+            {/* <Route
+              exact
+              path='/'
+              render={(props) => (
+                <Home
+                  Sidebar={<Sidebar hover={hover} />}
+                  Navbar={<Navbar />}
+                />
               )}
             />
             <Route
@@ -187,7 +201,8 @@ function App({
                 />
               )}
             />
-            <Route component={NotFound} />
+            <Route component={NotFound} /> */}
+            <Route component={WillBeLive} />
           </Switch>
         </>
       </Router>
