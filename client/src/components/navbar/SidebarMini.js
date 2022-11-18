@@ -214,7 +214,7 @@ const SidebarMini = ({
           </div>
         </NavLink>
         <NavLink
-          to='/projects'
+          to='/work'
           className={"element"}
           activeStyle={{ color: "rgb(0, 145, 255)" }}
         >
