@@ -225,7 +225,7 @@ const SidebarMini = ({
                 style={{ marginRight: "0.5em" }}
               />
             </div>
-            <div>Projects</div>
+            <div>Work</div>
           </div>
         </NavLink>
         <NavLink
