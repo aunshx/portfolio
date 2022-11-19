@@ -128,16 +128,6 @@ function App({
               exact
               path='/'
               render={(props) => (
-                <WillBeLive
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            {/* <Route
-              exact
-              path='/'
-              render={(props) => (
                 <Home
                   Sidebar={<Sidebar hover={hover} />}
                   Navbar={<Navbar />}
@@ -201,8 +191,7 @@ function App({
                 />
               )}
             />
-            <Route component={NotFound} /> */}
-            <Route component={WillBeLive} />
+            <Route component={NotFound} />
           </Switch>
         </>
       </Router>

@@ -27,10 +27,10 @@ app.post("/", function (req, res, next) {
 });
 
 // Define Routes
-app.use("/api/contact", require("./routes/api/contact"));
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/metrics", require("./routes/api/metrics"));
-app.use("/api/blog", require("./routes/api/blog"));
+app.use("/api/v1/contact", require("./routes/api/contact"));
+app.use("/api/v1/auth", require("./routes/api/auth"));
+app.use("/api/v1/metrics", require("./routes/api/metrics"));
+app.use("/api/v1/blog", require("./routes/api/blog"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
@@ -48,3 +48,4 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
+// aunsh.website@gmail.com
