@@ -6,13 +6,9 @@ import {
   Zoom,
   Box,
   Fade,
-  IconButton,
   Modal,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { styled } from "@mui/material/styles";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from "@mui/icons-material/Launch";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
@@ -51,7 +47,6 @@ const Card = ({
   subTitle,
   description,
   tech,
-  websiteUrl,
   gitUrl,
   // Redux State
   settings: { displayMode },
@@ -97,9 +92,7 @@ const Card = ({
   return (
     <div className='card-container'>
       <div className='grid'>
-        <div
-          className='image-container'
-        >
+        <div className='image-container'>
           <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
             <div className='image'>
               <img
@@ -168,7 +161,7 @@ const Card = ({
             >
               <div className='icon' style={{ marginRight: "0" }}>
                 <a
-                  href={websiteUrl}
+                  href={link}
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
                 >

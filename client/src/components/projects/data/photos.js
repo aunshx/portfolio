@@ -1,24 +1,8 @@
-import aunshPortfolioLightOne from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightOne.PNG";
-import aunshPortfolioLightTwo from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightTwo.PNG";
-import aunshPortfolioLightThree from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightThree.PNG";
-import aunshPortfolioLightFour from "../../../resources/images/work-and-projects/aunsh.com/light/aunshPortfolioLightFour.PNG";
-
 import aunshPortfolioDarkOne from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkOne.PNG";
 import aunshPortfolioDarkTwo from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkTwo.PNG";
 import aunshPortfolioDarkThree from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkThree.PNG";
 import aunshPortfolioDarkFour from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkFour.PNG";
 
-// DR SB's
-import drSbsOne from '../../../resources/images/work-and-projects/dr-sbs/main-page-1.png'
-
-import bodingaOne from '../../../resources/images/work-and-projects/bodinga.com/main-page.png'
-
-export const bodingaPics = [
-  {
-    imgSource: bodingaOne,
-    imgText: 'Landing page of bodinga.com'
-  },
-];
 
 export const gotuuPicsLight = [
   {
@@ -92,34 +76,23 @@ export const gotuuPicsDark = [
   },
 ];
 
-export const drSbsPics = [
-  {
-    imgSource: drSbsOne,
-    imgText: "Home page of Dr SB's vet services"
-  },
-  {
-    imgSource: drSbsOne,
-    imgText: "Home page of Dr SB's vet services"
-  },
-];
-
 export const aunshPicsLight = [
   {
-    imgSource: aunshPortfolioLightOne,
+    imgSource: "https://i.postimg.cc/GpPFH4Hf/aunsh-Portfolio-Light-Five.png",
+    imgText: "Homepage of my portfolio website",
+  },
+  {
+    imgSource: "https://i.postimg.cc/q72LymZj/aunsh-Portfolio-Light-One.png",
     imgText: "Admin dashboard pages showcasing recent messages",
   },
   {
-    imgSource: aunshPortfolioLightTwo,
-    imgText: "Admin dashboard in light mode",
-  },
-  {
-    imgSource: aunshPortfolioLightThree,
+    imgSource: "https://i.postimg.cc/ydBTPFMB/aunsh-Portfolio-Light-Two.png",
     imgText: "Statistics pages for recent hits, message metrics and more",
     needsFit: true,
   },
   {
-    imgSource: aunshPortfolioLightFour,
-    imgText: "Statistics pages in dark mode",
+    imgSource: "https://i.postimg.cc/RFrYz62b/aunsh-Portfolio-Light-Three.png",
+    imgText: "Various functionalities for messages",
   },
 ];
 
@@ -140,5 +113,16 @@ export const aunshPicsDark = [
   {
     imgSource: aunshPortfolioDarkFour,
     imgText: "Statistics pages in dark mode",
+  },
+];
+
+export const funWithRedditPics = [
+  {
+    imgSource: "https://i.postimg.cc/mkDwK7T9/homepage-1.png",
+    imgText: "Home page of FwR",
+  },
+  {
+    imgSource: "https://i.postimg.cc/ydkCBQX6/funwithredditworking.gif",
+    imgText: "A walk-through of the features of FwR",
   },
 ];
