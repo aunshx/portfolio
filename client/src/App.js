@@ -4,13 +4,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useSound from "use-sound";
 
-import ArticlesMain from "./components/articles/ArticlesMain";
-import AboutMain from "./components/about/AboutMain";
 import Home from "./Home";
 import NotFound from "./components/layout/NotFound";
 import WillBeLive from "./components/layout/WillBeLive";
 import SkillsMain from "./components/skills/SkillsMain";
-import ContactMain from "./components/contact/ContactMain";
 import Sidebar from "./components/navbar/Sidebar";
 import WorkMain from "./components/work/WorkMain";
 import Navbar from "./components/navbar/Navbar";
@@ -127,61 +124,8 @@ function App({
             <Route
               exact
               path='/'
-              render={(props) => (
-                <Home
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
+              component={Home}
             />
-            <Route
-              exact
-              path='/user'
-              render={(props) => (
-                <AboutMain
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            <Route
-              path='/work'
-              render={(props) => (
-                <WorkMain
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            <Route
-              path='/articles'
-              render={(props) => (
-                <ArticlesMain
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            <Route
-              path='/skills'
-              render={(props) => (
-                <SkillsMain
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            <Route
-              path='/contact'
-              render={(props) => (
-                <ContactMain
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            <PrivateRoute path='/admin' exact component={Main} />
-            <PrivateRoute path='/admin/stats' component={Stats} />
             <Route
               path='/admin/login'
               render={(props) => (

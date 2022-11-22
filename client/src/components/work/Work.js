@@ -19,9 +19,9 @@ import {
   bodingaPics,
 } from "./data/photos";
 
-const Projects = () => {
+const Projects = ({ innerRef }) => {
   return (
-    <div className='app'>
+    <div className='app' ref={innerRef}>
       <div className='projects'>
         <div className='title flex_middle' data-aos='flip-down'>
           <div style={{ marginRight: "0.5em" }}>

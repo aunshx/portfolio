@@ -11,49 +11,69 @@ const SkillOne = ({ delay, logo, title, runAos,
 
   const [borderColorNow, setBorderColorNow] = useState('')
 
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseEnter = () => {
+      setIsHovering(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+    };
+
   useEffect(() => {
-    switch(true) {
-      case title === 'React':
-        setBorderColorNow("#34cfeb")
-        break
+    switch (true) {
+      case title === "React" || title === "C++":
+        setBorderColorNow("#34cfeb");
+        break;
 
-      case title === 'Node.js' || title === 'MongoDb':
+      case title === "Node.js" ||
+        title === "MongoDb" ||
+        title === "SpringBoot":
         setBorderColorNow("#3ede69");
-        break
+        break;
 
-      case title === 'Git' || title === 'HTML':
+      case title === "Git" || title === "HTML":
         setBorderColorNow("#de793e");
-        break
+        break;
 
-      case title === 'CSS' || title === 'Postgres' || title === 'Mui':
+      case title === "CSS" || title === "Postgres" || title === "Mui":
         setBorderColorNow("rgb(0, 145, 255)");
-        break
+        break;
 
-      case title === 'JS':
+      case title === "JS" || title === 'Python':
         setBorderColorNow("#dec13e");
-        break
+        break;
 
-      case title === 'Redux':
+      case title === "Redux":
         setBorderColorNow("#8e3ede");
-        break
+        break;
+
+      case title === "Java":
+        setBorderColorNow("#ec2024");
+        break;
 
       default:
-        return null
+        return null;
     }
   },[])
 
-  const { width, height } = useWindow();
+  const { width } = useWindow();
 
   return (
-    <div className='imp'>
+    <div
+      className='imp'
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div
         className={
           displayMode ? "individual individual--dark app" : "individual app"
         }
-        data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ''}
+        data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
-        style={displayMode ? { border: `1px solid ${borderColorNow}` } : {}}
+        style={isHovering ? { border: `1px solid ${borderColorNow}`, boxShadow: `0px 0px 20px 0px ${borderColorNow}`,transition: '.05s ease-in-out'} : {}}
       >
         <div className='image'>
           <img src={logo} alt='Logo of Tech' />

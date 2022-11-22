@@ -38,6 +38,12 @@ const useStyles = makeStyles(theme => ({
 
 const Sidebar = ({
   hover,
+  goToHome,
+  goToAbout,
+  goToWork,
+  goToSkills,
+  goToArticles,
+  goToContact,
   // Redux State
   settings: { displayMode, sound }
 }) => {
@@ -111,11 +117,10 @@ const Sidebar = ({
           onClick={minimize}
         >
           <div className='app'>
-            <NavLink
-              to='/'
+            <div
+              onClick={goToHome}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
@@ -128,12 +133,11 @@ const Sidebar = ({
                   Home
                 </div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/user'
+            </div>
+            <div
+              onClick={goToAbout}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
@@ -144,12 +148,11 @@ const Sidebar = ({
                 </div>
                 <div className='writing'>About</div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/work'
+            </div>
+            <div
+              onClick={goToWork}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
@@ -160,12 +163,11 @@ const Sidebar = ({
                 </div>
                 <div className='writing'>Work</div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/articles'
+            </div>
+            <div
+              onClick={goToArticles}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
@@ -176,12 +178,11 @@ const Sidebar = ({
                 </div>
                 <div className='writing'>Articles</div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/skills'
+            </div>
+            <div
+              onClick={goToSkills}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
@@ -192,12 +193,11 @@ const Sidebar = ({
                 </div>
                 <div className='writing'>Skills</div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/contact'
+            </div>
+            <div
+              onClick={goToContact}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between' onMouseEnter={elementHover}>
                 <div>
@@ -208,7 +208,7 @@ const Sidebar = ({
                 </div>
                 <div className='writing'>Contact</div>
               </div>
-            </NavLink>
+            </div>
             <div
               className='writing'
               style={{ marginTop: "1.3em", fontWeight: "bold" }}
@@ -322,11 +322,10 @@ const Sidebar = ({
           onClick={maximize}
         >
           <div className='app'>
-            <NavLink
-              to='/'
+            <div
+              onClick={goToHome}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between'>
                 <div>
@@ -336,12 +335,11 @@ const Sidebar = ({
                   />
                 </div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/user'
+            </div>
+            <div
+              onClick={goToAbout}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between'>
                 <div>
@@ -351,12 +349,11 @@ const Sidebar = ({
                   />
                 </div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/work'
+            </div>
+            <div
+              onClick={goToWork}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between'>
                 <div>
@@ -366,12 +363,11 @@ const Sidebar = ({
                   />
                 </div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/articles'
+            </div>
+            <div
+              onClick={goToArticles}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between'>
                 <div>
@@ -381,12 +377,11 @@ const Sidebar = ({
                   />
                 </div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/skills'
+            </div>
+            <div
+              onClick={goToSkills}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between'>
                 <div>
@@ -396,12 +391,11 @@ const Sidebar = ({
                   />
                 </div>
               </div>
-            </NavLink>
-            <NavLink
-              to='/contact'
+            </div>
+            <div
+              onClick={goToContact}
               className={"element"}
-              activeStyle={{ color: "rgb(0, 145, 255)" }}
-              exact
+              style={{ cursor: "pointer" }}
             >
               <div className='flex_between'>
                 <div>
@@ -411,7 +405,7 @@ const Sidebar = ({
                   />
                 </div>
               </div>
-            </NavLink>
+            </div>
             <a
               href='https://github.com/aunshx'
               target={"_blank"}

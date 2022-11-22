@@ -32,7 +32,7 @@ const SkillsMain = ({
   // Redux State
   sidebar: { hover }
 }) => {
-  const { width, height } = useWindow()
+  const { width } = useWindow()
   
   return (
     <>

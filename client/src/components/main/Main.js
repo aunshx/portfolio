@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import second from "../../resources/images/main/gifs/drinkingWater.gif";
 
 import keyboard from "../../resources/sounds/keyboard.mp3";
-import MetaTags from '../layout/MetaTags';
 
 const SplitText = ({ copy, role }) => {
 
@@ -14,15 +13,15 @@ const SplitText = ({ copy, role }) => {
     return(
       <span aria-label={copy} role={role}>
           {copy.split("").map(function(char, index){
-            let style1 = {"animation-delay": (0.5 + index / 10) + "s"}
-            let style2 = {"animation-delay": (0.5 + index / 10) + "s"}
+            let style1 = {"animation-delay": (0.2 + index / 10) + "s"}
+            let style2 = {"animation-delay": (0.3 + index / 10) + "s"}
             return (
               <>
-                {index > 4 && index < 10 ? (
+                {index > 12 && index < 20 ? (
                   <span
                     aria-hidden='true'
                     key={index}
-                    className='u'
+                    className='uu'
                     style={style2}
                   >
                     {char}
@@ -31,7 +30,7 @@ const SplitText = ({ copy, role }) => {
                   <span
                     aria-hidden='true'
                     key={index}
-                    className='uu'
+                    className='u'
                     style={style1}
                   >
                     {char}
@@ -45,6 +44,7 @@ const SplitText = ({ copy, role }) => {
 }
 
 const Main = ({
+  innerRef,
   // Redux State 
   settings: { sound }
 }) => {
@@ -70,23 +70,17 @@ const Main = ({
   
   return (
     <>
-      <MetaTags
-        title={<title>Aunsh &middot; Full Stack Developer &middot; Portfolio</title>}
-      />
-      <div className='main' onMouseMove={makeSomeNoise}>
+      <div className='main' onMouseMove={makeSomeNoise} ref={innerRef}>
         <div className='double_grid'>
           <div className='title app' style={{ justifyContent: "center" }}>
             <div className='second app ft-bold'>
-              <div
-                className='first one'
-                onMouseEnter={onHoverOnElement}
-              >
+              <div className='first one' onMouseEnter={onHoverOnElement}>
                 Hi,
               </div>
               <div>
                 <div
                   className={
-                    // wooActive ? "flex_middle boopie-two" : 
+                    // wooActive ? "flex_middle boopie-two" :
                     "flex_middle boopie"
                   }
                 >
@@ -154,16 +148,20 @@ const Main = ({
                     >
                       !
                     </span>
-                    <span
-                      style={{ marginLeft: "-0.28em", paddingTop: "2em" }}
-                    >
-                    <img src={second} alt='Dude standing and drinking water' />
+                    <span style={{ marginLeft: "-0.28em", paddingTop: "2em" }}>
+                      <img
+                        src={second}
+                        alt='Dude standing and drinking water'
+                      />
                     </span>
                   </div>
                 </div>
               </div>
               <div className='third' data-splitting>
-                <SplitText copy='Full Stack Developer' role='heading' />
+                <SplitText
+                  copy='Welcome to my corner of the internet'
+                  role='heading'
+                />
               </div>
             </div>
           </div>

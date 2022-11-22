@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faNewspaper} from "@fortawesome/free-solid-svg-icons";
 import ArticleOne from './ArticleOne';
 
 import reduxLogo from "../../resources/images/skills/logos/reduxLogo.png";
@@ -18,9 +18,9 @@ import createServerImg from "../../resources/images/articles/five.jpeg";
 import funWithReddit from '../../resources/images/articles/funWithReddit.png'
 
 
-const Articles = (props) => {
+const Articles = ({ innerRef }) => {
   return (
-    <div className='app'>
+    <div className='app' ref={innerRef}>
       <div className='articles'>
         <div className='title flex_middle' data-aos='flip-up'>
           <div style={{ marginRight: "0.5em" }}>
@@ -141,6 +141,17 @@ const Articles = (props) => {
                 "A simple local server to get you started with backend development"
               }
             />
+          </div>
+        </div>
+        <div className='read-more flex_middle'>
+          <div className='ft-bold' style={{ marginLeft: "0.5em" }}>
+            <a
+              href='https://aunsh.medium.com'
+              rel='noreferrer nofollow'
+              target='_blank'
+            >
+              Read More
+            </a>
           </div>
         </div>
       </div>

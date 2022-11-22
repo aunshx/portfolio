@@ -63,8 +63,6 @@ const ArticleOne = ({
     >
       <div
         className={displayMode ? "individual individual--dark" : "individual"}
-        data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
-        data-aos-offset={width < 787 && 30}
       >
         <div
           className='image'
@@ -85,10 +83,10 @@ const ArticleOne = ({
         </div>
         <div className='app' style={{ justifyContent: "space-between" }}>
           <div className='title flex_middle'>{title}</div>
-          <div className='description flex_middle'>
+          {/* <div className='description flex_middle'>
             {description ||
               "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, maiores."}
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>

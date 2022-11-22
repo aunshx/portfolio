@@ -1,99 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import useWindow from "react-window-size-simple";
-
+import { faUser, faSchool, faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Cools from "../layout/Cools";
 
-import logo from "../../resources/images/about/sketLogo.png";
+import logo from "../../resources/images/about/profile.png"
 
-// import imgLogo
-
-const About = ({ sidebar: { hover } }) => {
-  
-  const { width, height } = useWindow();
-
-  const [radius, setRadius] = useState(0);
-
-  useEffect(() => {
-    switch (true) {
-      case 787 < width && width <= 1200:
-        return setRadius(250);
-
-      case width > 1200:
-        return setRadius(500);
-
-      case width <= 786:
-        return setRadius(100);
-
-      default:
-        return null;
-    }
-  }, [width]);
-
+const About = ({ innerRef, sidebar: { hover } }) => {
   return (
     <>
-      <div className='app'>
+      <div className='app' ref={innerRef}>
         <div className='about-main' style={{ justifyContent: "center" }}>
-          <div
-            className='title flex_middle'
-            data-aos='flip-up'
-            data-aos-offset={width < 787 && 30}
-          >
+          <div className='title flex_middle'>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faUser} />
             </div>
-            <div>About</div>
+            <div>C'est Moi</div>
           </div>
           <div className='body'>
             <div className='flex_middle'>
               <div className='app text'>
                 <div className='title'>
-                  <div
-                    className='image'
-                    data-aos='fade-in'
-                    data-aos-offset={width < 787 && 30}
-                  >
+                  <div className='image'>
                     <img src={logo} alt='' />
                   </div>
                 </div>
-                <div
-                  className='para'
-                  data-aos='fade-in'
-                  data-aos-offset={width < 787 && 30}
-                >
-                  I’m an engineer, teacher and full stack web developer from
-                  India. Ever since venturing into the field of web development
-                  I have become smitten with the process of designing,
-                  developing and bringing to life a product from scratch.
+                <div className='para'>
+                  I'm
+                  <div>an Engineer</div>
+                  <div>a Teacher</div>
+                  <div>a Writer</div>
+                  <div>Also, a cyclist</div>
                 </div>
-                <div
-                  className='para'
-                  data-aos='fade-in'
-                  data-aos-offset={width < 787 && 30}
-                >
-                  A highly-motivated individual with a problem solving mindset,
-                  I like to solve challenges efficiently. Fan of cycling,
-                  cooking and exploring new music on YT :) A tween with a knack
-                  of randomly creating new web-apps and working on ambitious
-                  projects with like minded people.
-                </div>
-                <Link to='/contact'>
-                  <div
-                    className='para-link'
-                    data-aos='fade-in'
-                    data-aos-offset={width < 787 && 30}
-                  >
-                    Let's get going!
-                  </div>
-                </Link>
               </div>
             </div>
-            <div className='cloud flex_middle'>
-              <Cools radius={radius} />
+            <div className='text flex_middle'>
+              <div className='qualifications'>
+                <div className='app' style={{ margin: "0.5em 0 1.5em 0" }}>
+                  <div style={{ margin: "0 0 0.2em 0" }}>
+                    <FontAwesomeIcon icon={faSchool} style={{ fontSize: 22 }} />
+                  </div>
+                  <div>B.E. E&TC, University of Pune, 2020</div>
+                </div>
+                <div className='app' style={{ margin: "0.5em 0 1.5em 0" }}>
+                  <div style={{ margin: "0 0 0.2em 0" }}>
+                    <FontAwesomeIcon
+                      icon={faLanguage}
+                      style={{ fontSize: 22 }}
+                    />
+                  </div>
+                  <div>English, Hindi, Marathi and French*</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
