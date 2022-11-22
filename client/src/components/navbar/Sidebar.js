@@ -40,7 +40,7 @@ const Sidebar = ({
   hover,
   goToHome,
   goToAbout,
-  goToWork,
+  goToProjects,
   goToSkills,
   goToArticles,
   goToContact,
@@ -150,7 +150,7 @@ const Sidebar = ({
               </div>
             </div>
             <div
-              onClick={goToWork}
+              onClick={goToProjects}
               className={"element"}
               style={{ cursor: "pointer" }}
             >
@@ -161,7 +161,7 @@ const Sidebar = ({
                     style={{ marginRight: "0.5em" }}
                   />
                 </div>
-                <div className='writing'>Work</div>
+                <div className='writing'>Projects</div>
               </div>
             </div>
             <div
@@ -351,7 +351,7 @@ const Sidebar = ({
               </div>
             </div>
             <div
-              onClick={goToWork}
+              onClick={goToProjects}
               className={"element"}
               style={{ cursor: "pointer" }}
             >

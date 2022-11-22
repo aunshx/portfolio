@@ -15,7 +15,7 @@ import bellRing from "./resources/sounds/bellRing.mp3";
 import { captureIpNow } from "./redux/actions/metrics";
 
 import Main from './components/main/Main';
-import Work from './components/work/Work';
+import Projects from './components/projects/Projects';
 import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
@@ -41,8 +41,8 @@ const Home = ({
   const me = useRef();
   const goHome = useRef();
   const goAbout = useRef();
-  const goWork = useRef();
   const goProjects = useRef();
+  const goWork = useRef();
   const goArticles = useRef();
   const goSkills = useRef();
   const goContact = useRef();
@@ -104,9 +104,9 @@ const Home = ({
     }
   };
 
-  const goToWork = () => {
-    if (goWork.current) {
-      goWork.current.scrollIntoView({ behavior: "smooth" });
+  const goToProjects = () => {
+    if (goProjects.current) {
+      goProjects.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -145,7 +145,7 @@ const Home = ({
         hover={hover}
         goToHome={goToHome}
         goToAbout={goToAbout}
-        goToWork={goToWork}
+        goToProjects={goToProjects}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
         goToContact={goToContact}
@@ -156,7 +156,7 @@ const Home = ({
       {width <= 600 && <BackgroundTiny />} */}
       <Main innerRef={goHome} />
       <About innerRef={goAbout} />
-      <Work innerRef={goWork} />
+      <Projects innerRef={goProjects} />
       <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />
       <Contact

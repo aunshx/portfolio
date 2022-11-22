@@ -29,20 +29,20 @@ const Skills = ({ innerRef }) => {
       </div>
       <div className='body-two'>
         <div className='flex_middle'>
-          <SkillOne delay={0} title={"Java"} logo={javaLogo} runAos={true} />
+          <SkillOne delay={0} title={"Java"} logo={javaLogo} runAos={false} />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={50} title={"JS"} logo={jsLogo} runAos={true} />
+          <SkillOne delay={50} title={"JS"} logo={jsLogo} runAos={false} />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={100} title={"C++"} logo={cppLogo} runAos={true} />
+          <SkillOne delay={100} title={"C++"} logo={cppLogo} runAos={false} />
         </div>
         <div className='flex_middle'>
           <SkillOne
             delay={150}
             title={"Python"}
             logo={pythonLogo}
-            runAos={true}
+            runAos={false}
           />
         </div>
       </div>
@@ -52,7 +52,7 @@ const Skills = ({ innerRef }) => {
             delay={200}
             title={"MongoDb"}
             logo={mongoLogo}
-            runAos={true}
+            runAos={false}
           />
         </div>
         <div className='flex_middle'>
@@ -60,7 +60,7 @@ const Skills = ({ innerRef }) => {
             delay={250}
             title={"SpringBoot"}
             logo={springBootLogo}
-            runAos={true}
+            runAos={false}
           />
         </div>
         <div className='flex_middle'>
@@ -68,7 +68,7 @@ const Skills = ({ innerRef }) => {
             delay={300}
             title={"Postgres"}
             logo={psqlLogo}
-            runAos={true}
+            runAos={false}
           />
         </div>
         <div className='flex_middle'>
@@ -76,27 +76,27 @@ const Skills = ({ innerRef }) => {
             delay={350}
             title={"Node.js"}
             logo={nodeLogo}
-            runAos={true}
+            runAos={false}
           />
         </div>
       </div>
       <div className='body-two'>
         <div className='flex_middle'>
-          <SkillOne delay={400} title={"Git"} logo={gitLogo} runAos={true} />
+          <SkillOne delay={400} title={"Git"} logo={gitLogo} runAos={false} />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={450} title={"React"} logo={reactLogo} runAos={true} />
+          <SkillOne delay={450} title={"React"} logo={reactLogo} runAos={false} />
         </div>
         <div className='flex_middle'>
           <SkillOne
             delay={500}
             title={"Redux"}
             logo={reduxLogo}
-            runAos={true}
+            runAos={false}
           />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={550} title={"CSS"} logo={css3Logo} runAos={true} />
+          <SkillOne delay={550} title={"CSS"} logo={css3Logo} runAos={false} />
         </div>
       </div>
     </div>
