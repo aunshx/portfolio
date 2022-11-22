@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import useWindow from "react-window-size-simple";
 import { connect } from "react-redux";
 
-import { Box, Collapse, Fade, IconButton, Modal, Tooltip } from "@mui/material";
+import { Box, Fade, IconButton, Modal, Tooltip } from "@mui/material";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";

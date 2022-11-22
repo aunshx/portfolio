@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Tooltip, Zoom } from "@mui/material";
+import {
+  Tooltip,
+  Zoom,
+  Box,
+  Fade,
+  IconButton,
+  Modal,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-
+import { styled } from "@mui/material/styles";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from "@mui/icons-material/Launch";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import useWindow from "react-window-size-simple";
+
+import BigPic from "./BigPic";
 
 const useStyles = makeStyles((theme) => ({
   customTooltip: {
@@ -16,6 +28,19 @@ const useStyles = makeStyles((theme) => ({
     color: "rgb(100, 100, 100)",
   },
 }));
+
+const style = {
+  position: "fixed",
+  top: "40%",
+  left: "54%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "white",
+  boxShadow: 24,
+  border: "none",
+  padding: "1em",
+  width: "70%",
+  height: "60%",
+};
 
 
 const Card = ({
@@ -32,7 +57,42 @@ const Card = ({
 }) => {
     const classes = useStyles();
 
-    const [currentImage, setCurrentImage] = useState(0)
+    const { width } = useWindow();
+    const [isLoading, setIsLoading] = useState(true);
+    const [isBigPicOpen, setIsBigPicOpen] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const increaseCurrentIndex = () => {
+      if (currentIndex === pics.length - 1) {
+        setCurrentIndex(0);
+      } else {
+        setCurrentIndex(currentIndex + 1);
+      }
+      setIsLoading(true);
+    };
+
+    const decreaseCurrentIndex = () => {
+      if (currentIndex === 0) {
+        setCurrentIndex(pics.length - 1);
+      } else {
+        setCurrentIndex(currentIndex - 1);
+      }
+      setIsLoading(true);
+    };
+
+    const bigPicClose = () => {
+      setIsBigPicOpen(false);
+    };
+
+    const bigPicOpen = () => {
+      setIsBigPicOpen(true);
+    };
+
+    const onLoad = () => {
+      setIsLoading(false);
+    };
+
+
   return (
     <div className='card-container'>
       <div className='grid'>
@@ -43,8 +103,8 @@ const Card = ({
           <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
             <div className='image'>
               <img
-                src={pics[currentImage].imgSource}
-                alt={pics[currentImage].imgText}
+                src={pics[currentIndex].imgSource}
+                alt={pics[currentIndex].imgText}
               />
             </div>
           </a>
@@ -78,7 +138,7 @@ const Card = ({
               TransitionComponent={Zoom}
               enterDelay={390}
             >
-              <div className='icon'>
+              <div className='icon' onClick={bigPicOpen}>
                 <OpenInFullIcon style={{ fontSize: 20 }} />
               </div>
             </Tooltip>
@@ -106,7 +166,7 @@ const Card = ({
               TransitionComponent={Zoom}
               enterDelay={390}
             >
-              <div className='icon' style={{ marginRight: '0' }} >
+              <div className='icon' style={{ marginRight: "0" }}>
                 <a
                   href={websiteUrl}
                   target={"_blank"}
@@ -119,6 +179,33 @@ const Card = ({
           </div>
         </div>
       </div>
+      <Modal
+        open={isBigPicOpen}
+        onClose={bigPicClose}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+          style: {
+            backgroundColor: "rgba(0,0,0,0.8)",
+          },
+        }}
+      >
+        <Fade in={isBigPicOpen}>
+          <Box style={style}>
+            <BigPic
+              close={bigPicClose}
+              pics={pics}
+              currentIndex={currentIndex}
+              increaseCurrentIndex={increaseCurrentIndex}
+              decreaseCurrentIndex={decreaseCurrentIndex}
+              displayMode={displayMode}
+              isLoading={isLoading}
+              onLoad={onLoad}
+              width={width}
+            />
+          </Box>
+        </Fade>
+      </Modal>
     </div>
   );
 };
