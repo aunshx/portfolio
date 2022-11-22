@@ -98,7 +98,6 @@ const Card = ({
       <div className='grid'>
         <div
           className='image-container'
-          // style={{ border: "1px solid blue" }}
         >
           <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
             <div className='image'>

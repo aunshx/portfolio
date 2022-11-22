@@ -49,18 +49,6 @@ const Projects = ({
             websiteUrl={"https://gotuu.in"}
             gitUrl={"https://github.com/aunshx/gotuu"}
           />
-          <CardOld
-            runAos={false}
-            picsLight={gotuuPicsLight}
-            picsDark={gotuuPicsDark}
-            logo={gotuuLogo}
-            details={aunshDetails}
-            type={"gotuu"}
-            websiteTitle={"gotuu.in"}
-            websiteUrl={"https://gotuu.in"}
-            gitUrl={"https://github.com/aunshx/gotuu"}
-            tags={["react", "redux", "mongo", "node", "js"]}
-          />
         </div>
       </div>
     </div>
