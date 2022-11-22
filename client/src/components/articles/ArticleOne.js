@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { connect } from "react-redux";
+import useSound from "use-sound";
 import {Tooltip} from '@mui/material'
 import { Link } from 'react-router-dom'
 
-
-import useWindow from "react-window-size-simple";
-import { connect } from 'react-redux';
+import swoosh from '../../resources/sounds/resumeSwoosh.mp3'
 
 const ArticleOne = ({
   delay,
@@ -19,9 +17,9 @@ const ArticleOne = ({
   link,
   description,
   // Redux States
-  settings: { displayMode },
+  settings: { displayMode, sound },
 }) => {
-  const { width, height } = useWindow();
+  const [playOn] = useSound(swoosh, { volume: 0.2 });
   const [colorBorder, setColorBorder] = useState("");
 
   useEffect(() => {
@@ -52,6 +50,11 @@ const ArticleOne = ({
     }
   }, []);
 
+  const elementHover = () => {
+    if (sound) {
+      playOn();
+    }
+  };
   return (
     <Link
       to={{
@@ -63,6 +66,7 @@ const ArticleOne = ({
     >
       <div
         className={displayMode ? "individual individual--dark" : "individual"}
+        onMouseEnter={elementHover}
       >
         <div
           className='image'

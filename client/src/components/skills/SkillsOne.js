@@ -3,23 +3,36 @@ import PropTypes from 'prop-types';
 
 import useWindow from "react-window-size-simple";
 import { connect } from 'react-redux';
+import useSound from 'use-sound';
 
-const SkillOne = ({ delay, logo, title, runAos, number, numberCurrent,
+import bass from '../../resources/sounds/shortBass.mp3'
+
+const SkillOne = ({
+  delay,
+  logo,
+  title,
+  runAos,
+  number,
+  numberCurrent,
   // Redux State
-  settings: { displayMode }
+  settings: { displayMode, sound },
 }) => {
+  const [playOn] = useSound(bass, { volume: 0.2 });
 
-  const [borderColorNow, setBorderColorNow] = useState('')
+  const [borderColorNow, setBorderColorNow] = useState("");
 
-    const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
-    const handleMouseEnter = () => {
-      setIsHovering(true);
-    };
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
 
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-    };
+  const handleMouseLeave = () => {
+    if (sound) {
+      playOn();
+    }
+    setIsHovering(false);
+  };
 
   useEffect(() => {
     switch (true) {
@@ -27,9 +40,7 @@ const SkillOne = ({ delay, logo, title, runAos, number, numberCurrent,
         setBorderColorNow("#34cfeb");
         break;
 
-      case title === "Node.js" ||
-        title === "MongoDb" ||
-        title === "SpringBoot":
+      case title === "Node.js" || title === "MongoDb" || title === "SpringBoot":
         setBorderColorNow("#3ede69");
         break;
 
@@ -41,7 +52,7 @@ const SkillOne = ({ delay, logo, title, runAos, number, numberCurrent,
         setBorderColorNow("rgb(0, 145, 255)");
         break;
 
-      case title === "JS" || title === 'Python':
+      case title === "JS" || title === "Python":
         setBorderColorNow("#dec13e");
         break;
 
@@ -56,7 +67,7 @@ const SkillOne = ({ delay, logo, title, runAos, number, numberCurrent,
       default:
         return null;
     }
-  },[])
+  }, []);
 
   const { width } = useWindow();
 
@@ -73,7 +84,14 @@ const SkillOne = ({ delay, logo, title, runAos, number, numberCurrent,
         data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
-        style={(isHovering || number === numberCurrent) ? { boxShadow: `0px 0px 20px 0px ${borderColorNow}`,transition: '.1s ease-in-out'} : {}}
+        style={
+          isHovering || number === numberCurrent
+            ? {
+                boxShadow: `0px 0px 20px 0px ${borderColorNow}`,
+                transition: ".1s ease-in-out",
+              }
+            : {}
+        }
       >
         <div className='image'>
           <img src={logo} alt='Logo of Tech' />
