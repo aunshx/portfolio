@@ -15,11 +15,12 @@ import bellRing from "./resources/sounds/bellRing.mp3";
 import { captureIpNow } from "./redux/actions/metrics";
 
 import Main from './components/main/Main';
+import About from "./components/about/About";
+import Work from "./components/work/Work";
 import Projects from './components/projects/Projects';
 import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
-import About from "./components/about/About";
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/navbar/Sidebar';
 
@@ -41,8 +42,8 @@ const Home = ({
   const me = useRef();
   const goHome = useRef();
   const goAbout = useRef();
-  const goProjects = useRef();
   const goWork = useRef();
+  const goProjects = useRef();
   const goArticles = useRef();
   const goSkills = useRef();
   const goContact = useRef();
@@ -104,6 +105,12 @@ const Home = ({
     }
   };
 
+  const goToWork = () => {
+    if (goWork.current) {
+      goWork.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const goToProjects = () => {
     if (goProjects.current) {
       goProjects.current.scrollIntoView({ behavior: "smooth" });
@@ -145,6 +152,7 @@ const Home = ({
         hover={hover}
         goToHome={goToHome}
         goToAbout={goToAbout}
+        goToWork={goToWork}
         goToProjects={goToProjects}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
@@ -152,10 +160,11 @@ const Home = ({
       />
       {/* {width > 1280 && <BackgroundLarge />}
       {900 < width && width <= 1280 && <BackgroundMedium />}
-      {600 < width && width <= 900 && <BackgroundSmall />}
-      {width <= 600 && <BackgroundTiny />} */}
+      {600 < width && width <= 900 && <BackgroundSmall />} */}
+      {width <= 600 && <BackgroundTiny />}
       <Main innerRef={goHome} />
       <About innerRef={goAbout} />
+      <Work innerRef={goWork} />
       <Projects innerRef={goProjects} />
       <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />

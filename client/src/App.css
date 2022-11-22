@@ -1083,7 +1083,7 @@ pre {
 /* ------------------------------------ PROJECTS ------------------------------------ */
 .projects {
   color: var(--grey-color);
-   width: 1000px;
+   width: 800px;
   height: auto;
   padding: 1em;
   margin: 50px 0 50px 50px;
@@ -1093,6 +1093,7 @@ pre {
 .projects .title {
   color: var(--lighter-dark-font-color);
   font-size: 2em;
+  margin-bottom: 1em;
 }
 
 .projects .card-container {
@@ -1520,7 +1521,7 @@ transition: .2s ease-in-out;
    width: 800px;
   height: auto;
   padding: 0em 0em 1em 1em;
-  margin: 0px 0 50px 50px;
+  margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1535,17 +1536,17 @@ transition: .2s ease-in-out;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
   margin-top: 1.5em;
-  column-gap: 30px;
+  column-gap: 20px;
 }
 
 .articles .body .individual {
-  width: 100%;
+  width: 90%;
   color: var(--lighter-dark-font-color);
   height: 260px;
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
-  margin: 2em 0;
+  margin: 1.5em 0 2em 0;
 }
 
 .articles .body .individual--dark {
@@ -1602,7 +1603,7 @@ transition: .2s ease-in-out;
 }
 
 .articles .body .individual .title {
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 0em 1em 1em 1em;
   text-align: center;
   height: 90px;
@@ -1640,8 +1641,7 @@ transition: .2s ease-in-out;
 .read-more a {
   color: var(--expand-more-color);
   font-size: 0.9em;
-  margin-top: 1em;
-  margin-bottom: 2em;
+  margin: 1em 0 2em 25px;
   cursor: pointer;
 }
 
@@ -1868,7 +1868,7 @@ transition: .2s ease;
 .skills .title {
   color: var(--lighter-dark-font-color);
   font-size: 2em;
-  margin: 1.5em 0;
+  margin: 1em 0 1.5em 0;
 }
 
 .skills .body-two {

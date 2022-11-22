@@ -7,7 +7,6 @@ import { faTools } from "@fortawesome/free-solid-svg-icons";
 import Card from "./tools/Card";
 import InvertedCard from "./tools/InvertedCard";
 
-import { aunshDetails } from "./data/details";
 import {
   aunshPicsLight,
   aunshPicsDark,
@@ -64,6 +63,17 @@ const Projects = ({
             tech={["Node.js", "PSQL", "React", "Mui", "Javascript"]}
             gitUrl={"https://github.com/aunshx/portfolio"}
           />
+        </div>
+      </div>
+      <div className='read-more flex_middle' style={{ marginTop: "-5em" }}>
+        <div className='ft-bold' style={{ marginLeft: "0.5em" }}>
+          <a
+            href='https://github.com/aunshx?tab=repositories'
+            rel='noreferrer nofollow'
+            target='_blank'
+          >
+            More Projects
+          </a>
         </div>
       </div>
     </div>

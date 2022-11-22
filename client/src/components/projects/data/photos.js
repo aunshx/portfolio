@@ -1,9 +1,3 @@
-import aunshPortfolioDarkOne from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkOne.PNG";
-import aunshPortfolioDarkTwo from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkTwo.PNG";
-import aunshPortfolioDarkThree from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkThree.PNG";
-import aunshPortfolioDarkFour from "../../../resources/images/work-and-projects/aunsh.com/dark/aunshPortfolioDarkFour.PNG";
-
-
 export const gotuuPicsLight = [
   {
     imgSource: "https://i.postimg.cc/CLW7jtb8/main-page-light-1.png",
@@ -87,32 +81,32 @@ export const aunshPicsLight = [
   },
   {
     imgSource: "https://i.postimg.cc/ydBTPFMB/aunsh-Portfolio-Light-Two.png",
-    imgText: "Statistics pages for recent hits, message metrics and more",
-    needsFit: true,
+    imgText: "Metrics pages for recent hits, message metrics and more",
   },
   {
     imgSource: "https://i.postimg.cc/RFrYz62b/aunsh-Portfolio-Light-Three.png",
     imgText: "Various functionalities for messages",
+    needsFit: true,
   },
 ];
 
 export const aunshPicsDark = [
   {
-    imgSource: aunshPortfolioDarkOne,
+    imgSource: "https://i.postimg.cc/c4VdBbM2/aunsh-Portfolio-Dark-Five.png",
+    imgText: "Homepage of my portfolio website",
+  },
+  {
+    imgSource: "https://i.postimg.cc/05XkbQ68/aunsh-Portfolio-Dark-One.png",
     imgText: "Admin dashboard pages showcasing recent messages",
   },
   {
-    imgSource: aunshPortfolioDarkTwo,
-    imgText: "Admin dashboard in Dark mode",
+    imgSource: "https://i.postimg.cc/bNGzbhb1/aunsh-Portfolio-Dark-Two.png",
+    imgText: "Metrics pages for recent hits, message metrics and more",
   },
   {
-    imgSource: aunshPortfolioDarkThree,
-    imgText: "Statistics pages for recent hits, message metrics and more",
+    imgSource: "https://i.postimg.cc/wMrgPfKt/aunsh-Portfolio-Dark-Three.png",
+    imgText: "Various functionalities for messages",
     needsFit: true,
-  },
-  {
-    imgSource: aunshPortfolioDarkFour,
-    imgText: "Statistics pages in dark mode",
   },
 ];
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useSound from 'use-sound'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 import {
     Tooltip
@@ -39,6 +39,7 @@ const Sidebar = ({
   hover,
   goToHome,
   goToAbout,
+  goToWork,
   goToProjects,
   goToSkills,
   goToArticles,
@@ -146,6 +147,21 @@ const Sidebar = ({
                   />
                 </div>
                 <div className='writing'>About</div>
+              </div>
+            </div>
+            <div
+              onClick={goToWork}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between' onMouseEnter={elementHover}>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faBriefcase}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+                <div className='writing'>Work</div>
               </div>
             </div>
             <div
@@ -344,6 +360,20 @@ const Sidebar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faUser}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              onClick={goToWork}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faBriefcase}
                     style={{ marginRight: "0.5em" }}
                   />
                 </div>

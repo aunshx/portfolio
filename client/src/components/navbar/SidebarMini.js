@@ -190,9 +190,6 @@ const SidebarMini = ({
         </div>
         <NavLink
           to='/'
-          className={"element"}
-          activeStyle={{ color: "rgb(0, 145, 255)" }}
-          exact
         >
           <div className='flex_between' onMouseEnter={elementHover}>
             <div>

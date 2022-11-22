@@ -11,8 +11,8 @@ export default function BackgroundLarge() {
         },
         particles: {
           number: {
-            value: 300,
-            limit: 400,
+            value: 250,
+            limit: 300,
           },
           color: {
             value: "#262626",

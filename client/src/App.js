@@ -49,7 +49,7 @@ function App({
     window.addEventListener("storage", () => {
       if (!localStorage.token) store.dispatch({ type: LOGOUT });
     });
-    // check for token in LS
+
     if (localStorage.getItem("theme") === "light") {
       store.dispatch({
         type: DARK_MODE_OFF,
