@@ -41,7 +41,13 @@ const Projects = ({
             pics={displayMode ? gotuuPicsDark : gotuuPicsLight}
             title={"gotuu.in"}
             link={"https://gotuu.in"}
-            subTitle={'Web-App'}
+            subTitle={"Web-App"}
+            description={
+              "A web-app to maximize your productivity and manage time smartly. Also included smart metrics to check your statistics."
+            }
+            tech={["React", "Redux", "MongodB", "Node.js", "Javascript"]}
+            websiteUrl={"https://gotuu.in"}
+            gitUrl={"https://github.com/aunshx/gotuu"}
           />
           <CardOld
             runAos={false}
@@ -50,9 +56,6 @@ const Projects = ({
             logo={gotuuLogo}
             details={aunshDetails}
             type={"gotuu"}
-            description={
-              "A web-app to maximize your productivity and manage time smartly"
-            }
             websiteTitle={"gotuu.in"}
             websiteUrl={"https://gotuu.in"}
             gitUrl={"https://github.com/aunshx/gotuu"}
