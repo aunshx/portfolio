@@ -27,10 +27,10 @@ const Projects = ({ innerRef }) => {
           <div style={{ marginRight: "0.5em" }}>
             <FontAwesomeIcon icon={faTools} />
           </div>
-          <div>Work</div>
+          <div>Projects</div>
         </div>
         <div className='body app'>
-          <Card
+          {/* <Card
             runAos={true}
             picsLight={drSbsPics}
             picsDark={""}
@@ -44,8 +44,8 @@ const Projects = ({ innerRef }) => {
             websiteUrl={"https://drsbs.in"}
             gitUrl={"https://github.com/aunshx/sb-vet-services"}
             tags={["react", "redux", "psql", "node", "js"]}
-          />
-          <Card
+          /> */}
+          {/* <Card
             runAos={true}
             picsLight={bodingaPics}
             picsDark={""}
@@ -59,9 +59,9 @@ const Projects = ({ innerRef }) => {
             websiteUrl={"https://bodinga.com"}
             gitUrl={"https://github.com/aunshx/bodinga-lite"}
             tags={["react", "redux", "psql", "node", "js"]}
-          />
+          /> */}
           <Card
-            runAos={true}
+            runAos={false}
             picsLight={gotuuPicsLight}
             picsDark={gotuuPicsDark}
             logo={gotuuLogo}
@@ -75,7 +75,7 @@ const Projects = ({ innerRef }) => {
             gitUrl={"https://github.com/aunshx/gotuu"}
             tags={["react", "redux", "mongo", "node", "js"]}
           />
-          <Card
+          {/* <Card
             runAos={true}
             picsLight={aunshPicsLight}
             picsDark={aunshPicsDark}
@@ -89,7 +89,7 @@ const Projects = ({ innerRef }) => {
             websiteUrl={"https://aunsh.com"}
             gitUrl={"https://github.com/aunshx/portfolio"}
             tags={["react", "redux", "psql", "node", "js"]}
-          />
+          /> */}
         </div>
       </div>
     </div>

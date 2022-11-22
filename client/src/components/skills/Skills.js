@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
+import random from "simple-random-number-generator";
+import useInterval from "use-interval";
 
 import SkillOne from './SkillsOne';
 
@@ -19,6 +21,18 @@ import cppLogo from '../../resources/images/skills/logos/cppLogo.png'
 
 
 const Skills = ({ innerRef }) => {
+  let params = {
+    min: 0,
+    max: 3,
+    integer: true,
+  };
+
+  const [number, setNumber] = useState(0)
+
+   useInterval(() => {
+    setNumber(random(params));
+   }, 1000);
+
   return (
     <div className='skills' ref={innerRef}>
       <div className='title flex_middle' data-aos='flip-down'>
@@ -29,13 +43,34 @@ const Skills = ({ innerRef }) => {
       </div>
       <div className='body-two'>
         <div className='flex_middle'>
-          <SkillOne delay={0} title={"Java"} logo={javaLogo} runAos={false} />
+          <SkillOne
+            delay={0}
+            title={"Java"}
+            logo={javaLogo}
+            runAos={false}
+            number={0}
+            numberCurrent={number}
+          />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={50} title={"JS"} logo={jsLogo} runAos={false} />
+          <SkillOne
+            delay={50}
+            title={"JS"}
+            logo={jsLogo}
+            runAos={false}
+            number={0}
+            numberCurrent={number}
+          />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={100} title={"C++"} logo={cppLogo} runAos={false} />
+          <SkillOne
+            delay={100}
+            title={"C++"}
+            logo={cppLogo}
+            runAos={false}
+            number={2}
+            numberCurrent={number}
+          />
         </div>
         <div className='flex_middle'>
           <SkillOne
@@ -43,6 +78,8 @@ const Skills = ({ innerRef }) => {
             title={"Python"}
             logo={pythonLogo}
             runAos={false}
+            number={3}
+            numberCurrent={number}
           />
         </div>
       </div>
@@ -53,6 +90,8 @@ const Skills = ({ innerRef }) => {
             title={"MongoDb"}
             logo={mongoLogo}
             runAos={false}
+            number={0}
+            numberCurrent={number}
           />
         </div>
         <div className='flex_middle'>
@@ -61,6 +100,8 @@ const Skills = ({ innerRef }) => {
             title={"SpringBoot"}
             logo={springBootLogo}
             runAos={false}
+            number={2}
+            numberCurrent={number}
           />
         </div>
         <div className='flex_middle'>
@@ -69,6 +110,8 @@ const Skills = ({ innerRef }) => {
             title={"Postgres"}
             logo={psqlLogo}
             runAos={false}
+            number={3}
+            numberCurrent={number}
           />
         </div>
         <div className='flex_middle'>
@@ -77,15 +120,31 @@ const Skills = ({ innerRef }) => {
             title={"Node.js"}
             logo={nodeLogo}
             runAos={false}
+            number={1}
+            numberCurrent={number}
           />
         </div>
       </div>
       <div className='body-two'>
         <div className='flex_middle'>
-          <SkillOne delay={400} title={"Git"} logo={gitLogo} runAos={false} />
+          <SkillOne
+            delay={400}
+            title={"Git"}
+            logo={gitLogo}
+            runAos={false}
+            number={2}
+            numberCurrent={number}
+          />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={450} title={"React"} logo={reactLogo} runAos={false} />
+          <SkillOne
+            delay={450}
+            title={"React"}
+            logo={reactLogo}
+            runAos={false}
+            number={3}
+            numberCurrent={number}
+          />
         </div>
         <div className='flex_middle'>
           <SkillOne
@@ -93,10 +152,19 @@ const Skills = ({ innerRef }) => {
             title={"Redux"}
             logo={reduxLogo}
             runAos={false}
+            number={1}
+            numberCurrent={number}
           />
         </div>
         <div className='flex_middle'>
-          <SkillOne delay={550} title={"CSS"} logo={css3Logo} runAos={false} />
+          <SkillOne
+            delay={550}
+            title={"CSS"}
+            logo={css3Logo}
+            runAos={false}
+            number={1}
+            numberCurrent={number}
+          />
         </div>
       </div>
     </div>

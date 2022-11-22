@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import useWindow from "react-window-size-simple";
 import { connect } from 'react-redux';
 
-const SkillOne = ({ delay, logo, title, runAos,
+const SkillOne = ({ delay, logo, title, runAos, number, numberCurrent,
   // Redux State
   settings: { displayMode }
 }) => {
@@ -73,7 +73,7 @@ const SkillOne = ({ delay, logo, title, runAos,
         data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
-        style={isHovering ? { border: `1px solid ${borderColorNow}`, boxShadow: `0px 0px 20px 0px ${borderColorNow}`,transition: '.05s ease-in-out'} : {}}
+        style={(isHovering || number === numberCurrent) ? { boxShadow: `0px 0px 20px 0px ${borderColorNow}`,transition: '.05s ease-in-out'} : {}}
       >
         <div className='image'>
           <img src={logo} alt='Logo of Tech' />

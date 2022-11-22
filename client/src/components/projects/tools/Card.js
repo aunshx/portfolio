@@ -231,7 +231,7 @@ const Card = ({
           </div>
         )}
       </div>
-      <div className='details app' style={{ justifyContent: "space-around" }}>
+      {/* <div className='details app' style={{ justifyContent: "space-around" }}>
         <a href={websiteUrl} target={"_blank"} rel='noreferrer nofollow'>
           <div className='title flex_middle' style={{ marginBottom: "-0.6em" }}>
             <div
@@ -288,8 +288,8 @@ const Card = ({
             </a>
           </div>
         </div>
-      </div>
-      <div className=''>
+      </div> */}
+      {/* <div className=''>
         <Collapse
           in={expanded}
           timeout='auto'
@@ -333,7 +333,7 @@ const Card = ({
             </div>
           </div>
         </Collapse>
-      </div>
+      </div> */}
       <Modal
         open={isBigPicOpen}
         onClose={bigPicClose}
