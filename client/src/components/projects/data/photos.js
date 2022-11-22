@@ -11,25 +11,6 @@ import aunshPortfolioDarkFour from "../../../resources/images/work-and-projects/
 // DR SB's
 import drSbsOne from '../../../resources/images/work-and-projects/dr-sbs/main-page-1.png'
 
-// GOTUU 
-import gotuuOneLight from '../../../resources/images/work-and-projects/gotuu.in/light/register-page-light-3.png'
-import gotuuTwoLight from '../../../resources/images/work-and-projects/gotuu.in/light/main-page-light-1.png'
-import gotuuThreeLight from '../../../resources/images/work-and-projects/gotuu.in/light/login-page-light-2.png'
-import gotuuFourLight from '../../../resources/images/work-and-projects/gotuu.in/light/metrics-page-light-5.png'
-import gotuuFiveLight from '../../../resources/images/work-and-projects/gotuu.in/light/about-page-light-4.png'
-import gotuuSixLight from "../../../resources/images/work-and-projects/gotuu.in/light/work-page-light-6.png";
-import gotuuSevenLight from "../../../resources/images/work-and-projects/gotuu.in/light/note-page-light-6.png";
-import gotuuEightLight from "../../../resources/images/work-and-projects/gotuu.in/light/timeline-page-light-5.png";
-
-import gotuuOnedark from '../../../resources/images/work-and-projects/gotuu.in/dark/register-page-dark-3.png'
-import gotuuTwodark from '../../../resources/images/work-and-projects/gotuu.in/dark/main-page-dark-1.png'
-import gotuuThreedark from '../../../resources/images/work-and-projects/gotuu.in/dark/login-page-dark-2.png'
-import gotuuFourdark from '../../../resources/images/work-and-projects/gotuu.in/dark/metrics-page-dark-5.png'
-import gotuuFivedark from '../../../resources/images/work-and-projects/gotuu.in/dark/about-page-dark-4.png'
-import gotuuSixdark from "../../../resources/images/work-and-projects/gotuu.in/dark/work-page-dark-6.png";
-import gotuuSevendark from "../../../resources/images/work-and-projects/gotuu.in/dark/note-page-dark-6.png";
-import gotuuEightdark from "../../../resources/images/work-and-projects/gotuu.in/dark/timeline-page-dark-5.png";
-
 import bodingaOne from '../../../resources/images/work-and-projects/bodinga.com/main-page.png'
 
 export const bodingaPics = [
@@ -41,71 +22,72 @@ export const bodingaPics = [
 
 export const gotuuPicsLight = [
   {
-    imgSource: gotuuTwoLight,
+    imgSource: "https://i.postimg.cc/CLW7jtb8/main-page-light-1.png",
     imgText: "Main Page for play/pause",
   },
   {
-    imgSource: gotuuOneLight,
-    imgText: "Registration Page for Gotuu",
-  },
-  {
-    imgSource: gotuuSixLight,
+    imgSource: "https://i.postimg.cc/mrSSWgJ3/work-page-light-6.png",
     imgText: "Stopwatch started and start of a tuu",
   },
   {
-    imgSource: gotuuSevenLight,
+    imgSource: "https://i.postimg.cc/N0txnHJf/note-page-light-6.png",
     imgText: "Including task note for the current time tuu.",
   },
   {
-    imgSource: gotuuEightLight,
-    imgText: "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
+    imgSource: "https://i.postimg.cc/0Q20kq1T/timeline-page-light-5.png",
+    imgText:
+      "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
   },
   {
-    imgSource: gotuuThreeLight,
-    imgText: "Login Page for Gotuu",
-  },
-  {
-    imgSource: gotuuFourLight,
+    imgSource: "https://i.postimg.cc/cH9M65sr/metrics-page-light-5.png",
     imgText: "Metrics and statistics page based on performance",
   },
   {
-    imgSource: gotuuFiveLight,
+    imgSource: "https://i.postimg.cc/rs71N0RT/login-page-light-2.png",
+    imgText: "Login Page for Gotuu",
+  },
+  {
+    imgSource: "https://i.postimg.cc/XqrK5cJx/register-page-light-3.png",
+    imgText: "Registration Page for Gotuu",
+  },
+  {
+    imgSource: "https://i.postimg.cc/0Q20kq1T/timeline-page-light-5.png",
     imgText: "About section containing tutorials on how to use the features.",
   },
 ];
 
 export const gotuuPicsDark = [
   {
-    imgSource: gotuuTwodark,
+    imgSource: "https://i.postimg.cc/NMXB0LqV/main-page-dark-1.png",
     imgText: "Main Page for play/pause",
   },
   {
-    imgSource: gotuuOnedark,
-    imgText: "Registration Page for Gotuu",
-  },
-  {
-    imgSource: gotuuSixdark,
+    imgSource: "https://i.postimg.cc/zX88JJdt/work-page-dark-6.png",
     imgText: "Stopwatch started and start of a tuu",
   },
   {
-    imgSource: gotuuSevendark,
+    imgSource: "https://i.postimg.cc/mZQTfcS1/note-page-dark-6.png",
     imgText: "Including task note for the current time tuu.",
   },
   {
-    imgSource: gotuuEightdark,
+    imgSource: "https://i.postimg.cc/kg5CbTPW/timeline-page-dark-5.png",
     imgText:
       "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
   },
   {
-    imgSource: gotuuThreedark,
-    imgText: "Login Page for Gotuu",
-  },
-  {
-    imgSource: gotuuFourdark,
+    imgSource: "https://i.postimg.cc/YqRk0JZp/metrics-page-dark-5.png",
     imgText: "Metrics and statistics page based on performance",
   },
   {
-    imgSource: gotuuFivedark,
+    imgSource: "https://i.postimg.cc/vmgdPDBB/login-page-dark-2.png",
+    imgText: "Login Page for Gotuu",
+  },
+  {
+    imgSource: "https://i.postimg.cc/kghmFW7z/register-page-dark-3.png",
+    imgText: "Registration Page for Gotuu",
+  },
+  {
+    imgSource: "https://i.postimg.cc/tgKG8yZz/about-page-dark-4.png",
     imgText: "About section containing tutorials on how to use the features.",
   },
 ];
