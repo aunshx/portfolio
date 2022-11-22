@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -57,6 +57,38 @@ const InvertedCard = ({
   const [isLoading, setIsLoading] = useState(true);
   const [isBigPicOpen, setIsBigPicOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [borderColorNow, setBorderColorNow] = useState("");
+
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    switch (true) {
+      case title === "aunsh.com":
+        setBorderColorNow("#34cfeb");
+        break;
+
+      case title === "Fun w/ Reddit":
+        setBorderColorNow("#de793e");
+        break;
+
+      case title === "gotuu.in":
+        setBorderColorNow("#3ede69");
+        break;
+
+      default:
+        return null;
+    }
+  }, []);
+
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
 
   const increaseCurrentIndex = () => {
     if (currentIndex === pics.length - 1) {
@@ -162,10 +194,22 @@ const InvertedCard = ({
         </div>
         <div className='image-container'>
           <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
-            <div className='image'>
+            <div
+              className='image'
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <img
                 src={pics[currentIndex].imgSource}
                 alt={pics[currentIndex].imgText}
+                style={
+                  isHovering
+                    ? {
+                        boxShadow: `0px 0px 20px 0px ${borderColorNow}`,
+                        transition: ".1s ease-in-out",
+                      }
+                    : {}
+                }
               />
             </div>
           </a>
