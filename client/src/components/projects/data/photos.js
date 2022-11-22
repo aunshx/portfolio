@@ -40,74 +40,74 @@ export const bodingaPics = [
 ];
 
 export const gotuuPicsLight = [
-  {
-    imgSource: gotuuOneLight,
-    imgText: "Registration Page for Gotuu",
-  },
+  // {
+  //   imgSource: gotuuOneLight,
+  //   imgText: "Registration Page for Gotuu",
+  // },
   {
     imgSource: gotuuTwoLight,
     imgText: "Main Page for play/pause",
   },
-  {
-    imgSource: gotuuSixLight,
-    imgText: "Stopwatch started and start of a tuu",
-  },
-  {
-    imgSource: gotuuSevenLight,
-    imgText: "Including task note for the current time tuu.",
-  },
-  {
-    imgSource: gotuuEightLight,
-    imgText: "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
-  },
-  {
-    imgSource: gotuuThreeLight,
-    imgText: "Login Page for Gotuu",
-  },
-  {
-    imgSource: gotuuFourLight,
-    imgText: "Metrics and statistics page based on performance",
-  },
-  {
-    imgSource: gotuuFiveLight,
-    imgText: "About section containing tutorials on how to use the features.",
-  },
+  // {
+  //   imgSource: gotuuSixLight,
+  //   imgText: "Stopwatch started and start of a tuu",
+  // },
+  // {
+  //   imgSource: gotuuSevenLight,
+  //   imgText: "Including task note for the current time tuu.",
+  // },
+  // {
+  //   imgSource: gotuuEightLight,
+  //   imgText: "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
+  // },
+  // {
+  //   imgSource: gotuuThreeLight,
+  //   imgText: "Login Page for Gotuu",
+  // },
+  // {
+  //   imgSource: gotuuFourLight,
+  //   imgText: "Metrics and statistics page based on performance",
+  // },
+  // {
+  //   imgSource: gotuuFiveLight,
+  //   imgText: "About section containing tutorials on how to use the features.",
+  // },
 ];
 
 export const gotuuPicsDark = [
-  {
-    imgSource: gotuuOnedark,
-    imgText: "Registration Page for Gotuu",
-  },
+  // {
+  //   imgSource: gotuuOnedark,
+  //   imgText: "Registration Page for Gotuu",
+  // },
   {
     imgSource: gotuuTwodark,
     imgText: "Main Page for play/pause",
   },
-  {
-    imgSource: gotuuSixdark,
-    imgText: "Stopwatch started and start of a tuu",
-  },
-  {
-    imgSource: gotuuSevendark,
-    imgText: "Including task note for the current time tuu.",
-  },
-  {
-    imgSource: gotuuEightdark,
-    imgText:
-      "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
-  },
-  {
-    imgSource: gotuuThreedark,
-    imgText: "Login Page for Gotuu",
-  },
-  {
-    imgSource: gotuuFourdark,
-    imgText: "Metrics and statistics page based on performance",
-  },
-  {
-    imgSource: gotuuFivedark,
-    imgText: "About section containing tutorials on how to use the features.",
-  },
+  // {
+  //   imgSource: gotuuSixdark,
+  //   imgText: "Stopwatch started and start of a tuu",
+  // },
+  // {
+  //   imgSource: gotuuSevendark,
+  //   imgText: "Including task note for the current time tuu.",
+  // },
+  // {
+  //   imgSource: gotuuEightdark,
+  //   imgText:
+  //     "Timeline showing each Tuu (interval), its corresponding note and whether the tasks on the note are completed or not.",
+  // },
+  // {
+  //   imgSource: gotuuThreedark,
+  //   imgText: "Login Page for Gotuu",
+  // },
+  // {
+  //   imgSource: gotuuFourdark,
+  //   imgText: "Metrics and statistics page based on performance",
+  // },
+  // {
+  //   imgSource: gotuuFivedark,
+  //   imgText: "About section containing tutorials on how to use the features.",
+  // },
 ];
 
 export const drSbsPics = [

@@ -1,13 +1,16 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTools } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTools } from "@fortawesome/free-solid-svg-icons";
 
-import Card from './tools/Card';
+import CardOld from "./tools/CardOld";
+import Card from "./tools/Card";
 
-import bodingaLogo from '../../resources/images/work-and-projects/logos/bodingaLogo.png'
-import gotuuLogo from '../../resources/images/work-and-projects/logos/gotuuLogo.png'
-import aunshLogo from '../../resources/images/work-and-projects/logos/aunshLogo.png'
-import drsbsLogo from '../../resources/images/work-and-projects/logos/drsbsLogo.png'
+import bodingaLogo from "../../resources/images/work-and-projects/logos/bodingaLogo.png";
+import gotuuLogo from "../../resources/images/work-and-projects/logos/gotuuLogo.png";
+import aunshLogo from "../../resources/images/work-and-projects/logos/aunshLogo.png";
+import drsbsLogo from "../../resources/images/work-and-projects/logos/drsbsLogo.png";
 
 import { aunshDetails } from "./data/details";
 import {
@@ -19,7 +22,11 @@ import {
   bodingaPics,
 } from "./data/photos";
 
-const Projects = ({ innerRef }) => {
+const Projects = ({
+  innerRef,
+  // Redux State
+  settings: { displayMode },
+}) => {
   return (
     <div className='app' ref={innerRef}>
       <div className='projects'>
@@ -30,37 +37,13 @@ const Projects = ({ innerRef }) => {
           <div>Projects</div>
         </div>
         <div className='body app'>
-          {/* <Card
-            runAos={true}
-            picsLight={drSbsPics}
-            picsDark={""}
-            logo={drsbsLogo}
-            details={aunshDetails}
-            type={"drsbs"}
-            description={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, libero!"
-            }
-            websiteTitle={"drsbs.in"}
-            websiteUrl={"https://drsbs.in"}
-            gitUrl={"https://github.com/aunshx/sb-vet-services"}
-            tags={["react", "redux", "psql", "node", "js"]}
-          /> */}
-          {/* <Card
-            runAos={true}
-            picsLight={bodingaPics}
-            picsDark={""}
-            logo={bodingaLogo}
-            details={aunshDetails}
-            type={"bodinga"}
-            description={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, libero!"
-            }
-            websiteTitle={"bodinga.com"}
-            websiteUrl={"https://bodinga.com"}
-            gitUrl={"https://github.com/aunshx/bodinga-lite"}
-            tags={["react", "redux", "psql", "node", "js"]}
-          /> */}
           <Card
+            pics={displayMode ? gotuuPicsDark : gotuuPicsLight}
+            title={"gotuu.in"}
+            link={"https://gotuu.in"}
+            subTitle={'Web-App'}
+          />
+          <CardOld
             runAos={false}
             picsLight={gotuuPicsLight}
             picsDark={gotuuPicsDark}
@@ -68,32 +51,27 @@ const Projects = ({ innerRef }) => {
             details={aunshDetails}
             type={"gotuu"}
             description={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, libero!"
+              "A web-app to maximize your productivity and manage time smartly"
             }
             websiteTitle={"gotuu.in"}
             websiteUrl={"https://gotuu.in"}
             gitUrl={"https://github.com/aunshx/gotuu"}
             tags={["react", "redux", "mongo", "node", "js"]}
           />
-          {/* <Card
-            runAos={true}
-            picsLight={aunshPicsLight}
-            picsDark={aunshPicsDark}
-            logo={aunshLogo}
-            details={aunshDetails}
-            type={"aunsh"}
-            description={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, libero!"
-            }
-            websiteTitle={"aunsh.com"}
-            websiteUrl={"https://aunsh.com"}
-            gitUrl={"https://github.com/aunshx/portfolio"}
-            tags={["react", "redux", "psql", "node", "js"]}
-          /> */}
         </div>
       </div>
     </div>
   );
 };
 
-export default Projects;
+Projects.propTypes = {
+  settings: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  settings: state.settings,
+});
+
+const mapStateToActions = {};
+
+export default connect(mapStateToProps, mapStateToActions)(Projects);

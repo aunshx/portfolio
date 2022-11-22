@@ -1095,6 +1095,71 @@ pre {
   font-size: 2em;
 }
 
+.projects .card-container {
+  width: 800px;
+  height: 330px;
+  border: 1px solid red;
+  margin: 3em 0 1em 0;
+}
+
+.projects .card-container .grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  column-gap: 10px;
+  height: 100%;
+}
+
+.projects .card-container .grid .image-container .image {
+  width: 100%;
+  height: 100%;
+}
+
+.projects .card-container .grid .image-container .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  	display: block;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.projects .card-container .grid .image-container .image img:hover {
+  box-shadow: 0px 0px 20px 0px rgb(120, 188, 234);
+transition: .2s ease-in-out;
+}
+
+.projects .card-container .grid .details-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.projects .card-container .grid .details-container .title {
+  font-size: 1.5em;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  border: 1px solid red;
+}
+
+.projects .card-container .grid .details-container .title .name {
+  color: var(--light-dark-font-color);
+}
+
+.projects .card-container .grid .details-container .title .name:hover {
+  color: var(--logo-color);
+}
+
+.projects .card-container .grid .details-container .title .sub-title {
+  color: var(--grey-color);
+  font-size: 0.5em;
+  margin-top: -0.5em;
+  cursor: context-menu;
+}
+
+
+
 .projects .individual {
   width: 50%;
   height: 270px;
