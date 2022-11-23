@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVial } from "@fortawesome/free-solid-svg-icons";
 
 import Card from "./tools/Card";
+import Title from "../layout/Title";
 
 const Research = ({
   innerRef,
@@ -14,12 +15,7 @@ const Research = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='research'>
-        <div className='title flex_middle' data-aos='flip-down'>
-          <div style={{ marginRight: "0.5em" }}>
-            <FontAwesomeIcon icon={faVial} />
-          </div>
-          <div>Research</div>
-        </div>
+        <Title icon={<FontAwesomeIcon icon={faVial} />} title={"Research"} />
         <div className='body'>
           <div className='flex_middle'>
             <Card

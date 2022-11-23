@@ -56,7 +56,7 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Comfortaa', sans-serif;
     color: var(--light-color);
     line-height: 1.6;
     background-color: var(--background-color);
@@ -105,7 +105,6 @@ pre {
 .main_container {
   width: 100%;
   height: calc(100vh - 50px);
-  border: 1px solid red;
 }
 
 /* ------------------------------------- BASICS ----------------------------------- */
@@ -233,6 +232,11 @@ pre {
 
 .invisible {
   display: none;
+}
+
+.main-title {
+  color: var(--lighter-dark-font-color);
+  font-size: 1.5em;
 }
 
 /* --------------------------------------------- NAVBAR -------------------------------------- */
@@ -1851,11 +1855,6 @@ transition: .2s ease-in-out;
   font-family: 'Comfortaa', cursive;
 }
 
-.work .title {
-  color: var(--lighter-dark-font-color);
-  font-size: 1.6em;
-}
-
 .work .body {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -1933,26 +1932,23 @@ transition: .2s ease-in-out;
 /* ----------------------------------- ABOUT ---------------------------- */
 .about {
   color: var(--grey-color);
-   width: 800px;
+   width: 720px;
   height: auto;
-  padding: 0em 1em 0em 1em;
+  /* padding: 0em 1em 0em 1em; */
   margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
   border: 1px solid red;
 }
 
-.about .title {
-  color: var(--lighter-dark-font-color);
-  font-size: 2em;
-}
-
 .about .body {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1.5fr 1fr;
   grid-template-rows: minmax(100px, auto);
   margin-top: 3em;
   column-gap: 30px;
    color: var(--lighter-dark-font-color);
+   border: 1px solid red;
 }
 
 .about .body .text {

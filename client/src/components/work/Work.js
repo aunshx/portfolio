@@ -9,6 +9,7 @@ import VerticalSlider from "./tools/VerticalSlider";
 
 import { companies } from './data/data'
 import CompanyDetails from "./tools/CompanyDetails";
+import Title from "../layout/Title";
 
 const Work = ({
   innerRef,
@@ -28,12 +29,7 @@ const Work = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='work'>
-        <div className='title flex_middle' data-aos='flip-down'>
-          <div style={{ marginRight: "0.5em" }}>
-            <FontAwesomeIcon icon={faBriefcase} />
-          </div>
-          <div>Work</div>
-        </div>
+        <Title icon={<FontAwesomeIcon icon={faBriefcase} />} title={"Work"} />
         <div className='body app' style={{ alignItems: "flex-start" }}>
           <VerticalSlider
             companies={companies}
@@ -42,7 +38,7 @@ const Work = ({
             changeCurrentIndex={changeCurrentIndex}
           />
           <div className='details'>
-          {!glowOn && <CompanyDetails company={companies[currentIndex]} />}
+            {!glowOn && <CompanyDetails company={companies[currentIndex]} />}
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import {
   gotuuPicsDark,
   funWithRedditPics,
 } from "./data/photos";
+import Title from "../layout/Title";
 
 const Projects = ({
   innerRef,
@@ -23,12 +24,7 @@ const Projects = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='projects'>
-        <div className='title flex_middle' data-aos='flip-down'>
-          <div style={{ marginRight: "0.5em" }}>
-            <FontAwesomeIcon icon={faTools} />
-          </div>
-          <div>Projects</div>
-        </div>
+        <Title icon={<FontAwesomeIcon icon={faTools} />} title={"Projects"} />
         <div className='body app'>
           <Card
             pics={displayMode ? gotuuPicsDark : gotuuPicsLight}

@@ -4,7 +4,7 @@ import { faBrain } from '@fortawesome/free-solid-svg-icons';
 import random from "simple-random-number-generator";
 import useInterval from "use-interval";
 
-import SkillOne from './SkillsOne';
+import SkillOne from './tools/Card';
 
 import reduxLogo from '../../resources/images/skills/logos/reduxLogo.png'
 import reactLogo from '../../resources/images/skills/logos/reactLogo.png'
@@ -18,6 +18,7 @@ import mongoLogo from '../../resources/images/skills/logos/mongoLogo.png'
 import css3Logo from '../../resources/images/skills/logos/css3Logo.png'
 import javaLogo from '../../resources/images/skills/logos/javaLogo.png'
 import cppLogo from '../../resources/images/skills/logos/cppLogo.png'
+import Title from '../layout/Title';
 
 
 const Skills = ({ innerRef }) => {
@@ -35,12 +36,7 @@ const Skills = ({ innerRef }) => {
 
   return (
     <div className='skills' ref={innerRef}>
-      <div className='title flex_middle' data-aos='flip-down'>
-        <div style={{ marginRight: "0.5em" }}>
-          <FontAwesomeIcon icon={faBrain} />
-        </div>
-        <div>Skills</div>
-      </div>
+      <Title icon={<FontAwesomeIcon icon={faBrain} />} title={"Skills"} />
       <div className='body-two'>
         <div className='flex_middle'>
           <SkillOne

@@ -16,18 +16,14 @@ import automateTasks from '../../resources/images/articles/three.jpeg'
 import underTheHood from '../../resources/images/articles/four.jpeg'
 import createServerImg from "../../resources/images/articles/five.jpeg";
 import funWithReddit from '../../resources/images/articles/funWithReddit.png'
+import Title from '../layout/Title';
 
 
 const Articles = ({ innerRef }) => {
   return (
     <div className='app' ref={innerRef}>
       <div className='articles'>
-        <div className='title flex_middle' data-aos='flip-up'>
-          <div style={{ marginRight: "0.5em" }}>
-            <FontAwesomeIcon icon={faNewspaper} />
-          </div>
-          <div>Articles</div>
-        </div>
+        <Title icon={<FontAwesomeIcon icon={faNewspaper} />} title={"Articles"} />
         <div className='body'>
           <div className='flex_middle'>
             <Card

@@ -100,50 +100,50 @@ const Home = ({
 
   const goToHome = () => {
     if (goHome.current) {
-      goHome.current.scrollIntoView({ behavior: "smooth" });
+      goHome.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     }
   };
 
   const goToAbout = () => {
     if (goAbout.current) {
-      goAbout.current.scrollIntoView({ behavior: "smooth" });
+      goAbout.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     }
     console.log('About')
   };
 
   const goToWork = () => {
     if (goWork.current) {
-      goWork.current.scrollIntoView({ behavior: "smooth" });
+      goWork.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     }
   };
 
   const goToProjects = () => {
     if (goProjects.current) {
-      goProjects.current.scrollIntoView({ behavior: "smooth" });
+      goProjects.current.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
   };
   
   const goToResearch = () => {
     if (goResearch.current) {
-      goResearch.current.scrollIntoView({ behavior: "smooth" });
+      goResearch.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     }
   };
 
   const goToArticles = () => {
     if (goArticles.current) {
-      goArticles.current.scrollIntoView({ behavior: "smooth" });
+      goArticles.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     }
   };
 
   const goToContact = () => {
     if (goContact.current) {
-      goContact.current.scrollIntoView({ behavior: "smooth" });
+      goContact.current.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
   };
 
   const goToSkills = () => {
     if (goSkills.current) {
-      goSkills.current.scrollIntoView({ behavior: "smooth" });
+      goSkills.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     }
   };
 

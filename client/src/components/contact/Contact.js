@@ -13,6 +13,7 @@ import Footer from "../layout/Footer";
 import Card from "./tools/Card";
 import DetailsCard from "./tools/DetailsCard";
 import EmailCard from "./tools/EmailCard";
+import Title from "../layout/Title";
 
 const Contact = ({
   reference,
@@ -70,16 +71,12 @@ const Contact = ({
     <>
       <div className='app' ref={reference}>
         <div className='contact app' ref={innerRef}>
-          <div className='title flex_middle' data-aos='flip-up' ref={refSec}>
-            <div style={{ marginRight: "0.5em" }}>
-              <FontAwesomeIcon icon={faMobileAlt} />
-            </div>
-            <div>Contact</div>
-          </div>
+          <Title
+            icon={<FontAwesomeIcon icon={faMobileAlt} />}
+            title={"Contact"}
+          />
           <EmailCard displayMode={displayMode} />
-          <div className="or">
-            OR
-          </div>
+          <div className='or'>OR</div>
           <Card
             displayMode={displayMode}
             messageEmptyError={messageEmptyError}
@@ -95,6 +92,7 @@ const Contact = ({
             message={message}
           />
           <DetailsCard displayMode={displayMode} />
+          <div ref={refSec}></div>
           <Footer />
         </div>
       </div>

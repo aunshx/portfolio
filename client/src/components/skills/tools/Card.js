@@ -5,9 +5,9 @@ import useWindow from "react-window-size-simple";
 import { connect } from 'react-redux';
 import useSound from 'use-sound';
 
-import bass from '../../resources/sounds/shortBass.mp3'
+import bass from '../../../resources/sounds/shortBass.mp3'
 
-const SkillOne = ({
+const Card = ({
   delay,
   logo,
   title,
@@ -103,7 +103,7 @@ const SkillOne = ({
   );
 };
 
-SkillOne.propTypes = {
+Card.propTypes = {
   settings: PropTypes.object.isRequired
 };
 
@@ -111,4 +111,4 @@ const mapStateToProps = state => ({
   settings: state.settings
 })
 
-export default connect(mapStateToProps)(SkillOne);
+export default connect(mapStateToProps)(Card);

@@ -48,7 +48,7 @@ const DetailsCard = ({ displayMode }) => {
       <div
         className='info flex_around'
         //   style={{ border: "1px solid red" }}
-        style={{ marginLeft: "5em" }}
+        style={{ marginLeft: "4.5em" }}
       >
         <Tooltip title='Github Profile' placement='top' enterDelay={200}>
           <div className='socials'>
