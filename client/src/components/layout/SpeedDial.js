@@ -45,8 +45,12 @@ const SpeedDialMenu = () => {
           width: 50,
           height: 50,
           "& .MuiSpeedDialIcon-icon": { fontSize: 25 },
-          "&:hover": { backgroundColor: "rgb(105, 182, 242)" },
-          margin: "0 0em 0 0.8em",
+          "&:hover": {
+            backgroundColor: "transparent",
+            color: "rgb(0, 145, 255)",
+            border: "1px solid rgb(0, 145, 255)",
+          },
+          margin: "0 0em 0 0.4em",
         },
       }}
       onClose={handleClose}

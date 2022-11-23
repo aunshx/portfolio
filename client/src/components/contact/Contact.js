@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import useWindow from "react-window-size-simple";
-
 import validator from "email-validator";
-
 import { connect } from "react-redux";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMobileAlt,
 } from "@fortawesome/free-solid-svg-icons";
-
-import Me from "./MeMain";
-import MeSmall from "./MeSmall";
 
 import { sendEmail } from "../../redux/actions/contact";
 
@@ -33,8 +26,6 @@ const Contact = ({
   // Redux Actions
   sendEmail,
 }) => {
-  const { width, height } = useWindow()
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -107,18 +98,6 @@ const Contact = ({
           <Footer />
         </div>
       </div>
-      {show && width > 651 && (
-        <div>
-          <Me
-            error={emailError}
-            success={emailSuccess}
-            message={emailMessage}
-            loading={emailLoading}
-            show={show}
-            changeDialog={changeDialog}
-          />
-        </div>
-      )}
     </>
   );
 };
