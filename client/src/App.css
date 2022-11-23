@@ -1086,19 +1086,19 @@ pre {
    width: 800px;
   height: auto;
   padding: 1em;
-  margin: 50px 0 50px 50px;
+  margin: 40px 0 30px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
 .projects .title {
   color: var(--lighter-dark-font-color);
-  font-size: 2em;
-  margin-bottom: 1em;
+  font-size: 1.6em;
+  margin-bottom: 0.5em;
 }
 
 .projects .card-container {
-  width: 800px;
-  height: 330px;
+  width: 750px;
+  height: 300px;
   margin: 3em 0 5em 0;
 }
 
@@ -1150,14 +1150,14 @@ transition: .2s ease-in-out;
 }
 
 .projects .card-container .grid .details-container .title {
-  font-size: 1.5em;
+  font-size: 1.4em;
   position: absolute;
   top: 30px;
   right: 5px;
 }
 
 .projects .card-container .invert-grid .details-container .title {
-  font-size: 1.5em;
+  font-size: 1.4em;
   position: absolute;
   top: 30px;
   left: 5px;
@@ -1176,21 +1176,21 @@ transition: .2s ease-in-out;
 .projects .card-container .grid .details-container .title .sub-title,
 .projects .card-container .invert-grid .details-container .title .sub-title {
   color: var(--grey-color);
-  font-size: 0.5em;
+  font-size: 0.45em;
   margin-top: -0.5em;
   cursor: context-menu;
 }
 
 .projects .card-container .grid .details-container .description {
   color: var(--grey-color);
-  font-size: 0.85em;
+  font-size: 0.78em;
   margin-top: 1em;
   position: absolute;
   top: 30%;
   right: 5px;
   width: 120%;
   height: 85px;
-  padding: 1em 0.8em;
+  padding: 1em 1em;
   background-color: var(--card-color);
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -1198,14 +1198,14 @@ transition: .2s ease-in-out;
 
 .projects .card-container .invert-grid .details-container .description {
   color: var(--grey-color);
-  font-size: 0.85em;
+  font-size: 0.78em;
   margin-top: 1em;
   position: absolute;
   top: 30%;
   left: 5px;
   width: 120%;
   height: 85px;
-  padding: 1em 0.8em;
+  padding: 1em 1em;
   background-color: var(--card-color);
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -1217,7 +1217,7 @@ transition: .2s ease-in-out;
   width: 100%;
   height: 20px;
   top: 70%;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: var(--grey-color);
 }
 
@@ -1227,7 +1227,7 @@ transition: .2s ease-in-out;
   width: 100%;
   height: 20px;
   top: 70%;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: var(--grey-color);
 }
 
@@ -1518,16 +1518,16 @@ transition: .2s ease-in-out;
 /* ----------------------------------- ARTICLES ---------------------------- */
 .articles {
   color: var(--grey-color);
-   width: 800px;
+   width: 750px;
   height: auto;
   padding: 0em 0em 1em 1em;
-  margin: 50px 0 50px 50px;
+  margin: 40px 0 30px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
 .articles .title {
   color: var(--lighter-dark-font-color);
-  font-size: 2em;
+  font-size: 1.6em;
   margin: 1.5em 0 0.5em 0;
 }
 
@@ -1536,13 +1536,13 @@ transition: .2s ease-in-out;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: minmax(100px, auto);
   margin-top: 1.5em;
-  column-gap: 20px;
+  column-gap: 10px;
 }
 
 .articles .body .individual {
   width: 85%;
   color: var(--lighter-dark-font-color);
-  height: 260px;
+  height: 240px;
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
@@ -1570,7 +1570,7 @@ transition: .2s ease-in-out;
 }
 
 .articles .body .individual .image {
-  height: 130px;
+  height: 120px;
   width: 100%;
   border-radius: 10px 10px 0px 0px;
   position: relative;
@@ -1603,8 +1603,8 @@ transition: .2s ease-in-out;
 }
 
 .articles .body .individual .title {
-  font-size: 0.8em;
-  padding: 0em 1em 1em 1em;
+  font-size: 0.78em;
+  padding: 0em 0.6em 1em 0.6em;
   text-align: center;
   height: 90px;
   margin-top: 0px;
@@ -1643,6 +1643,7 @@ transition: .2s ease-in-out;
   font-size: 0.9em;
   margin: 1em 0 2em 25px;
   cursor: pointer;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 .read-more:hover,
