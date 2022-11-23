@@ -13,8 +13,8 @@ const SplitText = ({ copy, role }) => {
     return(
       <span aria-label={copy} role={role}>
           {copy.split("").map(function(char, index){
-            let style1 = {"animation-delay": (0.2 + index / 10) + "s"}
-            let style2 = {"animation-delay": (0.3 + index / 10) + "s"}
+            let style1 = {"animation-delay": (index / 12) + "s"}
+            let style2 = {"animation-delay": (index / 12) + "s"}
             return (
               <>
                 {index > 12 && index < 20 ? (
