@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNewspaper} from "@fortawesome/free-solid-svg-icons";
-import ArticleOne from './ArticleOne';
+import Card from './tools/Card';
 
 import reduxLogo from "../../resources/images/skills/logos/reduxLogo.png";
 import reactLogo from "../../resources/images/skills/logos/reactLogo.png";
@@ -30,7 +30,7 @@ const Articles = ({ innerRef }) => {
         </div>
         <div className='body'>
           <div className='flex_middle'>
-            <ArticleOne
+            <Card
               delay={0}
               technology={["node", "https"]}
               imagesArray={[{ image: nodeLogo, alt: "Node Logo" }]}
@@ -48,7 +48,7 @@ const Articles = ({ innerRef }) => {
             />
           </div>
           <div className='flex_middle'>
-            <ArticleOne
+            <Card
               delay={200}
               technology={["react", "redux"]}
               imagesArray={[
@@ -67,7 +67,7 @@ const Articles = ({ innerRef }) => {
             />
           </div>
           <div className='flex_middle'>
-            <ArticleOne
+            <Card
               delay={400}
               technology={["javascript"]}
               imagesArray={[{ image: jsLogo, alt: "Javascript Logo" }]}
@@ -85,7 +85,7 @@ const Articles = ({ innerRef }) => {
             />
           </div>
           <div className='flex_middle'>
-            <ArticleOne
+            <Card
               delay={600}
               technology={["node", "node-cron"]}
               imagesArray={[
@@ -104,7 +104,7 @@ const Articles = ({ innerRef }) => {
             />
           </div>
           <div className='flex_middle'>
-            <ArticleOne
+            <Card
               delay={800}
               technology={["reddit", "node", "snoowrap", "react"]}
               imagesArray={[
@@ -124,7 +124,7 @@ const Articles = ({ innerRef }) => {
             />
           </div>
           <div className='flex_middle'>
-            <ArticleOne
+            <Card
               delay={1000}
               technology={["node", "javascript"]}
               imagesArray={[

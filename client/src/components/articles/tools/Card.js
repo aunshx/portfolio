@@ -5,17 +5,14 @@ import useSound from "use-sound";
 import {Tooltip} from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import swoosh from '../../resources/sounds/resumeSwoosh.mp3'
+import swoosh from '../../../resources/sounds/resumeSwoosh.mp3'
 
-const ArticleOne = ({
-  delay,
+const Card = ({
   technology,
   imagesArray,
   articleImage,
   title,
-  runAos,
   link,
-  description,
   // Redux States
   settings: { displayMode, sound },
 }) => {
@@ -87,17 +84,13 @@ const ArticleOne = ({
         </div>
         <div className='app' style={{ justifyContent: "space-between" }}>
           <div className='title flex_middle'>{title}</div>
-          {/* <div className='description flex_middle'>
-            {description ||
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, maiores."}
-          </div> */}
         </div>
       </div>
     </Link>
   );
 };
 
-ArticleOne.propTypes = {
+Card.propTypes = {
   displayMode: PropTypes.object.isRequired
 };
 
@@ -105,4 +98,4 @@ const mapStateToProps = (state) => ({
   settings: state.settings
 })
 
-export default connect(mapStateToProps)(ArticleOne);
+export default connect(mapStateToProps)(Card);

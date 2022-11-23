@@ -1514,6 +1514,98 @@ transition: .2s ease-in-out;
 
 }
 
+/* ----------------- RESEARCH ---------------- */
+.research {
+  color: var(--grey-color);
+   width: 750px;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 40px 0 10px 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.research .title {
+  color: var(--lighter-dark-font-color);
+  font-size: 1.6em;
+  margin: 1.5em 0 0.5em 0;
+}
+
+.research .body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 1em;
+  column-gap: 15px;
+}
+
+.research .body .individual {
+  width: 240px;
+  color: var(--lighter-dark-font-color);
+  height: 270px;
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+
+.research .body .individual--dark {
+   border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
+}
+
+.research .body .individual:hover {
+ cursor: pointer;
+ transform: scale(1.007);
+  box-shadow: 0px 0px 40px 0px rgb(118, 166, 233);
+transition: .2s ease-in-out;
+}
+
+.research .body .individual--dark:hover {
+ cursor: pointer;
+ transform: scale(1.007);
+ border: 1px solid var(--logo-color);
+ box-shadow: 0px 0px 40px 0px var(--logo-color);
+transition: .2s ease-in-out;
+}
+
+.research .body .individual .title {
+  font-size: 0.82em;
+  text-align: center;
+}
+
+.research .body .individual .description {
+  font-size: 0.68em;
+  color: var(--grey-color);
+  margin: 1em 0.1em 1em 0.1em;
+}
+
+.research .body .individual .tags {
+  color: var(--grey-color);
+  margin: 1em 0.1em 0.5em 0.1em;
+}
+
+.research .body .individual .tags .tag {
+  margin: 0.4em 0.2em;
+  border: 1px solid var(--light-grey-color);
+  padding: 0.1em 0.5em;
+  font-size: 0.62em;
+  border-radius: 5px;
+}
+
+.research .body .individual .achievements {
+  margin: 0.5em 0.1em 1em 0.1em;
+}
+
+.research .body .individual .achievements .element {
+  font-size: 0.6em;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  margin: 0 0.8em 0 0;
+  border: 1px solid var(--ye-color);
+  color: var(--grey-color);
+}
+
 /* ----------------------------------- ARTICLES ---------------------------- */
 .articles {
   color: var(--grey-color);
