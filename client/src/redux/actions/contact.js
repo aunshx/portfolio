@@ -77,7 +77,7 @@ export const commentOnMessage = (messageId, comment) => async (dispatch) => {
            dispatch({
              type: SNACKBAR_RESET,
            }),
-         5000
+         3000
        );
      } else if (error.response.status === 400) {
        value.message = error.response.data.errors[0].msg;
@@ -93,7 +93,7 @@ export const commentOnMessage = (messageId, comment) => async (dispatch) => {
            dispatch({
              type: SNACKBAR_RESET,
            }),
-         5000
+         3000
        );
      } else if (error.response.status === 401) {
        value.message = "Session expired. Pl login again.";
@@ -109,7 +109,7 @@ export const commentOnMessage = (messageId, comment) => async (dispatch) => {
            dispatch({
              type: SNACKBAR_RESET,
            }),
-         5000
+         3000
        );
      } else {
        value.message = "Something went wrong. Pl reload!";
@@ -125,7 +125,7 @@ export const commentOnMessage = (messageId, comment) => async (dispatch) => {
            dispatch({
              type: SNACKBAR_RESET,
            }),
-         5000
+         3000
        );
      }
    }
@@ -195,7 +195,7 @@ export const deleteMessage = (messageId) => async (dispatch) => {
         dispatch({
           type: SNACKBAR_RESET,
         }),
-      5000
+      3000
     );
   } catch (error) {
     if (error.response.status === 500) {
@@ -212,7 +212,7 @@ export const deleteMessage = (messageId) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 400) {
       value.message = error.response.data.errors[0].msg;
@@ -228,7 +228,7 @@ export const deleteMessage = (messageId) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 401) {
       value.message = "Session expired. Pl login again.";
@@ -244,7 +244,7 @@ export const deleteMessage = (messageId) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else {
       value.message = "Something went wrong. Pl reload!";
@@ -260,7 +260,7 @@ export const deleteMessage = (messageId) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     }
   }
@@ -323,7 +323,7 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 400) {
       value.message = error.response.data.errors[0].msg;
@@ -344,7 +344,7 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 401) {
       value.message = "Session expired. Pl login again.";
@@ -365,7 +365,7 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else {
       value.message = "Something went wrong. Pl reload!";
@@ -386,7 +386,7 @@ export const updateMessageStatus = (status, messageId, previousStatus) => async 
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     }
   }
@@ -455,7 +455,7 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 400) {
       value.message = error.response.data.errors[0].msg;
@@ -475,7 +475,7 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 401) {
       value.message = "Session expired. Pl login again.";
@@ -495,7 +495,7 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else {
       value.message = "Something went wrong. Pl reload!";
@@ -515,7 +515,7 @@ export const getMessagesOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     }
   }
@@ -584,7 +584,7 @@ export const getMessagesOldestOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 400) {
       value.message = error.response.data.errors[0].msg;
@@ -604,7 +604,7 @@ export const getMessagesOldestOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 401) {
       value.message = "Session expired. Pl login again.";
@@ -624,7 +624,7 @@ export const getMessagesOldestOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else {
       value.message = "Something went wrong. Pl reload!";
@@ -644,7 +644,7 @@ export const getMessagesOldestOnReload = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     }
   }
@@ -737,7 +737,7 @@ export const getMessages = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 400) {
       value.message = error.response.data.errors[0].msg;
@@ -757,7 +757,7 @@ export const getMessages = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 401) {
       value.message = "Session expired. Pl login again.";
@@ -777,7 +777,7 @@ export const getMessages = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else {
       value.message = "Something went wrong. Pl reload!";
@@ -797,7 +797,7 @@ export const getMessages = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     }
   }
@@ -887,7 +887,7 @@ export const getMessagesOldest = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 400) {
       value.message = error.response.data.errors[0].msg;
@@ -907,7 +907,7 @@ export const getMessagesOldest = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else if (error.response.status === 401) {
       value.message = "Session expired. Pl login again.";
@@ -927,7 +927,7 @@ export const getMessagesOldest = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     } else {
       value.message = "Something went wrong. Pl reload!";
@@ -947,7 +947,7 @@ export const getMessagesOldest = (skipNow) => async (dispatch) => {
           dispatch({
             type: SNACKBAR_RESET,
           }),
-        5000
+        3000
       );
     }
   }
@@ -970,15 +970,31 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             type: EMAIL_LOADING_COMPLETE,
         })
 
-        const res = await api.post("/contact/save-message", body);
+        await api.post("/contact/save-message", body);
+
+        dispatch({
+          type: SUCCESS_200,
+          payload: {
+            message: "Message Sent Successfully!",
+            type: "success",
+          },
+        })
 
         setTimeout(
+          () =>
+            dispatch({
+              type: SNACKBAR_RESET,
+            }),
+          3000
+        );
+
+          setTimeout(
             () =>
-                dispatch({
-                    type: EMAIL_RESET,
-                }),
-            5000
-        )
+              dispatch({
+                type: EMAIL_RESET,
+              }),
+            3000
+          );
 
     } catch (error) {
         if (error.response.status === 500) {
@@ -989,12 +1005,28 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             payload: value,
           });
 
+          dispatch({
+            type: ERROR_SNACKBAR,
+            payload: {
+              message: "Message Sending Error :(",
+              type: "error",
+            },
+          });
+
+          setTimeout(
+            () =>
+              dispatch({
+                type: SNACKBAR_RESET,
+              }),
+            3000
+          );
+
           setTimeout(
             () =>
               dispatch({
                 type: EMAIL_RESET,
               }),
-            5000
+            3000
           );
         } else if (error.response.status === 400) {
           value.message = error.response.data.errors[0].msg;
@@ -1003,13 +1035,28 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             type: EMAIL_ERROR,
             payload: value,
           });
+          
+dispatch({
+  type: ERROR_SNACKBAR,
+  payload: {
+    message: "Message Sending Error :(",
+    type: "error",
+  },
+});
 
+setTimeout(
+  () =>
+    dispatch({
+      type: SNACKBAR_RESET,
+    }),
+  3000
+);
           setTimeout(
             () =>
               dispatch({
                 type: EMAIL_RESET,
               }),
-            5000
+            3000
           );
         } else if (error.response.status === 401) {
           value.message = "You're unauthorized.";
@@ -1018,13 +1065,27 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             type: EMAIL_ERROR,
             payload: value,
           });
+dispatch({
+  type: ERROR_SNACKBAR,
+  payload: {
+    message: "Message Sending Error :(",
+    type: "error",
+  },
+});
 
+setTimeout(
+  () =>
+    dispatch({
+      type: SNACKBAR_RESET,
+    }),
+  3000
+);
           setTimeout(
             () =>
               dispatch({
                 type: EMAIL_RESET,
               }),
-            5000
+            3000
           );
         } else {
           value.message =
@@ -1034,13 +1095,27 @@ export const sendEmail= (name, email, organisation, message) => async (dispatch)
             type: EMAIL_ERROR,
             payload: value,
           });
+dispatch({
+  type: ERROR_SNACKBAR,
+  payload: {
+    message: "Message Sending Error :(",
+    type: "error",
+  },
+});
 
+setTimeout(
+  () =>
+    dispatch({
+      type: SNACKBAR_RESET,
+    }),
+  3000
+);
           setTimeout(
             () =>
               dispatch({
                 type: EMAIL_RESET,
               }),
-            5000
+            3000
           );
         }
     }

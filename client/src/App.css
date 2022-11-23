@@ -1051,8 +1051,7 @@ pre {
 /* ------------------------------------- FOOTER --------------------------------- */
 .footer {
   height: 10px;
-  margin-left: 5%;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   margin-top: 1em;
 }
 
@@ -2063,9 +2062,7 @@ transition: .2s ease;
 }
 
 .contact .body {
-  display: flex;
-  margin-top: 5%;
-  justify-content: center;
+  /* margin-top: 5%; */
 }
 
 .contact .body .form {
@@ -2076,7 +2073,7 @@ transition: .2s ease;
   border-radius: 10px;
   min-height: 400px;
   z-index: 1;
-  margin-top: 1em;
+  margin-top: -10px;
 }
 
 .contact .body .form--dark {
@@ -2110,7 +2107,6 @@ transition: .2s ease;
 .contact .body .form .title .first {
   font-size: 1.3em;
   color: var(--logo-color);
-  /* padding-bottom: 0.5em; */
 }
 
 .contact .body .form .title {
@@ -2121,7 +2117,7 @@ transition: .2s ease;
 }
 
 .card-contact {
-   width: 310px;
+   width: 300px;
   color: var(--lighter-dark-font-color);
   background-color: var(--card-color);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -2130,7 +2126,7 @@ transition: .2s ease;
   z-index: 1;
   font-family: 'Comfortaa', cursive;
   padding: 0.5em 0.5em 0.6em 0.5em;
-  margin: 0px 0 50px 50px;
+  margin: 40px 0 30px 0px;
 }
 
 .card-contact--dark {

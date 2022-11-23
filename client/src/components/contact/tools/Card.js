@@ -106,7 +106,7 @@ const Card = ({
       {displayMode ? (
         <div className='form form--dark'>
           <div className='app title'>
-            <div className='first ft-bold flex_middle'>Send a DM!</div>
+            <div className='first flex_middle'>Send a DM!</div>
           </div>
           <div className='app'>
             {!messageEmptyError &&
@@ -272,7 +272,7 @@ const Card = ({
       ) : (
         <div className='form'>
           <div className='app title'>
-            <div className='first ft-bold flex_middle'>Send a DM!</div>
+            <div className='first flex_middle'>Send a DM!</div>
           </div>
           <div className='app'>
             {!messageEmptyError &&

@@ -78,25 +78,17 @@ const Contact = ({
   return (
     <>
       <div className='app' ref={reference}>
-        <div className='contact' ref={innerRef}>
+        <div className='contact app' ref={innerRef}>
           <div className='title flex_middle' data-aos='flip-up' ref={refSec}>
             <div style={{ marginRight: "0.5em" }}>
               <FontAwesomeIcon icon={faMobileAlt} />
             </div>
             <div>Contact</div>
           </div>
-          {/* {show && width < 651 && (
-            <div>
-              <MeSmall
-                error={emailError}
-                success={emailSuccess}
-                message={emailMessage}
-                loading={emailLoading}
-                show={show}
-                changeDialog={changeDialog}
-              />
-            </div>
-          )} */}
+          <EmailCard displayMode={displayMode} />
+          <div className="or">
+            OR
+          </div>
           <Card
             displayMode={displayMode}
             messageEmptyError={messageEmptyError}
@@ -111,10 +103,9 @@ const Contact = ({
             organisation={organisation}
             message={message}
           />
+          <DetailsCard displayMode={displayMode} />
+          <Footer />
         </div>
-        <EmailCard displayMode={displayMode} />
-        <DetailsCard displayMode={displayMode} />
-        <Footer />
       </div>
       {show && width > 651 && (
         <div>

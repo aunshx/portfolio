@@ -25,6 +25,7 @@ import Contact from './components/contact/Contact';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/navbar/Sidebar';
 import SpeedDial from "./components/layout/SpeedDial";
+import Alerts from './components/layout/Alerts';
 
 import './App.css'
 import { Tooltip } from '@mui/material';
@@ -221,6 +222,7 @@ const Home = ({
       <div className='speed_dial-button'>
         <SpeedDial />
       </div>
+      <Alerts />
     </div>
   );
 };

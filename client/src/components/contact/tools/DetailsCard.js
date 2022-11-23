@@ -19,6 +19,7 @@ const DetailsCard = ({ displayMode }) => {
       className={
         displayMode ? "card-contact card-contact--dark" : "card-contact"
       }
+      style={{ margin: '50px 0 50px 0' }}
     >
       <div className='title flex_middle' style={{ marginTop: '0.5em' }} >Details</div>
       <div className='info'>
