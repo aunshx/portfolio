@@ -1753,7 +1753,7 @@ transition: .2s ease-in-out;
 /* ----------------- WORK -------------------- */
 .work {
   color: var(--grey-color);
-   width: 600px;
+   width: 700px;
   height: 400px;
   padding: 0em 1em 0em 1em;
   margin: 50px 0 30px 50px;
@@ -1762,7 +1762,7 @@ transition: .2s ease-in-out;
 
 .work .title {
   color: var(--lighter-dark-font-color);
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 
 .work .body {
@@ -1778,7 +1778,7 @@ transition: .2s ease-in-out;
 }
 
 .work .body .list .name {
-  font-size: 0.8em;
+  font-size: 0.82em;
   padding: 1.2em 0.2em 1.2em 0.9em;
   width: 130px;
   border-left: 2px solid var(--light-grey-color);
@@ -1818,24 +1818,23 @@ transition: .2s ease-in-out;
 
 .work .body .details .company .position {
   font-weight: bold;
-  font-size: 0.95em;
+  font-size: 1em;
 }
 
 .work .body .details .company .name {
   font-weight: bold;
-  font-size: 0.95em;
+  font-size: 1em;
   color: var(--logo-color);
-  cursor: pointer;
 }
 
 .work .body .details .company .duration {
-  font-size: 0.75em;
+  font-size: 0.8em;
   color: var(--grey-color);
   margin: 0.2em 0.4em;
 }
 
 .work .body .details .company .badge {
-  font-size: 0.75em;
+  font-size: 0.8em;
   color: var(--grey-color);
   margin: 0.2em 0.4em;
 }

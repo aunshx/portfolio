@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useSound from 'use-sound'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial } from "@fortawesome/free-solid-svg-icons";
 
 import {
     makeStyles,
@@ -29,31 +29,32 @@ const Sidebar = ({
   goToAbout,
   goToWork,
   goToProjects,
+  goToResearch,
   goToSkills,
   goToArticles,
   goToContact,
   // Redux State
-  settings: { displayMode, sound }
+  settings: { displayMode, sound },
 }) => {
   const [playOn] = useSound(pop, { volume: 0.2 });
 
-    const maximize = () => {
-        store.dispatch({
-          type: MOUSE_ENTER
-        })
-    }
+  const maximize = () => {
+    store.dispatch({
+      type: MOUSE_ENTER,
+    });
+  };
 
-    const minimize = () => {
-         store.dispatch({
-           type: MOUSE_LEAVE,
-         });
-    }
+  const minimize = () => {
+    store.dispatch({
+      type: MOUSE_LEAVE,
+    });
+  };
 
-    const elementHover = () => {
-      if(sound){
-        playOn()
-      }
+  const elementHover = () => {
+    if (sound) {
+      playOn();
     }
+  };
   return (
     <>
       {hover ? (
@@ -127,6 +128,21 @@ const Sidebar = ({
                   />
                 </div>
                 <div className='writing'>Projects</div>
+              </div>
+            </div>
+            <div
+              onClick={goToResearch}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between' onMouseEnter={elementHover}>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVial}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+                <div className='writing'>Research</div>
               </div>
             </div>
             <div
@@ -234,6 +250,20 @@ const Sidebar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faTools}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              onClick={goToResearch}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVial}
                     style={{ marginRight: "0.5em" }}
                   />
                 </div>

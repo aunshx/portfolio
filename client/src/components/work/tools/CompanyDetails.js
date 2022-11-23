@@ -41,7 +41,7 @@ const CompanyDetails = ({ company }) => {
               <ListItem
                 disableGutters
                 disablePadding
-                style={{ fontSize: "0.8em", color: "grey", padding: "0.4em" }}
+                style={{ fontSize: "0.85em", color: "grey", padding: "0.4em" }}
                 key={index}
               >
                 {element}

@@ -6,10 +6,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 
-const About = props => {
+const About = ({ innerRef }) => {
   return (
     <>
-      <div className='app'>
+      <div className='app' ref={innerRef}>
         <div className='about' style={{ justifyContent: "center" }}>
           <div className='title flex_middle'>
             <div style={{ marginRight: "0.5em" }}>
@@ -21,7 +21,7 @@ const About = props => {
       </div>
     </>
   );
-}
+};
 
 About.propTypes = {}
 

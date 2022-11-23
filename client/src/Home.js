@@ -18,6 +18,7 @@ import Main from './components/main/Main';
 import About from "./components/about/About";
 import Work from "./components/work/Work";
 import Projects from './components/projects/Projects';
+import Research from './components/research/Research';
 import Articles from './components/articles/Articles';
 import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
@@ -46,6 +47,7 @@ const Home = ({
   const goAbout = useRef();
   const goWork = useRef();
   const goProjects = useRef();
+  const goResearch = useRef();
   const goArticles = useRef();
   const goSkills = useRef();
   const goContact = useRef();
@@ -105,6 +107,7 @@ const Home = ({
     if (goAbout.current) {
       goAbout.current.scrollIntoView({ behavior: "smooth" });
     }
+    console.log('About')
   };
 
   const goToWork = () => {
@@ -116,6 +119,12 @@ const Home = ({
   const goToProjects = () => {
     if (goProjects.current) {
       goProjects.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+  
+  const goToResearch = () => {
+    if (goResearch.current) {
+      goResearch.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -156,6 +165,7 @@ const Home = ({
         goToAbout={goToAbout}
         goToWork={goToWork}
         goToProjects={goToProjects}
+        goToResearch={goToResearch}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
         goToContact={goToContact}
@@ -168,6 +178,7 @@ const Home = ({
       <About innerRef={goAbout} />
       <Work innerRef={goWork} />
       <Projects innerRef={goProjects} />
+      <Research innerRef={goResearch} />
       <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />
       <Contact
