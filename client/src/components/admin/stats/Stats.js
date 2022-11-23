@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import PullToRefresh from "react-simple-pull-to-refresh";
+import { connect } from "react-redux";
 
-import Navbar from '../navbar/Navbar'
-import { connect } from 'react-redux';
+import Navbar from "../../common/navbar/Navbar";
+import Alerts from "../../common/layout/Alerts";
+import Spinner from "../../common/layout/Spinner";
+import FooterAdmin from "../../common/layout/FooterAdmin";
 
 import VisitorGraph from './charts/VisitorGraph';
-import Alerts from '../../layout/Alerts';
 import HitsChart from './charts/HitsChart';
 import TotalHits from "./blocks/upper/TotalHits";
 import TotalColds from './blocks/lower/TotalColds';
@@ -15,10 +16,7 @@ import TotalSuccess from "./blocks/lower/TotalSuccess";
 import TotalNotReplied from './blocks/lower/TotalNotReplied';
 import SynopsisHits from './blocks/upper/SynopsisHits';
 import RecentEmails from './blocks/mid/RecentEmails';
-import Spinner from "../../layout/Spinner";
-
 import MessageUpdates from './blocks/mid/MessageUpdates';
-import FooterAdmin from '../../layout/FooterAdmin';
 
 const Stats = ({
 

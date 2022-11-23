@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSkullCrossbones
 } from "@fortawesome/free-solid-svg-icons";
-import CircularProgress from "@mui/material/CircularProgress";
 
 import {
     deleteMessage

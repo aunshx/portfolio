@@ -2,14 +2,16 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
-
+import { Redirect } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import CableIcon from "@mui/icons-material/Cable";
 
-import Navbar from '../navbar/Navbar'
 import Messages from '../message/Messages';
-
-import Alerts from '../../layout/Alerts'
+import Navbar from "../../common/navbar/Navbar";
+import Alerts from "../../common/layout/Alerts";
+import Spinner from "../../common/layout/Spinner";
+import MessagesOldest from "../message/MessagesOldest";
 
 import {
   getMessages,
@@ -18,12 +20,7 @@ import {
   getMessagesOldest,
   getMessagesOldestOnReload,
 } from "../../../redux/actions/contact";
-import { Tooltip } from '@mui/material';
-import MessagesOldest from '../message/MessagesOldest';
 
-import { Redirect } from 'react-router-dom';
-
-import Spinner from '../../layout/Spinner'
 
 const Main = ({
   // Redux Actions

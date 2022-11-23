@@ -1,11 +1,10 @@
-import React, { useCallback, useRef, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-import Navbar from "../navbar/Navbar";
-import Footer from "../../layout/FooterAdmin";
-import MetaTags from "../../layout/MetaTags";
+import Navbar from "../../common/navbar/Navbar";
+import MetaTags from "../../common/layout/MetaTags";
 
 import Normal from "./tools/Card";
 

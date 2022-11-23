@@ -6,26 +6,26 @@ import useWindow from "react-window-size-simple";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
-import BackgroundLarge from "./components/main/BackgroundLarge";
-import BackgroundMedium from "./components/main/BackgroundMedium";
-import BackgroundSmall from "./components/main/BackgroundSmall";
-import BackgroundTiny from "./components/main/BackgroundTiny";
+import BackgroundLarge from "./components/client/main/BackgroundLarge";
+import BackgroundMedium from "./components/client/main/BackgroundMedium";
+import BackgroundSmall from "./components/client/main/BackgroundSmall";
+import BackgroundTiny from "./components/client/main/BackgroundTiny";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
 import { captureIpNow } from "./redux/actions/metrics";
 
-import Main from './components/main/Main';
-import About from "./components/about/About";
-import Work from "./components/work/Work";
-import Projects from './components/projects/Projects';
-import Research from './components/research/Research';
-import Articles from './components/articles/Articles';
-import Skills from './components/skills/Skills';
-import Contact from './components/contact/Contact';
-import Navbar from './components/navbar/Navbar';
-import Sidebar from './components/navbar/Sidebar';
-import SpeedDial from "./components/layout/SpeedDial";
-import Alerts from './components/layout/Alerts';
+import Main from './components/client/main/Main';
+import About from "./components/client/about/About";
+import Work from "./components/client/work/Work";
+import Projects from './components/client/projects/Projects';
+import Research from './components/client/research/Research';
+import Articles from './components/client/articles/Articles';
+import Skills from './components/client/skills/Skills';
+import Contact from './components/client/contact/Contact';
+import Navbar from './components/common/navbar/Navbar';
+import Sidebar from './components/common/navbar/Sidebar';
+import SpeedDial from "./components/common/layout/SpeedDial";
+import Alerts from './components/common/layout/Alerts';
 
 import './App.css'
 import { Tooltip } from '@mui/material';

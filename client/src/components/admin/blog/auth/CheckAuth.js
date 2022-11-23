@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
-import Navbar from "../../navbar/Navbar";
-
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -13,12 +12,11 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { styled } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 
+import Alerts from "../../../common/layout/Alerts";
+import MetaTags from "../../../common/layout/MetaTags";
+import Navbar from "../../../common/navbar/Navbar";
 import { blogCheckAuth } from "../../../../redux/actions/blog";
 
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import Alerts from "../../../layout/Alerts";
-import MetaTags from "../../../layout/MetaTags";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",

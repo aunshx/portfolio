@@ -5,10 +5,9 @@ import PropTypes from "prop-types";
 import useSound from "use-sound";
 
 import Home from "./Home";
-import NotFound from "./components/layout/NotFound";
-import WillBeLive from "./components/layout/WillBeLive";
-import Sidebar from "./components/navbar/Sidebar";
-import Navbar from "./components/navbar/Navbar";
+import NotFound from "./components/common/layout/NotFound";
+import Sidebar from "./components/common/navbar/Sidebar";
+import Navbar from "./components/common/navbar/Navbar";
 import Login from "./components/admin/auth/Login";
 import Main from "./components/admin/main/Main";
 import PrivateRoute from "./utils/PrivateRoute";

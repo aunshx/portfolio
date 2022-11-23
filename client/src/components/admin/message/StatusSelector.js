@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Menu, MenuItem, Tooltip } from '@mui/material';
+import { Menu, Tooltip } from '@mui/material';
 import { connect } from 'react-redux';
 
 import { updateMessageStatus } from "../../../redux/actions/contact";
