@@ -160,8 +160,8 @@ const Home = ({
       />
       {/* {width > 1280 && <BackgroundLarge />}
       {900 < width && width <= 1280 && <BackgroundMedium />}
-      {600 < width && width <= 900 && <BackgroundSmall />} */}
-      {width <= 600 && <BackgroundTiny />}
+      {600 < width && width <= 900 && <BackgroundSmall />}
+      {width <= 600 && <BackgroundTiny />} */}
       <Main innerRef={goHome} />
       <About innerRef={goAbout} />
       <Work innerRef={goWork} />
