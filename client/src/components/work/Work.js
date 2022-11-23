@@ -34,7 +34,7 @@ const Work = ({
           </div>
           <div>Work</div>
         </div>
-        <div className='body app' style={{ alignItems: 'flex-start' }} >
+        <div className='body app' style={{ alignItems: "flex-start" }}>
           <VerticalSlider
             companies={companies}
             currentIndex={currentIndex}
@@ -42,7 +42,7 @@ const Work = ({
             changeCurrentIndex={changeCurrentIndex}
           />
           <div className='details'>
-            <CompanyDetails company={companies[currentIndex]} />
+          {!glowOn && <CompanyDetails company={companies[currentIndex]} />}
           </div>
         </div>
       </div>
