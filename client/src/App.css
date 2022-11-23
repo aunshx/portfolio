@@ -2053,7 +2053,7 @@ transition: .2s ease;
    width: 800px;
   height: auto;
   padding: 0em 1em 0em 1em;
-  margin: 80px 0 50px 50px;
+  margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -2129,7 +2129,7 @@ transition: .2s ease;
   min-height: 150px;
   z-index: 1;
   font-family: 'Comfortaa', cursive;
-  padding: 0.5em 0.5em 1.3em 0.5em;
+  padding: 0.5em 0.5em 0.6em 0.5em;
   margin: 0px 0 50px 50px;
 }
 
@@ -2156,6 +2156,30 @@ transition: .2s ease;
   justify-content: flex-start;
   margin-left: 4em;
   padding-top: 1em;
+}
+.social-title {
+  color: var(--light-dark-font-color);
+  font-size: 0.9em;
+}
+
+.card-contact .info .socials {
+  margin: 0.2em 0.6em;
+  cursor: pointer;
+}
+
+.card-contact .email-button {
+  padding: 0.5em 0.7em 0.4em 0.7em;
+  border-radius: 5px;
+  font-size: 0.8em;
+  border: 1px solid var(--lighter-dark-font-color);
+  margin-top: 0.6em;
+  cursor: pointer;
+  color: var(--grey-color);
+}
+
+.card-contact .email-button:hover {
+  color: var(--logo-color);
+  border: 2px solid var(--light-logo-color);
 }
 
 @media only screen and (min-width: 786px) and (max-width: 1028px) {
