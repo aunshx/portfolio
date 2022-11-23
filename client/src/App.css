@@ -1753,23 +1753,22 @@ transition: .2s ease-in-out;
 .work {
   color: var(--grey-color);
    width: 600px;
-  height: auto;
+  height: 400px;
   padding: 0em 1em 0em 1em;
   margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  /* border: 1px solid red; */
 }
 
 .work .title {
   color: var(--lighter-dark-font-color);
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .work .body {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: minmax(100px, auto);
-  margin-top: 3em;
+  margin-top: 2em;
    color: var(--lighter-dark-font-color);
 }
 
@@ -1778,8 +1777,8 @@ transition: .2s ease-in-out;
 }
 
 .work .body .list .name {
-  font-size: 0.75em;
-  padding: 1.2em 0.2em 1.2em 1em;
+  font-size: 0.8em;
+  padding: 1.2em 0.2em 1.2em 0.9em;
   width: 130px;
   border-left: 2px solid var(--light-grey-color);
   cursor: pointer;
@@ -1799,6 +1798,45 @@ transition: .2s ease-in-out;
 
 .work .body .list .name-glow {
   border-left: 2px solid var(--light-logo-color);
+}
+
+.work .body .details {
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 1em;
+}
+
+.work .body .details .company {
+  /* border: 1px solid red; */
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.work .body .details .company .position {
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.work .body .details .company .name {
+  font-weight: bold;
+  font-size: 0.95em;
+  color: var(--logo-color);
+  cursor: pointer;
+}
+
+.work .body .details .company .duration {
+  font-size: 0.75em;
+  color: var(--grey-color);
+  margin: 0.2em 0.4em;
+}
+
+.work .body .details .company .badge {
+  font-size: 0.75em;
+  color: var(--grey-color);
+  margin: 0.2em 0.4em;
 }
 
 /* ----------------------------------- ABOUT ---------------------------- */

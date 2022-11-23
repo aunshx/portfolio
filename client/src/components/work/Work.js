@@ -8,6 +8,7 @@ import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import VerticalSlider from "./tools/VerticalSlider";
 
 import { companies } from './data/data'
+import CompanyDetails from "./tools/CompanyDetails";
 
 const Work = ({
   innerRef,
@@ -33,14 +34,16 @@ const Work = ({
           </div>
           <div>Work</div>
         </div>
-        <div className='body app'>
+        <div className='body app' style={{ alignItems: 'flex-start' }} >
           <VerticalSlider
             companies={companies}
             currentIndex={currentIndex}
             glowOn={glowOn}
             changeCurrentIndex={changeCurrentIndex}
           />
-          <div className='details'></div>
+          <div className='details'>
+            <CompanyDetails company={companies[currentIndex]} />
+          </div>
         </div>
       </div>
     </div>

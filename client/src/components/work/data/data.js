@@ -46,7 +46,7 @@ export const companies = [
     duration: "Jun '19 - Jul '19",
   },
   {
-    name: "Open Links Foundation",
+    name: "Open Links Fdn",
     type: "NGO",
     work: [
       "Created and trained a network of volunteers to aide in the increase of the reach of the organization",
