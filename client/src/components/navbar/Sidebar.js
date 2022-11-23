@@ -5,23 +5,10 @@ import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial } from "@fortawesome/free-solid-svg-icons";
 
-import {
-    makeStyles,
-} from "@mui/styles";
-
 import pop from '../../resources/sounds/pop.mp3'
 
 import store from '../../store'
 import { MOUSE_ENTER, MOUSE_LEAVE } from '../../redux/actions/types';
-
-
-const useStyles = makeStyles(theme => ({
-  customTooltip: {
-    backgroundColor: 'rgb(245, 245, 245)',
-    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
-    color: 'rgb(72, 72, 72)'
-  },
-}));
 
 const Sidebar = ({
   hover,

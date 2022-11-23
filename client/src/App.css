@@ -2229,7 +2229,8 @@ transition: .2s ease;
 .contact-button {
   position: fixed;
   bottom: 45px;
-  right: 34px;  background-color: var(--grey-color);
+  right: 33px;  
+  background-color: var(--grey-color);
   width: 40px;
   height: 40px;
   border-radius: 50%;

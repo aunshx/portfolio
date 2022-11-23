@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, ListItem, ListSubheader } from '@mui/material'
+import { List, ListItem } from '@mui/material'
 
 const CompanyDetails = ({ company }) => {
   return (
