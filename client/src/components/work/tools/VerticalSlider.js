@@ -4,7 +4,7 @@ const VerticalSlider = ({ companies, changeCurrentIndex, currentIndex, glowOn })
   return (
     <div className='list app' style={{ alignItems: "flex-start" }}>
       {companies.length > 0 &&
-        companies.map((name, index) => (
+        companies.map((element, index) => (
           <div
             className={
               glowOn
@@ -16,7 +16,7 @@ const VerticalSlider = ({ companies, changeCurrentIndex, currentIndex, glowOn })
             key={index}
             onClick={(e) => changeCurrentIndex(index)}
           >
-            {name}
+            {element.name}
           </div>
         ))}
     </div>

@@ -3,16 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
-import {Box, Stepper, Step, StepLabel, StepContent, Button, Paper, Typography} from "@mui/material";
+
+
 import VerticalSlider from "./tools/VerticalSlider";
 
-const companies = [
-  "Dr SB's",
-  "2WheelR",
-  "Teach for India",
-  "Forbes Marshall",
-  "Open Links Fdn"
-];
+import { companies } from './data/data'
 
 const Work = ({
   innerRef,
