@@ -1952,13 +1952,13 @@ transition: .2s ease;
    width: 700px;
   height: auto;
   padding: 0em 0em 1em 1em;
-  margin: 0px 0 50px 50px;
+  margin: 0px 0 30px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
 .skills .title {
   color: var(--lighter-dark-font-color);
-  font-size: 2em;
+  font-size: 1.6em;
   margin: 1em 0 1.5em 0;
 }
 
@@ -2209,20 +2209,29 @@ transition: .2s ease;
 
 .contact-button {
   position: fixed;
-  bottom: 50px;
-  right: 30px;  background-color: var(--logo-color);
-  width: 43px;
-  height: 43px;
+  bottom: 45px;
+  right: 34px;  background-color: var(--grey-color);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
+}
+
+.contact-button:hover {
+  background-color: var(--light-logo-color);
+}
+
+.speed_dial-button {
+  position: fixed;
+  bottom: 140px;
+  right: 30px;  
 }
 
 .go-up {
   position: absolute;
-  color: var(--logo-color);
-  top: 10px;
-  left: 15px;
+  top: 11px;
+  left: 13px;
   z-index: 10;
   color: var(--light-color);
 }

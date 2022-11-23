@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import useSound from 'use-sound'
 import { connect } from 'react-redux'
@@ -6,20 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 import {
-    Tooltip
-} from '@mui/material'
-
-import {
     makeStyles,
 } from "@mui/styles";
-
-import mediumLogo from '../../resources/images/skills/logos/mediumLogo.png'
-import mediumLogoHover from '../../resources/images/skills/logos/mediumLogoHover.png'
-import mediumLogoDark from '../../resources/images/skills/logos/mediumLogoDark.png'
-
-
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import pop from '../../resources/sounds/pop.mp3'
 
@@ -49,12 +37,6 @@ const Sidebar = ({
 }) => {
   const [playOn] = useSound(pop, { volume: 0.2 });
 
-    const classes = useStyles()
-
-    const [githubHover, setGithubHover] = useState(false)
-    const [mediumHover, setMediumHover] = useState(false)
-    const [linkedInHover, setLinkedInHover] = useState(false)
-
     const maximize = () => {
         store.dispatch({
           type: MOUSE_ENTER
@@ -65,38 +47,6 @@ const Sidebar = ({
          store.dispatch({
            type: MOUSE_LEAVE,
          });
-    }
-
-    const githubHoverMoveEnter = () => {
-        setGithubHover(true)
-        if(sound){
-          playOn()
-        }    }
-
-    const githubHoverMoveLeave = () => {
-        setGithubHover(false)
-    }
-
-    const mediumHoverMoveEnter = () => {
-        setMediumHover(true)
-        if(sound){
-          playOn()
-        }
-    }
-
-    const mediumHoverMoveLeave = () => {
-        setMediumHover(false)
-    }
-
-    const linkedInHoverMoveEnter = () => {
-        setLinkedInHover(true)
-        if(sound){
-          playOn()
-        }
-    }
-
-    const linkedInHoverMoveLeave = () => {
-        setLinkedInHover(false)
     }
 
     const elementHover = () => {
@@ -224,110 +174,6 @@ const Sidebar = ({
                 <div className='writing'>Contact</div>
               </div>
             </div>
-            <div
-              className='writing'
-              style={{ marginTop: "1.3em", fontWeight: "bold" }}
-            >
-              Socials
-            </div>
-            <a
-              href='https://github.com/aunshx'
-              target={"_blank"}
-              rel='noreferrer nofollow'
-              alt='Github Logo'
-            >
-              <div
-                className='element flex_between'
-                style={{ padding: "0.7em", marginTop: "0.5em" }}
-              >
-                <Tooltip
-                  title='Go To Github Profile'
-                  placement='right'
-                  classes={{ tooltip: classes.customTooltip }}
-                >
-                  <div
-                    className='flex_middle'
-                    onMouseEnter={githubHoverMoveEnter}
-                    onMouseLeave={githubHoverMoveLeave}
-                  >
-                    {githubHover ? (
-                      <GitHubIcon
-                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
-                      />
-                    ) : displayMode ? (
-                      <GitHubIcon style={{ color: "#fff", fontSize: 18 }} />
-                    ) : (
-                      <GitHubIcon style={{ color: "#000", fontSize: 18 }} />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            </a>
-            <a
-              href='https://aunsh.medium.com'
-              target={"_blank"}
-              rel='noreferrer nofollow'
-              alt='Medium Logo'
-            >
-              <div
-                className='element flex_between'
-                style={{ padding: "0.7em" }}
-              >
-                <Tooltip
-                  title='Go To Medium Profile'
-                  placement='right'
-                  classes={{ tooltip: classes.customTooltip }}
-                >
-                  <div
-                    style={{ objectFit: "contain", width: "25px" }}
-                    onMouseEnter={mediumHoverMoveEnter}
-                    onMouseLeave={mediumHoverMoveLeave}
-                  >
-                    {mediumHover ? (
-                      <img src={mediumLogoHover} alt='Medium Logo' />
-                    ) : (
-                      <img
-                        src={displayMode ? mediumLogoDark : mediumLogo}
-                        alt='Medium Logo'
-                      />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            </a>
-            <a
-              href='https://www.linkedin.com/in/aunsh/'
-              target={"_blank"}
-              rel='noreferrer nofollow'
-              alt='Medium Logo'
-            >
-              <div
-                className='element flex_between'
-                style={{ padding: "0.7em" }}
-              >
-                <Tooltip
-                  title='Go To LinkedIn Profile'
-                  placement='right'
-                  classes={{ tooltip: classes.customTooltip }}
-                >
-                  <div
-                    className='flex_middle'
-                    onMouseEnter={linkedInHoverMoveEnter}
-                    onMouseLeave={linkedInHoverMoveLeave}
-                  >
-                    {linkedInHover ? (
-                      <LinkedInIcon
-                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
-                      />
-                    ) : displayMode ? (
-                      <LinkedInIcon style={{ color: "#fff", fontSize: 18 }} />
-                    ) : (
-                      <LinkedInIcon style={{ color: "#000", fontSize: 18 }} />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            </a>
           </div>
         </div>
       ) : (
@@ -435,104 +281,6 @@ const Sidebar = ({
                 </div>
               </div>
             </div>
-            <a
-              href='https://github.com/aunshx'
-              target={"_blank"}
-              rel='noreferrer nofollow'
-              alt='Github Logo'
-              className='element'
-            >
-              <div className='flex_between' style={{ paddingRight: "0.5em" }}>
-                <Tooltip
-                  title='Go To Github Profile'
-                  placement='right'
-                  classes={{ tooltip: classes.customTooltip }}
-                >
-                  <div
-                    className='flex_middle'
-                    onMouseEnter={githubHoverMoveEnter}
-                    onMouseLeave={githubHoverMoveLeave}
-                  >
-                    {githubHover ? (
-                      <GitHubIcon
-                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
-                      />
-                    ) : displayMode ? (
-                      <GitHubIcon style={{ color: "#fff", fontSize: 18 }} />
-                    ) : (
-                      <GitHubIcon style={{ color: "#000", fontSize: 18 }} />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            </a>
-            <a
-              href='https://aunsh.medium.com'
-              target={"_blank"}
-              rel='noreferrer nofollow'
-              alt='Medium Logo'
-              className='element'
-            >
-              <div
-                className='flex_between'
-                style={{ paddingRight: "0.5em", marginTop: "-0.5em" }}
-              >
-                <Tooltip
-                  title='Go To Medium Profile'
-                  placement='right'
-                  classes={{ tooltip: classes.customTooltip }}
-                >
-                  <div
-                    style={{ objectFit: "contain", width: "18px" }}
-                    onMouseEnter={mediumHoverMoveEnter}
-                    onMouseLeave={mediumHoverMoveLeave}
-                  >
-                    {mediumHover ? (
-                      <img src={mediumLogoHover} alt='Medium Logo' />
-                    ) : (
-                      <img
-                        src={displayMode ? mediumLogoDark : mediumLogo}
-                        alt='Medium Logo'
-                      />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            </a>
-            <a
-              href='https://linked.com/aunsh'
-              target={"_blank"}
-              rel='noreferrer nofollow'
-              alt='Medium Logo'
-              className='element'
-            >
-              <div
-                className='flex_between'
-                style={{ paddingRight: "0.5em", marginTop: "-0.5em" }}
-              >
-                <Tooltip
-                  title='Go To LinkedIn Profile'
-                  placement='right'
-                  classes={{ tooltip: classes.customTooltip }}
-                >
-                  <div
-                    className='flex_middle'
-                    onMouseEnter={linkedInHoverMoveEnter}
-                    onMouseLeave={linkedInHoverMoveLeave}
-                  >
-                    {linkedInHover ? (
-                      <LinkedInIcon
-                        style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
-                      />
-                    ) : displayMode ? (
-                      <LinkedInIcon style={{ color: "#fff", fontSize: 18 }} />
-                    ) : (
-                      <LinkedInIcon style={{ color: "#000", fontSize: 18 }} />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            </a>
           </div>
         </div>
       )}

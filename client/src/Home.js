@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import useSound from "use-sound";
 import useWindow from "react-window-size-simple";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMobileAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 import BackgroundLarge from "./components/main/BackgroundLarge";
 import BackgroundMedium from "./components/main/BackgroundMedium";
@@ -23,8 +23,10 @@ import Skills from './components/skills/Skills';
 import Contact from './components/contact/Contact';
 import Navbar from './components/navbar/Navbar';
 import Sidebar from './components/navbar/Sidebar';
+import SpeedDial from "./components/layout/SpeedDial";
 
 import './App.css'
+import { Tooltip } from '@mui/material';
 
 const Home = ({
   // Redux State
@@ -178,16 +180,36 @@ const Home = ({
       {showContact && (
         <>
           <div className='appear_contact' onClick={goToContact}>
-            <div className='contact-button' onMouseEnter={onHoverMobile}>
-              <FontAwesomeIcon
-                icon={faMobileAlt}
-                className='go-up'
-                style={{ fontSize: 23 }}
-              />
-            </div>
+            <Tooltip title='Page Down' placement='left' enterDelay={400}>
+              <div className='contact-button' onMouseEnter={onHoverMobile}>
+                <FontAwesomeIcon
+                  icon={faArrowDown}
+                  className='go-up'
+                  style={{ fontSize: 20 }}
+                />
+              </div>
+            </Tooltip>
           </div>
         </>
       )}
+      {!showContact && (
+        <>
+          <div className='appear_contact' onClick={goToHome}>
+            <Tooltip title='Page Up' placement='left' enterDelay={400}>
+              <div className='contact-button' onMouseEnter={onHoverMobile}>
+                <FontAwesomeIcon
+                  icon={faArrowUp}
+                  className='go-up'
+                  style={{ fontSize: 20 }}
+                />
+              </div>
+            </Tooltip>
+          </div>
+        </>
+      )}
+      <div className='speed_dial-button'>
+        <SpeedDial />
+      </div>
     </div>
   );
 };
