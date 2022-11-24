@@ -28,8 +28,7 @@ const SpeedDialMenu = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const goToLink = (e, link) => {
-    e.preventDefault()
+  const goToLink = (link) => {
     setOpen(false)
     window.open(link, '_blank')
   }
@@ -62,7 +61,7 @@ const SpeedDialMenu = () => {
           key={action.name}
           icon={action.icon}
           tooltipTitle={action.name}
-          onClick={(e) => goToLink(e, action.link)}
+          onClick={(e) => goToLink(action.link)}
           sx={{
             "& .MuiFab-primary": {
               "& .MuiSpeedDialIcon-icon": { fontSize: 300 },

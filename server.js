@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 
 const { 
 task, 
-// task2 
+task2 
 } = require("./workers/worker");
 const connectDB = require("./config/db");
 

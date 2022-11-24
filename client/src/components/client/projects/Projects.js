@@ -60,16 +60,16 @@ const Projects = ({
             gitUrl={"https://github.com/aunshx/portfolio"}
           />
         </div>
-      </div>
-      <div className='read-more flex_middle' style={{ marginTop: "-5em" }}>
-        <div className='ft-bold' style={{ marginLeft: "0.5em" }}>
-          <a
-            href='https://github.com/aunshx?tab=repositories'
-            rel='noreferrer nofollow'
-            target='_blank'
-          >
-            More Projects
-          </a>
+        <div className='read-more flex_middle' style={{ marginTop: "-3em" }}>
+          <div className='ft-bold' style={{ marginLeft: "0.5em" }}>
+            <a
+              href='https://github.com/aunshx?tab=repositories'
+              rel='noreferrer nofollow'
+              target='_blank'
+            >
+              More Projects
+            </a>
+          </div>
         </div>
       </div>
     </div>

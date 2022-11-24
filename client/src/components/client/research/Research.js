@@ -16,7 +16,9 @@ const Research = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='research'>
-        <Title icon={<FontAwesomeIcon icon={faVial} />} title={"Research"} />
+        <div style={{ marginBottom: '1.5em' }} >
+          <Title icon={<FontAwesomeIcon icon={faVial} />} title={"Research"} />
+        </div>
         <div className='body'>
           <div className='flex_middle'>
             <Card
