@@ -33,11 +33,12 @@ import { Tooltip } from '@mui/material';
 const Home = ({
   // Redux State
   sidebar: { hover },
-  settings: { sound },
+  settings: { sound, backgroundAnimation },
 
   // Redux Actions
   captureIpNow,
 }) => {
+
   const { width } = useWindow();
 
   const [showContact, setShowContact] = useState(false);
@@ -100,50 +101,81 @@ const Home = ({
 
   const goToHome = () => {
     if (goHome.current) {
-      goHome.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      goHome.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     }
   };
 
   const goToAbout = () => {
     if (goAbout.current) {
-      goAbout.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      goAbout.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     }
-    console.log('About')
   };
 
   const goToWork = () => {
     if (goWork.current) {
-      goWork.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      goWork.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     }
   };
 
   const goToProjects = () => {
     if (goProjects.current) {
-      goProjects.current.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      goProjects.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
     }
   };
-  
+
   const goToResearch = () => {
     if (goResearch.current) {
-      goResearch.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      goResearch.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     }
   };
 
   const goToArticles = () => {
     if (goArticles.current) {
-      goArticles.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      goArticles.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     }
   };
 
   const goToContact = () => {
     if (goContact.current) {
-      goContact.current.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      goContact.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
     }
   };
 
   const goToSkills = () => {
     if (goSkills.current) {
-      goSkills.current.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+      goSkills.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
     }
   };
 
@@ -171,10 +203,14 @@ const Home = ({
         goToArticles={goToArticles}
         goToContact={goToContact}
       />
-      {/* {width > 1280 && <BackgroundLarge />}
-      {900 < width && width <= 1280 && <BackgroundMedium />}
-      {600 < width && width <= 900 && <BackgroundSmall />}
-      {width <= 600 && <BackgroundTiny />} */}
+      {backgroundAnimation && (
+        <>
+          {width > 1280 && <BackgroundLarge />}
+          {900 < width && width <= 1280 && <BackgroundMedium />}
+          {600 < width && width <= 900 && <BackgroundSmall />}
+          {width <= 600 && <BackgroundTiny />}
+        </>
+      )}
       <Main innerRef={goHome} />
       <About innerRef={goAbout} />
       <Work innerRef={goWork} />

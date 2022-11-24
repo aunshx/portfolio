@@ -3,14 +3,25 @@ import {
   DARK_MODE_ON,
   DARK_MODE_OFF,
 
-//   Sound
+  //   Sound
   SOUND_ON,
   SOUND_OFF,
 
-//   Music 
-MUSIC_ON,
-MUSIC_OFF
+  //   Music
+  MUSIC_ON,
+  MUSIC_OFF,
+
+  // Background Animation
+  ANIMATION_CHANGE,
 } from "./types";
+
+export const toggleAnimationChange = (value) => async (dispatch) => 
+{
+    dispatch({
+      type: ANIMATION_CHANGE,
+      payload: value
+    });
+}
 
 // Toggle To Light Mode
 export const toggleLightMode= () => async (dispatch) => {

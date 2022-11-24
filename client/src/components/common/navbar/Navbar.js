@@ -6,7 +6,7 @@ import useWindow from "react-window-size-simple";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute, faRadiation } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
 import {
     makeStyles,
@@ -26,7 +26,8 @@ import {
   soundOn,
   soundOff,
   musicOn,
-  musicOff
+  musicOff,
+  toggleAnimationChange,
 } from "../../../redux/actions/settings";
 
 const setDark = () => {
@@ -49,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar = ({
   // Redux State
-  settings: { displayMode, sound, music },
+  settings: { displayMode, sound, music, backgroundAnimation },
   // Redux Actions
   soundOn,
   soundOff,
@@ -57,8 +58,9 @@ const Navbar = ({
   toggleDarkMode,
   musicOn,
   musicOff,
+  toggleAnimationChange,
 }) => {
-  const [playOn2] = useSound(resumeSwoosh, { volume: 0.2 })
+  const [playOn2] = useSound(resumeSwoosh, { volume: 0.2 });
   const [playOn] = useSound(toggle, { volume: 0.2 });
 
   const classes = useStyles();
@@ -93,6 +95,20 @@ const Navbar = ({
     }
   };
 
+  const toggleAnimationOn = () => {
+    toggleAnimationChange(true)
+    if(sound){
+      playOn()
+    }
+  }
+
+  const toggleAnimationOff = () => {
+    toggleAnimationChange(false)
+    if(sound){
+      playOn()
+    }
+  }
+
   const toggleThemeToLight = (e) => {
     setLight();
     toggleLightMode();
@@ -126,7 +142,6 @@ const Navbar = ({
     }
   };
 
-
   return (
     <>
       <div
@@ -134,7 +149,7 @@ const Navbar = ({
         style={
           displayMode
             ? { boxShadow: "2px 2px 2px 1px rgba(80, 80, 80, 0.2)" }
-            : { boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px' }
+            : { boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }
         }
       >
         <div className='cursor_pointer'>
@@ -143,6 +158,80 @@ const Navbar = ({
           </NavLink>
         </div>
         <div className='right flex_evenly'>
+          {displayMode ? (
+            <div className='moon cursor_pointer'>
+              <Tooltip title='Dark' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faMoon}
+                    className={"mobile_logo--tilted"}
+                    onClick={toggleThemeToLight}
+                    style={{
+                      fontSize: 17,
+                      marginTop: "0.35em",
+                      color: "grey",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='sun cursor_pointer'>
+              <Tooltip title='Light' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faSun}
+                    className={"mobile_logo--tilted"}
+                    onClick={toggleThemeToDark}
+                    style={{
+                      fontSize: 19,
+                      marginTop: "0.35em",
+                      color: "orange",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+          {backgroundAnimation ? (
+            <div
+              className='sound-on cursor_pointer'
+              style={{ marginRight: "2.2em" }}
+            >
+              <Tooltip title='Background Animation On' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faRadiation}
+                    onClick={toggleAnimationOff}
+                    style={{
+                      fontSize: 18,
+                      marginTop: "0.3em",
+                    }}
+                    className='radiation'
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div
+              className='sound-off cursor_pointer'
+              style={{ marginRight: "2.2em" }}
+            >
+              <Tooltip title='Background Animation Off' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faRadiation}
+                    onClick={toggleAnimationOn}
+                    style={{
+                      fontSize: 18,
+                      marginTop: "0.3em",
+                    }}
+                    className='radiation-off'
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
           {sound ? (
             <div className='sound-on cursor_pointer'>
               <Tooltip title='Sound-On' placement='left'>
@@ -175,63 +264,28 @@ const Navbar = ({
             </div>
           )}
           {music ? (
-            <div className='sound-on cursor_pointer'>
+            <div className='sound-on cursor_pointer' style={{ margin: "0" }}>
               <Tooltip title='Music-On' placement='left'>
                 <div>
                   <MusicNoteIcon
                     onClick={musicTurnOff}
                     style={{
-                      fontSize: 17,
-                      marginTop: "0.3em",
+                      fontSize: 20,
+                      marginTop: "0.35em",
                     }}
                   />
                 </div>
               </Tooltip>
             </div>
           ) : (
-            <div className='sound-off cursor_pointer'>
+            <div className='sound-off cursor_pointer' style={{ margin: "0" }}>
               <Tooltip title='Music-Off' placement='left'>
                 <div>
                   <MusicOffIcon
                     onClick={musicTurnOn}
                     style={{
-                      fontSize: 19,
-                      marginTop: "0.3em",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          )}
-          {displayMode ? (
-            <div className='moon cursor_pointer'>
-              <Tooltip title='Dark' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faMoon}
-                    className={"mobile_logo--tilted"}
-                    onClick={toggleThemeToLight}
-                    style={{
-                      fontSize: 17,
-                      marginTop: "0.3em",
-                      color: "grey",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          ) : (
-            <div className='sun cursor_pointer'>
-              <Tooltip title='Light' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faSun}
-                    className={"mobile_logo--tilted"}
-                    onClick={toggleThemeToDark}
-                    style={{
-                      fontSize: 19,
-                      marginTop: "0.3em",
-                      color: "orange",
+                      fontSize: 20,
+                      marginTop: "0.35em",
                     }}
                   />
                 </div>
@@ -356,6 +410,7 @@ Navbar.propTypes = {
   soundOff: PropTypes.func.isRequired,
   musicOn: PropTypes.func.isRequired,
   musicOff: PropTypes.func.isRequired,
+  toggleAnimationChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -369,6 +424,7 @@ const mapStateToActions = {
   soundOff,
   musicOn,
   musicOff,
+  toggleAnimationChange,
 };
 
 export default connect(mapStateToProps, mapStateToActions)(Navbar)

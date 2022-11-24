@@ -5,18 +5,26 @@ import {
   SOUND_OFF,
   MUSIC_ON,
   MUSIC_OFF,
+  ANIMATION_CHANGE,
 } from "../actions/types";
 //
 const initialState = {
   displayMode: false,
   sound: false,
-  music: false
+  music: false,
+  backgroundAnimation: true
 };
 // kk
 function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    // Background Animation
+    case ANIMATION_CHANGE:
+      return {
+        ...state,
+        backgroundAnimation: payload
+      }
     // Dark Mode
     case DARK_MODE_ON:
       return {

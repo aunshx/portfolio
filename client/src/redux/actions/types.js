@@ -9,6 +9,9 @@ export const EMAIL_ERROR_RESET = 'EMAIL_ERROR_RESET'
 export const MOUSE_LEAVE = "MOUSE_LEAVE";
 export const MOUSE_ENTER = "MOUSE_ENTER";
 
+// Background Animation
+export const ANIMATION_CHANGE = "ANIMATION_CHANGE";
+
 // Settings - Sound
 export const SOUND_ON = "SOUND_ON";
 export const SOUND_OFF = "SOUND_OFF";
