@@ -17,7 +17,6 @@ import DetailsCard from "./tools/DetailsCard";
 import EmailCard from "./tools/EmailCard";
 
 const Contact = ({
-  reference,
   refSec,
   show,
   changeDialog,
@@ -70,7 +69,7 @@ const Contact = ({
 
   return (
     <>
-      <div className='app' ref={reference}>
+      <div className='app'>
         <div className='contact app' ref={innerRef}>
           <Title
             icon={<FontAwesomeIcon icon={faMobileAlt} />}

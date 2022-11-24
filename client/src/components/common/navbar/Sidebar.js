@@ -11,6 +11,7 @@ import store from '../../../store'
 import { MOUSE_ENTER, MOUSE_LEAVE } from '../../../redux/actions/types';
 
 const Sidebar = ({
+  shadowToggle,
   hover,
   goToHome,
   goToAbout,
@@ -53,6 +54,19 @@ const Sidebar = ({
           }
           onMouseLeave={minimize}
           onClick={minimize}
+          style={
+            shadowToggle
+              ? {}
+              : displayMode
+              ? {
+                  boxShadow: "none",
+                  background: "transparent",
+                }
+              : {
+                  boxShadow: "none",
+                  background: "transparent",
+                }
+          }
         >
           <div className='app'>
             <div
@@ -184,6 +198,21 @@ const Sidebar = ({
           className='sidebar_main'
           onMouseEnter={maximize}
           onClick={maximize}
+          style={
+            shadowToggle
+              ? {
+                transition: '0.2s ease-in-out'
+              }
+              : displayMode
+              ? {
+                  boxShadow: "none",
+                  background: "transparent",
+                }
+              : {
+                  boxShadow: "none",
+                  background: "transparent",
+                }
+          }
         >
           <div className='app'>
             <div

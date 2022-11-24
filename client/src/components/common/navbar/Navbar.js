@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Navbar = ({
+  shadowToggle,
   // Redux State
   settings: { displayMode, sound, music, backgroundAnimation },
   // Redux Actions
@@ -96,18 +97,18 @@ const Navbar = ({
   };
 
   const toggleAnimationOn = () => {
-    toggleAnimationChange(true)
-    if(sound){
-      playOn()
+    toggleAnimationChange(true);
+    if (sound) {
+      playOn();
     }
-  }
+  };
 
   const toggleAnimationOff = () => {
-    toggleAnimationChange(false)
-    if(sound){
-      playOn()
+    toggleAnimationChange(false);
+    if (sound) {
+      playOn();
     }
-  }
+  };
 
   const toggleThemeToLight = (e) => {
     setLight();
@@ -147,9 +148,19 @@ const Navbar = ({
       <div
         className='navbar flex_between'
         style={
-          displayMode
-            ? { boxShadow: "2px 2px 2px 1px rgba(80, 80, 80, 0.2)" }
-            : { boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }
+          shadowToggle
+            ? displayMode
+              ? {
+                  boxShadow:
+                    "2px 2px 2px 1px rgba(80, 80, 80, 0.2), transition: '0.15s ease-in-out'",
+                }
+              : {
+                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                  transition: "0.15s ease-in-out",
+                }
+            : {
+                background: "transparent",
+              }
         }
       >
         <div className='cursor_pointer'>

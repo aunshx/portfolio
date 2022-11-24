@@ -43,8 +43,9 @@ const Home = ({
 
   const [showContact, setShowContact] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
+  const [shadowToggle, setShadowToggle] = useState(false)
 
-  const me = useRef();
+  const shadow = useRef()
   const goHome = useRef();
   const goAbout = useRef();
   const goWork = useRef();
@@ -53,6 +54,26 @@ const Home = ({
   const goArticles = useRef();
   const goSkills = useRef();
   const goContact = useRef();
+
+  const shadowElement = useCallback((node) => {
+    if (shadow.current) {
+      shadow.current.disconnect();
+    }
+    const options = {
+      root: null,
+      threshold: 0,
+    };
+    shadow.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setShadowToggle(false);
+      } else {
+        setShadowToggle(true);
+      }
+    }, options);
+    if (node) {
+      shadow.current.observe(node);
+    }
+  }, []);
 
   const refElement = useCallback((node) => {
     if (goContact.current) {
@@ -74,25 +95,6 @@ const Home = ({
     }
   }, []);
 
-  const refElement2 = useCallback((node) => {
-    if (me.current) {
-      me.current.disconnect();
-    }
-    const options = {
-      root: null,
-      threshold: 0.4,
-    };
-    me.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setShowDialog(true);
-      } else {
-        setShowDialog(false);
-      }
-    }, options);
-    if (node) {
-      me.current.observe(node);
-    }
-  }, []);
 
   useEffect(() => {
     // Capture Ip
@@ -191,8 +193,9 @@ const Home = ({
 
   return (
     <div className='app '>
-      <Navbar />
+      <Navbar shadowToggle={shadowToggle} />
       <Sidebar
+        shadowToggle={shadowToggle}
         hover={hover}
         goToHome={goToHome}
         goToAbout={goToAbout}
@@ -211,6 +214,7 @@ const Home = ({
           {width <= 600 && <BackgroundTiny />}
         </>
       )}
+      <div ref={shadowElement} />
       <Main innerRef={goHome} />
       <About innerRef={goAbout} />
       <Work innerRef={goWork} />
@@ -219,7 +223,6 @@ const Home = ({
       <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />
       <Contact
-        reference={refElement2}
         refSec={refElement}
         show={showDialog}
         changeDialog={setShowDialog}

@@ -588,7 +588,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40% 0.5em 40% 1em;
+  padding: 45% 0.5em 45% 1em;
 }
 
 .sidebar_main_maximize .element {
@@ -598,7 +598,7 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10% 0.5em 10% 1em;
+  padding: 11% 0.5em 13% 1em;
 }
 
 .sidebar_main .element:hover,
