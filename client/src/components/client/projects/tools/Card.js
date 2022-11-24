@@ -11,7 +11,7 @@ import {
 import { makeStyles } from "@mui/styles";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from "@mui/icons-material/Launch";
-import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import useWindow from "react-window-size-simple";
 
 import BigPic from "./BigPic";
@@ -173,8 +173,9 @@ const Card = ({
               TransitionComponent={Zoom}
               enterDelay={390}
             >
-              <div className='icon' onClick={bigPicOpen}>
-                <OpenInFullIcon style={{ fontSize: 20 }} />
+              <div className='expand-button flex_middle' onClick={bigPicOpen}>
+                <div style={{ marginRight: "0.4em" }}>Expand Project</div>
+                <ExpandLessIcon style={{ fontSize: 16, marginBottom: '0.1em' }} />
               </div>
             </Tooltip>
             <Tooltip

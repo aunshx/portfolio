@@ -11,7 +11,7 @@ import {
 import { makeStyles } from "@mui/styles";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from "@mui/icons-material/Launch";
-import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import useWindow from "react-window-size-simple";
 
 import BigPic from "./BigPic";
@@ -146,17 +146,6 @@ const InvertedCard = ({
           </div>
           <div className='icons flex_right'>
             <Tooltip
-              title='Open Image Carousel'
-              placement='top'
-              classes={{ tooltip: classes.customTooltip }}
-              TransitionComponent={Zoom}
-              enterDelay={390}
-            >
-              <div className='icon' onClick={bigPicOpen}>
-                <OpenInFullIcon style={{ fontSize: 20 }} />
-              </div>
-            </Tooltip>
-            <Tooltip
               title='To Github Profile'
               placement='top'
               classes={{ tooltip: classes.customTooltip }}
@@ -188,6 +177,20 @@ const InvertedCard = ({
                 >
                   <LaunchIcon style={{ fontSize: 20 }} />
                 </a>
+              </div>
+            </Tooltip>
+            <Tooltip
+              title='Open Image Carousel'
+              placement='top'
+              classes={{ tooltip: classes.customTooltip }}
+              TransitionComponent={Zoom}
+              enterDelay={390}
+            >
+              <div className='expand-button flex_middle' onClick={bigPicOpen} style={{ margin: '0 0 0.5em 2.5em' }} >
+                <div style={{ marginRight: "0.4em" }}>Expand Project</div>
+                <ExpandLessIcon
+                  style={{ fontSize: 16, marginBottom: "0.1em" }}
+                />
               </div>
             </Tooltip>
           </div>

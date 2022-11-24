@@ -12,7 +12,7 @@ const initialState = {
   displayMode: false,
   sound: false,
   music: false,
-  backgroundAnimation: true
+  backgroundAnimation: false
 };
 // kk
 function authReducer(state = initialState, action) {

@@ -228,37 +228,41 @@ const Home = ({
         changeDialog={setShowDialog}
         innerRef={goContact}
       />
-      {showContact && (
+      {width > 1029 && (
         <>
-          <div className='appear_contact' onClick={goToContact}>
-            <Tooltip title='Page Down' placement='left' enterDelay={400}>
-              <div className='contact-button' onMouseEnter={onHoverMobile}>
-                <ArrowCircleDownOutlinedIcon
-                  className='go-up'
-                  style={{ fontSize: 40 }}
-                />
+          {showContact && (
+            <>
+              <div className='appear_contact' onClick={goToContact}>
+                <Tooltip title='Page Down' placement='left' enterDelay={400}>
+                  <div className='contact-button' onMouseEnter={onHoverMobile}>
+                    <ArrowCircleDownOutlinedIcon
+                      className='go-up'
+                      style={{ fontSize: 40 }}
+                    />
+                  </div>
+                </Tooltip>
               </div>
-            </Tooltip>
+            </>
+          )}
+          {!showContact && (
+            <>
+              <div className='appear_contact' onClick={goToHome}>
+                <Tooltip title='Page Up' placement='left' enterDelay={400}>
+                  <div className='contact-button' onMouseEnter={onHoverMobile}>
+                    <ArrowCircleUpOutlinedIcon
+                      className='go-up'
+                      style={{ fontSize: 40 }}
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            </>
+          )}
+          <div className='speed_dial-button'>
+            <SpeedDial />
           </div>
         </>
       )}
-      {!showContact && (
-        <>
-          <div className='appear_contact' onClick={goToHome}>
-            <Tooltip title='Page Up' placement='left' enterDelay={400}>
-              <div className='contact-button' onMouseEnter={onHoverMobile}>
-                <ArrowCircleUpOutlinedIcon
-                  className='go-up'
-                  style={{ fontSize: 40 }}
-                />
-              </div>
-            </Tooltip>
-          </div>
-        </>
-      )}
-      <div className='speed_dial-button'>
-        <SpeedDial />
-      </div>
       <Alerts />
     </div>
   );

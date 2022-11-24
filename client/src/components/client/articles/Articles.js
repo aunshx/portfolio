@@ -141,7 +141,7 @@ const Articles = ({ innerRef }) => {
           </div>
         </div>
         <div className='read-more flex_middle'>
-          <div className='ft-bold' style={{ marginLeft: "-25px" }}>
+          <div className='ft-bold' style={{ marginLeft: "" }}>
             <a
               href='https://aunsh.medium.com'
               rel='noreferrer nofollow'

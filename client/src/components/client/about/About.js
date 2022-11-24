@@ -4,8 +4,11 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "../../common/layout/Title";
+import useWindow from 'react-window-size-simple';
 
 const About = ({ innerRef }) => {
+
+  const { width } = useWindow
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,7 +39,9 @@ const About = ({ innerRef }) => {
                 at my regular cafe.
               </div>
             </div>
-            <div className='image flex_left'>
+            <div
+              className={width < 1028 ? "image flex_middle" : "image flex_left"}
+            >
               <div
                 style={{
                   display: isLoading ? "block" : "none",
