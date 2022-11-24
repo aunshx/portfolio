@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import useSound from "use-sound";
 import useWindow from "react-window-size-simple";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
+import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
 
 import BackgroundLarge from "./components/client/main/BackgroundLarge";
 import BackgroundMedium from "./components/client/main/BackgroundMedium";
@@ -181,7 +181,7 @@ const Home = ({
     }
   };
 
-  const [playOn, { stop }] = useSound(bellRing, {
+  const [playOn] = useSound(bellRing, {
     volume: 0.2,
   });
 
@@ -233,10 +233,9 @@ const Home = ({
           <div className='appear_contact' onClick={goToContact}>
             <Tooltip title='Page Down' placement='left' enterDelay={400}>
               <div className='contact-button' onMouseEnter={onHoverMobile}>
-                <FontAwesomeIcon
-                  icon={faArrowDown}
+                <ArrowCircleDownOutlinedIcon
                   className='go-up'
-                  style={{ fontSize: 20 }}
+                  style={{ fontSize: 40 }}
                 />
               </div>
             </Tooltip>
@@ -248,10 +247,9 @@ const Home = ({
           <div className='appear_contact' onClick={goToHome}>
             <Tooltip title='Page Up' placement='left' enterDelay={400}>
               <div className='contact-button' onMouseEnter={onHoverMobile}>
-                <FontAwesomeIcon
-                  icon={faArrowUp}
+                <ArrowCircleUpOutlinedIcon
                   className='go-up'
-                  style={{ fontSize: 20 }}
+                  style={{ fontSize: 40 }}
                 />
               </div>
             </Tooltip>

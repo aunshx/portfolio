@@ -91,8 +91,8 @@ const Contact = ({
             organisation={organisation}
             message={message}
           />
+          <div ref={refSec} />
           <DetailsCard displayMode={displayMode} />
-          <div ref={refSec}></div>
           <Footer />
         </div>
       </div>

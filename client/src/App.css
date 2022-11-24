@@ -33,7 +33,7 @@
   --background-color: rgb(45, 45, 45);
   --background-dots-color: rgb(15, 15, 15);
    --navbar-color: rgb(35, 35, 35);
-   --card-color: rgb(26, 26, 26);
+   --card-color: rgb(35, 35, 35);
    --light-grey-color: rgb(25, 25, 25);
    --dark-font-color: rgb(238, 238, 238);
   --light-dark-font-color: rgb(204, 204, 204);
@@ -1070,7 +1070,7 @@ pre {
 /* ------------------------------------- FOOTER --------------------------------- */
 .footer {
   height: 10px;
-  margin-bottom: 0px;
+  margin-bottom: -20px;
   margin-top: 1em;
 }
 
@@ -2215,32 +2215,20 @@ z-index: 5;
 
 .contact-button {
   position: fixed;
-  bottom: 45px;
-  right: 33px;  
-  background-color: var(--grey-color);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  bottom: 40px;
+  right: 36px;  
   cursor: pointer;
+  color: var(--grey-color);
 }
 
 .contact-button:hover {
-  background-color: var(--light-logo-color);
+  color: var(--light-logo-color);
 }
 
 .speed_dial-button {
   position: fixed;
   bottom: 140px;
   right: 30px;  
-}
-
-.go-up {
-  position: absolute;
-  top: 11px;
-  left: 13px;
-  z-index: 10;
-  color: var(--light-color);
 }
 
 .contact-button:hover {
