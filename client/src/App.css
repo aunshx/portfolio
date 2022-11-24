@@ -1558,7 +1558,7 @@ transition: .2s ease-in-out;
 }
 
 .research .body .individual {
-  width: 240px;
+  width: 243px;
   color: var(--lighter-dark-font-color);
   height: 270px;
   background-color: var(--card-color);
@@ -1866,7 +1866,7 @@ transition: .2s ease-in-out;
    width: 700px;
   height: 400px;
   padding: 0em 1em 0em 1em;
-  margin: 50px 0 30px 50px;
+  margin: 70px 0 30px 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -1874,7 +1874,7 @@ transition: .2s ease-in-out;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: minmax(100px, auto);
-  margin-top: 2em;
+  margin-top: 2.5em;
    color: var(--lighter-dark-font-color);
 }
 
@@ -1952,7 +1952,7 @@ transition: .2s ease-in-out;
   /* padding: 0em 1em 0em 1em; */
   margin: 50px 0 50px 50px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .about .body {
@@ -1968,7 +1968,7 @@ transition: .2s ease-in-out;
 .about .body .image {
   width: 100%;
   position: relative;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding-left: 35px;
 }
 
@@ -2008,7 +2008,7 @@ z-index: 5;
 }
 
 .about .body .details {
-  font-size: 0.8em;
+  font-size: 0.85em;
 }
 
 

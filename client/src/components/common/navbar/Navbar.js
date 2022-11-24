@@ -196,7 +196,7 @@ const Navbar = ({
                     onClick={toggleThemeToDark}
                     style={{
                       fontSize: 19,
-                      marginTop: "0.35em",
+                      marginTop: "0.42em",
                       color: "orange",
                     }}
                   />
