@@ -10,16 +10,6 @@ const task = cron.schedule("*/12 * * * *", async () => {
   }
 });
 
-const task2 = cron.schedule("*/2 * * * * *", async () => {
-  try {
-    const res = await axios.get("https://github.com/aunshx");
-    console.log("Github Accessed");
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 module.exports = {
   task,
-  task2,
 };
