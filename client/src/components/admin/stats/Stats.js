@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PullToRefresh from "react-simple-pull-to-refresh";
 import { connect } from "react-redux";
 
-import Navbar from "../../common/navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 import Alerts from "../../common/layout/Alerts";
 import Spinner from "../../common/layout/Spinner";
 import FooterAdmin from "../../common/layout/FooterAdmin";

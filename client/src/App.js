@@ -22,7 +22,11 @@ import WillBeLive from "./components/common/layout/WillBeLive";
 
 import "./App.css";
 
-import { DARK_MODE_ON, DARK_MODE_OFF, LOGOUT } from "./redux/actions/types.js";
+import { 
+  // DARK_MODE_ON, 
+  // DARK_MODE_OFF, 
+  LOGOUT 
+} from "./redux/actions/types.js";
 import store from "./store";
 
 import lightBackground from "./resources/sounds/lightBackground.mp3";
@@ -54,17 +58,17 @@ function App({
       if (!localStorage.token) store.dispatch({ type: LOGOUT });
     });
 
-    if (localStorage.getItem("theme") === "light") {
-      store.dispatch({
-        type: DARK_MODE_OFF,
-      });
-      document.documentElement.setAttribute("data-theme", "light");
-    } else {
-      store.dispatch({
-        type: DARK_MODE_ON,
-      });
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
+    // if (localStorage.getItem("theme") === "light") {
+    //   store.dispatch({
+    //     type: DARK_MODE_OFF,
+    //   });
+    //   document.documentElement.setAttribute("data-theme", "light");
+    // } else {
+    //   store.dispatch({
+    //     type: DARK_MODE_ON,
+    //   });
+    //   document.documentElement.setAttribute("data-theme", "dark");
+    // }
 
     if (music && displayMode) {
       stop();

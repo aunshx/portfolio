@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-import Navbar from "../../common/navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 import MetaTags from "../../common/layout/MetaTags";
 
 import Normal from "./tools/Card";

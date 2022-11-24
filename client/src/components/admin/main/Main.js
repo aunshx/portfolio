@@ -8,7 +8,7 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import CableIcon from "@mui/icons-material/Cable";
 
 import Messages from '../message/Messages';
-import Navbar from "../../common/navbar/Navbar";
+import Navbar from "../navbar/Navbar";
 import Alerts from "../../common/layout/Alerts";
 import Spinner from "../../common/layout/Spinner";
 import MessagesOldest from "../message/MessagesOldest";
