@@ -2048,10 +2048,6 @@ z-index: 5;
   font-size: 2em;
 }
 
-.contact .body {
-  /* margin-top: 5%; */
-}
-
 .contact .body .form {
   width: 300px;
   color: var(--lighter-dark-font-color);

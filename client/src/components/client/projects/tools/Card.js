@@ -30,7 +30,6 @@ const style = {
   top: "40%",
   left: "54%",
   transform: "translate(-50%, -50%)",
-//   bgcolor: "white",
   boxShadow: 24,
   border: "none",
   outline: "none",

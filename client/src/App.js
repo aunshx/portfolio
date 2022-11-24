@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useSound from "use-sound";
+import {
+  isBrowser,
+} from "react-device-detect";
+
 
 import Home from "./Home";
 import NotFound from "./components/common/layout/NotFound";
@@ -13,6 +17,8 @@ import Main from "./components/admin/main/Main";
 import PrivateRoute from "./utils/PrivateRoute";
 import Stats from "./components/admin/stats/Stats";
 import Blog from './components/admin/blog/Blog'
+import CheckAuth from "./components/admin/blog/auth/CheckAuth";
+import WillBeLive from "./components/common/layout/WillBeLive";
 
 import "./App.css";
 
@@ -24,7 +30,6 @@ import darkBackground from "./resources/sounds/darkBackground.mp3";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./redux/actions/auth";
 import BlogAuthRoute from "./utils/BlogAuthRoute";
-import CheckAuth from "./components/admin/blog/auth/CheckAuth";
 
 function App({
   sidebar: { hover },
@@ -83,7 +88,8 @@ function App({
 
   }, [music, displayMode]);
 
-  if(window.location.host.split('.')[0] === 'admin') {
+  if (isBrowser) {
+    if (window.location.host.split(".")[0] === "admin") {
       return (
         <Router>
           <>
@@ -113,30 +119,35 @@ function App({
           </>
         </Router>
       );
+    } else {
+      return (
+        <Router>
+          <>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route
+                path='/admin/login'
+                render={(props) => (
+                  <Login
+                    Sidebar={<Sidebar hover={hover} />}
+                    Navbar={<Navbar />}
+                  />
+                )}
+              />
+              <Route component={NotFound} />
+            </Switch>
+          </>
+        </Router>
+      );
+    }
   } else {
     return (
       <Router>
-        <>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              component={Home}
-            />
-            <Route
-              path='/admin/login'
-              render={(props) => (
-                <Login
-                  Sidebar={<Sidebar hover={hover} />}
-                  Navbar={<Navbar />}
-                />
-              )}
-            />
-            <Route component={NotFound} />
-          </Switch>
-        </>
+      <Switch>
+        <WillBeLive />
+      </Switch>
       </Router>
-    );
+    )
   }
 }
 

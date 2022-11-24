@@ -29,9 +29,9 @@ const WillBeLive = (props) => {
               <div className='writing'>
                 <span className='middle'>a</span>unsh
               </div>
-              <div className='subwriting flex_middle' style={{ textAlign: 'center' }}>is currently updating this site!</div>
+              <div className='subwriting flex_middle' style={{ textAlign: 'center' }}>Mobile site is being updated!</div>
                 <div className='button flex_evenly' style={{ cursor: 'context-menu' }} >
-                  <div>See you on Nov 20, 2022!</div>
+                  <div>See you on Nov 25, 2022!</div>
                 </div>
             </div>
           </div>
