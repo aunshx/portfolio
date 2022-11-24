@@ -209,7 +209,17 @@ const Navbar = ({
               className='sound-on cursor_pointer'
               style={{ marginRight: "2.2em" }}
             >
-              <Tooltip title='Background Animation On' placement='left'>
+              <Tooltip
+                title={
+                  <>
+                    <div color='inherit'>Background Animation On</div>
+                    <div className='flex_middle ft-bold' style={{ color: "white" }}>
+                      RAM Intensive
+                    </div>
+                  </>
+                }
+                placement='bottom'
+              >
                 <div>
                   <FontAwesomeIcon
                     icon={faRadiation}

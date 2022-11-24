@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "../../common/layout/Title";
 
-import aunshProfilePic from '../../../resources/images/about/profile3.jpg'
+import aunshProfilePic from '../../../resources/images/about/profile2.png'
 
 const About = ({ innerRef }) => {
   return (

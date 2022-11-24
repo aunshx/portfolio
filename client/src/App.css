@@ -1950,7 +1950,7 @@ transition: .2s ease-in-out;
    width: 720px;
   height: 330px;
   /* padding: 0em 1em 0em 1em; */
-  margin: 50px 0 50px 50px;
+  margin: 50px 0 80px 50px;
   font-family: 'Comfortaa', cursive;
   /* border: 1px solid red; */
 }
@@ -1982,7 +1982,7 @@ transition: .2s ease-in-out;
   	transition: all .3s ease-in-out;
 	
 	/* Filters */
-	filter: grayscale(100%);
+	filter: grayscale(70%);
 }
 
 .about .body .image:hover img {
