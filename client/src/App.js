@@ -92,7 +92,7 @@ function App({
 
   }, [music, displayMode]);
 
-  if (true) {
+  if (isBrowser) {
     if (window.location.host.split(".")[0] === "admin") {
       return (
         <Router>
