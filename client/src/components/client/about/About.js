@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "../../common/layout/Title";
 
-import aunshProfilePic from '../../../resources/images/about/profile2.png'
-
 const About = ({ innerRef }) => {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const onLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
     <>
       <div className='app' ref={innerRef}>
@@ -22,7 +27,8 @@ const About = ({ innerRef }) => {
                 school teacher, and now a software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
-                I believe that technology should be as ergonomic as it is complex. Currently, I work as a software developer at a nascent
+                I believe that technology should be as ergonomic as it is
+                complex. Currently, I work as a software developer at a nascent
                 company called Dr SB's.
               </div>
               <div style={{ marginTop: "2em" }}>
@@ -31,7 +37,21 @@ const About = ({ innerRef }) => {
               </div>
             </div>
             <div className='image flex_left'>
-              <img src={aunshProfilePic} alt='Aunsh Profile Pic' />
+              <div
+                style={{
+                  display: isLoading ? "block" : "none",
+                }}
+                className='loader-about flex_middle'
+              >
+                <div className='loader-me' />
+              </div>
+              <div style={{ display: isLoading ? "none" : "block" }}>
+                <img
+                  src={"https://i.postimg.cc/vZQHqRSC/profile2.png"}
+                  alt='Aunsh Profile Pic'
+                  onLoad={onLoad}
+                />
+              </div>
               <div className='border' />
             </div>
           </div>
