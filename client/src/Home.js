@@ -227,12 +227,12 @@ const Home = ({
       <div ref={shadowElement} />
       <div ref={goHome} />
       <Main />
-      {/* <About innerRef={goAbout} /> */}
-      {/* <Work innerRef={goWork} /> */}
-      {/* <Projects innerRef={goProjects} /> */}
-      {/* <Research innerRef={goResearch} /> */}
-      {/* <Articles innerRef={goArticles} /> */}
-      {/* <Skills innerRef={goSkills} /> */}
+      <About innerRef={goAbout} />
+      <Work innerRef={goWork} />
+      <Projects innerRef={goProjects} />
+      <Research innerRef={goResearch} />
+      <Articles innerRef={goArticles} />
+      <Skills innerRef={goSkills} />
       <Contact
         refSec={refElement}
         show={showDialog}

@@ -498,7 +498,7 @@ pre {
 
 /* ---------------------------------- SIDEBAR ---------------------------- */
 .sidebar {
-  width: 170px;
+  width: 200px;
   font-family: 'Comfortaa', cursive;
   background-color: var(--navbar-color);
   height: 100vh;
