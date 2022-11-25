@@ -44,7 +44,6 @@ const SplitText = ({ copy, role }) => {
 }
 
 const Main = ({
-  innerRef,
   // Redux State 
   settings: { sound }
 }) => {
@@ -70,7 +69,8 @@ const Main = ({
   
   return (
     <>
-      <div className='main' onMouseMove={makeSomeNoise} ref={innerRef}>
+      <div className='main' onMouseMove={makeSomeNoise} 
+      >
         <div className='double_grid'>
           <div className='title app' style={{ justifyContent: "center" }}>
             <div className='second app ft-bold'>

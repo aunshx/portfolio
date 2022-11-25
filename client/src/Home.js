@@ -215,7 +215,8 @@ const Home = ({
         </>
       )}
       <div ref={shadowElement} />
-      <Main innerRef={goHome} />
+      <div ref={goHome} />
+      <Main />
       <About innerRef={goAbout} />
       <Work innerRef={goWork} />
       <Projects innerRef={goProjects} />

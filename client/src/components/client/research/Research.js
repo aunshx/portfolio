@@ -50,7 +50,7 @@ const Research = ({
             <Card
               title={"5G Dual Band Pass Filter for Wi-Fi and WLAN Operations"}
               link={
-                "https://drive.google.com/file/d/1vU5t8YAz7mKWWKG1-l77xMDisG6grjzA/view?usp=sharing"
+                ""
               }
               description={
                 "Project proposes a new generation of dual band pass 5G filter for Wi-Fi and WLAN operating t 2.45 GHz and 5.5 GHz."
