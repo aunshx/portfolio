@@ -228,8 +228,8 @@ const Home = ({
       <div ref={goHome} />
       <Main />
       <About innerRef={goAbout} />
-      {/* <Work innerRef={goWork} />
-      <Projects innerRef={goProjects} />
+      <Work innerRef={goWork} />
+      {/* <Projects innerRef={goProjects} />
       <Research innerRef={goResearch} />
       <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} /> */}

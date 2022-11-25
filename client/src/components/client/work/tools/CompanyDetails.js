@@ -1,22 +1,21 @@
 import React from 'react'
 import { List, ListItem } from '@mui/material'
+import useWindow from 'react-window-size-simple';
 
 const CompanyDetails = ({ company }) => {
+
+  const { width } = useWindow()
+
   return (
     <div className='company'>
-      <div className='flex_left'>
-        <div className='app' style={{ alignItems: "flex-start" }}>
+      <div className={width < 800 ? "flex_middle" : "flex_left"}>
+        <div
+          className='app'
+          style={width < 800 ? {} : { alignItems: "flex-start" }}
+        >
           <div className='flex_middle'>
             <div className='position'>{company.position}</div>
-            <span
-              style={{
-                margin: "0 0.3em",
-                fontSize: "0.9em",
-                color: "rgb(0, 145, 255)",
-              }}
-            >
-              @
-            </span>
+            <span className='at'>@</span>
             <div className='name'>{company.name}</div>
           </div>
           <div className='flex_middle'>
@@ -41,7 +40,7 @@ const CompanyDetails = ({ company }) => {
               <ListItem
                 disableGutters
                 disablePadding
-                style={{ fontSize: "0.85em", color: "grey", padding: "0.4em" }}
+                className='item'
                 key={index}
               >
                 {element}
