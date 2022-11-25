@@ -14,7 +14,7 @@ import LaunchIcon from "@mui/icons-material/Launch";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import useWindow from "react-window-size-simple";
 
-import BigPic from "./BigPic";
+import BigPic from "../BigPic";
 
 const useStyles = makeStyles((theme) => ({
   customTooltip: {

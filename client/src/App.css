@@ -1331,6 +1331,130 @@ transition: .2s ease-in-out;
   color: var(--logo-color);
 }
 
+.projects .card-container-small {
+  width: 410px;
+  height: auto;
+  margin: 0em 0 4em 0;
+}
+
+.projects .card-container-small .grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 10px;
+  height: 100%;
+}
+
+.projects .card-container-small .image-container .image {
+  width: 100%;
+  height: 260px;
+  border-radius: 20px;
+  background-color: var(--card-color);
+}
+
+.projects .card-container-small .image-container .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  	display: block;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.projects .card-container-small .image-container .image img:hover {
+  box-shadow: 0px 0px 20px 0px rgb(120, 188, 234);
+transition: .2s ease-in-out;
+}
+
+.projects .card-container-small .details-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 1em;
+}
+
+.projects .card-container-small .title {
+  font-size: 1.4em;
+  margin-bottom: 1em;
+}
+
+.projects .card-container-small .title .name {
+  color: var(--light-dark-font-color);
+}
+
+.projects .card-container-small .title .name:hover {
+  color: var(--logo-color);
+}
+
+.projects .card-container-small .title .sub-title {
+  color: var(--grey-color);
+  font-size: 0.45em;
+  margin-top: -0.5em;
+  cursor: context-menu;
+}
+
+.projects .card-container-small .details-container .description {
+  color: var(--grey-color);
+  font-size: 0.75em;
+  margin-top: 1em;
+  width: 95%;
+  height: 70px;
+  padding: 0.5em;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.projects .card-container-small .details-container .tech-stack {
+  width: 100%;
+  height: 20px;
+  top: 70%;
+  font-size: 0.7em;
+  margin-top: 1.5em;
+  color: var(--grey-color);
+}
+
+.projects .card-container-small .details-container .tech-stack .tech {
+  margin: 0 0.3em;
+}
+
+.projects .card-container-small .details-container .icons {
+  margin-top: 1.4em;
+}
+
+.projects .card-container-small .details-container .icons .icon {
+  color: var(--grey-color);
+  cursor: pointer;
+  margin: 0 1.5em 0 0;
+}
+
+.projects .card-container-small .details-container .icons .icon:hover {
+  color: var(--logo-color);
+}
+
+.projects .card-container-small .details-container .icons .expand-button {
+  color: var(--grey-color);
+  cursor: pointer;
+  margin: 0 2.5em 0.4em 0;
+  font-size: 0.6em;
+  border: 1px solid var(--grey-color);
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-radius: 10px;
+}
+
+.projects .card-container-small .details-container .icons .expand-button:hover {
+  color: var(--logo-color);
+  border-color: var(--logo-color);
+}
+
+.projects .card-container-small .details-container .icons .icon a {
+  color: var(--grey-color);
+  cursor: pointer;
+}
+
+.projects .card-container-small .details-container .icons .icon a:hover {
+  color: var(--logo-color);
+}
+
 .big-pic .individual {
    color: var(--lighter-dark-font-color);
   background-color: var(--card-color);
@@ -1441,11 +1565,40 @@ transition: .2s ease-in-out;
   }
 }
 
-@media only screen and (max-width: 650px) {
-  .projects {
-    width: 100vw;
-    margin: 50px 0;
-  }
+@media only screen and (max-width: 500px) {
+  .projects .card-container-small {
+  width: 300px;
+  height: auto;
+  margin: 0em 0 4em 0;
+}
+
+.projects .card-container-small .grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 10px;
+  height: 100%;
+}
+
+.projects .card-container-small .image-container .image {
+  width: 100%;
+  height: 220px;
+  border-radius: 20px;
+  background-color: var(--card-color);
+}
+
+.projects .card-container-small .details-container .description {
+  color: var(--grey-color);
+  font-size: 0.7em;
+  margin-top: 1em;
+  width: 95%;
+  height: 60px;
+  padding: 0.8em;
+  background-color: var(--card-color);
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 }
 
 /* ----------------- RESEARCH ---------------- */
@@ -1875,7 +2028,6 @@ transition: .2s ease-in-out;
   padding: 0em 1em 0em 0em;
   margin: 0 0 5em 0px;
   font-family: 'Comfortaa', cursive;
-  border: 1px solid red;
 }
 
 .work .body {
@@ -1885,7 +2037,6 @@ transition: .2s ease-in-out;
   grid-template-rows: minmax(100px, auto);
   margin-top: -0.4em;
    color: var(--lighter-dark-font-color);
-   border: 1px solid green;
 }
 
 .work .body .list {

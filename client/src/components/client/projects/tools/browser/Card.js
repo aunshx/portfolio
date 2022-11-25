@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  Tooltip,
-  Zoom,
-  Box,
-  Fade,
-  Modal,
-} from "@mui/material";
+import { Tooltip, Zoom, Box, Fade, Modal } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import GitHubIcon from '@mui/icons-material/GitHub';
+import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import useWindow from "react-window-size-simple";
 
-import BigPic from "./BigPic";
+import BigPic from "../BigPic";
 
 const useStyles = makeStyles((theme) => ({
   customTooltip: {
@@ -38,7 +32,6 @@ const style = {
   height: "60%",
 };
 
-
 const Card = ({
   pics,
   title,
@@ -50,12 +43,12 @@ const Card = ({
   // Redux State
   settings: { displayMode },
 }) => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    const { width } = useWindow();
-    const [isLoading, setIsLoading] = useState(true);
-    const [isBigPicOpen, setIsBigPicOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const { width } = useWindow();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isBigPicOpen, setIsBigPicOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [borderColorNow, setBorderColorNow] = useState("");
 
@@ -88,36 +81,35 @@ const Card = ({
     setIsHovering(false);
   };
 
-    const increaseCurrentIndex = () => {
-      if (currentIndex === pics.length - 1) {
-        setCurrentIndex(0);
-      } else {
-        setCurrentIndex(currentIndex + 1);
-      }
-      setIsLoading(true);
-    };
+  const increaseCurrentIndex = () => {
+    if (currentIndex === pics.length - 1) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
+    setIsLoading(true);
+  };
 
-    const decreaseCurrentIndex = () => {
-      if (currentIndex === 0) {
-        setCurrentIndex(pics.length - 1);
-      } else {
-        setCurrentIndex(currentIndex - 1);
-      }
-      setIsLoading(true);
-    };
+  const decreaseCurrentIndex = () => {
+    if (currentIndex === 0) {
+      setCurrentIndex(pics.length - 1);
+    } else {
+      setCurrentIndex(currentIndex - 1);
+    }
+    setIsLoading(true);
+  };
 
-    const bigPicClose = () => {
-      setIsBigPicOpen(false);
-    };
+  const bigPicClose = () => {
+    setIsBigPicOpen(false);
+  };
 
-    const bigPicOpen = () => {
-      setIsBigPicOpen(true);
-    };
+  const bigPicOpen = () => {
+    setIsBigPicOpen(true);
+  };
 
-    const onLoad = () => {
-      setIsLoading(false);
-    };
-
+  const onLoad = () => {
+    setIsLoading(false);
+  };
 
   return (
     <div className='card-container'>
@@ -175,7 +167,9 @@ const Card = ({
             >
               <div className='expand-button flex_middle' onClick={bigPicOpen}>
                 <div style={{ marginRight: "0.4em" }}>Expand Project</div>
-                <ExpandLessIcon style={{ fontSize: 16, marginBottom: '0.1em' }} />
+                <ExpandLessIcon
+                  style={{ fontSize: 16, marginBottom: "0.1em" }}
+                />
               </div>
             </Tooltip>
             <Tooltip
