@@ -24,7 +24,10 @@ const Articles = ({ innerRef }) => {
   return (
     <div className='app' ref={innerRef}>
       <div className='articles'>
-        <Title icon={<FontAwesomeIcon icon={faNewspaper} />} title={"Articles"} />
+        <Title
+          icon={<FontAwesomeIcon icon={faNewspaper} />}
+          title={"Articles"}
+        />
         <div className='body'>
           <div className='flex_middle'>
             <Card
@@ -112,9 +115,7 @@ const Articles = ({ innerRef }) => {
               articleImage={funWithReddit}
               title={"Lazy Loading in React using the Reddit API"}
               runAos={true}
-              link={
-                "https://aunsh.medium.com/automate-tasks-in-node-with-node-cron-fbb276bdaede"
-              }
+              link={"https://github.com/aunshx/fun-with-reddit"}
               description={
                 "Show unlimited posts on scroll from subreddits in your React app"
               }

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faBriefcase, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVial, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
@@ -43,6 +43,14 @@ const useStyles = makeStyles((theme) => ({
 
 const SidebarMini = ({
   close,
+  goToHome,
+  goToAbout,
+  goToWork,
+  goToProjects,
+  goToResearch,
+  goToSkills,
+  goToArticles,
+  goToContact,
   // Redux State
   settings: { displayMode, music, sound },
   // Redux Actions
@@ -51,7 +59,7 @@ const SidebarMini = ({
   musicOn,
   musicOff,
 }) => {
-  const [playOn] = useSound(pop, { volume: 1 })
+  const [playOn] = useSound(pop, { volume: 1 });
   const classes = useStyles();
 
   const [githubHover, setGithubHover] = useState(false);
@@ -188,32 +196,71 @@ const SidebarMini = ({
             </div>
           )}
         </div>
-        <NavLink
-          to='/'
+        <div
+          onClick={() => {
+            close()
+            goToHome()
+          }}
+          className={"element"}
+          style={{ cursor: "pointer", marginBottom: "-0.5em" }}
         >
           <div className='flex_between' onMouseEnter={elementHover}>
             <div>
-              <FontAwesomeIcon icon={faHome} style={{ marginRight: "0.5em" }} />
+              <FontAwesomeIcon
+                icon={faHome}
+                style={{ marginRight: "0.5em", marginTop: "0.7em" }}
+              />
             </div>
-            <div>Home</div>
+            <div className='writing' style={{ marginTop: "0.5em" }}>
+              Home
+            </div>
           </div>
-        </NavLink>
-        <NavLink
-          to='/user'
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToAbout()
+          }}
           className={"element"}
-          activeStyle={{ color: "rgb(0, 145, 255)" }}
+          style={{ cursor: "pointer" }}
         >
           <div className='flex_between' onMouseEnter={elementHover}>
             <div>
-              <FontAwesomeIcon icon={faUser} style={{ marginRight: "0.5em" }} />
+              <FontAwesomeIcon
+                icon={faUser}
+                style={{ marginRight: "0.5em", marginTop: "0.7em" }}
+              />
             </div>
-            <div>About</div>
+            <div className='writing' style={{ marginTop: "0.5em" }}>
+              About
+            </div>
           </div>
-        </NavLink>
-        <NavLink
-          to='/work'
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToWork()
+          }}
           className={"element"}
-          activeStyle={{ color: "rgb(0, 145, 255)" }}
+          style={{ cursor: "pointer" }}
+        >
+          <div className='flex_between' onMouseEnter={elementHover}>
+            <div>
+              <FontAwesomeIcon
+                icon={faBriefcase}
+                style={{ marginRight: "0.5em" }}
+              />
+            </div>
+            <div className='writing'>Work</div>
+          </div>
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToProjects()
+          }}
+          className={"element"}
+          style={{ cursor: "pointer" }}
         >
           <div className='flex_between' onMouseEnter={elementHover}>
             <div>
@@ -222,28 +269,49 @@ const SidebarMini = ({
                 style={{ marginRight: "0.5em" }}
               />
             </div>
-            <div>Work</div>
+            <div className='writing'>Projects</div>
           </div>
-        </NavLink>
-        <NavLink
-          to='/articles'
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToResearch()
+          }}
           className={"element"}
-          activeStyle={{ color: "rgb(0, 145, 255)" }}
+          style={{ cursor: "pointer" }}
         >
-          <div className='flex_between'>
+          <div className='flex_between' onMouseEnter={elementHover}>
+            <div>
+              <FontAwesomeIcon icon={faVial} style={{ marginRight: "0.5em" }} />
+            </div>
+            <div className='writing'>Research</div>
+          </div>
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToArticles()
+          }}
+          className={"element"}
+          style={{ cursor: "pointer" }}
+        >
+          <div className='flex_between' onMouseEnter={elementHover}>
             <div>
               <FontAwesomeIcon
                 icon={faNewspaper}
                 style={{ marginRight: "0.5em" }}
               />
             </div>
-            <div>Articles</div>
+            <div className='writing'>Articles</div>
           </div>
-        </NavLink>
-        <NavLink
-          to='/skills'
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToSkills()
+          }}
           className={"element"}
-          activeStyle={{ color: "rgb(0, 145, 255)" }}
+          style={{ cursor: "pointer" }}
         >
           <div className='flex_between' onMouseEnter={elementHover}>
             <div>
@@ -252,13 +320,16 @@ const SidebarMini = ({
                 style={{ marginRight: "0.5em" }}
               />
             </div>
-            <div>Skills</div>
+            <div className='writing'>Skills</div>
           </div>
-        </NavLink>
-        <NavLink
-          to='/contact'
+        </div>
+        <div
+          onClick={() => {
+            close()
+            goToContact()
+          }}
           className={"element"}
-          activeStyle={{ color: "rgb(0, 145, 255)" }}
+          style={{ cursor: "pointer" }}
         >
           <div className='flex_between' onMouseEnter={elementHover}>
             <div>
@@ -267,110 +338,112 @@ const SidebarMini = ({
                 style={{ marginRight: "0.5em" }}
               />
             </div>
-            <div>Contact</div>
+            <div className='writing'>Contact</div>
           </div>
-        </NavLink>
+        </div>
         <div className='element ft-bold' style={{ marginTop: "0em" }}>
           Socials
         </div>
-        <a
-          href='https://github.com/aunshx'
-          target={"_blank"}
-          rel='noreferrer nofollow'
-          alt='Github Logo'
-        >
-          <div
-            className='element flex_between'
-            style={{ padding: "0em", marginTop: "0.2em" }}
+        <div className='flex_between'>
+          <a
+            href='https://github.com/aunshx'
+            target={"_blank"}
+            rel='noreferrer nofollow'
+            alt='Github Logo'
           >
-            <Tooltip
-              title='Go To Github Profile'
-              placement='right'
-              classes={{ tooltip: classes.customTooltip }}
+            <div
+              className='element flex_between'
+              style={{ padding: "0em", marginTop: "0.2em" }}
             >
-              <div
-                className='flex_middle'
-                onMouseEnter={githubHoverMoveEnter}
-                onMouseLeave={githubHoverMoveLeave}
+              <Tooltip
+                title='Go To Github Profile'
+                placement='right'
+                classes={{ tooltip: classes.customTooltip }}
               >
-                {githubHover ? (
-                  <GitHubIcon
-                    style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
-                  />
-                ) : displayMode ? (
-                  <GitHubIcon style={{ color: "#fff", fontSize: 18 }} />
-                ) : (
-                  <GitHubIcon style={{ color: "#000", fontSize: 18 }} />
-                )}
-              </div>
-            </Tooltip>
-          </div>
-        </a>
-        <a
-          href='https://aunsh.medium.com'
-          target={"_blank"}
-          rel='noreferrer nofollow'
-          alt='Medium Logo'
-        >
-          <div
-            className='element flex_between'
-            style={{ paddingTop: "0.2em", marginTop: "0.4em" }}
+                <div
+                  className='flex_middle'
+                  onMouseEnter={githubHoverMoveEnter}
+                  onMouseLeave={githubHoverMoveLeave}
+                >
+                  {githubHover ? (
+                    <GitHubIcon
+                      style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
+                    />
+                  ) : displayMode ? (
+                    <GitHubIcon style={{ color: "#fff", fontSize: 18 }} />
+                  ) : (
+                    <GitHubIcon style={{ color: "#000", fontSize: 18 }} />
+                  )}
+                </div>
+              </Tooltip>
+            </div>
+          </a>
+          <a
+            href='https://aunsh.medium.com'
+            target={"_blank"}
+            rel='noreferrer nofollow'
+            alt='Medium Logo'
           >
-            <Tooltip
-              title='Go To Medium Profile'
-              placement='right'
-              classes={{ tooltip: classes.customTooltip }}
+            <div
+              className='element flex_between'
+              style={{ paddingTop: "0.2em", marginTop: "0.8em" }}
             >
-              <div
-                style={{ objectFit: "contain", width: "18px" }}
-                onMouseEnter={mediumHoverMoveEnter}
-                onMouseLeave={mediumHoverMoveLeave}
+              <Tooltip
+                title='Go To Medium Profile'
+                placement='right'
+                classes={{ tooltip: classes.customTooltip }}
               >
-                {mediumHover ? (
-                  <img src={mediumLogoHover} alt='Medium Logo' />
-                ) : (
-                  <img
-                    src={displayMode ? mediumLogoDark : mediumLogo}
-                    alt='Medium Logo'
-                  />
-                )}
-              </div>
-            </Tooltip>
-          </div>
-        </a>
-        <a
-          href='https://linked.com/aunsh'
-          target={"_blank"}
-          rel='noreferrer nofollow'
-          alt='Medium Logo'
-        >
-          <div
-            className='element flex_between'
-            style={{ padding: "0em", marginTop: "0.4em" }}
+                <div
+                  style={{ objectFit: "contain", width: "18px" }}
+                  onMouseEnter={mediumHoverMoveEnter}
+                  onMouseLeave={mediumHoverMoveLeave}
+                >
+                  {mediumHover ? (
+                    <img src={mediumLogoHover} alt='Medium Logo' />
+                  ) : (
+                    <img
+                      src={displayMode ? mediumLogoDark : mediumLogo}
+                      alt='Medium Logo'
+                    />
+                  )}
+                </div>
+              </Tooltip>
+            </div>
+          </a>
+          <a
+            href='https://linked.com/aunsh'
+            target={"_blank"}
+            rel='noreferrer nofollow'
+            alt='Medium Logo'
           >
-            <Tooltip
-              title='Go To LinkedIn Profile'
-              placement='right'
-              classes={{ tooltip: classes.customTooltip }}
+            <div
+              className='element flex_between'
+              style={{ padding: "0em", marginTop: "0.4em" }}
             >
-              <div
-                className='flex_middle'
-                onMouseEnter={linkedInHoverMoveEnter}
-                onMouseLeave={linkedInHoverMoveLeave}
+              <Tooltip
+                title='Go To LinkedIn Profile'
+                placement='right'
+                classes={{ tooltip: classes.customTooltip }}
               >
-                {linkedInHover ? (
-                  <LinkedInIcon
-                    style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
-                  />
-                ) : displayMode ? (
-                  <LinkedInIcon style={{ color: "#fff", fontSize: 18 }} />
-                ) : (
-                  <LinkedInIcon style={{ color: "#000", fontSize: 18 }} />
-                )}
-              </div>
-            </Tooltip>
-          </div>
-        </a>
+                <div
+                  className='flex_middle'
+                  onMouseEnter={linkedInHoverMoveEnter}
+                  onMouseLeave={linkedInHoverMoveLeave}
+                >
+                  {linkedInHover ? (
+                    <LinkedInIcon
+                      style={{ color: "rgb(0, 145, 255)", fontSize: 18 }}
+                    />
+                  ) : displayMode ? (
+                    <LinkedInIcon style={{ color: "#fff", fontSize: 18 }} />
+                  ) : (
+                    <LinkedInIcon style={{ color: "#000", fontSize: 18 }} />
+                  )}
+                </div>
+              </Tooltip>
+            </div>
+          </a>
+        </div>
         <div className='element'>
           <a href={resume} download='aunsh_resume.pdf'>
             <div className='resume'>Resume</div>

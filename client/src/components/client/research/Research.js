@@ -16,7 +16,7 @@ const Research = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='research'>
-        <div style={{ marginBottom: '1.5em' }} >
+        <div style={{ marginBottom: "1.5em" }}>
           <Title icon={<FontAwesomeIcon icon={faVial} />} title={"Research"} />
         </div>
         <div className='body'>
@@ -43,20 +43,18 @@ const Research = ({
                 "An autonomous steering mechanism that uses Sobel filters (OpenCV) to detect lanes and passes deviation data to steering in real-time."
               }
               tags={["Image Processing", "ML", "Electronics"]}
-              achievements={["Presented"]}
+              achievements={["Project Expo"]}
             />
           </div>
           <div className='flex_middle'>
             <Card
-              title={"5G Dual Band Pass Filter for Wi-Fi and WLAN Operations"}
-              link={
-                ""
-              }
+              title={"Industrial Processes Smart Safety System"}
+              link={""}
               description={
-                "Project proposes a new generation of dual band pass 5G filter for Wi-Fi and WLAN operating t 2.45 GHz and 5.5 GHz."
+                "Designed and developed an smart industrial safety system with parameter logging and automated measures"
               }
-              tags={["5G", "Sponsored", "Telecommunication"]}
-              achievements={["Cost-effective"]}
+              tags={["Mechatronics", "Processors", "Digital"]}
+              achievements={[]}
             />
           </div>
         </div>

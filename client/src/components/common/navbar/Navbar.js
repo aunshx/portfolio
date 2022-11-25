@@ -50,6 +50,14 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar = ({
   shadowToggle,
+  goToHome,
+  goToAbout,
+  goToWork,
+  goToProjects,
+  goToResearch,
+  goToSkills,
+  goToArticles,
+  goToContact,
   // Redux State
   settings: { displayMode, sound, music, backgroundAnimation },
   // Redux Actions
@@ -213,7 +221,10 @@ const Navbar = ({
                 title={
                   <>
                     <div color='inherit'>Background Animation On</div>
-                    <div className='flex_middle ft-bold' style={{ color: "white" }}>
+                    <div
+                      className='flex_middle ft-bold'
+                      style={{ color: "white" }}
+                    >
                       RAM Intensive
                     </div>
                   </>
@@ -370,6 +381,58 @@ const Navbar = ({
                 </Tooltip>
               </div>
             )}
+            {backgroundAnimation ? (
+              <div
+                className='sound-on cursor_pointer'
+                style={{ marginRight: "1.4em" }}
+              >
+                <Tooltip
+                  title={
+                    <>
+                      <div color='inherit'>Background Animation On</div>
+                      <div
+                        className='flex_middle ft-bold'
+                        style={{ color: "white" }}
+                      >
+                        RAM Intensive
+                      </div>
+                    </>
+                  }
+                  placement='bottom'
+                >
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faRadiation}
+                      onClick={toggleAnimationOff}
+                      style={{
+                        fontSize: 17,
+                        marginTop: "0.15em",
+                      }}
+                      className='radiation'
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            ) : (
+              <div
+                className='sound-off cursor_pointer'
+                style={{ marginRight: "1.4em" }}
+              >
+                <Tooltip title='Background Animation Off' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faRadiation}
+                      onClick={toggleAnimationOn}
+                      style={{
+                        fontSize: 17,
+                        marginTop: "0.15em",
+                      }}
+                      className='radiation-off'
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            )}
             <div>
               {menu ? (
                 <div className='flex_middle'>
@@ -395,7 +458,8 @@ const Navbar = ({
                         className={"mobile_logo"}
                         onClick={verticalMenu}
                         style={{
-                          fontSize: 17,
+                          fontSize: 19,
+                          marginTop: '0.15em'
                         }}
                       />
                     </div>
@@ -415,7 +479,17 @@ const Navbar = ({
             onClose={verticalMenu}
             className='sidebar_nav-right'
           >
-            <SidebarMini close={verticalMenu} />
+            <SidebarMini
+              close={verticalMenu}
+              goToHome={goToHome}
+              goToAbout={goToAbout}
+              goToWork={goToWork}
+              goToProjects={goToProjects}
+              goToResearch={goToResearch}
+              goToSkills={goToSkills}
+              goToArticles={goToArticles}
+              goToContact={goToContact}
+            />
           </Drawer>
         )}
       </div>

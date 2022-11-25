@@ -466,6 +466,10 @@ pre {
     color: var(--logo-color);
   }
 
+  .navbar .right-mini .radiation {
+  animation: rotateContinuously 2s infinite linear;
+}
+
   @keyframes verticalToHorizontal {
         0% {
             transform: rotate(90deg);
@@ -1878,12 +1882,12 @@ transition: .2s ease-in-out;
   	transition: all .3s ease-in-out;
 	
 	/* Filters */
-	filter: grayscale(70%);
+	/* filter: grayscale(70%); */
 }
 
-.about .body .image:hover img {
+/* .about .body .image:hover img {
 	filter: none;
-}
+} */
 
 .about .body .image .border {
   border: 2px solid var(--grey-color);
