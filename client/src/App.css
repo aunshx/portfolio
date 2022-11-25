@@ -1693,6 +1693,36 @@ transition: .2s ease-in-out;
   color: var(--grey-color);
 }
 
+@media only screen and (max-width: 870px) {
+  .research {
+  color: var(--grey-color);
+   width: auto;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 0 0 8em 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+  .research .body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 1em;
+}
+}
+
+@media only screen and (max-width: 768px){
+    .research {
+  color: var(--grey-color);
+   width: auto;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 0 0 8em 0px;
+  font-family: 'Comfortaa', cursive;
+}
+
+}
+
 /* ----------------------------------- ARTICLES ---------------------------- */
 .articles {
   color: var(--grey-color);
