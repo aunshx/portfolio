@@ -779,7 +779,6 @@ pre {
   color: var(--light-color);  
 }
 
-/* ---------------- moving text ------------------- */
 .third {
   font-size: 5em;
   text-align: center;
@@ -857,9 +856,15 @@ pre {
 
   .main {
     width: 100vw;
-    height: 90vh;
+    height: 85vh;
     margin: 50px 0;
   }
+
+.main .double_grid .title .second .first {
+  font-size: 0.5em;
+  position: absolute;
+  top: -10px;
+}
 
   .main .double_grid .title .second {
   font-size: 6em;
@@ -885,18 +890,24 @@ pre {
   font-size: 116px;
 }
 
+.main .double_grid .title .second .third {
+  font-size:28px;
+  position: absolute;
+  bottom: -8px;
+}
+
 }
 
 @media only screen and (max-width: 650px) {
 
   .main {
     width: 100vw;
-    height: 90vh;
+    height: 82vh;
     margin: 50px 0;
   }
 
   .main .double_grid .title .second {
-  font-size: 5em;
+  font-size: 5.1em;
   text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
    position: relative;
    cursor:context-menu;
@@ -918,9 +929,8 @@ pre {
   position: relative;
 }
 
-
 .main .double_grid .title .second .third {
-  font-size:30px;
+  font-size:20px;
   position: absolute;
   bottom: 0px;
 }
@@ -931,12 +941,19 @@ pre {
 
   .main {
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
     margin: 50px 0;
   }
 
+  
+.main .double_grid .title .second .first {
+  font-size: 0.58em;
+  position: absolute;
+  top: -10px;
+}
+
   .main .double_grid .title .second {
-  font-size: 4.3em;
+  font-size: 4.2em;
   text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
    position: relative;
    cursor:context-menu;
@@ -966,7 +983,6 @@ pre {
   position: relative;
 }
 
-
 .main .double_grid .title .second .third {
   font-size:20px;
   position: absolute;
@@ -979,9 +995,15 @@ pre {
 
   .main {
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
     margin: 50px 0;
   }
+
+   .main .double_grid .title .second .first {
+  font-size: 0.55em;
+  position: absolute;
+  top: -10px;
+}
 
   .main .double_grid .title .second {
   font-size: 3.8em;
@@ -1014,9 +1036,8 @@ pre {
   position: relative;
 }
 
-
 .main .double_grid .title .second .third {
-  font-size:20px;
+  font-size:18px;
   position: absolute;
   bottom: -10px;
 }
@@ -1027,17 +1048,17 @@ pre {
 
   .main {
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
     margin: 50px 0;
   }
 
  .main .double_grid .title .second .first {
-  font-size: 0.4em;
+  font-size: 0.6em;
   position: absolute;
-  top: 10px;
+  top: -10px;
 }
   .main .double_grid .title .second {
-  font-size: 2.7em;
+  font-size: 3.2em;
   text-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
    position: relative;
    cursor:context-menu;
@@ -1064,7 +1085,7 @@ pre {
 
 
 .main .double_grid .title .second .third {
-  font-size:14px;
+  font-size:16px;
   position: absolute;
   bottom: -20px;
 }
