@@ -30,7 +30,7 @@ const Projects = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='projects'>
-        <div style={{ marginBottom : '2.5em' }} >
+        <div style={{ marginBottom: "2.5em" }}>
           <Title icon={<FontAwesomeIcon icon={faTools} />} title={"Projects"} />
         </div>
         <div className='body app'>
@@ -44,7 +44,13 @@ const Projects = ({
                 description={
                   "A web-app to maximize your productivity and manage time smartly. Also included smart metrics to check your statistics."
                 }
-                tech={["React", "Redux", "MongodB", "Node.js", "Javascript"]}
+                tech={[
+                  "Dual-Mode",
+                  "Time management",
+                  "Free",
+                  "Metrics",
+                  "Timeline",
+                ]}
                 gitUrl={"https://github.com/aunshx/gotuu"}
               />
               <SmallCard
@@ -55,7 +61,13 @@ const Projects = ({
                 description={
                   "A simple web project to utilize the Reddit API by lazy-loading. API Data is cleaned and sent from the server in real-time while scrolling."
                 }
-                tech={["React", "Redux", "MongodB", "Node.js", "Javascript"]}
+                tech={[
+                  "Dual-Mode",
+                  "Reddit API",
+                  "Snoowrap",
+                  "Data Cleaning",
+                  "Lazy-load",
+                ]}
                 gitUrl={"https://github.com/aunshx/fun-with-reddit"}
               />
               <SmallCard
@@ -66,7 +78,7 @@ const Projects = ({
                 description={
                   "My portfolio website. Includes client side static site and admin overview functionalities to check stats and messages."
                 }
-                tech={["Node.js", "PSQL", "React", "Mui", "Javascript"]}
+                tech={["Showcase", "Personal", "Messages", "Mui", "Javascript"]}
                 gitUrl={"https://github.com/aunshx/portfolio"}
               />
             </div>
@@ -80,7 +92,13 @@ const Projects = ({
                 description={
                   "A web-app to maximize your productivity and manage time smartly. Also included smart metrics to check your statistics."
                 }
-                tech={["React", "Redux", "MongodB", "Node.js", "Javascript"]}
+                tech={[
+                  "Dual-Mode",
+                  "Time management",
+                  "Free",
+                  "Metrics",
+                  "Timeline",
+                ]}
                 gitUrl={"https://github.com/aunshx/gotuu"}
               />
               <InvertedCard
@@ -91,7 +109,13 @@ const Projects = ({
                 description={
                   "A simple web project to utilize the Reddit API by lazy-loading. API Data is cleaned and sent from the server in real-time while scrolling."
                 }
-                tech={["React", "Redux", "MongodB", "Node.js", "Javascript"]}
+                tech={[
+                  "Dual-Mode",
+                  "Reddit API",
+                  "Snoowrap",
+                  "Data Cleaning",
+                  "Lazy-load",
+                ]}
                 gitUrl={"https://github.com/aunshx/fun-with-reddit"}
               />
               <Card
@@ -102,7 +126,7 @@ const Projects = ({
                 description={
                   "My portfolio website. Includes client side static site and admin overview functionalities to check stats and messages."
                 }
-                tech={["Node.js", "PSQL", "React", "Mui", "Javascript"]}
+                tech={["Showcase", "Personal", "Messages", "Mui", "Javascript"]}
                 gitUrl={"https://github.com/aunshx/portfolio"}
               />
             </>
