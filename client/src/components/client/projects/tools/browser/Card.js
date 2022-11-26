@@ -32,6 +32,17 @@ const style = {
   height: "60%",
 };
 
+const styleSmall = {
+  position: "fixed",
+  top: "40%",
+  left: "5%",
+  transform: "translate(-50%, -50%)",
+  boxShadow: 24,
+  border: "none",
+  outline: "none",
+  padding: "1em",
+};
+
 const Card = ({
   pics,
   title,
@@ -221,7 +232,7 @@ const Card = ({
         }}
       >
         <Fade in={isBigPicOpen}>
-          <Box style={style}>
+          <Box style={width < 786 ? styleSmall : style}>
             <BigPic
               close={bigPicClose}
               pics={pics}
