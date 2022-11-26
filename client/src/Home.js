@@ -231,7 +231,7 @@ const Home = ({
       <Work innerRef={goWork} />
       <Projects innerRef={goProjects} />
       {/* <Research innerRef={goResearch} /> */}
-      {/* <Articles innerRef={goArticles} /> */}
+      <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />
       <Contact
         refSec={refElement}
