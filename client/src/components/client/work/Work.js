@@ -32,31 +32,33 @@ const Work = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='work'>
-        <div style={{ marginBottom: '2.5em' }} >
+        <div style={{ marginBottom: "2.5em" }}>
           <Title icon={<FontAwesomeIcon icon={faBriefcase} />} title={"Work"} />
         </div>
-        <div
-          className='body app'
-          style={width < 800 ? {} : { alignItems: "flex-start" }}
-        >
-          {width < 800 && (
-            <HorizontalSlider
-              companies={companies}
-              currentIndex={currentIndex}
-              glowOn={glowOn}
-              changeCurrentIndex={changeCurrentIndex}
-            />
-          )}
-          {width >= 800 && (
-            <VerticalSlider
-              companies={companies}
-              currentIndex={currentIndex}
-              glowOn={glowOn}
-              changeCurrentIndex={changeCurrentIndex}
-            />
-          )}
-          <div className='details'>
-            {!glowOn && <CompanyDetails company={companies[currentIndex]} />}
+        <div className='app'>
+          <div
+            className='body app'
+            style={width < 800 ? {} : { alignItems: "flex-start" }}
+          >
+            {width < 800 && (
+              <HorizontalSlider
+                companies={companies}
+                currentIndex={currentIndex}
+                glowOn={glowOn}
+                changeCurrentIndex={changeCurrentIndex}
+              />
+            )}
+            {width >= 800 && (
+              <VerticalSlider
+                companies={companies}
+                currentIndex={currentIndex}
+                glowOn={glowOn}
+                changeCurrentIndex={changeCurrentIndex}
+              />
+            )}
+            <div className='details'>
+              {!glowOn && <CompanyDetails company={companies[currentIndex]} />}
+            </div>
           </div>
         </div>
       </div>
