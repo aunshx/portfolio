@@ -1802,7 +1802,7 @@ transition: .2s ease-in-out;
 
 .research .body .individual {
   width: 150px;
-  height: 180px;
+  height: auto;
   margin: 1.5em 0 0 0;
   padding: 0.5em 0.8em;
 }
@@ -2265,7 +2265,7 @@ transition: .2s ease-in-out;
 
 .work .body .list .name {
   font-size: 0.6em;
-  min-width: 95px;
+  min-width: 100px;
   padding: 0.5em;
   width: auto;
   border-bottom: 2px solid var(--light-grey-color);
