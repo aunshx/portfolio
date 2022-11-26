@@ -2837,11 +2837,6 @@ z-index: 5;
   font-family: 'Comfortaa', cursive;
 }
 
-.contact .title {
-  color: var(--lighter-dark-font-color);
-  font-size: 2em;
-}
-
 .contact .body .form {
   width: 300px;
   color: var(--lighter-dark-font-color);
@@ -2903,7 +2898,7 @@ z-index: 5;
   z-index: 1;
   font-family: 'Comfortaa', cursive;
   padding: 0.5em 0.5em 0.6em 0.5em;
-  margin: 40px 0 30px 0px;
+  margin: 0px 0 30px 0px;
 }
 
 .card-contact--dark {

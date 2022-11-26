@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = ({  }) => {
   return (
-    <div className='footer flex_middle'>
+    <div className='footer app'>
       <div className='text cursor_pointer'>
         <span style={{ marginBottom: "0.5em", fontSize: "0.8em" }}>
           Handcrafted with &#10084; by{" "}
@@ -16,13 +16,12 @@ const Footer = ({  }) => {
           >
             Aunsh B
           </a>{" "}
-          |
-        </span>{" "}
-        <span style={{ margin: "0.3em 0.3em 0 0", fontSize: "0.8em" }}>
-          {" "}
-          {String.fromCodePoint("0X00A9")}
+          &middot;
         </span>
-        <span style={{ fontSize: "0.8em", fontWeight: "400" }}>2022</span>
+      </div>
+      <div className='text' style={{ fontSize: "0.55em", fontWeight: "200", marginTop: '0.5em' }}>
+        v2.0.1 &middot; Update 26 Nv 22 &middot;
+        All rights reserved
       </div>
     </div>
   );
