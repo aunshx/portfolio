@@ -30,7 +30,7 @@ const Projects = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='projects'>
-        <div style={{ marginBottom :'3em' }} >
+        <div style={{ marginBottom : '2.5em' }} >
           <Title icon={<FontAwesomeIcon icon={faTools} />} title={"Projects"} />
         </div>
         <div className='body app'>

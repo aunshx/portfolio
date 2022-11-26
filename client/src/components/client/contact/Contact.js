@@ -71,10 +71,12 @@ const Contact = ({
     <>
       <div className='app'>
         <div className='contact app' ref={innerRef}>
-          <Title
-            icon={<FontAwesomeIcon icon={faMobileAlt} />}
-            title={"Contact"}
-          />
+          <div style={{ marginBottom: '2.5em' }} >
+            <Title
+              icon={<FontAwesomeIcon icon={faMobileAlt} />}
+              title={"Contact"}
+            />
+          </div>
           <EmailCard displayMode={displayMode} />
           <div className='or'>OR</div>
           <Card

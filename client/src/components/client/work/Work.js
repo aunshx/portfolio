@@ -32,7 +32,9 @@ const Work = ({
   return (
     <div className='app' ref={innerRef}>
       <div className='work'>
-        <Title icon={<FontAwesomeIcon icon={faBriefcase} />} title={"Work"} />
+        <div style={{ marginBottom: '2.5em' }} >
+          <Title icon={<FontAwesomeIcon icon={faBriefcase} />} title={"Work"} />
+        </div>
         <div
           className='body app'
           style={width < 800 ? {} : { alignItems: "flex-start" }}

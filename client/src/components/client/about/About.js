@@ -20,7 +20,12 @@ const About = ({ innerRef }) => {
     <>
       <div className='app' ref={innerRef}>
         <div className='about' style={{ justifyContent: "center" }}>
-          <Title icon={<FontAwesomeIcon icon={faUser} />} title={"About Me"} />
+          <div style={{ marginBottom: '2.5em' }} >
+            <Title
+              icon={<FontAwesomeIcon icon={faUser} />}
+              title={"About Me"}
+            />
+          </div>
           <div className='body app' style={{ alignItems: "flex-start" }}>
             <div className='details'>
               <div>

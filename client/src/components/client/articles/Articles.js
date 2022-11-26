@@ -24,10 +24,12 @@ const Articles = ({ innerRef }) => {
   return (
     <div className='app' ref={innerRef}>
       <div className='articles'>
-        <Title
-          icon={<FontAwesomeIcon icon={faNewspaper} />}
-          title={"Articles"}
-        />
+        <div style={{ marginBottom: '2.5em' }} >
+          <Title
+            icon={<FontAwesomeIcon icon={faNewspaper} />}
+            title={"Articles"}
+          />
+        </div>
         <div className='body'>
           <div className='flex_middle'>
             <Card

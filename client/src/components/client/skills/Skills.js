@@ -37,7 +37,7 @@ const Skills = ({ innerRef }) => {
 
   return (
     <div className='skills' ref={innerRef}>
-      <div style={{ marginBottom: '3em' }} >
+      <div style={{ marginBottom: '2.5em' }} >
         <Title icon={<FontAwesomeIcon icon={faBrain} />} title={"Skills"} />
       </div>
       <div className='body-two'>

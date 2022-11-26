@@ -1775,8 +1775,57 @@ transition: .2s ease-in-out;
   border: 1px solid var(--ye-color);
   color: var(--grey-color);
 }
+}
 
+@media only screen and (max-width: 510px){
+    .research {
+  color: var(--grey-color);
+   width: auto;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 0 0 3em 0px;
+  font-family: 'Comfortaa', cursive;
+}
 
+.research .body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 1em;
+}
+
+.research .body .individual {
+  width: 150px;
+  height: 180px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+
+.research .body .individual .title {
+  font-size: 0.5em;
+}
+
+.research .body .individual .description {
+  font-size: 0.51em;
+  margin: 0em 0.1em 1em 0.1em;
+}
+
+.research .body .individual .tags {
+  margin: 0.2em 0.1em 0.5em 0.1em;
+}
+
+.research .body .individual .tags .tag {
+  margin: 0em 0.2em;
+  font-size: 0.2em;
+}
+
+.research .body .individual .achievements {
+  margin: 0em 0.1em 1em 0.1em;
+}
+
+.research .body .individual .achievements .element {
+  font-size: 0.43em;
+}
 }
 
 /* ----------------------------------- ARTICLES ---------------------------- */
@@ -2635,7 +2684,7 @@ z-index: 5;
   display: grid;
   column-gap: 0px;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 1em;
+    margin-top: 0;
 }
 
 .skills .body-two .individual {
@@ -2677,19 +2726,24 @@ z-index: 5;
   margin: 50px 0 0px 50px;
   font-family: 'Comfortaa', cursive;
 }
+
+.skills .body-two {
+    margin-top: 0;
+}
 }
 
 @media only screen and (max-width: 786px) {
   .skills {
     width: 100vw;
     margin: 50px 0;
+      padding: 0em 1em 0em 1em;
   }
 
   .skills .body-two {
   display: grid;
   column-gap: 0px;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 1em;
+    margin-top: 0;
 }
 }
 
@@ -2698,13 +2752,14 @@ z-index: 5;
   .skills {
     width: 100vw;
     margin: 50px 0;
+    padding: 0em;
   }
 
   .skills .body-two {
   display: grid;
   column-gap: 0px;
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 1em;
+  margin-top: 0;
 }
   
 .skills .body-two .individual {
