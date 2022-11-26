@@ -1829,7 +1829,7 @@ transition: .2s ease-in-out;
   color: var(--grey-color);
    width: 100vw;
   height: auto;
-  padding: 0em em 0em 0.5em;
+  padding: 0em 0.5em 0em 0.5em;
   margin: 0 0 3em 0px;
   font-family: 'Comfortaa', cursive;
 }
