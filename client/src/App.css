@@ -1788,7 +1788,7 @@ transition: .2s ease-in-out;
   color: var(--grey-color);
    width: 100vw;
   height: auto;
-  padding: 0em 0em 1em 0;
+  padding: 0em 0.5em 0em 0.5em;
   margin: 0 0 3em 0px;
   font-family: 'Comfortaa', cursive;
 }
@@ -1801,7 +1801,7 @@ transition: .2s ease-in-out;
 }
 
 .research .body .individual {
-  width: 150px;
+  width: 95%;
   height: auto;
   margin: 1.5em 0 0 0;
   padding: 0.5em 0.8em;
