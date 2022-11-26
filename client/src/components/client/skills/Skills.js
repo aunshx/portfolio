@@ -81,8 +81,6 @@ const Skills = ({ innerRef }) => {
             numberCurrent={number}
           />
         </div>
-      </div>
-      <div className='body-two'>
         <div className='flex_middle'>
           <SkillOne
             delay={200}
@@ -123,8 +121,6 @@ const Skills = ({ innerRef }) => {
             numberCurrent={number}
           />
         </div>
-      </div>
-      <div className='body-two'>
         <div className='flex_middle'>
           <SkillOne
             delay={400}
@@ -165,7 +161,7 @@ const Skills = ({ innerRef }) => {
             numberCurrent={number}
           />
         </div>
-      </div>
+    </div>
     </div>
   );
 };
