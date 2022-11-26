@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -40,6 +40,7 @@ function App({
   // Redux States
   settings: { sound, displayMode, music },
 }) {
+  
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
     volume: 0.2,
   });
@@ -91,6 +92,28 @@ function App({
     }
 
   }, [music, displayMode]);
+
+  const [isLoading, setLoading] = useState(true);
+
+  function someRequest() {
+    //Simulates a request; makes a "promise" that'll run for 2.5 seconds
+    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+  }
+
+  useEffect(() => {
+    someRequest().then(() => {
+      const loaderElement = document.querySelector(".loader-me-initial");
+      if (loaderElement) {
+        loaderElement.remove();
+        setLoading(!isLoading);
+      }
+    });
+  });
+
+  if (isLoading) {
+    //
+    return null;
+  }
 
   if (true) {
     if (window.location.host.split(".")[0] === "admin") {
