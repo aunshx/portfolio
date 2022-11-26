@@ -97,12 +97,12 @@ function App({
 
   function someRequest() {
     //Simulates a request; makes a "promise" that'll run for 2.5 seconds
-    return new Promise((resolve) => setTimeout(() => resolve(), 1500));
+    return new Promise((resolve) => setTimeout(() => resolve(), 150000));
   }
 
   useEffect(() => {
     someRequest().then(() => {
-      const loaderElement = document.querySelector(".loader-me-initial");
+      const loaderElement = document.querySelector(".complete-screen");
       if (loaderElement) {
         loaderElement.remove();
         setLoading(!isLoading);
