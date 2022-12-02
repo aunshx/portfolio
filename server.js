@@ -2,9 +2,7 @@ const express = require("express");
 const expressSanitizer = require("express-sanitizer");
 const path = require("path");
 const bodyParser = require('body-parser')
-const { 
-task, 
-} = require("./workers/worker");
+const { task, task2 } = require("./workers/worker");
 const connectDB = require("./config/db");
 
 const app = express();
