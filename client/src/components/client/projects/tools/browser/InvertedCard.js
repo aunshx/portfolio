@@ -130,7 +130,12 @@ const InvertedCard = ({
               alignItems: "flex-start",
             }}
           >
-            <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
+            <a
+              href={link}
+              target={"_blank"}
+              rel='noopener noreferrer nofollow'
+              aria-label={title}
+            >
               <div className='name'>{title}</div>
             </a>
             <div className='sub-title'>{subTitle}</div>
@@ -157,6 +162,7 @@ const InvertedCard = ({
                   href={gitUrl}
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
+                  aria-label={"Github"}
                 >
                   <GitHubIcon style={{ fontSize: 20 }} />
                 </a>
@@ -174,6 +180,7 @@ const InvertedCard = ({
                   href={link}
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
+                  aria-label={title}
                 >
                   <LaunchIcon style={{ fontSize: 20 }} />
                 </a>
@@ -186,7 +193,11 @@ const InvertedCard = ({
               TransitionComponent={Zoom}
               enterDelay={390}
             >
-              <div className='expand-button flex_middle' onClick={bigPicOpen} style={{ margin: '0 0 0.5em 2.5em' }} >
+              <div
+                className='expand-button flex_middle'
+                onClick={bigPicOpen}
+                style={{ margin: "0 0 0.5em 2.5em" }}
+              >
                 <div style={{ marginRight: "0.4em" }}>Expand Project</div>
                 <ExpandLessIcon
                   style={{ fontSize: 16, marginBottom: "0.1em" }}
@@ -196,7 +207,12 @@ const InvertedCard = ({
           </div>
         </div>
         <div className='image-container'>
-          <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
+          <a
+            href={link}
+            target={"_blank"}
+            rel='noopener noreferrer nofollow'
+            aria-label={title}
+          >
             <div
               className='image'
               onMouseEnter={handleMouseEnter}

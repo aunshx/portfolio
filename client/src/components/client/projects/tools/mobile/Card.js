@@ -114,13 +114,23 @@ const Card = ({
   return (
     <div className='card-container-small'>
       <div className='title app'>
-        <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
+        <a
+          href={link}
+          target={"_blank"}
+          rel='noopener noreferrer nofollow'
+          aria-label={title}
+        >
           <div className='name'>{title}</div>
         </a>
         <div className='sub-title'>{subTitle}</div>
       </div>
       <div className='image-container'>
-        <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
+        <a
+          href={link}
+          target={"_blank"}
+          rel='noopener noreferrer nofollow'
+          aria-label={title}
+        >
           <div
             className='image'
             onMouseEnter={handleMouseEnter}
@@ -178,6 +188,7 @@ const Card = ({
                 href={gitUrl}
                 target={"_blank"}
                 rel='noopener noreferrer nofollow'
+                aria-label={"Github"}
               >
                 <GitHubIcon style={{ fontSize: 20 }} />
               </a>
@@ -195,6 +206,7 @@ const Card = ({
                 href={link}
                 target={"_blank"}
                 rel='noopener noreferrer nofollow'
+                aria-label={title}
               >
                 <LaunchIcon style={{ fontSize: 20 }} />
               </a>

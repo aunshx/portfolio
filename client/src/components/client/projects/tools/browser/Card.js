@@ -126,7 +126,12 @@ const Card = ({
     <div className='card-container'>
       <div className='grid'>
         <div className='image-container'>
-          <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
+          <a
+            href={link}
+            target={"_blank"}
+            rel='noopener noreferrer nofollow'
+            aria-label={title}
+          >
             <div
               className='image'
               onMouseEnter={handleMouseEnter}
@@ -154,7 +159,12 @@ const Card = ({
               alignItems: "flex-end",
             }}
           >
-            <a href={link} target={"_blank"} rel='noopener noreferrer nofollow'>
+            <a
+              href={link}
+              target={"_blank"}
+              rel='noopener noreferrer nofollow'
+              aria-label={title}
+            >
               <div className='name'>{title}</div>
             </a>
             <div className='sub-title'>{subTitle}</div>
@@ -195,6 +205,7 @@ const Card = ({
                   href={gitUrl}
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
+                  aria-label={'Github'}
                 >
                   <GitHubIcon style={{ fontSize: 20 }} />
                 </a>
@@ -212,6 +223,7 @@ const Card = ({
                   href={link}
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
+                  aria-label={title}
                 >
                   <LaunchIcon style={{ fontSize: 20 }} />
                 </a>

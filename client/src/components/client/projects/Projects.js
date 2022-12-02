@@ -56,7 +56,7 @@ const Projects = ({
               <SmallCard
                 pics={funWithRedditPics}
                 title={"Fun w/ Reddit"}
-                link={"https://fun-with-reddit.herokuapp.com"}
+                link={"https://sumptuous-sandy-basket.glitch.me/"}
                 subTitle={"Web API Project"}
                 description={
                   "A simple web project to utilize the Reddit API by lazy-loading. API Data is cleaned and sent from the server in real-time while scrolling."
@@ -104,7 +104,7 @@ const Projects = ({
               <InvertedCard
                 pics={funWithRedditPics}
                 title={"Fun w/ Reddit"}
-                link={"https://fun-with-reddit.herokuapp.com"}
+                link={"https://sumptuous-sandy-basket.glitch.me/"}
                 subTitle={"Web API Project"}
                 description={
                   "A simple web project to utilize the Reddit API by lazy-loading. API Data is cleaned and sent from the server in real-time while scrolling."
