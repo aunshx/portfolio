@@ -18,9 +18,11 @@ const DetailsCard = ({ displayMode }) => {
       className={
         displayMode ? "card-contact card-contact--dark" : "card-contact"
       }
-      style={{ margin: '50px 0 50px 0' }}
+      style={{ margin: "50px 0 50px 0" }}
     >
-      <div className='title flex_middle' style={{ marginTop: '0.5em' }} >Details</div>
+      <div className='title flex_middle' style={{ marginTop: "0.5em" }}>
+        Details
+      </div>
       <div className='info'>
         <div className='title'>
           <FontAwesomeIcon icon={faEnvelope} />
@@ -41,7 +43,10 @@ const DetailsCard = ({ displayMode }) => {
           Aunsh Bandivadekar
         </div>
       </div>
-      <div className="flex_middle" style={{ marginTop: '1.5em', fontSize: '0.9em', color: 'grey' }} >
+      <div
+        className='flex_middle'
+        style={{ marginTop: "1.5em", fontSize: "0.9em", color: "grey" }}
+      >
         Socials
       </div>
       <div
@@ -51,21 +56,39 @@ const DetailsCard = ({ displayMode }) => {
       >
         <Tooltip title='Github Profile' placement='top' enterDelay={200}>
           <div className='socials'>
-            <GitHubIcon />
+            <a
+              href='https://github.com/aunshx'
+              target={"_blank"}
+              rel='noopener noreferrer nofollow'
+            >
+              <GitHubIcon />
+            </a>
           </div>
         </Tooltip>
         <Tooltip title='Linkedin Profile' placement='top' enterDelay={200}>
           <div className='socials'>
-            <LinkedInIcon />
+            <a
+              href='https://www.linkedin.com/in/aunsh'
+              target={"_blank"}
+              rel='noopener noreferrer nofollow'
+            >
+                <LinkedInIcon />
+            </a>
           </div>
         </Tooltip>
         <Tooltip title='Medium Profile' placement='top' enterDelay={200}>
           <div className='socials'>
-            <img
-              src={displayMode ? mediumLogoDark : mediumLogo}
-              alt='Medium'
-              style={{ width: "30px", height: "20px" }}
-            />
+            <a
+              href='https://aunsh.medium.com'
+              target={"_blank"}
+              rel='noopener noreferrer nofollow'
+            >
+              <img
+                src={displayMode ? mediumLogoDark : mediumLogo}
+                alt='Medium'
+                style={{ width: "30px", height: "20px" }}
+              />
+            </a>
           </div>
         </Tooltip>
       </div>

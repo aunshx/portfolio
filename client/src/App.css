@@ -2930,9 +2930,10 @@ z-index: 5;
   font-size: 0.9em;
 }
 
-.card-contact .info .socials {
-  margin: 0.2em 0.6em;
+.card-contact .info .socials a {
+  margin: 0.2em 0.7em;
   cursor: pointer;
+  color: var(--light-dark-font-color);
 }
 
 .card-contact .email-button {
