@@ -1277,6 +1277,7 @@ transition: .2s ease-in-out;
 .projects .card-container .grid .details-container .tech-stack .tech,
 .projects .card-container .invert-grid .details-container .tech-stack .tech {
   margin: 0 0.3em;
+  text-align: center;
 }
 
 .projects .card-container .grid .details-container .icons {
@@ -2133,13 +2134,15 @@ transition: .2s ease-in-out;
 }
 
 .work .body .details {
-  width: 100%;
+  width: 500px;
   height: 100%;
   padding: 0 0 0 1em;
+
 }
 
 .work .body .details .company {
   animation: fadeIn 0.1s ease-in-out;
+  width: fit-content;
 }
 
 @keyframes fadeIn {
@@ -2758,7 +2761,7 @@ z-index: 5;
   object-fit: contain;
   width: 40px;
   height: 50px;
-  margin-bottom: -1em;
+  margin-bottom: 0em;
 }
 
 .skills .body-two .individual .title {
@@ -2922,7 +2925,7 @@ z-index: 5;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 4em;
+  margin-left: 3.5em;
   padding-top: 1em;
 }
 .social-title {
