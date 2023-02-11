@@ -545,6 +545,26 @@ pre {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   }
 
+
+  .sidebar .element .gotuu_app {
+    font-size: 11px;
+  color: rgb(94, 226, 61);
+  font-weight: 700;
+  border: 1px solid rgb(46, 169, 15);
+  padding: 0.2em 0.7em;
+  border-radius: 20px;
+  }
+
+  .sidebar .element .gotuu_app img {
+    object-fit: contain;
+    width: 15px;
+    height: 15px;
+  }
+
+  .sidebar .element .gotuu_app:hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
+
   .sidebar .music-on {
    color: var(--light-logo-color);
 }
@@ -3016,9 +3036,42 @@ z-index: 5;
 
 .speed_dial-button {
   position: fixed;
-  bottom: 140px;
+  bottom: 200px;
   right: 30px;  
 }
+
+.gotuu_dial-button {
+  position: fixed;
+  bottom: 120px;
+  right: 30px;  
+}
+
+.gotuu_dial-button .body {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: 3px solid rgb(191, 252, 176);
+}
+
+.gotuu_dial-button .body:hover {
+  border: 3px solid var(--gotuu-color);
+  transition: 0.2s;
+}
+
+.gotuu_dial-button .body:hover img {
+  transform: rotate(-5deg);
+    transition: 0.2s;
+}
+
+.gotuu_dial-button .body img {
+  object-fit: contain;
+  width: 28px;
+  height: 28px;
+}
+
 
 .contact-button:hover {
   animation: contactButton 0.2s 1 linear;

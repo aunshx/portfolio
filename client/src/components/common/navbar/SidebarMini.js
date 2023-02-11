@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faBriefcase, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVial, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faBriefcase, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVial, faVolumeMute, faVolumeUp, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
@@ -17,6 +17,7 @@ import MusicOffIcon from "@mui/icons-material/MusicOff"
 import mediumLogo from "../../../resources/images/skills/logos/mediumLogo.png";
 import mediumLogoHover from "../../../resources/images/skills/logos/mediumLogoHover.png";
 import mediumLogoDark from "../../../resources/images/skills/logos/mediumLogoDark.png";
+import gotuuLogo from '../../../resources/images/work-and-projects/gotuu.in/gotuuOnyLogo.png'
 
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -198,8 +199,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToHome()
+            close();
+            goToHome();
           }}
           className={"element"}
           style={{ cursor: "pointer", marginBottom: "-0.5em" }}
@@ -218,8 +219,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToAbout()
+            close();
+            goToAbout();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -238,8 +239,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToWork()
+            close();
+            goToWork();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -256,8 +257,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToProjects()
+            close();
+            goToProjects();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -274,8 +275,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToResearch()
+            close();
+            goToResearch();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -289,8 +290,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToArticles()
+            close();
+            goToArticles();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -307,8 +308,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToSkills()
+            close();
+            goToSkills();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -325,8 +326,8 @@ const SidebarMini = ({
         </div>
         <div
           onClick={() => {
-            close()
-            goToContact()
+            close();
+            goToContact();
           }}
           className={"element"}
           style={{ cursor: "pointer" }}
@@ -446,7 +447,22 @@ const SidebarMini = ({
         </div>
         <div className='element'>
           <a href={resume} download='aunsh_resume.pdf'>
-            <div className='resume'>Resume</div>
+            <div className='resume flex_middle'>
+              <FontAwesomeIcon icon={faDownload} style={{ margin: '0 0.2em 0.15em 0' }} />
+              <div>Resume</div>
+            </div>
+          </a>
+        </div>
+        <div className='element'>
+          <a
+            href='https://gotuu.in/'
+            target={"_blank"}
+            rel='noopenner nofollow noreferrer'
+          >
+            <div className='gotuu_app flex_middle'>
+              <img src={gotuuLogo} alt='Gotuu Logo' />
+              <div style={{ margin: "0.1em 0 0 0.2em" }}>gotuu.in</div>
+            </div>
           </a>
         </div>
       </div>

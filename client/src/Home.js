@@ -24,7 +24,8 @@ import Skills from './components/client/skills/Skills';
 import Contact from './components/client/contact/Contact';
 import Navbar from './components/common/navbar/Navbar';
 import Sidebar from './components/common/navbar/Sidebar';
-import SpeedDial from "./components/common/layout/SpeedDial";
+import SpeedDial from "./components/common/layout/dials/SpeedDial";
+import GotuuDial from "./components/common/layout/dials/GotuuDial";
 import Alerts from './components/common/layout/Alerts';
 
 import './App.css'
@@ -271,6 +272,9 @@ const Home = ({
           )}
           <div className='speed_dial-button'>
             <SpeedDial />
+          </div>
+          <div className='gotuu_dial-button'>
+            <GotuuDial />
           </div>
         </>
       )}

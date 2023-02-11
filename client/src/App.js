@@ -3,10 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import useSound from "use-sound";
-import {
-  isBrowser,
-} from "react-device-detect";
-
 
 import Home from "./Home";
 import NotFound from "./components/common/layout/NotFound";
