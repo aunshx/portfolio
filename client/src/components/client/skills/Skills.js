@@ -37,100 +37,10 @@ const Skills = ({ innerRef }) => {
 
   return (
     <div className='skills' ref={innerRef}>
-      <div style={{ marginBottom: '2.5em' }} >
+      <div style={{ marginBottom: "2.5em" }}>
         <Title icon={<FontAwesomeIcon icon={faBrain} />} title={"Skills"} />
       </div>
       <div className='body-two'>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={0}
-            title={"Java"}
-            logo={javaLogo}
-            runAos={false}
-            number={0}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={50}
-            title={"JS"}
-            logo={jsLogo}
-            runAos={false}
-            number={0}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={100}
-            title={"C++"}
-            logo={cppLogo}
-            runAos={false}
-            number={2}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={150}
-            title={"Python"}
-            logo={pythonLogo}
-            runAos={false}
-            number={3}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={200}
-            title={"MongoDb"}
-            logo={mongoLogo}
-            runAos={false}
-            number={0}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={250}
-            title={"SpringBoot"}
-            logo={springBootLogo}
-            runAos={false}
-            number={2}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={300}
-            title={"Postgres"}
-            logo={psqlLogo}
-            runAos={false}
-            number={3}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={350}
-            title={"Node.js"}
-            logo={nodeLogo}
-            runAos={false}
-            number={1}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={400}
-            title={"Git"}
-            logo={gitLogo}
-            runAos={false}
-            number={2}
-            numberCurrent={number}
-          />
-        </div>
         <div className='flex_middle'>
           <SkillOne
             delay={450}
@@ -161,7 +71,67 @@ const Skills = ({ innerRef }) => {
             numberCurrent={number}
           />
         </div>
-    </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={350}
+            title={"Node.js"}
+            logo={nodeLogo}
+            runAos={false}
+            number={1}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={0}
+            title={"Java"}
+            logo={javaLogo}
+            runAos={false}
+            number={0}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={50}
+            title={"JS"}
+            logo={jsLogo}
+            runAos={false}
+            number={0}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={200}
+            title={"MongoDb"}
+            logo={mongoLogo}
+            runAos={false}
+            number={0}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={300}
+            title={"Postgres"}
+            logo={psqlLogo}
+            runAos={false}
+            number={3}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={400}
+            title={"Git"}
+            logo={gitLogo}
+            runAos={false}
+            number={2}
+            numberCurrent={number}
+          />
+        </div>
+      </div>
     </div>
   );
 };

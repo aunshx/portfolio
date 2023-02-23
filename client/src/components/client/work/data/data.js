@@ -1,27 +1,25 @@
 export const companies = [
   {
     name: "Dr SB's",
-    type: "Industry",
+    type: "Software",
     work: [
-      "Designed and developed infrastructure for bookings and appointments using Node.js and PostgresDB",
-      "Digitized patient-care work flow including digital medical records, prescriptions and pet passports",
-      "Created UI/UX for client-side site using React and Bootstrap",
-      "Developed npm packages to standardize the bookings API for appointments and vaccination",
-      "Implemented smart learning metrics of a given store and showcase it with the use of dashboards",
+      "Designed and worked on the company website using React and Node.js. Developed the dB schema using PostgreSQL",
+      "Implemented authentication and authorization using Google OAuth",
+      "Digitized lab report generation from MS Word to Web. Reduced lab report generation time significantly",
+      "Developed direct web to WhatsApp report sharing by developing npm packages",
+      "Implemented RESTful APIs in Node.js for analytics measurement and created customer check-in and reminder functionalities",
     ],
     position: "Software Development Engineer",
     duration: "Jan '22 - Present",
   },
   {
     name: "2WheelR",
-    type: "Industry",
+    type: "Analytics and Web",
     work: [
-      "Used Spring Boot to design and develop backend APIs and optimized them using Spark database analysis",
-      "Designed and implemented a high number of asynchronous transactions according to ACID properties",
-      "Created UI/UX for client-side site using React and Bootstrap",
-      "Developed the minimum viable product (MVP) to initiate a soft-launch of the digital space which included admin facilities, store updates and digital financial records and client-side retail space",
+      "Developed and set up business process to collect and collate data which was later analyzed to generate actionable insights resulting in increased revenue and margin",
+      "Designed a dashboard by selecting relevant KPIs which was implemented as a part of the digital transformation effort",
     ],
-    position: "Software Development - CEO's Office",
+    position: "CEO's Strategy & Operations Team",
     duration: "Jan '21 - Dec '21",
   },
   {

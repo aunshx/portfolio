@@ -20,7 +20,7 @@ const About = ({ innerRef }) => {
     <>
       <div className='app' ref={innerRef}>
         <div className='about' style={{ justifyContent: "center" }}>
-          <div style={{ marginBottom: '2.5em' }} >
+          <div style={{ marginBottom: "2.5em" }}>
             <Title
               icon={<FontAwesomeIcon icon={faUser} />}
               title={"About Me"}
@@ -29,19 +29,18 @@ const About = ({ innerRef }) => {
           <div className='body app' style={{ alignItems: "flex-start" }}>
             <div className='details'>
               <div>
-                Namaste! My name is Aunsh and I like gaining new experiences and
-                creating stuff. In my 24 years on this planet, I've been a
-                national-level cyclist, engineering student, researcher, high
-                school teacher, and now a software developer.
+                Namaste! My name is Aunsh and in my 24 years on this planet,
+                I've been a national-level cyclist, engineering student,
+                researcher, high school teacher, and now a software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
                 I believe that technology should be as ergonomic as it is
-                complex. Currently, I work as a software developer at a nascent
+                complex. Currently, I work as a freelance developer at a
                 company called Dr SB's.
               </div>
               <div style={{ marginTop: "2em" }}>
-                In my free time, I enjoy writing while sipping on a cappuccino
-                at my regular cafe.
+                In my free time, I enjoy sipping on a cappuccino at my regular
+                cafe while writing.
               </div>
             </div>
             <div
@@ -57,7 +56,9 @@ const About = ({ innerRef }) => {
               </div>
               <div style={{ display: isLoading ? "none" : "block" }}>
                 <img
-                  src={"https://i.postimg.cc/vZQHqRSC/profile2.png"}
+                  src={
+                    "https://i.postimg.cc/G2FVgJWc/Screenshot-20230223-170247.png"
+                  }
                   alt='Aunsh Profile Pic'
                   onLoad={onLoad}
                 />
