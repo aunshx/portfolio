@@ -31,7 +31,7 @@ const About = ({ innerRef }) => {
               <div>
                 Namaste! My name is Aunsh and in my 24 years on this planet,
                 I've been a national-level cyclist, engineering student,
-                researcher, high school teacher, and now a software developer.
+                award-winning researcher, high school teacher, and now a software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
                 I believe that technology should be as ergonomic as it is
