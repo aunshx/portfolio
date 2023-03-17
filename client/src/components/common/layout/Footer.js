@@ -19,7 +19,7 @@ const Footer = ({  }) => {
         </span>
       </div>
       <div className='text' style={{ fontSize: "0.55em", fontWeight: "200", marginTop: '0.5em' }}>
-        v2.1.2 &middot; Update 24 Dec 22 &middot;
+        v2.1.3 &middot; Update 17 Mar 23 &middot;
         All rights reserved
       </div>
     </div>

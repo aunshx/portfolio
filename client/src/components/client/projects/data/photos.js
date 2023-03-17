@@ -120,3 +120,18 @@ export const funWithRedditPics = [
     imgText: "A walk-through of the features of FwR",
   },
 ];
+
+export const omdbAPIPics = [
+  {
+    imgSource: "https://i.postimg.cc/rw9ScBMj/omdb2.png",
+    imgText: "Searching a string 'harry' provides movies card",
+  },
+  {
+    imgSource: "https://i.postimg.cc/MKCByWKd/omdb1.png",
+    imgText: "Home page of Omdb API Project",
+  },
+  {
+    imgSource: "https://i.postimg.cc/dDP0TVmC/omdb3.png",
+    imgText: "Modal showing individual movie details",
+  },
+];

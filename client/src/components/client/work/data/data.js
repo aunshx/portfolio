@@ -1,5 +1,15 @@
 export const companies = [
   {
+    name: "Prosperix",
+    type: "Software",
+    work: [
+      "My work will be updated shortly! Till then here is what Prosperix does:-",
+      "Prosperix is a workforce innovation company that develops software solutions that enable businesses to build an extraordinary workforce. To help businesses realize their highest potential and deliver meaningful impact, we have pioneered a new way of building and managing a thriving workforce. Our ultimate aim is for our solutions to positively impact human, workforce, and business prosperity.",
+    ],
+    position: "Software Engineer",
+    duration: "Mar '23 - Present",
+  },
+  {
     name: "Dr SB's",
     type: "Software",
     work: [
@@ -10,7 +20,7 @@ export const companies = [
       "Implemented RESTful APIs in Node.js for analytics measurement and created customer check-in and reminder functionalities",
     ],
     position: "Software Development Engineer",
-    duration: "Jan '22 - Present",
+    duration: "Jan '22 - Feb '23",
   },
   {
     name: "2WheelR",

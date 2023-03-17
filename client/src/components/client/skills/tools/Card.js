@@ -35,7 +35,7 @@ const Card = ({
 
   useEffect(() => {
     switch (true) {
-      case title === "React" || title === "C++":
+      case title === "React" || title === "C++" || title === "Typescript":
         setBorderColorNow("#34cfeb");
         break;
 
@@ -59,7 +59,7 @@ const Card = ({
         setBorderColorNow("#8e3ede");
         break;
 
-      case title === "Java":
+      case title === "Java" || title === "PassportJS":
         setBorderColorNow("#ec2024");
         break;
 

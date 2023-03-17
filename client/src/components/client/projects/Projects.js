@@ -15,6 +15,7 @@ import {
   gotuuPicsLight,
   gotuuPicsDark,
   funWithRedditPics,
+  omdbAPIPics,
 } from "./data/photos";
 
 import Title from "../../common/layout/Title";
@@ -81,6 +82,23 @@ const Projects = ({
                 tech={["Showcase", "Personal", "Messages", "Mui", "Javascript"]}
                 gitUrl={"https://github.com/aunshx/portfolio"}
               />
+              <SmallCard
+                pics={omdbAPIPics}
+                title={"Omdb API"}
+                link={"https://main--calm-cajeta-d1c26b.netlify.app/"}
+                subTitle={"Real time search"}
+                description={
+                  "A project featuring real-time search and lazy loading using the Omdb movie API."
+                }
+                tech={[
+                  "Typescript",
+                  "API",
+                  "Lazy-Loading",
+                  "Responsive",
+                  "Search",
+                ]}
+                gitUrl={"https://github.com/aunshx/omdb_api"}
+              />
             </div>
           ) : (
             <>
@@ -128,6 +146,23 @@ const Projects = ({
                 }
                 tech={["Showcase", "Personal", "Messages", "Mui", "Javascript"]}
                 gitUrl={"https://github.com/aunshx/portfolio"}
+              />
+              <InvertedCard
+                pics={omdbAPIPics}
+                title={"Omdb API"}
+                link={"https://main--calm-cajeta-d1c26b.netlify.app/"}
+                subTitle={"Real time search"}
+                description={
+                  "A project featuring real-time search and lazy loading using the Omdb movie API."
+                }
+                tech={[
+                  "Typescript",
+                  "API",
+                  "Lazy-Loading",
+                  "Responsive",
+                  "Search",
+                ]}
+                gitUrl={"https://github.com/aunshx/omdb_api"}
               />
             </>
           )}

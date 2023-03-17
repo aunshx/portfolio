@@ -76,6 +76,10 @@ const InvertedCard = ({
         setBorderColorNow("#3ede69");
         break;
 
+      case title === "Omdb API":
+        setBorderColorNow("#c678fa");
+        break;
+
       default:
         return null;
     }

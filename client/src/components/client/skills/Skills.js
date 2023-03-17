@@ -10,12 +10,12 @@ import jsLogo from '../../../resources/images/skills/logos/jsLogo.png'
 import nodeLogo from '../../../resources/images/skills/logos/nodeLogo.png'
 import psqlLogo from '../../../resources/images/skills/logos/psqlLogo.png'
 import gitLogo from '../../../resources/images/skills/logos/gitLogo.png'
-import springBootLogo from '../../../resources/images/skills/logos/springBootLogo.png'
-import pythonLogo from '../../../resources/images/skills/logos/pythonLogo.png'
 import mongoLogo from '../../../resources/images/skills/logos/mongoLogo.png'
 import css3Logo from '../../../resources/images/skills/logos/css3Logo.png'
 import javaLogo from '../../../resources/images/skills/logos/javaLogo.png'
-import cppLogo from '../../../resources/images/skills/logos/cppLogo.png'
+import htmlLogo from '../../../resources/images/skills/logos/htmlLogo.png'
+import typescriptLogo from '../../../resources/images/skills/logos/typescriptLogo.png'
+import passportLogo from '../../../resources/images/skills/logos/passportLogo.png'
 
 import SkillOne from "./tools/Card";
 
@@ -25,7 +25,7 @@ import Title from "../../common/layout/Title";
 const Skills = ({ innerRef }) => {
   let params = {
     min: 0,
-    max: 3,
+    max: 4,
     integer: true,
   };
 
@@ -48,6 +48,16 @@ const Skills = ({ innerRef }) => {
             logo={reactLogo}
             runAos={false}
             number={3}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={450}
+            title={"Typescript"}
+            logo={typescriptLogo}
+            runAos={false}
+            number={4}
             numberCurrent={number}
           />
         </div>
@@ -128,6 +138,26 @@ const Skills = ({ innerRef }) => {
             logo={gitLogo}
             runAos={false}
             number={2}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={0}
+            title={"HTML 5"}
+            logo={htmlLogo}
+            runAos={false}
+            number={4}
+            numberCurrent={number}
+          />
+        </div>
+        <div className='flex_middle'>
+          <SkillOne
+            delay={400}
+            title={"PassportJS"}
+            logo={passportLogo}
+            runAos={false}
+            number={4}
             numberCurrent={number}
           />
         </div>

@@ -35,8 +35,7 @@ const About = ({ innerRef }) => {
               </div>
               <div style={{ marginTop: "2em" }}>
                 I believe that technology should be as ergonomic as it is
-                complex. Currently, I work as a freelance developer at a
-                company called Dr SB's.
+                complex. Currently, I work as a software engineer at prosperix.com.
               </div>
               <div style={{ marginTop: "2em" }}>
                 In my free time, I enjoy sipping on a cappuccino at my regular

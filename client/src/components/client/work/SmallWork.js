@@ -7,7 +7,6 @@ import useWindow from "react-window-size-simple";
 
 import { companies } from './data/data'
 import CompanyDetails from "./tools/CompanyDetails";
-import VerticalSlider from "./tools/VerticalSlider";
 
 import Title from "../../common/layout/Title";
 import HorizontalSlider from "./tools/HorizontalSlider";
