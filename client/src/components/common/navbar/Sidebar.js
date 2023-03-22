@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useSound from 'use-sound'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial, faBox } from "@fortawesome/free-solid-svg-icons";
 
 import pop from '../../../resources/sounds/pop.mp3'
 
@@ -21,6 +21,7 @@ const Sidebar = ({
   goToSkills,
   goToArticles,
   goToContact,
+  goToNpm,
   // Redux State
   settings: { displayMode, sound },
 }) => {
@@ -144,6 +145,21 @@ const Sidebar = ({
                   />
                 </div>
                 <div className='writing'>Research</div>
+              </div>
+            </div>
+            <div
+              onClick={goToNpm}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between' onMouseEnter={elementHover}>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faBox}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+                <div className='writing'>Packages</div>
               </div>
             </div>
             <div
@@ -280,6 +296,20 @@ const Sidebar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faVial}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              onClick={goToNpm}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faBox}
                     style={{ marginRight: "0.5em" }}
                   />
                 </div>

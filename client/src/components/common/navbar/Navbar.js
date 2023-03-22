@@ -58,6 +58,7 @@ const Navbar = ({
   goToSkills,
   goToArticles,
   goToContact,
+  goToNpm,
   // Redux State
   settings: { displayMode, sound, music, backgroundAnimation },
   // Redux Actions
@@ -459,7 +460,7 @@ const Navbar = ({
                         onClick={verticalMenu}
                         style={{
                           fontSize: 19,
-                          marginTop: '0.15em'
+                          marginTop: "0.15em",
                         }}
                       />
                     </div>
@@ -489,6 +490,7 @@ const Navbar = ({
               goToSkills={goToSkills}
               goToArticles={goToArticles}
               goToContact={goToContact}
+              goToNpm={goToNpm}
             />
           </Drawer>
         )}

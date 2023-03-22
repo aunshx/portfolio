@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import useSound from "use-sound";
+import { Tooltip } from "@mui/material";
 import useWindow from "react-window-size-simple";
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
 import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
@@ -27,9 +28,9 @@ import Sidebar from './components/common/navbar/Sidebar';
 import SpeedDial from "./components/common/layout/dials/SpeedDial";
 import GotuuDial from "./components/common/layout/dials/GotuuDial";
 import Alerts from './components/common/layout/Alerts';
+import Npm from "./components/client/npm-packages/Npm";
 
 import './App.css'
-import { Tooltip } from '@mui/material';
 
 const Home = ({
   // Redux State
@@ -55,6 +56,7 @@ const Home = ({
   const goArticles = useRef();
   const goSkills = useRef();
   const goContact = useRef();
+  const goNpm = useRef()
 
   const shadowElement = useCallback((node) => {
     if (shadow.current) {
@@ -182,6 +184,16 @@ const Home = ({
     }
   };
 
+  const goToNpm = () => {
+    if (goNpm.current) {
+      goNpm.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }
+  };
+
   const [playOn] = useSound(bellRing, {
     volume: 0.2,
   });
@@ -204,6 +216,7 @@ const Home = ({
         goToSkills={goToSkills}
         goToArticles={goToArticles}
         goToContact={goToContact}
+        goToNpm={goToNpm}
       />
       <Sidebar
         shadowToggle={shadowToggle}
@@ -216,6 +229,7 @@ const Home = ({
         goToSkills={goToSkills}
         goToArticles={goToArticles}
         goToContact={goToContact}
+        goToNpm={goToNpm}
       />
       {backgroundAnimation && (
         <>
@@ -232,6 +246,7 @@ const Home = ({
       <Work innerRef={goWork} />
       <Projects innerRef={goProjects} />
       <Research innerRef={goResearch} />
+      <Npm innerRef={goNpm} />
       <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />
       <Contact

@@ -1896,6 +1896,273 @@ transition: .2s ease-in-out;
 }
 }
 
+/* ----------------- NPM Packages ---------------- */
+.npm-packages {
+  color: var(--grey-color);
+   width: 750px;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 0 0 8em 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.npm-packages .title {
+  color: var(--lighter-dark-font-color);
+  font-size: 1.6em;
+  margin: 1.5em 0 0.5em 0;
+}
+
+.npm-packages .body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 1em;
+  column-gap: 15px;
+}
+
+.npm-packages .body .individual {
+  width: 243px;
+  color: var(--lighter-dark-font-color);
+  height: 180px;
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+
+.npm-packages .body .individual .check-it-out {
+  visibility: hidden;
+  border-radius: 0px 10px 0 10px;
+  background-color: var(--logo-color);
+  font-weight: 500;
+  color: var(--dark-font-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 25px;
+  padding: 0.3em;
+  font-size: 0.7em;
+}
+
+.npm-packages .body .individual:hover .check-it-out {
+  visibility: visible;
+}
+
+.npm-packages .body .individual--dark {
+   border: 1px solid var(--lighter-dark-font-color);
+  box-shadow: none;
+}
+
+.npm-packages .body .individual:hover {
+ cursor: pointer;
+ transform: scale(1.007);
+  box-shadow: 0px 0px 40px 0px rgb(118, 166, 233);
+transition: .2s ease-in-out;
+}
+
+.npm-packages .body .individual--dark:hover {
+ cursor: pointer;
+ transform: scale(1.007);
+ border: 1px solid var(--logo-color);
+ box-shadow: 0px 0px 40px 0px var(--logo-color);
+transition: .2s ease-in-out;
+}
+
+.npm-packages .body .individual .title {
+  font-size: 0.82em;
+  text-align: center;
+}
+
+.npm-packages .body .individual .description {
+  font-size: 0.68em;
+  color: var(--grey-color);
+  margin: 1em 0.1em 1em 0.1em;
+}
+
+.npm-packages .body .individual .tags {
+  color: var(--grey-color);
+  margin: 1em 0.1em 0.5em 0.1em;
+}
+
+.npm-packages .body .individual .tags .tag {
+  margin: 0.4em 0.2em;
+  border: 1px solid var(--light-grey-color);
+  padding: 0.1em 0.5em;
+  font-size: 0.62em;
+  border-radius: 5px;
+}
+
+.npm-packages .body .individual .achievements {
+  margin: 0.5em 0.1em 1em 0.1em;
+}
+
+.npm-packages .body .individual .achievements .element {
+  font-size: 0.6em;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  margin: 0 0.8em 0 0;
+  border: 1px solid var(--ye-color);
+  color: var(--grey-color);
+}
+
+@media only screen and (max-width: 870px) {
+  .npm-packages {
+  color: var(--grey-color);
+   width: auto;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 0 0 8em 50px;
+  font-family: 'Comfortaa', cursive;
+}
+
+  .npm-packages .body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 0em;
+}
+
+.npm-packages .body .individual {
+  width: 243px;
+  color: var(--lighter-dark-font-color);
+  height: 180px;
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+}
+
+@media only screen and (max-width: 768px){
+    .npm-packages {
+  color: var(--grey-color);
+   width: 100vw;
+  height: auto;
+  padding: 0em 0em 1em 0;
+  margin: 0 0 3em 0px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.npm-packages .body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 1em;
+}
+
+.npm-packages .body .individual {
+  width: 230px;
+  color: var(--lighter-dark-font-color);
+  height: 180px;
+  background-color: var(--card-color);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+
+.npm-packages .body .individual .title {
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.npm-packages .body .individual .description {
+  font-size: 0.65em;
+  color: var(--grey-color);
+  margin: 1em 0.1em 1em 0.1em;
+}
+
+.npm-packages .body .individual .tags {
+  color: var(--grey-color);
+  margin: 1em 0.1em 0.5em 0.1em;
+}
+
+.npm-packages .body .individual .tags .tag {
+  margin: 0.4em 0.2em;
+  border: 1px solid var(--light-grey-color);
+  padding: 0.1em 0.5em;
+  font-size: 0.58em;
+  border-radius: 5px;
+}
+
+.npm-packages .body .individual .achievements {
+  margin: 0.5em 0.1em 1em 0.1em;
+}
+
+.npm-packages .body .individual .achievements .element {
+  font-size: 0.58em;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  margin: 0 0.8em 0 0;
+  border: 1px solid var(--ye-color);
+  color: var(--grey-color);
+}
+}
+
+@media only screen and (max-width: 510px){
+    .npm-packages {
+  color: var(--grey-color);
+   width: 100vw;
+  height: auto;
+  padding: 0em 0.5em 0em 0.5em;
+  margin: 0 0 3em 0px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.npm-packages .body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(100px, auto);
+  margin-top: 0em;
+}
+
+.npm-packages .body .individual {
+  width: 90%;
+  height: 130px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+
+.npm-packages .body .individual .title {
+  font-size: 0.6em;
+  margin-top: 1em;
+}
+
+.npm-packages .body .individual .description {
+  font-size: 0.55em;
+  margin: 0em 0.1em 1em 0.1em;
+}
+
+.npm-packages .body .individual .tags {
+  margin: 0.2em 0.1em 0.5em 0.1em;
+}
+
+.npm-packages .body .individual .tags .tag {
+  margin: 0em 0.2em;
+  font-size: 0.2em;
+}
+
+.npm-packages .body .individual .achievements {
+  margin: 0em 0.1em 1em 0.1em;
+}
+
+.npm-packages .body .individual .achievements .element {
+  font-size: 0.43em;
+}
+}
+
+@media only screen and (max-width: 420px){
+  .npm-packages .body .individual {
+  width: 95%;
+  height: 155px;
+  margin: 1.5em 0 0 0;
+  padding: 0.5em 0.8em;
+}
+}
+
 /* ----------------------------------- ARTICLES ---------------------------- */
 .articles {
   color: var(--grey-color);
