@@ -19,16 +19,16 @@ import WillBeLive from "./components/common/layout/WillBeLive";
 import "./App.css";
 
 import { 
-  // DARK_MODE_ON, 
-  // DARK_MODE_OFF, 
-  LOGOUT 
+  DARK_MODE_ON, 
+  DARK_MODE_OFF, 
+  // LOGOUT 
 } from "./redux/actions/types.js";
 import store from "./store";
 
 import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
-import setAuthToken from "./utils/setAuthToken";
-import { loadUser } from "./redux/actions/auth";
+// import setAuthToken from "./utils/setAuthToken";
+// import { loadUser } from "./redux/actions/auth";
 import BlogAuthRoute from "./utils/BlogAuthRoute";
 
 function App({
@@ -45,27 +45,27 @@ function App({
   });
 
   useEffect(() => {
-    // check for token in LS
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-      store.dispatch(loadUser());
-    }
-    // log user out from all tabs if they log out in one tab
-    window.addEventListener("storage", () => {
-      if (!localStorage.token) store.dispatch({ type: LOGOUT });
-    });
-
-    // if (localStorage.getItem("theme") === "light") {
-    //   store.dispatch({
-    //     type: DARK_MODE_OFF,
-    //   });
-    //   document.documentElement.setAttribute("data-theme", "light");
-    // } else {
-    //   store.dispatch({
-    //     type: DARK_MODE_ON,
-    //   });
-    //   document.documentElement.setAttribute("data-theme", "dark");
+    // // check for token in LS
+    // if (localStorage.token) {
+    //   setAuthToken(localStorage.token);
+    //   store.dispatch(loadUser());
     // }
+    // // log user out from all tabs if they log out in one tab
+    // window.addEventListener("storage", () => {
+    //   if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    // });
+
+    if (localStorage.getItem("theme") === "light") {
+      store.dispatch({
+        type: DARK_MODE_OFF,
+      });
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      store.dispatch({
+        type: DARK_MODE_ON,
+      });
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
 
     if (music && displayMode) {
       stop();

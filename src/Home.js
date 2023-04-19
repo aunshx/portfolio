@@ -13,7 +13,7 @@ import BackgroundSmall from "./components/client/main/BackgroundSmall";
 import BackgroundTiny from "./components/client/main/BackgroundTiny";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
-import { captureIpNow } from "./redux/actions/metrics";
+// import { captureIpNow } from "./redux/actions/metrics";
 
 import Main from './components/client/main/Main';
 import About from "./components/client/about/About";
@@ -38,7 +38,7 @@ const Home = ({
   settings: { sound, backgroundAnimation },
 
   // Redux Actions
-  captureIpNow,
+  // captureIpNow,
 }) => {
 
   const { width } = useWindow();
@@ -99,10 +99,10 @@ const Home = ({
   }, []);
 
 
-  useEffect(() => {
-    // Capture Ip
-    captureIpNow();
-  }, []);
+  // useEffect(() => {
+  //   // Capture Ip
+  //   captureIpNow();
+  // }, []);
 
   const goToHome = () => {
     if (goHome.current) {
@@ -301,7 +301,7 @@ const Home = ({
 Home.propTypes = {
   sidebar: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  captureIpNow: PropTypes.func.isRequired
+  // captureIpNow: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -310,7 +310,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  captureIpNow,
+  // captureIpNow,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Home);
