@@ -131,24 +131,39 @@ const Card = ({
             target={"_blank"}
             rel='noopener noreferrer nofollow'
             aria-label={title}
+            style={
+              title === "gotuu.in"
+                ? {
+                    pointerEvents: "none",
+                  }
+                : {}
+            }
           >
             <div
               className='image'
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <img
-                src={pics[currentIndex].imgSource}
-                alt={pics[currentIndex].imgText}
-                style={
-                  isHovering
-                    ? {
-                        boxShadow: `0px 0px 20px 0px ${borderColorNow}`,
-                        transition: ".1s ease-in-out",
-                      }
-                    : {}
-                }
-              />
+              <div style={{ display: isLoading ? "none" : "block", width: '100%', height: '100%' }}>
+                <img
+                  src={pics[currentIndex].imgSource}
+                  alt={pics[currentIndex].imgText}
+                  onLoad={onLoad}
+                  className={
+                    pics[currentIndex].needsFit ? "image-needs-fit" : ""
+                  }
+                />
+              </div>
+              <div
+                style={{
+                  display: isLoading ? "block" : "none",
+                  position: 'relative',
+                  paddingTop: '300px'
+                }}
+                className='flex_middle'
+              >
+                <div className='loader-me'></div>
+              </div>
             </div>
           </a>
         </div>
@@ -164,6 +179,13 @@ const Card = ({
               target={"_blank"}
               rel='noopener noreferrer nofollow'
               aria-label={title}
+              style={
+                title === "gotuu.in"
+                  ? {
+                      pointerEvents: "none",
+                    }
+                  : {}
+              }
             >
               <div className='name'>{title}</div>
             </a>
@@ -205,7 +227,7 @@ const Card = ({
                   href={gitUrl}
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
-                  aria-label={'Github'}
+                  aria-label={"Github"}
                 >
                   <GitHubIcon style={{ fontSize: 20 }} />
                 </a>
@@ -224,6 +246,13 @@ const Card = ({
                   target={"_blank"}
                   rel='noopener noreferrer nofollow'
                   aria-label={title}
+                  style={
+                    title === "gotuu.in"
+                      ? {
+                          pointerEvents: "none",
+                        }
+                      : {}
+                  }
                 >
                   <LaunchIcon style={{ fontSize: 20 }} />
                 </a>
