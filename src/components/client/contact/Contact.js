@@ -78,7 +78,7 @@ const Contact = ({
             />
           </div>
           <EmailCard displayMode={displayMode} />
-          <div className='or'>OR</div>
+          {/* <div className='or'>OR</div>
           <Card
             displayMode={displayMode}
             messageEmptyError={messageEmptyError}
@@ -92,7 +92,7 @@ const Contact = ({
             email={email}
             organisation={organisation}
             message={message}
-          />
+          /> */}
           <div ref={refSec} />
           <DetailsCard displayMode={displayMode} />
           <Footer />

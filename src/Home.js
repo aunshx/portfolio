@@ -13,7 +13,6 @@ import BackgroundSmall from "./components/client/main/BackgroundSmall";
 import BackgroundTiny from "./components/client/main/BackgroundTiny";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
-// import { captureIpNow } from "./redux/actions/metrics";
 
 import Main from './components/client/main/Main';
 import About from "./components/client/about/About";
@@ -26,7 +25,7 @@ import Contact from './components/client/contact/Contact';
 import Navbar from './components/common/navbar/Navbar';
 import Sidebar from './components/common/navbar/Sidebar';
 import SpeedDial from "./components/common/layout/dials/SpeedDial";
-import GotuuDial from "./components/common/layout/dials/GotuuDial";
+// import GotuuDial from "./components/common/layout/dials/GotuuDial";
 import Alerts from './components/common/layout/Alerts';
 import Npm from "./components/client/npm-packages/Npm";
 
@@ -36,9 +35,6 @@ const Home = ({
   // Redux State
   sidebar: { hover },
   settings: { sound, backgroundAnimation },
-
-  // Redux Actions
-  // captureIpNow,
 }) => {
 
   const { width } = useWindow();
@@ -97,12 +93,6 @@ const Home = ({
       goContact.current.observe(node);
     }
   }, []);
-
-
-  // useEffect(() => {
-  //   // Capture Ip
-  //   captureIpNow();
-  // }, []);
 
   const goToHome = () => {
     if (goHome.current) {
@@ -205,7 +195,7 @@ const Home = ({
   };
 
   return (
-    <div className='app '>
+    <div className='app'>
       <Navbar
         shadowToggle={shadowToggle}
         goToHome={goToHome}
@@ -288,9 +278,10 @@ const Home = ({
           <div className='speed_dial-button'>
             <SpeedDial />
           </div>
-          <div className='gotuu_dial-button'>
+          {/* // ? Add it again once gotuu is active and re-branded */}
+          {/* <div className='gotuu_dial-button'>
             <GotuuDial />
-          </div>
+          </div> */}
         </>
       )}
       <Alerts />

@@ -18,24 +18,24 @@ const DetailsCard = ({ displayMode }) => {
       className={
         displayMode ? "card-contact card-contact--dark" : "card-contact"
       }
-      style={{ margin: "50px 0 50px 0" }}
+      style={{ margin: "0px 0 50px 0" }}
     >
       <div className='title flex_middle' style={{ marginTop: "0.5em" }}>
         Details
       </div>
-      <div className='info'>
+      <div className='info flex_middle'>
         <div className='title'>
           <FontAwesomeIcon icon={faEnvelope} />
         </div>
         <div style={{ fontSize: "0.85em" }}>aunsh.sb@gmail.com</div>
       </div>
-      <div className='info'>
+      <div className='info flex_middle'>
         <div className='title'>
           <FontAwesomeIcon icon={faMobileAlt} />
         </div>
         <div style={{ fontSize: "0.85em" }}>+91 79721 46825</div>
       </div>
-      <div className='info'>
+      <div className='info flex_middle'>
         <div className='title'>
           <FontAwesomeIcon icon={faUser} />
         </div>
@@ -45,15 +45,11 @@ const DetailsCard = ({ displayMode }) => {
       </div>
       <div
         className='flex_middle'
-        style={{ marginTop: "1.5em", fontSize: "0.9em", color: "grey" }}
+        style={{ margin: "1.5em 0 1em 0", fontSize: "0.9em", color: "grey" }}
       >
         Socials
       </div>
-      <div
-        className='info flex_around'
-        //   style={{ border: "1px solid red" }}
-        style={{ marginLeft: "4.5em" }}
-      >
+      <div className='flex_around'>
         <Tooltip title='Github Profile' placement='top' enterDelay={200}>
           <div className='socials'>
             <a
@@ -72,7 +68,7 @@ const DetailsCard = ({ displayMode }) => {
               target={"_blank"}
               rel='noopener noreferrer nofollow'
             >
-                <LinkedInIcon />
+              <LinkedInIcon />
             </a>
           </div>
         </Tooltip>

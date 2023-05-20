@@ -18,6 +18,7 @@ const Card = ({
 }) => {
   const [playOn] = useSound(swoosh, { volume: 0.2 });
   const [colorBorder, setColorBorder] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     switch (true) {
@@ -47,6 +48,8 @@ const Card = ({
     }
   }, []);
 
+  const onLoad = () => setIsLoading(false);
+
   const elementHover = () => {
     if (sound) {
       playOn();
@@ -70,13 +73,35 @@ const Card = ({
           style={{ borderBottom: `2px solid ${colorBorder}` }}
         >
           <div className='check-it-out flex_middle'>Read More</div>
-          <img src={articleImage} alt='Article default' />
+            <div
+              style={{
+                display: isLoading ? "none" : "block",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <img
+                src={articleImage}
+                alt={title}
+                onLoad={onLoad}
+              />
+            </div>
+            <div
+              style={{
+                display: isLoading ? "block" : "none",
+                position: "relative",
+                paddingTop: "100px",
+              }}
+              className='flex_middle'
+            >
+              <div className='loader-me'></div>
+          </div>
         </div>
         <div className='tags flex_right'>
           {imagesArray.length > 0 &&
             imagesArray.map((element, index) => (
-              <Tooltip title={element.alt} placement='top'>
-                <div style={{ marginRight: "0.5em" }} key={index}>
+              <Tooltip title={element.alt} placement='top' key={index} >
+                <div style={{ marginRight: "0.5em" }}>
                   <img src={element.image} alt={element.alt} />
                 </div>
               </Tooltip>
