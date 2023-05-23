@@ -8,6 +8,7 @@ import {
 import { Tooltip } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 import mediumLogo from '../../../../resources/images/skills/logos/mediumLogo.png'
 import mediumLogoDark from '../../../../resources/images/skills/logos/mediumLogoDark.png'
@@ -69,6 +70,17 @@ const DetailsCard = ({ displayMode }) => {
               rel='noopener noreferrer nofollow'
             >
               <LinkedInIcon />
+            </a>
+          </div>
+        </Tooltip>
+        <Tooltip title='Instagram Profile' placement='top' enterDelay={200}>
+          <div className='socials'>
+            <a
+              href='https://www.instagram.com/aunsh___'
+              target={"_blank"}
+              rel='noopener noreferrer nofollow'
+            >
+              <InstagramIcon />
             </a>
           </div>
         </Tooltip>

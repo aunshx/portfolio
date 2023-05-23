@@ -4,12 +4,18 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const actions = [
   {
     icon: "M",
     name: "Medium Profile",
     link: "https://aunsh.medium.com",
+  },
+  {
+    icon: <InstagramIcon />,
+    name: "Instagram Profile",
+    link: "https://www.instagram.com/aunsh___",
   },
   {
     icon: <LinkedInIcon />,
