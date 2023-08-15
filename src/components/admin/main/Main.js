@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import CableIcon from "@mui/icons-material/Cable";
@@ -118,7 +118,7 @@ const Main = ({
   };
 
       if (!isAuthenticated) {
-        return <Redirect to='/login' />;
+        return <Navigate to='/login' />;
       }
       
 

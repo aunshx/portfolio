@@ -1,7 +1,7 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
+import React from "react";
 import { connect } from "react-redux";
+import { Navigate, Route } from "react-router-dom";
 
 import Spinner from "../components/common/layout/Spinner";
 
@@ -29,11 +29,11 @@ const PrivateRoute = ({
               {isBlogCheckAuth ? (
                 <Component {...props} />
               ) : (
-                <Redirect to='/' />
+                <Navigate to='/' />
               )}
             </>
           ) : (
-            <Redirect to='/login' />
+            <Navigate to='/login' />
           )}
         </>
       )
