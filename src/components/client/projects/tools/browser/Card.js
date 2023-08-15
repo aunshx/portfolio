@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Tooltip, Zoom, Box, Fade, Modal } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { Box, Fade, Modal, Tooltip, Zoom } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
 
 import BigPic from "../BigPic";

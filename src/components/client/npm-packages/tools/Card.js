@@ -1,10 +1,7 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { connect } from "react-redux";
 import useSound from "use-sound";
-import { Link } from "react-router-dom";
-import StarIcon from "@mui/icons-material/Star";
-import CheckIcon from "@mui/icons-material/Check";
 
 import swoosh from "../../../../resources/sounds/resumeSwoosh.mp3";
 
@@ -24,10 +21,8 @@ const Card = ({
     }
   };
   return (
-    <Link
-      to={{
-        pathname: link,
-      }}
+    <a
+      href={link}
       className='checkout flex_middle'
       target={"_blank"}
       rel='noreferrer nofollow'
@@ -45,7 +40,7 @@ const Card = ({
           <div className='description flex_middle'>{description}</div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

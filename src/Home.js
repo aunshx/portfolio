@@ -249,10 +249,10 @@ const Home = ({
       <About innerRef={goAbout} />
       <Education innerRef={goEducation} />
       <Work innerRef={goWork} />
-      {/* <Projects innerRef={goProjects} /> */}
-      {/* <Research innerRef={goResearch} /> */}
-      {/* <Npm innerRef={goNpm} /> */}
-      {/* <Articles innerRef={goArticles} /> */}
+      <Projects innerRef={goProjects} />
+      <Research innerRef={goResearch} />
+      <Npm innerRef={goNpm} />
+      <Articles innerRef={goArticles} />
       <Skills innerRef={goSkills} />
       <Contact
         refSec={refElement}

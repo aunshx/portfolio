@@ -1,9 +1,9 @@
-import React from 'react';
-import Title from '../../common/layout/Title';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSchoolFlag } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import sppuLogo from '../../../resources/images/education/sppuLogo.png';
 import ucDavisLogo from '../../../resources/images/education/ucDavisLogo.png';
+import Title from '../../common/layout/Title';
 
 const data = [
   {
@@ -60,17 +60,20 @@ const Element = ({
   );
 };
 
-const Education = () => {
+const Education = ({ innerRef }) => {
   return (
-    <div className='app education'>
+    <div className='app education' ref={innerRef}>
       <div className='about' style={{ justifyContent: "center" }}>
         <div style={{ marginBottom: "3em" }}>
-          <Title icon={<FontAwesomeIcon icon={faSchoolFlag} />} title={"Education"} />
+          <Title
+            icon={<FontAwesomeIcon icon={faSchoolFlag} />}
+            title={"Education"}
+          />
         </div>
-        <div className='app' style={{ rowGap: '50px' }} >
-            {data.map((data, index) => {
-              return <Element data={data} key={index}></Element>;
-            })}
+        <div className='app' style={{ rowGap: "50px" }}>
+          {data.map((data, index) => {
+            return <Element data={data} key={index}></Element>;
+          })}
         </div>
       </div>
     </div>

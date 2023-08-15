@@ -1,10 +1,9 @@
-import React from "react";
-import useWindow from "react-window-size-simple"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import React from "react";
+import useWindow from "react-window-size-simple";
 
-import npmLogo from '../../../resources/images/npm/npmlogo.png'
+import npmLogo from '../../../resources/images/npm/npmlogo.png';
 
 import Card from "./tools/Card";
 

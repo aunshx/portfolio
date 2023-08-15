@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faBriefcase, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVial, faVolumeMute, faVolumeUp, faDownload, faBox } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faBriefcase, faHome, faMobileAlt, faNewspaper, faTools, faUser, faVial, faVolumeMute, faVolumeUp, faDownload, faBox, faSchoolFlag } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@mui/material";
 
 import { makeStyles } from "@mui/styles";
@@ -53,6 +53,7 @@ const SidebarMini = ({
   goToArticles,
   goToContact,
   goToNpm,
+  goToEducation,
   // Redux State
   settings: { displayMode, music, sound },
   // Redux Actions
@@ -254,6 +255,24 @@ const SidebarMini = ({
               />
             </div>
             <div className='writing'>Work</div>
+          </div>
+        </div>
+        <div
+          onClick={() => {
+            close();
+            goToEducation();
+          }}
+          className={"element"}
+          style={{ cursor: "pointer" }}
+        >
+          <div className='flex_between' onMouseEnter={elementHover}>
+            <div>
+              <FontAwesomeIcon
+                icon={faSchoolFlag}
+                style={{ marginRight: "0.5em" }}
+              />
+            </div>
+            <div className='writing'>Education</div>
           </div>
         </div>
         <div

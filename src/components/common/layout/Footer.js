@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-const Footer = ({  }) => {
+const Footer = () => {
   return (
     <div className='footer app'>
       <div className='text'>
@@ -19,7 +17,7 @@ const Footer = ({  }) => {
         </span>
       </div>
       <div className='text' style={{ fontSize: "0.55em", fontWeight: "200", marginTop: '0.5em' }}>
-        v2.2 &middot; Update 17 May 23 &middot;
+        v2.3 &middot; Update 15 Aug 23 &middot;
         All rights reserved
       </div>
     </div>

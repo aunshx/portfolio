@@ -59,6 +59,7 @@ const Navbar = ({
   goToArticles,
   goToContact,
   goToNpm,
+  goToEducation,
   // Redux State
   settings: { displayMode, sound, music, backgroundAnimation },
   // Redux Actions
@@ -491,6 +492,7 @@ const Navbar = ({
               goToArticles={goToArticles}
               goToContact={goToContact}
               goToNpm={goToNpm}
+              goToEducation={goToEducation}
             />
           </Drawer>
         )}
