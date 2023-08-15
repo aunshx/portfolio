@@ -4983,6 +4983,7 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 
+/* ------ INDIAN FLAG ------ */
 .flag {
   position: relative;
   width: 17px;
@@ -4995,4 +4996,100 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background: linear-gradient(#ff9933 33%, #fff 33%, #fff 66%, #138808 0);
   display: grid;
   place-items: center;
+}
+
+/* ----- CHECKBOX FOR LIGHT AND DARK MODE ----- */
+
+.toggle-switch {
+  display: block;
+  width: 60px;
+  height: 25px;
+  margin: 0 auto;
+  background-color: #fcba03;
+  border-radius: 56px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+  overflow: hidden;
+}
+
+.toggle-switch .star {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  transform: scale(1);
+  border-radius: 50%;
+  transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform,
+    0.3s ease background-color;
+  z-index: 1;
+}
+
+.toggle-switch .moon {
+  position: absolute;
+  bottom: -80px;
+  right: -20px;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s ease bottom;
+}
+
+.toggle-switch .moon:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  background-color: #fcba03;
+  border-radius: 50%;
+  transition: 0.3s ease background-color;
+}
+
+.toggle-switch-dark {
+  display: block;
+  width: 60px;
+  height: 25px;
+  margin: 0 auto;
+  background-color: #808080;
+  border-radius: 56px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+  overflow: hidden;
+}
+
+.toggle-switch-dark .star {
+  top: 3px;
+  left: 62px;
+  transform: scale(0.3);
+  background-color: #fff;
+  color: #fcba03;
+}
+
+.toggle-switch-dark .moon {
+  position: absolute;
+  bottom: 5px;
+  right: -20px;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s ease bottom;
+}
+
+.toggle-switch-dark .moon:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  background-color: #808080;
+  border-radius: 50%;
+  transition: 0.3s ease background-color;
 }
