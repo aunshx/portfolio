@@ -31,15 +31,17 @@ const About = ({ innerRef }) => {
               <div>
                 Namaste! My name is Aunsh and in my 24 years on this planet,
                 I've been a national-level cyclist, engineering student,
-                award-winning researcher, high school teacher, and now a software developer.
+                award-winning researcher, high school teacher, and now a
+                software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
                 I believe that technology should be as ergonomic as it is
-                complex. Currently, I work as a software engineer at prosperix.com.
+                complex. Currently, I work as a software engineer at
+                prosperix.com.
               </div>
               <div style={{ marginTop: "2em" }}>
-                In my free time, I enjoy sipping on a cappuccino at my regular
-                cafe while writing.
+                Apart from my work station one can find me at the gym or my
+                regular cafe enjoying a cappuccino
               </div>
             </div>
             <div
@@ -53,13 +55,19 @@ const About = ({ innerRef }) => {
               >
                 <div className='loader-me' />
               </div>
-              <div style={{ display: isLoading ? "none" : "block" }}>
+              <div
+                style={{
+                  display: isLoading ? "none" : "block",
+                  borderRadius: "8px",
+                }}
+              >
                 <img
                   src={
-                    "https://i.postimg.cc/G2FVgJWc/Screenshot-20230223-170247.png"
+                    "https://i.postimg.cc/nzhdvh8c/Whats-App-Image-2023-08-12-at-13-49-25ki.jpg"
                   }
                   alt='Aunsh Profile Pic'
                   onLoad={onLoad}
+                  style={{ objectFit: "contain" }}
                 />
               </div>
               <div className='border' />

@@ -2898,20 +2898,19 @@ transition: .2s ease-in-out;
 
 .about .body .image .border {
   border: 2px solid var(--grey-color);
-  border-radius: 10px;
 z-index: 5;
-  width: 80%;
+  width: 70%;
     height: 220px;
   position: absolute;
-  top: 20px;
-  left: 55px;
+  top: 25px;
+  left: 70px;
   transition: all .3s ease-in-out;
 }
 
 .about .body .image:hover .border {
   border-color: var(--logo-color);
-  top: 14px;
-  left: 49px;
+  top: 15px;
+  left: 60px;
 }
 
 .about .body .details {
@@ -2980,20 +2979,19 @@ z-index: 5;
 
 .about .body .image .border {
   border: 2px solid var(--grey-color);
-  border-radius: 10px;
 z-index: 5;
-  width: 220px;
+  width: 200px;
     height: 220px;
   position: absolute;
-  top: 20px;
-  left: 142px;
+  top: 30px;
+  left: 155px;
   transition: all .3s ease-in-out;
 }
 
 .about .body .image:hover .border {
   border-color: var(--logo-color);
-  top: 14px;
-  left: 139px;
+  top: 20px;
+  left: 150px;
 }
 
 .about .body .details {
@@ -3068,20 +3066,19 @@ z-index: 5;
 
 .about .body .image .border {
   border: 2px solid var(--grey-color);
-  border-radius: 10px;
 z-index: 5;
-  width: 170px;
+  width: 160px;
     height: 170px;
   position: absolute;
   top: 20px;
-  left: 142px;
+  left: 140px;
   transition: all .3s ease-in-out;
 }
 
 .about .body .image:hover .border {
   border-color: var(--logo-color);
-  top: 14px;
-  left: 139px;
+  top: 15px;
+  left: 135px;
 }
 
 .about .body .details {
@@ -3156,20 +3153,19 @@ z-index: 5;
 
 .about .body .image .border {
   border: 2px solid var(--grey-color);
-  border-radius: 10px;
 z-index: 5;
-  width: 170px;
+  width: 160px;
     height: 170px;
   position: absolute;
-  top: 20px;
-  left: 85px;
+  top: 25px;
+  left: 90px;
   transition: all .3s ease-in-out;
 }
 
 .about .body .image:hover .border {
   border-color: var(--logo-color);
-  top: 14px;
-  left: 80px;
+  top: 20px;
+  left: 85px;
 }
 
 .about .body .details {
@@ -4979,4 +4975,19 @@ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 .blog .posts .author .saying .link:hover {
   color: var(--bodinga-color);
+}
+
+
+.flag {
+  position: relative;
+  width: 17px;
+  height: 12px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.india {
+  background: linear-gradient(#ff9933 33%, #fff 33%, #fff 66%, #138808 0);
+  display: grid;
+  place-items: center;
 }
