@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.b80fd5fb.css",
-    "main.js": "/static/js/main.ce898b91.js",
-    "static/js/845.167f1c0b.chunk.js": "/static/js/845.167f1c0b.chunk.js",
+    "main.css": "/static/css/main.e386284c.css",
+    "main.js": "/static/js/main.8c1a022a.js",
+    "static/js/845.4fbf7743.chunk.js": "/static/js/845.4fbf7743.chunk.js",
     "static/media/darkBackground.mp3": "/static/media/darkBackground.6fd18f9c6429589c8ffd.mp3",
     "static/media/lightBackground.mp3": "/static/media/lightBackground.a097281895b2baca79e8.mp3",
     "static/media/funWithReddit.png": "/static/media/funWithReddit.091cbfc746a985c248c3.png",
@@ -35,12 +35,12 @@
     "static/media/pop.mp3": "/static/media/pop.f8ab6f3d9bcbe3e24e82.mp3",
     "static/media/keyboard.mp3": "/static/media/keyboard.ff0d1c8756fee80a8743.mp3",
     "index.html": "/index.html",
-    "main.b80fd5fb.css.map": "/static/css/main.b80fd5fb.css.map",
-    "main.ce898b91.js.map": "/static/js/main.ce898b91.js.map",
-    "845.167f1c0b.chunk.js.map": "/static/js/845.167f1c0b.chunk.js.map"
+    "main.e386284c.css.map": "/static/css/main.e386284c.css.map",
+    "main.8c1a022a.js.map": "/static/js/main.8c1a022a.js.map",
+    "845.4fbf7743.chunk.js.map": "/static/js/845.4fbf7743.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b80fd5fb.css",
-    "static/js/main.ce898b91.js"
+    "static/css/main.e386284c.css",
+    "static/js/main.8c1a022a.js"
   ]
 }
