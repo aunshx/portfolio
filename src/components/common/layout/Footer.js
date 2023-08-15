@@ -32,7 +32,7 @@ const Footer = () => {
         className='text'
         style={{ fontSize: "0.55em", fontWeight: "200", marginTop: "0em" }}
       >
-        v2.3 &middot; Update 15 Aug 23 &middot; All rights reserved
+        v2.3 &middot; Updated 15 Aug 23 &middot; All rights reserved
       </div>
     </div>
   );
