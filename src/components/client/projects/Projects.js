@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTools } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
+import React from "react";
+import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
 
 import Card from "./tools/browser/Card";
-import SmallCard from './tools/mobile/Card';
 import InvertedCard from "./tools/browser/InvertedCard";
+import SmallCard from './tools/mobile/Card';
 
 import {
-  aunshPicsLight,
   aunshPicsDark,
-  gotuuPicsLight,
-  gotuuPicsDark,
+  aunshPicsLight,
   funWithRedditPics,
+  gotuuPicsDark,
+  gotuuPicsLight,
   omdbAPIPics,
 } from "./data/photos";
 

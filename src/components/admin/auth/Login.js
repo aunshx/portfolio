@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import validator from "email-validator";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Navigate  } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -145,7 +145,7 @@ const Login = ({
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Navigate  to='/' />;
   }
 
   return (

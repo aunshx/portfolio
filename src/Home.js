@@ -30,6 +30,7 @@ import Alerts from './components/common/layout/Alerts';
 import Npm from "./components/client/npm-packages/Npm";
 
 import './App.css'
+import Education from './components/client/education/Education';
 
 const Home = ({
   // Redux State
@@ -52,7 +53,8 @@ const Home = ({
   const goArticles = useRef();
   const goSkills = useRef();
   const goContact = useRef();
-  const goNpm = useRef()
+  const goNpm = useRef();
+  const goEducation = useRef();
 
   const shadowElement = useCallback((node) => {
     if (shadow.current) {
@@ -107,6 +109,16 @@ const Home = ({
   const goToAbout = () => {
     if (goAbout.current) {
       goAbout.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }
+  };
+
+  const goToEducation = () => {
+    if (goEducation.current) {
+      goEducation.current.scrollIntoView({
         behavior: "smooth",
         block: "center",
         inline: "nearest",
@@ -207,6 +219,7 @@ const Home = ({
         goToArticles={goToArticles}
         goToContact={goToContact}
         goToNpm={goToNpm}
+        goToEducation={goToEducation}
       />
       <Sidebar
         shadowToggle={shadowToggle}
@@ -220,6 +233,7 @@ const Home = ({
         goToArticles={goToArticles}
         goToContact={goToContact}
         goToNpm={goToNpm}
+        goToEducation={goToEducation}
       />
       {backgroundAnimation && (
         <>
@@ -233,6 +247,7 @@ const Home = ({
       <div ref={goHome} />
       <Main />
       <About innerRef={goAbout} />
+      <Education innerRef={goEducation} />
       <Work innerRef={goWork} />
       <Projects innerRef={goProjects} />
       <Research innerRef={goResearch} />

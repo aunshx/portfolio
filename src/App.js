@@ -1,32 +1,31 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import useSound from "use-sound";
 
 import Home from "./Home";
-import NotFound from "./components/common/layout/NotFound";
-import Sidebar from "./components/common/navbar/Sidebar";
-import Navbar from "./components/common/navbar/Navbar";
 import Login from "./components/admin/auth/Login";
-import Main from "./components/admin/main/Main";
-import PrivateRoute from "./utils/PrivateRoute";
-import Stats from "./components/admin/stats/Stats";
-import Blog from './components/admin/blog/Blog'
+import Blog from './components/admin/blog/Blog';
 import CheckAuth from "./components/admin/blog/auth/CheckAuth";
+import Main from "./components/admin/main/Main";
+import Stats from "./components/admin/stats/Stats";
+import NotFound from "./components/common/layout/NotFound";
 import WillBeLive from "./components/common/layout/WillBeLive";
+import Navbar from "./components/common/navbar/Navbar";
+import Sidebar from "./components/common/navbar/Sidebar";
+import PrivateRoute from "./utils/PrivateRoute";
 
 import "./App.css";
 
-import { 
-  DARK_MODE_ON, 
-  DARK_MODE_OFF, 
-  // LOGOUT 
+import {
+  DARK_MODE_OFF,
+  DARK_MODE_ON,
 } from "./redux/actions/types.js";
 import store from "./store";
 
-import lightBackground from "./resources/sounds/lightBackground.mp3";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
+import lightBackground from "./resources/sounds/lightBackground.mp3";
 // import setAuthToken from "./utils/setAuthToken";
 // import { loadUser } from "./redux/actions/auth";
 import BlogAuthRoute from "./utils/BlogAuthRoute";
@@ -116,7 +115,7 @@ function App({
       return (
         <Router>
           <>
-            <Switch>
+            <Routes>
               {/* -------------------- ADMIN ----------------------- */}
 
               <PrivateRoute path='/' exact component={Main} />
@@ -138,7 +137,7 @@ function App({
                 )}
               />
               <Route component={NotFound} />
-            </Switch>
+            </Routes>
           </>
         </Router>
       );
@@ -146,8 +145,8 @@ function App({
       return (
         <Router>
           <>
-            <Switch>
-              <Route exact path='/' component={Home} />
+            <Routes>
+              <Route exact path='/' element={<Home />} />
               <Route
                 path='/admin/login'
                 render={(props) => (
@@ -157,8 +156,8 @@ function App({
                   />
                 )}
               />
-              <Route component={NotFound} />
-            </Switch>
+              <Route element={<NotFound />} />
+            </Routes>
           </>
         </Router>
       );
@@ -166,9 +165,9 @@ function App({
   } else {
     return (
       <Router>
-      <Switch>
+      <Routes>
         <WillBeLive />
-      </Switch>
+      </Routes>
       </Router>
     )
   }

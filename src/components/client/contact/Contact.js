@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import validator from "email-validator";
-import { connect } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMobileAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import validator from "email-validator";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import { sendEmail } from "../../../redux/actions/contact";
 
 import Footer from "../../common/layout/Footer";
 import Title from "../../common/layout/Title";
 
-import Card from "./tools/Card";
 import DetailsCard from "./tools/DetailsCard";
 import EmailCard from "./tools/EmailCard";
 
