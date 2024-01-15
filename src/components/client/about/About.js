@@ -17,7 +17,6 @@ const About = ({ innerRef }) => {
   };
 
   return (
-    <>
       <div className='app' ref={innerRef}>
         <div className='about' style={{ justifyContent: "center" }}>
           <div style={{ marginBottom: "2.5em" }}>
@@ -29,15 +28,14 @@ const About = ({ innerRef }) => {
           <div className='body app' style={{ alignItems: "flex-start" }}>
             <div className='details'>
               <div>
-                Namaste! My name is Aunsh and in my 24 years on this planet,
+                Namaste! My name is Aunsh and in my 25 years on this planet,
                 I've been a national-level cyclist, engineering student,
-                award-winning researcher, high school teacher, and now a
+                award-winning researcher, high school teacher and a
                 software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
                 I believe that technology should be as ergonomic as it is
-                complex. Currently, I work as a software engineer at
-                prosperix.com.
+                complex. Currently, I am a graduate student at the University of California, Davis.
               </div>
               <div style={{ marginTop: "2em" }}>
                 Apart from my work station one can find me at the gym or my
@@ -63,7 +61,7 @@ const About = ({ innerRef }) => {
               >
                 <img
                   src={
-                    "https://i.postimg.cc/nzhdvh8c/Whats-App-Image-2023-08-12-at-13-49-25ki.jpg"
+                    "https://i.postimg.cc/BZxtHLFM/Whats-App-Image-2024-01-14-at-18-18-20-2933dca3.jpg"
                   }
                   alt='Aunsh Profile Pic'
                   onLoad={onLoad}
@@ -75,7 +73,6 @@ const About = ({ innerRef }) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

@@ -23,7 +23,7 @@ const data = [
     end: "May 20",
     logo: sppuLogo,
     abbr: "SPPU",
-    gpa: '3.94/4.00',
+    // gpa: '3.94/4.00',
     extra: 'Student Council | Top 10 of the class in all years'
   },
 ];
@@ -41,7 +41,7 @@ const Element = ({
         <div className='flex_middle'>
           <div className='title'>{title}</div>
         </div>
-        <div className='flex_middle'>
+        <div className='flex_middle' style={{ alignItems: 'start' }} >
           <div className='degree'>{degree}.</div>
           <div className='degree'>{field}</div>
         </div>
@@ -49,10 +49,10 @@ const Element = ({
           <div className='date'>
             {start} to {end}
           </div>
-          <div>&#8226;</div>
+          {/* <div>&#8226;</div>
           <div className='date' style={{ marginLeft: "10px" }}>
             GPA: {gpa ?? "N/A"}
-          </div>
+          </div> */}
         </div>
         <div className='flex_middle date'>{extra ?? "To be updated"}</div>
       </div>

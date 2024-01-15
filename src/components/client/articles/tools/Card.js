@@ -23,6 +23,8 @@ const Card = ({
     switch (true) {
       case technology[0] === "react":
         return setColorBorder("#61dbfb");
+      case technology[0] === "blockchain":
+        return setColorBorder("#1973F4");
       case technology[0] === "redux":
         return setColorBorder("#61dbfb");
       case technology[0] === "node":

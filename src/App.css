@@ -1927,7 +1927,7 @@ transition: .2s ease-in-out;
    width: 750px;
   height: auto;
   padding: 0em 0em 1em 0;
-  margin: 0 0 6em 50px;
+  margin: 0 0 5em 50px;
   font-family: 'Comfortaa', cursive;
 }
 
@@ -2710,7 +2710,7 @@ transition: .2s ease-in-out;
 .education .element {
   color: var(--light-dark-font-color);
   border-radius: 8px;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   background-color: var(--card-color);
   display: flex;
