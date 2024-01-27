@@ -19,20 +19,20 @@ const Footer = () => {
             Aunsh B
           </a>{" "}
         </div>
-        <div style={{ fontSize: "0.8em", margin: "0 0.45em" }}>in</div>
+        {/* <div style={{ fontSize: "0.8em", margin: "0 0.45em" }}>in</div>
         <div class='flag india' style={{ marginBottom: '0.1em' }} >
           <img
             src='https://imgur.com/nm8Qq5m.png'
             alt='Indian Flag'
             style={{ width: "4px" }}
           />
-        </div>
+        </div> */}
       </div>
       <div
         className='text'
         style={{ fontSize: "0.55em", fontWeight: "200", marginTop: "0em" }}
       >
-        v2.3 &middot; Updated 15 Aug 23 &middot; All rights reserved
+        v2.3 &middot; Updated 26 Jan 24 &middot; All rights reserved
       </div>
     </div>
   );

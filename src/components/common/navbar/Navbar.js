@@ -18,7 +18,7 @@ import SidebarMini from './SidebarMini'
 
 import toggle from "../../../resources/sounds/toggle.mp3";
 import resumeSwoosh from "../../../resources/sounds/resumeSwoosh.mp3";
-import resume from "../../../resources/articles/resume.pdf";
+import resume from "../../../resources/articles/Aunsh_Resume.pdf";
 
 import {
   toggleLightMode,
