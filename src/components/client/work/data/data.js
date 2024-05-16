@@ -1,5 +1,16 @@
 export const companies = [
   {
+    name: "UC Davis",
+    type: "Education and Computer Science",
+    work: [
+      "Currently pursuing my Master's in Electrical and Computer Engineering at the University of California, Davis",
+      "Working as a Graduate Teaching Assistant for Prof. Sophia Mattingly, course EDU 122",
+      "Working with Prof. Mohammad Sadoghi at the Exploratory Systems Lab on the sustainable blockchain fabric - ResilientDb"
+    ],
+    position: "Graduate Student",
+    duration: "Sep '23 - Present",
+  },
+  {
     name: "Prosperix",
     type: "Software",
     work: [
@@ -7,7 +18,7 @@ export const companies = [
       "Prosperix is a workforce innovation company that develops software solutions that enable businesses to build an extraordinary workforce. To help businesses realize their highest potential and deliver meaningful impact, we have pioneered a new way of building and managing a thriving workforce. Our ultimate aim is for our solutions to positively impact human, workforce, and business prosperity.",
     ],
     position: "Software Engineer",
-    duration: "Mar '23 - Present",
+    duration: "Mar '23 - Aug '23",
   },
   {
     name: "Dr SB's",

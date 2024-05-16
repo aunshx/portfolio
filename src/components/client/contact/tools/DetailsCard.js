@@ -28,13 +28,7 @@ const DetailsCard = ({ displayMode }) => {
         <div className='title'>
           <FontAwesomeIcon icon={faEnvelope} />
         </div>
-        <div style={{ fontSize: "0.85em" }}>aunsh.sb@gmail.com</div>
-      </div>
-      <div className='info flex_middle'>
-        <div className='title'>
-          <FontAwesomeIcon icon={faMobileAlt} />
-        </div>
-        <div style={{ fontSize: "0.85em" }}>+91 79721 46825</div>
+        <div style={{ fontSize: "0.85em" }}>aunsh@ucdavis.edu</div>
       </div>
       <div className='info flex_middle'>
         <div className='title'>

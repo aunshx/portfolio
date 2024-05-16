@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import Title from "../../common/layout/Title";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from 'react';
 import useWindow from 'react-window-size-simple';
+import Title from "../../common/layout/Title";
 
 const About = ({ innerRef }) => {
 
@@ -17,7 +17,6 @@ const About = ({ innerRef }) => {
   };
 
   return (
-    <>
       <div className='app' ref={innerRef}>
         <div className='about' style={{ justifyContent: "center" }}>
           <div style={{ marginBottom: "2.5em" }}>
@@ -29,17 +28,18 @@ const About = ({ innerRef }) => {
           <div className='body app' style={{ alignItems: "flex-start" }}>
             <div className='details'>
               <div>
-                Namaste! My name is Aunsh and in my 24 years on this planet,
+                Namaste! My name is Aunsh and in my 25 years on this planet,
                 I've been a national-level cyclist, engineering student,
-                award-winning researcher, high school teacher, and now a software developer.
+                award-winning researcher, high school teacher and a
+                software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
                 I believe that technology should be as ergonomic as it is
-                complex. Currently, I work as a software engineer at prosperix.com.
+                complex. Currently, I am a graduate student at the University of California, Davis.
               </div>
               <div style={{ marginTop: "2em" }}>
-                In my free time, I enjoy sipping on a cappuccino at my regular
-                cafe while writing.
+                Apart from my work station one can find me at the gym or my
+                regular cafe enjoying a cappuccino
               </div>
             </div>
             <div
@@ -53,13 +53,19 @@ const About = ({ innerRef }) => {
               >
                 <div className='loader-me' />
               </div>
-              <div style={{ display: isLoading ? "none" : "block" }}>
+              <div
+                style={{
+                  display: isLoading ? "none" : "block",
+                  borderRadius: "8px",
+                }}
+              >
                 <img
                   src={
-                    "https://i.postimg.cc/G2FVgJWc/Screenshot-20230223-170247.png"
+                    "https://i.postimg.cc/BZxtHLFM/Whats-App-Image-2024-01-14-at-18-18-20-2933dca3.jpg"
                   }
                   alt='Aunsh Profile Pic'
                   onLoad={onLoad}
+                  style={{ objectFit: "contain" }}
                 />
               </div>
               <div className='border' />
@@ -67,7 +73,6 @@ const About = ({ innerRef }) => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

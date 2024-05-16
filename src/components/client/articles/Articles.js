@@ -1,21 +1,22 @@
-import React from 'react';
+import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNewspaper} from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
 import Card from './tools/Card';
 
-import reduxLogo from "../../../resources/images/skills/logos/reduxLogo.png";
-import reactLogo from "../../../resources/images/skills/logos/reactLogo.png";
-import nodeLogo from "../../../resources/images/skills/logos/nodeLogo.png";
+import jsLogo from '../../../resources/images/skills/logos/jsLogo.png';
 import nodeCronLogo from "../../../resources/images/skills/logos/nodeCronLogo.png";
+import nodeLogo from "../../../resources/images/skills/logos/nodeLogo.png";
+import reactLogo from "../../../resources/images/skills/logos/reactLogo.png";
 import redditLogo from "../../../resources/images/skills/logos/redditLogo.png";
-import jsLogo from '../../../resources/images/skills/logos/jsLogo.png'
+import reduxLogo from "../../../resources/images/skills/logos/reduxLogo.png";
+import blockchainLogo from "../../../resources/images/skills/logos/blockchainLogo.png";
 
-import httpsNodeLogo from '../../../resources/images/articles/one.jpeg'
-import sendWhatsappMessages from '../../../resources/images/articles/two.jpeg'
-import automateTasks from '../../../resources/images/articles/three.jpeg'
-import underTheHood from '../../../resources/images/articles/four.jpeg'
 import createServerImg from "../../../resources/images/articles/five.jpeg";
-import funWithReddit from '../../../resources/images/articles/funWithReddit.png'
+import underTheHood from '../../../resources/images/articles/four.jpeg';
+import funWithReddit from '../../../resources/images/articles/funWithReddit.png';
+import httpsNodeLogo from '../../../resources/images/articles/one.jpeg';
+import automateTasks from '../../../resources/images/articles/three.jpeg';
+import sendWhatsappMessages from '../../../resources/images/articles/two.jpeg';
 
 import Title from "../../common/layout/Title";
 
@@ -24,13 +25,33 @@ const Articles = ({ innerRef }) => {
   return (
     <div className='app' ref={innerRef}>
       <div className='articles'>
-        <div style={{ marginBottom: '2.5em' }} >
+        <div style={{ marginBottom: "2.5em" }}>
           <Title
             icon={<FontAwesomeIcon icon={faNewspaper} />}
             title={"Articles"}
           />
         </div>
         <div className='body'>
+          <div className='flex_middle'>
+            <Card
+              delay={0}
+              technology={["blockchain"]}
+              imagesArray={[{ image: blockchainLogo, alt: "Blockchain Logo" }]}
+              articleImage={
+                "https://i.postimg.cc/gcQJCyWz/1-K-4-Kp-Bo-ZMMtn-Tf-R0-g-EXJQ.webp"
+              }
+              title={
+                "ResView: A PBFT visualizer based on the ResilientDb blockchain fabric"
+              }
+              runAos={true}
+              link={
+                "https://aunsh.medium.com/resview-a-pbft-visualizer-based-on-the-resilientdb-blockchain-fabric-3ffaeb2aaee5"
+              }
+              description={
+                "A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric."
+              }
+            />
+          </div>
           <div className='flex_middle'>
             <Card
               delay={0}

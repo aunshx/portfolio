@@ -25,10 +25,8 @@ const Card = ({
     }
   };
   return (
-    <Link
-      to={{
-        pathname: link,
-      }}
+    <a
+      href={link}
       className='checkout flex_middle'
       target={"_blank"}
       rel='noreferrer nofollow'
@@ -82,7 +80,7 @@ const Card = ({
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   );
 };
 

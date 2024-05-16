@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useSound from 'use-sound'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial, faBox } from "@fortawesome/free-solid-svg-icons";
+import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial, faBox, faSchoolFlag } from "@fortawesome/free-solid-svg-icons";
 
 import pop from '../../../resources/sounds/pop.mp3'
 
@@ -22,6 +22,7 @@ const Sidebar = ({
   goToArticles,
   goToContact,
   goToNpm,
+  goToEducation,
   // Redux State
   settings: { displayMode, sound },
 }) => {
@@ -115,6 +116,21 @@ const Sidebar = ({
                   />
                 </div>
                 <div className='writing'>Work</div>
+              </div>
+            </div>
+            <div
+              onClick={goToEducation}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between' onMouseEnter={elementHover}>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faSchoolFlag}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+                <div className='writing'>Education</div>
               </div>
             </div>
             <div
@@ -217,8 +233,8 @@ const Sidebar = ({
           style={
             shadowToggle
               ? {
-                transition: '0.2s ease-in-out'
-              }
+                  transition: "0.2s ease-in-out",
+                }
               : displayMode
               ? {
                   boxShadow: "none",
@@ -268,6 +284,20 @@ const Sidebar = ({
                 <div>
                   <FontAwesomeIcon
                     icon={faBriefcase}
+                    style={{ marginRight: "0.5em" }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              onClick={goToEducation}
+              className={"element"}
+              style={{ cursor: "pointer" }}
+            >
+              <div className='flex_between'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faSchoolFlag}
                     style={{ marginRight: "0.5em" }}
                   />
                 </div>

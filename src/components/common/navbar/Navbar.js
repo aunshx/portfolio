@@ -18,7 +18,7 @@ import SidebarMini from './SidebarMini'
 
 import toggle from "../../../resources/sounds/toggle.mp3";
 import resumeSwoosh from "../../../resources/sounds/resumeSwoosh.mp3";
-import resume from "../../../resources/articles/resume.pdf";
+import resume from "../../../resources/articles/Aunsh_Resume.pdf";
 
 import {
   toggleLightMode,
@@ -48,6 +48,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const ToggleSwitch = ({ displayMode, toggleTheme }) => {
+  const display = displayMode ? "toggle-switch-dark" : "toggle-switch";
+  return (
+    <div onClick={toggleTheme} className='cursor_pointer'>
+      <div className={display}>
+        <div className='star'></div>
+        <div className='moon'></div>
+      </div>
+    </div>
+  );
+};
+
 const Navbar = ({
   shadowToggle,
   goToHome,
@@ -59,6 +71,7 @@ const Navbar = ({
   goToArticles,
   goToContact,
   goToNpm,
+  goToEducation,
   // Redux State
   settings: { displayMode, sound, music, backgroundAnimation },
   // Redux Actions
@@ -97,14 +110,6 @@ const Navbar = ({
     setDisplayDownload(false);
   };
 
-  const toggleThemeToDark = (e) => {
-    setDark();
-    toggleDarkMode();
-    if (sound) {
-      playOn();
-    }
-  };
-
   const toggleAnimationOn = () => {
     toggleAnimationChange(true);
     if (sound) {
@@ -119,9 +124,14 @@ const Navbar = ({
     }
   };
 
-  const toggleThemeToLight = (e) => {
-    setLight();
-    toggleLightMode();
+  const toggleTheme = (e) => {
+    if (displayMode) {
+      setLight();
+      toggleLightMode();
+    } else {
+      setDark();
+      toggleDarkMode();
+    }
     if (sound) {
       playOn();
     }
@@ -178,41 +188,9 @@ const Navbar = ({
           </NavLink>
         </div>
         <div className='right flex_evenly'>
-          {displayMode ? (
-            <div className='moon cursor_pointer'>
-              <Tooltip title='Dark' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faMoon}
-                    className={"mobile_logo--tilted"}
-                    onClick={toggleThemeToLight}
-                    style={{
-                      fontSize: 17,
-                      marginTop: "0.35em",
-                      color: "grey",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          ) : (
-            <div className='sun cursor_pointer'>
-              <Tooltip title='Light' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faSun}
-                    className={"mobile_logo--tilted"}
-                    onClick={toggleThemeToDark}
-                    style={{
-                      fontSize: 19,
-                      marginTop: "0.42em",
-                      color: "orange",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          )}
+          <div style={{ margin: "1.8em 2.2em 0 0" }}>
+            <ToggleSwitch displayMode={displayMode} toggleTheme={toggleTheme} />
+          </div>
           {backgroundAnimation ? (
             <div
               className='sound-on cursor_pointer'
@@ -349,39 +327,12 @@ const Navbar = ({
         </div>
         {width < 787 && (
           <div className='right-mini flex_evenly'>
-            {displayMode ? (
-              <div className='moon cursor_pointer'>
-                <Tooltip title='Dark' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faMoon}
-                      onClick={toggleThemeToLight}
-                      style={{
-                        fontSize: 15,
-                        marginTop: "0.3em",
-                        color: "grey",
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div className='sun cursor_pointer'>
-                <Tooltip title='Light' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faSun}
-                      onClick={toggleThemeToDark}
-                      style={{
-                        fontSize: 17,
-                        marginTop: "0.3em",
-                        color: "orange",
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
+            <div style={{ margin: "1.4em 1.6em 0 0" }}>
+              <ToggleSwitch
+                displayMode={displayMode}
+                toggleTheme={toggleTheme}
+              />
+            </div>
             {backgroundAnimation ? (
               <div
                 className='sound-on cursor_pointer'
@@ -491,6 +442,7 @@ const Navbar = ({
               goToArticles={goToArticles}
               goToContact={goToContact}
               goToNpm={goToNpm}
+              goToEducation={goToEducation}
             />
           </Drawer>
         )}

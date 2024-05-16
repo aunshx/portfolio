@@ -22,6 +22,19 @@ const Research = ({
         <div className='body'>
           <div className='flex_middle'>
             <Card
+              title={
+                "ResView: A PBFT visualizer based on the ResilientDb blockchain fabric"
+              }
+              link={"https://blog.resilientdb.com/2023/12/06/ResView.html"}
+              description={
+                "A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric to simulate consensus protocol transactions"
+              }
+              tags={["Blockchain", "DDS", "D3.js"]}
+              achievements={[]}
+            />
+          </div>
+          <div className='flex_middle'>
+            <Card
               title={"5G Dual Band Pass Filter for Wi-Fi and WLAN Operations"}
               link={
                 "https://drive.google.com/file/d/1vU5t8YAz7mKWWKG1-l77xMDisG6grjzA/view?usp=sharing"
