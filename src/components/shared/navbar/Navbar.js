@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import useSound from "use-sound";
+import React, { useState } from 'react';
 import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
+import useSound from "use-sound";
 
-import { NavLink } from "react-router-dom";
+import { faBars, faRadiation, faShare, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute, faRadiation, faShare } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
 import {
-    makeStyles,
+  makeStyles,
 } from "@mui/styles";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import MusicOffIcon from "@mui/icons-material/MusicOff";
+import { NavLink } from "react-router-dom";
 
-import SidebarMini from './SidebarMini'
+import SidebarMini from './SidebarMini';
 
-import toggle from "../../../resources/sounds/toggle.mp3";
 import resumeSwoosh from "../../../resources/sounds/resumeSwoosh.mp3";
-import resume from "../../../resources/articles/Aunsh_Resume.pdf";
+import toggle from "../../../resources/sounds/toggle.mp3";
 
 import {
-  toggleLightMode,
-  toggleDarkMode,
-  soundOn,
-  soundOff,
-  musicOn,
   musicOff,
+  musicOn,
+  soundOff,
+  soundOn,
   toggleAnimationChange,
+  toggleDarkMode,
+  toggleLightMode,
 } from "../../../redux/actions/settings";
+import { RESUME_LINK } from '../../../resources/constants';
 
 const setDark = () => {
   localStorage.setItem("theme", "dark");
@@ -69,24 +67,16 @@ const Navbar = ({
   goToResearch,
   goToSkills,
   goToArticles,
-  goToContact,
-  goToNpm,
   goToEducation,
   // Redux State
-  settings: { displayMode, sound, music, backgroundAnimation },
+  settings: { displayMode, sound, backgroundAnimation },
   // Redux Actions
   soundOn,
   soundOff,
-  toggleLightMode,
-  toggleDarkMode,
-  musicOn,
-  musicOff,
   toggleAnimationChange,
 }) => {
   const [playOn2] = useSound(resumeSwoosh, { volume: 0.2 });
   const [playOn] = useSound(toggle, { volume: 0.2 });
-
-  const classes = useStyles();
 
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -124,19 +114,6 @@ const Navbar = ({
     }
   };
 
-  const toggleTheme = (e) => {
-    if (displayMode) {
-      setLight();
-      toggleLightMode();
-    } else {
-      setDark();
-      toggleDarkMode();
-    }
-    if (sound) {
-      playOn();
-    }
-  };
-
   const soundTurnOff = () => {
     soundOff();
     if (sound) {
@@ -148,24 +125,10 @@ const Navbar = ({
     soundOn();
   };
 
-  const musicTurnOff = () => {
-    musicOff();
-    if (sound) {
-      playOn();
-    }
-  };
-
-  const musicTurnOn = () => {
-    musicOn();
-    if (sound) {
-      playOn();
-    }
-  };
-
   return (
     <>
       <div
-        className='navbar flex_between'
+        className='navbar flex items-center justify-between w-full general-card fixed top-0 px-16 z-[200]'
         style={
           shadowToggle
             ? displayMode
@@ -182,118 +145,20 @@ const Navbar = ({
               }
         }
       >
-        <div className='cursor_pointer'>
+        <div className='cursor-pointer'>
           <NavLink to='/'>
-            <div className='left'>aunsh.</div>
+            <div className='text-2xl text-brand font-bold'>aunsh.</div>
           </NavLink>
         </div>
-        <div className='right flex_evenly'>
-          {backgroundAnimation ? (
-            <div
-              className='sound-on cursor_pointer'
-              style={{ marginRight: "2.2em" }}
-            >
-              <Tooltip
-                title={
-                  <div color='inherit'>Background Animation On</div>
-                }
-                placement='bottom'
-              >
-                <div>
-                  <FontAwesomeIcon
-                    icon={faRadiation}
-                    onClick={toggleAnimationOff}
-                    style={{
-                      fontSize: 18,
-                      marginTop: "0.3em",
-                    }}
-                    className='radiation'
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          ) : (
-            <div
-              className='sound-off cursor_pointer'
-              style={{ marginRight: "2.2em" }}
-            >
-              <Tooltip title='Background Animation Off' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faRadiation}
-                    onClick={toggleAnimationOn}
-                    style={{
-                      fontSize: 18,
-                      marginTop: "0.3em",
-                    }}
-                    className='radiation-off'
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          )}
-          {sound ? (
-            <div className='sound-on cursor_pointer'>
-              <Tooltip title='Sound-On' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faVolumeUp}
-                    onClick={soundTurnOff}
-                    style={{
-                      fontSize: 17,
-                      marginTop: "0.3em",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          ) : (
-            <div className='sound-off cursor_pointer'>
-              <Tooltip title='Sound-Off' placement='left'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faVolumeMute}
-                    onClick={soundTurnOn}
-                    style={{
-                      fontSize: 19,
-                      marginTop: "0.3em",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          )}
-          <a href={resume} download='Aunsh_Resume.pdf'>
-              <div
-                className='resume flex_middle'
-                onMouseEnter={changeDownloadEnter}
-                onMouseLeave={changeDownloadLeave}
-              >
-                  <div className="flex items-center justify-between gap-x-2">
-                      <FontAwesomeIcon icon={faShare} className='icon' />
-                      <div className='text'>Résumé/CV</div>
-                  </div>
-              </div>
-          </a>
-        </div>
-        {width < 787 && (
-          <div className='right-mini flex_evenly'>
-            <div style={{ margin: "1.4em 1.6em 0 0" }}>
-              <ToggleSwitch
-                displayMode={displayMode}
-                toggleTheme={toggleTheme}
-              />
-            </div>
+        {width > 787 ? (
+          <div className='text-xl flex items-center justify-evenly gap-x-8'>
             {backgroundAnimation ? (
               <div
-                className='sound-on cursor_pointer'
-                style={{ marginRight: "1.4em" }}
+                className='text-brand cursor-pointer'
               >
                 <Tooltip
                   title={
-                    <>
-                      <div color='inherit'>Background Animation On</div>
-                    </>
+                    <div color='inherit'>Background Animation On</div>
                   }
                   placement='bottom'
                 >
@@ -302,18 +167,16 @@ const Navbar = ({
                       icon={faRadiation}
                       onClick={toggleAnimationOff}
                       style={{
-                        fontSize: 17,
-                        marginTop: "0.15em",
+                        fontSize: 20,
                       }}
-                      className='radiation'
+                      className='rotate'
                     />
                   </div>
                 </Tooltip>
               </div>
             ) : (
               <div
-                className='sound-off cursor_pointer'
-                style={{ marginRight: "1.4em" }}
+                className='text-gray-400 cursor-pointer'
               >
                 <Tooltip title='Background Animation Off' placement='left'>
                   <div>
@@ -321,77 +184,126 @@ const Navbar = ({
                       icon={faRadiation}
                       onClick={toggleAnimationOn}
                       style={{
-                        fontSize: 17,
-                        marginTop: "0.15em",
+                        fontSize: 20,
                       }}
-                      className='radiation-off'
                     />
                   </div>
                 </Tooltip>
               </div>
             )}
-            <div>
-              {menu ? (
-                <div className='flex_middle'>
-                  <Tooltip title='Menu' placement='left'>
-                    <div>
-                      <FontAwesomeIcon
-                        icon={faBars}
-                        className={"mobile_logo--tilted"}
-                        onClick={verticalMenu}
-                        style={{
-                          fontSize: 17,
-                        }}
-                      />
-                    </div>
-                  </Tooltip>
-                </div>
-              ) : (
-                <div className='flex_middle'>
-                  <Tooltip title='Menu' placement='left'>
-                    <div>
-                      <FontAwesomeIcon
-                        icon={faBars}
-                        className={"mobile_logo"}
-                        onClick={verticalMenu}
-                        style={{
-                          fontSize: 19,
-                          marginTop: "0.15em",
-                        }}
-                      />
-                    </div>
-                  </Tooltip>
-                </div>
-              )}
-              <div></div>
-            </div>
+            {sound ? (
+              <div className='cursor-pointer'>
+                <Tooltip title='Sound-On' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faVolumeUp}
+                      onClick={soundTurnOff}
+                      style={{
+                        fontSize: 20,
+                      }}
+                      className='text-brand'
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            ) : (
+              <div className='cursor-pointer'>
+                <Tooltip title='Sound-Off' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faVolumeMute}
+                      onClick={soundTurnOn}
+                      style={{
+                        fontSize: 20,
+                      }}
+                      className='text-gray-400'
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            )}
+            <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'>
+              <div
+                className='resume-btn flex items-center justify-between gap-x-2'
+                onMouseEnter={changeDownloadEnter}
+                onMouseLeave={changeDownloadLeave}
+              >
+                <FontAwesomeIcon icon={faShare} className='icon' />
+                <div className='text'>Résumé/CV</div>
+              </div>
+            </a>
+          </div>
+        ) : (
+          <div className='flex items-center justify-center gap-x-2'>
+            {backgroundAnimation ? (
+              <div
+                className='text-brand cursor-pointer'
+                style={{ marginRight: "1.4em" }}
+              >
+                <Tooltip
+                    title={'Background Animation On'}
+                  placement='bottom'
+                >
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faRadiation}
+                      onClick={toggleAnimationOff}
+                      style={{
+                        fontSize: 19,
+                      }}
+                      className='rotate'
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            ) : (
+              <div className='cursor-pointer'>
+                <Tooltip title='Background Animation Off' placement='left'>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faRadiation}
+                      onClick={toggleAnimationOn}
+                      style={{
+                        fontSize: 19,
+                      }}
+                    />
+                  </div>
+                </Tooltip>
+              </div>
+            )}
+            <Tooltip title='Menu' placement='left'>
+              <div>
+                <FontAwesomeIcon
+                  icon={faBars}
+                  onClick={verticalMenu}
+                  style={{
+                    fontSize: 21,
+                  }}
+                />
+              </div>
+            </Tooltip>
           </div>
         )}
-      </div>
-      <div>
         {width < 787 && (
           <Drawer
             anchor={"right"}
             open={drawer}
             onClose={verticalMenu}
-            className='sidebar_nav-right'
           >
             <SidebarMini
               close={verticalMenu}
               goToHome={goToHome}
-              goToAbout={goToAbout}
               goToWork={goToWork}
               goToProjects={goToProjects}
               goToResearch={goToResearch}
               goToSkills={goToSkills}
               goToArticles={goToArticles}
-              goToContact={goToContact}
-              goToNpm={goToNpm}
               goToEducation={goToEducation}
             />
           </Drawer>
         )}
       </div>
+
     </>
   );
 };

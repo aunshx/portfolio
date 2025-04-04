@@ -280,70 +280,38 @@ pre {
 
 /* --------------------------------------------- NAVBAR -------------------------------------- */
 .navbar {
-  background-color: var(--navbar-color);
-  color: var(--dark-font-color);
-  width: 100vw;
-  height: 45px;
-  /* border-bottom: 1px solid var(--light-grey-color); */
-  position: fixed;
-  top: 0;
-  padding: 0 5em;
-  z-index: 103;
+  height: 60px;
 }
 
-.navbar .left {
-  font-size: 26px;
-  color: var(--logo-color);
-  font-weight: 700;
+.navbar .rotate {
+  animation: rotateContinuously 2s infinite linear;
 }
 
-.navbar .right {
-  /* width: 45vw; */
-  font-size: 0.9em;
+@keyframes rotateContinuously {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.navbar .right .element {
-  display: inline-block;
-  position: relative;
-  color: var(--light-dark-font-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* --------------------------------------------- RESUME BUTTON -------------------------------------- */
 
-.navbar .right .element:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--logo-color);
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
-}
-
-.navbar .right .element:hover:after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-
-.navbar .right .resume {
+.resume-btn {
   font-size: 14px;
   color: var(--logo-color);
   font-weight: 700;
   border: 1px solid var(--logo-color);
   padding: 0.2em 0.8em;
   border-radius: 20px;
-  margin-left: 2em;
   cursor: pointer;
   width: 130px;
-  height: 30px;
+  height: 35px;
 }
 
-.navbar .right .resume:hover {
+.resume-btn:hover {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     animation: resumeHover 0.25s 1 linear;
 }
@@ -367,259 +335,9 @@ pre {
   }
 }
 
-.navbar .right .sun {
-  animation: sunEntry 0.3s 1 linear;
-  margin: 0 2.2em 0 0;
-}
-
-.navbar .right .moon {
-  animation: moonEntry 0.3s 1 linear;
-  margin: 0 2.2em 0 0;
-}
-
-.navbar .right .element-letter--admin {
-  color: var(--lighter-dark-font-color);
-  margin: 0 0.4em 0.1em 0.8em;
-  font-size: 1.7em;
-  font-weight: bold;
-}
-
-.navbar .right .element-letter--admin:hover {
-  color: var(--logo-color);
-}
-
-.navbar .right .element--admin {
-  color: var(--lighter-dark-font-color);
-  margin: 0 1.5em;
-}
-
-.navbar .right .element--admin:hover {
-  color: var(--logo-color);
-}
-
-.navbar .right .sound-on {
-  color: var(--logo-color);
-}
-
-.navbar .right .sound-off {
-  color: var(--light-icon-color);
-}
-
-.navbar .right .radiation {
-  animation: rotateContinuously 2s infinite linear;
-}
-
-@keyframes rotateContinuously {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes sunEntry {
-  from {
-    opacity: 0;
-    transform: rotate(270deg);
-  }
-
-  to {
-    opacity: 1;
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes moonEntry {
-  from {
-    opacity: 0;
-    transform: rotate(90deg);
-  }
-
-  to {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-}
-
-
-@media only screen and (max-width: 786px) {
-  .navbar {
-    padding: 0 1em;
-  }
-
-  .navbar .right {
-    display: none;
-  }
-
-  .navbar .right-mini {
-    width: auto;
-  }
-
-  .navbar .right-mini .sun {
-    animation: sunEntry 0.3s 1 linear;
-    margin: 0 25px 0 0;
-  }
-
-  .navbar .right-mini .moon {
-    animation: moonEntry 0.3s 1 linear;
-    margin: 0 25px 0 0;
-  }
-
-  .navbar .right-mini .music-on {
-    margin: 0 25px;
-  }
-
-  .navbar .right-mini .music-off {
-    margin: 0 25px;
-  }
-
-  .navbar .right-mini .sound-on {
-    color: var(--logo-color);
-  }
-
-  .navbar .right-mini .sound-off {
-    color: var(--light-icon-color);
-  }
-
-  .navbar .mobile_logo {
-    cursor: pointer;
-    animation: verticalToHorizontal 0.3s 1 linear;
-    color: var(--light-dark-font-color);
-    padding-top: 0.1em;
-  }
-
-  .navbar .mobile_logo--tilted {
-    cursor: pointer;
-    transform: rotate(90deg);
-    animation: horizontalToVertical 0.3s 1 linear;
-    color: var(--light-dark-font-color);
-  }
-
-  .navbar .mobile_logo:hover,
-  .navbar .mobile_logo--tilted:hover {
-    color: var(--logo-color);
-  }
-
-  .navbar .right-mini .radiation {
-    animation: rotateContinuously 2s infinite linear;
-  }
-
-  @keyframes verticalToHorizontal {
-    0% {
-      transform: rotate(90deg);
-    }
-
-    50% {
-      transform: rotate(45deg);
-    }
-
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-
-  @keyframes horizontalToVertical {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    50% {
-      transform: rotate(45deg);
-    }
-
-    100% {
-      transform: rotate(90deg);
-    }
-  }
-
-}
-
 /* ---------------------------------- SIDEBAR ---------------------------- */
 .sidebar {
   width: 200px;
-  background-color: var(--navbar-color);
-  height: 100vh;
-}
-
-.sidebar .title {
-  padding: 0.5em 0.5em;
-}
-
-.sidebar .title .text {
-  font-size: 1em;
-  color: var(--logo-color);
-  font-weight: bold;
-}
-
-.sidebar .title .icon {
-  color: var(--dark-font-color);
-}
-
-.sidebar .element {
-  color: var(--lighter-dark-font-color);
-  padding: 0.7em;
-  margin: 0.2em;
-  cursor: pointer;
-  font-size: 0.9em;
-}
-
-.sidebar .element:hover {
-  color: var(--logo-color);
-}
-
-.sidebar .element .resume {
-  font-size: 14px;
-  color: var(--logo-color);
-  font-weight: 700;
-  border: 1px solid var(--logo-color);
-  padding: 0.1em 0.8em;
-  border-radius: 20px;
-}
-
-.sidebar .element .resume:hover {
-  color: var(--logo-color);
-  border: 1px solid var(--logo-color);
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-
-.sidebar .element .gotuu_app {
-  font-size: 11px;
-  color: rgb(94, 226, 61);
-  font-weight: 700;
-  border: 1px solid rgb(46, 169, 15);
-  padding: 0.2em 0.7em;
-  border-radius: 20px;
-}
-
-.sidebar .element .gotuu_app img {
-  object-fit: contain;
-  width: 15px;
-  height: 15px;
-}
-
-.sidebar .element .gotuu_app:hover {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-.sidebar .music-on {
-  color: var(--logo-color);
-}
-
-.sidebar .music-off {
-  color: var(--light-icon-color);
-}
-
-.sidebar .sound-on {
-  margin: 0 20px 0 0;
-  color: var(--logo-color);
-}
-
-.sidebar .sound-off {
-  margin: 0 20px 0 0;
-  color: var(--light-icon-color);
 }
 
 /* --------------------------------------- SIDEBAR MAIN ----------------------------- */

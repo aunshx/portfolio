@@ -3,7 +3,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-const ContactButtons = ({ link, icon  }) => {
+export const ContactButtons = ({ link, icon  }) => {
     return (
         <a href={link ?? 'https://github.com/aunshx'} target="_blank" rel='noreferrer nofollow' type="button" class="text-sm hover:text-brand text-gray-400 cursor-pointer">
           <FontAwesomeIcon

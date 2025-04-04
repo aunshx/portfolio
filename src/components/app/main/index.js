@@ -18,7 +18,7 @@ const ContactButtons = ({ link, icon  }) => {
 
 const Main = () => {
     return (
-        <div className='grid grid-cols-2 items-start justify-center lg:flex lg:flex-col text-white text-left gap-x-8 mt-16'>
+        <div className='grid grid-cols-2 items-start justify-center lg:flex lg:flex-col text-white text-left gap-x-8 mt-24'>
             <div className="flex flex-col gap-y-2">
                 <div className="text-5xl">
                     <span className='text-brand'>A</span>unsh Bandivadekar

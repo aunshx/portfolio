@@ -35,7 +35,6 @@ const Home = ({
   const { width } = useWindow();
 
   const [showContact, setShowContact] = useState(false);
-  const [showDialog, setShowDialog] = useState(false);
   const [shadowToggle, setShadowToggle] = useState(false)
 
   const shadow = useRef()
