@@ -14,7 +14,7 @@ import BackgroundTiny from "./components/client/main/BackgroundTiny";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
 
-import Main from './components/client/main/Main';
+import Main from './components/client/main';
 import About from "./components/client/about/About";
 import Work from "./components/client/work/Work";
 import Projects from './components/client/projects/Projects';
@@ -207,7 +207,7 @@ const Home = ({
   };
 
   return (
-    <div className='app'>
+    <div className='app body-whole h-100v w-full'>
       <Navbar
         shadowToggle={shadowToggle}
         goToHome={goToHome}
@@ -245,61 +245,98 @@ const Home = ({
       )}
       <div ref={shadowElement} />
       <div ref={goHome} />
-      <Main />
-      <About innerRef={goAbout} />
-      <Education innerRef={goEducation} />
-      <Work innerRef={goWork} />
-      <Projects innerRef={goProjects} />
-      <Research innerRef={goResearch} />
-      <Npm innerRef={goNpm} />
-      <Articles innerRef={goArticles} />
-      <Skills innerRef={goSkills} />
-      <Contact
-        refSec={refElement}
-        show={showDialog}
-        changeDialog={setShowDialog}
-        innerRef={goContact}
-      />
-      {width > 1029 && (
-        <>
-          {showContact && (
-            <>
-              <div className='appear_contact' onClick={goToContact}>
-                <Tooltip title='Page Down' placement='left' enterDelay={400}>
-                  <div className='contact-button' onMouseEnter={onHoverMobile}>
-                    <ArrowCircleDownOutlinedIcon
-                      className='go-up'
-                      style={{ fontSize: 40 }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            </>
-          )}
-          {!showContact && (
-            <>
-              <div className='appear_contact' onClick={goToHome}>
-                <Tooltip title='Page Up' placement='left' enterDelay={400}>
-                  <div className='contact-button' onMouseEnter={onHoverMobile}>
-                    <ArrowCircleUpOutlinedIcon
-                      className='go-up'
-                      style={{ fontSize: 40 }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            </>
-          )}
-          <div className='speed_dial-button'>
-            <SpeedDial />
-          </div>
-          {/* // ? Add it again once gotuu is active and re-branded */}
-          {/* <div className='gotuu_dial-button'>
+      <div className="w-4/5
+  max-w-4xl
+  lg:max-w-3xl
+  md:max-w-2xl
+  sm:w-11/12
+  
+  px-6
+  lg:px-5
+  md:px-4
+  sm:px-3
+  
+  mx-auto
+  my-10
+  lg:my-8
+  md:my-6
+  sm:my-4
+  
+  text-base
+  md:text-sm
+  
+  grid
+  grid-cols-3
+  lg:grid-cols-2
+  md:grid-cols-2
+  sm:grid-cols-1
+  gap-5
+  md:gap-4
+  sm:gap-3
+  
+  rounded-lg
+  md:rounded-md
+  sm:rounded
+  
+  shadow-md
+  sm:shadow-sm
+">
+        <div className=''>
+          <Main />
+        </div>
+        {/* <About innerRef={goAbout} />
+        <Education innerRef={goEducation} />
+        <Work innerRef={goWork} />
+        <Projects innerRef={goProjects} />
+        <Research innerRef={goResearch} />
+        <Articles innerRef={goArticles} />
+        <Skills innerRef={goSkills} />
+        <Contact
+          refSec={refElement}
+          show={showDialog}
+          changeDialog={setShowDialog}
+          innerRef={goContact}
+        /> */}
+        {width > 1029 && (
+          <>
+            {showContact && (
+              <>
+                <div className='appear_contact' onClick={goToContact}>
+                  <Tooltip title='Page Down' placement='left' enterDelay={400}>
+                    <div className='contact-button' onMouseEnter={onHoverMobile}>
+                      <ArrowCircleDownOutlinedIcon
+                        className='go-up'
+                        style={{ fontSize: 40 }}
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              </>
+            )}
+            {!showContact && (
+              <>
+                <div className='appear_contact' onClick={goToHome}>
+                  <Tooltip title='Page Up' placement='left' enterDelay={400}>
+                    <div className='contact-button' onMouseEnter={onHoverMobile}>
+                      <ArrowCircleUpOutlinedIcon
+                        className='go-up'
+                        style={{ fontSize: 40 }}
+                      />
+                    </div>
+                  </Tooltip>
+                </div>
+              </>
+            )}
+            <div className='speed_dial-button'>
+              <SpeedDial />
+            </div>
+            {/* <div className='gotuu_dial-button'>
             <GotuuDial />
           </div> */}
-        </>
-      )}
-      <Alerts />
+          </>
+        )}
+        <Alerts />
+      </div>
     </div>
   );
 };

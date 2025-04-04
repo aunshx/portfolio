@@ -32,27 +32,25 @@ const Projects = ({
     <div className='app' ref={innerRef}>
       <div className='projects'>
         <div style={{ marginBottom: "2.5em" }}>
-          <Title icon={<FontAwesomeIcon icon={faTools} />} title={"Projects"} />
+          <Title icon={<FontAwesomeIcon icon={faTools} />} title={"Selected Work"} />
         </div>
         <div className='body app'>
           {width < 860 ? (
             <div>
               <SmallCard
                 pics={displayMode ? gotuuPicsDark : gotuuPicsLight}
-                title={"gotuu.in"}
-                link={"https://gotuu.in"}
+                title={"FRREDSS"}
+                link={"https://forestdss.ucdavis.edu"}
                 subTitle={"Web-App"}
-                description={
-                  "A web-app to maximize your productivity and manage time smartly. Also included smart metrics to check your statistics."
-                }
+                description={"Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass"}
                 tech={[
-                  "Dual-Mode",
-                  "Time management",
-                  "Free",
-                  "Metrics",
-                  "Timeline",
+                  "Biomass",
+                  "Technoeconomic Assessment",
+                  "LCA",
+                  "Agriculture",
+                  "Modelling",
                 ]}
-                gitUrl={"https://github.com/aunshx/gotuu"}
+                gitUrl={"https://github.com/ucdavis/cecdss"}
               />
               <SmallCard
                 pics={funWithRedditPics}
@@ -104,20 +102,18 @@ const Projects = ({
             <>
               <Card
                 pics={displayMode ? gotuuPicsDark : gotuuPicsLight}
-                title={"gotuu.in"}
-                link={"https://gotuu.in"}
+                title={"FRREDSS"}
+                link={"https://forestdss.ucdavis.edu"}
                 subTitle={"Web-App"}
-                description={
-                  "A web-app to maximize your productivity and manage time smartly. Also included smart metrics to check your statistics."
-                }
+                description={"Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass"}
                 tech={[
-                  "Dual-Mode",
-                  "Time management",
-                  "Free",
-                  "Metrics",
-                  "Timeline",
+                  "Biomass",
+                  "Technoeconomic Assessment",
+                  "LCA",
+                  "Agriculture",
+                  "Modelling",
                 ]}
-                gitUrl={"https://github.com/aunshx/gotuu"}
+                gitUrl={"https://github.com/ucdavis/cecdss"}
               />
               <InvertedCard
                 pics={funWithRedditPics}

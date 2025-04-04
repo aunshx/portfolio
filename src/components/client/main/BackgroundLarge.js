@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import background from '../../../resources/images/background.jpg'
 
 export default function BackgroundLarge() {
 
@@ -12,84 +13,64 @@ export default function BackgroundLarge() {
    }, []);
 
   return (
-    <Particles
-      id='tsparticles'
-      init={particlesInit}
-      loaded={particlesLoaded}
-      options={{
-        fullScreen: {
-          //   enable: true,
-          zIndex: -10,
-        },
-        particles: {
-          number: {
-            value: 250,
-            limit: 300,
+      <Particles
+        id='tsparticles'
+        init={particlesInit}
+        options={{
+          fullScreen: {
+            enable: false,
+            zIndex: -15
           },
-          color: {
-            value: "#262626",
+          background: {
+            opacity: 0
           },
-          links: {
+          detectRetina: false,
+          fpsLimit: 30,
+          particles: {
             color: {
-              value: "#a9aaab",
+              value: "#0091ff"
             },
-            enable: true,
-            opacity: 0.2,
-          },
-          opacity: {
-            value: 0.1,
-          },
-          size: {
-            value: 2,
-          },
-          move: {
-            enable: true,
-            speed: 0.5,
-            direction: "none",
-            random: false,
-            straight: false,
-            out_mode: "out",
-            bounce: false,
-            attract: {
-              enable: false,
-              rotateX: 600,
-              rotateY: 1200,
-            },
-          },
-        },
-        interactivity: {
-          events: {
-            onHover: {
-              enable: true,
-              mode: "bubble",
-            },
-            resize: true,
-          },
-          modes: {
-            grab: {
-              distance: 400,
-              links: {
-                opacity: 1,
+            number: {
+              density: {
+                enable: true,
+                area: 1080
               },
+              limit: 0,
+              value: 100
             },
-            links: {
-              color: "#ff0000",
-            },
-            bubble: {
-              opacity: 0.9,
-              size: 4,
-              color: {
-                value: "#3694ff",
+            opacity: {
+              animation: {
+                enable: true,
+                minimumValue: 0.05,
+                speed: 1.75,
+                sync: false
               },
+              random: {
+                enable: true,
+                minimumValue: 0.05
+              },
+              value: 1
             },
-          },
-          onClick: {
-            enable: true,
-            mode: "push",
-          },
-          resize: true,
-        },
-      }}
-    />
+            shape: {
+              type: "circle"
+            },
+            size: {
+              random: {
+                enable: true,
+                minimumValue: 1
+              },
+              value: 2
+            }
+          }
+        }}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 1
+        }}
+      />
   );
 }

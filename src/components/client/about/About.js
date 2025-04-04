@@ -28,14 +28,13 @@ const About = ({ innerRef }) => {
           <div className='body app' style={{ alignItems: "flex-start" }}>
             <div className='details'>
               <div>
-                Namaste! My name is Aunsh and in my 25 years on this planet,
+                Namaste! My name is Aunsh and in my 26 years on this planet,
                 I've been a national-level cyclist, engineering student,
                 award-winning researcher, high school teacher and a
                 software developer.
               </div>
               <div style={{ marginTop: "2em" }}>
-                I believe that technology should be as ergonomic as it is
-                complex. Currently, I am a graduate student at the University of California, Davis.
+                
               </div>
               <div style={{ marginTop: "2em" }}>
                 Apart from my work station one can find me at the gym or my

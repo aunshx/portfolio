@@ -5,10 +5,10 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
-    "@fortawesome/free-regular-svg-icons": "^6.2.1",
-    "@fortawesome/free-solid-svg-icons": "^6.2.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^5.3.1",
     "@mui/lab": "^5.0.0-alpha.66",
     "@mui/material": "^5.3.1",
@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "^10.4.21",
     "axios": "^0.25.0",
     "crypto-browserify": "^3.12.0",
     "css-minimizer-webpack-plugin": "^3.4.1",
@@ -24,6 +25,8 @@
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nanoid": "^3.2.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
     "react": "^17.0.2",
     "react-animated-text": "^0.1.4",
     "react-dom": "^17.0.2",
@@ -51,7 +54,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:styles": "postcss src/index.css -o src/App.css"
   },
   "eslintConfig": {
     "extends": [
@@ -71,5 +75,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://aunsh.com"
+  "proxy": "https://aunsh.com",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
 }

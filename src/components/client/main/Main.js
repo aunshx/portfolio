@@ -148,12 +148,12 @@ const Main = ({
                     >
                       !
                     </span>
-                    <span style={{ marginLeft: "-0.28em", paddingTop: "2em" }}>
+                    {/* <span style={{ marginLeft: "-0.28em", paddingTop: "2em" }}>
                       <img
                         src={second}
                         alt='Dude standing and drinking water'
                       />
-                    </span>
+                    </span> */}
                   </div>
                 </div>
               </div>

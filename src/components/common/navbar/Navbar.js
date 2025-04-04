@@ -6,7 +6,7 @@ import useWindow from "react-window-size-simple";
 
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute, faRadiation } from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSun, faMoon, faDownload, faVolumeUp, faVolumeMute, faRadiation, faShare } from "@fortawesome/free-solid-svg-icons";
 import { Drawer, Tooltip } from "@mui/material";
 import {
     makeStyles,
@@ -188,9 +188,9 @@ const Navbar = ({
           </NavLink>
         </div>
         <div className='right flex_evenly'>
-          <div style={{ margin: "1.8em 2.2em 0 0" }}>
+          {/* <div style={{ margin: "1.8em 2.2em 0 0" }}>
             <ToggleSwitch displayMode={displayMode} toggleTheme={toggleTheme} />
-          </div>
+          </div> */}
           {backgroundAnimation ? (
             <div
               className='sound-on cursor_pointer'
@@ -274,55 +274,17 @@ const Navbar = ({
               </Tooltip>
             </div>
           )}
-          {music ? (
-            <div className='sound-on cursor_pointer' style={{ margin: "0" }}>
-              <Tooltip title='Music-On' placement='left'>
-                <div>
-                  <MusicNoteIcon
-                    onClick={musicTurnOff}
-                    style={{
-                      fontSize: 20,
-                      marginTop: "0.35em",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          ) : (
-            <div className='sound-off cursor_pointer' style={{ margin: "0" }}>
-              <Tooltip title='Music-Off' placement='left'>
-                <div>
-                  <MusicOffIcon
-                    onClick={musicTurnOn}
-                    style={{
-                      fontSize: 20,
-                      marginTop: "0.35em",
-                    }}
-                  />
-                </div>
-              </Tooltip>
-            </div>
-          )}
           <a href={resume} download='Aunsh_Resume.pdf'>
-            <Tooltip
-              title='Download Resume'
-              placement='left'
-              classes={{ tooltip: classes.customTooltip }}
-            >
               <div
                 className='resume flex_middle'
                 onMouseEnter={changeDownloadEnter}
                 onMouseLeave={changeDownloadLeave}
               >
-                {displayDownload ? (
-                  <div>
-                    <FontAwesomeIcon icon={faDownload} className='icon' />
+                  <div className="flex items-center justify-between gap-x-2">
+                      <FontAwesomeIcon icon={faShare} className='icon' />
+                      <div className='text'>Résumé/CV</div>
                   </div>
-                ) : (
-                  <div className='text'>Resume</div>
-                )}
               </div>
-            </Tooltip>
           </a>
         </div>
         {width < 787 && (

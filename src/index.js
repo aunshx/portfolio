@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import ReactDOM from 'react-dom';
 import Spinner from "./components/common/layout/Spinner";
 import Mega from './Mega';
+import "./index.css"
 
 ReactDOM.render(
   <Suspense fallback={<Spinner />}>

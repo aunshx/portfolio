@@ -9,7 +9,7 @@ import {
 } from "../actions/types";
 //
 const initialState = {
-  displayMode: false,
+  displayMode: true,
   sound: false,
   music: false,
   backgroundAnimation: true
