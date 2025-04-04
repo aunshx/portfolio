@@ -4,6 +4,24 @@ import { connect } from "react-redux";
 import useSound from "use-sound";
 
 import swoosh from "../../../../resources/sounds/resumeSwoosh.mp3";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faHandsClapping } from "@fortawesome/free-solid-svg-icons";
+import { Tooltip } from "@mui/material";
+
+const Stats = ({ type, value}) => {
+  const icon = type === 'views' ? faEye : faHandsClapping;
+  const tooltipTitle = type === 'views' ? 'Views' : 'Upvotes';
+  return (
+    <Tooltip title={tooltipTitle}>
+      <div title={tooltipTitle} className="flex items-center justify-center gap-x-2 text-sm text-gray-500">
+        <FontAwesomeIcon icon={icon} />
+        <div>
+          {value}
+        </div>
+      </div>
+    </Tooltip>
+  );
+};
 
 const Card = ({
   title,
@@ -37,15 +55,22 @@ const Card = ({
         <div className="flex flex-col gap-y-2">
           <div className='text-lg font-bold tracking-tight'>{title}</div>
           <div className='text-sm text-gray-400'>{description}</div>
-          <div className='flex flex-wrap gap-4 text-gray-500 text-xs mt-1'>
-            {technology.length > 0 &&
-              technology.map((val, index) => (
-                <div
-                  className='text-gray-600 bg-gray-900  focus:outline-none font-xs rounded-xl text-sm px-2 py-1 min-w-16 text-center'
-                  key={index}>
-                  {val}
-                </div>
-              ))}
+          <div className="flex items-center justify-between gap-x-4 mt-1">
+            <div className="flex gap-x-4">
+              {Object.entries(stats).map(([k, value], index) => {
+                return <Stats key={index} type={k} value={value} />
+              })}
+            </div>
+            <div className='flex flex-wrap gap-4 text-gray-500 text-xs mt-1'>
+              {technology.length > 0 &&
+                technology.map((val, index) => (
+                  <div
+                    className='text-gray-600 bg-gray-900  focus:outline-none text-xs rounded-lg px-2 py-1 min-w-16 text-center'
+                    key={index}>
+                    {val}
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
       </div>

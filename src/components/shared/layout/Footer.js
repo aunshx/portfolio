@@ -1,40 +1,38 @@
+import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+
+const ContactButtons = ({ link, icon  }) => {
+    return (
+        <a href={link ?? 'https://github.com/aunshx'} target="_blank" rel='noreferrer nofollow' type="button" class="text-sm hover:text-brand text-gray-400 cursor-pointer">
+          <FontAwesomeIcon
+              icon={icon ?? faGithub}
+              style={{
+                  fontSize: 20,
+              }}
+          />
+        </a>
+    )
+};
 
 const Footer = () => {
   return (
-    <div className='footer app'>
-      <div className='text flex_middle' style={{ marginBottom: "0.5em" }}>
-        <div style={{ fontSize: "0.8em" }}>
-          Handcrafted with &#10084; by{" "}
-          <a
-            href='https://admin.aunsh.com/login'
-            target={"_blank"}
-            rel='noreferrer nofollow'
-            style={{
-              fontSize: "0.95em",
-              marginRight: "0em",
-              pointerEvents: "none",
-            }}
-          >
-            Aunsh B
-          </a>{" "}
+    <footer className="bg-none w-full">
+      <div className="mx-auto w-full max-w-screen-xl ">
+        <hr className="mb-4 border-gray-200 sm:mx-auto dark:border-gray-700" />
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" className="hover:underline"> अंश बांदिवडेकर</a>. All Rights Reserved.
+          </span>
+          <div className="flex items-center justify-center gap-x-8">
+            <ContactButtons />
+            <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} />
+            <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} />
+            <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} />
+          </div>
         </div>
-        {/* <div style={{ fontSize: "0.8em", margin: "0 0.45em" }}>in</div>
-        <div class='flag india' style={{ marginBottom: '0.1em' }} >
-          <img
-            src='https://imgur.com/nm8Qq5m.png'
-            alt='Indian Flag'
-            style={{ width: "4px" }}
-          />
-        </div> */}
       </div>
-      <div
-        className='text'
-        style={{ fontSize: "0.55em", fontWeight: "200", marginTop: "0em" }}
-      >
-        v2.3 &middot; Updated 26 Jan 24 &middot; All rights reserved
-      </div>
-    </div>
+    </footer>
   );
 };
 

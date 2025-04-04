@@ -716,34 +716,6 @@ pre {
   }
 }
 
-/* ------------------------------------- FOOTER --------------------------------- */
-.footer {
-  height: 10px;
-  margin-bottom: -20px;
-  margin-top: 1em;
-}
-
-.footer .text,
-.footer--admin .text {
-  font-size: 1em;
-  color: rgb(167, 167, 167);
-  font-weight: bold;
-}
-
-.footer .text a,
-.footer--admin .text a {
-  font-size: 1em;
-  color: rgb(167, 167, 167);
-  font-weight: bold;
-}
-
-.footer .text a:hover,
-.footer--admin .text a:hover {
-  font-size: 1em;
-  color: var(--logo-color);
-  font-weight: bold;
-}
-
 /* ----------------------------------- ARTICLES ---------------------------- */
 
  .general-card {

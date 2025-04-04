@@ -21,9 +21,10 @@ import SpeedDial from "./components/shared/layout/SpeedDial";
 
 import Education from './components/app/education/Education';
 import Container from './components/shared/layout/Container';
-import ParticleBackground from './components/shared/layout/BackgroundLarge';
+import ParticleBackground from './components/shared/layout/ParticleBG';
 
 import './App.css'
+import Footer from './components/shared/layout/Footer';
 
 const Home = ({
   // Redux State
@@ -45,7 +46,7 @@ const Home = ({
   const goResearch = useRef();
   const goArticles = useRef();
   const goSkills = useRef();
-  const goContact = useRef();
+  const goFooter = useRef();
   const goNpm = useRef();
   const goEducation = useRef();
 
@@ -70,14 +71,14 @@ const Home = ({
   }, []);
 
   const refElement = useCallback((node) => {
-    if (goContact.current) {
-      goContact.current.disconnect();
+    if (goFooter.current) {
+      goFooter.current.disconnect();
     }
     const options = {
       root: null,
       threshold: 0,
     };
-    goContact.current = new IntersectionObserver((entries) => {
+    goFooter.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setShowContact(false);
       } else {
@@ -85,7 +86,7 @@ const Home = ({
       }
     }, options);
     if (node) {
-      goContact.current.observe(node);
+      goFooter.current.observe(node);
     }
   }, []);
 
@@ -159,9 +160,9 @@ const Home = ({
     }
   };
 
-  const goToContact = () => {
-    if (goContact.current) {
-      goContact.current.scrollIntoView({
+  const goToFooter = () => {
+    if (goFooter.current) {
+      goFooter.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
         inline: "nearest",
@@ -172,16 +173,6 @@ const Home = ({
   const goToSkills = () => {
     if (goSkills.current) {
       goSkills.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
-  };
-
-  const goToNpm = () => {
-    if (goNpm.current) {
-      goNpm.current.scrollIntoView({
         behavior: "smooth",
         block: "center",
         inline: "nearest",
@@ -210,8 +201,6 @@ const Home = ({
         goToResearch={goToResearch}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
-        goToContact={goToContact}
-        goToNpm={goToNpm}
         goToEducation={goToEducation}
       />
       <Sidebar
@@ -224,8 +213,6 @@ const Home = ({
         goToResearch={goToResearch}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
-        goToContact={goToContact}
-        goToNpm={goToNpm}
         goToEducation={goToEducation}
       />
 
@@ -254,12 +241,15 @@ const Home = ({
         <Container innerRef={goArticles}>
           <Articles />
         </Container>
+        <Container innerRef={goFooter}>
+          <Footer />
+        </Container>
 
         {width > 1029 && (
           <>
             {showContact && (
               <>
-                <div onClick={goToContact}>
+                <div onClick={goToFooter}>
                   <Tooltip title='Page Down' placement='left' enterDelay={400}>
                     <div className='speed-dial cursor-pointer fixed bottom-10 right-8 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
                       <ArrowCircleDownOutlinedIcon

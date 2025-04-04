@@ -6,7 +6,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 
 import body from '../../../resources/images/main/body-shots/smug.png';
-import ParticleBackground from './BackgroundLarge';
+import ParticleBackground from './ParticleBG';
 
 const NotFound = () => {
   const { width } = useWindow()

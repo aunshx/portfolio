@@ -29,7 +29,7 @@ const Articles = ({  }) => {
           title={"Blog"}
         />
       <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
-        {currentArticles.length > 0 && currentArticles.map(({ technologies, image, title, link, description, stats }, index) => (
+        {currentArticles.length > 0 && currentArticles.map(({ technologies, title, link, description, stats }, index) => (
           <Card
             delay={0}
             stats={stats}

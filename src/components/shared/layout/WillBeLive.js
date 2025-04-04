@@ -3,7 +3,7 @@ import useWindow from "react-window-size-simple";
 
 
 import body from '../../../resources/images/main/body-shots/smug.png';
-import ParticleBackground from './BackgroundLarge';
+import ParticleBackground from './ParticleBG';
 
 const WillBeLive = (props) => {
   const { width } = useWindow()
