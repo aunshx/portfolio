@@ -49,6 +49,15 @@ const Home = ({
   const goNpm = useRef();
   const goEducation = useRef();
 
+  const scrollToTargetPos = (rect) => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const targetPosition = scrollTop + rect.top - 120;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth"
+    });
+  };
+
   const shadowElement = useCallback((node) => {
     if (shadow.current) {
       shadow.current.disconnect();
@@ -90,73 +99,35 @@ const Home = ({
   }, []);
 
   const goToHome = () => {
-    if (goHome.current) {
-      goHome.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
+    if (goHome.current) scrollToTargetPos(goHome.current.getBoundingClientRect());
   };
 
   const goToAbout = () => {
-    if (goAbout.current) {
-      goAbout.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
+    if (goAbout.current) scrollToTargetPos(goAbout.current.getBoundingClientRect());
   };
 
   const goToEducation = () => {
-    if (goEducation.current) {
-      goEducation.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
+    if (goEducation.current) scrollToTargetPos(goEducation.current.getBoundingClientRect());
   };
 
   const goToWork = () => {
-    if (goWork.current) {
-      goWork.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
+    if (goWork.current) scrollToTargetPos(goWork.current.getBoundingClientRect());
   };
 
   const goToProjects = () => {
-    if (goProjects.current) {
-      goProjects.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
-    }
+    if (goProjects.current) scrollToTargetPos(goProjects.current.getBoundingClientRect());
   };
 
   const goToResearch = () => {
-    if (goResearch.current) {
-      goResearch.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
+    if (goResearch.current) scrollToTargetPos(goResearch.current.getBoundingClientRect());
   };
 
   const goToArticles = () => {
-    if (goArticles.current) {
-      goArticles.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
+    if (goArticles.current) scrollToTargetPos(goArticles.current.getBoundingClientRect());
+  };
+
+  const goToSkills = () => {
+    if (goSkills.current) scrollToTargetPos(goSkills.current.getBoundingClientRect());
   };
 
   const goToFooter = () => {
@@ -169,15 +140,6 @@ const Home = ({
     }
   };
 
-  const goToSkills = () => {
-    if (goSkills.current) {
-      goSkills.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      });
-    }
-  };
 
   const [playOn] = useSound(bellRing, {
     volume: 0.2,
@@ -221,7 +183,7 @@ const Home = ({
       <div ref={refElement} />
       <div className="w-full h-full flex flex-col items-center justify-center">
         <Container innerRef={goHome} movement={'fade-down'}>
-          <Main />
+          <Main goToFunc={[goToProjects, goToWork]} />
         </Container>
         <Container innerRef={goWork} movement={'fade-up'}>
           <Work />

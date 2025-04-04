@@ -23,7 +23,7 @@ const ContactButtons = ({ link, icon }) => {
 };
 
 const TypedText = () => {
-    const roles = ["UX Designer", "Problem Solver", "Software Engineer", "ML Researcher"];
+    const roles = ["Software Engineer", "UX/UI Developer", "ML Researcher", "Problem Solver",];
     const [currentIndex, setCurrentIndex] = useState(0);
     const [previousIndex, setPreviousIndex] = useState(null);
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -64,7 +64,7 @@ const TypedText = () => {
     );
 };
 
-const Main = () => {
+const Main = ({ goToFunc }) => {
     return (
         <div className="h-[90vh] flex items-center justify-center relative overflow-hidden px-4 w-full">
 
@@ -83,12 +83,13 @@ const Main = () => {
                         </div>
 
                         <div className="flex gap-4 pt-6">
-                            <a
-                                href="#work"
+                            <div
+                                type='button'
                                 className="text-gray-100 px-8 py-2 rounded-lg font-semibold hover:bg-opacity-90 transform hover:scale-105 transition duration-300 shadow-lg border-gray-100 border-2 hover:border-brand hover:text-brand"
+                                onClick={goToFunc[0]}
                             >
                                 My Work
-                            </a>
+                            </div>
                             <a
                                 href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'
                                 className="text-gray-100 px-8 py-2 rounded-lg font-semibold hover:bg-opacity-90 transform hover:scale-105 transition duration-300 shadow-lg border-gray-100 border-2 hover:border-brand hover:text-brand"
@@ -116,13 +117,13 @@ const Main = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <a href="#work" className="text-gray-400 hover:text-brand transition-colors duration-300">
+            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce" onClick={goToFunc[1]}>
+                <div className="text-gray-400 hover:text-brand transition-colors duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <polyline points="19 12 12 19 5 12"></polyline>
                     </svg>
-                </a>
+                </div>
             </div>
         </div>
     );
