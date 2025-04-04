@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Container = ({ children, className = '', innerRef}) => {
+const Container = ({ children, className = '', innerRef, movement }) => {
     return (
         <div
         className={`
@@ -29,7 +29,7 @@ const Container = ({ children, className = '', innerRef}) => {
         
         ${className}
       `}
-        data-aos={'fade-left'}
+            data-aos={movement ?? 'fade-left'}
         ref={innerRef}
         >
             {children}

@@ -219,29 +219,30 @@ const Home = ({
       {backgroundAnimation && <ParticleBackground />}
 
       <div ref={shadowElement} />
+      <div ref={refElement} />
       <div className="w-full h-full flex flex-col items-center justify-center">
-        <Container innerRef={goHome}>
+        <Container innerRef={goHome} movement={'fade-down'}>
           <Main />
         </Container>
-        <Container innerRef={goWork} vertical>
+        <Container innerRef={goWork} movement={'fade-up'}>
           <Work />
         </Container>
-        <Container innerRef={goSkills}>
+        <Container innerRef={goSkills} movement={'fade-left'}>
           <Skills />
         </Container>
-        <Container innerRef={goProjects} vertical>
+        <Container innerRef={goProjects} movement={'fade-up'}>
           <Projects />
         </Container>
-        <Container innerRef={goResearch} vertical>
+        <Container innerRef={goResearch} movement={'fade-down'}>
           <Research />
         </Container>
-        <Container innerRef={goEducation}>
+        <Container innerRef={goEducation} movement={'fade-right'}>
           <Education />
         </Container>
-        <Container innerRef={goArticles}>
+        <Container innerRef={goArticles} movement={'fade-up'}>
           <Articles />
         </Container>
-        <Container innerRef={goFooter}>
+        <Container innerRef={goFooter} movement={''}>
           <Footer />
         </Container>
 
