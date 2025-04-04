@@ -41,20 +41,20 @@ const Work = () => {
   }, [isCollapsed])
 
   return (
-    <div className='grid grid-cols-[20%_80%] gap-5 w-full lg:grid-cols-1 items-center'>
-      <Title
-        icon={<FontAwesomeIcon icon={faBriefcase} />}
-        title={"Experience"}
-      />
+    <div className="w-full">
+      <div className='grid grid-cols-[20%_80%] gap-5 w-full lg:grid-cols-1 items-center'>
+        <Title
+          icon={<FontAwesomeIcon icon={faBriefcase} />}
+          title={"Experience"}
+        />
 
-      <div className="">
         <ol className="relative border-s border-gray-200 dark:border-gray-700">
           {currentCompanies.length > 0 && currentCompanies.map(({ name, type, work, position, duration, link, description, tech }, index) => (
             <li className="mb-10 ms-6" key={index}>
               <span className="absolute flex items-center justify-center w-4 h-4 bg-gray-500 rounded-full -start-2">
               </span>
               <div className="flex items-center mb-1 text-md font-semibold text-gray-900 dark:text-white">{position} <span className="mx-1">&#8226;</span> <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`${name}`}</a>
-                {index === 0 && (<span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">Current</span>)} 
+                {index === 0 && (<span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">Current</span>)}
               </div>
               <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{duration}</time>
 
@@ -64,15 +64,14 @@ const Work = () => {
                   <div className="text-gray-600 bg-gray-900  focus:outline-none font-xs rounded-xl text-sm px-2 py-1 min-w-16 text-center" key={index}>{val}</div>
                 ))}
               </div>
-              
+
             </li>
           ))}
         </ol>
-        <div className="flex items-center justify-center mt-2">
-          <ExpandButton isCollapsed={isCollapsed} onClick={changeCollapse} />
-        </div>
       </div>
-
+      <div className="flex items-center justify-center mt-2">
+        <ExpandButton isCollapsed={isCollapsed} onClick={changeCollapse} />
+      </div>
     </div>
   );
 };
