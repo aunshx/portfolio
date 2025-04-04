@@ -88,25 +88,25 @@ function App({
 
   }, [music, displayMode]);
 
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
-  // function someRequest() {
-  //   return new Promise((resolve) => setTimeout(() => resolve(), 1500));
-  // }
+  function someRequest() {
+    return new Promise((resolve) => setTimeout(() => resolve(), 150));
+  }
 
-  // useEffect(() => {
-  //   someRequest().then(() => {
-  //     const loaderElement = document.querySelector(".complete-screen");
-  //     if (loaderElement) {
-  //       loaderElement.remove();
-  //       setLoading(!isLoading);
-  //     }
-  //   });
-  // });
+  useEffect(() => {
+    someRequest().then(() => {
+      const loaderElement = document.querySelector(".complete-screen");
+      if (loaderElement) {
+        loaderElement.remove();
+        setLoading(!isLoading);
+      }
+    });
+  });
 
-  // if (isLoading) {
-  //   return null;
-  // }
+  if (isLoading) {
+    return null;
+  }
 
   if (true) {
     if (window.location.host.split(".")[0] === "admin") {

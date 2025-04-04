@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBrain } from '@fortawesome/free-solid-svg-icons';
+import { faBrain, faHammer } from '@fortawesome/free-solid-svg-icons';
 import random from "simple-random-number-generator";
 import useInterval from "use-interval";
 
@@ -21,6 +21,80 @@ import SkillOne from "./tools/Card";
 
 import Title from "../../common/layout/Title";
 
+const skills = [
+  {
+    title: 'React',
+    logo: reactLogo,
+    number: 3,
+    delay: 450
+  },
+  {
+    title: 'Typescript',
+    logo: typescriptLogo,
+    number: 4,
+    delay: 450
+  },
+  {
+    title: 'Redux',
+    logo: reduxLogo,
+    number: 1,
+    delay: 500
+  },
+  {
+    title: 'CSS',
+    logo: css3Logo,
+    number: 1,
+    delay: 550
+  },
+  {
+    title: 'Node.js',
+    logo: nodeLogo,
+    number: 1,
+    delay: 350
+  },
+  {
+    title: 'Java',
+    logo: javaLogo,
+    number: 0,
+    delay: 0
+  },
+  {
+    title: 'JS',
+    logo: jsLogo,
+    number: 0,
+    delay: 50
+  },
+  {
+    title: 'MongoDb',
+    logo: mongoLogo,
+    number: 0,
+    delay: 200
+  },
+  {
+    title: 'Postgres',
+    logo: psqlLogo,
+    number: 3,
+    delay: 300
+  },
+  {
+    title: 'Git',
+    logo: gitLogo,
+    number: 2,
+    delay: 400
+  },
+  {
+    title: 'HTML 5',
+    logo: htmlLogo,
+    number: 4,
+    delay: 0
+  },
+  {
+    title: 'PassportJS',
+    logo: passportLogo,
+    number: 4,
+    delay: 400
+  }
+];
 
 const Skills = ({ innerRef }) => {
   let params = {
@@ -29,138 +103,28 @@ const Skills = ({ innerRef }) => {
     integer: true,
   };
 
-  const [number, setNumber] = useState(0)
+  const [number, setNumber] = useState(0);
 
-   useInterval(() => {
+  useInterval(() => {
     setNumber(random(params));
-   }, 1000);
+  }, 1000);
 
   return (
-    <div className='skills' ref={innerRef}>
-      <div style={{ marginBottom: "2.5em" }}>
-        <Title icon={<FontAwesomeIcon icon={faBrain} />} title={"Skills"} />
-      </div>
-      <div className='body-two'>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={450}
-            title={"React"}
-            logo={reactLogo}
-            runAos={false}
-            number={3}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={450}
-            title={"Typescript"}
-            logo={typescriptLogo}
-            runAos={false}
-            number={4}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={500}
-            title={"Redux"}
-            logo={reduxLogo}
-            runAos={false}
-            number={1}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={550}
-            title={"CSS"}
-            logo={css3Logo}
-            runAos={false}
-            number={1}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={350}
-            title={"Node.js"}
-            logo={nodeLogo}
-            runAos={false}
-            number={1}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={0}
-            title={"Java"}
-            logo={javaLogo}
-            runAos={false}
-            number={0}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={50}
-            title={"JS"}
-            logo={jsLogo}
-            runAos={false}
-            number={0}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={200}
-            title={"MongoDb"}
-            logo={mongoLogo}
-            runAos={false}
-            number={0}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={300}
-            title={"Postgres"}
-            logo={psqlLogo}
-            runAos={false}
-            number={3}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={400}
-            title={"Git"}
-            logo={gitLogo}
-            runAos={false}
-            number={2}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={0}
-            title={"HTML 5"}
-            logo={htmlLogo}
-            runAos={false}
-            number={4}
-            numberCurrent={number}
-          />
-        </div>
-        <div className='flex_middle'>
-          <SkillOne
-            delay={400}
-            title={"PassportJS"}
-            logo={passportLogo}
-            runAos={false}
-            number={4}
-            numberCurrent={number}
-          />
-        </div>
+    <div className='grid grid-cols-[20%_80%] gap-5 w-full lg:grid-cols-1 items-center'>
+      <Title title={"Tech"} icon={<FontAwesomeIcon icon={faHammer} />} description={': Some tools I use quite often'} />
+      <div className='flex gap-x-2 flex-wrap'>
+        {skills.map((skill, index) => (
+          <div key={index} className={index >= 4 ? 'flex_middle' : ''}>
+            <SkillOne
+              delay={skill.delay}
+              title={skill.title}
+              logo={skill.logo}
+              runAos={false}
+              number={skill.number}
+              numberCurrent={number}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

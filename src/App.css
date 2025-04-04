@@ -64,10 +64,18 @@ body {
   scrollbar-width: thin;
   width: 100%;
   height: 100vh;
+  max-height: 100vh;
+  /* Ensures the body doesn't expand beyond viewport height */
+  overflow-y: auto;
+  /* Adds vertical scrollbar when content overflows */
+  overflow-x: hidden;
+  /* Prevents horizontal scrolling */
   background-image: url('./resources/images/background.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* Keeps the background fixed while scrolling */
 }
 
 body::-webkit-scrollbar {
@@ -271,7 +279,6 @@ pre {
 
 .main-title {
   color: var(--lighter-dark-font-color);
-  font-size: 1.5em;
 }
 
 /* --------------------------------------------- NAVBAR -------------------------------------- */
@@ -2689,60 +2696,21 @@ pre {
 }
 
 /* ----------------- EDUCATION ------------- */
-.education {
-  margin-bottom: 8rem;
-}
 
 .education .element {
   color: var(--light-dark-font-color);
   border-radius: 8px;
-  width: 80%;
-  padding: 10px;
+  width: auto;
   background-color: var(--card-color);
-  display: flex;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  cursor: context-menu;
+  border: 2px solid var(--faint-hover-color);
 }
 
-.education .element:hover {
-  box-shadow: 0px 0px 20px 0px var(--logo-color);
-  transition: .1s ease-in-out;
+
+.education .element img {
+  width: 50px;
+  height: 50px;
 }
 
-.education .element .image {
-  border-radius: 8px;
-  width: 150px;
-  height: 150px;
-}
-
-.education .element .image img {
-  border-radius: 8px;
-  width: 100%;
-  height: 100%;
-}
-
-.education .element .info {
-  margin-left: 20px;
-  display: flex;
-  row-gap: 15px;
-  align-items: start;
-}
-
-.education .element .info .title {
-  font-size: 18px;
-}
-
-.education .element .info .date {
-  font-size: 12px;
-  margin-top: 2px;
-  margin-right: 10px;
-  color: var(--lighter-dark-font-color);
-}
-
-.education .element .degree {
-  margin-right: 10px;
-  font-size: 13px;
-}
 
 @media only screen and (max-width: 1024px) {
 
@@ -2842,9 +2810,6 @@ pre {
 /* ----------------------------------- ABOUT ---------------------------- */
 .about {
   color: var(--grey-color);
-  width: 720px;
-  height: 330px;
-  margin: 0px 0 9em 50px;
 }
 
 .about .body {
@@ -3163,110 +3128,28 @@ pre {
 
 
 /* ----------------------------------- SKILLS --------------------------------- */
-.skills {
-  color: var(--grey-color);
-  width: 700px;
-  height: auto;
-  padding: 0em 0em 1em 1em;
-  margin: 0px 0 3em 50px;
-}
 
-.skills .body-two {
-  display: grid;
-  column-gap: 0px;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 0;
-}
-
-.skills .body-two .individual {
-  width: 120px;
+ .skills-card {
+  width: auto;
   color: var(--lighter-dark-font-color);
-  height: 120px;
+  height: 50px;
+  font-size: 14px;
   background-color: var(--card-color);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   margin: 0.5em 0;
-  padding: 1em;
+  padding: 0.5em 1em 0.5em 1em;
+  border: 2px solid var(--faint-hover-color);
 }
 
-.skills .body-two .individual--dark {
-  box-shadow: none;
-}
 
-.skills .body-two .imp:hover {
-  transform: scale(1.05);
-}
-
-.skills .body-two .individual .image img {
+.skills-card img {
   object-fit: contain;
-  width: 40px;
-  height: 50px;
-  margin-bottom: 0em;
+  width: 2em;
+  height: 1.5em;
 }
 
-.skills .body-two .individual .title {
+.skills-card .title {
   font-size: 1em;
-}
-
-@media only screen and (min-width: 786px) and (max-width: 1028px) {
-  .skills {
-    color: var(--grey-color);
-    width: 80vw;
-    height: auto;
-    padding: 0em 1em 1em 1em;
-    margin: 50px 0 0px 50px;
-    }
-
-  .skills .body-two {
-    margin-top: 0;
-  }
-}
-
-@media only screen and (max-width: 786px) {
-  .skills {
-    width: 100vw;
-    margin: 50px 0;
-    padding: 0em 1em 0em 1em;
-  }
-
-  .skills .body-two {
-    display: grid;
-    column-gap: 0px;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 0;
-  }
-}
-
-
-@media only screen and (max-width: 550px) {
-  .skills {
-    width: 100vw;
-    margin: 50px 0;
-    padding: 0em;
-  }
-
-  .skills .body-two {
-    display: grid;
-    column-gap: 0px;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 0;
-  }
-
-  .skills .body-two .individual {
-    width: 120px;
-    height: 100px;
-  }
-
-  .skills .body-two .individual .image img {
-    object-fit: contain;
-    width: 30px;
-    height: 40px;
-    margin-bottom: 0em;
-  }
-
-  .skills .body-two .individual .title {
-    font-size: 0.9em;
-  }
 }
 
 /* --------------------------------- CONTACT ------------------------------ */

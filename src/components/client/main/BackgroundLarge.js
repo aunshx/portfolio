@@ -18,7 +18,7 @@ export default function BackgroundLarge() {
         init={particlesInit}
         options={{
           fullScreen: {
-            enable: false,
+            enable: true,
             zIndex: -15
           },
           background: {

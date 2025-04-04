@@ -1,15 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faMailForward } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const ContactButtons = ({ link, icon  }) => {
     return (
-        <a href={link ?? 'https://github.com/aunshx'} target="_blank" rel='noreferrer nofollow' type="button" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-4 py-1 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:border-brand dark:hover:text-brand dark:hover:bg-none dark:focus:ring-gray-800 cursor-pointer">
+        <a href={link ?? 'https://github.com/aunshx'} target="_blank" rel='noreferrer nofollow' type="button" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-6 py-1 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:border-brand dark:hover:text-brand dark:hover:bg-none dark:focus:ring-gray-800 cursor-pointer">
             <FontAwesomeIcon
                 icon={icon ?? faGithub}
                 style={{
-                    fontSize: 15,
+                    fontSize: 20,
                 }}
             />
         </a>
@@ -18,18 +18,19 @@ const ContactButtons = ({ link, icon  }) => {
 
 const Main = () => {
     return (
-        <div className='grid grid-cols-2 items-center justify-center flex-col text-white text-left gap-x-8' style={{ border:'1px solid red' }} >
-            <div className="text-3xl">
-                <span className='text-brand'>A</span>unsh Bandivadekar
-                <div>
-                    Software Engineer & Researcher
-
+        <div className='grid grid-cols-2 items-start justify-center lg:flex lg:flex-col text-white text-left gap-x-8 mt-16'>
+            <div className="flex flex-col gap-y-2">
+                <div className="text-5xl">
+                    <span className='text-brand'>A</span>unsh Bandivadekar
                 </div>
-                <div className="flex">
+                <div className='text-2xl'>
+                    Software Engineer & Researcher
+                </div>
+                <div className="flex mt-4 gap-x-4">
                     <ContactButtons />
                     <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} />
+                    <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} />
                     <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} />
-
                 </div>
             </div>
             <div className=''>

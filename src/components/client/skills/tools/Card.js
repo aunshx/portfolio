@@ -14,7 +14,7 @@ const Card = ({
   number,
   numberCurrent,
   // Redux State
-  settings: { displayMode, sound },
+  settings: { sound },
 }) => {
   const [playOn] = useSound(bass, { volume: 0.2 });
 
@@ -72,14 +72,12 @@ const Card = ({
 
   return (
     <div
-      className='imp'
+      className='hover:scale-105'
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={
-          displayMode ? "individual individual--dark app" : "individual app"
-        }
+        className={'flex items-center gap-x-1 skills-card'}
         data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}

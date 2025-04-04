@@ -25,12 +25,12 @@ import Contact from './components/client/contact/Contact';
 import Navbar from './components/common/navbar/Navbar';
 import Sidebar from './components/common/navbar/Sidebar';
 import SpeedDial from "./components/common/layout/dials/SpeedDial";
-// import GotuuDial from "./components/common/layout/dials/GotuuDial";
 import Alerts from './components/common/layout/Alerts';
 import Npm from "./components/client/npm-packages/Npm";
 
 import './App.css'
 import Education from './components/client/education/Education';
+import Container from './components/common/Container';
 
 const Home = ({
   // Redux State
@@ -244,59 +244,33 @@ const Home = ({
         </>
       )}
       <div ref={shadowElement} />
-      <div ref={goHome} />
-      <div className="w-4/5
-  max-w-4xl
-  lg:max-w-3xl
-  md:max-w-2xl
-  sm:w-11/12
-  
-  px-6
-  lg:px-5
-  md:px-4
-  sm:px-3
-  
-  mx-auto
-  my-10
-  lg:my-8
-  md:my-6
-  sm:my-4
-  
-  text-base
-  md:text-sm
-  
-  grid
-  grid-cols-3
-  lg:grid-cols-2
-  md:grid-cols-2
-  sm:grid-cols-1
-  gap-5
-  md:gap-4
-  sm:gap-3
-  
-  rounded-lg
-  md:rounded-md
-  sm:rounded
-  
-  shadow-md
-  sm:shadow-sm
-">
-        <div className=''>
+      {/* <div ref={goHome} /> */}
+      <div className="w-full h-full flex flex-col items-center justify-center">
+        <Container ref={goHome}>
           <Main />
-        </div>
-        {/* <About innerRef={goAbout} />
-        <Education innerRef={goEducation} />
-        <Work innerRef={goWork} />
+        </Container>
+        <Container ref={goWork}>
+          <Work />
+        </Container>
+        <Container ref={goEducation}>
+          <Education />
+        </Container>
+        <Container ref={goSkills}>
+          <Skills />
+        </Container>
+
+
+        {/*
         <Projects innerRef={goProjects} />
         <Research innerRef={goResearch} />
         <Articles innerRef={goArticles} />
-        <Skills innerRef={goSkills} />
         <Contact
           refSec={refElement}
           show={showDialog}
           changeDialog={setShowDialog}
           innerRef={goContact}
         /> */}
+
         {width > 1029 && (
           <>
             {showContact && (
@@ -330,9 +304,6 @@ const Home = ({
             <div className='speed_dial-button'>
               <SpeedDial />
             </div>
-            {/* <div className='gotuu_dial-button'>
-            <GotuuDial />
-          </div> */}
           </>
         )}
         <Alerts />
