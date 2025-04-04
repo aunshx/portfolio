@@ -29,11 +29,11 @@ const Card = ({
     >
       <div
         onMouseEnter={elementHover}
-        className="max-w-md max-h-xl min-h-[230px] bg-none border-2 border-gray-800 dark:border-gray-800 rounded-lg hover:scale-105 transition projects-card hover:text-brand dark:hover:border-brand dark:hover:text-brand p-4"
+        className="max-w-md max-h-xl min-h-[200px] bg-none border-2 border-gray-800 dark:border-gray-800 rounded-lg hover:scale-105 transition general-card hover:text-brand dark:hover:border-brand dark:hover:text-brand p-4"
       >
         <div className="flex flex-col gap-y-2">
           <div className='text-lg font-bold tracking-tight'>{title}</div>
-          <div className='text-md text-gray-400'>{description}</div>
+          <div className='text-sm text-gray-400'>{description}</div>
           <div className="flex flex-wrap gap-2 text-sm">
             {tags.length > 0 &&
               tags.map((element, index) => (

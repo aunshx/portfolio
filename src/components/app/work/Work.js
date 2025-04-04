@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase, faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import useWindow from "react-window-size-simple";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
-import { companies } from './data/data'
-import CompanyDetails from "./tools/CompanyDetails";
-import VerticalSlider from "./tools/VerticalSlider";
+import { companies } from './data/data';
 
 import Title from "../../shared/layout/Title";
-import HorizontalSlider from "./tools/HorizontalSlider";
 
 export const ExpandButton = ({ isCollapsed, onClick }) => {
   return (
-    <div onClick={onClick} type="button" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-4 py-2 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:border-brand dark:hover:text-brand dark:hover:bg-none dark:focus:ring-gray-800 cursor-pointer flex items-center justify-center gap-x-2 w-fit">
+    <div onClick={onClick} type="button" className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-4 py-2 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:border-brand dark:hover:text-brand dark:hover:bg-none dark:focus:ring-gray-800 cursor-pointer flex items-center justify-center gap-x-2 w-fit">
       <FontAwesomeIcon
         icon={isCollapsed ? faCaretUp : faCaretDown}
         style={{
@@ -29,26 +25,13 @@ export const ExpandButton = ({ isCollapsed, onClick }) => {
 };
 
 
-const Work = ({
-  innerRef,
-  // Redux State
-  settings: { displayMode },
-}) => {
-  const { width } = useWindow()
+const Work = () => {
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [currentCompanies, setCurrentCompanies] = useState(companies);
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [glowOn, setGlowOn] = useState(false)
 
   const changeCollapse = () => {
     setIsCollapsed((prev) => !prev);
-  }
-
-  const changeCurrentIndex = (index) => {
-    setGlowOn(true)
-    setCurrentIndex(index)
-    setTimeout(() => setGlowOn(false), 200);
   }
 
   useEffect(() => {
@@ -58,36 +41,38 @@ const Work = ({
   }, [isCollapsed])
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className='grid grid-cols-[20%_80%] gap-5 w-full lg:grid-cols-1 items-center'>
       <Title
         icon={<FontAwesomeIcon icon={faBriefcase} />}
         title={"Experience"}
       />
-      {currentCompanies.length > 0 && currentCompanies.map(({ name, type, work, position, duration, link }, index) => (
-        <div className={`grid grid-cols-[30%_70%] gap-y-8 w-full lg:grid-cols-1 items-start text-gray-300 my-4`} key={index}>
-          <div className="flex flex-col px-4">
-            <div className="text-md">
-              {position}
-            </div>
-            <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`@ ${name}`}</a>
-            <div className="text-gray-400 text-sm mt-1">
-              {duration}
-            </div>
-          </div>
-          <div className="flex flex-col gap-y-4 px-4">
-            <ul>
-              {work.length > 0 && work.map((val, index) => (
-                <li key={index} className="break-normal text-wrap text-sm list-disc ml-5 my-1">
-                  {val}
-                </li>
-              ))}
-            </ul>
-          </div>
+
+      <div className="">
+        <ol className="relative border-s border-gray-200 dark:border-gray-700">
+          {currentCompanies.length > 0 && currentCompanies.map(({ name, type, work, position, duration, link, description, tech }, index) => (
+            <li className="mb-10 ms-6" key={index}>
+              <span className="absolute flex items-center justify-center w-4 h-4 bg-gray-500 rounded-full -start-2">
+              </span>
+              <div className="flex items-center mb-1 text-md font-semibold text-gray-900 dark:text-white">{position} <span className="mx-1">&#8226;</span> <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`${name}`}</a>
+                {index === 0 && (<span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">Current</span>)} 
+              </div>
+              <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{duration}</time>
+
+              <p className="mb-4 text-sm font-normal text-gray-500 dark:text-gray-400">{description}</p>
+              <div className="flex flex-wrap w-full gap-x-2">
+                {tech !== undefined && tech.map((val, index) => (
+                  <div className="text-gray-600 bg-gray-900  focus:outline-none font-xs rounded-xl text-sm px-2 py-1 min-w-16 text-center" key={index}>{val}</div>
+                ))}
+              </div>
+              
+            </li>
+          ))}
+        </ol>
+        <div className="flex items-center justify-center mt-2">
+          <ExpandButton isCollapsed={isCollapsed} onClick={changeCollapse} />
         </div>
-      ))}
-      <div className="flex items-center justify-center mt-2">
-        <ExpandButton isCollapsed={isCollapsed} onClick={changeCollapse} />
       </div>
+
     </div>
   );
 };

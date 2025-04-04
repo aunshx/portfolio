@@ -7,6 +7,7 @@ import { faVial } from "@fortawesome/free-solid-svg-icons";
 import Card from "./tools/Card";
 
 import Title from "../../shared/layout/Title";
+import { VERTICAL_MARGIN } from "../../../resources/constants";
 
 const projects = [
   {
@@ -44,7 +45,7 @@ const Research = ({
   return (
     <div className='w-full'>
       <Title icon={<FontAwesomeIcon icon={faVial} />} title={"Research"} />
-      <div className='flex justify-center w-full flex-wrap gap-16 items-center'>
+      <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
         {projects.map(({ title, link, description, tags, achievements }, index) => (
           <div key={index}>
             <Card

@@ -17,6 +17,7 @@ import {
 import Card from './tools/Card';
 import { ExpandButton } from '../work/Work';
 import Title from '../../shared/layout/Title';
+import { VERTICAL_MARGIN } from '../../../resources/constants';
 
 const projectsData = [
   {
@@ -95,10 +96,10 @@ const Projects = ({
     <div className='w-full'>
       <Title
         icon={<FontAwesomeIcon icon={faTools} />}
-        title="Selected Work"
+        title="Portfolio"
       />
 
-      <div className="flex justify-center w-full flex-wrap gap-16 items-center">
+      <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
         {projectsData.map((project, index) => (
           <Card
             key={project.id}
@@ -114,7 +115,7 @@ const Projects = ({
         ))}
       </div>
 
-      <div className="flex items-center justify-center mt-8">
+      <div className={`flex items-center justify-center ${VERTICAL_MARGIN}`}>
         <ExpandButton isCollapsed={isCollapsed} onClick={changeCollapse} />
       </div>
     </div>

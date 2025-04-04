@@ -1,109 +1,52 @@
-import { Tooltip } from '@mui/material';
-import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 import { connect } from "react-redux";
 import useSound from "use-sound";
 
-import swoosh from '../../../../resources/sounds/resumeSwoosh.mp3';
+import swoosh from "../../../../resources/sounds/resumeSwoosh.mp3";
 
 const Card = ({
-  technology,
-  imagesArray,
-  articleImage,
   title,
+  stats,
   link,
+  description,
+  technology,
+  delay,
   // Redux States
-  settings: { displayMode, sound },
+  settings: { sound }
 }) => {
+
   const [playOn] = useSound(swoosh, { volume: 0.2 });
-  const [colorBorder, setColorBorder] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    switch (true) {
-      case technology[0] === "react":
-        return setColorBorder("#61dbfb");
-      case technology[0] === "blockchain":
-        return setColorBorder("#1973F4");
-      case technology[0] === "redux":
-        return setColorBorder("#61dbfb");
-      case technology[0] === "node":
-        return setColorBorder("#0fb825");
-      case technology[0] === "mongo":
-        return setColorBorder("#61dbfb");
-      case technology[0] === "postman":
-        return setColorBorder("#61dbfb");
-      case technology[0] === "postgres":
-        return setColorBorder("#61dbfb");
-      case technology[0] === "passport":
-        return setColorBorder("#61dbfb");
-      case technology[0] === "jwt":
-        return setColorBorder("#eb3474");
-      case technology[0] === "javascript":
-        return setColorBorder("#ffc403");
-      case technology[0] === "reddit":
-        return setColorBorder("#d15e0d");
-
-      default:
-        return null;
-    }
-  }, []);
-
-  const onLoad = () => setIsLoading(false);
 
   const elementHover = () => {
     if (sound) {
       playOn();
     }
   };
+
   return (
     <a
       href={link}
-      className='checkout flex_middle'
       target={"_blank"}
       rel='noreferrer nofollow'
     >
       <div
-        className={displayMode ? "individual individual--dark" : "individual"}
         onMouseEnter={elementHover}
+        className="max-w-md max-h-xl min-h-[180px] w-full bg-none border-2 border-gray-800 dark:border-gray-800 rounded-lg hover:scale-105 transition general-card hover:text-brand dark:hover:border-brand dark:hover:text-brand p-4"
       >
-        <div
-          className='image'
-          style={{ borderBottom: `2px solid ${colorBorder}` }}
-        >
-          <div className='check-it-out flex_middle'>Read More</div>
-          <div
-            style={{
-              display: isLoading ? "none" : "block",
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <img src={articleImage} alt={title} onLoad={onLoad} />
-          </div>
-          <div
-            style={{
-              display: isLoading ? "block" : "none",
-              position: "relative",
-              paddingTop: "100px",
-            }}
-            className='flex_middle'
-          >
-            <div className='loader-me'></div>
-          </div>
-        </div>
-        <div className='tags flex_right'>
-          {imagesArray.length > 0 &&
-            imagesArray.map((element, index) => (
-              <Tooltip title={element.alt} placement='top' key={index}>
-                <div style={{ marginRight: "0.5em" }}>
-                  <img src={element.image} alt={element.alt} />
+        <div className="flex flex-col gap-y-2">
+          <div className='text-lg font-bold tracking-tight'>{title}</div>
+          <div className='text-sm text-gray-400'>{description}</div>
+          <div className='flex flex-wrap gap-4 text-gray-500 text-xs mt-1'>
+            {technology.length > 0 &&
+              technology.map((val, index) => (
+                <div
+                  className='text-gray-600 bg-gray-900  focus:outline-none font-xs rounded-xl text-sm px-2 py-1 min-w-16 text-center'
+                  key={index}>
+                  {val}
                 </div>
-              </Tooltip>
-            ))}
-        </div>
-        <div className='app' style={{ justifyContent: "space-between" }}>
-          <div className='title flex_middle'>{title}</div>
+              ))}
+          </div>
         </div>
       </div>
     </a>
@@ -111,11 +54,11 @@ const Card = ({
 };
 
 Card.propTypes = {
-  displayMode: PropTypes.object.isRequired
+  displayMode: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  settings: state.settings
-})
+  settings: state.settings,
+});
 
 export default connect(mapStateToProps)(Card);

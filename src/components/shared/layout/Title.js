@@ -6,7 +6,7 @@ const Title = ({
     description
 }) => {
   return (
-    <div className='main-title text-2xl mb-8 flex items-center justify-center gap-x-2' >
+    <div className='main-title text-2xl flex items-center justify-center gap-x-2 font-bold'>
       <div>
         {icon}
       </div>

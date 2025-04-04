@@ -2,13 +2,10 @@ import React, { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-export default function BackgroundLarge() {
+export default function ParticleBackground() {
 
    const particlesInit = useCallback(async (engine) => {
      await loadFull(engine);
-   }, []);
-
-   const particlesLoaded = useCallback(async (container) => {
    }, []);
 
   return (
@@ -41,7 +38,7 @@ export default function BackgroundLarge() {
               animation: {
                 enable: true,
                 minimumValue: 0.05,
-                speed: 1.75,
+                speed: 2,
                 sync: false
               },
               random: {

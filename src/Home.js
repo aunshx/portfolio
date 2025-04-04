@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import useSound from "use-sound";
@@ -6,11 +6,6 @@ import { Tooltip } from "@mui/material";
 import useWindow from "react-window-size-simple";
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
 import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
-
-import BackgroundLarge from "./components/app/main/BackgroundLarge";
-import BackgroundMedium from "./components/app/main/BackgroundMedium";
-import BackgroundSmall from "./components/app/main/BackgroundSmall";
-import BackgroundTiny from "./components/app/main/BackgroundTiny";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
 
@@ -24,9 +19,11 @@ import Navbar from './components/shared/navbar/Navbar';
 import Sidebar from './components/shared/navbar/Sidebar';
 import SpeedDial from "./components/shared/layout/SpeedDial";
 
-import './App.css'
 import Education from './components/app/education/Education';
 import Container from './components/shared/layout/Container';
+import ParticleBackground from './components/shared/layout/BackgroundLarge';
+
+import './App.css'
 
 const Home = ({
   // Redux State
@@ -231,16 +228,10 @@ const Home = ({
         goToNpm={goToNpm}
         goToEducation={goToEducation}
       />
-      {backgroundAnimation && (
-        <>
-          {width > 1280 && <BackgroundLarge />}
-          {900 < width && width <= 1280 && <BackgroundMedium />}
-          {600 < width && width <= 900 && <BackgroundSmall />}
-          {width <= 600 && <BackgroundTiny />}
-        </>
-      )}
+
+      {backgroundAnimation && <ParticleBackground />}
+
       <div ref={shadowElement} />
-      {/* <div ref={goHome} /> */}
       <div className="w-full h-full flex flex-col items-center justify-center">
         <Container innerRef={goHome}>
           <Main />
@@ -260,16 +251,9 @@ const Home = ({
         <Container innerRef={goEducation}>
           <Education />
         </Container>
-
-
-        {/*
-        <Articles innerRef={goArticles} />
-        <Contact
-          refSec={refElement}
-          show={showDialog}
-          changeDialog={setShowDialog}
-          innerRef={goContact}
-        /> */}
+        <Container innerRef={goArticles}>
+          <Articles />
+        </Container>
 
         {width > 1029 && (
           <>
@@ -277,7 +261,7 @@ const Home = ({
               <>
                 <div onClick={goToContact}>
                   <Tooltip title='Page Down' placement='left' enterDelay={400}>
-                    <div className='contact-button cursor-pointer fixed bottom-10 right-8 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                    <div className='speed-dial cursor-pointer fixed bottom-10 right-8 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
                       <ArrowCircleDownOutlinedIcon
                         className='go-up'
                         style={{ fontSize: 40 }}
@@ -291,7 +275,7 @@ const Home = ({
               <>
                 <div onClick={goToHome}>
                   <Tooltip title='Page Up' placement='left' enterDelay={400}>
-                    <div className='contact-button cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                    <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
                       <ArrowCircleUpOutlinedIcon
                         className='go-up'
                         style={{ fontSize: 40 }}
