@@ -1,396 +1,81 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import useSound from 'use-sound'
-import { connect } from 'react-redux'
+import { faBrain, faBriefcase, faHome, faNewspaper, faSchool, faTools, faVial } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBrain, faHome, faMobileAlt, faNewspaper, faTools, faUser, faBriefcase, faVial, faBox, faSchoolFlag } from "@fortawesome/free-solid-svg-icons";
-
-import pop from '../../../resources/sounds/pop.mp3'
-
-import store from '../../../store'
-import { MOUSE_ENTER, MOUSE_LEAVE } from '../../../redux/actions/types';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import useWindow from 'react-window-size-simple';
+import useSound from 'use-sound';
+import pop from '../../../resources/sounds/pop.mp3';
 
 const Sidebar = ({
-  shadowToggle,
-  hover,
   goToHome,
-  goToAbout,
   goToWork,
   goToProjects,
   goToResearch,
   goToSkills,
   goToArticles,
-  goToContact,
-  goToNpm,
   goToEducation,
-  // Redux State
-  settings: { displayMode, sound },
+  settings: { sound },
 }) => {
-  const [playOn] = useSound(pop, { volume: 0.2 });
+  const { width } = useWindow();
 
-  const maximize = () => {
-    store.dispatch({
-      type: MOUSE_ENTER,
-    });
-  };
+  const [expanded, setExpanded] = useState(false);
+  const [playSound] = useSound(pop, { volume: 0.2 });
 
-  const minimize = () => {
-    store.dispatch({
-      type: MOUSE_LEAVE,
-    });
-  };
-
-  const elementHover = () => {
+  const handleHover = () => {
+    if (!expanded) {
+      setExpanded(true);
+    }
     if (sound) {
-      playOn();
+      playSound();
     }
   };
+
+  const handleLeave = () => {
+    if (expanded) {
+      setExpanded(false);
+    }
+  };
+
+  const navItems = [
+    { icon: faHome, title: 'Home', action: goToHome },
+    { icon: faBriefcase, title: 'Work Ex', action: goToWork },
+    { icon: faSchool, title: 'Education', action: goToEducation },
+    { icon: faTools, title: 'Projects', action: goToProjects },
+    { icon: faVial, title: 'Research', action: goToResearch },
+    { icon: faNewspaper, title: 'Blog', action: goToArticles },
+    { icon: faBrain, title: 'Tech', action: goToSkills },
+  ];
+
+  if(width < 787) return null;
+
   return (
-    <>
-      {hover ? (
-        <div
-          className={
-            hover
-              ? "sidebar_main_maximize"
-              : "sidebar_main_maximize sidebar_main-active"
-          }
-          onMouseLeave={minimize}
-          onClick={minimize}
-          style={
-            shadowToggle
-              ? {}
-              : displayMode
-              ? {
-                  boxShadow: "none",
-                  background: "transparent",
-                }
-              : {
-                  boxShadow: "none",
-                  background: "transparent",
-                }
-          }
-        >
-          <div className='app'>
-            <div
-              onClick={goToHome}
-              className={"element"}
-              style={{ cursor: "pointer" }}
+    <div
+      className={`fixed left-0 top-[60px] h-[calc(100vh-60px)] bg-none text-gray-400 transition-all duration-300 ease-in-out z-[190] pt-8 ${expanded ? 'w-[180px]' : 'w-[50px]'}`}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleLeave}
+    >
+      <div className="flex flex-col gap-y-16 items-center">
+        {navItems.map((item, index) => (
+          <div
+            key={index}
+            className="relative flex items-center w-full cursor-pointer pl-4 hover:text-[rgb(0,145,255)]"
+            onClick={item.action}
+          >
+            <FontAwesomeIcon
+              icon={item.icon}
+              className="w-[18px] h-[18px] transition-all"
+            />
+            <span
+              className={`absolute left-10 ml-2 whitespace-nowrap transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'
+                }`}
             >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faHome}
-                    style={{ marginRight: "0.5em", marginTop: "0.7em" }}
-                  />
-                </div>
-                <div className='writing' style={{ marginTop: "0.5em" }}>
-                  Home
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToAbout}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>About</div>
-              </div>
-            </div>
-            <div
-              onClick={goToWork}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faBriefcase}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Work</div>
-              </div>
-            </div>
-            <div
-              onClick={goToEducation}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faSchoolFlag}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Education</div>
-              </div>
-            </div>
-            <div
-              onClick={goToProjects}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faTools}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Projects</div>
-              </div>
-            </div>
-            <div
-              onClick={goToResearch}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faVial}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Research</div>
-              </div>
-            </div>
-            <div
-              onClick={goToNpm}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faBox}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Packages</div>
-              </div>
-            </div>
-            <div
-              onClick={goToArticles}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faNewspaper}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Articles</div>
-              </div>
-            </div>
-            <div
-              onClick={goToSkills}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faBrain}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Skills</div>
-              </div>
-            </div>
-            <div
-              onClick={goToContact}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between' onMouseEnter={elementHover}>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faMobileAlt}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-                <div className='writing'>Contact</div>
-              </div>
-            </div>
+              {item.title}
+            </span>
           </div>
-        </div>
-      ) : (
-        <div
-          className='sidebar_main'
-          onMouseEnter={maximize}
-          onClick={maximize}
-          style={
-            shadowToggle
-              ? {
-                  transition: "0.2s ease-in-out",
-                }
-              : displayMode
-              ? {
-                  boxShadow: "none",
-                  background: "transparent",
-                }
-              : {
-                  boxShadow: "none",
-                  background: "transparent",
-                }
-          }
-        >
-          <div className='app'>
-            <div
-              onClick={goToHome}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faHome}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToAbout}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToWork}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faBriefcase}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToEducation}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faSchoolFlag}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToProjects}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faTools}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToResearch}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faVial}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToNpm}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faBox}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToArticles}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faNewspaper}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToSkills}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faBrain}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={goToContact}
-              className={"element"}
-              style={{ cursor: "pointer" }}
-            >
-              <div className='flex_between'>
-                <div>
-                  <FontAwesomeIcon
-                    icon={faMobileAlt}
-                    style={{ marginRight: "0.5em" }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -402,7 +87,4 @@ const mapStateToProps = (state) => ({
   settings: state.settings,
 });
 
-const mapStateToActions = {};
-
-export default connect(mapStateToProps, mapStateToActions)(Sidebar);
-
+export default connect(mapStateToProps)(Sidebar);

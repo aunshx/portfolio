@@ -278,7 +278,7 @@ pre {
   color: var(--lighter-dark-font-color);
 }
 
-/* --------------------------------------------- NAVBAR -------------------------------------- */
+/* --------------------- NAVBAR -------------- */
 .navbar {
   height: 60px;
 }
@@ -297,7 +297,7 @@ pre {
   }
 }
 
-/* --------------------------------------------- RESUME BUTTON -------------------------------------- */
+/* ------------------- RESUME BUTTON -------------- */
 
 .resume-btn {
   font-size: 14px;
@@ -335,79 +335,60 @@ pre {
   }
 }
 
-/* ---------------------------------- SIDEBAR ---------------------------- */
+/* ---------------- SIDEBAR ------------ */
 .sidebar {
   width: 200px;
 }
 
-/* --------------------------------------- SIDEBAR MAIN ----------------------------- */
-.sidebar_main {
-  background-color: var(--navbar-color);
-  color: var(--dark-font-color);
-  width: 50px;
-  height: calc(100vh - 45px);
-  /* border-right: 1px solid var(--light-grey-color); */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+/* --------------- SIDEBAR MAIN -------------- */
+/* Add these styles to your CSS file */
+
+/* Base sidebar with shared properties */
+.sidebar-container {
   position: fixed;
   left: 0;
-  top: 45px;
-  z-index: 102;
-  transition: all 0s linear;
-  -webkit-transition: all 0s linear;
+  top: 60px;
+  height: calc(100vh - 60px);
+  background-color: rgb(8, 8, 8);
+  color: rgb(141, 141, 141);
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  padding-top: 2rem;
+  z-index: 190;
 }
 
-.sidebar_main_maximize {
+/* Icon positioning */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  padding-left: 1rem;
+}
+
+.nav-item:hover {
+  color: rgb(0, 145, 255);
+}
+
+/* Fixed position for icons so they don't move */
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Label positioning and animation */
+.nav-label {
   position: absolute;
-  z-index: 102;
+  left: 2.5rem;
+  white-space: nowrap;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.sidebar_main .element {
-  display: inline-block;
-  position: relative;
-  color: var(--light-dark-font-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 45% 0.5em 45% 1em;
-}
-
-.sidebar_main_maximize .element {
-  display: inline-block;
-  position: relative;
-  color: var(--light-dark-font-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11% 0.5em 13% 1em;
-}
-
-.sidebar_main .element:hover,
-.sidebar_main_maximize .element:hover {
-  color: var(--logo-color);
-}
-
-.sidebar_main_maximize .element .writing {
-  animation: appear 0.4s 1 linear;
-  margin-right: 0.4em;
-}
-
-.sidebar_main_maximize {
-  background-color: var(--navbar-color);
-  color: var(--dark-font-color);
-  width: 180px;
-  height: calc(100vh - 45px);
-  /* border-right: 1px solid var(--light-grey-color); */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  position: fixed;
-  left: 0;
-  top: 45px;
-  transition: all 0s linear;
-  -webkit-transition: all 0s linear;
-}
-
-
+/* Mobile responsive */
 @media only screen and (max-width: 786px) {
-  .sidebar_main {
+  .sidebar-container {
     display: none;
   }
 }
@@ -434,13 +415,12 @@ pre {
   }
 }
 
-/* ----------------------------------- ARTICLES ---------------------------- */
+/* ------------------ ARTICLES ------------ */
 
  .general-card {
    color: var(--lighter-dark-font-color);
    background-color: var(--card-color);
  }
-
 
 /* ----------------- EDUCATION ------------- */
 
@@ -457,8 +437,7 @@ pre {
   height: 50px;
 }
 
-
-/* ----------------------------------- SKILLS --------------------------------- */
+/* --------------- SKILLS ---------------- */
 
  .skills-card {
   width: auto;
@@ -472,7 +451,6 @@ pre {
   border: 2px solid var(--faint-hover-color);
 }
 
-
 .skills-card img {
   object-fit: contain;
   width: 2em;
@@ -483,7 +461,7 @@ pre {
   font-size: 1em;
 }
 
-/* -------------------------------- SPEED DIAL ---------------------------- */
+/* ----------------- SPEED DIAL ---------------- */
 
 .speed-dial:hover {
   animation: speedDial 0.2s 1 linear;

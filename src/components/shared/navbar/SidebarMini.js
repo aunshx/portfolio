@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import useSound from "use-sound";
 
-import { faBrain, faBriefcase, faEnvelope, faHome, faMicrochip, faNewspaper, faSchoolFlag, faShare, faTools, faVial, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase, faEnvelope, faHome, faMicrochip, faNewspaper, faSchoolFlag, faShare, faTools, faVial, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Tooltip } from "@mui/material";
 
@@ -11,6 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import pop from "../../../resources/sounds/pop.mp3";
 
+import { faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 import {
   musicOff,
   musicOn,
@@ -19,7 +20,6 @@ import {
 } from "../../../redux/actions/settings";
 import { RESUME_LINK } from '../../../resources/constants';
 import { ContactButtons } from '../layout/Footer';
-import { faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 
 const SidebarComponent = ({ close, goToFunc, elementHover, icon, title}) => {
   return (
@@ -123,11 +123,11 @@ const SidebarMini = ({
               </div>
             )}
         <SidebarComponent icon={faHome} title={'Home'} close={close} goToFunc={goToHome} elementHover={elementHover}  />
-        <SidebarComponent icon={faBriefcase} title={'Work'} close={close} goToFunc={goToWork} elementHover={elementHover} />
+        <SidebarComponent icon={faBriefcase} title={'Work Ex'} close={close} goToFunc={goToWork} elementHover={elementHover} />
         <SidebarComponent icon={faSchoolFlag} title={'Education'} close={close} goToFunc={goToEducation} elementHover={elementHover} />
         <SidebarComponent icon={faTools} title={'Portfolio'} close={close} goToFunc={goToProjects} elementHover={elementHover} />
         <SidebarComponent icon={faVial} title={'Research'} close={close} goToFunc={goToResearch} elementHover={elementHover} />
-        <SidebarComponent icon={faNewspaper} title={'Articles'} close={close} goToFunc={goToArticles} elementHover={elementHover} />
+        <SidebarComponent icon={faNewspaper} title={'Blog'} close={close} goToFunc={goToArticles} elementHover={elementHover} />
         <SidebarComponent icon={faMicrochip} title={'Tech'} close={close} goToFunc={goToSkills} elementHover={elementHover} />
 
         <div className="flex flex-col w-full px-2">

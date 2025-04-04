@@ -7,9 +7,6 @@ import useSound from "use-sound";
 import { faBars, faRadiation, faShare, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Drawer, Tooltip } from "@mui/material";
-import {
-  makeStyles,
-} from "@mui/styles";
 import { NavLink } from "react-router-dom";
 
 import SidebarMini from './SidebarMini';
@@ -28,40 +25,10 @@ import {
 } from "../../../redux/actions/settings";
 import { RESUME_LINK } from '../../../resources/constants';
 
-const setDark = () => {
-  localStorage.setItem("theme", "dark");
-  document.documentElement.setAttribute("data-theme", "dark");
-};
-
-const setLight = () => {
-  localStorage.setItem("theme", "light");
-  document.documentElement.setAttribute("data-theme", "light");
-};
-
-const useStyles = makeStyles(theme => ({
-  customTooltip: {
-    backgroundColor: 'rgb(245, 245, 245)',
-    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
-    color: 'rgb(72, 72, 72)'
-  },
-}));
-
-const ToggleSwitch = ({ displayMode, toggleTheme }) => {
-  const display = displayMode ? "toggle-switch-dark" : "toggle-switch";
-  return (
-    <div onClick={toggleTheme} className='cursor_pointer'>
-      <div className={display}>
-        <div className='star'></div>
-        <div className='moon'></div>
-      </div>
-    </div>
-  );
-};
 
 const Navbar = ({
   shadowToggle,
   goToHome,
-  goToAbout,
   goToWork,
   goToProjects,
   goToResearch,

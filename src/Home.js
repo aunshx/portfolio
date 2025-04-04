@@ -190,7 +190,7 @@ const Home = ({
   };
 
   return (
-    <div className='app body-whole h-100v w-full'>
+    <div className='h-100v w-full'>
       <Navbar
         shadowToggle={shadowToggle}
         goToHome={goToHome}
