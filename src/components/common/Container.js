@@ -17,7 +17,7 @@ const Container = ({ children, className = '', innerRef }) => {
         md:px-8
         sm:px-4
 
-        mt-24 
+        my-12 
         
         mx-auto
         sm:my-4

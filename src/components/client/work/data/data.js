@@ -7,8 +7,9 @@ export const companies = [
       "Working as a Graduate Teaching Assistant for Prof. Sophia Mattingly, course EDU 122",
       "Working with Prof. Mohammad Sadoghi at the Exploratory Systems Lab on the sustainable blockchain fabric - ResilientDb"
     ],
-    position: "Graduate Student",
+    position: "Graduate Student Researcher",
     duration: "Sep '23 - Present",
+    link: 'https://ucdavis.edu'
   },
   {
     name: "Prosperix",
@@ -19,6 +20,7 @@ export const companies = [
     ],
     position: "Software Engineer",
     duration: "Mar '23 - Aug '23",
+    link: 'https://prosperix.com'
   },
   {
     name: "Dr SB's",
@@ -32,6 +34,7 @@ export const companies = [
     ],
     position: "Software Development Engineer",
     duration: "Jan '22 - Feb '23",
+    link: ''
   },
   {
     name: "2WheelR",
@@ -42,6 +45,7 @@ export const companies = [
     ],
     position: "CEO's Strategy & Operations Team",
     duration: "Jan '21 - Dec '21",
+    link: 'https://2wheelr.com'
   },
   {
     name: "Teach for India",
@@ -52,6 +56,7 @@ export const companies = [
     ],
     position: "Fellow",
     duration: "May '20 - Jun '21",
+    link: 'https://www.teachforindia.org/'
   },
   {
     name: "Forbes Marshall",
@@ -63,6 +68,7 @@ export const companies = [
     ],
     position: "Project Trainee",
     duration: "Jun '19 - Jul '19",
+    link: 'https://www.forbesmarshall.com/'
   },
   {
     name: "Open Links Fdn",
@@ -74,5 +80,6 @@ export const companies = [
     ],
     position: "Volunteer",
     duration: "Nov '18 - May '20",
+    link: 'https://openlinksfoundation.org'
   },
 ];

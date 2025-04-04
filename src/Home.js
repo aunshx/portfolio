@@ -246,22 +246,24 @@ const Home = ({
       <div ref={shadowElement} />
       {/* <div ref={goHome} /> */}
       <div className="w-full h-full flex flex-col items-center justify-center">
-        <Container ref={goHome}>
+        <Container innerRef={goHome}>
           <Main />
         </Container>
-        <Container ref={goWork}>
-          <Work />
-        </Container>
-        <Container ref={goEducation}>
+        <Container innerRef={goEducation}>
           <Education />
         </Container>
-        <Container ref={goSkills}>
+        <Container innerRef={goWork}>
+          <Work />
+        </Container>
+        <Container innerRef={goSkills}>
           <Skills />
+        </Container>
+        <Container innerRef={goProjects}>
+          <Projects />
         </Container>
 
 
         {/*
-        <Projects innerRef={goProjects} />
         <Research innerRef={goResearch} />
         <Articles innerRef={goArticles} />
         <Contact

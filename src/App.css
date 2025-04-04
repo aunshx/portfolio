@@ -65,17 +65,13 @@ body {
   width: 100%;
   height: 100vh;
   max-height: 100vh;
-  /* Ensures the body doesn't expand beyond viewport height */
   overflow-y: auto;
-  /* Adds vertical scrollbar when content overflows */
   overflow-x: hidden;
-  /* Prevents horizontal scrolling */
   background-image: url('./resources/images/background.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* Keeps the background fixed while scrolling */
 }
 
 body::-webkit-scrollbar {
@@ -1190,19 +1186,8 @@ pre {
 }
 
 /* ------------------------------------ PROJECTS ------------------------------------ */
-.projects {
-  color: var(--grey-color);
-  width: 800px;
-  height: auto;
-  padding: 1em;
-  margin: 0 0 4em 50px;
-}
 
-.projects .title {
-  color: var(--lighter-dark-font-color);
-  font-size: 1.6em;
-  margin-bottom: 0.5em;
-}
+
 
 .projects .card-container {
   width: 750px;
@@ -2389,13 +2374,16 @@ pre {
 }
 
 /* ----------------- WORK -------------------- */
-.work {
-  color: var(--grey-color);
-  width: 700px;
-  height: 400px;
-  padding: 0em 1em 0em 1em;
-  margin: 0 0 5em 50px;
-}
+
+ .work-card-title {
+   width: 120px;
+   color: var(--lighter-dark-font-color);
+   height: 50px;
+   font-size: 14px;
+   background-color: var(--card-color);
+   border-radius: 10px;
+   border: 2px solid var(--faint-hover-color);
+ }
 
 .work .body {
   display: grid;

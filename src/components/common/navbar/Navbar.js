@@ -188,9 +188,6 @@ const Navbar = ({
           </NavLink>
         </div>
         <div className='right flex_evenly'>
-          {/* <div style={{ margin: "1.8em 2.2em 0 0" }}>
-            <ToggleSwitch displayMode={displayMode} toggleTheme={toggleTheme} />
-          </div> */}
           {backgroundAnimation ? (
             <div
               className='sound-on cursor_pointer'
@@ -198,15 +195,7 @@ const Navbar = ({
             >
               <Tooltip
                 title={
-                  <>
-                    <div color='inherit'>Background Animation On</div>
-                    <div
-                      className='flex_middle ft-bold'
-                      style={{ color: "white" }}
-                    >
-                      RAM Intensive
-                    </div>
-                  </>
+                  <div color='inherit'>Background Animation On</div>
                 }
                 placement='bottom'
               >
@@ -304,12 +293,6 @@ const Navbar = ({
                   title={
                     <>
                       <div color='inherit'>Background Animation On</div>
-                      <div
-                        className='flex_middle ft-bold'
-                        style={{ color: "white" }}
-                      >
-                        RAM Intensive
-                      </div>
                     </>
                   }
                   placement='bottom'

@@ -29,11 +29,11 @@ const Projects = ({
   const { width } = useWindow()
 
   return (
-    <div className='app' ref={innerRef}>
-      <div className='projects'>
-        <div style={{ marginBottom: "2.5em" }}>
-          <Title icon={<FontAwesomeIcon icon={faTools} />} title={"Selected Work"} />
-        </div>
+      <div className='projects w-full'>
+      <Title
+        icon={<FontAwesomeIcon icon={faTools} />}
+        title={"Selected Work"}
+      />
         <div className='body app'>
           {width < 860 ? (
             <div>
@@ -175,7 +175,6 @@ const Projects = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
