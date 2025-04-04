@@ -2,10 +2,9 @@ import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import Title from "../../shared/layout/Title";
-import { ARTICLES_LIST } from "./data";
 import Card from './tools/Card';
 import { ExpandButton } from "../work/Work";
-import { VERTICAL_MARGIN } from "../../../resources/constants";
+import { ARTICLES_LIST, VERTICAL_MARGIN } from "../../../resources/constants";
 
 const Articles = ({  }) => {
   const [currentArticles, setCurrentArticles] = useState(ARTICLES_LIST);

@@ -23,7 +23,7 @@ const ContactButtons = ({ link, icon }) => {
 };
 
 const TypedText = () => {
-    const roles = ["Software Engineer", "UX/UI Developer", "ML Researcher", "Problem Solver",];
+    const roles = ["Software Engineer", "UX/UI Developer", "ML Researcher", "Problem Solver"];
     const [currentIndex, setCurrentIndex] = useState(0);
     const [previousIndex, setPreviousIndex] = useState(null);
     const [isTransitioning, setIsTransitioning] = useState(false);

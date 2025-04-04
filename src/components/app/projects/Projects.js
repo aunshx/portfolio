@@ -1,85 +1,14 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools } from '@fortawesome/free-solid-svg-icons';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
 import useWindow from 'react-window-size-simple';
 
-
-import Card from './tools/Card';
-import { ExpandButton } from '../work/Work';
+import { PROJECT_LIST, VERTICAL_MARGIN } from '../../../resources/constants';
 import Title from '../../shared/layout/Title';
-import { forestDssProj, omdbProj, redditInfinitProj, resviewProj, VERTICAL_MARGIN } from '../../../resources/constants';
+import { ExpandButton } from '../work/Work';
+import Card from './tools/Card';
 
-const projectsData = [
-  {
-    id: 1,
-    title: 'FRREDSS',
-    subTitle: 'Web-App',
-    description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass',
-    image: forestDssProj,
-    tech: [
-      'Biomass',
-      'Technoeconomic Assessment',
-      'LCA',
-      'Agriculture',
-      'Modelling',
-    ],
-    gitUrl: 'https://github.com/ucdavis/cecdss',
-    link: 'https://forestdss.ucdavis.edu',
-    tag: 'California OPR x UC Davis'
-  },
-  {
-    id: 2,
-    title: 'ResView',
-    subTitle: 'Blockchain Visualizer',
-    description: 'My portfolio website. Includes client side static site and admin overview functionalities to check stats and messages.',
-    image: resviewProj,
-    tech: ['Showcase', 'Personal', 'Messages', 'Mui', 'Javascript'],
-    gitUrl: 'https://github.com/aunshx/portfolio',
-    link: 'https://resview.resilientdb.com/pages/home',
-    tag: 'ExpoLab'
-  },
-  {
-    id: 3,
-    title: 'Reddit Infiniti',
-    subTitle: 'Web API Project',
-    description: 'A simple project to utilize the Reddit API by lazy-loading. Filtered API Data is processed and consumed in real-time while scrolling.',
-    image: redditInfinitProj,
-    tech: [
-      'Dual-Mode',
-      'Reddit API',
-      'Snoowrap',
-      'Data Cleaning',
-      'Lazy-load',
-    ],
-    gitUrl: 'https://github.com/aunshx/fun-with-reddit',
-    link: 'https://sumptuous-sandy-basket.glitch.me/',
-  },
-  {
-    id: 4,
-    title: 'Movie Catalogue',
-    subTitle: 'Omdb API Real time search',
-    description: 'A project featuring real-time search and lazy loading using the Omdb movie API.',
-    image: omdbProj,
-    tech: [
-      'Typescript',
-      'API',
-      'Lazy-Loading',
-      'Responsive',
-      'Search',
-    ],
-    gitUrl: 'https://github.com/aunshx/omdb_api',
-    link: 'https://main--calm-cajeta-d1c26b.netlify.app/',
-  },
-];
-
-const Projects = ({
-  innerRef,
-  // Redux State
-  settings: { displayMode },
-}) => {
-  const { width } = useWindow();
+const Projects = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const changeCollapse = () => {
@@ -94,7 +23,7 @@ const Projects = ({
       />
 
       <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
-        {projectsData.map((project, index) => (
+        {PROJECT_LIST.map((project, index) => (
           <Card
             key={project.id}
             title={project.title}
@@ -116,12 +45,5 @@ const Projects = ({
   );
 };
 
-Projects.propTypes = {
-  settings: PropTypes.object.isRequired,
-};
 
-const mapStateToProps = (state) => ({
-  settings: state.settings,
-});
-
-export default connect(mapStateToProps, {})(Projects);
+export default Projects;

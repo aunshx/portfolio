@@ -140,7 +140,6 @@ const Home = ({
     }
   };
 
-
   const [playOn] = useSound(bellRing, {
     volume: 0.2,
   });

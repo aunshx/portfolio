@@ -4,27 +4,7 @@ import React from 'react';
 import sppuLogo from '../../../resources/images/education/sppuLogo.png';
 import ucDavisLogo from '../../../resources/images/education/ucDavisLogo.png';
 import Title from "../../shared/layout/Title";
-
-const data = [
-  {
-    title: "University of California, Davis",
-    degree: "MS. Electrical and Computer Engineering",
-    start: "Sep 2023",
-    end: "Sep 2025",
-    logo: ucDavisLogo,
-    abbr: "UCD",
-  },
-  {
-    title: "University of Pune",
-    degree: "BE. Electronics and Telecommunication",
-    start: "June 2016",
-    end: "May 2020",
-    logo: sppuLogo,
-    abbr: "SPPU",
-    // gpa: '3.94/4.00',
-    extra: 'Student Council | Top 10 of the class in all years'
-  },
-];
+import { EDUCATION_LIST } from "../../../resources/constants";
 
 const Card = ({
   data: { title, degree, start, end, abbr, gpa, extra },
@@ -52,7 +32,7 @@ const Education = () => {
         title={"Education"}
       />
       <div className='flex gap-x-8'>
-        {data.map((data, index) => {
+        {EDUCATION_LIST.map((data, index) => {
           return <Card data={data} key={index} />
         })}
       </div>

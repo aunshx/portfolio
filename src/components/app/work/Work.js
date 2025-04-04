@@ -4,9 +4,8 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { companies } from './data/data';
-
 import Title from "../../shared/layout/Title";
+import { EXP_LIST } from "../../../resources/constants";
 
 export const ExpandButton = ({ isCollapsed, onClick }) => {
   return (
@@ -27,7 +26,7 @@ export const ExpandButton = ({ isCollapsed, onClick }) => {
 
 const Work = () => {
 
-  const [currentCompanies, setCurrentCompanies] = useState(companies);
+  const [currentCompanies, setCurrentCompanies] = useState(EXP_LIST);
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   const changeCollapse = () => {
@@ -36,8 +35,8 @@ const Work = () => {
 
   useEffect(() => {
     if (isCollapsed) {
-      setCurrentCompanies(companies)
-    } else setCurrentCompanies(companies.slice(0, 3))
+      setCurrentCompanies(EXP_LIST)
+    } else setCurrentCompanies(EXP_LIST.slice(0, 3))
   }, [isCollapsed])
 
   return (
