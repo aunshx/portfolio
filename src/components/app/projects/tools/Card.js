@@ -20,14 +20,14 @@ const Card = ({
     title,
     subTitle,
     description,
-    pics,
+    image,
     gitUrl,
     link,
 }) => {
   return (
       <a href = { link } target = '_blank' rel = 'noreferrer nofollow' className="max-w-md max-h-xl bg-none border-2 border-gray-800 rounded-lg hover:scale-105 transition general-card hover:text-brand dark:hover:border-brand dark:hover:text-brand">
           <a href={link} target='_blank' rel='noreferrer nofollow'>
-              <img className="rounded-t-lg" src={'https://i.postimg.cc/rw9ScBMj/omdb2.png'} alt="" style={{ maxHeight: '250px' }} />
+              <img className="rounded-t-lg" src={image} alt="" style={{ maxHeight: '250px' }} />
           </a>
           <div className="flex flex-col items-start justify-around p-4 gap-y-2">
               <div className='flex flex-col gap-y-2'>

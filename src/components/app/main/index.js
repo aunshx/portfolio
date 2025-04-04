@@ -1,52 +1,131 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { RESUME_LINK } from '../../../resources/constants';
 
-const ContactButtons = ({ link, icon  }) => {
+const ContactButtons = ({ link, icon }) => {
     return (
-        <a href={link ?? 'https://github.com/aunshx'} target="_blank" rel='noreferrer nofollow' type="button" class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm px-6 py-1 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:border-brand dark:hover:text-brand dark:hover:bg-none dark:focus:ring-gray-800 cursor-pointer">
+        <a
+            href={link ?? 'https://github.com/aunshx'}
+            target="_blank"
+            rel='noreferrer nofollow'
+            className="text-gray-200 hover:text-brand text-sm px-4 py-2 text-center transform hover:scale-110 transition duration-300"
+        >
             <FontAwesomeIcon
                 icon={icon ?? faGithub}
                 style={{
-                    fontSize: 20,
+                    fontSize: 30,
                 }}
             />
         </a>
     )
 };
 
+const TypedText = () => {
+    const roles = ["UX Designer", "Problem Solver", "Software Engineer", "ML Researcher"];
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [previousIndex, setPreviousIndex] = useState(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPreviousIndex(currentIndex);
+            setIsTransitioning(true);
+
+            setTimeout(() => {
+                setCurrentIndex((prev) => (prev + 1) % roles.length);
+                setIsTransitioning(false);
+            }, 500);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [currentIndex]);
+
+    return (
+        <span className="flex items-center justify-center relative w-full">
+            <span
+                className={`text-brand transition-all duration-500 ease-in-out absolute
+                    ${isTransitioning ? 'opacity-0 transform translate-y-full' : 'opacity-100 transform translate-y-0'}`}
+            >
+                {roles[currentIndex]}
+            </span>
+
+            {previousIndex !== null && (
+                <span
+                    className={`text-brand transition-all duration-500 ease-in-out absolute
+                        ${isTransitioning ? 'opacity-0 transform -translate-y-full' : 'opacity-0 transform translate-y-0'}`}
+                >
+                    {roles[previousIndex]}
+                </span>
+            )}
+            <span className="opacity-0">{roles[0]}</span>
+        </span>
+    );
+};
+
 const Main = () => {
     return (
-        <div className='grid grid-cols-2 items-start justify-center lg:flex lg:flex-col text-white text-left gap-x-8 mt-24'>
-            <div className="flex flex-col gap-y-2">
-                <div className="text-5xl">
-                    <span className='text-brand'>A</span>unsh Bandivadekar
-                </div>
-                <div className='text-2xl'>
-                    Software Engineer & Researcher
-                </div>
-                <div className="flex mt-4 gap-x-4">
-                    <ContactButtons />
-                    <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} />
-                    <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} />
-                    <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} />
+        <div className="h-[90vh] flex items-center justify-center relative overflow-hidden px-4 w-full">
+
+            <div className="absolute top-50 right-1/3 w-64 h-64 rounded-full bg-blue-700 opacity-5 blur-3xl"></div>
+
+            <div className="">
+                <div className="flex flex-col items-center justify-center gap-16">
+                    <div className="flex flex-col items-center justify-center w-full space-y-4">
+                        <div className="space-y-3 w-full flex items-center justify-center flex-col" >
+                            <div className="text-7xl md:text-7xl font-bold text-white tracking-normal" >
+                                <span className="text-brand">A</span>unsh Bandivadekar
+                            </div>
+                            <div className="text-4xl md:text-3xl text-white text-center gap-x-2 w-full">
+                                <span><TypedText /></span>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 pt-6">
+                            <a
+                                href="#work"
+                                className="text-gray-100 px-8 py-2 rounded-lg font-semibold hover:bg-opacity-90 transform hover:scale-105 transition duration-300 shadow-lg border-gray-100 border-2 hover:border-brand hover:text-brand"
+                            >
+                                My Work
+                            </a>
+                            <a
+                                href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'
+                                className="text-gray-100 px-8 py-2 rounded-lg font-semibold hover:bg-opacity-90 transform hover:scale-105 transition duration-300 shadow-lg border-gray-100 border-2 hover:border-brand hover:text-brand"
+                            >
+                                Résumé
+                            </a>
+                        </div>
+                        <div className="flex flex-wrap gap-4 pt-2">
+                            <ContactButtons />
+                            <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} />
+                            <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} />
+                            <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} />
+                        </div>
+                    </div>
+
+                    <div className="w-3/4">
+                        <div className="p-8 bg-gray-900 bg-opacity-60 backdrop-blur-sm rounded-2xl border border-gray-800 shadow-xl transform hover:translate-y-[-5px] transition duration-500" >
+                            <h3 className="text-2xl font-semibold mb-4 text-brand">Namaste! 👋</h3>
+
+                            <p className="text-gray-300 text-md">
+                                Currently, I am a graduate student at the University of California, Davis focusing on integrating machine learning with AgTech solutions. My research combines data science with practical applications to create sustainable agricultural technologies. Beyond research, I'm passionate about crafting intuitive user experiences that make complex technologies accessible to everyone.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className=''>
-                Namaste! My name is Aunsh and in my 26 years on this planet, I've been a national-level cyclist, engineering student, award-winning researcher, high school teacher and a software developer.
-                <div className="mt-2">
-                I believe that technology should be as ergonomic as it is complex. Currently, I am a graduate student at the University of California, Davis researching the applications of machine learning in AgTech as well as crafting memorable UXs.
-                </div>
+
+            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#work" className="text-gray-400 hover:text-brand transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                </a>
             </div>
         </div>
     );
 };
 
-const index = () => {
-  return (
-    <Main />
-  )
-}
-
-export default index
+export default Main;

@@ -52,7 +52,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`fixed left-0 h-[calc(100vh-60px)] text-gray-400 transition-all duration-300 ease-in-out z-[190] flex items-center justify-center ${expanded ? 'w-[180px]' : 'w-[50px]'}`}
+      className={`sidebar_main fixed left-0 h-[calc(100vh-60px)] text-gray-400 transition-all duration-300 ease-in-out z-[190] flex items-center justify-center ${expanded ? 'w-[180px]' : 'w-[50px]'}`}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
     >
