@@ -7,30 +7,26 @@ import useWindow from "react-window-size-simple";
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
 import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
 
-import BackgroundLarge from "./components/client/main/BackgroundLarge";
-import BackgroundMedium from "./components/client/main/BackgroundMedium";
-import BackgroundSmall from "./components/client/main/BackgroundSmall";
-import BackgroundTiny from "./components/client/main/BackgroundTiny";
+import BackgroundLarge from "./components/app/main/BackgroundLarge";
+import BackgroundMedium from "./components/app/main/BackgroundMedium";
+import BackgroundSmall from "./components/app/main/BackgroundSmall";
+import BackgroundTiny from "./components/app/main/BackgroundTiny";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
 
-import Main from './components/client/main';
-import About from "./components/client/about/About";
-import Work from "./components/client/work/Work";
-import Projects from './components/client/projects/Projects';
-import Research from './components/client/research/Research';
-import Articles from './components/client/articles/Articles';
-import Skills from './components/client/skills/Skills';
-import Contact from './components/client/contact/Contact';
-import Navbar from './components/common/navbar/Navbar';
-import Sidebar from './components/common/navbar/Sidebar';
-import SpeedDial from "./components/common/layout/dials/SpeedDial";
-import Alerts from './components/common/layout/Alerts';
-import Npm from "./components/client/npm-packages/Npm";
+import Main from './components/app/main';
+import Work from "./components/app/work/Work";
+import Projects from './components/app/projects/Projects';
+import Research from './components/app/research/Research';
+import Articles from './components/app/articles/Articles';
+import Skills from './components/app/skills/Skills';
+import Navbar from './components/shared/navbar/Navbar';
+import Sidebar from './components/shared/navbar/Sidebar';
+import SpeedDial from "./components/shared/layout/SpeedDial";
 
 import './App.css'
-import Education from './components/client/education/Education';
-import Container from './components/common/Container';
+import Education from './components/app/education/Education';
+import Container from './components/shared/layout/Container';
 
 const Home = ({
   // Redux State
@@ -249,22 +245,24 @@ const Home = ({
         <Container innerRef={goHome}>
           <Main />
         </Container>
-        <Container innerRef={goEducation}>
-          <Education />
-        </Container>
-        <Container innerRef={goWork}>
+        <Container innerRef={goWork} vertical>
           <Work />
         </Container>
         <Container innerRef={goSkills}>
           <Skills />
         </Container>
-        <Container innerRef={goProjects}>
+        <Container innerRef={goProjects} vertical>
           <Projects />
+        </Container>
+        <Container innerRef={goResearch} vertical>
+          <Research />
+        </Container>
+        <Container innerRef={goEducation}>
+          <Education />
         </Container>
 
 
         {/*
-        <Research innerRef={goResearch} />
         <Articles innerRef={goArticles} />
         <Contact
           refSec={refElement}
@@ -277,9 +275,9 @@ const Home = ({
           <>
             {showContact && (
               <>
-                <div className='appear_contact' onClick={goToContact}>
+                <div onClick={goToContact}>
                   <Tooltip title='Page Down' placement='left' enterDelay={400}>
-                    <div className='contact-button' onMouseEnter={onHoverMobile}>
+                    <div className='contact-button cursor-pointer fixed bottom-10 right-8 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
                       <ArrowCircleDownOutlinedIcon
                         className='go-up'
                         style={{ fontSize: 40 }}
@@ -291,9 +289,9 @@ const Home = ({
             )}
             {!showContact && (
               <>
-                <div className='appear_contact' onClick={goToHome}>
+                <div onClick={goToHome}>
                   <Tooltip title='Page Up' placement='left' enterDelay={400}>
-                    <div className='contact-button' onMouseEnter={onHoverMobile}>
+                    <div className='contact-button cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
                       <ArrowCircleUpOutlinedIcon
                         className='go-up'
                         style={{ fontSize: 40 }}
@@ -303,12 +301,11 @@ const Home = ({
                 </div>
               </>
             )}
-            <div className='speed_dial-button'>
+            <div className='fixed bottom-36 right-9'>
               <SpeedDial />
             </div>
           </>
         )}
-        <Alerts />
       </div>
     </div>
   );
@@ -317,7 +314,6 @@ const Home = ({
 Home.propTypes = {
   sidebar: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  // captureIpNow: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

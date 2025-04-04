@@ -1,18 +1,10 @@
 import { combineReducers } from 'redux'
-import contact from './contact'
-import sidebar from './sidebar'
 import settings from './settings'
-import auth from './auth'
-import metrics from './metrics'
-import blog from './blog'
+import sidebar from './sidebar'
 
 const appReducer = combineReducers({
-    contact,
     sidebar,
     settings,
-    auth,
-    metrics,
-    blog
 })
 
 

@@ -5,16 +5,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import useSound from "use-sound";
 
 import Home from "./Home";
-import Login from "./components/admin/auth/Login";
-import Blog from './components/admin/blog/Blog';
-import CheckAuth from "./components/admin/blog/auth/CheckAuth";
-import Main from "./components/admin/main/Main";
-import Stats from "./components/admin/stats/Stats";
-import NotFound from "./components/common/layout/NotFound";
-import WillBeLive from "./components/common/layout/WillBeLive";
-import Navbar from "./components/common/navbar/Navbar";
-import Sidebar from "./components/common/navbar/Sidebar";
-import PrivateRoute from "./utils/PrivateRoute";
+import NotFound from "./components/shared/layout/NotFound.js";
+import WillBeLive from "./components/shared/layout/WillBeLive.js";
 
 import "./App.css";
 
@@ -26,16 +18,14 @@ import store from "./store";
 
 import darkBackground from "./resources/sounds/darkBackground.mp3";
 import lightBackground from "./resources/sounds/lightBackground.mp3";
-// import setAuthToken from "./utils/setAuthToken";
-// import { loadUser } from "./redux/actions/auth";
-import BlogAuthRoute from "./utils/BlogAuthRoute";
+
 
 function App({
   sidebar: { hover },
   // Redux States
   settings: { sound, displayMode, music },
 }) {
-  
+
   const [playBackgroundLight, { stop }] = useSound(lightBackground, {
     volume: 0.2,
   });
@@ -109,63 +99,22 @@ function App({
   }
 
   if (true) {
-    if (window.location.host.split(".")[0] === "admin") {
-      return (
-        <Router>
-          <>
-            <Routes>
-              {/* -------------------- ADMIN ----------------------- */}
-
-              <PrivateRoute path='/' exact component={Main} />
-              <PrivateRoute path='/stats' exact component={Stats} />
-              <BlogAuthRoute path='/blog' exact component={Blog} />
-              <PrivateRoute
-                path='/blog-check-auth'
-                exact
-                component={CheckAuth}
-              />
-              <Route
-                exact
-                path='/login'
-                render={(props) => (
-                  <Login
-                    Sidebar={<Sidebar hover={hover} />}
-                    Navbar={<Navbar />}
-                  />
-                )}
-              />
-              <Route component={NotFound} />
-            </Routes>
-          </>
-        </Router>
-      );
-    } else {
-      return (
-        <Router>
-          <>
-            <Routes>
-              <Route exact path='/' element={<Home />} />
-              <Route
-                path='/admin/login'
-                render={(props) => (
-                  <Login
-                    Sidebar={<Sidebar hover={hover} />}
-                    Navbar={<Navbar />}
-                  />
-                )}
-              />
-              <Route element={<NotFound />} />
-            </Routes>
-          </>
-        </Router>
-      );
-    }
+    return (
+      <Router>
+        <>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route element={<NotFound />} />
+          </Routes>
+        </>
+      </Router>
+    );
   } else {
     return (
       <Router>
-      <Routes>
-        <WillBeLive />
-      </Routes>
+        <Routes>
+          <WillBeLive />
+        </Routes>
       </Router>
     )
   }
