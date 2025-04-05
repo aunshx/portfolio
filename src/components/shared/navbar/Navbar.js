@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
 import useSound from "use-sound";
@@ -48,8 +48,40 @@ const Navbar = ({
   const [menu, setMenu] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [displayDownload, setDisplayDownload] = useState(false);
+  const [isNameInView, setIsNameInView] = useState(true);
 
   const { width } = useWindow();
+
+  const nameObserver = useRef(null);
+
+  useEffect(() => {
+    const nameElement = document.getElementById('main-name');
+
+    if (nameElement) {
+      const options = {
+        root: null,
+        threshold: 0.2,
+      };
+
+      nameObserver.current = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          setIsNameInView(entry.isIntersecting);
+          if (sound && entry.isIntersecting !== isNameInView) {
+            // Play sound when state changes (optional)
+            playOn();
+          }
+        });
+      }, options);
+
+      nameObserver.current.observe(nameElement);
+
+      return () => {
+        if (nameObserver.current) {
+          nameObserver.current.disconnect();
+        }
+      };
+    }
+  }, [isNameInView, sound, playOn]);
 
   const verticalMenu = () => {
     setMenu(!menu);
@@ -100,21 +132,25 @@ const Navbar = ({
           shadowToggle
             ? displayMode
               ? {
-                  boxShadow:
-                    "2px 2px 2px 1px rgba(80, 80, 80, 0.2), transition: '0.15s ease-in-out'",
-                }
-              : {
-                  boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                  transition: "0.15s ease-in-out",
-                }
-            : {
-                background: "transparent",
+                boxShadow:
+                  "2px 2px 2px 1px rgba(80, 80, 80, 0.2), transition: '0.15s ease-in-out'",
               }
+              : {
+                boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+                transition: "0.15s ease-in-out",
+              }
+            : {
+              background: "transparent",
+            }
         }
       >
         <div className='cursor-pointer'>
           <NavLink to='/'>
-            <div className='text-2xl text-brand font-bold'>aunsh.</div>
+            <div className='logo-container text-3xl text-brand font-bold'>
+              <span className="logo-a">a</span>
+              <span className={`logo-unsh ${isNameInView ? 'hidden' : 'visible'}`}>unsh</span>
+              <span className="logo-dot">.</span>
+            </div>
           </NavLink>
         </div>
         {width > 787 ? (
@@ -208,7 +244,7 @@ const Navbar = ({
                 style={{ marginRight: "1.4em" }}
               >
                 <Tooltip
-                    title={'Background Animation On'}
+                  title={'Background Animation On'}
                   placement='bottom'
                 >
                   <div>
@@ -271,6 +307,7 @@ const Navbar = ({
         )}
       </div>
 
+      {/* Styling is now handled in App.css */}
     </>
   );
 };

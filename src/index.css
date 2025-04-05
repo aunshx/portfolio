@@ -70,7 +70,7 @@ body {
     max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    /* background-image: url('./resources/images/background.png'); */
+    position: relative;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -152,6 +152,57 @@ pre {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Add these styles to your App.css file */
+
+/* Logo animation styles */
+.logo-container {
+    position: relative;
+    display: inline-flex;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.logo-a,
+.logo-dot {
+    display: inline-block;
+}
+
+.logo-unsh {
+    display: inline-block;
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: opacity 0.6s ease, max-width 0.6s ease;
+    transform-origin: left;
+}
+
+.logo-unsh.visible {
+    opacity: 1;
+    max-width: 100px;
+}
+
+.logo-dot {
+    display: inline-block;
+    position: relative;
+    transition: transform 0.6s ease;
+}
+
+@keyframes dotBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(2px);
+    }
+}
+
+.logo-unsh.visible+.logo-dot {
+    animation: dotBounce 0.3s ease 0.6s;
 }
 
 /* ------------------- RESUME BUTTON -------------- */
@@ -602,3 +653,4 @@ pre {
         opacity: 0.7;
     }
 }
+

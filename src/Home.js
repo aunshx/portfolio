@@ -180,9 +180,9 @@ const Home = ({
 
       <div ref={shadowElement} />
       <div ref={refElement} />
-      <div className="w-full h-full flex flex-col items-center justify-center">
-        <Container innerRef={goHome} movement={'fade-down'}>
-          <Main goToFunc={[goToProjects, goToWork]} />
+      <div className="w-full h-full flex flex-col items-center justify-center" style={{ border: '1px solid green' }} >
+        <Container innerRef={goHome} movement={'fade-down'} customMargin>
+          {/* <Main goToFunc={[goToProjects, goToWork]} /> */}
         </Container>
         <Container innerRef={goWork} movement={'fade-up'}>
           <Work />
@@ -206,7 +206,7 @@ const Home = ({
           <Footer />
         </Container>
 
-        {width > 1029 && (
+        {width > 1280 && (
           <>
             {showContact && (
               <>
@@ -257,7 +257,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  // captureIpNow,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Home);

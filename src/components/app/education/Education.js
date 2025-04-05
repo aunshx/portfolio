@@ -11,7 +11,7 @@ const Card = ({
 }) => {
   const logo = abbr === "UCD" ? ucDavisLogo : sppuLogo;
   return (
-    <div className='element hover:scale-105 transition flex gap-x-4 py-2 px-4'>
+    <div className='element hover:scale-105 transition flex gap-x-4 py-2 px-4 max-w-md'>
       <img src={logo} alt={title} />
       <div className="flex flex-col gap-y-1">
         <div className='text-lg'>{title}</div>
@@ -31,7 +31,7 @@ const Education = () => {
         icon={<FontAwesomeIcon icon={faSchoolFlag} />}
         title={"Education"}
       />
-      <div className='flex gap-x-8'>
+      <div className='flex items-center justify-center gap-8 lg:flex-col'>
         {EDUCATION_LIST.map((data, index) => {
           return <Card data={data} key={index} />
         })}

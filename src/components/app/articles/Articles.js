@@ -6,14 +6,10 @@ import Card from './tools/Card';
 import { ExpandButton } from "../work/Work";
 import { ARTICLES_LIST, VERTICAL_MARGIN } from "../../../resources/constants";
 
-const Articles = ({  }) => {
+const Articles = () => {
   const [currentArticles, setCurrentArticles] = useState(ARTICLES_LIST);
 
   const [isCollapsed, setIsCollapsed] = useState(false)
-
-  const changeCollapse = () => {
-    setIsCollapsed((prev) => !prev);
-  }
 
   useEffect(() => {
     if (isCollapsed) {
@@ -41,9 +37,9 @@ const Articles = ({  }) => {
           />
         ))}
       </div>
-      <div className={`flex items-center justify-center ${VERTICAL_MARGIN}`}>
-        <ExpandButton isCollapsed={isCollapsed} onClick={changeCollapse} />
-      </div>
+      <a href={'https://aunsh.medium.com/'} className={`flex items-center justify-center ${VERTICAL_MARGIN}`}>
+        <ExpandButton isCollapsed={false} />
+      </a>
       </div>
   );
 };

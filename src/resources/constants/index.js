@@ -107,7 +107,7 @@ export const ARTICLES_LIST = [
         "title": "Enable HTTPS for Localhost During Local Development in Node.js",
         "description": "A tutorial on how to go from http://localhost:PORT to https://localhost:PORT.",
         "link": "https://javascript.plainenglish.io/enable-https-for-localhost-during-local-development-in-node-js-96204453d72b",
-        "technologies": ["node", "https"],
+        "technologies": ["nodejs", "ssl"],
         "stats": {
             "views": "15.8K",
             "upvotes": "417"
@@ -117,7 +117,7 @@ export const ARTICLES_LIST = [
         "title": " Initialize a project in node with npm init",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, minus?",
         "link": "https://medium.com/@aunsh/initialize-a-project-in-node-with-npm-init-dc6f2196033",
-        "technologies": ["reddit", "node", "snoowrap", "react"],
+        "technologies": ["nodejs", "api", "snoowrap"],
         "stats": {
             "views": "2.9K",
             "upvotes": "15"
@@ -127,10 +127,20 @@ export const ARTICLES_LIST = [
         "title": "Under the hood: Worst case complexities & working of all JS array methods",
         "description": "Get to know the Big O if JS array methods and their working",
         "link": "https://aunsh.medium.com/under-the-hood-worst-case-complexities-workings-of-popular-js-array-methods-739d5fef314a",
-        "technologies": ["javascript"],
+        "technologies": ["javascript", "big-O", "analysis"],
         "stats": {
             "views": "1.5K",
             "upvotes": "187"
+        }
+    },
+    {
+        "title": "CipherPrint: Developing smart digital fingerprints",
+        "description": "Utilizing Machine Learning and Optimal Hashing to develop unique device fingerprints",
+        "link": "https://aunsh.medium.com/cipherprint-optimizing-machine-learning-and-hashing-to-develop-unique-device-fingerprints-d93ccef21b34",
+        "technologies": ["networks", "math", 'security'],
+        "stats": {
+            "views": "124",
+            "upvotes": "2"
         }
     },
     {
@@ -147,7 +157,7 @@ export const ARTICLES_LIST = [
         "title": "ResView: A PBFT visualizer based on the ResilientDb blockchain fabric",
         "description": "A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric.",
         "link": "https://aunsh.medium.com/resview-a-pbft-visualizer-based-on-the-resilientdb-blockchain-fabric-3ffaeb2aaee5",
-        "technologies": ["blockchain"],
+        "technologies": ["blockchain", "d3.js", "sockets"],
         "stats": {
             "views": "191",
             "upvotes": "39"
@@ -157,7 +167,7 @@ export const ARTICLES_LIST = [
         "title": "Creating a simple server using node and express",
         "description": "A simple local server to get you started with backend development using node.js",
         "link": "https://aunsh.medium.com/creating-a-server-in-using-node-and-express-1ff36c7fa358",
-        "technologies": ["node", "javascript"],
+        "technologies": ["express", "typescript"],
         "stats": {
             "views": "129",
             "upvotes": "29"
