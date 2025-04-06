@@ -33,41 +33,6 @@ const Card = ({
     setIsHovering(false);
   };
 
-  useEffect(() => {
-    switch (true) {
-      case title === "React" || title === "C++" || title === "Typescript":
-        setBorderColorNow("#34cfeb");
-        break;
-
-      case title === "Node.js" || title === "MongoDb" || title === "SpringBoot":
-        setBorderColorNow("#3ede69");
-        break;
-
-      case title === "Git" || title === "HTML":
-        setBorderColorNow("#de793e");
-        break;
-
-      case title === "CSS" || title === "Postgres" || title === "Mui":
-        setBorderColorNow("rgb(0, 145, 255)");
-        break;
-
-      case title === "JS" || title === "Python":
-        setBorderColorNow("#dec13e");
-        break;
-
-      case title === "Redux":
-        setBorderColorNow("#8e3ede");
-        break;
-
-      case title === "Java" || title === "PassportJS":
-        setBorderColorNow("#ec2024");
-        break;
-
-      default:
-        return null;
-    }
-  }, []);
-
   const { width } = useWindow();
 
   return (
@@ -77,7 +42,7 @@ const Card = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={'flex items-center gap-x-1 skills-card'}
+        className={'flex items-center gap-x-1 skills-card bg-slate-900 opacity-70'}
         data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}

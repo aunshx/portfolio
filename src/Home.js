@@ -182,7 +182,7 @@ const Home = ({
       <div ref={refElement} />
       <div className="w-full h-full flex flex-col items-center justify-center" style={{ border: '1px solid green' }} >
         <Container innerRef={goHome} movement={'fade-down'} customMargin>
-          {/* <Main goToFunc={[goToProjects, goToWork]} /> */}
+          <Main goToFunc={[goToProjects, goToWork]} />
         </Container>
         <Container innerRef={goWork} movement={'fade-up'}>
           <Work />

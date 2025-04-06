@@ -22,10 +22,13 @@ const Container = ({ children, className = '', innerRef, movement, noMargin, cus
         sm:px-2
         mx-auto
 
-        my-16 xl:my-12 lg:my-10 sm:my-8
+        my-16 
+        xl:my-12 
+        lg:my-10 
+        sm:my-8
         
         ${className}
-      `, {'my-0': customMargin })}
+      `, {'my-8': customMargin })}
             data-aos={movement ?? 'fade-left'}
         ref={innerRef}
         // style={{ border: '1px solid blue' }}

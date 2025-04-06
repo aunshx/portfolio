@@ -339,7 +339,6 @@ pre {
     color: var(--lighter-dark-font-color);
     height: 50px;
     font-size: 14px;
-    background-color: var(--card-color);
     border-radius: 10px;
     margin: 0.5em 0;
     padding: 0.5em 1em 0.5em 1em;

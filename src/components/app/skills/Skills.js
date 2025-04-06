@@ -16,6 +16,9 @@ import psqlLogo from '../../../resources/images/skills/logos/psqlLogo.png';
 import reactLogo from '../../../resources/images/skills/logos/reactLogo.png';
 import reduxLogo from '../../../resources/images/skills/logos/reduxLogo.png';
 import typescriptLogo from '../../../resources/images/skills/logos/typescriptLogo.png';
+import pythonLogo from '../../../resources/images/skills/logos/pythonLogo.png';
+import matlabLogo from '../../../resources/images/skills/logos/matlabLogo.png';
+import d3Logo from '../../../resources/images/skills/logos/d3Logo.png';
 
 import SkillOne from "./tools/Card";
 
@@ -23,8 +26,8 @@ import Title from "../../shared/layout/Title";
 
 const skills = [
   {
-    title: 'React',
-    logo: reactLogo,
+    title: 'Python',
+    logo: pythonLogo,
     number: 3,
     delay: 450
   },
@@ -33,6 +36,24 @@ const skills = [
     logo: typescriptLogo,
     number: 4,
     delay: 450
+  },
+  {
+    title: 'React',
+    logo: reactLogo,
+    number: 3,
+    delay: 450
+  },
+  {
+    title: 'Javscript',
+    logo: jsLogo,
+    number: 0,
+    delay: 50
+  },
+  {
+    title: 'Postgres',
+    logo: psqlLogo,
+    number: 4,
+    delay: 300
   },
   {
     title: 'Redux',
@@ -59,22 +80,10 @@ const skills = [
     delay: 0
   },
   {
-    title: 'JS',
-    logo: jsLogo,
-    number: 0,
-    delay: 50
-  },
-  {
     title: 'MongoDb',
     logo: mongoLogo,
     number: 0,
     delay: 200
-  },
-  {
-    title: 'Postgres',
-    logo: psqlLogo,
-    number: 3,
-    delay: 300
   },
   {
     title: 'Git',
@@ -85,18 +94,30 @@ const skills = [
   {
     title: 'HTML 5',
     logo: htmlLogo,
-    number: 4,
+    number: 0,
     delay: 0
   },
   {
     title: 'PassportJS',
     logo: passportLogo,
-    number: 4,
+    number: 3,
+    delay: 400
+  },
+  {
+    title: 'd3.js',
+    logo: d3Logo,
+    number: 2,
+    delay: 400
+  },
+  {
+    title: 'Matlab',
+    logo: matlabLogo,
+    number: 2,
     delay: 400
   }
 ];
 
-const Skills = ({ innerRef }) => {
+const Skills = () => {
   let params = {
     min: 0,
     max: 4,
