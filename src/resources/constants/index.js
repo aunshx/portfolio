@@ -179,7 +179,7 @@ export const ARTICLES_LIST = [
 export const RESEARCH_LIST = [
     {
         title: "ResView: A PBFT visualizer based on the ResilientDb blockchain fabric",
-        description: "A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric to simulate consensus protocol transactions",
+        description: "A novel practical byzantine fault tolerance consensus visualizer based on the ResilientDb sustainable blockchain fabric",
         tags: ["Blockchain", "DDS", "D3.js"],
         achievements: [],
         link: "https://blog.resilientdb.com/2023/12/06/ResView.html"
@@ -187,8 +187,8 @@ export const RESEARCH_LIST = [
     {
         title: "5G Dual Band Pass Filter for Wi-Fi and WLAN Operations",
         description: "Project proposes a new generation of dual band pass 5G filter for Wi-Fi and WLAN operating t 2.45 GHz and 5.5 GHz.",
-        tags: ["5G", "Sponsored", "Telecommunication"],
-        achievements: ["Published", "Best Paper"],
+        tags: ["5G", "Antenna Tech", "Telecomm"],
+        achievements: ["Best Paper"],
         link: "https://drive.google.com/file/d/1vU5t8YAz7mKWWKG1-l77xMDisG6grjzA/view?usp=sharing"
     },
     {

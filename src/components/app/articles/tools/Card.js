@@ -50,18 +50,18 @@ const Card = ({
     >
       <div
         onMouseEnter={elementHover}
-        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 bg-gray-900 bg-opacity-60 backdrop-blur-sm opacity-80 rounded-xl border border-gray-800 shadow-xl w-full text-white"
+        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 bg-slate-900 bg-opacity-60 backdrop-blur-sm opacity-80 rounded-xl border border-slate-800 shadow-xl w-full text-white"
       >
         <div className="flex flex-col gap-y-2">
           <div className='text-lg font-bold tracking-tight'>{title}</div>
           <div className='text-sm text-gray-400'>{description}</div>
         </div>
-        <div className="flex items-center justify-between gap-4 mt-1 lg:flex-col lg:items-start">
+        <div className="w-full flex items-center justify-between gap-4 mt-1 lg:flex-col lg:items-start">
           <div className='flex flex-wrap gap-4 text-gray-500 text-xs mt-1'>
             {technology.length > 0 &&
               technology.map((val, index) => (
                 <div
-                  className='text-gray-400 bg-gray-900  focus:outline-none text-xs rounded-lg px-2 py-1 min-w-16 text-center'
+                  className='text-gray-400 bg-gray-800  focus:outline-none text-xs rounded-lg px-2 py-1 min-w-16 text-center'
                   key={index}>
                   {val}
                 </div>
