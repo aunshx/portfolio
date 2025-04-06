@@ -1,7 +1,6 @@
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import useWindow from 'react-window-size-simple';
 
 import { PROJECT_LIST, VERTICAL_MARGIN } from '../../../resources/constants';
 import Title from '../../shared/layout/Title';
@@ -22,7 +21,7 @@ const Projects = () => {
         title="Portfolio"
       />
 
-      <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
+      <div className={`grid grid-cols-2 lg:grid-cols-1 gap-16 lg:gap-8 ${VERTICAL_MARGIN} flex items-center justify-center`}>
         {PROJECT_LIST.map((project, index) => (
           <Card
             key={project.id}
@@ -33,6 +32,7 @@ const Projects = () => {
             tech={project.tech}
             gitUrl={project.gitUrl}
             link={project.link}
+            tag={project.tag}
             isReversed={index % 2 !== 0}
           />
         ))}

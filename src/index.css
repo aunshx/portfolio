@@ -14,10 +14,10 @@
     --gotuu-color: #7ed957;
     --grey-color: grey;
 
-    --background-color: rgb(8, 8, 8);
+    --background-color: rgb(12, 12, 12);
     --background-dots-color: rgb(15, 15, 15);
-    --navbar-color: rgb(8, 8, 8);
-    --card-color: rgb(8, 8, 8);
+    --navbar-color: rgb(12, 12, 12);
+    --card-color: rgb(12, 12, 12);
     --light-grey-color: rgb(25, 25, 25);
     --dark-font-color: rgb(238, 238, 238);
     --light-dark-font-color: rgb(204, 204, 204);
@@ -34,10 +34,10 @@
 }
 
 [data-theme="dark"] {
-    --background-color: rgb(8, 8, 8);
+    --background-color: rgb(12, 12, 12);
     --background-dots-color: rgb(15, 15, 15);
-    --navbar-color: rgb(8, 8, 8);
-    --card-color: rgb(8, 8, 8);
+    --navbar-color: rgb(12, 12, 12);
+    --card-color: rgb(12, 12, 12);
     --light-grey-color: rgb(25, 25, 25);
     --dark-font-color: rgb(238, 238, 238);
     --light-dark-font-color: rgb(204, 204, 204);

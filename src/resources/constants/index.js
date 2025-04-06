@@ -12,8 +12,8 @@ export const PROJECT_LIST = [
     {
         id: 1,
         title: 'FRREDSS',
-        subTitle: 'Web-App',
-        description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass',
+        subTitle: 'Siting Tool',
+        description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass based on the $1.2 million grant from CA Office of Planning and Research',
         image: forestDssProj,
         tech: [
             'Biomass',
@@ -41,7 +41,7 @@ export const PROJECT_LIST = [
         id: 3,
         title: 'Reddit Infiniti',
         subTitle: 'Web API Project',
-        description: 'A simple project to utilize the Reddit API by lazy-loading. Filtered API Data is processed and consumed in real-time while scrolling.',
+        description: 'Utilizing the Reddit API by lazy-loading. Filtered API Data is processed and consumed in real-time while scrolling.',
         image: redditInfinitProj,
         tech: [
             'Dual-Mode',
@@ -52,12 +52,13 @@ export const PROJECT_LIST = [
         ],
         gitUrl: 'https://github.com/aunshx/fun-with-reddit',
         link: 'https://sumptuous-sandy-basket.glitch.me/',
+        tag: ''
     },
     {
         id: 4,
         title: 'Movie Catalogue',
-        subTitle: 'Omdb API Real time search',
-        description: 'A project featuring real-time search and lazy loading using the Omdb movie API.',
+        subTitle: 'Real-time search',
+        description: 'Featuring real-time search and lazy loading using the Omdb movie API.',
         image: omdbProj,
         tech: [
             'Typescript',
@@ -68,6 +69,7 @@ export const PROJECT_LIST = [
         ],
         gitUrl: 'https://github.com/aunshx/omdb_api',
         link: 'https://main--calm-cajeta-d1c26b.netlify.app/',
+        tag: ''
     },
 ];
 
