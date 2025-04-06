@@ -5,22 +5,22 @@ import random from "simple-random-number-generator";
 import useInterval from "use-interval";
 
 import css3Logo from '../../../resources/images/skills/logos/css3Logo.png';
+import d3Logo from '../../../resources/images/skills/logos/d3Logo.png';
+import dockerLogo from '../../../resources/images/skills/logos/dockerLogo.webp';
 import gitLogo from '../../../resources/images/skills/logos/gitLogo.png';
 import htmlLogo from '../../../resources/images/skills/logos/htmlLogo.png';
 import javaLogo from '../../../resources/images/skills/logos/javaLogo.png';
 import jsLogo from '../../../resources/images/skills/logos/jsLogo.png';
+import matlabLogo from '../../../resources/images/skills/logos/matlabLogo.png';
 import mongoLogo from '../../../resources/images/skills/logos/mongoLogo.png';
+import nextJSLogo from '../../../resources/images/skills/logos/nextJSLogo.png';
 import nodeLogo from '../../../resources/images/skills/logos/nodeLogo.png';
 import passportLogo from '../../../resources/images/skills/logos/passportLogo.png';
 import psqlLogo from '../../../resources/images/skills/logos/psqlLogo.png';
+import pythonLogo from '../../../resources/images/skills/logos/pythonLogo.png';
 import reactLogo from '../../../resources/images/skills/logos/reactLogo.png';
 import reduxLogo from '../../../resources/images/skills/logos/reduxLogo.png';
 import typescriptLogo from '../../../resources/images/skills/logos/typescriptLogo.png';
-import pythonLogo from '../../../resources/images/skills/logos/pythonLogo.png';
-import matlabLogo from '../../../resources/images/skills/logos/matlabLogo.png';
-import d3Logo from '../../../resources/images/skills/logos/d3Logo.png';
-import dockerLogo from '../../../resources/images/skills/logos/dockerLogo.webp'
-import nextJSLogo from '../../../resources/images/skills/logos/nextJSLogo.png';
 
 import SkillOne from "./tools/Card";
 

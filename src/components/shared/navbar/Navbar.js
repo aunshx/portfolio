@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
 import useSound from "use-sound";

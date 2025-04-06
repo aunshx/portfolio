@@ -1,29 +1,24 @@
-import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
+import React, { useCallback, useRef, useState } from 'react';
+import { connect } from 'react-redux';
 import useSound from "use-sound";
-import { Tooltip } from "@mui/material";
-import useWindow from "react-window-size-simple";
-import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
-import ArrowCircleDownOutlinedIcon from "@mui/icons-material/ArrowCircleDownOutlined";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
 
+import Articles from './components/app/articles/Articles';
 import Main from './components/app/main';
-import Work from "./components/app/work/Work";
 import Projects from './components/app/projects/Projects';
 import Research from './components/app/research/Research';
-import Articles from './components/app/articles/Articles';
 import Skills from './components/app/skills/Skills';
+import Work from "./components/app/work/Work";
 import Navbar from './components/shared/navbar/Navbar';
 import Sidebar from './components/shared/navbar/Sidebar';
-import SpeedDial from "./components/shared/layout/SpeedDial";
 
 import Education from './components/app/education/Education';
 import Container from './components/shared/layout/Container';
 import ParticleBackground from './components/shared/layout/ParticleBG';
 
-import './App.css'
+import './App.css';
 import Footer from './components/shared/layout/Footer';
 
 const Home = ({
@@ -31,8 +26,6 @@ const Home = ({
   sidebar: { hover },
   settings: { sound, backgroundAnimation },
 }) => {
-
-  const { width } = useWindow();
 
   const [showContact, setShowContact] = useState(false);
   const [shadowToggle, setShadowToggle] = useState(false)

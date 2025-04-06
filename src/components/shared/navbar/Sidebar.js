@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { faBrain, faBriefcase, faHome, faNewspaper, faSchool, faTools, faVial } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import useSound from 'use-sound';
 import pop from '../../../resources/sounds/pop.mp3';
@@ -19,10 +19,6 @@ const Sidebar = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [playSound] = useSound(pop, { volume: 0.2 });
-
-  const toggleSidebar = () => {
-    setExpanded(!expanded);
-  };
 
   const handleHover = () => {
     if (!expanded) {

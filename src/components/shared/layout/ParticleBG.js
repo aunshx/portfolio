@@ -32,7 +32,7 @@ export default function ParticleBG() {
                 area: 1080
               },
               limit: 0,
-              value: 150
+              value: 200
             },
             opacity: {
               animation: {

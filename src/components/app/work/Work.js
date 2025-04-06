@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import Title from "../../shared/layout/Title";
 import { EXP_LIST } from "../../../resources/constants";
+import Title from "../../shared/layout/Title";
 
 export const ExpandButton = ({ isCollapsed, onClick }) => {
   return (

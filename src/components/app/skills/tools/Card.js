@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import useWindow from "react-window-size-simple";
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import useWindow from "react-window-size-simple";
 import useSound from 'use-sound';
 
-import bass from '../../../../resources/sounds/shortBass.mp3'
+import bass from '../../../../resources/sounds/shortBass.mp3';
 
 const Card = ({
   delay,

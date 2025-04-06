@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState, useEffect, useRef } from 'react';
 import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useState } from 'react';
 import { RESUME_LINK } from '../../../resources/constants';
-import asxPortfolio from '../../../resources/images/asxPortfolio.jpeg'
+import asxPortfolio from '../../../resources/images/asxPortfolio.jpeg';
 
 const ContactButtons = ({ link, icon }) => {
     return (
