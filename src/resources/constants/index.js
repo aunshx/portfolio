@@ -178,32 +178,34 @@ export const ARTICLES_LIST = [
 // RESEARCH 
 export const RESEARCH_LIST = [
     {
-        title: "ResView: A PBFT visualizer based on the ResilientDb blockchain fabric",
-        description: "A novel practical byzantine fault tolerance consensus visualizer based on the ResilientDb sustainable blockchain fabric",
+        "title": "Spatio-temporal Forecasting of Agricultural Crop Yields with Machine Learning",
+        "description": "A platform for predicting agricultural crop distributions across California using spatio-temporal machine learning techniques",
+        "tags": ["Machine Learning", "Agriculture", "Geospatial Analysis"],
+        "achievements": [
+            "Thesis"
+        ],
+        "link": "https://drive.google.com/file/d/16OJgNEtry66OZOVhmm6F2xEvsaN8kYtj/view?usp=sharing"
+    },
+    {
+        "title": "Decision Support for Biomass Energy Assessment and Lifecycle Analysis",
+        "description": "Analyzing forest biomass resources across California to determine economic feasibility and environmental impacts of potential biopower facilities.",
+        "tags": [ "GIS", "Lifecycle Assessment", "Technoeconomic Modeling"],
+        "achievements": [],
+        "link": "https://forestdss.ucdavis.edu/"
+    },
+    {
+        title: "Byzantine Fault Tolerance Consensus Visualization",
+        description: "Novel practical byzantine fault tolerance consensus visualizer based on the ResilientDb sustainable blockchain fabric",
         tags: ["Blockchain", "DDS", "D3.js"],
         achievements: [],
         link: "https://blog.resilientdb.com/2023/12/06/ResView.html"
     },
     {
         title: "5G Dual Band Pass Filter for Wi-Fi and WLAN Operations",
-        description: "Project proposes a new generation of dual band pass 5G filter for Wi-Fi and WLAN operating t 2.45 GHz and 5.5 GHz.",
+        description: "New generation of dual band pass 5G filter for Wi-Fi and WLAN operating t 2.45 GHz and 5.5 GHz.",
         tags: ["5G", "Antenna Tech", "Telecomm"],
         achievements: ["Best Paper"],
         link: "https://drive.google.com/file/d/1vU5t8YAz7mKWWKG1-l77xMDisG6grjzA/view?usp=sharing"
-    },
-    {
-        title: "Automated Steering Mechanism",
-        description: "An autonomous steering mechanism that uses Sobel filters (OpenCV) to detect lanes and passes deviation data to steering in real-time.",
-        tags: ["Image Processing", "ML", "Electronics"],
-        achievements: ["Project Expo"],
-        link: "https://drive.google.com/file/d/1ttdNB7z2pF7-3aN8B8jFnxNZ0vlveiLR/view?usp=sharing"
-    },
-    {
-        title: "Industrial Processes Smart Safety System",
-        description: "Designed and developed an smart industrial safety system with parameter logging and automated measures",
-        tags: ["Mechatronics", "Processors", "Digital"],
-        achievements: [],
-        link: ""
     }
 ];
 

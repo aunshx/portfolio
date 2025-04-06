@@ -13,7 +13,7 @@ const Stats = ({ type, value}) => {
   const tooltipTitle = type === 'views' ? 'Views' : 'Upvotes';
   return (
     <Tooltip title={tooltipTitle}>
-      <div title={tooltipTitle} className="flex items-center justify-center gap-x-2 text-sm text-gray-400">
+      <div title={tooltipTitle} className="flex items-center justify-center gap-x-2 text-sm text-gray-300">
         <FontAwesomeIcon icon={icon} />
         <div>
           {value}
@@ -50,14 +50,14 @@ const Card = ({
     >
       <div
         onMouseEnter={elementHover}
-        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 bg-slate-900 bg-opacity-60 backdrop-blur-sm opacity-80 rounded-xl border border-slate-800 shadow-xl w-full text-white"
+        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 bg-slate-900 bg-opacity-75 backdrop-blur-sm opacity-80 rounded-xl border border-slate-800 shadow-xl w-full text-white"
       >
         <div className="flex flex-col gap-y-2">
           <div className='text-lg font-bold tracking-tight'>{title}</div>
-          <div className='text-sm text-gray-400'>{description}</div>
+          <div className='text-sm text-gray-300'>{description}</div>
         </div>
         <div className="w-full flex items-center justify-between gap-4 mt-1 lg:flex-col lg:items-start">
-          <div className='flex flex-wrap gap-4 text-gray-500 text-xs mt-1'>
+          <div className='flex flex-wrap gap-4 text-gray-400 text-xs mt-1'>
             {technology.length > 0 &&
               technology.map((val, index) => (
                 <div
@@ -66,6 +66,7 @@ const Card = ({
                   {val}
                 </div>
               ))}
+
           </div>
           <div className="flex gap-x-4">
             {Object.entries(stats).map(([k, value], index) => {
