@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --logo-color: rgb(0, 145, 255);
+    --logo-color: #0091ff;
     --closing-color: rgb(243, 47, 47);
     --image-navigate-color: rgb(206, 205, 205);
     --light-icon-color: rgb(141, 141, 141);
@@ -14,10 +14,10 @@
     --gotuu-color: #7ed957;
     --grey-color: grey;
 
-    --background-color: rgb(12, 12, 12);
+    --background-color: rgb(15, 15, 15);
     --background-dots-color: rgb(15, 15, 15);
-    --navbar-color: rgb(12, 12, 12);
-    --card-color: rgb(12, 12, 12);
+    --navbar-color: rgb(15, 15, 15);
+    --card-color: rgb(15, 15, 15);
     --light-grey-color: rgb(25, 25, 25);
     --dark-font-color: rgb(238, 238, 238);
     --light-dark-font-color: rgb(204, 204, 204);
@@ -34,10 +34,10 @@
 }
 
 [data-theme="dark"] {
-    --background-color: rgb(12, 12, 12);
+    --background-color: rgb(15, 15, 15);
     --background-dots-color: rgb(15, 15, 15);
-    --navbar-color: rgb(12, 12, 12);
-    --card-color: rgb(12, 12, 12);
+    --navbar-color: rgb(15, 15, 15);
+    --card-color: rgb(15, 15, 15);
     --light-grey-color: rgb(25, 25, 25);
     --dark-font-color: rgb(238, 238, 238);
     --light-dark-font-color: rgb(204, 204, 204);
@@ -75,7 +75,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    cursor: url('./resources/images/rocket.png') 15 15, auto;
+    cursor: url('./resources/images/rocket-2.png') 18 18, auto;
 }
 
 body::-webkit-scrollbar {
