@@ -19,6 +19,8 @@ import typescriptLogo from '../../../resources/images/skills/logos/typescriptLog
 import pythonLogo from '../../../resources/images/skills/logos/pythonLogo.png';
 import matlabLogo from '../../../resources/images/skills/logos/matlabLogo.png';
 import d3Logo from '../../../resources/images/skills/logos/d3Logo.png';
+import dockerLogo from '../../../resources/images/skills/logos/dockerLogo.webp'
+import nextJSLogo from '../../../resources/images/skills/logos/nextJSLogo.png';
 
 import SkillOne from "./tools/Card";
 
@@ -53,6 +55,12 @@ const skills = [
     title: 'Postgres',
     logo: psqlLogo,
     number: 4,
+    delay: 300
+  },
+  {
+    title: 'Next JS',
+    logo: nextJSLogo,
+    number: 2,
     delay: 300
   },
   {
@@ -113,6 +121,12 @@ const skills = [
     title: 'Matlab',
     logo: matlabLogo,
     number: 2,
+    delay: 400
+  },
+  {
+    title: 'Docker',
+    logo: dockerLogo,
+    number: 0,
     delay: 400
   }
 ];

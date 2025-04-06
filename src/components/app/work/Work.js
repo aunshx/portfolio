@@ -53,7 +53,7 @@ const Work = () => {
               <span className="absolute flex items-center justify-center w-4 h-4 bg-gray-500 rounded-full -start-2">
               </span>
               <div className="flex items-center mb-1 text-md font-semibold text-gray-900 dark:text-white">{position} <span className="mx-1">&#8226;</span> <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`${name}`}</a>
-                {index === 0 && (<span className="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">Current</span>)}
+                {index === 0 && (<span className="text-sm rounded-lg font-medium me-2 px-2.5 py-0.5 bg-none text-gray-400 border-gray-400 border ms-3">Present</span>)}
               </div>
               <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{duration}</time>
 

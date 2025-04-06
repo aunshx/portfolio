@@ -215,91 +215,69 @@ export const EXP_LIST = [
         name: "UC Davis",
         type: "Education and Computer Science",
         work: [
-            "Currently pursuing my Master's in Electrical and Computer Engineering at the University of California, Davis",
-            "Working as a Graduate Teaching Assistant for Prof. Sophia Mattingly, course EDU 122",
-            "Working with Prof. Mohammad Sadoghi at the Exploratory Systems Lab on the sustainable blockchain fabric - ResilientDb"
+            "Spearheaded development and system design of version 2.0 of the Forest Resources and Renewable Energy Decision Support System (FRREDSS)",
+            "Implemented competitive feedstock analysis visualization using Python, TypeScript, Leaflet, CSS, and PostgreSQL",
+            "Orchestrated CI/CD pipeline development and oversaw production deployment of the application"
         ],
-        description: "Currently pursuing my Master's in Electrical and Computer Engineering at the University of California, Davis. Working as a Graduate Teaching Assistant for Prof. Sophia Mattingly, course EDU 122. Working with Prof. Mohammad Sadoghi at the Exploratory Systems Lab on the sustainable blockchain fabric - ResilientDb",
+        description: "Spearheaded development of the Forest Resources and Renewable Energy Decision Support System (FRREDSS) 2.0, implemented feedstock analysis visualization with Python and TypeScript, and orchestrated CI/CD pipeline development while building advanced reporting tools and transportation cost modeling interfaces.",
         position: "Graduate Student Researcher",
-        duration: "Apr '24 - Present",
-        link: 'https://ucdavis.edu'
+        duration: "Jun '24 - Present",
+        link: 'https:/forestdss.ucdavis.edu',
+        tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment "]
+
+    },
+    {
+        name: "Exploratory Systems Lab",
+        type: "Software",
+        work: [
+            "Architected and implemented ResView, a novel PBFT consensus protocol visualization tool for blockchain systems",
+            "Developed interactive data visualization components that track message propagation timing and consensus achievement",
+            "Created simulation capabilities allowing users to induce replica failures for testing Byzantine fault tolerance mechanisms"
+        ],
+        description: "Architected ResView, a novel PBFT consensus protocol visualization tool for blockchain systems using React.js, D3.js and websockets, developed interactive components tracking message propagation timing and consensus achievement, and created simulation capabilities for testing Byzantine fault tolerance mechanisms.",
+        position: "Software Developer",
+        duration: "Aug '23 - Dec '24",
+        link: 'https://resilientdb.com',
+        tech: ['React', 'D3', 'WebSockets', 'Blockchain']
     },
     {
         name: "Prosperix",
         type: "Software",
         work: [
-            "My work will be updated shortly! Till then here is what Prosperix does:-",
-            "Prosperix is a workforce innovation company that develops software solutions that enable businesses to build an extraordinary workforce. To help businesses realize their highest potential and deliver meaningful impact, we have pioneered a new way of building and managing a thriving workforce. Our ultimate aim is for our solutions to positively impact human, workforce, and business prosperity.",
+            "Collaborated with an international team to develop two key in-app modules for the company's brand cut-over project",
+            "Implemented robust UI/UX using ReactJS, CSS, Tailwind, and Git",
+            "Designed fast and reliable APIs using GraphQL queries and enabled agile software development using CI-CD techniques"
         ],
-        description: "My work will be updated shortly! Till then here is what Prosperix does. Prosperix is a workforce innovation company that develops software solutions that enable businesses to build an extraordinary workforce. To help businesses realize their highest potential and deliver meaningful impact, we have pioneered a new way of building and managing a thriving workforce. Our ultimate aim is for our solutions to positively impact human, workforce, and business prosperity.",
-        position: "SDE",
+        description: "Collaborated with an international team to develop key in-app modules for a brand cut-over project, implemented robust UI/UX using ReactJS, CSS and Tailwind, and designed fast and reliable APIs using GraphQL queries while enabling agile software development with CI-CD techniques.",
+        position: "Software Developer Engineer",
         duration: "Mar '23 - Aug '23",
         link: 'https://prosperix.com',
-        tech: ['React', 'TS', 'CSS', 'Blockchain']
-    },
-    {
-        name: "Dr SB's",
-        type: "Software",
-        work: [
-            "Designed and worked on the company website using React and Node.js. Developed the dB schema using PostgreSQL",
-            "Implemented authentication and authorization using Google OAuth",
-            "Digitized lab report generation from MS Word to Web. Reduced lab report generation time significantly",
-            "Developed direct web to WhatsApp report sharing by developing npm packages",
-            "Implemented RESTful APIs in Node.js for analytics measurement and created customer check-in and reminder functionalities",
-        ],
-        description: "Designed and worked on the company website using React and Node.js. Developed the dB schema using PostgreSQL. Implemented authentication and authorization using Google OAuth. Digitized lab report generation from MS Word to Web. Reduced lab report generation time significantly. Developed direct web to WhatsApp report sharing by developing npm packages. Implemented RESTful APIs in Node.js for analytics measurement and created customer check-in and reminder functionalities",
-        position: "Software Development Engineer",
-        duration: "Jan '22 - Feb '23",
-        link: ''
+        tech: ['React', 'GraphQL', 'Tailwind', 'CSS']
     },
     {
         name: "2WheelR",
         type: "Analytics and Web",
         work: [
-            "Developed and set up business process to collect and collate data which was later analyzed to generate actionable insights resulting in increased revenue and margin",
-            "Designed a dashboard by selecting relevant KPIs which was implemented as a part of the digital transformation effort",
+            "Designed and implemented comprehensive KPI dashboards using SQL and Tableau that streamlined decision-making processes",
+            "Reduced reporting time by 20% and enabled real-time performance monitoring across departments",
+            "Developed market segmentation models and competitive analyses that strengthened the company's market positioning"
         ],
-        description: "Developed and set up business process to collect and collate data which was later analyzed to generate actionable insights resulting in increased revenue and margin. Designed a dashboard by selecting relevant KPIs which was implemented as a part of the digital transformation effort",
-        position: "CEO's Strategy & Operations Team",
-        duration: "Jan '21 - Dec '21",
+        description: "Designed and implemented comprehensive KPI dashboards using SQL and Tableau that streamlined decision-making processes, reduced reporting time by 20%, and played a key role in analytics strategy that secured 2nd place in Asia's largest startup competition through market segmentation models and competitive analyses.",
+        position: "Engineering Analyst",
+        duration: "Jul '21 - Jun '22",
         link: 'https://2wheelr.com'
     },
     {
         name: "Teach for India",
         type: "NGO",
         work: [
-            "Taught and mentored 60 students coming from under-privileged communities in Math, History and Science at a local school",
-            "Conducted personality development workshops, field visits and gatherings to increase engagement, merit and holistic development",
+            "Led high school mathematics and science curriculum for underprivileged students",
+            "Conducted personality development workshops, field visits and gatherings to increase engagement",
+            "Received fellowship for commitment to educational equity"
         ],
-        description: "Taught and mentored 60 students coming from under-privileged communities in Math, History and Science at a local school. Conducted personality development workshops, field visits and gatherings to increase engagement, merit and holistic development",
+        description: "Led high school mathematics and science curriculum for underprivileged students as a Fellow while conducting personality development workshops, field visits and gatherings to increase engagement, merit and holistic development.",
         position: "Fellow",
         duration: "May '20 - Jun '21",
         link: 'https://www.teachforindia.org/'
-    },
-    {
-        name: "Forbes Marshall",
-        type: "Internship",
-        work: [
-            "Designed the control circuit of the Swiss New Water's novel disinfectant dispenser according to IPC specifications and implemented it using schematics developed in Eagle",
-            "Developed schematics for a prototype based on Texas Instruments' XTR 111 precision voltage-to-current converter",
-            "Oversaw purchase and procurement of materials required for the product",
-        ],
-        description: "Designed the control circuit of the Swiss New Water's novel disinfectant dispenser according to IPC specifications and implemented it using schematics developed in Eagle. Developed schematics for a prototype based on Texas Instruments' XTR 111 precision voltage-to-current converter. Oversaw purchase and procurement of materials required for the product",
-        position: "Project Trainee",
-        duration: "Jun '19 - Jul '19",
-        link: 'https://www.forbesmarshall.com/'
-    },
-    {
-        name: "Open Links Fdn",
-        type: "NGO",
-        work: [
-            "Created and trained a network of volunteers to aide in the increase of the reach of the organization",
-            "Facilitated inclusive communication between all stakeholders for efficient workflow and optimum utilization of resources",
-            "Conducted multiple workshops to elevate technological literacy and facilitate holistic personality development in various schools for students coming from under-privileged communities.",
-        ],
-        description: "Created and trained a network of volunteers to aide in the increase of the reach of the organization. Facilitated inclusive communication between all stakeholders for efficient workflow and optimum utilization of resources. Conducted multiple workshops to elevate technological literacy and facilitate holistic personality development in various schools for students coming from under-privileged communities.",
-        position: "Volunteer",
-        duration: "Nov '18 - May '20",
-        link: 'https://openlinksfoundation.org'
-    },
+    }
 ];

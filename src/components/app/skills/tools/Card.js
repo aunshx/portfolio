@@ -42,7 +42,7 @@ const Card = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={'flex items-center gap-x-1 skills-card bg-slate-900 opacity-70'}
+        className={'flex items-center gap-x-1 skills-card opacity-70'}
         data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
