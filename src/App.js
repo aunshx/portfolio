@@ -84,7 +84,7 @@ function App({
         <>
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </>
       </Router>

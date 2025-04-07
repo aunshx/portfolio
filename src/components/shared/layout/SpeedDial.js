@@ -1,4 +1,5 @@
 import { faGithub, faLinkedin, faMedium } from "@fortawesome/free-brands-svg-icons";
+import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SpeedDial from "@mui/material/SpeedDial";
@@ -6,6 +7,11 @@ import SpeedDialAction from "@mui/material/SpeedDialAction";
 import React, { useState } from "react";
 
 const actions = [
+  {
+    icon: <FontAwesomeIcon icon={faMailBulk} />,
+    name: "Mail",
+    link: "mailto:aunsh.spb@gmail.com",
+  },
   {
     icon: <FontAwesomeIcon icon={faMedium} />,
     name: "Medium Profile",

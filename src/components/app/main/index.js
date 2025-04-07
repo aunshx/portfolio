@@ -71,12 +71,11 @@ const TypedText = () => {
 
 const Main = ({ goToFunc }) => {
     return (
-        <div className="min-h-[95vh] flex items-center justify-start relative  px-4 w-full">
+        <div className="min-h-[95vh] md:mt-1 flex items-center justify-start relative  px-4 w-full">
             <div className="lg:hidden absolute top-10 right-1/3 w-64 h-64 rounded-full bg-blue-400 opacity-5 blur-3xl"></div>
 
             <div className="w-full max-w-7xl">
                 <div className="flex flex-col items-center justify-between gap-4 lg:gap-6 w-full">
-
                     <div className="w-full flex flex-col items-center space-y-6">
                         <div className="relative w-44 h-44 xl:w-40 xl:h-40 md:w-30 md:h-30 rounded-full overflow-hidden border-2 border-brand shadow-lg mb-2">
                             <img
@@ -85,7 +84,6 @@ const Main = ({ goToFunc }) => {
                                 className="w-full h-full object-cover"
                             />
                         </div>
-
                         <div className="space-y-2 w-full flex items-center justify-center flex-col">
                             <div id="main-name" className="text-6xl lg:text-4xl md:text-2xl font-bold text-white tracking-normal text-center">
                                 Aunsh Bandivadekar
