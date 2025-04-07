@@ -34,9 +34,9 @@ const Card = ({
                     </div>
                     <div className="flex flex-col justify-between p-4 h-full">
                         <div className='flex flex-col gap-2'>
-                            <div className="flex items-center justify-start gap-1">
+                            <div className="flex items-center justify-start md:flex-col gap-1">
                                 <div className="text-lg font-bold tracking-tight">{title}</div>
-                                <span>
+                                <span className='md:hidden'>
                                     &#8226;
                                 </span>
                                 <div className='font-normal text-gray-400 text-md'>
