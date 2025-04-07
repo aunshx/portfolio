@@ -7,24 +7,23 @@ const Container = ({ children, className = '', innerRef, movement, noMargin, cus
         <div
         className={cn(`
         w-9/12
-        xl:w-full
-        lg:max-w-[960px]
-        md:max-w-[720px]
-        
+        xl:max-w-[90vw]
+        lg:w-full
         flex
         items-center
         justify-center
 
         px-14
-        lg:px-10
+        lg:px-2
         md:px-4
-        sm:px-2
+
+        py-2
         
         ${className}
-      `, {'my-16 xl:my-12 lg:my-10 sm:my-8': customMargin })}
+      `, {'my-14 xl:my-10 lg:my-8 sm:my-6': customMargin })}
             data-aos={movement ?? 'fade-left'}
         ref={innerRef}
-        // style={{ border: '1px solid blue' }}
+        style={{ border: '1px solid yellow' }}
         >
             {children}
         </div>

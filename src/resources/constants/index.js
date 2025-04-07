@@ -30,7 +30,7 @@ export const PROJECT_LIST = [
         id: 2,
         title: 'ResView',
         subTitle: 'Blockchain Visualizer',
-        description: 'My portfolio website. Includes client side static site and admin overview functionalities to check stats and messages.',
+        description: 'A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric.',
         image: resviewProj,
         tech: ['Showcase', 'Personal', 'Messages', 'Mui', 'Javascript'],
         gitUrl: 'https://github.com/aunshx/portfolio',
@@ -41,7 +41,7 @@ export const PROJECT_LIST = [
         id: 3,
         title: 'Reddit Infiniti',
         subTitle: 'Web API Project',
-        description: 'Utilizing the Reddit API by lazy-loading. Filtered API Data is processed and consumed in real-time while scrolling.',
+        description: 'Utilizing the Reddit API by continuous streaming and processing API Data to showcase tech memes.',
         image: redditInfinitProj,
         tech: [
             'Dual-Mode',
@@ -251,7 +251,7 @@ export const EXP_LIST = [
             "Designed fast and reliable APIs using GraphQL queries and enabled agile software development using CI-CD techniques"
         ],
         description: "Collaborated with an international team to develop key in-app modules for a brand cut-over project, implemented robust UI/UX using ReactJS, CSS and Tailwind, and designed fast and reliable APIs using GraphQL queries while enabling agile software development with CI-CD techniques.",
-        position: "Software Developer Engineer",
+        position: "Software Developer",
         duration: "Mar '23 - Aug '23",
         link: 'https://prosperix.com',
         tech: ['React', 'GraphQL', 'Tailwind', 'CSS']

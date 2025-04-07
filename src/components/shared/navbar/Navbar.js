@@ -129,7 +129,7 @@ const Navbar = ({
       <div
         className='navbar flex items-center justify-between w-full general-card fixed top-0 px-16 z-[200]'
         style={
-          shadowToggle
+          false
             ? displayMode
               ? {
                 boxShadow:

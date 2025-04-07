@@ -15,13 +15,13 @@ const Projects = () => {
   }
 
   return (
-    <div className='w-full'>
+    <div className='w-full items-center justify-center' style={{ border: '1px solid red' }} >
       <Title
         icon={<FontAwesomeIcon icon={faTools} />}
         title="Portfolio"
       />
 
-      <div className={`grid grid-cols-2 lg:grid-cols-1 gap-16 lg:gap-8 ${VERTICAL_MARGIN} flex items-center justify-center`}>
+      <div className={`grid grid-cols-2 gap-16 ${VERTICAL_MARGIN} lg:flex lg:flex-col lg:items-center lg:justify-center`} style={{ border: '1px solid red' }} >
         {PROJECT_LIST.map((project, index) => (
           <Card
             key={project.id}

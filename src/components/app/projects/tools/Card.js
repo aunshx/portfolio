@@ -28,7 +28,7 @@ const Card = ({
     return (
         <div className="grid grid-cols-1 h-full">
             <a href={link} target='_blank' rel='noreferrer nofollow' className="h-full">
-                <div className='max-w-md h-full border-2 opacity-70 border-zinc-800 bg-zinc-900 rounded-lg hover:scale-105 transition hover:border-brand hover:text-brand text-white grid grid-rows-[auto_1fr]'>
+                <div className='max-w-md h-full border-2 opacity-900 border-zinc-800 bg-zinc-900 rounded-lg hover:scale-105 transition hover:border-brand hover:text-brand text-white grid grid-rows-[auto_1fr]'>
                     <div>
                         <img className="rounded-t-lg w-full" src={image} alt={`${title} Logo`} style={{ maxHeight: '250px', objectFit: 'cover' }} />
                     </div>
