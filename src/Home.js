@@ -173,16 +173,16 @@ const Home = ({
 
       <div ref={shadowElement} />
       <div ref={refElement} />
-      <div className="w-screen h-full flex flex-col items-center justify-center" style={{ border: '1px solid red' }} >
+      <div className="w-screen h-full flex flex-col items-center justify-center">
         <Container innerRef={goHome} movement={'fade-down'} className='my-12'>
           <Main goToFunc={[goToProjects, goToWork]} />
         </Container>
         <Container innerRef={goWork} movement={'fade-up'} customMargin>
           <Work />
         </Container>
-        {/* <Container innerRef={goSkills} movement={'fade-left'} customMargin>
+        <Container innerRef={goSkills} movement={'fade-down'} customMargin>
           <Skills />
-        </Container> */}
+        </Container>
         <Container innerRef={goProjects} movement={'fade-up'} customMargin>
           <Projects />
         </Container>

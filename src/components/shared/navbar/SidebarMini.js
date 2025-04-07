@@ -78,7 +78,7 @@ const SidebarMini = ({
 
  
   return (
-    <div className='sidebar bg-gray-950 h-full text-gray-400 px-2 py-4'>
+    <div className='sidebar bg-zinc-950 h-full text-gray-400 px-2 py-4'>
       <div className='title flex_around'>
         <div></div>
         <div className='text-xl text-brand'>Menu</div>

@@ -14,7 +14,7 @@ const Container = ({ children, className = '', innerRef, movement, noMargin, cus
         justify-center
 
         px-14
-        lg:px-2
+        lg:px-10
         md:px-4
 
         py-2
@@ -23,7 +23,6 @@ const Container = ({ children, className = '', innerRef, movement, noMargin, cus
       `, {'my-14 xl:my-10 lg:my-8 sm:my-6': customMargin })}
             data-aos={movement ?? 'fade-left'}
         ref={innerRef}
-        style={{ border: '1px solid yellow' }}
         >
             {children}
         </div>

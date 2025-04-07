@@ -28,12 +28,6 @@ import Title from "../../shared/layout/Title";
 
 const skills = [
   {
-    title: 'Python',
-    logo: pythonLogo,
-    number: 3,
-    delay: 450
-  },
-  {
     title: 'Typescript',
     logo: typescriptLogo,
     number: 4,
@@ -42,6 +36,12 @@ const skills = [
   {
     title: 'React',
     logo: reactLogo,
+    number: 3,
+    delay: 450
+  },
+  {
+    title: 'Python',
+    logo: pythonLogo,
     number: 3,
     delay: 450
   },
@@ -80,12 +80,6 @@ const skills = [
     logo: nodeLogo,
     number: 1,
     delay: 350
-  },
-  {
-    title: 'Java',
-    logo: javaLogo,
-    number: 0,
-    delay: 0
   },
   {
     title: 'MongoDb',
@@ -145,9 +139,9 @@ const Skills = () => {
   }, 1000);
 
   return (
-    <div className='grid grid-cols-[20%_80%] gap-5 w-full lg:grid-cols-1 items-center'>
+    <div className='grid grid-cols-[20%_80%] gap-5 w-full xl:grid-cols-1  px-2'>
       <Title title={"Tech"} icon={<FontAwesomeIcon icon={faMicrochip} />} description={': Some tools I use quite often'} />
-      <div className='flex gap-x-2 flex-wrap'>
+      <div className='flex gap-x-2 flex-wrap items-center justify-start'>
         {skills.map((skill, index) => (
           <div key={index}>
             <SkillOne
