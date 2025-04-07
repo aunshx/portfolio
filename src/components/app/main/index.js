@@ -119,7 +119,7 @@ const Main = ({ goToFunc }) => {
 
                     <div className="w-full flex items-center justify-center">
                         <div className="w-full max-w-2xl transform hover:translate-y-[-5px] transition duration-500">
-                            <div className="p-8 bg-gray-900 bg-opacity-60 backdrop-blur-sm opacity-80 rounded-2xl border border-gray-800 shadow-xl w-full text-white text-md ">
+                            <div className="p-8 bg-gray-900 bg-opacity-60 backdrop-blur-sm opacity-80 rounded-2xl border border-gray-800 shadow-xl w-full text-white text-md md:text-sm">
                                 <span className="text-lg text-brand">Namaste! 👋</span>
                                 , I'm a Software and ML Engineer currently pursuing my MS in Electrical and Computer Engineering at UC Davis. I love building impactful visualizations and data-driven software systems that solve real-world problems. 
                             </div>

@@ -45,7 +45,7 @@ const Card = ({
                             </div>
                             <p className="font-normal text-sm text-gray-300 mb-3">{description}</p>
                         </div>
-                        <div className='flex items-center justify-between gap-2 text-md w-full lg:flex-col mt-4'>
+                        <div className='flex items-center justify-between gap-2 lg:gap-4 text-md w-full lg:flex-col mt-4'>
                             <div className="flex items-center justify-start gap-x-8">
                                 <ContactButtons icon={faGithub} link={gitUrl} />
                                 <ContactButtons icon={faArrowUpRightFromSquare} link={link} />

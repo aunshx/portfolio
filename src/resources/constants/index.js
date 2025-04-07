@@ -33,7 +33,7 @@ export const PROJECT_LIST = [
         description: 'A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric.',
         image: resviewProj,
         tech: ['Showcase', 'Personal', 'Messages', 'Mui', 'Javascript'],
-        gitUrl: 'https://github.com/aunshx/portfolio',
+        gitUrl: 'https://github.com/ResilientApp/ResView',
         link: 'https://resview.resilientdb.com/pages/home',
         tag: 'ExpoLab'
     },
@@ -193,7 +193,7 @@ export const RESEARCH_LIST = [
         "description": "Analyzing forest biomass resources across California to determine economic feasibility and environmental impacts of potential biopower facilities.",
         "tags": [ "GIS", "Lifecycle Assessment", "Technoeconomic Modeling"],
         "achievements": [],
-        "link": "https://forestdss.ucdavis.edu/"
+        "link": "https://ucdavis.app.box.com/file/1602222716525?s=ptum3pvtfarexagd1nmgy479gej1otmz"
     },
     {
         title: "Byzantine Fault Tolerance Consensus Visualization",
@@ -224,7 +224,7 @@ export const EXP_LIST = [
         description: "Spearheaded development of the Forest Resources and Renewable Energy Decision Support System (FRREDSS) 2.0, implemented feedstock analysis visualization with Python and TypeScript, and orchestrated CI/CD pipeline development while building advanced reporting tools and transportation cost modeling interfaces.",
         position: "Graduate Student Researcher",
         duration: "Jun '24 - Present",
-        link: 'https:/forestdss.ucdavis.edu',
+        link: 'https:/its.ucdavis.edu',
         tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment "]
 
     },

@@ -13,7 +13,7 @@ const Stats = ({ type, value}) => {
   const tooltipTitle = type === 'views' ? 'Views' : 'Upvotes';
   return (
     <Tooltip title={tooltipTitle}>
-      <div title={tooltipTitle} className="flex items-center justify-center gap-x-2 text-sm text-gray-300">
+      <div title={tooltipTitle} className="flex items-center justify-center gap-x-2 text-sm text-gray-200">
         <FontAwesomeIcon icon={icon} />
         <div>
           {value}

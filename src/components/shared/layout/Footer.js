@@ -19,10 +19,10 @@ export const ContactButtons = ({ link, icon  }) => {
 
 const Footer = () => {
   return (
-    <footer className="bg-none w-full">
+    <footer className="bg-none w-full px-8 lg:px-4">
       <div className="mx-auto w-full max-w-screen-xl ">
         <hr className="mb-4 border-gray-200 sm:mx-auto dark:border-gray-700" />
-        <div className="flex items-start justify-between text-gray-400 md:flex-col gap-6 md:gap-4 text-md md:text-sm">
+        <div className="flex items-start justify-between text-gray-400 sm:flex-col gap-6 md:gap-4 md:items-center md:gap-8 text-md md:text-sm">
           <div>
             Handcrafted with <span className='text-red-500'>&#9829;</span> in CA
           </div>
