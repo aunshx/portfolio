@@ -151,7 +151,7 @@ const Home = ({
   return (
     <div className='h-100v w-full'>
       <Navbar
-        shadowToggle={shadowToggle}
+        refElement={refElement}
         goToHome={goToHome}
         goToAbout={goToAbout}
         goToWork={goToWork}
@@ -177,6 +177,7 @@ const Home = ({
       {backgroundAnimation && <ParticleBackground />}
 
       <div ref={shadowElement} />
+      <div ref={refElement} />
       <div className="w-screen h-full flex flex-col items-center justify-center">
         <Container innerRef={goHome} movement={'fade-down'} className='my-12'>
           <Main goToFunc={[goToProjects, goToWork]} />
@@ -184,7 +185,6 @@ const Home = ({
         <Container innerRef={goWork} movement={'fade-up'} customMargin>
           <Work />
         </Container>
-        <div ref={refElement} />
         <Container innerRef={goSkills} movement={'fade-down'} customMargin>
           <Skills />
         </Container>

@@ -28,7 +28,7 @@ import cn from 'classnames';
 
 
 const Navbar = ({
-  shadowToggle,
+  refElement,
   goToHome,
   goToWork,
   goToProjects,
@@ -37,7 +37,7 @@ const Navbar = ({
   goToArticles,
   goToEducation,
   // Redux State
-  settings: { displayMode, sound, backgroundAnimation },
+  settings: { sound, backgroundAnimation },
   // Redux Actions
   soundOn,
   soundOff,
@@ -68,7 +68,6 @@ const Navbar = ({
         entries.forEach(entry => {
           setIsNameInView(entry.isIntersecting);
           if (sound && entry.isIntersecting !== isNameInView) {
-            // Play sound when state changes (optional)
             playOn();
           }
         });
@@ -127,7 +126,7 @@ const Navbar = ({
 
   return (
       <div
-      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white', {'md:bg-[#0f0f0f]':shadowToggle})}
+      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white', { 'md:bg-[#0f0f0f]': refElement })}
       >
         <div className='cursor-pointer'>
           <NavLink to='/'>

@@ -88,7 +88,7 @@ const Main = ({ goToFunc }) => {
                             <div id="main-name" className="text-6xl lg:text-4xl md:text-2xl font-bold text-white tracking-normal text-center">
                                 Aunsh Bandivadekar
                             </div>
-                            <div className="text-3xl lg:text-2xl md:text-xl text-white text-center lg:text-left w-full">
+                            <div className="text-3xl lg:text-2xl md:text-lg text-white text-center lg:text-left w-full">
                                 <span><TypedText /></span>
                             </div>
                         </div>
