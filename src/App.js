@@ -18,7 +18,6 @@ import store from "./store";
 import darkBackground from "./resources/sounds/darkBackground.mp3";
 import lightBackground from "./resources/sounds/lightBackground.mp3";
 
-
 function App({
   // Redux States
   settings: { displayMode, music },
@@ -73,6 +72,7 @@ function App({
       }
     });
   });
+
 
   if (isLoading) {
     return null;
