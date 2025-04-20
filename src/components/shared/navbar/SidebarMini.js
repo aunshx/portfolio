@@ -78,7 +78,7 @@ const SidebarMini = ({
 
  
   return (
-    <div className='sidebar bg-gray-950 h-full text-gray-400 px-2 py-4'>
+    <div className='sidebar bg-zinc-950 h-full text-gray-400 px-2 py-4'>
       <div className='title flex_around'>
         <div></div>
         <div className='text-xl text-brand'>Menu</div>
@@ -123,9 +123,9 @@ const SidebarMini = ({
               </div>
             )}
         <SidebarComponent icon={faHome} title={'Home'} close={close} goToFunc={goToHome} elementHover={elementHover}  />
-        <SidebarComponent icon={faBriefcase} title={'Work Ex'} close={close} goToFunc={goToWork} elementHover={elementHover} />
+        <SidebarComponent icon={faBriefcase} title={'Experience'} close={close} goToFunc={goToWork} elementHover={elementHover} />
         <SidebarComponent icon={faSchoolFlag} title={'Education'} close={close} goToFunc={goToEducation} elementHover={elementHover} />
-        <SidebarComponent icon={faTools} title={'Portfolio'} close={close} goToFunc={goToProjects} elementHover={elementHover} />
+        <SidebarComponent icon={faTools} title={'Projects'} close={close} goToFunc={goToProjects} elementHover={elementHover} />
         <SidebarComponent icon={faVial} title={'Research'} close={close} goToFunc={goToResearch} elementHover={elementHover} />
         <SidebarComponent icon={faNewspaper} title={'Blog'} close={close} goToFunc={goToArticles} elementHover={elementHover} />
         <SidebarComponent icon={faMicrochip} title={'Tech'} close={close} goToFunc={goToSkills} elementHover={elementHover} />

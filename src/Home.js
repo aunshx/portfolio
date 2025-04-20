@@ -20,12 +20,18 @@ import ParticleBackground from './components/shared/layout/ParticleBG';
 
 import './App.css';
 import Footer from './components/shared/layout/Footer';
+import useWindow from 'react-window-size-simple';
+import { Tooltip } from '@mui/material';
+import { ArrowCircleDown, ArrowCircleUp } from '@mui/icons-material';
+import SpeedDial from './components/shared/layout/SpeedDial';
 
 const Home = ({
   // Redux State
   sidebar: { hover },
   settings: { sound, backgroundAnimation },
 }) => {
+
+  const { width } = useWindow()
 
   const [showContact, setShowContact] = useState(false);
   const [shadowToggle, setShadowToggle] = useState(false)
@@ -39,7 +45,6 @@ const Home = ({
   const goArticles = useRef();
   const goSkills = useRef();
   const goFooter = useRef();
-  const goNpm = useRef();
   const goEducation = useRef();
 
   const scrollToTargetPos = (rect) => {
@@ -61,9 +66,9 @@ const Home = ({
     };
     shadow.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        setShadowToggle(false);
-      } else {
         setShadowToggle(true);
+      } else {
+        setShadowToggle(false);
       }
     }, options);
     if (node) {
@@ -146,7 +151,7 @@ const Home = ({
   return (
     <div className='h-100v w-full'>
       <Navbar
-        shadowToggle={shadowToggle}
+        refElement={refElement}
         goToHome={goToHome}
         goToAbout={goToAbout}
         goToWork={goToWork}
@@ -173,16 +178,16 @@ const Home = ({
 
       <div ref={shadowElement} />
       <div ref={refElement} />
-      <div className="w-screen h-full flex flex-col items-center justify-center" style={{ border: '1px solid red' }} >
+      <div className="w-screen h-full flex flex-col items-center justify-center">
         <Container innerRef={goHome} movement={'fade-down'} className='my-12'>
           <Main goToFunc={[goToProjects, goToWork]} />
         </Container>
         <Container innerRef={goWork} movement={'fade-up'} customMargin>
           <Work />
         </Container>
-        {/* <Container innerRef={goSkills} movement={'fade-left'} customMargin>
+        <Container innerRef={goSkills} movement={'fade-down'} customMargin>
           <Skills />
-        </Container> */}
+        </Container>
         <Container innerRef={goProjects} movement={'fade-up'} customMargin>
           <Projects />
         </Container>
@@ -199,41 +204,38 @@ const Home = ({
           <Footer />
         </Container>
 
-        {/* {width > 1280 && (
+        {width > 1280 && (
           <>
-            {showContact && (
-              <>
-                <div onClick={goToFooter}>
-                  <Tooltip title='Page Down' placement='left' enterDelay={400}>
-                    <div className='speed-dial cursor-pointer fixed bottom-10 right-8 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
-                      <ArrowCircleDownOutlinedIcon
+            <div onClick={shadowToggle ? goToFooter : goToHome}>
+              <Tooltip title={shadowToggle ? 'Page Down' : 'Page Up'} placement='left' enterDelay={400}>
+                    <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                      {shadowToggle ? (
+                    <ArrowCircleDown
+                      className='go-up'
+                      style={{ fontSize: 40 }}
+                    />
+                      ) : (
+                      <ArrowCircleUp
                         className='go-up'
                         style={{ fontSize: 40 }}
                       />
+                      )}
+        
                     </div>
                   </Tooltip>
                 </div>
-              </>
-            )}
-            {!showContact && (
-              <>
                 <div onClick={goToHome}>
                   <Tooltip title='Page Up' placement='left' enterDelay={400}>
                     <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
-                      <ArrowCircleUpOutlinedIcon
-                        className='go-up'
-                        style={{ fontSize: 40 }}
-                      />
+
                     </div>
                   </Tooltip>
                 </div>
-              </>
-            )}
             <div className='fixed bottom-36 right-9'>
               <SpeedDial />
             </div>
           </>
-        )} */}
+        )}
       </div>
     </div>
   );

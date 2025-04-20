@@ -24,10 +24,11 @@ import {
   toggleLightMode,
 } from "../../../redux/actions/settings";
 import { RESUME_LINK } from '../../../resources/constants';
+import cn from 'classnames';
 
 
 const Navbar = ({
-  shadowToggle,
+  refElement,
   goToHome,
   goToWork,
   goToProjects,
@@ -36,7 +37,7 @@ const Navbar = ({
   goToArticles,
   goToEducation,
   // Redux State
-  settings: { displayMode, sound, backgroundAnimation },
+  settings: { sound, backgroundAnimation },
   // Redux Actions
   soundOn,
   soundOff,
@@ -67,7 +68,6 @@ const Navbar = ({
         entries.forEach(entry => {
           setIsNameInView(entry.isIntersecting);
           if (sound && entry.isIntersecting !== isNameInView) {
-            // Play sound when state changes (optional)
             playOn();
           }
         });
@@ -125,24 +125,8 @@ const Navbar = ({
   };
 
   return (
-    <>
       <div
-        className='navbar flex items-center justify-between w-full general-card fixed top-0 px-16 z-[200]'
-        style={
-          false
-            ? displayMode
-              ? {
-                boxShadow:
-                  "2px 2px 2px 1px rgba(80, 80, 80, 0.2), transition: '0.15s ease-in-out'",
-              }
-              : {
-                boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-                transition: "0.15s ease-in-out",
-              }
-            : {
-              background: "transparent",
-            }
-        }
+      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white', { 'md:bg-[#0f0f0f]': refElement })}
       >
         <div className='cursor-pointer'>
           <NavLink to='/'>
@@ -306,9 +290,6 @@ const Navbar = ({
           </Drawer>
         )}
       </div>
-
-      {/* Styling is now handled in App.css */}
-    </>
   );
 };
 

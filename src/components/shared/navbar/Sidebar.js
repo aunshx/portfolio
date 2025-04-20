@@ -38,7 +38,7 @@ const Sidebar = ({
   // Define navigation items in a consistent structure
   const navItems = [
     { icon: faHome, title: 'Home', action: goToHome },
-    { icon: faBriefcase, title: 'Work', action: goToWork },
+    { icon: faBriefcase, title: 'Experience', action: goToWork },
     { icon: faSchool, title: 'Education', action: goToEducation },
     { icon: faTools, title: 'Projects', action: goToProjects },
     { icon: faVial, title: 'Research', action: goToResearch },

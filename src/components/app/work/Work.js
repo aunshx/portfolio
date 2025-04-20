@@ -57,7 +57,6 @@ const Work = () => {
                   {position}
               </div>
               <div className="mx-1 lg:hidden">&#8226;</div> <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`${name}`}</a>
-                {index === 0 && (<div className="text-sm rounded-lg font-medium px-2.5 py-0.5 bg-none text-gray-400 border-gray-400 border my-1">Present</div>)}
               </div>
               <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{duration}</time>
 
