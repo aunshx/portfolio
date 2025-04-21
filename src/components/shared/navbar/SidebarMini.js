@@ -134,11 +134,11 @@ const SidebarMini = ({
           <div className='text-lg font-bold mb-2 text-center'>
             Connect
           </div>
-          <div className="flex flex-wrap w-full px-2 items-center justify-center gap-x-4">
+          <div className="flex flex-wrap w-full px-2 items-center justify-center gap-4">
             <ContactButtons />
-            <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} />
-            <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} />
-            <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} />
+            <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} title={'Linkedin'} />
+            <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} title={'Medium'} />
+            <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} title={'Mail'} />
           </div>
         </div> 
       <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'>

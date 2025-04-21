@@ -21,7 +21,7 @@ export default function ParticleBG() {
             opacity: 0
           },
           detectRetina: false,
-          fpsLimit: 30,
+          fpsLimit: 120,
           particles: {
             color: {
               value: "#0091ff"

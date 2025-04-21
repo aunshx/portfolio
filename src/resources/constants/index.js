@@ -117,7 +117,7 @@ export const ARTICLES_LIST = [
     },
     {
         "title": " Initialize a project in node with npm init",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, minus?",
+        "description": "How to initialize a project with the npm init command and use the package.json file to start coding our projects in node",
         "link": "https://medium.com/@aunsh/initialize-a-project-in-node-with-npm-init-dc6f2196033",
         "technologies": ["nodejs", "api", "snoowrap"],
         "stats": {
@@ -214,7 +214,7 @@ export const RESEARCH_LIST = [
 // EXPERIENCE, Work
 export const EXP_LIST = [
     {
-        name: "UC Davis",
+        name: "Energy Graduate Group, UC Davis",
         type: "Education and Computer Science",
         work: [
             "Spearheaded development and system design of version 2.0 of the Forest Resources and Renewable Energy Decision Support System (FRREDSS)",
@@ -222,14 +222,14 @@ export const EXP_LIST = [
             "Orchestrated CI/CD pipeline development and oversaw production deployment of the application"
         ],
         description: "Spearheaded development of the Forest Resources and Renewable Energy Decision Support System (FRREDSS) 2.0, implemented feedstock analysis visualization with Python and TypeScript, and orchestrated CI/CD pipeline development while building advanced reporting tools and transportation cost modeling interfaces.",
-        position: "Graduate Student Researcher",
-        duration: "Jun '24 - Present",
+        position: "Software Engineer",
+        duration: "Jun 2024 - Present",
         link: 'https:/its.ucdavis.edu',
         tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment "]
 
     },
     {
-        name: "Exploratory Systems Lab",
+        name: "Expolab, UC Davis",
         type: "Software",
         work: [
             "Architected and implemented ResView, a novel PBFT consensus protocol visualization tool for blockchain systems",
@@ -238,12 +238,12 @@ export const EXP_LIST = [
         ],
         description: "Architected ResView, a novel PBFT consensus protocol visualization tool for blockchain systems using React.js, D3.js and websockets, developed interactive components tracking message propagation timing and consensus achievement, and created simulation capabilities for testing Byzantine fault tolerance mechanisms.",
         position: "Software Developer",
-        duration: "Aug '23 - Dec '24",
+        duration: "Aug 2023 - Dec 2024",
         link: 'https://resilientdb.com',
         tech: ['React', 'D3', 'WebSockets', 'Blockchain']
     },
     {
-        name: "Prosperix",
+        name: "Prosperix.com",
         type: "Software",
         work: [
             "Collaborated with an international team to develop two key in-app modules for the company's brand cut-over project",
@@ -252,7 +252,7 @@ export const EXP_LIST = [
         ],
         description: "Collaborated with an international team to develop key in-app modules for a brand cut-over project, implemented robust UI/UX using ReactJS, CSS and Tailwind, and designed fast and reliable APIs using GraphQL queries while enabling agile software development with CI-CD techniques.",
         position: "Software Developer",
-        duration: "Mar '23 - Aug '23",
+        duration: "Mar 2023 - Aug 2023",
         link: 'https://prosperix.com',
         tech: ['React', 'GraphQL', 'Tailwind', 'CSS']
     },
@@ -266,7 +266,7 @@ export const EXP_LIST = [
         ],
         description: "Designed and implemented comprehensive KPI dashboards using SQL and Tableau that streamlined decision-making processes, reduced reporting time by 20%, and played a key role in analytics strategy that secured 2nd place in Asia's largest startup competition through market segmentation models and competitive analyses.",
         position: "Engineering Analyst",
-        duration: "Jul '21 - Jun '22",
+        duration: "Jul 2021 - Jun 2022",
         link: 'https://2wheelr.com'
     },
     {
@@ -279,7 +279,10 @@ export const EXP_LIST = [
         ],
         description: "Led high school mathematics and science curriculum for underprivileged students as a Fellow while conducting personality development workshops, field visits and gatherings to increase engagement, merit and holistic development.",
         position: "Fellow",
-        duration: "May '20 - Jun '21",
+        duration: "May 2020 - Jun 2021",
         link: 'https://www.teachforindia.org/'
     }
 ];
+
+// LICENSE
+export const LICENSE = 'https://www.gnu.org/licenses/agpl-3.0.en.html'

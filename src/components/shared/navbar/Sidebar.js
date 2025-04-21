@@ -48,7 +48,7 @@ const Sidebar = ({
 
   return (
     <div
-      className={`sidebar_main fixed left-0 h-[calc(100vh-60px)] text-gray-400 transition-all duration-300 ease-in-out z-[190] flex items-center justify-center ${expanded ? 'w-[180px]' : 'w-[50px]'}`}
+      className={`sidebar_main fixed left-0 h-[calc(100vh-60px)] text-gray-200 transition-all duration-300 ease-in-out z-[190] flex items-center justify-center ${expanded ? 'w-[180px]' : 'w-[50px]'}`}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
     >
@@ -61,7 +61,7 @@ const Sidebar = ({
           >
             <FontAwesomeIcon
               icon={item.icon}
-              className="w-[18px] h-[18px] transition-all"
+              className="w-[20px] h-[20px] transition-all"
             />
             <span
               className={`absolute left-10 ml-2 whitespace-nowrap transition-opacity duration-300 ${expanded ? 'opacity-100' : 'opacity-0'
