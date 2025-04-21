@@ -58,12 +58,22 @@ const Work = () => {
               </div>
               <div className="mx-1 lg:hidden">&#8226;</div> <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`${name}`}</a>
               </div>
-              <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{duration}</time>
+              <div className="flex items-center justify-start gap-1 mb-1 text-gray-500 text-sm md:flex-col md:items-start">
+                {(index === 0 || index === 1) && (
+                  <>
+                    <div>
+                      Graduate Student Researcher
+                    </div>
+                    <div className="md:hidden">&#8226;</div>
+                  </>
+                )}
+                <time className="block font-normal leading-none">{duration}</time>
+              </div>
 
               <p className="mb-4 text-sm font-normal text-gray-500 dark:text-gray-400 lg:mt-1">{description}</p>
               <div className="flex flex-wrap w-full gap-2">
                 {tech !== undefined && tech.map((val, index) => (
-                  <div className="text-gray-600 bg-gray-900  focus:outline-none font-xs rounded-xl text-sm px-2 py-1 min-w-16 text-center" key={index}>{val}</div>
+                  <div className="text-gray-500 bg-gray-800  focus:outline-none font-xs rounded-xl text-sm px-2 py-1 min-w-16 text-center" key={index}>{val}</div>
                 ))}
               </div>
 

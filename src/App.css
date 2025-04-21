@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --logo-color: rgb(0, 145, 255);
+    --logo-color: #0091ff;
     --closing-color: rgb(243, 47, 47);
     --image-navigate-color: rgb(206, 205, 205);
     --light-icon-color: rgb(141, 141, 141);
@@ -134,6 +134,7 @@ pre {
     color: var(--light-color);
     padding: 10px;
 }
+
 
 
 .cursor_pointer {
@@ -440,29 +441,6 @@ pre {
     height: 50px;
 }
 
-/* --------------- SKILLS ---------------- */
-
-.skills-card {
-    width: auto;
-    color: var(--lighter-dark-font-color);
-    height: 50px;
-    font-size: 14px;
-    background-color: var(--card-color);
-    border-radius: 10px;
-    margin: 0.5em 0;
-    padding: 0.5em 1em 0.5em 1em;
-    border: 2px solid var(--faint-hover-color);
-}
-
-.skills-card img {
-    object-fit: contain;
-    width: 2em;
-    height: 1.5em;
-}
-
-.skills-card .title {
-    font-size: 1em;
-}
 
 /* ----------------- SPEED DIAL ---------------- */
 

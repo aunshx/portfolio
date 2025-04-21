@@ -130,7 +130,7 @@ const Navbar = ({
       >
         <div className='cursor-pointer'>
           <NavLink to='/'>
-            <div className='logo-container text-3xl text-brand font-bold'>
+            <div className='logo-container text-4xl text-brand font-bold'>
               <span className="logo-a">a</span>
               <span className={`logo-unsh ${isNameInView ? 'hidden' : 'visible'}`}>unsh</span>
               <span className="logo-dot">.</span>
@@ -163,7 +163,7 @@ const Navbar = ({
               </div>
             ) : (
               <div
-                className='text-gray-400 cursor-pointer'
+                className='text-gray-200 cursor-pointer'
               >
                 <Tooltip title='Background Animation Off' placement='left'>
                   <div>
@@ -203,7 +203,7 @@ const Navbar = ({
                       style={{
                         fontSize: 20,
                       }}
-                      className='text-gray-400'
+                      className='text-gray-200'
                     />
                   </div>
                 </Tooltip>

@@ -42,7 +42,7 @@ const Card = ({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className={'flex items-center gap-x-1 skills-card opacity-70'}
+        className={'flex items-center gap-x-1 skills-card opacity-70 text-white'}
         data-aos={runAos ? (width < 787 ? "fade-in" : "fade-in") : ""}
         data-aos-offset={width < 787 && 30}
         data-aos-delay={delay}
@@ -58,7 +58,7 @@ const Card = ({
         <div className='image'>
           <img src={logo} alt='Logo of Tech' />
         </div>
-        <div className='title'>{title}</div>
+        <div className='text-white'>{title}</div>
       </div>
       <div></div>
     </div>
