@@ -2,6 +2,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faArrowUpRightFromSquare, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import ImageWithLoader from '../../../shared/layout/ImageContainer';
 
 const ContactButtons = ({ link, icon }) => {
     return (
@@ -29,9 +30,12 @@ const Card = ({
         <div className="grid grid-cols-1 h-full">
             <a href={link} target='_blank' rel='noreferrer nofollow' className="h-full">
                 <div className='max-w-md h-full border-2 opacity-900 border-zinc-800 bg-zinc-900 rounded-lg hover:scale-105 transition hover:border-brand hover:text-brand text-white grid grid-rows-[auto_1fr]'>
-                    <div>
-                        <img className="rounded-t-lg w-full" src={image} alt={`${title} Logo`} style={{ maxHeight: '250px', objectFit: 'cover' }} />
-                    </div>
+                    <ImageWithLoader
+                        src={image}
+                        alt={`${title} Logo`}
+                        className="rounded-t-lg w-full"
+                        style={{ maxHeight: '250px', objectFit: 'cover' }}
+                    />
                     <div className="flex flex-col justify-between p-4 h-full">
                         <div className='flex flex-col gap-2'>
                             <div className="flex items-center justify-start md:flex-col gap-1">

@@ -285,4 +285,4 @@ export const EXP_LIST = [
 ];
 
 // LICENSE
-export const LICENSE = 'https://www.gnu.org/licenses/agpl-3.0.en.html'
+export const LICENSE = 'https://creativecommons.org/licenses/by-nc/4.0/deed.en'
