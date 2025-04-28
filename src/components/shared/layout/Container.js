@@ -4,7 +4,6 @@ import cn from 'classnames';
 const Container = ({ children, className = '', innerRef, movement, noMargin, customMargin }) => {
     const containerRef = useRef(null);
 
-    // Combine refs if needed
     const setRefs = (element) => {
         containerRef.current = element;
         if (innerRef) {
@@ -17,7 +16,6 @@ const Container = ({ children, className = '', innerRef, movement, noMargin, cus
     };
 
     useEffect(() => {
-        // Only set up observer if we have a movement value
         if (!movement || !containerRef.current) return;
 
         const observer = new IntersectionObserver(
