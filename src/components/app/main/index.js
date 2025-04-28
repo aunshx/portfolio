@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { RESUME_LINK } from '../../../resources/constants';
 import asxPortfolio from '../../../resources/images/asxPortfolio.jpeg';
 import useWindow from 'react-window-size-simple';
+import ImageWithLoader from '../../shared/layout/ImageContainer';
 
 const ContactButtons = ({ link, icon }) => {
     const { width } = useWindow();
@@ -78,7 +79,7 @@ const Main = ({ goToFunc }) => {
                 <div className="flex flex-col items-center justify-between gap-4 lg:gap-6 w-full">
                     <div className="w-full flex flex-col items-center space-y-6">
                         <div className="relative w-44 h-44 xl:w-40 xl:h-40 md:w-30 md:h-30 rounded-full overflow-hidden border-2 border-brand shadow-lg mb-2">
-                            <img
+                            <ImageWithLoader
                                 src={asxPortfolio}
                                 alt="Aunsh Bandivadekar"
                                 className="w-full h-full object-cover"
