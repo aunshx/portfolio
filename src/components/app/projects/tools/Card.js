@@ -40,7 +40,7 @@ const Card = ({
                         <div className='flex flex-col gap-2'>
                             <div className="flex items-center justify-start md:flex-col gap-1">
                                 <div className="text-lg font-bold tracking-tight">{title}</div>
-                                <span className='md:hidden'>
+                                <span className='text-white md:hidden'>
                                     &#8226;
                                 </span>
                                 <div className='font-normal text-gray-400 text-md'>
@@ -56,7 +56,7 @@ const Card = ({
                             </div>
                             {tag.length > 0 && (
                                 <div
-                                    className='border px-2 py-1 rounded-md border-violet-500 hover:text-gray-300 flex items-center justify-center gap-x-1 text-xs'>
+                                    className='border px-2 py-1 rounded-md border-violet-500 text-gray-300 flex items-center justify-center gap-x-1 text-xs'>
                                     <FontAwesomeIcon icon={faStar} />
                                     <span>
                                         {tag}
