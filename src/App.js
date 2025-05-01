@@ -74,12 +74,9 @@ function App({
   });
   
   useEffect(() => {
-    // Wait for window load to start animations
     const handleLoad = () => {
-      // Add a small delay to ensure DOM is fully rendered
       setTimeout(() => {
         document.querySelectorAll('.fade-down, .fade-up, .fade-right').forEach(el => {
-          // Set up IntersectionObserver for each element
           const observer = new IntersectionObserver(
             entries => {
               entries.forEach(entry => {
@@ -97,7 +94,6 @@ function App({
       }, 100);
     };
 
-    // If document is already loaded
     if (document.readyState === 'complete') {
       handleLoad();
     } else {
