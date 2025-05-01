@@ -60,7 +60,7 @@ const Work = () => {
                   <div className="mx-1 lg:hidden">&#8226;</div> <a href={link} target="_blank" rel="noreferrer nofollow" className="text-brand cursor-pointer">{`${name}`}</a>
                 </div>
                 <div className="flex items-center justify-start gap-1 mt-1 text-gray-300 text-sm md:flex-col md:items-start">
-                  {(index === 0 || index === 1) && (
+                  {(index === 0 || index === 2) && (
                     <>
                       <div>
                         Graduate Student Researcher

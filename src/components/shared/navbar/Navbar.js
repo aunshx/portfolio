@@ -130,7 +130,7 @@ const Navbar = ({
       >
         <div className='cursor-pointer'>
           <NavLink to='/'>
-            <div className='logo-container text-4xl text-brand font-bold'>
+            <div className='logo-container text-4xl text-brand font-bold' onClick={goToHome}>
               <span className="logo-a">a</span>
               <span className={`logo-unsh ${isNameInView ? 'hidden' : 'visible'}`}>unsh</span>
               <span className="logo-dot">.</span>
