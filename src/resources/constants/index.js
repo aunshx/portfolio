@@ -224,7 +224,7 @@ export const EXP_LIST = [
         description: "Spearheaded development of the Forest Resources and Renewable Energy Decision Support System (FRREDSS) 2.0, implemented feedstock analysis visualization with Python and TypeScript, and orchestrated CI/CD pipeline development while building advanced reporting tools and transportation cost modeling interfaces.",
         position: "Software Developer",
         duration: "July 2024 - Present",
-        link: 'https:/its.ucdavis.edu',
+        link: 'https://its.ucdavis.edu',
         tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment", "GIS"]
 
     },
@@ -239,7 +239,7 @@ export const EXP_LIST = [
         description: "Developed application architecture for pre-seed AI startup using FastAPI backend and NextJS frontend, created 'Sage', a RAG-based AI agent using Langchain to determine optimal ML models based on user interaction, and worked closely with founders to implement the model selection and inference pipeline.",
         position: "Software Engineering Intern",
         duration: "July 2024 - Sept 2024",
-        link: 'https:/mlpal.ai',
+        link: 'https://mlpal.ai',
         tech: ["Machine Learning", "Web Dev", "RAG", "Langchain"]
     },
     {

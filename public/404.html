@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - 404</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      overflow: hidden;
+    }
+    
+    #stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: #d1d5db;
+      z-index: 1;
+    }
+    
+    .error-code {
+      font-size: 4rem;
+    }
+    
+    .brand-color {
+      color: #3b82f6;
+    }
+    
+    .error-message {
+      font-size: 1.5rem;
+      color: #9ca3af;
+    }
+    
+    .redirect-message {
+      font-size: 1rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+    
+    .home-button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid #4b5563;
+      border-radius: 0.5rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .home-button:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 3rem;
+      }
+      
+      .error-message {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  
+  <div class="container">
+    <div class="error-code">
+      error 4<span class="brand-color">0</span>4
+    </div>
+    <div class="error-message">Page not found</div>
+    <div class="redirect-message">Redirecting in <span id="countdown">5</span> seconds...</div>
+    <a href="/" class="home-button">
+      <span>Go Home</span>
+    </a>
+  </div>
+  
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const stars = [];
+    const starCount = Math.floor((canvas.width * canvas.height) / 2997); 
+    
+    for (let i = 0; i < starCount; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        opacity: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.05
+      });
+    }
+    
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(100, 149, 237, ${star.opacity})`;
+        ctx.fill();
+        
+        star.opacity += (Math.random() - 0.5) * 0.01;
+        star.opacity = Math.max(0.2, Math.min(1, star.opacity));
+        
+        star.y += star.speed;
+        
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+      
+      requestAnimationFrame(animateStars);
+    }
+    
+    animateStars();
+    
+    let secondsLeft = 6;
+    const countdownElement = document.getElementById('countdown');
+    
+    const countdownInterval = setInterval(() => {
+      secondsLeft--;
+      countdownElement.textContent = secondsLeft;
+      
+      if (secondsLeft <= 0) {
+        clearInterval(countdownInterval);
+        window.location.href = '/';
+      }
+    }, 1000);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
