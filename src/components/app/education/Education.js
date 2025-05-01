@@ -11,9 +11,9 @@ const Card = ({
 }) => {
   const logo = abbr === "UCD" ? ucDavisLogo : sppuLogo;
   return (
-    <div className='element hover:scale-105 transition flex gap-x-4 py-2 px-4 max-w-md'>
-      <img src={logo} alt={title} />
-      <div className="flex flex-col gap-y-1">
+    <div className='element hover:scale-105 transition flex gap-x-4 py-2 px-4 max-w-md w-full'>
+      <img src={logo} alt={title} className="object-contain" />
+      <div className="flex flex-col gap-y-1 items-start justify-start flex-1">
         <div className='text-lg'>{title}</div>
         <div className='text-sm'>{degree}</div>
         <div className='text-sm italic'>
@@ -31,9 +31,13 @@ const Education = () => {
         icon={<FontAwesomeIcon icon={faSchoolFlag} />}
         title={"Education"}
       />
-      <div className='flex items-center justify-center gap-8 lg:flex-col'>
+      <div className='grid grid-cols-2 gap-8 w-full lg:grid-cols-1'>
         {EDUCATION_LIST.map((data, index) => {
-          return <Card data={data} key={index} />
+          return (
+            <div key={index} className="flex">
+              <Card data={data} />
+            </div>
+          );
         })}
       </div>
     </div>

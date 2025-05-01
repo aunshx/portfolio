@@ -21,7 +21,7 @@ const Projects = () => {
         title="Projects"
       />
 
-      <div className={`grid grid-cols-2 gap-16 ${VERTICAL_MARGIN} lg:flex lg:flex-col lg:items-center lg:justify-center`}>
+      <div className={`grid grid-cols-2 gap-16 ${VERTICAL_MARGIN} lg:flex lg:flex-col lg:items-center lg:justify-center `}>
         {PROJECT_LIST.map((project, index) => (
           <Card
             key={project.id}

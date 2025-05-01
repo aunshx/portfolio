@@ -214,7 +214,7 @@ export const RESEARCH_LIST = [
 // EXPERIENCE, Work
 export const EXP_LIST = [
     {
-        name: "Energy Graduate Group, UC Davis",
+        name: "Institute of Transportation Studies, UC Davis",
         type: "Education and Computer Science",
         work: [
             "Spearheaded development and system design of version 2.0 of the Forest Resources and Renewable Energy Decision Support System (FRREDSS)",
@@ -222,11 +222,25 @@ export const EXP_LIST = [
             "Orchestrated CI/CD pipeline development and oversaw production deployment of the application"
         ],
         description: "Spearheaded development of the Forest Resources and Renewable Energy Decision Support System (FRREDSS) 2.0, implemented feedstock analysis visualization with Python and TypeScript, and orchestrated CI/CD pipeline development while building advanced reporting tools and transportation cost modeling interfaces.",
-        position: "Software Engineer",
-        duration: "Jun 2024 - Present",
+        position: "Software Developer",
+        duration: "July 2024 - Present",
         link: 'https:/its.ucdavis.edu',
-        tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment "]
+        tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment", "GIS"]
 
+    },
+    {
+        name: "mlpal.ai",
+        type: "Education and Computer Science",
+        work: [
+            "Architected and developed pre-seed AI startup's application using FastAPI backend and NextJS frontend",
+            "Created 'Sage', a RAG-based AI model selector agent that uses Langchain to determine optimal ML models based on user interactions",
+            "Collaborated closely with founders to implement the model selection and inference pipeline for the platform"
+        ],
+        description: "Developed application architecture for pre-seed AI startup using FastAPI backend and NextJS frontend, created 'Sage', a RAG-based AI agent using Langchain to determine optimal ML models based on user interaction, and worked closely with founders to implement the model selection and inference pipeline.",
+        position: "Software Engineering Intern",
+        duration: "July 2024 - Sept 2024",
+        link: 'https:/mlpal.ai',
+        tech: ["Machine Learning", "Web Dev", "RAG", "Langchain"]
     },
     {
         name: "Expolab, UC Davis",
@@ -237,8 +251,8 @@ export const EXP_LIST = [
             "Created simulation capabilities allowing users to induce replica failures for testing Byzantine fault tolerance mechanisms"
         ],
         description: "Architected ResView, a novel PBFT consensus protocol visualization tool for blockchain systems using React.js, D3.js and websockets, developed interactive components tracking message propagation timing and consensus achievement, and created simulation capabilities for testing Byzantine fault tolerance mechanisms.",
-        position: "Software Developer",
-        duration: "Aug 2023 - Dec 2024",
+        position: "Fullstack Developer",
+        duration: "Sept 2023 - June 2024",
         link: 'https://resilientdb.com',
         tech: ['React', 'D3', 'WebSockets', 'Blockchain']
     },
@@ -251,8 +265,8 @@ export const EXP_LIST = [
             "Designed fast and reliable APIs using GraphQL queries and enabled agile software development using CI-CD techniques"
         ],
         description: "Collaborated with an international team to develop key in-app modules for a brand cut-over project, implemented robust UI/UX using ReactJS, CSS and Tailwind, and designed fast and reliable APIs using GraphQL queries while enabling agile software development with CI-CD techniques.",
-        position: "Software Developer",
-        duration: "Mar 2023 - Aug 2023",
+        position: "Frontend Engineer",
+        duration: "March 2023 - August 2023",
         link: 'https://prosperix.com',
         tech: ['React', 'GraphQL', 'Tailwind', 'CSS']
     },
@@ -265,8 +279,8 @@ export const EXP_LIST = [
             "Developed market segmentation models and competitive analyses that strengthened the company's market positioning"
         ],
         description: "Designed and implemented comprehensive KPI dashboards using SQL and Tableau that streamlined decision-making processes, reduced reporting time by 20%, and played a key role in analytics strategy that secured 2nd place in Asia's largest startup competition through market segmentation models and competitive analyses.",
-        position: "Engineering Analyst",
-        duration: "Jul 2021 - Jun 2022",
+        position: "Business Analyst",
+        duration: "July 2021 - June 2022",
         link: 'https://2wheelr.com'
     },
     {
@@ -279,7 +293,7 @@ export const EXP_LIST = [
         ],
         description: "Led high school mathematics and science curriculum for underprivileged students as a Fellow while conducting personality development workshops, field visits and gatherings to increase engagement, merit and holistic development.",
         position: "Fellow",
-        duration: "May 2020 - Jun 2021",
+        duration: "May 2020 - June 2021",
         link: 'https://www.teachforindia.org/'
     }
 ];
