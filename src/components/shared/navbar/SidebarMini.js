@@ -18,7 +18,7 @@ import {
   soundOff,
   soundOn,
 } from "../../../redux/actions/settings";
-import { RESUME_LINK } from '../../../resources/constants';
+import { EMAIL_LINK, LINKEDIN_LINK, MEDIUM_LINK, RESUME_LINK } from '../../../resources/constants';
 import { ContactButtons } from '../layout/Footer';
 
 const SidebarComponent = ({ close, goToFunc, elementHover, icon, title}) => {
@@ -136,9 +136,9 @@ const SidebarMini = ({
           </div>
           <div className="flex flex-wrap w-full px-2 items-center justify-center gap-4">
             <ContactButtons />
-            <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} title={'Linkedin'} />
-            <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} title={'Medium'} />
-            <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} title={'Mail'} />
+            <ContactButtons icon={faLinkedin} link={LINKEDIN_LINK} />
+            <ContactButtons icon={faMedium} link={MEDIUM_LINK} />
+            <ContactButtons icon={faEnvelope} link={EMAIL_LINK} />
           </div>
         </div> 
       <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'>

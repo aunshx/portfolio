@@ -2,7 +2,7 @@ import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-ico
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { RESUME_LINK } from '../../../resources/constants';
+import { EMAIL_LINK, GITHUB_LINK, LINKEDIN_LINK, MEDIUM_LINK, RESUME_LINK } from '../../../resources/constants';
 import asxPortfolio from '../../../resources/images/asxPortfolio.jpeg';
 import useWindow from 'react-window-size-simple';
 import ImageWithLoader from '../../shared/layout/ImageContainer';
@@ -12,7 +12,7 @@ const ContactButtons = ({ link, icon }) => {
 
     return (
         <a
-            href={link ?? 'https://github.com/aunshx'}
+            href={link ?? GITHUB_LINK}
             target="_blank"
             rel='noreferrer nofollow'
             className="text-gray-200 hover:text-brand text-sm px-4 py-2 text-center transform hover:scale-110 transition duration-300"
@@ -110,9 +110,9 @@ const Main = ({ goToFunc }) => {
                         </div>
                         <div className="flex flex-wrap gap-4 pt-1 justify-center items-center lg:justify-start lg:gap-2">
                             <ContactButtons />
-                            <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} />
-                            <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} />
-                            <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} />
+                            <ContactButtons icon={faLinkedin} link={LINKEDIN_LINK} />
+                            <ContactButtons icon={faMedium} link={MEDIUM_LINK} />
+                            <ContactButtons icon={faEnvelope} link={EMAIL_LINK} />
                         </div>
                     </div>
 

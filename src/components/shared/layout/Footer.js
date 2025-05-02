@@ -2,11 +2,11 @@ import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-ico
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { LICENSE } from '../../../resources/constants';
+import { EMAIL_LINK, GITHUB_LINK, LICENSE, LINKEDIN_LINK, MEDIUM_LINK } from '../../../resources/constants';
 
 export const ContactButtons = ({ link, icon, title='Github'  }) => {
     return (
-        <a href={link ?? 'https://github.com/aunshx'} target="_blank" rel='noreferrer nofollow' type="button" class="text-sm hover:text-brand text-gray-300 flex items-center justify-center gap-2">
+        <a href={link ?? GITHUB_LINK} target="_blank" rel='noreferrer nofollow' type="button" class="text-sm hover:text-brand text-gray-300 flex items-center justify-center gap-2">
           <FontAwesomeIcon
               icon={icon ?? faGithub}
               style={{
@@ -41,10 +41,10 @@ const Footer = () => {
           </div>
           <div className="flex flex-col items-center gap-4">
             <div className="flex flex-col items-start justify-center gap-4">
-              <ContactButtons icon={faEnvelope} link={'mailto:aunsh.spb@gmail.com'} title={'Mail'} />
+              <ContactButtons icon={faEnvelope} link={EMAIL_LINK} title={'Mail'} />
               <ContactButtons /> 
-              <ContactButtons icon={faLinkedin} link={'https://linkedin.com/in/aunsh'} title={'Linkedin'} />
-              <ContactButtons icon={faMedium} link={'https://aunsh.medium.com/'} title={'Medium'} />
+              <ContactButtons icon={faLinkedin} link={LINKEDIN_LINK} title={'Linkedin'} />
+              <ContactButtons icon={faMedium} link={MEDIUM_LINK} title={'Medium'} />
             </div>
           </div>
         </div>

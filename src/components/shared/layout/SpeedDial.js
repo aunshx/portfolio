@@ -5,27 +5,28 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import React, { useState } from "react";
+import { EMAIL_LINK, GITHUB_LINK, LINKEDIN_LINK, MEDIUM_LINK } from "../../../resources/constants";
 
 const actions = [
   {
     icon: <FontAwesomeIcon icon={faMailBulk} />,
     name: "Mail",
-    link: "mailto:aunsh.spb@gmail.com",
+    link: EMAIL_LINK,
   },
   {
     icon: <FontAwesomeIcon icon={faMedium} />,
     name: "Medium Profile",
-    link: "https://aunsh.medium.com",
+    link: MEDIUM_LINK,
   },
   {
     icon: <FontAwesomeIcon icon={faLinkedin} />,
     name: "Linkedin Profile",
-    link: "https://www.linkedin.com/in/aunsh",
+    link: LINKEDIN_LINK,
   },
   {
     icon: <FontAwesomeIcon icon={faGithub} />,
     name: "Github Profile",
-    link: "https://www.github.com/aunshx",
+    link: GITHUB_LINK,
   },
 ];
 
