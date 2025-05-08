@@ -34,7 +34,7 @@ const Education = () => {
       <div className='grid grid-cols-2 gap-8 w-full lg:grid-cols-1'>
         {EDUCATION_LIST.map((data, index) => {
           return (
-            <div key={index} className="flex">
+            <div key={index} className="flex items-center justify-center">
               <Card data={data} />
             </div>
           );

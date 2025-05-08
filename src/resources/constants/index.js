@@ -8,7 +8,7 @@ export const RESUME_LINK = 'https://drive.google.com/file/d/1RwM5cBplNVzH_OQr7Uf
 
 // PROJECTS, portfolio, image urls
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
-export const redditInfinitProj = 'https://i.postimg.cc/HL3JHsds/reddit-Infinit.png'
+export const cultivisionProj = 'https://i.postimg.cc/bJw4jzv1/cultivision-Dashboard.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
 export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 
@@ -17,7 +17,7 @@ export const PROJECT_LIST = [
         id: 1,
         title: 'FRREDSS',
         subTitle: 'Siting Tool',
-        description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass based on the $1.2 million grant from CA Office of Planning and Research',
+        description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass based on the $1.2 million grant from CA Office of Planning and Research.',
         image: forestDssProj,
         tech: [
             'Biomass',
@@ -43,20 +43,19 @@ export const PROJECT_LIST = [
     },
     {
         id: 3,
-        title: 'Reddit Infiniti',
-        subTitle: 'Web API Project',
-        description: 'Utilizing the Reddit API by continuous streaming and processing API Data to showcase tech memes.',
-        image: redditInfinitProj,
+        title: 'Cultivision',
+        subTitle: 'Cultivated Meat Analytics',
+        description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
+        image: cultivisionProj,
         tech: [
-            'Dual-Mode',
-            'Reddit API',
-            'Snoowrap',
-            'Data Cleaning',
-            'Lazy-load',
+            'Nextjs',
+            'Python',
+            'Technoeconomic Analysis',
+            'Plant bioprocessing',
         ],
-        gitUrl: 'https://github.com/aunshx/fun-with-reddit',
-        link: 'https://sumptuous-sandy-basket.glitch.me/',
-        tag: ''
+        gitUrl: 'https://github.com/aunshx/cultivision',
+        link: 'https://aunshx.github.io/cultivision',
+        tag: 'Mcdonald/Nandi Lab'
     },
     {
         id: 4,
@@ -240,7 +239,7 @@ export const EXP_LIST = [
             "Created 'Sage', a RAG-based AI model selector agent that uses Langchain to determine optimal ML models based on user interactions",
             "Collaborated closely with founders to implement the model selection and inference pipeline for the platform"
         ],
-        description: "Developed application architecture for pre-seed AI startup using FastAPI backend and NextJS frontend, created 'Sage', a RAG-based AI agent using Langchain to determine optimal ML models based on user interaction, and worked closely with founders to implement the model selection and inference pipeline.",
+        description: "Worked on the application development for pre-seed AI startup using FastAPI backend and NextJS frontend, created 'Sage', a RAG-based AI agent using Langchain to determine optimal ML models based on user interaction, and worked closely with founders to implement the model selection and inference pipeline.",
         position: "Software Engineering Intern",
         duration: "July 2024 - Sept 2024",
         link: 'https://mlpal.ai',
