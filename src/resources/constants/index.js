@@ -8,7 +8,7 @@ export const RESUME_LINK = 'https://drive.google.com/file/d/1RwM5cBplNVzH_OQr7Uf
 
 // PROJECTS, portfolio, image urls
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
-export const cultivisionProj = 'https://i.postimg.cc/bJw4jzv1/cultivision-Dashboard.png'
+export const cultivisionProj = 'https://i.postimg.cc/Qdt56TZP/cultivision.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
 export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 
