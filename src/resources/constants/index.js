@@ -53,8 +53,8 @@ export const PROJECT_LIST = [
             'Technoeconomic Analysis',
             'Plant bioprocessing',
         ],
-        gitUrl: 'https://github.com/aunshx/cultivision',
-        link: 'https://aunshx.github.io/cultivision',
+        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
+        link: 'https://mcdonald-nandi-lab.github.io/cultivision/',
         tag: 'Mcdonald/Nandi Lab'
     },
     {
