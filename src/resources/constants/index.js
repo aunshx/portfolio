@@ -4,11 +4,11 @@ export const LINKEDIN_LINK = 'https://linkedin.com/in/aunsh'
 export const MEDIUM_LINK = 'https://aunsh.medium.com/'
 export const EMAIL_LINK = 'mailto:aunsh.sb@gmail.com'
 export const GITHUB_LINK = 'https://github.com/aunshx'
-export const RESUME_LINK = 'https://drive.google.com/file/d/1RwM5cBplNVzH_OQr7UfEKXOTacZEd29D/view?usp=sharing';
+export const RESUME_LINK = 'https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5xUn6p-NZDR1vJ/view?usp=sharing';
 
 // PROJECTS, portfolio, image urls
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
-export const cultivisionProj = 'https://i.postimg.cc/Qdt56TZP/cultivision.png'
+export const cultivisionProj = 'https://i.postimg.cc/23NLmv9k/cv.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
 export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 
@@ -54,7 +54,7 @@ export const PROJECT_LIST = [
             'Plant bioprocessing',
         ],
         gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
-        link: 'https://mcdonald-nandi-lab.github.io/cultivision/',
+        link: 'https://mcdonald-nandi-lab.github.io/cultivision/?token=sh1v-0x726f6f74-g0dm0d3.cv',
         tag: 'Mcdonald/Nandi Lab'
     },
     {
@@ -195,8 +195,8 @@ export const RESEARCH_LIST = [
         "title": "Decision Support for Biomass Energy Assessment and Lifecycle Analysis",
         "description": "Analyzing forest biomass resources across California to determine economic feasibility and environmental impacts of potential biopower facilities.",
         "tags": [ "GIS", "Lifecycle Assessment", "Technoeconomic Modeling"],
-        "achievements": [],
-        "link": "https://ucdavis.app.box.com/file/1602222716525?s=ptum3pvtfarexagd1nmgy479gej1otmz"
+        "achievements": ["Under Review"],
+        "link": "https://drive.google.com/file/d/17rLkjHeBkYXq0YjcfZ_u8gsityeHID3A/view?usp=sharing"
     },
     {
         title: "Byzantine Fault Tolerance Consensus Visualization",
@@ -225,7 +225,7 @@ export const EXP_LIST = [
             "Orchestrated CI/CD pipeline development and oversaw production deployment of the application"
         ],
         description: "Spearheaded development of the Forest Resources and Renewable Energy Decision Support System (FRREDSS) 2.0, implemented feedstock analysis visualization with Python and TypeScript, and orchestrated CI/CD pipeline development while building advanced reporting tools and transportation cost modeling interfaces.",
-        position: "Software Developer",
+        position: "Software Engineer",
         duration: "July 2024 - Present",
         link: 'https://its.ucdavis.edu',
         tech: ["Biomass", "Technoeconomic Analysis", "Lifecycle Assessment", "GIS"]
@@ -245,20 +245,20 @@ export const EXP_LIST = [
         link: 'https://mlpal.ai',
         tech: ["Machine Learning", "Web Dev", "RAG", "Langchain"]
     },
-    {
-        name: "Expolab, UC Davis",
-        type: "Software",
-        work: [
-            "Architected and implemented ResView, a novel PBFT consensus protocol visualization tool for blockchain systems",
-            "Developed interactive data visualization components that track message propagation timing and consensus achievement",
-            "Created simulation capabilities allowing users to induce replica failures for testing Byzantine fault tolerance mechanisms"
-        ],
-        description: "Architected ResView, a novel PBFT consensus protocol visualization tool for blockchain systems using React.js, D3.js and websockets, developed interactive components tracking message propagation timing and consensus achievement, and created simulation capabilities for testing Byzantine fault tolerance mechanisms.",
-        position: "Fullstack Developer",
-        duration: "Sept 2023 - June 2024",
-        link: 'https://resilientdb.com',
-        tech: ['React', 'D3', 'WebSockets', 'Blockchain']
-    },
+    // {
+    //     name: "Expolab, UC Davis",
+    //     type: "Software",
+    //     work: [
+    //         "Architected and implemented ResView, a novel PBFT consensus protocol visualization tool for blockchain systems",
+    //         "Developed interactive data visualization components that track message propagation timing and consensus achievement",
+    //         "Created simulation capabilities allowing users to induce replica failures for testing Byzantine fault tolerance mechanisms"
+    //     ],
+    //     description: "Architected ResView, a novel PBFT consensus protocol visualization tool for blockchain systems using React.js, D3.js and websockets, developed interactive components tracking message propagation timing and consensus achievement, and created simulation capabilities for testing Byzantine fault tolerance mechanisms.",
+    //     position: "Fullstack Developer",
+    //     duration: "Sept 2023 - June 2024",
+    //     link: 'https://resilientdb.com',
+    //     tech: ['React', 'D3', 'WebSockets', 'Blockchain']
+    // },
     {
         name: "Prosperix.com",
         type: "Software",
@@ -268,7 +268,7 @@ export const EXP_LIST = [
             "Designed fast and reliable APIs using GraphQL queries and enabled agile software development using CI-CD techniques"
         ],
         description: "Collaborated with an international team to develop key in-app modules for a brand cut-over project, implemented robust UI/UX using ReactJS, CSS and Tailwind, and designed fast and reliable APIs using GraphQL queries while enabling agile software development with CI-CD techniques.",
-        position: "Frontend Engineer",
+        position: "Software Engineer",
         duration: "March 2023 - August 2023",
         link: 'https://prosperix.com',
         tech: ['React', 'GraphQL', 'Tailwind', 'CSS']

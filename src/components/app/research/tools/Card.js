@@ -50,6 +50,7 @@ const Card = ({
               {achievements.map((val, index) => (
                 <div
                   className='border px-2 py-1 rounded-md border-violet-500 dark:border-violet-500 flex items-center justify-center gap-x-1'
+                  style={{ minWidth: '120px' }}
                   key={index}>
                   <FontAwesomeIcon icon={faStar} />
                   <span>

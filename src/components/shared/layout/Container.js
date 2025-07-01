@@ -60,7 +60,7 @@ const Container = ({ children, className = '', innerRef, movement, noMargin, cus
         ${movement || ''}
         ${className}
         `,
-                { 'my-14 xl:my-10 lg:my-8 sm:my-6': customMargin }
+           { 'my-14 xl:my-10 lg:my-8 sm:my-6': customMargin }
             )}
             ref={setRefs}
         >

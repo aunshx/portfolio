@@ -50,7 +50,7 @@ const Card = ({
     >
       <div
         onMouseEnter={elementHover}
-        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 border-zinc-700 bg-zinc-900 bg-opacity-75 backdrop-blur-sm opacity-80 rounded-xl border shadow-xl w-full text-white hover:scale-105 transition gap-y-1 md:gap-y-2"
+        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 border-slate-700 bg-slate-900 bg-opacity-75 backdrop-blur-sm opacity-80 rounded-xl border shadow-xl w-full text-white hover:scale-105 transition gap-y-1 md:gap-y-2"
       >
           <div className='text-lg font-bold tracking-tight'>{title}</div>
           <div className='text-sm text-gray-300'>{description}</div>

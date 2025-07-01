@@ -40,7 +40,7 @@ const Work = () => {
   }, [isCollapsed])
 
   return (
-    <div className="w-full lg:px-4 lg:max-w-90per">
+    <div className="w-full">
       <div className='grid grid-cols-[20%_80%] gap-5 w-full lg:grid-cols-1 items-center'>
         <Title
           icon={<FontAwesomeIcon icon={faBriefcase} />}
