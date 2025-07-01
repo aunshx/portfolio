@@ -430,10 +430,7 @@ pre {
 
 .education .element {
     color: var(--light-dark-font-color);
-    border-radius: 8px;
     width: auto;
-    background-color: var(--card-color);
-    border: 2px solid var(--faint-hover-color);
 }
 
 .education .element img {

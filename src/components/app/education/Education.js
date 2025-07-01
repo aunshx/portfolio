@@ -11,7 +11,7 @@ const Card = ({
 }) => {
   const logo = abbr === "UCD" ? ucDavisLogo : sppuLogo;
   return (
-    <div className='element hover:scale-105 transition flex gap-x-4 py-2 px-4 max-w-md w-full'>
+    <div className='element hover:scale-105 transition flex gap-x-4 py-2 px-4 max-w-md w-full border-2p border-solid border-zinc-800 bg-zinc-900 rounded-md' style={{ border: '1px solid #27272a' }}>
       <img src={logo} alt={title} className="object-contain" />
       <div className="flex flex-col gap-y-1 items-start justify-start flex-1">
         <div className='text-lg'>{title}</div>
