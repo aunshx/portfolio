@@ -46,7 +46,7 @@ export const PROJECT_LIST = [
         title: 'Cultivision',
         subTitle: 'Cultivated Meat Analytics',
         description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
-        image: cultivisionProj,
+        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-meta-image_rgvulo.png',
         tech: [
             'Nextjs',
             'Python',
@@ -217,7 +217,7 @@ export const RESEARCH_LIST = [
 // EXPERIENCE, Work
 export const EXP_LIST = [
     {
-        name: "Institute of Transportation Studies, UC Davis",
+        name: "University of California, Davis",
         type: "Education and Computer Science",
         work: [
             "Spearheaded development and system design of version 2.0 of the Forest Resources and Renewable Energy Decision Support System (FRREDSS)",
@@ -245,20 +245,6 @@ export const EXP_LIST = [
         link: 'https://mlpal.ai',
         tech: ["Machine Learning", "Web Dev", "RAG", "Langchain"]
     },
-    // {
-    //     name: "Expolab, UC Davis",
-    //     type: "Software",
-    //     work: [
-    //         "Architected and implemented ResView, a novel PBFT consensus protocol visualization tool for blockchain systems",
-    //         "Developed interactive data visualization components that track message propagation timing and consensus achievement",
-    //         "Created simulation capabilities allowing users to induce replica failures for testing Byzantine fault tolerance mechanisms"
-    //     ],
-    //     description: "Architected ResView, a novel PBFT consensus protocol visualization tool for blockchain systems using React.js, D3.js and websockets, developed interactive components tracking message propagation timing and consensus achievement, and created simulation capabilities for testing Byzantine fault tolerance mechanisms.",
-    //     position: "Fullstack Developer",
-    //     duration: "Sept 2023 - June 2024",
-    //     link: 'https://resilientdb.com',
-    //     tech: ['React', 'D3', 'WebSockets', 'Blockchain']
-    // },
     {
         name: "Prosperix.com",
         type: "Software",
