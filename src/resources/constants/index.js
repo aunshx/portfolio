@@ -46,7 +46,7 @@ export const PROJECT_LIST = [
         title: 'Cultivision',
         subTitle: 'Cultivated Meat Analytics',
         description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
-        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-meta-image_rgvulo.png',
+        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-meta-image_jgzxbq.png',
         tech: [
             'Nextjs',
             'Python',
