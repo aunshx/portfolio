@@ -46,7 +46,7 @@ export const PROJECT_LIST = [
         title: 'Cultivision',
         subTitle: 'Cultivated Meat Analytics',
         description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
-        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-meta-image_jgzxbq.png',
+        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-metadata-preview_c0ptwh.png',
         tech: [
             'Nextjs',
             'Python',
@@ -54,7 +54,7 @@ export const PROJECT_LIST = [
             'Plant bioprocessing',
         ],
         gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
-        link: 'https://mcdonald-nandi-lab.github.io/cultivision/?token=sh1v-0x726f6f74-g0dm0d3.cv',
+        link: 'https://mcdonald-nandi-lab.github.io/cultivision/',
         tag: 'Mcdonald/Nandi Lab'
     },
     {
