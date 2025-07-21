@@ -35,15 +35,14 @@ const Sidebar = ({
     }
   };
 
-  // Define navigation items in a consistent structure
   const navItems = [
     { icon: faHome, title: 'Home', action: goToHome },
     { icon: faBriefcase, title: 'Experience', action: goToExperience },
-    { icon: faSchool, title: 'Education', action: goToEducation },
+    { icon: faBrain, title: 'Tech', action: goToSkills },
     { icon: faTools, title: 'Work', action: goToWork },
     { icon: faVial, title: 'Research', action: goToResearch },
+    { icon: faSchool, title: 'Education', action: goToEducation },
     { icon: faNewspaper, title: 'Blog', action: goToArticles },
-    { icon: faBrain, title: 'Tech', action: goToSkills },
   ];
 
   return (
