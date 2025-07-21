@@ -10,7 +10,7 @@ import pop from '../../../resources/sounds/pop.mp3';
 const Sidebar = ({
   goToHome,
   goToWork,
-  goToProjects,
+  goToExperience,
   goToResearch,
   goToSkills,
   goToArticles,
@@ -38,9 +38,9 @@ const Sidebar = ({
   // Define navigation items in a consistent structure
   const navItems = [
     { icon: faHome, title: 'Home', action: goToHome },
-    { icon: faBriefcase, title: 'Experience', action: goToWork },
+    { icon: faBriefcase, title: 'Experience', action: goToExperience },
     { icon: faSchool, title: 'Education', action: goToEducation },
-    { icon: faTools, title: 'Projects', action: goToProjects },
+    { icon: faTools, title: 'Work', action: goToWork },
     { icon: faVial, title: 'Research', action: goToResearch },
     { icon: faNewspaper, title: 'Blog', action: goToArticles },
     { icon: faBrain, title: 'Tech', action: goToSkills },
