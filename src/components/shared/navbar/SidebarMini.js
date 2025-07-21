@@ -1,24 +1,16 @@
+import { faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
+import { faBriefcase, faEnvelope, faHome, faMicrochip, faNewspaper, faSchoolFlag, faShare, faTools, faVial } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
-import React from 'react';
 import { connect } from "react-redux";
 import useSound from "use-sound";
-
-import { faBriefcase, faEnvelope, faHome, faMicrochip, faNewspaper, faSchoolFlag, faShare, faTools, faVial, faVolumeMute, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tooltip } from "@mui/material";
-
-import CloseIcon from '@mui/icons-material/Close';
-
-import pop from "../../../resources/sounds/pop.mp3";
-
-import { faLinkedin, faMedium } from '@fortawesome/free-brands-svg-icons';
 import {
   musicOff,
-  musicOn,
-  soundOff,
-  soundOn,
+  musicOn
 } from "../../../redux/actions/settings";
 import { EMAIL_LINK, LINKEDIN_LINK, MEDIUM_LINK, RESUME_LINK } from '../../../resources/constants';
+import pop from "../../../resources/sounds/pop.mp3";
 import { ContactButtons } from '../layout/Footer';
 
 const SidebarComponent = ({ close, goToFunc, elementHover, icon, title}) => {
@@ -56,9 +48,6 @@ const SidebarMini = ({
   goToEducation,
   // Redux State
   settings: { sound },
-  // Redux Actions
-  soundOn,
-  soundOff,
 }) => {
   const [playOn] = useSound(pop, { volume: 1 });
 
@@ -67,15 +56,6 @@ const SidebarMini = ({
       playOn();
     }
   };
-
-  const soundTurnOff = () => {
-    soundOff();
-  };
-
-  const soundTurnOn = () => {
-    soundOn();
-  };
-
  
   return (
     <div className='sidebar bg-zinc-950 h-full text-gray-400 px-2 py-4'>
@@ -90,38 +70,7 @@ const SidebarMini = ({
           />
         </div>
       </div>
-      <div className='flex flex-col items-center justify-center gap-y-8 mt-4'>
-            {sound ? (
-              <div className='cursor-pointer'>
-                <Tooltip title='Sound-On' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faVolumeUp}
-                      onClick={soundTurnOff}
-                      style={{
-                        fontSize: 20,
-                      }}
-                      className='text-brand'
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div className='cursor-pointer'>
-                <Tooltip title='Sound-Off' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faVolumeMute}
-                      onClick={soundTurnOn}
-                      style={{
-                        fontSize: 20,
-                      }}
-                      className='text-gray-400'
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
+      <div className='flex flex-col items-start justify-center gap-y-8 mt-4 px-12'>
         <SidebarComponent icon={faHome} title={'Home'} close={close} goToFunc={goToHome} elementHover={elementHover}  />
         <SidebarComponent icon={faBriefcase} title={'Experience'} close={close} goToFunc={goToExperience} elementHover={elementHover} />
         <SidebarComponent icon={faSchoolFlag} title={'Education'} close={close} goToFunc={goToEducation} elementHover={elementHover} />
@@ -130,18 +79,18 @@ const SidebarMini = ({
         <SidebarComponent icon={faNewspaper} title={'Blog'} close={close} goToFunc={goToArticles} elementHover={elementHover} />
         <SidebarComponent icon={faMicrochip} title={'Tech'} close={close} goToFunc={goToSkills} elementHover={elementHover} />
 
-        <div className="flex flex-col w-full px-2">
-          <div className='text-lg font-bold mb-2 text-center'>
+        <div className="flex flex-col items-start justify-center gap-y-4 w-full">
+          <div className='text-lg font-bold'>
             Connect
           </div>
-          <div className="flex flex-wrap w-full px-2 items-center justify-center gap-4">
+          <div className="flex flex-col items-start justify-center w-full gap-4">
             <ContactButtons />
-            <ContactButtons icon={faLinkedin} link={LINKEDIN_LINK} />
-            <ContactButtons icon={faMedium} link={MEDIUM_LINK} />
-            <ContactButtons icon={faEnvelope} link={EMAIL_LINK} />
+            <ContactButtons icon={faLinkedin} link={LINKEDIN_LINK} title={'Linkedin'} />
+            <ContactButtons icon={faMedium} link={MEDIUM_LINK} title={'Medium'} />
+            <ContactButtons icon={faEnvelope} link={EMAIL_LINK} title={'Mail'} />
           </div>
         </div> 
-      <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'>
+        <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow' className='w-full flex items-start justify-center'>
         <div
             className='resume-btn flex items-center justify-between gap-x-2'
         >
@@ -156,8 +105,6 @@ const SidebarMini = ({
 
 SidebarMini.propTypes = {
   settings: PropTypes.object.isRequired,
-  soundOn: PropTypes.func.isRequired,
-  soundOff: PropTypes.func.isRequired,
   musicOn: PropTypes.func.isRequired,
   musicOff: PropTypes.func.isRequired,
 };
@@ -167,8 +114,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapStateToActions = {
-  soundOn,
-  soundOff,
   musicOn,
   musicOff,
 };
