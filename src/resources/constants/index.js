@@ -12,9 +12,25 @@ export const cultivisionProj = 'https://i.postimg.cc/23NLmv9k/cv.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
 export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 
-export const PROJECT_LIST = [
+export const WORK_LIST = [
     {
         id: 1,
+        title: 'Cultivision',
+        subTitle: 'Cultivated Meat Analytics',
+        description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
+        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-metadata-preview_c0ptwh.png',
+        tech: [
+            'Nextjs',
+            'Python',
+            'Technoeconomic Analysis',
+            'Plant bioprocessing',
+        ],
+        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
+        link: 'https://mcdonald-nandi-lab.github.io/cultivision/',
+        tag: 'Mcdonald/Nandi Lab'
+    },
+    {
+        id: 2,
         title: 'FRREDSS',
         subTitle: 'Siting Tool',
         description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass based on the $1.2 million grant from CA Office of Planning and Research.',
@@ -31,7 +47,7 @@ export const PROJECT_LIST = [
         tag: 'California OPR x UC Davis'
     },
     {
-        id: 2,
+        id: 3,
         title: 'ResView',
         subTitle: 'Blockchain Visualizer',
         description: 'A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric.',
@@ -40,22 +56,6 @@ export const PROJECT_LIST = [
         gitUrl: 'https://github.com/ResilientApp/ResView',
         link: 'https://resview.resilientdb.com/pages/home',
         tag: 'ExpoLab'
-    },
-    {
-        id: 3,
-        title: 'Cultivision',
-        subTitle: 'Cultivated Meat Analytics',
-        description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
-        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-metadata-preview_c0ptwh.png',
-        tech: [
-            'Nextjs',
-            'Python',
-            'Technoeconomic Analysis',
-            'Plant bioprocessing',
-        ],
-        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
-        link: 'https://mcdonald-nandi-lab.github.io/cultivision/',
-        tag: 'Mcdonald/Nandi Lab'
     },
     {
         id: 4,
@@ -97,7 +97,7 @@ export const EDUCATION_LIST = [
 ];
 
 // BLOG, articles 
-export const ARTICLES_LIST = [
+export const BLOG_LIST = [
     {
         "title": "How to Send WhatsApp Messages From Your React App Easily",
         "description": "A very simple way to send messages on WhatsApp web in React.",

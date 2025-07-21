@@ -5,12 +5,12 @@ import useSound from "use-sound";
 
 import bellRing from "./resources/sounds/bellRing.mp3";
 
-import Articles from './components/app/articles/Articles';
+import Articles from './components/app/blog/Blog';
 import Main from './components/app/main';
-import Projects from './components/app/projects/Projects';
+import Work from './components/app/work/Work';
 import Research from './components/app/research/Research';
 import Skills from './components/app/skills/Skills';
-import Work from "./components/app/work/Work";
+import Experience from "./components/app/experience/Experience";
 import Navbar from './components/shared/navbar/Navbar';
 import Sidebar from './components/shared/navbar/Sidebar';
 
@@ -39,8 +39,8 @@ const Home = ({
   const shadow = useRef()
   const goHome = useRef();
   const goAbout = useRef();
+  const goExperience = useRef();
   const goWork = useRef();
-  const goProjects = useRef();
   const goResearch = useRef();
   const goArticles = useRef();
   const goSkills = useRef();
@@ -108,12 +108,12 @@ const Home = ({
     if (goEducation.current) scrollToTargetPos(goEducation.current.getBoundingClientRect());
   };
 
-  const goToWork = () => {
-    if (goWork.current) scrollToTargetPos(goWork.current.getBoundingClientRect());
+  const goToExperience = () => {
+    if (goExperience.current) scrollToTargetPos(goExperience.current.getBoundingClientRect());
   };
 
-  const goToProjects = () => {
-    if (goProjects.current) scrollToTargetPos(goProjects.current.getBoundingClientRect());
+  const goToWork = () => {
+    if (goWork.current) scrollToTargetPos(goWork.current.getBoundingClientRect());
   };
 
   const goToResearch = () => {
@@ -154,8 +154,8 @@ const Home = ({
         refElement={refElement}
         goToHome={goToHome}
         goToAbout={goToAbout}
+        goToExperience={goToExperience}
         goToWork={goToWork}
-        goToProjects={goToProjects}
         goToResearch={goToResearch}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
@@ -166,8 +166,8 @@ const Home = ({
         hover={hover}
         goToHome={goToHome}
         goToAbout={goToAbout}
+        goToExperience={goToExperience}
         goToWork={goToWork}
-        goToProjects={goToProjects}
         goToResearch={goToResearch}
         goToSkills={goToSkills}
         goToArticles={goToArticles}
@@ -180,16 +180,16 @@ const Home = ({
       <div ref={refElement} />
       <div className="w-screen h-full flex flex-col items-center justify-center">
         <Container innerRef={goHome} movement={'fade-down'} className='my-12'>
-          <Main goToFunc={[goToProjects, goToWork]} />
+          <Main goToFunc={[goToWork, goToExperience]} />
         </Container>
-        <Container innerRef={goWork} movement={'fade-up'} customMargin>
-          <Work />
+        <Container innerRef={goExperience} movement={'fade-up'} customMargin>
+          <Experience />
         </Container>
         <Container innerRef={goSkills} movement={'fade-down'} customMargin>
           <Skills />
         </Container>
-        <Container innerRef={goProjects} movement={'fade-up'} customMargin>
-          <Projects />
+        <Container innerRef={goWork} movement={'fade-up'} customMargin>
+          <Work />
         </Container>
         <Container innerRef={goResearch} movement={'fade-down'} customMargin>
           <Research />
@@ -208,29 +208,29 @@ const Home = ({
           <>
             <div onClick={shadowToggle ? goToFooter : goToHome}>
               <Tooltip title={shadowToggle ? 'Page Down' : 'Page Up'} placement='left' enterDelay={400}>
-                    <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
-                      {shadowToggle ? (
+                <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                  {shadowToggle ? (
                     <ArrowCircleDown
                       className='go-up'
                       style={{ fontSize: 40 }}
                     />
-                      ) : (
-                      <ArrowCircleUp
-                        className='go-up'
-                        style={{ fontSize: 40 }}
-                      />
-                      )}
-        
-                    </div>
-                  </Tooltip>
-                </div>
-                <div onClick={goToHome}>
-                  <Tooltip title='Page Up' placement='left' enterDelay={400}>
-                    <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                  ) : (
+                    <ArrowCircleUp
+                      className='go-up'
+                      style={{ fontSize: 40 }}
+                    />
+                  )}
 
-                    </div>
-                  </Tooltip>
                 </div>
+              </Tooltip>
+            </div>
+            <div onClick={goToHome}>
+              <Tooltip title='Page Up' placement='left' enterDelay={400}>
+                <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+
+                </div>
+              </Tooltip>
+            </div>
             <div className='fixed bottom-36 right-9'>
               <SpeedDial />
             </div>

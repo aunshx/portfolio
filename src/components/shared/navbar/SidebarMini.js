@@ -48,8 +48,8 @@ const SidebarComponent = ({ close, goToFunc, elementHover, icon, title}) => {
 const SidebarMini = ({
   close,
   goToHome,
+  goToExperience,
   goToWork,
-  goToProjects,
   goToResearch,
   goToSkills,
   goToArticles,
@@ -123,9 +123,9 @@ const SidebarMini = ({
               </div>
             )}
         <SidebarComponent icon={faHome} title={'Home'} close={close} goToFunc={goToHome} elementHover={elementHover}  />
-        <SidebarComponent icon={faBriefcase} title={'Experience'} close={close} goToFunc={goToWork} elementHover={elementHover} />
+        <SidebarComponent icon={faBriefcase} title={'Experience'} close={close} goToFunc={goToExperience} elementHover={elementHover} />
         <SidebarComponent icon={faSchoolFlag} title={'Education'} close={close} goToFunc={goToEducation} elementHover={elementHover} />
-        <SidebarComponent icon={faTools} title={'Projects'} close={close} goToFunc={goToProjects} elementHover={elementHover} />
+        <SidebarComponent icon={faTools} title={'Work'} close={close} goToFunc={goToWork} elementHover={elementHover} />
         <SidebarComponent icon={faVial} title={'Research'} close={close} goToFunc={goToResearch} elementHover={elementHover} />
         <SidebarComponent icon={faNewspaper} title={'Blog'} close={close} goToFunc={goToArticles} elementHover={elementHover} />
         <SidebarComponent icon={faMicrochip} title={'Tech'} close={close} goToFunc={goToSkills} elementHover={elementHover} />
