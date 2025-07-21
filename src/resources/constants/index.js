@@ -82,7 +82,7 @@ export const EDUCATION_LIST = [
         title: "University of California, Davis",
         degree: "MS. Electrical and Computer Engineering",
         start: "Sep 2023",
-        end: "Sep 2025",
+        end: "Dec 2025",
         abbr: "UCD",
     },
     {

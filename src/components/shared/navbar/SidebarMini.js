@@ -73,11 +73,11 @@ const SidebarMini = ({
       <div className='flex flex-col items-start justify-center gap-y-8 mt-4 px-12'>
         <SidebarComponent icon={faHome} title={'Home'} close={close} goToFunc={goToHome} elementHover={elementHover}  />
         <SidebarComponent icon={faBriefcase} title={'Experience'} close={close} goToFunc={goToExperience} elementHover={elementHover} />
-        <SidebarComponent icon={faSchoolFlag} title={'Education'} close={close} goToFunc={goToEducation} elementHover={elementHover} />
+        <SidebarComponent icon={faMicrochip} title={'Tech'} close={close} goToFunc={goToSkills} elementHover={elementHover} />
         <SidebarComponent icon={faTools} title={'Work'} close={close} goToFunc={goToWork} elementHover={elementHover} />
         <SidebarComponent icon={faVial} title={'Research'} close={close} goToFunc={goToResearch} elementHover={elementHover} />
+        <SidebarComponent icon={faSchoolFlag} title={'Education'} close={close} goToFunc={goToEducation} elementHover={elementHover} />
         <SidebarComponent icon={faNewspaper} title={'Blog'} close={close} goToFunc={goToArticles} elementHover={elementHover} />
-        <SidebarComponent icon={faMicrochip} title={'Tech'} close={close} goToFunc={goToSkills} elementHover={elementHover} />
 
         <div className="flex flex-col items-start justify-center gap-y-4 w-full">
           <div className='text-lg font-bold'>
