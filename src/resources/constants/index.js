@@ -5,6 +5,7 @@ export const MEDIUM_LINK = 'https://aunsh.medium.com/'
 export const EMAIL_LINK = 'mailto:aunsh.sb@gmail.com'
 export const GITHUB_LINK = 'https://github.com/aunshx'
 export const RESUME_LINK = 'https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5xUn6p-NZDR1vJ/view?usp=sharing';
+export const CULTIVISION_LINK = 'https://mcdonald-nandi-lab.github.io/cultivision/';
 
 // PROJECTS, portfolio, image urls
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'

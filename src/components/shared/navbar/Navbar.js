@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { connect } from "react-redux";
 import useWindow from "react-window-size-simple";
 import useSound from "use-sound";
@@ -14,6 +14,7 @@ import SidebarMini from './SidebarMini';
 import resumeSwoosh from "../../../resources/sounds/resumeSwoosh.mp3";
 import toggle from "../../../resources/sounds/toggle.mp3";
 
+import cn from 'classnames';
 import {
   musicOff,
   musicOn,
@@ -24,7 +25,6 @@ import {
   toggleLightMode,
 } from "../../../redux/actions/settings";
 import { RESUME_LINK } from '../../../resources/constants';
-import cn from 'classnames';
 
 
 const Navbar = ({
