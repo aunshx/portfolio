@@ -28,7 +28,7 @@ const ContactButtons = ({ link, icon }) => {
 };
 
 const TypedText = () => {
-    const roles = ["Software Engineer", "Fullstack Developer", "ML/Ag Researcher"];
+    const roles = ["Software Engineer", "ML/Ag Researcher", "Homo Sapien"];
     const [currentIndex, setCurrentIndex] = useState(0);
     const [previousIndex, setPreviousIndex] = useState(null);
     const [isTransitioning, setIsTransitioning] = useState(false);

@@ -24,7 +24,6 @@ import useWindow from 'react-window-size-simple';
 import { Tooltip } from '@mui/material';
 import { ArrowCircleDown, ArrowCircleUp } from '@mui/icons-material';
 import SpeedDial from './components/shared/layout/SpeedDial';
-import Banner from './components/shared/layout/Banner';
 
 const Home = ({
   // Redux State
@@ -36,7 +35,6 @@ const Home = ({
 
   const [showContact, setShowContact] = useState(false);
   const [shadowToggle, setShadowToggle] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
 
   const shadow = useRef()
   const goHome = useRef();
@@ -239,7 +237,6 @@ const Home = ({
           </>
         )}
       </div>
-      {showBanner && <Banner onClick={() => setShowBanner(false)} />}
     </div>
   );
 };
