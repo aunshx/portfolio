@@ -1,21 +1,29 @@
 import PropTypes from "prop-types";
-import React from "react";
 import { connect } from "react-redux";
-import useSound from "use-sound";
 
-import swoosh from "../../../../resources/sounds/resumeSwoosh.mp3";
+import { faExternalLinkAlt, faEye, faHandsClapping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faHandsClapping } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@mui/material";
 
-const Stats = ({ type, value}) => {
+const Stats = ({ type, value }) => {
   const icon = type === 'views' ? faEye : faHandsClapping;
   const tooltipTitle = type === 'views' ? 'Views' : 'Upvotes';
+  const colorClass = type === 'views' ? 'text-blue-400' : 'text-green-400';
+
   return (
-    <Tooltip title={tooltipTitle}>
-      <div title={tooltipTitle} className="flex items-center justify-center gap-x-2 text-sm text-gray-200">
-        <FontAwesomeIcon icon={icon} />
-        <div>
+    <Tooltip title={tooltipTitle} arrow placement="top">
+      <div
+        title={tooltipTitle}
+        className="glass-button flex items-center justify-center gap-x-2 text-sm px-3 py-1 rounded-lg transition-all duration-300 hover:scale-105 group"
+      >
+        <FontAwesomeIcon
+          icon={icon}
+          className={`${colorClass} group-hover:drop-shadow-lg transition-all duration-300`}
+          style={{
+            filter: 'drop-shadow(0 0 4px currentColor)'
+          }}
+        />
+        <div className="text-gray-200 group-hover:text-white transition-colors duration-300 font-medium">
           {value}
         </div>
       </div>
@@ -23,53 +31,63 @@ const Stats = ({ type, value}) => {
   );
 };
 
-const Card = ({
+const BlogCard = ({
   title,
   stats,
   link,
   description,
   technology,
-  delay,
-  // Redux States
-  settings: { sound }
 }) => {
-
-  const [playOn] = useSound(swoosh, { volume: 0.2 });
-
-  const elementHover = () => {
-    if (sound) {
-      playOn();
-    }
-  };
-
   return (
     <a
       href={link}
       target={"_blank"}
       rel='noreferrer nofollow'
+      className="block group w-full h-full"
+
     >
       <div
-        onMouseEnter={elementHover}
-        className="max-w-md min-h-[220px] hover:text-brand hover:border-brand flex flex-col items-start justify-around px-8 py-4 border-slate-700 bg-slate-900 bg-opacity-75 backdrop-blur-sm opacity-80 rounded-xl border shadow-xl w-full text-white hover:scale-105 transition gap-y-1 md:gap-y-2"
+        className="glass-card max-w-md min-h-[280px] flex flex-col items-start justify-between px-8 py-6 w-full text-white gap-y-4 md:gap-y-5 hover:scale-105 transition-all duration-500 relative overflow-hidden group cursor-pointer h-full"
       >
-          <div className='text-lg font-bold tracking-tight'>{title}</div>
-          <div className='text-sm text-gray-300'>{description}</div>
-        <div className="w-full flex items-center justify-between gap-4 mt-1 lg:flex-col lg:items-start">
-          <div className='flex flex-wrap gap-4 text-gray-400 text-xs mt-1'>
+        <div className=" w-full">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <h3 className="text-lg font-bold tracking-tight group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 leading-tight">
+              {title}
+            </h3>
+            <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
+              <FontAwesomeIcon
+                icon={faExternalLinkAlt}
+                className="text-brand w-4 h-4"
+                style={{
+                  filter: 'drop-shadow(0 0 6px currentColor)'
+                }}
+              />
+            </div>
+          </div>
+          <div className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors duration-300 leading-relaxed">
+            {description}
+          </div>
+        </div>
+        <div className=" w-full">
+          <div className="flex flex-wrap gap-2">
             {technology.length > 0 &&
               technology.map((val, index) => (
                 <div
-                  className='text-gray-400 bg-gray-800  focus:outline-none text-xs rounded-lg px-2 py-1 min-w-16 text-center'
-                  key={index}>
-                  {val}
+                  className="glass-button text-gray-400 text-xs rounded-full px-3 py-1 min-w-16 text-center hover:text-white hover:bg-white/10 transition-all duration-300 group/tag relative overflow-hidden"
+                  key={index}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover/tag:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                  <span className="">{val}</span>
                 </div>
-              ))}
-
+              ))
+            }
           </div>
-          <div className="flex gap-x-4">
-            {Object.entries(stats).map(([k, value], index) => {
-              return <Stats key={index} type={k} value={value} />
-            })}
+        </div>
+        <div className=" w-full">
+          <div className="flex gap-x-3 justify-start">
+            {Object.entries(stats).map(([k, value], index) => (
+              <Stats key={index} type={k} value={value} />
+            ))}
           </div>
         </div>
       </div>
@@ -77,12 +95,16 @@ const Card = ({
   );
 };
 
-Card.propTypes = {
-  displayMode: PropTypes.object.isRequired,
+BlogCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  stats: PropTypes.object.isRequired,
+  link: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  technology: PropTypes.array.isRequired,
+  delay: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({
-  settings: state.settings,
 });
 
-export default connect(mapStateToProps)(Card);
+export default connect(mapStateToProps)(BlogCard);

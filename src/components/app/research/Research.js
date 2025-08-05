@@ -13,8 +13,8 @@ const Research = ({
 }) => {
   return (
     <div className='w-full'>
-      <Title icon={<FontAwesomeIcon icon={faVial} />} title={"Research"} />
-      <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
+      <Title icon={<FontAwesomeIcon icon={faVial} />} title={'Research'} />
+      <div className={`flex justify-center w-full flex-wrap gap-16 items-stretch ${VERTICAL_MARGIN}`}>
         {RESEARCH_LIST.map(({ title, link, description, tags, achievements }, index) => (
           <div key={index}>
             <Card
