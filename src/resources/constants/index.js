@@ -23,7 +23,7 @@ export const WORK_LIST = [
         tech: [
             'Nextjs',
             'Python',
-            'Technoeconomic Analysis',
+            'TEA',
             'Plant bioprocessing',
         ],
         gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
@@ -38,7 +38,7 @@ export const WORK_LIST = [
         image: forestDssProj,
         tech: [
             'Biomass',
-            'Technoeconomic Assessment',
+            'TEA',
             'LCA',
             'Agriculture',
             'Modelling',
@@ -83,7 +83,7 @@ export const EDUCATION_LIST = [
         title: "University of California, Davis",
         degree: "MS. Electrical and Computer Engineering",
         start: "Sep 2023",
-        end: "Dec 2025",
+        end: "Present",
         abbr: "UCD",
     },
     {
@@ -92,7 +92,6 @@ export const EDUCATION_LIST = [
         start: "June 2016",
         end: "May 2020",
         abbr: "SPPU",
-        // gpa: '3.94/4.00',
         extra: 'Student Council | Top 10 of the class in all years'
     },
 ];
@@ -186,7 +185,7 @@ export const RESEARCH_LIST = [
     {
         "title": "Spatio-temporal Forecasting of Agricultural Crop Yields with Machine Learning",
         "description": "A platform for predicting agricultural crop distributions across California using spatio-temporal machine learning techniques",
-        "tags": ["Machine Learning", "Agriculture", "Geospatial Analysis"],
+        "tags": ["ML", "Agriculture", "Geospatial Analysis"],
         "achievements": [
             "Thesis"
         ],
@@ -195,7 +194,7 @@ export const RESEARCH_LIST = [
     {
         "title": "Decision Support for Biomass Energy Assessment and Lifecycle Analysis",
         "description": "Analyzing forest biomass resources across California to determine economic feasibility and environmental impacts of potential biopower facilities.",
-        "tags": [ "GIS", "Lifecycle Assessment", "Technoeconomic Modeling"],
+        "tags": [ "GIS", "LCA", "TEA"],
         "achievements": ["Under Review"],
         "link": "https://drive.google.com/file/d/17rLkjHeBkYXq0YjcfZ_u8gsityeHID3A/view?usp=sharing"
     },

@@ -6,28 +6,33 @@ import Card from './tools/Card';
 
 export const LinkButton = ({ link }) => {
   return (
-    <a href={link} target='_blank' rel='noreferrer nofollow' type="button" className="rounded-lg text-sm px-4 py-2 text-center border-[1px] border-gray-300 text-gray-400 hover:border-brand hover:text-brand hover:bg-none focus:ring-gray-800 cursor-pointer flex items-center justify-center gap-x-2 w-fit">
-      <FontAwesomeIcon
-        icon={faArrowUpRightFromSquare}
-        style={{
-          fontSize: 15,
-        }}
-      />
-      <div>
-        {'Show More'}
+    <a href={link} target='_blank' rel='noreferrer nofollow'>
+      <div className="glass-button rounded-lg text-sm px-6 py-3 text-center text-gray-400 hover:text-brand cursor-pointer flex items-center justify-center gap-x-3 w-fit transition-all duration-300 group relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+
+        <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 liquid-border"></div>
+
+        <div className="relative z-10 flex items-center gap-x-3">
+          <FontAwesomeIcon
+            icon={faArrowUpRightFromSquare}
+            style={{ fontSize: 16 }}
+            className="group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
+          />
+          <div className="group-hover:font-semibold transition-all duration-300">
+            Show More
+          </div>
+        </div>
+
+        <div className="absolute top-1 right-2 w-1 h-1 bg-white/30 rounded-full twinkle opacity-0 group-hover:opacity-100"></div>
       </div>
     </a>
   )
 };
 
-
 const Work = () => {
   return (
     <div className='w-full items-center justify-center'>
-      <Title
-        icon={<FontAwesomeIcon icon={faTools} />}
-        title="Work"
-      />
+      <Title icon={<FontAwesomeIcon icon={faTools} />} title={'Work'} />
       <div className={`grid grid-cols-2 gap-16 ${VERTICAL_MARGIN} lg:flex lg:flex-col lg:items-center lg:justify-center`}>
         {WORK_LIST.map((project, index) => (
           <Card
@@ -50,6 +55,5 @@ const Work = () => {
     </div>
   );
 };
-
 
 export default Work;

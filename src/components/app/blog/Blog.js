@@ -12,18 +12,19 @@ const Blog = () => {
         icon={<FontAwesomeIcon icon={faNewspaper} />}
         title={"Blog"}
       />
-      <div className={`flex justify-center w-full flex-wrap gap-16 items-center ${VERTICAL_MARGIN}`}>
+      <div className={`flex justify-center w-full flex-wrap gap-16 items-stretch ${VERTICAL_MARGIN}`}>
         {BLOG_LIST.length > 0 && BLOG_LIST.slice(0,4).map(({ technologies, title, link, description, stats }, index) => (
-          <Card
-            delay={0}
-            stats={stats}
-            technology={technologies}
-            title={title}
-            runAos={true}
-            link={link}
-            description={description}
-            key={index}
-          />
+          <div key={index}>
+            <Card
+              delay={0}
+              stats={stats}
+              technology={technologies}
+              title={title}
+              runAos={true}
+              link={link}
+              description={description}
+            />
+          </div>
         ))}
       </div>
       <div className={`flex items-center justify-center ${VERTICAL_MARGIN}`}>

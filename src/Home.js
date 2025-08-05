@@ -24,7 +24,6 @@ import useWindow from 'react-window-size-simple';
 import { Tooltip } from '@mui/material';
 import { ArrowCircleDown, ArrowCircleUp } from '@mui/icons-material';
 import SpeedDial from './components/shared/layout/SpeedDial';
-import Banner from './components/shared/layout/Banner';
 
 const Home = ({
   // Redux State
@@ -36,7 +35,6 @@ const Home = ({
 
   const [showContact, setShowContact] = useState(false);
   const [shadowToggle, setShadowToggle] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
 
   const shadow = useRef()
   const goHome = useRef();
@@ -140,16 +138,6 @@ const Home = ({
     }
   };
 
-  const [playOn] = useSound(bellRing, {
-    volume: 0.2,
-  });
-
-  const onHoverMobile = () => {
-    if (sound) {
-      playOn();
-    }
-  };
-
   return (
     <div className='h-100v w-full'>
       <Navbar
@@ -210,7 +198,7 @@ const Home = ({
           <>
             <div onClick={shadowToggle ? goToFooter : goToHome}>
               <Tooltip title={shadowToggle ? 'Page Down' : 'Page Up'} placement='left' enterDelay={400}>
-                <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand'>
                   {shadowToggle ? (
                     <ArrowCircleDown
                       className='go-up'
@@ -228,7 +216,7 @@ const Home = ({
             </div>
             <div onClick={goToHome}>
               <Tooltip title='Page Up' placement='left' enterDelay={400}>
-                <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand' onMouseEnter={onHoverMobile}>
+                <div className='speed-dial cursor-pointer fixed bottom-10 right-10 text-gray-500 hover:text-brand'>
 
                 </div>
               </Tooltip>
@@ -239,7 +227,6 @@ const Home = ({
           </>
         )}
       </div>
-      {showBanner && <Banner onClick={() => setShowBanner(false)} />}
     </div>
   );
 };

@@ -124,9 +124,23 @@ const Navbar = ({
     soundOn();
   };
 
+  const getNavbarBackground = () => {
+    if (refElement && width < 768) { 
+      return {
+        background: 'linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #0a0a0f 100%)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+      };
+    }
+    return {};
+  };
+
   return (
       <div
-      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white', { 'md:bg-[#0f0f0f]': refElement })}
+      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white')}
+      style={getNavbarBackground()}
       >
         <div className='cursor-pointer'>
           <NavLink to='/'>
