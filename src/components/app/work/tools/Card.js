@@ -42,29 +42,18 @@ const Card = ({
     tag,
     tech = []
 }) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-
     return (
         <div className="flex items-center justify-center h-full">
             <a href={link} target='_blank' rel='noreferrer nofollow' className="h-full block group">
                 <div
                     className='glass-card max-w-md h-full rounded-2xl hover:scale-105 transition-all duration-500 text-white grid grid-rows-[auto_1fr] relative overflow-hidden'
                 >
-                    <div className="relative overflow-hidden rounded-t-2xl group/image">
-                        {!imageLoaded && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-gray-800/50 min-h-[250px]">
-                                <div className="spinner-new-block"></div>
-                            </div>
-                        )}
+                    <div className="overflow-hidden rounded-t-2xl group/image">
                         <ImageWithLoader
                             src={image}
                             alt={`${title} Logo`}
-                            className={`rounded-t-2xl w-full ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                            style={{ maxHeight: '250px', objectFit: 'cover' }}
-                            onLoad={() => setImageLoaded(true)}
+                            className={`rounded-t-2xl w-full object-cover`}
                         />
-
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-brand/30 to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 rounded-tr-2xl"></div>
                     </div>
 
                     <div className="flex flex-col justify-between p-6 h-full relative z-10">

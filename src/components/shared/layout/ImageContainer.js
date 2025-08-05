@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const ImageWithLoader = ({ src, alt, className, containerClassName, style }) => {
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
