@@ -15,7 +15,6 @@
     margin: 0;
 }
 
-/* Force hardware acceleration for all elements to prevent flickering on scroll */
 html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
