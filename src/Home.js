@@ -168,7 +168,7 @@ const Home = ({
 
       <div ref={shadowElement} />
       <div ref={refElement} />
-      <div className="w-screen h-full flex flex-col items-center justify-center">
+      <div className="w-screen h-full flex flex-col items-center justify-center relative z-10">
         <Container innerRef={goHome} movement={'fade-down'} className='my-12'>
           <Main goToFunc={[goToWork, goToExperience]} />
         </Container>

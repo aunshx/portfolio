@@ -124,186 +124,206 @@ const Navbar = ({
     soundOn();
   };
 
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const getNavbarBackground = () => {
-    if (refElement && width < 768) { 
+    if (hasScrolled && width < 787) {
       return {
         background: 'linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #0a0a0f 100%)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+        transition: 'all 0.3s ease-in-out',
       };
     }
-    return {};
+    return {
+      transition: 'all 0.3s ease-in-out'
+    };
   };
 
   return (
-      <div
-      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white')}
+    <div
+      className={cn('navbar flex items-center justify-between w-full fixed top-0 px-16 z-[200] text-white', {
+        'glass-navbar': hasScrolled && width < 787,
+        'navbar-transparent': !hasScrolled || width >= 787
+      })}
       style={getNavbarBackground()}
-      >
-        <div className='cursor-pointer'>
-          <NavLink to='/'>
-            <div className='logo-container text-4xl text-brand font-bold' onClick={goToHome}>
-              <span className="logo-a">a</span>
-              <span className={`logo-unsh ${isNameInView ? 'hidden' : 'visible'}`}>unsh</span>
-              <span className="logo-dot">.</span>
-            </div>
-          </NavLink>
-        </div>
-        {width > 787 ? (
-          <div className='text-xl flex items-center justify-evenly gap-x-8'>
-            {backgroundAnimation ? (
-              <div
-                className='text-brand cursor-pointer'
-              >
-                <Tooltip
-                  title={
-                    <div color='inherit'>Background Animation On</div>
-                  }
-                  placement='bottom'
-                >
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faRadiation}
-                      onClick={toggleAnimationOff}
-                      style={{
-                        fontSize: 20,
-                      }}
-                      className='rotate'
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div
-                className='text-gray-200 cursor-pointer'
-              >
-                <Tooltip title='Background Animation Off' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faRadiation}
-                      onClick={toggleAnimationOn}
-                      style={{
-                        fontSize: 20,
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
-            {sound ? (
-              <div className='cursor-pointer'>
-                <Tooltip title='Sound-On' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faVolumeUp}
-                      onClick={soundTurnOff}
-                      style={{
-                        fontSize: 20,
-                      }}
-                      className='text-brand'
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div className='cursor-pointer'>
-                <Tooltip title='Sound-Off' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faVolumeMute}
-                      onClick={soundTurnOn}
-                      style={{
-                        fontSize: 20,
-                      }}
-                      className='text-gray-200'
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
-            <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'>
-              <div
-                className='resume-btn flex items-center justify-between gap-x-2'
-                onMouseEnter={changeDownloadEnter}
-                onMouseLeave={changeDownloadLeave}
-              >
-                <FontAwesomeIcon icon={faShare} className='icon' />
-                <div className='text'>Résumé/CV</div>
-              </div>
-            </a>
+    >
+      <div className='cursor-pointer'>
+        <NavLink to='/'>
+          <div className='logo-container text-4xl text-brand font-bold' onClick={goToHome}>
+            <span className="logo-a">a</span>
+            <span className={`logo-unsh ${isNameInView ? 'hidden' : 'visible'}`}>unsh</span>
+            <span className="logo-dot">.</span>
           </div>
-        ) : (
-          <div className='flex items-center justify-center gap-x-2'>
-            {backgroundAnimation ? (
-              <div
-                className='text-brand cursor-pointer'
-                style={{ marginRight: "1.4em" }}
-              >
-                <Tooltip
-                  title={'Background Animation On'}
-                  placement='bottom'
-                >
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faRadiation}
-                      onClick={toggleAnimationOff}
-                      style={{
-                        fontSize: 19,
-                      }}
-                      className='rotate'
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            ) : (
-              <div className='cursor-pointer'>
-                <Tooltip title='Background Animation Off' placement='left'>
-                  <div>
-                    <FontAwesomeIcon
-                      icon={faRadiation}
-                      onClick={toggleAnimationOn}
-                      style={{
-                        fontSize: 19,
-                      }}
-                    />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
-            <Tooltip title='Menu' placement='left'>
-              <div>
-                <FontAwesomeIcon
-                  icon={faBars}
-                  onClick={verticalMenu}
-                  style={{
-                    fontSize: 21,
-                  }}
-                />
-              </div>
-            </Tooltip>
-          </div>
-        )}
-        {width < 787 && (
-          <Drawer
-            anchor={"right"}
-            open={drawer}
-            onClose={verticalMenu}
-          >
-            <SidebarMini
-              close={verticalMenu}
-              goToHome={goToHome}
-              goToWork={goToWork}
-              goToProjects={goToProjects}
-              goToResearch={goToResearch}
-              goToSkills={goToSkills}
-              goToArticles={goToArticles}
-              goToEducation={goToEducation}
-            />
-          </Drawer>
-        )}
+        </NavLink>
       </div>
+      {width > 787 ? (
+        <div className='text-xl flex items-center justify-evenly gap-x-8'>
+          {backgroundAnimation ? (
+            <div
+              className='text-brand cursor-pointer'
+            >
+              <Tooltip
+                title={
+                  <div color='inherit'>Background Animation On</div>
+                }
+                placement='bottom'
+              >
+                <div>
+                  <FontAwesomeIcon
+                    icon={faRadiation}
+                    onClick={toggleAnimationOff}
+                    style={{
+                      fontSize: 20,
+                    }}
+                    className='rotate'
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div
+              className='text-gray-200 cursor-pointer'
+            >
+              <Tooltip title='Background Animation Off' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faRadiation}
+                    onClick={toggleAnimationOn}
+                    style={{
+                      fontSize: 20,
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+          {sound ? (
+            <div className='cursor-pointer'>
+              <Tooltip title='Sound-On' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVolumeUp}
+                    onClick={soundTurnOff}
+                    style={{
+                      fontSize: 20,
+                    }}
+                    className='text-brand'
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='cursor-pointer'>
+              <Tooltip title='Sound-Off' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faVolumeMute}
+                    onClick={soundTurnOn}
+                    style={{
+                      fontSize: 20,
+                    }}
+                    className='text-gray-200'
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+          <a href={RESUME_LINK} target='_blank' rel='noreferrer nofollow'>
+            <div
+              className='resume-btn flex items-center justify-between gap-x-2'
+              onMouseEnter={changeDownloadEnter}
+              onMouseLeave={changeDownloadLeave}
+            >
+              <FontAwesomeIcon icon={faShare} className='icon' />
+              <div className='text'>Résumé/CV</div>
+            </div>
+          </a>
+        </div>
+      ) : (
+        <div className='flex items-center justify-center gap-x-2'>
+          {backgroundAnimation ? (
+            <div
+              className='text-brand cursor-pointer'
+              style={{ marginRight: "1.4em" }}
+            >
+              <Tooltip
+                title={'Background Animation On'}
+                placement='bottom'
+              >
+                <div>
+                  <FontAwesomeIcon
+                    icon={faRadiation}
+                    onClick={toggleAnimationOff}
+                    style={{
+                      fontSize: 19,
+                    }}
+                    className='rotate'
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          ) : (
+            <div className='cursor-pointer'>
+              <Tooltip title='Background Animation Off' placement='left'>
+                <div>
+                  <FontAwesomeIcon
+                    icon={faRadiation}
+                    onClick={toggleAnimationOn}
+                    style={{
+                      fontSize: 19,
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </div>
+          )}
+          <Tooltip title='Menu' placement='left'>
+            <div>
+              <FontAwesomeIcon
+                icon={faBars}
+                onClick={verticalMenu}
+                style={{
+                  fontSize: 21,
+                }}
+              />
+            </div>
+          </Tooltip>
+        </div>
+      )}
+      {width < 787 && (
+        <Drawer
+          anchor={"right"}
+          open={drawer}
+          onClose={verticalMenu}
+        >
+          <SidebarMini
+            close={verticalMenu}
+            goToHome={goToHome}
+            goToWork={goToWork}
+            goToProjects={goToProjects}
+            goToResearch={goToResearch}
+            goToSkills={goToSkills}
+            goToArticles={goToArticles}
+            goToEducation={goToEducation}
+          />
+        </Drawer>
+      )}
+    </div>
   );
 };
 

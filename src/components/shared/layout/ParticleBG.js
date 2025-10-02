@@ -4,69 +4,78 @@ import { loadFull } from "tsparticles";
 
 export default function ParticleBG() {
 
-   const particlesInit = useCallback(async (engine) => {
-     await loadFull(engine);
-   }, []);
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
+  }, []);
 
   return (
-      <Particles
-        id='tsparticles'
-        init={particlesInit}
-        options={{
-          fullScreen: {
-            enable: true,
-            zIndex: -15
+    <Particles
+      id='tsparticles'
+      init={particlesInit}
+      options={{
+        fullScreen: {
+          enable: true,
+          zIndex: 0 // IMPORTANT: Changed from -10 to 0 to be consistent with style
+        },
+        background: {
+          opacity: 0
+        },
+        detectRetina: true, // Enable retina detection for better mobile rendering
+        fpsLimit: 60, // Good balance between performance and quality
+        particles: {
+          color: {
+            value: "#0091ff"
           },
-          background: {
-            opacity: 0
+          number: {
+            density: {
+              enable: true,
+              area: 1200 // Slightly higher density
+            },
+            limit: 0,
+            value: 150 // Reduced for better performance
           },
-          detectRetina: false,
-          fpsLimit: 120,
-          particles: {
-            color: {
-              value: "#0091ff"
+          opacity: {
+            animation: {
+              enable: true,
+              minimumValue: 0.05,
+              speed: 1.5, // Slower animations look better with fixed background
+              sync: false
             },
-            number: {
-              density: {
-                enable: true,
-                area: 1080
-              },
-              limit: 0,
-              value: 200
+            random: {
+              enable: true,
+              minimumValue: 0.05
             },
-            opacity: {
-              animation: {
-                enable: true,
-                minimumValue: 0.05,
-                speed: 2.5,
-                sync: false
-              },
-              random: {
-                enable: true,
-                minimumValue: 0.05
-              },
-              value: 1
+            value: 1
+          },
+          shape: {
+            type: "circle"
+          },
+          size: {
+            random: {
+              enable: true,
+              minimumValue: 1
             },
-            shape: {
-              type: "circle"
-            },
-            size: {
-              random: {
-                enable: true,
-                minimumValue: 1
-              },
-              value: 2
-            }
+            value: 1.8 // Slightly smaller particles
+          },
+          move: {
+            enable: false,
+            speed: 0.8, // Very slow movement to appear almost static
+            direction: "none",
+            random: true,
+            straight: false,
+            outModes: "out"
           }
-        }}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 1
-        }}
-      />
+        }
+      }}
+      style={{
+        position: "fixed", // Fixed position so it stays in place during scroll
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        zIndex: 0, // IMPORTANT: Changed from -1 to 0 to make particles visible above backgrounds
+        pointerEvents: "none" // Ensure clicks pass through
+      }}
+    />
   );
 }
