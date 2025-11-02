@@ -9,7 +9,7 @@ export const CULTIVISION_LINK = 'https://mcdonald-nandi-lab.github.io/cultivisio
 
 // PROJECTS, portfolio, image urls
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
-export const cultivisionProj = 'https://i.postimg.cc/23NLmv9k/cv.png'
+export const cultivisionProj = 'https://res.cloudinary.com/shnuab/image/upload/v1761627847/cv-metadata_mce6na.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
 export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 
@@ -18,8 +18,8 @@ export const WORK_LIST = [
         id: 1,
         title: 'Cultivision',
         subTitle: 'Cultivated Meat Analytics',
-        description: 'Explore production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
-        image: 'https://res.cloudinary.com/shnuab/image/upload/f_auto,q_auto,c_limit,w_1200/Cultivision/cv-metadata-preview_c0ptwh.png',
+        description: 'Explore AI-powered production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
+        image: cultivisionProj,
         tech: [
             'Nextjs',
             'Python',
@@ -27,7 +27,7 @@ export const WORK_LIST = [
             'Plant bioprocessing',
         ],
         gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
-        link: 'https://mcdonald-nandi-lab.github.io/cultivision/',
+        link: 'https://cultivision.app',
         tag: 'Mcdonald/Nandi Lab'
     },
     {

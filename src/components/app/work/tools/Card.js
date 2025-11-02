@@ -92,8 +92,8 @@ const Card = ({
                         </div>
                         <div className='flex items-center justify-between gap-4 lg:gap-6 text-md w-full lg:flex-col mt-6'>
                             <div className="flex items-center justify-start gap-x-4">
-                                <ContactButtons icon={faGithub} link={gitUrl} tooltip="View Code" />
-                                <ContactButtons icon={faArrowUpRightFromSquare} link={link} tooltip="Live Demo" />
+                                {title !== 'Cultivision' && title !== 'FRREDSS' && gitUrl && (<ContactButtons icon={faGithub} link={gitUrl} tooltip="View Code" />)}
+                                <ContactButtons icon={faArrowUpRightFromSquare} link={link} tooltip="App Link" />
                             </div>
 
                             {tag && tag.length > 0 && (
