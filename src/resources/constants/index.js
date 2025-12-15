@@ -51,12 +51,12 @@ export const WORK_LIST = [
         id: 3,
         title: 'ResView',
         subTitle: 'Blockchain Visualizer',
-        description: 'A novel PBFT graphical visualizer based on the ResilientDb sustainable blockchain fabric.',
+        description: 'A novel PBFT graphical visualizer based on the Apache ResilientDb sustainable blockchain fabric.',
         image: resviewProj,
         tech: ['Showcase', 'Personal', 'Messages', 'Mui', 'Javascript'],
         gitUrl: 'https://github.com/ResilientApp/ResView',
         link: 'https://resview.resilientdb.com/pages/home',
-        tag: 'ExpoLab'
+        tag: 'Open Source Contribution'
     },
     {
         id: 4,
@@ -200,8 +200,8 @@ export const RESEARCH_LIST = [
     },
     {
         title: "Byzantine Fault Tolerance Consensus Visualization",
-        description: "Novel practical byzantine fault tolerance consensus visualizer based on the ResilientDb sustainable blockchain fabric",
-        tags: ["Blockchain", "DDS", "D3.js"],
+        description: "Novel practical byzantine fault tolerance consensus visualizer based on the Apache ResilientDb sustainable blockchain fabric",
+        tags: ["Open Source", "Blockchain", "DDS", "D3.js"],
         achievements: [],
         link: "https://blog.resilientdb.com/2023/12/06/ResView.html"
     },
