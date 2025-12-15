@@ -53,7 +53,7 @@ export const WORK_LIST = [
         subTitle: 'Blockchain Visualizer',
         description: 'A novel PBFT graphical visualizer based on the Apache ResilientDb sustainable blockchain fabric.',
         image: resviewProj,
-        tech: ['Showcase', 'Personal', 'Messages', 'Mui', 'Javascript'],
+        tech: ['Blockhain', 'Websockets', 'Javascript', 'C++', 'Mui'],
         gitUrl: 'https://github.com/ResilientApp/ResView',
         link: 'https://resview.resilientdb.com/pages/home',
         tag: 'Open Source Contribution'
