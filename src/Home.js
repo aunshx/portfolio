@@ -172,14 +172,14 @@ const Home = ({
         <Container innerRef={goHome} movement={'fade-down'} className='my-12'>
           <Main goToFunc={[goToWork, goToExperience]} />
         </Container>
+        <Container innerRef={goWork} movement={'fade-up'} customMargin>
+          <Work />
+        </Container>
         <Container innerRef={goExperience} movement={'fade-up'} customMargin>
           <Experience />
         </Container>
         <Container innerRef={goSkills} movement={'fade-down'} customMargin>
           <Skills />
-        </Container>
-        <Container innerRef={goWork} movement={'fade-up'} customMargin>
-          <Work />
         </Container>
         <Container innerRef={goResearch} movement={'fade-down'} customMargin>
           <Research />

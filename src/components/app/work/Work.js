@@ -32,7 +32,7 @@ export const LinkButton = ({ link }) => {
 const Work = () => {
   return (
     <div className='w-full items-center justify-center'>
-      <Title icon={<FontAwesomeIcon icon={faTools} />} title={'Work'} />
+      <Title icon={<FontAwesomeIcon icon={faTools} />} title={'Featured Work'} />
       <div className={`grid grid-cols-2 gap-16 ${VERTICAL_MARGIN} lg:flex lg:flex-col lg:items-center lg:justify-center`}>
         {WORK_LIST.map((project, index) => (
           <Card
