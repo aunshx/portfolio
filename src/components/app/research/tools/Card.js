@@ -28,7 +28,7 @@ const ResearchCard = ({
       >
         <div className=" w-full">
           <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-lg font-bold tracking-tight group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 leading-tight flex items-center gap-3">
+            <h3 className="text-lg font-bold tracking-tight group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 leading-tight flex items-center gap-3 leading-6">
               <FontAwesomeIcon
                 icon={faFlask}
                 className="text-brand w-4 h-4 group-hover:scale-110 transition-transform duration-300"

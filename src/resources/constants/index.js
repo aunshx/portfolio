@@ -8,6 +8,7 @@ export const RESUME_LINK = 'https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5
 export const CULTIVISION_LINK = 'https://mcdonald-nandi-lab.github.io/cultivision/';
 
 // PROJECTS, portfolio, image urls
+export const fredProj = 'https://i.postimg.cc/FFw6tW0p/fred.png'
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
 export const cultivisionProj = 'https://res.cloudinary.com/shnuab/image/upload/v1761627847/cv-metadata_mce6na.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
@@ -16,65 +17,59 @@ export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 export const WORK_LIST = [
     {
         id: 1,
-        title: 'Cultivision',
-        subTitle: 'Cultivated Meat Analytics',
-        description: 'Explore AI-powered production and sustainability analysis on cultivated meat production, cost metrics, and bioreactor performance.',
-        image: cultivisionProj,
-        tech: [
-            'Nextjs',
-            'Python',
-            'TEA',
-            'Plant bioprocessing',
-        ],
-        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
-        link: 'https://cultivision.app',
-        tag: 'Mcdonald/Nandi Lab'
+        title: 'FRED.AI',
+        subTitle: 'Forest Biomass Decision Support',
+        description: 'AI system that turns California forest spatial data into procurement decisions. Compositional Spatial RAG composes ML prediction layers, runs fire-risk-aware Pareto optimization, and responds in plain language.',
+        image: fredProj,
+        tech: ['Pareto Optimization', 'FastAPI', 'XGBoost', 'PostGIS'],
+        gitUrl: 'https://github.com/aunshx/csrag',
+        link: 'https://biofred.us',
+        tag: 'MS Thesis'
     },
     {
         id: 2,
+        title: 'Cultivision',
+        subTitle: 'Cultivated Meat Analytics',
+        description: 'Techno-economic and sustainability analysis platform for cultivated meat production. Models bioreactor performance, cost metrics, and environmental impact across production scales.',
+        image: cultivisionProj,
+        tech: ['Next.js', 'Python', 'TEA', 'LCA'],
+        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
+        link: 'https://cultivision.app',
+        tag: 'McDonald/Nandi Lab'
+    },
+    {
+        id: 3,
         title: 'FRREDSS',
-        subTitle: 'Siting Tool',
-        description: 'Forest Resources and Renewable Energy Decision Support System (FRREDSS): An online siting and decision support application modeled for forest biomass based on the $1.2 million grant from CA Office of Planning and Research.',
+        subTitle: 'Forest Biomass Siting Tool',
+        description: 'Statewide decision support system for forest biomass energy siting in California. Built under a $1.2M CA OPR grant, coupling techno-economic assessment, LCA, and geospatial optimization.',
         image: forestDssProj,
-        tech: [
-            'Biomass',
-            'TEA',
-            'LCA',
-            'Agriculture',
-            'Modelling',
-        ],
+        tech: ['Biomass', 'TEA', 'LCA', 'GIS'],
         gitUrl: 'https://github.com/ucdavis/cecdss',
         link: 'https://forestdss.ucdavis.edu',
         tag: 'California OPR x UC Davis'
     },
     {
-        id: 3,
+        id: 4,
         title: 'ResView',
         subTitle: 'Blockchain Visualizer',
-        description: 'A novel PBFT graphical visualizer based on the Apache ResilientDb sustainable blockchain fabric.',
+        description: 'Graphical PBFT consensus visualizer on Apache ResilientDB. Renders live node state, message passing, and fault-tolerance behavior in real time.',
         image: resviewProj,
-        tech: ['Blockhain', 'Websockets', 'Javascript', 'C++', 'Mui'],
+        tech: ['Blockchain', 'WebSockets', 'JavaScript', 'C++'],
         gitUrl: 'https://github.com/ResilientApp/ResView',
         link: 'https://resview.resilientdb.com/pages/home',
-        tag: 'Open Source Contribution'
+        tag: 'Open Source'
     },
-    {
-        id: 4,
-        title: 'Movie Catalogue',
-        subTitle: 'Real-time search',
-        description: 'Featuring real-time search and lazy loading using the Omdb movie API.',
-        image: omdbProj,
-        tech: [
-            'Typescript',
-            'API',
-            'Lazy-Loading',
-            'Responsive',
-            'Search',
-        ],
-        gitUrl: 'https://github.com/aunshx/omdb_api',
-        link: 'https://main--calm-cajeta-d1c26b.netlify.app/',
-        tag: ''
-    },
+    // {
+    //     id: 5,
+    //     title: 'Movie Catalogue',
+    //     subTitle: 'Real-time Search',
+    //     description: 'Movie search interface powered by the OMDB API with real-time search and lazy loading across large catalogs.',
+    //     image: omdbProj,
+    //     tech: ['TypeScript', 'REST API', 'Lazy Loading', 'Responsive'],
+    //     gitUrl: 'https://github.com/aunshx/omdb_api',
+    //     link: 'https://main--calm-cajeta-d1c26b.netlify.app/',
+    //     tag: ''
+    // },
 ];
 
 // EDUCATION 
@@ -183,32 +178,30 @@ export const BLOG_LIST = [
 // RESEARCH 
 export const RESEARCH_LIST = [
     {
-        "title": "Spatio-temporal Forecasting of Agricultural Crop Yields with Machine Learning",
-        "description": "A platform for predicting agricultural crop distributions across California using spatio-temporal machine learning techniques",
-        "tags": ["ML", "Agriculture", "Geospatial Analysis"],
-        "achievements": [
-            "Thesis"
-        ],
-        "link": "https://drive.google.com/file/d/16OJgNEtry66OZOVhmm6F2xEvsaN8kYtj/view?usp=sharing"
+        title: "From Spatial Prediction Layers to Agentic Decision Support: An Integrated AI Pipeline for Forest Biomass Procurement in California",
+        description: "MS thesis introducing CS-RAG, an agentic architecture that composes ML prediction layers, runs fire-risk-aware Pareto optimization, and delivers procurement-ready recommendations in plain language.",
+        tags: ["Spatial AI", "CS-RAG", "XGBoost"],
+        achievements: ["MS Thesis"],
+        link: 'https://drive.google.com/file/d/16OJgNEtry66OZOVhmm6F2xEvsaN8kYtj/view?usp=drive_link'
     },
     {
-        "title": "Decision Support for Biomass Energy Assessment and Lifecycle Analysis",
-        "description": "Analyzing forest biomass resources across California to determine economic feasibility and environmental impacts of potential biopower facilities.",
-        "tags": [ "GIS", "LCA", "TEA"],
-        "achievements": ["Under Review"],
-        "link": "https://drive.google.com/file/d/17rLkjHeBkYXq0YjcfZ_u8gsityeHID3A/view?usp=sharing"
+        title: "FRREDSS 2.0: Decision Support for Forest Biomass Energy Assessment and Lifecycle Analysis",
+        description: "Statewide biomass-to-energy decision support system for California coupling techno-economic assessment, life cycle analysis, and geospatial optimization across millions of forest clusters. Developed under a $1.2M CA OPR grant.",
+        tags: ["GIS", "LCA", "TEA", "Biomass"],
+        achievements: ["Under Review"],
+        link: "https://drive.google.com/file/d/17rLkjHeBkYXq0YjcfZ_u8gsityeHID3A/view?usp=sharing"
     },
     {
         title: "Byzantine Fault Tolerance Consensus Visualization",
-        description: "Novel practical byzantine fault tolerance consensus visualizer based on the Apache ResilientDb sustainable blockchain fabric",
-        tags: ["Open Source", "Blockchain", "DDS", "D3.js"],
+        description: "Novel PBFT consensus visualizer built on the Apache ResilientDB sustainable blockchain fabric. Renders live node state, message passing, and fault-tolerance behavior in real time.",
+        tags: ["Open Source", "Blockchain", "D3.js"],
         achievements: [],
         link: "https://blog.resilientdb.com/2023/12/06/ResView.html"
     },
     {
         title: "5G Dual Band Pass Filter for Wi-Fi and WLAN Operations",
-        description: "New generation of dual band pass 5G filter for Wi-Fi and WLAN operating t 2.45 GHz and 5.5 GHz.",
-        tags: ["5G", "Antenna Tech", "Telecomm"],
+        description: "Dual band pass 5G filter for Wi-Fi and WLAN operating at 2.45 GHz and 5.5 GHz.",
+        tags: ["5G", "Antenna", "Telecomm"],
         achievements: ["Best Paper"],
         link: "https://drive.google.com/file/d/1vU5t8YAz7mKWWKG1-l77xMDisG6grjzA/view?usp=sharing"
     }
