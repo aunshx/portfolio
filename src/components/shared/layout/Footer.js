@@ -35,7 +35,7 @@ const Footer = () => {
               Commemorating ISRO's <a href="https://en.wikipedia.org/wiki/GSLV_F15" target='_blank' rel='noreferrer nofollow' className='text-gray-400 hover:text-brand underline'>100th rocket launch<sup>*</sup></a> &#128640;
             </div>
             <div className='text-xs'>
-              v5.1.0 &#8226; 2021-2026 &#8226; All rights reserved
+              v5.1.0 &#8226; 2026 &#8226; All rights reserved
             </div>
           </div>
           <div className="flex flex-col items-center gap-4">

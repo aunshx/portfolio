@@ -77,16 +77,12 @@ export const EDUCATION_LIST = [
     {
         title: "University of California, Davis",
         degree: "MS. Electrical and Computer Engineering",
-        start: "Sep 2023",
-        end: "Present",
         abbr: "UCD",
     },
     {
         title: "University of Pune",
         degree: "BE. Electronics and Telecommunication",
         start: "June 2016",
-        end: "May 2020",
-        abbr: "SPPU",
         extra: 'Student Council | Top 10 of the class in all years'
     },
 ];
@@ -178,7 +174,7 @@ export const BLOG_LIST = [
 // RESEARCH 
 export const RESEARCH_LIST = [
     {
-        title: "From Spatial Prediction Layers to Agentic Decision Support: An Integrated AI Pipeline for Forest Biomass Procurement in California",
+        title: "Agentic Decision Support via Spatial Prediction Layers for Forest Biomass Procurement",
         description: "MS thesis introducing CS-RAG, an agentic architecture that composes ML prediction layers, runs fire-risk-aware Pareto optimization, and delivers procurement-ready recommendations in plain language.",
         tags: ["Spatial AI", "CS-RAG", "XGBoost"],
         achievements: ["MS Thesis"],
