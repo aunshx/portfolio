@@ -1401,9 +1401,6 @@ video {
 .font-semibold {
   font-weight: 600;
 }
-.italic {
-  font-style: italic;
-}
 .leading-6 {
   line-height: 1.5rem;
 }

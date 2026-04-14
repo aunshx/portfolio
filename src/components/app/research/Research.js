@@ -1,12 +1,9 @@
 import { faVial } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import React from "react";
 import { connect } from "react-redux";
-
-import Card from "./tools/Card";
-
 import { RESEARCH_LIST, VERTICAL_MARGIN } from "../../../resources/constants";
+import Card from "./tools/Card";
 import Title from "../../shared/layout/Title";
 
 const Research = ({

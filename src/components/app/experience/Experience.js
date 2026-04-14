@@ -53,7 +53,7 @@ const ExperienceItem = ({ name, position, duration, link, description, tech, ind
             </div>
           </div>
           <div className="flex items-stretch justify-start gap-2 mt-1 text-gray-200 text-sm md:flex-col md:items-start mb-3">
-            {(index === 0 || index === 2) && (
+            {(index === 0) && (
               <>
                 <div className="glass-button px-3 py-1 rounded-lg text-xs group-hover:text-white transition-colors duration-300">
                   Graduate Student Researcher

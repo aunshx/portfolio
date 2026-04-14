@@ -45,9 +45,6 @@ const Card = ({
             {degree}
           </div>
         </div>
-        <div className='glass-button px-3 py-1 rounded-lg text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-300 italic'>
-          {start} to {end}
-        </div>
       </div>
 
       <div className="absolute top-3 right-3 w-2 h-2 bg-white/20 rounded-full twinkle opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
