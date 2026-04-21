@@ -6,11 +6,9 @@
   NODE_VERSION = "16.20.0"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[[redirects]]
-  from = "https://tldr.aun.sh/*"
-  to = "/tldr"
-  status = 200
-  force  = true
+[[edge_functions]]
+  function = "tldr-redirect"
+  path = "/*"
 
 [[redirects]]
   from = "/*"
