@@ -17,6 +17,7 @@ import store from "./store";
 
 import darkBackground from "./resources/sounds/darkBackground.mp3";
 import lightBackground from "./resources/sounds/lightBackground.mp3";
+import Tldr from "./components/tldr/index.js";
 
 function App({
   // Redux States
@@ -113,6 +114,7 @@ function App({
         <>
           <Routes>
             <Route exact path='/' element={<Home />} />
+            <Route path="/tldr" element={<Tldr />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </>
