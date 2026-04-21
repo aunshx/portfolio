@@ -7,15 +7,15 @@
   NPM_FLAGS = "--legacy-peer-deps"
 
 [[redirects]]
+  from = "https://tldr.aun.sh/*"
+  to = "/tldr"
+  status = 200
+  force  = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[redirects]]
-  from   = "https://tldr.aun.sh/*"
-  to     = "/tldr"
-  status = 200
-  force  = true
 
 [[redirects]]
   from = "/*"
