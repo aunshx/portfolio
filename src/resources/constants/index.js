@@ -5,12 +5,12 @@ export const MEDIUM_LINK = 'https://aunsh.medium.com/'
 export const EMAIL_LINK = 'mailto:aunsh.sb@gmail.com'
 export const GITHUB_LINK = 'https://github.com/aunshx'
 export const RESUME_LINK = 'https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5xUn6p-NZDR1vJ/view?usp=sharing';
-export const CULTIVISION_LINK = 'https://mcdonald-nandi-lab.github.io/cultivision/';
+export const REAKTR_LINK = 'https://reaktr.cc';
 
 // PROJECTS, portfolio, image urls
 export const fredProj = 'https://i.postimg.cc/FFw6tW0p/fred.png'
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
-export const cultivisionProj = 'https://res.cloudinary.com/shnuab/image/upload/v1761627847/cv-metadata_mce6na.png'
+export const cultivisionProj = 'https://i.postimg.cc/kX0xjpkF/reaktr.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
 export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 
@@ -28,14 +28,14 @@ export const WORK_LIST = [
     },
     {
         id: 2,
-        title: 'Cultivision',
-        subTitle: 'Cultivated Meat Analytics',
+        title: 'reaktr',
+        subTitle: 'Sustainable Food Agentic Analytics',
         description: 'Techno-economic and sustainability analysis platform for cultivated meat production. Models bioreactor performance, cost metrics, and environmental impact across production scales.',
         image: cultivisionProj,
         tech: ['Next.js', 'Python', 'TEA', 'LCA'],
         gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
         link: 'https://cultivision.app',
-        tag: 'McDonald/Nandi Lab'
+        tag: 'Transfered'
     },
     {
         id: 3,
