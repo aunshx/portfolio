@@ -61,9 +61,9 @@ const ExperienceItem = ({ name, position, duration, link, description, tech, ind
                 <div className="md:hidden text-gray-500">&#8226;</div>
               </>
             )}
-            <time className="glass-button px-3 py-1 rounded-lg text-xs group-hover:text-gray-200 transition-colors duration-300">
+            {/* <time className="glass-button px-3 py-1 rounded-lg text-xs group-hover:text-gray-200 transition-colors duration-300">
               {duration}
-            </time>
+            </time> */}
           </div>
 
           <p className="mb-6 text-sm font-normal text-gray-400 lg:mt-2 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
