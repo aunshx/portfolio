@@ -229,7 +229,7 @@ export const EXP_LIST = [
             "Collaborated closely with founders to implement the model selection and inference pipeline for the platform"
         ],
         description: "Worked on the application development for pre-seed AI startup using FastAPI backend and NextJS frontend, created 'Sage', a RAG-based AI agent using Langchain to determine optimal ML models based on user interaction, and worked closely with founders to implement the model selection and inference pipeline.",
-        position: "Software Engineering Intern",
+        position: "Software Engineer",
         duration: "July 2024 - Sept 2024",
         link: 'https://mlpal.ai',
         tech: ["Machine Learning", "Web Dev", "RAG", "Langchain"]
