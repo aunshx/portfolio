@@ -8,7 +8,7 @@ export const RESUME_LINK = 'https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5
 export const REAKTR_LINK = 'https://reaktr.cc';
 
 // PROJECTS, portfolio, image urls
-export const fredProj = 'https://i.postimg.cc/YCbnnPK5/fred.png'
+export const fredProj = 'https://i.postimg.cc/Prnq63dr/fred.png'
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
 export const cultivisionProj = 'https://i.postimg.cc/kX0xjpkF/reaktr.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
