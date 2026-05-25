@@ -2,6 +2,7 @@ import { faGithub, faLinkedin, faMedium } from '@fortawesome/free-brands-svg-ico
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import bodingoLogo from '../../../resources/images/bodingoLogo.png';
 import { EMAIL_LINK, GITHUB_LINK, LICENSE, LINKEDIN_LINK, MEDIUM_LINK } from '../../../resources/constants';
 
 export const ContactButtons = ({ link, icon, title='Github'  }) => {
@@ -33,6 +34,14 @@ const Footer = () => {
             </div>
             <div className="text-sm">
               Commemorating ISRO's <a href="https://en.wikipedia.org/wiki/GSLV_F15" target='_blank' rel='noreferrer nofollow' className='text-gray-400 hover:text-brand underline'>100th rocket launch<sup>*</sup></a> &#128640;
+            </div>
+            <div className='flex items-center gap-5 opacity-60'>
+              <img
+                src={bodingoLogo}
+                alt='Bodingo'
+                className='h-6'
+                style={{ filter: 'brightness(10)' }}
+              />
             </div>
             <div className='text-xs'>
               v5.1.0 &#8226; 2026 &#8226; All rights reserved
