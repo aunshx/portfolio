@@ -8,7 +8,7 @@ export const RESUME_LINK = 'https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5
 export const REAKTR_LINK = 'https://reaktr.cc';
 
 // PROJECTS, portfolio, image urls
-export const fredProj = 'https://i.postimg.cc/Prnq63dr/fred.png'
+export const fredProj = 'https://i.postimg.cc/QCYrYSc6/fred.png'
 export const forestDssProj = 'https://i.postimg.cc/C53SYbWp/forestdss.png'
 export const cultivisionProj = 'https://i.postimg.cc/kX0xjpkF/reaktr.png'
 export const resviewProj = 'https://i.postimg.cc/02mF4z0m/resview.png'
@@ -17,25 +17,24 @@ export const omdbProj = 'https://i.postimg.cc/7LFXyVVN/omdbAPI.png'
 export const WORK_LIST = [
     {
         id: 1,
-        title: 'FRED.AI',
-        subTitle: 'Forest Biomass Decision Support',
+        title: 'FRED',
+        subTitle: 'Spatial Agents for Biomass',
         description: 'AI system that turns California forest spatial data into procurement decisions. Compositional Spatial RAG composes ML prediction layers, runs fire-risk-aware Pareto optimization, and responds in plain language.',
         image: fredProj,
-        tech: ['Pareto Optimization', 'FastAPI', 'XGBoost', 'PostGIS'],
-        gitUrl: 'https://github.com/aunshx/csrag',
+        tech: ['Pareto Optimization', 'FastAPI', 'AI', 'PostGIS'],
         link: 'https://biofred.us',
-        tag: 'MS Thesis'
+        tag: 'Calma'
     },
     {
         id: 2,
-        title: 'reaktr',
-        subTitle: 'Sustainable Food Agentic Analytics',
-        description: 'Techno-economic and sustainability analysis platform for cultivated meat production. Models bioreactor performance, cost metrics, and environmental impact across production scales.',
-        image: cultivisionProj,
-        tech: ['Next.js', 'Python', 'TEA', 'LCA'],
-        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
-        link: 'https://cultivision.app',
-        tag: 'Transfered'
+        title: 'ResView',
+        subTitle: 'Blockchain Visualizer',
+        description: 'Graphical PBFT consensus visualizer on Apache ResilientDB. Renders live node state, message passing, and fault-tolerance behavior in real time.',
+        image: resviewProj,
+        tech: ['Blockchain', 'WebSockets', 'JavaScript', 'C++'],
+        gitUrl: 'https://github.com/ResilientApp/ResView',
+        link: 'https://resview.resilientdb.com/pages/home',
+        tag: 'Open Source'
     },
     {
         id: 3,
@@ -50,14 +49,14 @@ export const WORK_LIST = [
     },
     {
         id: 4,
-        title: 'ResView',
-        subTitle: 'Blockchain Visualizer',
-        description: 'Graphical PBFT consensus visualizer on Apache ResilientDB. Renders live node state, message passing, and fault-tolerance behavior in real time.',
-        image: resviewProj,
-        tech: ['Blockchain', 'WebSockets', 'JavaScript', 'C++'],
-        gitUrl: 'https://github.com/ResilientApp/ResView',
-        link: 'https://resview.resilientdb.com/pages/home',
-        tag: 'Open Source'
+        title: 'reaktr',
+        subTitle: 'Sustainable Food Agentic Analytics',
+        description: 'Techno-economic and sustainability analysis platform for cultivated meat production. Models bioreactor performance, cost metrics, and environmental impact across production scales.',
+        image: cultivisionProj,
+        tech: ['Next.js', 'Python', 'TEA', 'LCA'],
+        gitUrl: 'https://github.com/mcdonald-nandi-lab/cultivision',
+        link: 'https://cultivision.app',
+        tag: 'Transfered'
     },
     // {
     //     id: 5,
