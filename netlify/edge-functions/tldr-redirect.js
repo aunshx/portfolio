@@ -9,7 +9,7 @@ export default async function handler(request, context) {
             },
         });
     }
-    if (url.hostname === 'veryfi-demo.aun.sh') {
+    if (url.hostname === 'demo.aun.sh') {
         return new Response(null, {
             status: 302,
             headers: {
