@@ -9,6 +9,14 @@ export default async function handler(request, context) {
             },
         });
     }
+    if (url.hostname === 'verify.aun.sh') {
+        return new Response(null, {
+            status: 302,
+            headers: {
+                location: 'https://verify-dossier.netlify.app',
+            },
+        });
+    }
 
     return context.next();
 }
