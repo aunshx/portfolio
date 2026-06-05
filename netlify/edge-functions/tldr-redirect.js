@@ -13,7 +13,8 @@ export default async function handler(request, context) {
         return new Response(null, {
             status: 302,
             headers: {
-                location: 'https://veryfi-dossier.netlify.app',
+                ocation: 'https://veryfi-dossier.netlify.app' + url.pathname +
+                    url.search,
             },
         });
     }
