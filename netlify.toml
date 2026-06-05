@@ -5,6 +5,16 @@
 [build.environment]
   NODE_VERSION = "16.20.0"
   NPM_FLAGS = "--legacy-peer-deps"
+  # NODE_VERSION above is for the React build (pinned to 16). Functions need
+  # Node 18+ for built-in fetch / AbortSignal.timeout — pin the Lambda runtime
+  # separately so we don't have to touch the build.
+  AWS_LAMBDA_JS_RUNTIME = "nodejs18.x"
+
+[functions]
+  directory = "netlify/functions"
+
+# Scheduled functions are also declared via the schedule() helper inside
+# netlify/functions/keep-alive.mjs; the cron is "*/14 * * * *".
 
 [[edge_functions]]
   function = "tldr-redirect"
