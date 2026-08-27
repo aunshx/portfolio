@@ -16,3 +16,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Next.js
+.next/
+out/
+
+# scratch
+.keep/
+
+# typescript
+tsconfig.tsbuildinfo
