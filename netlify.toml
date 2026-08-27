@@ -1,26 +1,20 @@
 [build]
   command = "npm run build"
-  publish = "build"
+  publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "16.20.0"
-  NPM_FLAGS = "--legacy-peer-deps"
-  # NODE_VERSION above is for the React build (pinned to 16). Functions need
-  # Node 18+ for built-in fetch / AbortSignal.timeout — pin the Lambda runtime
-  # separately so we don't have to touch the build.
-  AWS_LAMBDA_JS_RUNTIME = "nodejs18.x"
+  NODE_VERSION = "20"
+  # Functions need Node 18+ for built-in fetch / AbortSignal.timeout.
+  AWS_LAMBDA_JS_RUNTIME = "nodejs20.x"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [functions]
   directory = "netlify/functions"
 
-# Scheduled functions are also declared via the schedule() helper inside
-# netlify/functions/keep-alive.mjs; the cron is "*/14 * * * *".
-
-[[edge_functions]]
-  function = "tldr-redirect"
-  path = "/*"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Hostname short-links (tldr / demo / visaverify / thesis) now live in
+# middleware.ts. The former netlify/edge-functions/ pair is removed.
+#
+# Scheduled function: netlify/functions/keep-alive.mjs declares its own
+# schedule() of "*/14 * * * *".
