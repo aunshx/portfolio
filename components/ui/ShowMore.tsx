@@ -4,9 +4,9 @@ import { useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 
 /**
- * Renders the first `initial` children and reveals the rest on request.
- * The hidden items stay in the DOM but out of the accessibility tree until
- * shown, so screen readers and keyboard order match what is visible.
+ * Renders the first `initial` children and the rest on request. Until
+ * then the extra items aren't rendered at all (an empty hidden <li> holds
+ * each place), so screen readers and keyboard order match what is visible.
  */
 export default function ShowMore({
   children,

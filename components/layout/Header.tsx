@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useActiveSection } from "@/lib/useActiveSection";
@@ -13,12 +13,22 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
-const SPY_IDS = ["top", ...NAV.map((n) => n.id)];
+// Every section on the page, so the ones without a nav item (papers,
+// tools, education) clear the highlight instead of leaving the last one lit.
+const SPY_IDS = ["top", "work", "experience", "writing", "research", "skills", "education", "contact"];
 
 /** Always visible. Solid, so it never fights the content it scrolls over. */
 export default function Header() {
   const active = useActiveSection(SPY_IDS);
   const [open, setOpen] = useState(false);
+
+  // Escape closes the phone menu.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg">
