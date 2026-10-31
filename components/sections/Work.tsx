@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Screenshot from "@/components/ui/Screenshot";
 import { WORK } from "@/content/work";
 import { LINKS } from "@/content/profile";
+import type { WorkItem } from "@/content/types";
 
 function External({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -14,109 +15,84 @@ function External({ href, children }: { href: string; children: React.ReactNode 
   );
 }
 
+/** Screenshot link: the case study when there is one, else the live site. */
+function ShotLink({ item, sizes }: { item: WorkItem; sizes: string }) {
+  const shot = <Screenshot shot={item.shot} label={item.title} aspect="16 / 9" sizes={sizes} />;
+  // Pointer-only duplicate of the title link, so it stays out of the tab order.
+  return item.caseStudy ? (
+    <Link href={`/work/${item.caseStudy}`} tabIndex={-1} aria-hidden="true" className="block">
+      {shot}
+    </Link>
+  ) : (
+    <a href={item.link} target="_blank" rel="noreferrer noopener" tabIndex={-1} aria-hidden="true" className="block">
+      {shot}
+    </a>
+  );
+}
+
+function Caption({ item }: { item: WorkItem }) {
+  return (
+    <div className="min-w-0">
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="t-h3">
+          {item.caseStudy ? (
+            <Link href={`/work/${item.caseStudy}`} className="hit hover:text-accent">
+              {item.title}
+            </Link>
+          ) : (
+            <a href={item.link} target="_blank" rel="noreferrer noopener" className="hit hover:text-accent">
+              {item.title}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          )}
+        </h3>
+        <span className="t-meta tabular shrink-0 text-faint">{item.year}</span>
+      </div>
+      <p className="t-body mt-1">{item.description}</p>
+      <p className="t-meta mt-3">
+        <span className="font-semibold text-accent">{item.metric.value}</span> {item.metric.label}
+      </p>
+      <p className="mt-1 flex flex-wrap gap-x-5">
+        {item.caseStudy && (
+          <Link href={`/work/${item.caseStudy}`} className="link">
+            Case study
+            <ArrowRight size={14} strokeWidth={2} aria-hidden="true" />
+          </Link>
+        )}
+        {item.link && <External href={item.link}>Live site</External>}
+        {item.gitUrl && <External href={item.gitUrl}>Code</External>}
+      </p>
+    </div>
+  );
+}
+
 /**
- * All four projects as one grid: four across on wide screens, two on
- * tablets, one on phones. Nothing overlaps the screenshots.
+ * The newest project large, the rest two across. FRED leads the hero, so it
+ * isn't repeated here.
  */
 export default function Work() {
+  const [lead, ...rest] = WORK;
   return (
-    <section id="work" aria-labelledby="work-title" className="pb-8 sm:pb-10">
+    <section id="work" aria-labelledby="work-title" className="pb-10 sm:pb-14">
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-t border-line pt-8 sm:pt-10">
           <h2 id="work-title" className="t-h2">
-            Selected work
+            More work
           </h2>
-          <External href={LINKS.github}>More on GitHub</External>
+          <External href={LINKS.github}>GitHub</External>
         </div>
 
-        <ul className="mt-8 grid grid-cols-1 gap-x-8 gap-y-14 sm:mt-10 md:grid-cols-2 xl:grid-cols-4 xl:gap-x-6">
-          {WORK.map((item) => {
-            const primary = item.caseStudy ? `/work/${item.caseStudy}` : item.link ?? item.gitUrl;
-            const internal = Boolean(item.caseStudy);
-            return (
-              <li key={item.id} className="flex min-w-0 flex-col">
-                {/* The screenshot repeats the title link for pointer users only. */}
-                {internal ? (
-                  <Link href={primary!} tabIndex={-1} aria-hidden="true" className="block">
-                    <Screenshot
-                      shot={item.shot}
-                      label={item.title}
-                      aspect="16 / 9"
-                      sizes="(min-width: 1280px) 275px, (min-width: 768px) 45vw, 100vw"
-                    />
-                  </Link>
-                ) : (
-                  <a
-                    href={primary}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    tabIndex={-1}
-                    aria-hidden="true"
-                    className="block"
-                  >
-                    <Screenshot
-                      shot={item.shot}
-                      label={item.title}
-                      aspect="16 / 9"
-                      sizes="(min-width: 1280px) 275px, (min-width: 768px) 45vw, 100vw"
-                    />
-                  </a>
-                )}
-
-                <div className="mt-4 flex items-baseline justify-between gap-3">
-                  <h3 className="t-h3">
-                    {internal ? (
-                      <Link href={primary!} className="hit hover:text-accent">
-                        {item.title}
-                      </Link>
-                    ) : (
-                      <a
-                        href={primary}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="hit hover:text-accent"
-                      >
-                        {item.title}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    )}
-                  </h3>
-                  <span className="t-meta tabular shrink-0 text-faint">{item.year}</span>
-                </div>
-
-                <p className="t-body mt-2">{item.description}</p>
-
-                <dl className="t-meta mt-4 grid gap-1.5">
-                  <div>
-                    <dt className="sr-only">Role</dt>
-                    <dd>{item.role}</dd>
-                  </div>
-                  <div>
-                    <dt className="sr-only">Result</dt>
-                    <dd>
-                      <span className="font-semibold text-text">{item.metric.value}</span>{" "}
-                      {item.metric.label}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="sr-only">Built with</dt>
-                    <dd className="text-faint">{item.tech.join(", ")}</dd>
-                  </div>
-                </dl>
-
-                <p className="mt-auto flex flex-wrap gap-x-4 pt-2">
-                  {item.caseStudy && (
-                    <Link href={`/work/${item.caseStudy}`} className="link">
-                      Case study
-                      <ArrowRight size={14} strokeWidth={2} aria-hidden="true" />
-                    </Link>
-                  )}
-                  {item.link && <External href={item.link}>Live site</External>}
-                  {item.gitUrl && <External href={item.gitUrl}>Code</External>}
-                </p>
-              </li>
-            );
-          })}
+        <ul className="mt-8 grid gap-x-10 gap-y-14 sm:mt-10 md:grid-cols-2">
+          <li className="grid min-w-0 items-center gap-6 md:col-span-2 lg:grid-cols-[minmax(0,7fr)_minmax(0,4fr)] lg:gap-12">
+            <ShotLink item={lead} sizes="(min-width: 1180px) 690px, (min-width: 1024px) 60vw, 100vw" />
+            <Caption item={lead} />
+          </li>
+          {rest.map((item) => (
+            <li key={item.id} className="grid min-w-0 content-start gap-5">
+              <ShotLink item={item} sizes="(min-width: 1180px) 540px, (min-width: 768px) 46vw, 100vw" />
+              <Caption item={item} />
+            </li>
+          ))}
         </ul>
       </div>
     </section>

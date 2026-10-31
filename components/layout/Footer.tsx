@@ -19,8 +19,7 @@ export default function Footer() {
 
           <div className="min-w-0">
             <p className="t-lead max-w-[40ch]">
-              I&rsquo;m looking for a full-stack or frontend engineering role. Email is the
-              fastest way to reach me.
+              Looking for a full-stack or applied AI role. Email is fastest.
             </p>
 
             <a
@@ -36,7 +35,9 @@ export default function Footer() {
                   <a href={href} target="_blank" rel="noreferrer noopener" className="link">
                     {label}
                     <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
-                    <span className="sr-only">(opens in a new tab)</span>
+                    <span className="sr-only">
+                      {label === "Résumé" ? "(PDF, opens in a new tab)" : "(opens in a new tab)"}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -46,7 +47,7 @@ export default function Footer() {
 
         <div className="t-meta mt-16 flex flex-col gap-1 border-t border-line pt-6 text-faint sm:flex-row sm:justify-between">
           <p>
-            {COLOPHON.credit} {COLOPHON.note}
+            {COLOPHON.credit}
           </p>
           <p className="tabular">© {COLOPHON.year}</p>
         </div>

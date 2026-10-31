@@ -1,21 +1,21 @@
 import type { SkillGroup } from "./types";
 
-/** Ordered for full-stack roles: the everyday stack first. */
+/** From the résumé, AI second to match the roles he's after. */
 export const SKILLS: SkillGroup[] = [
   {
     group: "Frontend",
-    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "D3.js", "Leaflet", "WebSockets"],
+    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "D3.js", "Leaflet"],
+  },
+  {
+    group: "AI and agents",
+    items: ["Anthropic SDK", "OpenAI API", "LangChain", "LangGraph", "ChromaDB", "RAG"],
   },
   {
     group: "Backend",
-    items: ["Node.js", "FastAPI", "Python", "GraphQL", "REST", "PostgreSQL", "PostGIS", "Redis"],
+    items: ["Python", "FastAPI", "Node.js", "PostgreSQL", "PostGIS", "Redis", "GraphQL"],
   },
   {
     group: "Infrastructure",
-    items: ["Docker", "CI/CD", "AWS", "GCP", "Azure", "Netlify", "Git"],
-  },
-  {
-    group: "AI and data",
-    items: ["LangChain", "RAG", "XGBoost", "Pandas", "SQL", "R"],
+    items: ["GCP", "AWS", "Azure", "Docker", "GitHub Actions"],
   },
 ];

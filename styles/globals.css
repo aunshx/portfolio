@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/*  Palette — refined blue.                                            */
-/*  Light is the base; dark is redefined in two guarded blocks so the  */
-/*  toggle wins in both directions and "system" works with no attr.    */
+/*  Palette: light only.                                               */
 /* ------------------------------------------------------------------ */
 
 :root {
@@ -29,56 +27,6 @@
   --ramp-empty: rgba(20, 22, 28, 0.07);
 
   --selection: rgba(0, 105, 217, 0.16);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0a0c12;
-    --surface: #121620;
-    --surface-raised: #171c28;
-    --line: rgba(230, 234, 242, 0.10);
-    --line-strong: rgba(230, 234, 242, 0.24);
-    --text: #e6eaf2;
-    --text-muted: #a8b2c4;
-    --text-faint: #727f92;
-    --accent: #3b9bff;
-    --accent-hover: #6bb4ff;
-    --accent-quiet: rgba(59, 155, 255, 0.14);
-    --contour: rgba(150, 190, 255, 0.06);
-
-    --ramp-1: #0a3d7a;
-    --ramp-2: #0069d9;
-    --ramp-3: #3b9bff;
-    --ramp-4: #93c5fd;
-    --ramp-5: #dbeafe;
-    --ramp-empty: rgba(230, 234, 242, 0.09);
-
-    --selection: rgba(59, 155, 255, 0.22);
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #0a0c12;
-  --surface: #121620;
-  --surface-raised: #171c28;
-  --line: rgba(230, 234, 242, 0.10);
-  --line-strong: rgba(230, 234, 242, 0.24);
-  --text: #e6eaf2;
-  --text-muted: #a8b2c4;
-  --text-faint: #727f92;
-  --accent: #3b9bff;
-  --accent-hover: #6bb4ff;
-  --accent-quiet: rgba(59, 155, 255, 0.14);
-  --contour: rgba(150, 190, 255, 0.06);
-
-  --ramp-1: #0a3d7a;
-  --ramp-2: #0069d9;
-  --ramp-3: #3b9bff;
-  --ramp-4: #93c5fd;
-  --ramp-5: #dbeafe;
-  --ramp-empty: rgba(230, 234, 242, 0.09);
-
-  --selection: rgba(59, 155, 255, 0.22);
 }
 
 /* ------------------------------------------------------------------ */
@@ -109,6 +57,7 @@
 
 @layer base {
   html {
+    color-scheme: light;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
@@ -323,6 +272,19 @@ a:focus-visible > .shot {
   border-color: var(--line-strong);
 }
 
+/* The site's one motif: faint topographic contour lines behind the hero,
+   fading out before they reach the text. */
+.contours {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url("/images/home/contours.svg") center / cover no-repeat;
+  opacity: 0.16;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
 /* Shown in place of a screenshot that fails to load. */
 .shot-fallback {
   position: absolute;
@@ -411,12 +373,6 @@ a:focus-visible > .shot {
 .cs[data-study="fred"] { --cs-accent: #7a5c24; }
 .cs[data-study="reaktr"] { --cs-accent: #0b6e61; }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .cs[data-study="fred"] { --cs-accent: #c8a96e; }
-  :root:not([data-theme="light"]) .cs[data-study="reaktr"] { --cs-accent: #00e5c3; }
-}
-:root[data-theme="dark"] .cs[data-study="fred"] { --cs-accent: #c8a96e; }
-:root[data-theme="dark"] .cs[data-study="reaktr"] { --cs-accent: #00e5c3; }
 
 .cs-shot {
   overflow: hidden;

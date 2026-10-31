@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { PROFILE, LINKS } from "@/content/profile";
 
@@ -64,7 +63,7 @@ export default function Header() {
                   href={LINKS.resume}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="inline-flex min-h-11 items-center gap-1 px-3 text-[0.875rem] text-muted transition-colors hover:text-accent"
+                  className="inline-flex min-h-11 items-center gap-1 pl-3 text-[0.875rem] text-muted transition-colors hover:text-accent"
                 >
                   Résumé
                   <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
@@ -74,7 +73,6 @@ export default function Header() {
             </ul>
           </nav>
 
-          <ThemeToggle />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

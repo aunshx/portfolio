@@ -58,21 +58,16 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
-  other: { "msapplication-TileColor": "#0a0c12" },
+  other: { "msapplication-TileColor": "#fbfbfd" },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfbfd" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0c12" },
-  ],
+  themeColor: "#fbfbfd",
+  colorScheme: "light",
   // Pinch zoom deliberately left enabled; the old build blocked it.
   width: "device-width",
   initialScale: 1,
 };
-
-/** Set the theme before first paint so the toggle never flashes. */
-const THEME_BOOTSTRAP = `(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`;
 
 const JSON_LD = {
   "@context": "https://schema.org",
@@ -105,7 +100,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}

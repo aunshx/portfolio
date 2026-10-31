@@ -5,7 +5,7 @@ export const EDUCATION: EducationItem[] = [
     title: "University of California, Davis",
     degree: "MS, Electrical and Computer Engineering",
     abbr: "UCD",
-    duration: "2026",
+    duration: "2023 – 2026",
     logo: "/images/education/ucDavisLogo.png",
   },
   {

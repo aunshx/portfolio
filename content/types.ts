@@ -14,14 +14,11 @@ export type HomeShot = {
 export type WorkItem = {
   id: number;
   title: string;
-  /** One plain sentence: what it is. */
+  /** A few words: what it is. */
   description: string;
-  /** What Aunsh did on it. */
-  role: string;
   /** One result, with the number kept separate so it can carry weight. */
   metric: { value: string; label: string };
   shot: HomeShot;
-  tech: string[];
   link?: string;
   gitUrl?: string;
   year: string;
@@ -36,15 +33,14 @@ export type ExperienceItem = {
   position: string;
   duration: string;
   link?: string;
-  work: string[];
-  tech?: string[];
+  /** One line, from the résumé. */
+  summary: string;
 };
 
 export type ResearchItem = {
   title: string;
-  description: string;
-  tags: string[];
-  achievements: string[];
+  /** Venue or status, when there is one. */
+  note?: string;
   link?: string;
 };
 

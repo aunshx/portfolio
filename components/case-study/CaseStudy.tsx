@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import ThemeToggle from "@/components/layout/ThemeToggle";
 import { PROFILE } from "@/content/profile";
 import type { CaseStudy as Study, Metric } from "@/content/types";
 import { Phone, Shot } from "./Shot";
@@ -114,7 +113,6 @@ export default function CaseStudy({ study }: { study: Study }) {
               <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
               <span className="sr-only">(opens in a new tab)</span>
             </a>
-            <ThemeToggle />
           </div>
         </div>
       </header>

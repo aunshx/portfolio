@@ -17,7 +17,7 @@ export default function Education() {
             />
             <div className="min-w-0">
               <h3 className="t-h3">{school.title}</h3>
-              <p className="t-body mt-0.5">{school.degree}</p>
+              <p className="t-meta mt-0.5">{school.degree}</p>
               {school.duration && (
                 <p className="t-meta tabular mt-1 text-faint">{school.duration}</p>
               )}
