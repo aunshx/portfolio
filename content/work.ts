@@ -13,6 +13,8 @@ export const WORK: WorkItem[] = [
     domain: "biofred.us",
     status: "building",
     featured: true,
+    year: "2026",
+    caseStudy: "fred",
   },
   {
     id: 2,
@@ -21,11 +23,13 @@ export const WORK: WorkItem[] = [
     description:
       "Techno-economic and sustainability analysis platform for cultivated meat production. Models bioreactor performance, cost metrics, and environmental impact across production scales.",
     image: "/images/work/reaktr.png",
-    tech: ["Next.js", "TypeScript", "Python", "Vercel"],
+    tech: ["Next.js", "TypeScript", "Chart.js", "Netlify"],
     gitUrl: "https://github.com/mcdonald-nandi-lab/cultivision",
     link: "https://reaktr.cc",
     domain: "reaktr.cc",
     status: "handed-off",
+    year: "2025",
+    caseStudy: "reaktr",
   },
   {
     id: 3,

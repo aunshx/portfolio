@@ -1109,3 +1109,80 @@ body { padding-top: var(--ticker-h); }
 @media (prefers-reduced-motion: reduce) {
   .bp-wash { transition: none; }
 }
+
+/* ------------------------------------------------------------------ */
+/*  Case studies                                                       */
+/*  Each study borrows one accent from its product. Light values are  */
+/*  darkened so text in the accent still passes 4.5:1 on --bg.         */
+/* ------------------------------------------------------------------ */
+
+.cs { --cs-accent: var(--accent); }
+.cs[data-study="fred"] { --cs-accent: #7a5c24; }
+.cs[data-study="reaktr"] { --cs-accent: #0b6e61; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cs[data-study="fred"] { --cs-accent: #c8a96e; }
+  :root:not([data-theme="light"]) .cs[data-study="reaktr"] { --cs-accent: #00e5c3; }
+}
+:root[data-theme="dark"] .cs[data-study="fred"] { --cs-accent: #c8a96e; }
+:root[data-theme="dark"] .cs[data-study="reaktr"] { --cs-accent: #00e5c3; }
+
+.cs-shot {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: var(--surface-raised);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.12),
+    0 40px 80px -40px rgba(0, 0, 0, 0.5);
+}
+
+.cs-caption {
+  margin-top: 0.85rem;
+  max-width: 80ch;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--text-faint);
+}
+
+/* Phones scroll sideways on narrow screens rather than shrinking to stamps. */
+.cs-phones {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+}
+.cs-phones > * { scroll-snap-align: start; }
+@media (min-width: 1180px) {
+  .cs-phones { justify-content: center; overflow-x: visible; }
+}
+
+.cs-phone {
+  overflow: hidden;
+  border: 7px solid #151a1f;
+  border-radius: 2.1rem;
+  background: #0a0c12;
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 30px 50px -30px rgba(0, 0, 0, 0.55);
+}
+
+.cs-code {
+  margin: 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--text);
+  tab-size: 2;
+}
+
+/* Hairline grid for metric tables: every cell draws its right and bottom
+   edge, and the container clips the outer ones. */
+.cs-cell {
+  box-shadow:
+    inset -1px 0 0 var(--line),
+    inset 0 -1px 0 var(--line);
+}

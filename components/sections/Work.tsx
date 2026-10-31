@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Github } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import BrowserFrame from "@/components/ui/BrowserFrame";
 import StatusPill from "@/components/ui/StatusPill";
 import { WORK } from "@/content/work";
@@ -177,6 +178,21 @@ export default function Work() {
                           className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                         />
                       </a>
+                      {item.caseStudy && (
+                        <Link
+                          href={`/work/${item.caseStudy}`}
+                          tabIndex={i === active ? 0 : -1}
+                          className="group inline-flex items-center gap-2 rounded-full border border-line-strong px-5 py-2.5 text-sm font-medium text-text transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                        >
+                          Case study
+                          <ArrowRight
+                            size={15}
+                            strokeWidth={2.2}
+                            aria-hidden="true"
+                            className="transition-transform group-hover:translate-x-0.5"
+                          />
+                        </Link>
+                      )}
                       {item.gitUrl && (
                         <a
                           href={item.gitUrl}
