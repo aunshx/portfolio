@@ -19,9 +19,10 @@ export default function Section({
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="py-8 sm:py-10">
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-        <div className="grid gap-6 border-t border-line pt-8 sm:pt-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-12">
+        <span data-rule className="rule" />
+        <div className="grid gap-6 pt-8 sm:pt-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-12">
           <div>
-            <h2 id={`${id}-title`} className="t-h2">
+            <h2 id={`${id}-title`} className="t-h2" data-split>
               {title}
             </h2>
             {note && <p className="t-meta mt-2 max-w-[30ch]">{note}</p>}

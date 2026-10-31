@@ -12,18 +12,20 @@ export default function Footer() {
   return (
     <footer id="contact" aria-labelledby="contact-title" className="pb-10 pt-8 sm:pt-10">
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-        <div className="grid gap-6 border-t border-line pt-8 sm:pt-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-12">
-          <h2 id="contact-title" className="t-h2">
+        <span data-rule className="rule" />
+        <div className="grid gap-6 pt-8 sm:pt-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-12">
+          <h2 id="contact-title" className="t-h2" data-split>
             Contact
           </h2>
 
           <div className="min-w-0">
-            <p className="t-lead max-w-[40ch]">
+            <p className="t-lead max-w-[40ch]" data-split>
               Looking for a full-stack or applied AI role. Email me. I reply faster than my builds finish.
             </p>
 
             <a
               href={LINKS.email}
+              data-magnetic
               className="mt-5 inline-flex min-h-11 items-center break-all text-[1.25rem] font-semibold tracking-[-0.01em] text-text underline decoration-line-strong decoration-1 underline-offset-[0.3em] transition-colors hover:text-accent hover:decoration-current sm:text-[1.75rem] sm:tracking-[-0.02em]"
             >
               {PROFILE.email}

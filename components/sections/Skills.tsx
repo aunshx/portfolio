@@ -4,7 +4,7 @@ import { SKILLS } from "@/content/skills";
 export default function Skills() {
   return (
     <Section id="skills" title="Tools" note="Things I’ve broken, then fixed.">
-      <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+      <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-2" data-stagger>
         {SKILLS.map((group) => (
           <div key={group.group} className="min-w-0">
             <dt className="t-meta font-medium text-text">{group.group}</dt>

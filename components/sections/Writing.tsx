@@ -15,14 +15,14 @@ export default function Writing() {
       title="Writing"
       note={`${Math.round(TOTAL_VIEWS / 1000)}K reads on Medium. ${reads(WRITING[0].views)} of them are about WhatsApp. I don’t make the rules.`}
     >
-      <ul className="grid">
+      <ul className="grid" data-stagger>
         {WRITING.slice(0, SHOWN).map((article, i) => (
           <li key={article.link} className={`min-w-0 ${i === 0 ? "" : "border-t border-line"}`}>
             <a
               href={article.link}
               target="_blank"
               rel="noreferrer noopener"
-              className={`group flex items-baseline justify-between gap-6 py-4 ${i === 0 ? "pt-0" : ""}`}
+              className={`row-link group flex items-baseline justify-between gap-6 py-4 ${i === 0 ? "pt-0" : ""}`}
             >
               <span className="t-h3 min-w-0 transition-colors group-hover:text-accent">
                 {article.title}

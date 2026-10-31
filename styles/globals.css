@@ -296,19 +296,194 @@ a:focus-visible > .shot {
   text-align: center;
 }
 
-/* The one authored moment: the hero figure settles in on load. It starts
-   visible, so nothing waits on the animation. */
-@keyframes settle {
-  from {
-    opacity: 0.45;
-    transform: translateY(14px);
+/* ------------------------------------------------------------------ */
+/*  Motion                                                             */
+/*  The page is drawn like a survey map: contour lines draw in, the    */
+/*  name rises out of them, rules draw across, screenshots scan in.    */
+/*  The intro is CSS so it plays on first paint; everything after it   */
+/*  is GSAP (components/motion/Motion.tsx). With reduced motion on,    */
+/*  none of it runs and the page is simply there.                      */
+/* ------------------------------------------------------------------ */
+
+.contours-svg {
+  position: absolute;
+  inset: -4% 0 0;
+  z-index: 0;
+  width: 100%;
+  height: 108%;
+  pointer-events: none;
+  color: #1d3a66;
+  opacity: 0.2;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+}
+.contour-path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Name lines rise out of their own boxes. */
+.intro-line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+.intro-line > span {
+  display: block;
+}
+
+/* A hairline rule that draws across when it scrolls in. */
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--line);
+  transform-origin: left center;
+}
+
+/* Reading progress along the header's bottom edge. */
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* The "View" bubble that follows the pointer over projects. */
+.cursor-bubble {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: -2.75rem 0 0 -2.75rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0);
+}
+@media (pointer: coarse) {
+  .cursor-bubble { display: none; }
+}
+
+/* Hover: screenshots lean in, rows fill from the left, arrows nudge. */
+.shot-link .shot img {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.shot-link:hover .shot img {
+  transform: scale(1.04);
+}
+.row-link {
+  position: relative;
+  isolation: isolate;
+}
+.row-link::before {
+  content: "";
+  position: absolute;
+  inset: 0 -0.75rem;
+  z-index: -1;
+  border-radius: 0.5rem;
+  background: var(--surface-raised);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-link:hover::before {
+  transform: scaleX(1);
+}
+.link svg,
+.btn svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link:hover svg,
+.btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* Availability: a soft ring, not a blink. */
+.pulse-dot {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .contour-path {
+    stroke-dasharray: 1;
+    animation: draw 2.4s cubic-bezier(0.65, 0, 0.35, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes draw {
+    from { stroke-dashoffset: 1; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .intro-line > span {
+    animation: line-rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  }
+  @keyframes line-rise {
+    from { transform: translateY(110%); }
+  }
+
+  .intro-fade {
+    animation: fade-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0.5s);
+  }
+  @keyframes fade-rise {
+    from { opacity: 0; transform: translateY(18px); }
+  }
+
+  .intro-shot {
+    animation: scan-in 1.4s cubic-bezier(0.87, 0, 0.13, 1) 0.3s both;
+  }
+  .intro-shot img {
+    animation: zoom-settle 2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+  @keyframes scan-in {
+    from { clip-path: inset(0% 0% 100% 0% round 10px); }
+    to { clip-path: inset(0% 0% 0% 0% round 10px); }
+  }
+  @keyframes zoom-settle {
+    from { transform: scale(1.18); }
+  }
+
+  .pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    animation: ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  @keyframes ring {
+    0% { transform: scale(1); opacity: 0.6; }
+    70%, 100% { transform: scale(3); opacity: 0; }
   }
 }
-.settle {
-  animation: settle 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .settle { animation: none; }
+
+/* Paper never animates. */
+@media print {
+  * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .cursor-bubble,
+  .progress {
+    display: none !important;
+  }
 }
 
 /* ------------------------------------------------------------------ */

@@ -7,6 +7,7 @@ import Research from "@/components/sections/Research";
 import Writing from "@/components/sections/Writing";
 import Skills from "@/components/sections/Skills";
 import Education from "@/components/sections/Education";
+import Motion from "@/components/motion/Motion";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <Education />
       </main>
       <Footer />
+      <Motion />
     </>
   );
 }

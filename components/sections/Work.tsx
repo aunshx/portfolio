@@ -20,11 +20,27 @@ function ShotLink({ item, sizes }: { item: WorkItem; sizes: string }) {
   const shot = <Screenshot shot={item.shot} label={item.title} aspect="16 / 9" sizes={sizes} />;
   // Pointer-only duplicate of the title link, so it stays out of the tab order.
   return item.caseStudy ? (
-    <Link href={`/work/${item.caseStudy}`} tabIndex={-1} aria-hidden="true" className="block">
+    <Link
+      href={`/work/${item.caseStudy}`}
+      tabIndex={-1}
+      aria-hidden="true"
+      className="shot-link block"
+      data-reveal
+      data-cursor="Case study"
+    >
       {shot}
     </Link>
   ) : (
-    <a href={item.link} target="_blank" rel="noreferrer noopener" tabIndex={-1} aria-hidden="true" className="block">
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noreferrer noopener"
+      tabIndex={-1}
+      aria-hidden="true"
+      className="shot-link block"
+      data-reveal
+      data-cursor="Visit"
+    >
       {shot}
     </a>
   );
@@ -32,7 +48,7 @@ function ShotLink({ item, sizes }: { item: WorkItem; sizes: string }) {
 
 function Caption({ item }: { item: WorkItem }) {
   return (
-    <div className="min-w-0">
+    <div className="min-w-0" data-stagger>
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="t-h3">
           {item.caseStudy ? (
@@ -50,7 +66,9 @@ function Caption({ item }: { item: WorkItem }) {
       </div>
       <p className="t-body mt-1">{item.description}</p>
       <p className="t-meta mt-3">
-        <span className="font-semibold text-accent">{item.metric.value}</span> {item.metric.label}
+        <span className="font-semibold text-accent" data-count>
+          {item.metric.value}
+        </span> {item.metric.label}
       </p>
       <p className="mt-1 flex flex-wrap gap-x-5">
         {item.caseStudy && (
@@ -75,8 +93,9 @@ export default function Work() {
   return (
     <section id="work" aria-labelledby="work-title" className="pb-10 sm:pb-14">
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-t border-line pt-8 sm:pt-10">
-          <h2 id="work-title" className="t-h2">
+        <span data-rule className="rule" />
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 pt-8 sm:pt-10">
+          <h2 id="work-title" className="t-h2" data-split>
             More work
           </h2>
           <External href={LINKS.github}>The half-finished ones live on GitHub</External>

@@ -14,6 +14,7 @@ export default function Screenshot({
   label,
   priority = false,
   aspect,
+  className = "",
 }: {
   shot: HomeShot;
   sizes: string;
@@ -22,6 +23,7 @@ export default function Screenshot({
   priority?: boolean;
   /** Crop to this ratio (e.g. "16 / 9"); defaults to the file's own. */
   aspect?: string;
+  className?: string;
 }) {
   const ref = useRef<HTMLImageElement>(null);
   const [failed, setFailed] = useState(false);
@@ -36,7 +38,7 @@ export default function Screenshot({
   const largest = shot.widths[shot.widths.length - 1];
 
   return (
-    <div className="shot" style={{ aspectRatio: aspect ?? `${shot.w} / ${shot.h}` }}>
+    <div className={`shot ${className}`} style={{ aspectRatio: aspect ?? `${shot.w} / ${shot.h}` }}>
       {failed ? (
         <div className="shot-fallback" role="img" aria-label={shot.alt}>
           <span className="t-h3">{label}</span>

@@ -31,6 +31,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg">
+      <span aria-hidden="true" data-progress className="progress" />
       <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-6 px-5 sm:px-8">
         <a
           href="#top"

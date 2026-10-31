@@ -17,7 +17,7 @@ export default function Experience() {
         </a>
       }
     >
-      <ol className="grid">
+      <ol className="grid" data-stagger>
         {EXPERIENCE.map((role, i) => (
           <li
             key={role.name}
