@@ -1,21 +1,32 @@
+/**
+ * A screenshot served as pre-sized WebP files: `${base}-${width}.webp` for
+ * every width listed. Pre-encoded so fine UI text stays sharp.
+ */
+export type HomeShot = {
+  base: string;
+  widths: number[];
+  /** Intrinsic size of the largest file, for the aspect ratio. */
+  w: number;
+  h: number;
+  alt: string;
+};
+
 export type WorkItem = {
   id: number;
   title: string;
-  subTitle: string;
+  /** One plain sentence: what it is. */
   description: string;
-  image: string;
+  /** What Aunsh did on it. */
+  role: string;
+  /** One result, with the number kept separate so it can carry weight. */
+  metric: { value: string; label: string };
+  shot: HomeShot;
   tech: string[];
   link?: string;
   gitUrl?: string;
-  /** Quiet credit line: grant, org, or status. */
-  tag?: string;
-  year?: string;
-  /** Shown as a live status pill on the card. */
-  status?: "live" | "building" | "handed-off" | "archived";
-  /** Bare domain, rendered in the card's browser chrome. */
+  year: string;
+  /** Bare domain, for link text. */
   domain?: string;
-  /** The first card is featured and spans the grid. */
-  featured?: boolean;
   /** Slug of a case study at /work/[slug], when one exists. */
   caseStudy?: string;
 };

@@ -39,19 +39,19 @@ export default function ShowMore({
       </Tag>
 
       {hidden > 0 && (
-        <div className="mt-6 flex justify-center">
+        <div className="mt-4">
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="group inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-muted transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+            className="btn btn-quiet"
           >
             {open ? labelLess : labelMore}
             <ChevronDown
               size={15}
               strokeWidth={2}
               aria-hidden="true"
-              className={`transition-transform ${open ? "rotate-180" : "group-hover:translate-y-0.5"}`}
+              className={`transition-transform ${open ? "rotate-180" : ""}`}
             />
           </button>
         </div>

@@ -5,8 +5,11 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 type Dir = "up" | "left" | "right" | "none";
 
 /**
- * The site's motion primitive. Reveals on first intersection, then
- * disconnects. Transform and opacity only, so it stays on the compositor.
+ * Content is always rendered visible. A block that starts below the fold
+ * gets one short fade as it scrolls in (see `.reveal` in globals.css);
+ * anything already on screen at load is left alone, so nothing dims after
+ * hydration and nothing is ever hidden from find-in-page, print or a
+ * full-page capture.
  */
 export default function Reveal({
   children,
@@ -27,14 +30,8 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setShown(true);
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
 
     const io = new IntersectionObserver(
       ([entry]) => {
@@ -43,7 +40,7 @@ export default function Reveal({
           io.disconnect();
         }
       },
-      { threshold: 0.05, rootMargin: "0px 0px -80px 0px" },
+      { threshold: 0.05 },
     );
 
     io.observe(el);
@@ -57,7 +54,7 @@ export default function Reveal({
       data-shown={shown}
       data-from={from}
       className={`reveal ${className}`}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      style={delay ? { animationDelay: `${Math.min(delay, 150)}ms` } : undefined}
     >
       {children}
     </Tag>

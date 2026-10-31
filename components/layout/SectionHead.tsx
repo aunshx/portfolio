@@ -1,41 +1,34 @@
-import Reveal from "@/components/ui/Reveal";
+import type { ReactNode } from "react";
 
-export default function SectionHead({
-  eyebrow,
-  title,
+/**
+ * Editorial section: a hairline, the heading in a left column on wide
+ * screens, content on the right. On phones the heading sits on top.
+ */
+export default function Section({
   id,
-  lead,
+  title,
+  note,
+  children,
 }: {
-  eyebrow: string;
-  title: string;
   id: string;
-  lead?: string;
+  title: string;
+  /** One short line under the heading. */
+  note?: ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <div className="mb-7 sm:mb-9">
-      <Reveal>
-        <p
-          aria-hidden="true"
-          className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-accent"
-        >
-          {eyebrow}
-        </p>
-      </Reveal>
-      <Reveal delay={70}>
-        <h2
-          id={id}
-          className="text-[1.85rem] font-semibold tracking-[-0.025em] text-text sm:text-[2.4rem]"
-        >
-          {title}
-        </h2>
-      </Reveal>
-      {lead && (
-        <Reveal delay={140}>
-          <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-muted">
-            {lead}
-          </p>
-        </Reveal>
-      )}
-    </div>
+    <section id={id} aria-labelledby={`${id}-title`} className="py-8 sm:py-10">
+      <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+        <div className="grid gap-6 border-t border-line pt-8 sm:pt-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-12">
+          <div>
+            <h2 id={`${id}-title`} className="t-h2">
+              {title}
+            </h2>
+            {note && <p className="t-meta mt-2 max-w-[30ch]">{note}</p>}
+          </div>
+          <div className="min-w-0">{children}</div>
+        </div>
+      </div>
+    </section>
   );
 }

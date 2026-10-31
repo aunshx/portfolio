@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import PageBackdrop from "@/components/ui/PageBackdrop";
 import { SITE, PROFILE, LINKS } from "@/content/profile";
 import "@/styles/globals.css";
 
@@ -11,12 +10,20 @@ const inter = Inter({
   display: "swap",
 });
 
+// Only the case studies set type in mono, so the home page doesn't preload it.
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
   weight: ["400", "500"],
+  preload: false,
 });
+
+// Analytics only on the live site: not in development, and not on Netlify
+// deploy previews or branch deploys (CONTEXT is set by Netlify at build time).
+const ANALYTICS =
+  process.env.NODE_ENV === "production" &&
+  (process.env.CONTEXT ?? "production") === "production";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -104,11 +111,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
       </head>
-      <body>
-        <PageBackdrop />
-        {children}
-      </body>
-      <GoogleAnalytics gaId="G-D8T0VT49PX" />
+      <body>{children}</body>
+      {ANALYTICS && <GoogleAnalytics gaId="G-D8T0VT49PX" />}
     </html>
   );
 }

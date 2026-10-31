@@ -3,15 +3,14 @@ export const PROFILE = {
   shortName: "Aunsh",
   headline: "Full-stack engineer. I ship products end to end.",
   role: "Full-Stack Engineer",
-  location: "Davis, California",
-  coordinates: "38.54°N 121.74°W",
-  bio: "I build and ship production systems. TypeScript and React on the front, Node and FastAPI behind it, PostgreSQL underneath, deployed on CI/CD I set up myself. Five years across startups, agencies and research labs, from a pre-seed founding engineer role to now developing AI for fields it hasn't touched.",
-  /** Short version for the landing. The full bio lives below. */
-  pitch: "TypeScript and React on the front. Node, FastAPI and PostgreSQL behind it. Five years shipping, now building AI for fields it hasn't touched.",
+  location: "San Francisco Bay Area",
+  /** The one line under the name on the landing. */
+  pitch:
+    "Full-stack engineer. I design and build web products end to end, most recently AI tools for forestry and food science.",
+  availability: "Open to full-stack and frontend roles",
   tagline: "Fast interfaces, solid APIs, and infrastructure that stays up.",
+  email: "aunsh.spb@gmail.com",
   avatar: "/images/asxPortfolio.jpeg",
-  /** Front and centre in the hero: what a reviewer scans for first. */
-  stack: ["TypeScript", "React", "Next.js", "Node.js", "FastAPI", "PostgreSQL", "Docker", "AWS"],
 } as const;
 
 export const LINKS = {
@@ -32,10 +31,7 @@ export const SITE = {
 } as const;
 
 export const COLOPHON = {
-  forged: "Forged with 🔥 in CA",
-  note: {
-    text: "Honoring our new AI overlords",
-  },
-  version: "v6.0.0",
+  credit: "Designed and built by Aunsh Bandivadekar in California.",
+  note: "Honoring our new AI overlords.",
   year: "2026",
 } as const;

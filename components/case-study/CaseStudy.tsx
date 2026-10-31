@@ -87,28 +87,31 @@ export default function CaseStudy({ study }: { study: Study }) {
         Skip to content
       </a>
 
-      <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur-xl">
+      {/* Same header as the home page, so the two read as one site. */}
+      <header className="sticky top-0 z-50 border-b border-line bg-bg">
         <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-4 px-5 sm:px-8">
           <Link
-            href="/#work"
-            className="inline-flex min-h-11 items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-accent"
+            href="/"
+            className="inline-flex min-h-11 items-center text-[0.875rem] font-semibold text-text"
           >
-            <ArrowLeft size={14} strokeWidth={2} aria-hidden="true" />
-            All work
+            {PROFILE.name}
           </Link>
-          <Link href="/" className="font-mono text-[13px] font-medium tracking-tight text-text">
-            {PROFILE.shortName}
-            <span className="text-accent">.</span>
-          </Link>
-          <div className="flex items-center gap-1.5">
+          <div className="-mr-2 flex items-center gap-1">
+            <Link
+              href="/#work"
+              className="inline-flex min-h-11 items-center gap-1.5 px-3 text-[0.875rem] text-muted transition-colors hover:text-accent"
+            >
+              <ArrowLeft size={14} strokeWidth={2} aria-hidden="true" />
+              All work
+            </Link>
             <a
               href={study.link}
               target="_blank"
               rel="noreferrer noopener"
-              className="hidden min-h-11 items-center gap-1.5 px-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-accent sm:inline-flex"
+              className="hidden min-h-11 items-center gap-1 px-3 text-[0.875rem] text-muted transition-colors hover:text-accent sm:inline-flex"
             >
               {study.domain}
-              <ArrowUpRight size={13} strokeWidth={2} aria-hidden="true" />
+              <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
               <span className="sr-only">(opens in a new tab)</span>
             </a>
             <ThemeToggle />

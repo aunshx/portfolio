@@ -36,12 +36,12 @@ export default function ThemeToggle() {
       aria-label={
         theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
       }
-      className="grid size-9 place-items-center rounded-full text-muted transition-colors hover:bg-accent-quiet hover:text-accent"
+      className="grid size-11 place-items-center rounded-full text-muted transition-colors hover:text-accent"
     >
       {theme === "dark" ? (
-        <Sun size={16} strokeWidth={1.75} />
+        <Sun size={17} strokeWidth={1.75} aria-hidden="true" />
       ) : (
-        <Moon size={16} strokeWidth={1.75} />
+        <Moon size={17} strokeWidth={1.75} aria-hidden="true" />
       )}
     </button>
   );
