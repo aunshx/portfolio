@@ -13,7 +13,7 @@ export default function Writing() {
     <Section
       id="writing"
       title="Writing"
-      note={`${Math.round(TOTAL_VIEWS / 1000)}K reads on Medium`}
+      note={`${Math.round(TOTAL_VIEWS / 1000)}K reads on Medium. ${reads(WRITING[0].views)} of them are about WhatsApp. I don’t make the rules.`}
     >
       <ul className="grid">
         {WRITING.slice(0, SHOWN).map((article, i) => (

@@ -4,7 +4,7 @@ import { EDUCATION } from "@/content/education";
 
 export default function Education() {
   return (
-    <Section id="education" title="Education">
+    <Section id="education" title="Education" note="Where I learned to read error messages.">
       <ul className="grid gap-6 sm:grid-cols-2 sm:gap-8">
         {EDUCATION.map((school) => (
           <li key={school.title} className="flex items-start gap-4">

@@ -5,7 +5,9 @@ export const PROFILE = {
   role: "Full-Stack Engineer",
   location: "San Francisco Bay Area",
   /** The one line under the name on the landing. */
-  pitch: "Full-stack engineer building applied AI products, end to end.",
+  pitch: "Full-stack engineer building applied AI products end to end.",
+  /** The aside under the pitch. */
+  quip: "Yes, including the CSS.",
   availability: "Open to full-stack and applied AI roles",
   tagline: "Fast interfaces, solid APIs, and infrastructure that stays up.",
   email: "aunsh.spb@gmail.com",
@@ -30,6 +32,6 @@ export const SITE = {
 } as const;
 
 export const COLOPHON = {
-  credit: "Designed and built by Aunsh Bandivadekar.",
+  credit: "Designed and built by Aunsh Bandivadekar. The contour lines are made up. The projects are real.",
   year: "2026",
 } as const;

@@ -16,7 +16,9 @@ export default function Hero() {
             {PROFILE.name}
           </h1>
 
-          <p className="t-lead mt-5 max-w-[30ch] text-text">{PROFILE.pitch}</p>
+          <p className="t-lead mt-5 max-w-[32ch] text-text">
+            {PROFILE.pitch} <span className="block text-muted">{PROFILE.quip}</span>
+          </p>
 
           <p className="t-meta mt-5 flex flex-wrap items-center gap-x-5 gap-y-1">
             <span className="inline-flex items-center gap-2 whitespace-nowrap">

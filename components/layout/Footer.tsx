@@ -19,7 +19,7 @@ export default function Footer() {
 
           <div className="min-w-0">
             <p className="t-lead max-w-[40ch]">
-              Looking for a full-stack or applied AI role. Email is fastest.
+              Looking for a full-stack or applied AI role. Email me. I reply faster than my builds finish.
             </p>
 
             <a

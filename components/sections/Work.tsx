@@ -79,7 +79,7 @@ export default function Work() {
           <h2 id="work-title" className="t-h2">
             More work
           </h2>
-          <External href={LINKS.github}>GitHub</External>
+          <External href={LINKS.github}>The half-finished ones live on GitHub</External>
         </div>
 
         <ul className="mt-8 grid gap-x-10 gap-y-14 sm:mt-10 md:grid-cols-2">

@@ -3,7 +3,7 @@ import { RESEARCH } from "@/content/research";
 
 export default function Research() {
   return (
-    <Section id="research" title="Papers">
+    <Section id="research" title="Papers" note="One of these is about antennas. It won best paper, so it stays.">
       <ul className="grid">
         {RESEARCH.map((item, i) => (
           <li key={item.title} className={`min-w-0 ${i === 0 ? "" : "border-t border-line"}`}>

@@ -11,9 +11,9 @@ export default function Experience() {
       title="Experience"
       note={
         <a href={LINKS.resume} target="_blank" rel="noreferrer noopener" className="link">
-          Full résumé
+          Full résumé (PDF, sorry)
           <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
-          <span className="sr-only">(PDF, opens in a new tab)</span>
+          <span className="sr-only">(opens in a new tab)</span>
         </a>
       }
     >
