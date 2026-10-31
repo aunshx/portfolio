@@ -26,6 +26,8 @@ export type WorkItem = {
   domain?: string;
   /** Slug of a case study at /work/[slug], when one exists. */
   caseStudy?: string;
+  /** The card's colors, taken from the product itself. */
+  tone: { bg: string; fg: string; muted: string; accent: string };
 };
 
 export type ExperienceItem = {

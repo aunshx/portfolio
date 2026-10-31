@@ -1,16 +1,25 @@
-import type { HomeShot, WorkItem } from "./types";
+import type { WorkItem } from "./types";
 
-/** The hero figure: FRED's landing page. FRED is the hero, so it isn't in the grid. */
-export const HERO_SHOT: HomeShot = {
-  base: "/images/home/fred-landing-dark",
-  widths: [800, 1500],
-  w: 1500,
-  h: 809,
-  alt: "FRED's landing page in its dark theme: “Ask a question about a place. Get an answer you can check,” beside a map answering a question about a 10 MW plant near Redding.",
-};
-
-/** Newest first. The first item is shown large. */
+/** Newest first. Each card takes its colors from the product it shows. */
 export const WORK: WorkItem[] = [
+  {
+    id: 1,
+    title: "FRED",
+    description: "Agentic AI that answers questions about land, and shows its work.",
+    metric: { value: "5,200×", label: "faster cost estimates than the standard simulator" },
+    shot: {
+      base: "/images/home/fred-landing-dark",
+      widths: [800, 1500],
+      w: 1500,
+      h: 809,
+      alt: "FRED's landing page: “Ask a question about a place. Get an answer you can check,” beside a map answering a question about a 10 MW plant near Redding.",
+    },
+    link: "https://biofred.us",
+    domain: "biofred.us",
+    year: "2026",
+    caseStudy: "fred",
+    tone: { bg: "#0f1c15", fg: "#f1ede2", muted: "#b9c2b4", accent: "#d8b56d" },
+  },
   {
     id: 2,
     title: "reaktr",
@@ -28,6 +37,7 @@ export const WORK: WorkItem[] = [
     domain: "reaktr.cc",
     year: "2025",
     caseStudy: "reaktr",
+    tone: { bg: "#0a1517", fg: "#eef6f4", muted: "#a9bdbb", accent: "#3ee6c4" },
   },
   {
     id: 3,
@@ -45,11 +55,12 @@ export const WORK: WorkItem[] = [
     link: "https://forestdss.ucdavis.edu",
     domain: "forestdss.ucdavis.edu",
     year: "2024",
+    tone: { bg: "#dfe6d3", fg: "#16210f", muted: "#47543d", accent: "#2f6b2a" },
   },
   {
     id: 4,
     title: "ResView",
-    description: "Live visualizer for blockchain consensus.",
+    description: "A live visualizer for blockchain consensus.",
     metric: { value: "300+", label: "students use it in UC Davis courses" },
     shot: {
       base: "/images/home/resview",
@@ -62,5 +73,6 @@ export const WORK: WorkItem[] = [
     link: "https://resview.resilientdb.com/pages/home",
     domain: "resview.resilientdb.com",
     year: "2023",
+    tone: { bg: "#17224d", fg: "#eef0fb", muted: "#b3bbe0", accent: "#8fa6ff" },
   },
 ];

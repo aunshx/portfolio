@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Archivo, Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE, PROFILE, LINKS } from "@/content/profile";
 import "@/styles/globals.css";
@@ -7,6 +7,24 @@ import "@/styles/globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Display face: a variable grotesk whose weight and width the hero bends
+// toward the pointer.
+const archivo = Archivo({
+  subsets: ["latin"],
+  variable: "--font-archivo",
+  axes: ["wdth"],
+  display: "swap",
+});
+
+// Italic serif for asides and jokes.
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
   display: "swap",
 });
 
@@ -58,16 +76,23 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
-  other: { "msapplication-TileColor": "#fbfbfd" },
+  other: { "msapplication-TileColor": "#f3f1ec" },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fbfbfd",
+  themeColor: "#f3f1ec",
   colorScheme: "light",
   // Pinch zoom deliberately left enabled; the old build blocked it.
   width: "device-width",
   initialScale: 1,
 };
+
+/**
+ * Runs before first paint. `motion` turns on the animated layer; `intro`
+ * plays the loading screen once per browser session. Reduced motion gets
+ * neither.
+ */
+const MOTION_BOOTSTRAP = `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');if(location.pathname==='/'&&!sessionStorage.getItem('intro')){d.classList.add('intro');sessionStorage.setItem('intro','1');}}catch(e){}})();`;
 
 const JSON_LD = {
   "@context": "https://schema.org",
@@ -96,10 +121,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrains.variable}`}
+      className={`${inter.variable} ${jetbrains.variable} ${archivo.variable} ${serif.variable}`}
       suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: MOTION_BOOTSTRAP }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}

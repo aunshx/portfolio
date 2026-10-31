@@ -4,14 +4,19 @@ import { useEffect } from "react";
 import "lenis/dist/lenis.css";
 
 /**
- * Everything that moves after the intro: smooth scrolling, rules that draw
- * across, headings that rise line by line, screenshots that wipe in like a
- * scan, numbers that count up, a "View" bubble over projects, magnetic
- * buttons and a tilting hero shot.
+ * Everything that moves after the intro. GSAP and Lenis load after
+ * hydration, so they never hold up the first paint; nothing is hidden until
+ * this script is running, anything already on screen is left alone, and all
+ * of it is skipped under reduced motion.
  *
- * GSAP and Lenis load after hydration, so they never hold up the first
- * paint. Nothing here hides content until the script is running, and all of
- * it is skipped when the visitor prefers reduced motion.
+ * - smooth scrolling, and a reading-progress line under the header
+ * - the hero lifting away as you leave it
+ * - headings rising line by line, lists arriving in order
+ * - the statement lighting up word by word
+ * - the marquee speeding up and reversing with the scroll
+ * - project cards stacking, each settling back under the next (wide screens)
+ * - numbers counting up
+ * - a custom cursor that labels projects, and magnetic buttons (fine pointers)
  */
 export default function Motion() {
   useEffect(() => {
@@ -25,7 +30,6 @@ export default function Motion() {
         import("gsap/SplitText"),
         import("lenis"),
       ]);
-      // Line splits must measure the real font, not the fallback.
       await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]);
       if (cancelled) return;
 
@@ -36,20 +40,17 @@ export default function Motion() {
         {
           motion: "(prefers-reduced-motion: no-preference)",
           fine: "(pointer: fine) and (prefers-reduced-motion: no-preference)",
+          wide: "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
         },
         (ctx) => {
-          const { motion, fine } = ctx.conditions as { motion: boolean; fine: boolean };
+          const { motion, fine, wide } = ctx.conditions as Record<string, boolean>;
           if (!motion) return;
           const cleanups: (() => void)[] = [];
-
-          // Anything already on screen when this runs stays as it is, so
-          // nothing flashes visible, hidden, then visible again.
           const onScreen = (el: Element) => el.getBoundingClientRect().top < window.innerHeight;
           const below = <T extends Element>(sel: string) =>
             gsap.utils.toArray<T>(sel).filter((el) => !onScreen(el));
 
-          // Smooth scrolling, driven by GSAP's clock so ScrollTrigger stays in step.
-          // Anchor links glide; the CSS scroll-margin-top already clears the header.
+          // Smooth scrolling on GSAP's clock, so ScrollTrigger stays in step.
           const lenis = new Lenis({ autoRaf: false, anchors: true });
           lenis.on("scroll", ScrollTrigger.update);
           const tick = (t: number) => lenis.raf(t * 1000);
@@ -60,149 +61,159 @@ export default function Motion() {
             lenis.destroy();
           });
 
-          // Reading progress along the bottom of the header.
           gsap.fromTo(
             "[data-progress]",
             { scaleX: 0 },
             { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3 } },
           );
 
-          // The hero recedes as you leave it: contours drift, text lifts, shot settles back.
-          const hero = { trigger: "#top", start: "top top", end: "bottom top", scrub: true };
-          gsap.to("[data-contours]", { yPercent: 14, ease: "none", scrollTrigger: hero });
-          gsap.to("[data-hero-copy]", { yPercent: -12, opacity: 0.4, ease: "none", scrollTrigger: hero });
-          gsap.to("[data-hero-shot]", { scale: 0.94, yPercent: 6, ease: "none", scrollTrigger: hero });
-
-          // Rules draw across, the same gesture as the contour lines.
-          below<HTMLElement>("[data-rule]").forEach((el) => {
-            gsap.from(el, {
-              scaleX: 0,
-              duration: 1.4,
-              ease: "expo.inOut",
-              scrollTrigger: { trigger: el, start: "top 92%", once: true },
-            });
-          });
+          // The hero lifts away: the name rises faster than the page, the map drifts slower.
+          const leave = { trigger: "#top", start: "top top", end: "bottom top", scrub: true };
+          gsap.to(".hero-name", { yPercent: -35, ease: "none", scrollTrigger: leave });
+          gsap.fromTo(
+            ".hero-meta, .hero-foot",
+            { opacity: 1 },
+            { opacity: 0, ease: "none", immediateRender: false, scrollTrigger: { ...leave, end: "50% top" } },
+          );
+          gsap.to(".contour-field, .contours-svg", { yPercent: 18, ease: "none", scrollTrigger: leave });
 
           // Headings rise out of their own line boxes.
           below<HTMLElement>("[data-split]").forEach((el) => {
             const split = SplitText.create(el, { type: "lines", mask: "lines" });
             gsap.from(split.lines, {
               yPercent: 110,
-              duration: 1.1,
-              stagger: 0.08,
+              duration: 1.2,
+              stagger: 0.1,
               ease: "expo.out",
-              scrollTrigger: { trigger: el, start: "top 90%", once: true },
+              scrollTrigger: { trigger: el, start: "top 88%", once: true },
               onComplete: () => split.revert(),
             });
           });
 
-          // Lists arrive as lists: a short stagger, capped.
+          // Lists arrive in order, with the total delay capped.
           below<HTMLElement>("[data-stagger]").forEach((el) => {
             gsap.from(el.children, {
-              y: 28,
+              y: 24,
               opacity: 0,
               duration: 0.9,
-              stagger: { each: 0.07, amount: 0.35 },
+              stagger: { each: 0.06, amount: 0.3 },
               ease: "expo.out",
               scrollTrigger: { trigger: el, start: "top 88%", once: true },
             });
           });
 
-          // Screenshots wipe in top to bottom, like a scan, and settle from a slight zoom.
-          below<HTMLElement>("[data-reveal]").forEach((el) => {
-            const img = el.querySelector("img");
-            const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top 85%", once: true } });
-            tl.fromTo(
-              el,
-              { clipPath: "inset(0% 0% 100% 0% round 10px)" },
-              { clipPath: "inset(0% 0% 0% 0% round 10px)", duration: 1.3, ease: "expo.inOut", clearProps: "clipPath" },
+          // The statement lights up word by word as it passes through.
+          below<HTMLElement>("[data-words]").forEach((el) => {
+            gsap.fromTo(
+              el.querySelectorAll(".word"),
+              { opacity: 0.14 },
+              {
+                opacity: 1,
+                stagger: 0.04,
+                ease: "none",
+                scrollTrigger: { trigger: el, start: "top 78%", end: "bottom 50%", scrub: 0.6 },
+              },
             );
-            if (img) tl.from(img, { scale: 1.2, duration: 1.8, ease: "expo.out", clearProps: "transform" }, 0);
           });
 
-          // Numbers count up the first time they're seen.
+          // Numbers count up the first time they're seen ("5,200×", "60+").
           below<HTMLElement>("[data-count]").forEach((el) => {
-            const m = el.textContent?.match(/^(\d+)(\D*)$/);
+            const m = el.textContent?.trim().match(/^([\d,]+)(\D*)$/);
             if (!m) return;
-            const end = Number(m[1]);
+            const end = Number(m[1].replace(/,/g, ""));
             const n = { v: 0 };
+            const show = () => (el.textContent = `${Math.round(n.v).toLocaleString("en-US")}${m[2]}`);
             gsap.to(n, {
               v: end,
-              duration: 1.6,
+              duration: 1.8,
               ease: "expo.out",
-              scrollTrigger: { trigger: el, start: "top 90%", once: true },
-              onStart: () => {
-                el.textContent = `0${m[2]}`;
-              },
-              onUpdate: () => {
-                el.textContent = `${Math.round(n.v)}${m[2]}`;
-              },
+              scrollTrigger: { trigger: el, start: "top 92%", once: true },
+              onStart: show,
+              onUpdate: show,
             });
           });
 
+          // The marquee drifts on its own; scrolling speeds it up, scrolling back reverses it.
+          const track = document.querySelector<HTMLElement>("[data-marquee]");
+          const run = track?.getAnimations()[0];
+          if (run) {
+            let rate = 1, target = 1, dir = 1;
+            const onScroll = () => {
+              dir = lenis.direction === -1 ? -1 : 1;
+              target = dir * (1 + Math.min(Math.abs(lenis.velocity) * 0.12, 5));
+            };
+            lenis.on("scroll", onScroll);
+            const ease = () => {
+              rate += (target - rate) * 0.08;
+              target += (dir - target) * 0.04;
+              run.playbackRate = rate;
+            };
+            gsap.ticker.add(ease);
+            cleanups.push(() => {
+              gsap.ticker.remove(ease);
+              run.playbackRate = 1;
+            });
+          }
+
+          // Cards stack: each settles back and dims as the next slides over it.
+          if (wide) {
+            const items = gsap.utils.toArray<HTMLElement>(".stack-item");
+            items.slice(0, -1).forEach((item, i) => {
+              const card = item.querySelector<HTMLElement>("[data-card]");
+              const dim = item.querySelector<HTMLElement>(".card-dim");
+              const next = items[i + 1];
+              const st = { trigger: next, start: "top bottom", end: "top 18%", scrub: true };
+              if (card) gsap.to(card, { scale: 0.9, ease: "none", scrollTrigger: st });
+              if (dim) gsap.to(dim, { opacity: 0.55, ease: "none", scrollTrigger: st });
+            });
+          }
+
           if (!fine) return () => cleanups.forEach((f) => f());
 
-          // A "View" bubble that follows the pointer over project screenshots.
-          const bubble = document.querySelector<HTMLElement>("[data-cursor-bubble]");
-          if (bubble) {
-            const label = bubble.querySelector("span")!;
-            const xTo = gsap.quickTo(bubble, "x", { duration: 0.45, ease: "expo.out" });
-            const yTo = gsap.quickTo(bubble, "y", { duration: 0.45, ease: "expo.out" });
-            const move = (e: PointerEvent) => {
-              xTo(e.clientX);
-              yTo(e.clientY);
+          // A cursor of our own: a dot, a ring over links, a labelled disc over projects.
+          const cursor = document.querySelector<HTMLElement>("[data-cursor-el]");
+          if (cursor) {
+            const label = cursor.querySelector<HTMLElement>(".cursor-label")!;
+            const xTo = gsap.quickTo(cursor, "x", { duration: 0.35, ease: "expo.out" });
+            const yTo = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "expo.out" });
+            document.documentElement.classList.add("cursor-on");
+            let px = -1, py = -1;
+            const read = (t: Element | null) => {
+              const tagged = t?.closest<HTMLElement>("[data-cursor]");
+              const link = t?.closest("a, button");
+              cursor.dataset.state = tagged ? "label" : link ? "link" : "dot";
+              if (tagged) label.textContent = tagged.dataset.cursor || "View";
             };
-            window.addEventListener("pointermove", move);
-            cleanups.push(() => window.removeEventListener("pointermove", move));
-            gsap.utils.toArray<HTMLElement>("[data-cursor]").forEach((el) => {
-              const enter = () => {
-                label.textContent = el.dataset.cursor || "View";
-                gsap.to(bubble, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" });
-              };
-              const leave = () => gsap.to(bubble, { scale: 0, opacity: 0, duration: 0.3, ease: "expo.out" });
-              el.addEventListener("pointerenter", enter);
-              el.addEventListener("pointerleave", leave);
-              cleanups.push(() => {
-                el.removeEventListener("pointerenter", enter);
-                el.removeEventListener("pointerleave", leave);
-              });
+            const move = (e: PointerEvent) => {
+              px = e.clientX;
+              py = e.clientY;
+              xTo(px);
+              yTo(py);
+              read(e.target as Element | null);
+            };
+            lenis.on("scroll", () => px >= 0 && read(document.elementFromPoint(px, py)));
+            const hide = () => (cursor.dataset.state = "hidden");
+            window.addEventListener("pointermove", move, { passive: true });
+            document.addEventListener("pointerleave", hide);
+            cleanups.push(() => {
+              window.removeEventListener("pointermove", move);
+              document.removeEventListener("pointerleave", hide);
+              document.documentElement.classList.remove("cursor-on");
             });
           }
 
           // Buttons lean toward the pointer.
           gsap.utils.toArray<HTMLElement>("[data-magnetic]").forEach((el) => {
-            const xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "expo.out" });
-            const yTo = gsap.quickTo(el, "y", { duration: 0.5, ease: "expo.out" });
+            const xTo = gsap.quickTo(el, "x", { duration: 0.6, ease: "expo.out" });
+            const yTo = gsap.quickTo(el, "y", { duration: 0.6, ease: "expo.out" });
             const move = (e: PointerEvent) => {
               const r = el.getBoundingClientRect();
-              xTo((e.clientX - (r.left + r.width / 2)) * 0.3);
-              yTo((e.clientY - (r.top + r.height / 2)) * 0.3);
+              xTo((e.clientX - (r.left + r.width / 2)) * 0.35);
+              yTo((e.clientY - (r.top + r.height / 2)) * 0.35);
             };
             const leave = () => {
               xTo(0);
               yTo(0);
-            };
-            el.addEventListener("pointermove", move);
-            el.addEventListener("pointerleave", leave);
-            cleanups.push(() => {
-              el.removeEventListener("pointermove", move);
-              el.removeEventListener("pointerleave", leave);
-            });
-          });
-
-          // The hero shot tilts toward the pointer.
-          gsap.utils.toArray<HTMLElement>("[data-tilt]").forEach((el) => {
-            gsap.set(el, { transformPerspective: 1200 });
-            const rx = gsap.quickTo(el, "rotationX", { duration: 0.8, ease: "expo.out" });
-            const ry = gsap.quickTo(el, "rotationY", { duration: 0.8, ease: "expo.out" });
-            const move = (e: PointerEvent) => {
-              const r = el.getBoundingClientRect();
-              ry(((e.clientX - r.left) / r.width - 0.5) * 8);
-              rx(-((e.clientY - r.top) / r.height - 0.5) * 8);
-            };
-            const leave = () => {
-              rx(0);
-              ry(0);
             };
             el.addEventListener("pointermove", move);
             el.addEventListener("pointerleave", leave);
@@ -226,8 +237,9 @@ export default function Motion() {
   }, []);
 
   return (
-    <div aria-hidden="true" data-cursor-bubble className="cursor-bubble">
-      <span>View</span>
+    <div aria-hidden="true" data-cursor-el data-state="hidden" className="cursor">
+      <span className="cursor-ball" />
+      <span className="cursor-label">View</span>
     </div>
   );
 }

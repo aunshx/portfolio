@@ -1,103 +1,70 @@
-import Link from "next/link";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
-import Screenshot from "@/components/ui/Screenshot";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import KineticText from "@/components/motion/KineticText";
+import ContourField from "@/components/motion/ContourField";
 import Contours from "@/components/motion/Contours";
+import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
-import { HERO_SHOT } from "@/content/work";
 
 /**
- * The focal sequence (CSS, plays on first paint): contour lines draw in, the
- * name rises out of them line by line, the rest follows, and FRED wipes in
- * like a scan. Scroll and pointer effects come from Motion.tsx.
+ * Full screen: a live contour map, the name edge to edge, three short
+ * facts across the top and the pitch and actions across the bottom.
  */
 export default function Hero() {
-  const [first, ...rest] = PROFILE.name.split(" ");
+  const [first, ...rest] = PROFILE.name.toUpperCase().split(" ");
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden">
+    <section id="top" aria-labelledby="hero-title" className="hero">
       <Contours />
+      <ContourField />
 
-      <div className="relative mx-auto grid max-w-[1180px] items-center gap-10 px-5 pb-12 pt-12 sm:px-8 sm:pt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14 lg:pb-16 lg:pt-20">
-        <div data-hero-copy>
-          <h1 id="hero-title" className="t-display">
-            <span className="intro-line">
-              <span>{first}</span>
-            </span>{" "}
-            <span className="intro-line">
-              <span style={{ animationDelay: "0.27s" }}>{rest.join(" ")}</span>
-            </span>
-          </h1>
-
-          <p className="t-lead intro-fade mt-5 max-w-[32ch] text-text" style={{ ["--d" as string]: "0.5s" }}>
-            {PROFILE.pitch} <span className="block text-muted">{PROFILE.quip}</span>
+      <div className="hero-inner">
+        <div className="hero-meta intro-fade" style={{ ["--d" as string]: "0.1s" }}>
+          <p>
+            Full-stack engineer
+            <br />
+            <span className="text-muted">Applied AI, mostly</span>
           </p>
-
-          <p
-            className="t-meta intro-fade mt-5 flex flex-wrap items-center gap-x-5 gap-y-1"
-            style={{ ["--d" as string]: "0.6s" }}
-          >
-            <span className="inline-flex items-center gap-2 whitespace-nowrap">
+          <p>
+            <span className="inline-flex items-center gap-2">
               <span aria-hidden="true" className="pulse-dot size-2 rounded-full bg-emerald-500" />
               {PROFILE.availability}
             </span>
-            <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-              <MapPin size={14} strokeWidth={2} aria-hidden="true" className="text-faint" />
-              {PROFILE.location}
+            <br />
+            <span className="text-muted">{PROFILE.location}</span>
+          </p>
+          <p className="hidden text-right sm:block">
+            Local time
+            <br />
+            <span className="text-muted">
+              <Clock />
             </span>
           </p>
+        </div>
 
-          <div className="intro-fade mt-8 flex flex-wrap items-center gap-3" style={{ ["--d" as string]: "0.7s" }}>
+        <KineticText
+          as="h1"
+          id="hero-title"
+          lines={[first, rest.join(" ")]}
+          fallback={[19.9, 8.95]}
+          className="hero-name"
+          delay={0.15}
+        />
+
+        <div className="hero-foot">
+          <p className="hero-pitch intro-fade" style={{ ["--d" as string]: "0.7s" }}>
+            {PROFILE.pitch} <span className="text-muted">{PROFILE.quip}</span>
+          </p>
+          <div className="hero-actions intro-fade" style={{ ["--d" as string]: "0.8s" }}>
             <a href="#work" className="btn btn-primary" data-magnetic>
               See the work
+              <ArrowDown size={15} strokeWidth={2} aria-hidden="true" />
             </a>
-            <a
-              href={LINKS.resume}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="btn btn-quiet"
-              data-magnetic
-            >
+            <a href={LINKS.resume} target="_blank" rel="noreferrer noopener" className="btn btn-quiet" data-magnetic>
               Résumé
               <ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" />
               <span className="sr-only">(PDF, opens in a new tab)</span>
             </a>
-            <a href={LINKS.email} className="link px-2" data-magnetic>
-              Email me
-            </a>
           </div>
         </div>
-
-        <figure className="m-0 min-w-0" data-hero-shot>
-          <Link
-            href="/work/fred"
-            tabIndex={-1}
-            aria-hidden="true"
-            className="block"
-            data-tilt
-            data-cursor="Case study"
-          >
-            <Screenshot
-              shot={HERO_SHOT}
-              label="FRED"
-              priority
-              className="intro-shot"
-              sizes="(min-width: 1180px) 640px, (min-width: 1024px) 56vw, 100vw"
-            />
-          </Link>
-          <figcaption
-            className="t-meta intro-fade mt-3 flex flex-wrap items-center justify-between gap-x-4"
-            style={{ ["--d" as string]: "1s" }}
-          >
-            <span>
-              <span className="font-semibold text-text">FRED</span>
-              <span className="text-faint"> · 2026 · </span>
-              Agentic AI for geospatial decisions
-            </span>
-            <Link href="/work/fred" className="link">
-              Case study
-              <ArrowRight size={15} strokeWidth={2} aria-hidden="true" />
-            </Link>
-          </figcaption>
-        </figure>
       </div>
     </section>
   );

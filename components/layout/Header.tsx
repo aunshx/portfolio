@@ -12,9 +12,7 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
-// Every section on the page, so the ones without a nav item (papers,
-// tools, education) clear the highlight instead of leaving the last one lit.
-const SPY_IDS = ["top", "work", "experience", "writing", "research", "skills", "education", "contact"];
+const SPY_IDS = ["top", "work", "experience", "writing", "contact"];
 
 /** Always visible. Solid, so it never fights the content it scrolls over. */
 export default function Header() {
