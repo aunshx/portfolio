@@ -67,15 +67,14 @@ export default function Motion() {
             { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: 0.3 } },
           );
 
-          // The hero lifts away: the name rises faster than the page, the map drifts slower.
-          const leave = { trigger: "#top", start: "top top", end: "bottom top", scrub: true };
-          gsap.to(".hero-name", { yPercent: -35, ease: "none", scrollTrigger: leave });
+          // Leaving the hero: the legend and furniture fade while the terrain's
+          // own camera climbs to a map view.
+          const leave = { trigger: "#top", start: "top top", end: "60% top", scrub: true };
           gsap.fromTo(
-            ".hero-meta, .hero-foot",
+            ".legend, .hero-corner, .map-furniture, .pins",
             { opacity: 1 },
-            { opacity: 0, ease: "none", immediateRender: false, scrollTrigger: { ...leave, end: "50% top" } },
+            { opacity: 0, ease: "none", immediateRender: false, scrollTrigger: leave },
           );
-          // (The terrain moves its own camera with the scroll.)
 
           // Headings rise out of their own line boxes.
           below<HTMLElement>("[data-split]").forEach((el) => {

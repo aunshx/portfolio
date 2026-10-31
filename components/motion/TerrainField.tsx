@@ -1,6 +1,20 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { terrainHeight } from "./terrain-math";
+
+/** A project standing on the land, as an HTML link the camera keeps in place. */
+export type TerrainPin = {
+  title: string;
+  year: string;
+  desc: string;
+  href: string;
+  external: boolean;
+  thumb: string;
+  /** Ground position; x is pulled toward the middle on narrow screens. */
+  x: number;
+  z: number;
+};
 
 /**
  * The hero graphic: a 3D landscape with contour lines draped over it,
@@ -45,6 +59,7 @@ uniform mat4 uVP;
 uniform float uTime;
 uniform vec2 uHill;
 uniform float uLift;
+uniform float uGlow;
 out float vH;
 out float vDepth;
 out float vNear;
@@ -68,7 +83,7 @@ void main() {
   vShade = dot(n, normalize(vec3(-0.5, 0.75, 0.45)));
   vH = h;
   float d = distance(p, uHill);
-  vNear = uLift * exp(-d * d * 0.7);
+  vNear = uGlow * exp(-d * d * 0.7);
   vec4 pos = uVP * vec4(p.x, h, p.y, 1.0);
   vDepth = pos.w;
   gl_Position = pos;
@@ -164,12 +179,14 @@ function hex(c: string): [number, number, number] {
   return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
 }
 
-export default function TerrainField() {
+export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const wrap = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = ref.current;
-    if (!canvas) return;
+    const root = wrap.current;
+    if (!canvas || !root) return;
     const gl = canvas.getContext("webgl2", { antialias: true, alpha: false, powerPreference: "high-performance" });
     if (!gl) return;
 
@@ -190,7 +207,9 @@ export default function TerrainField() {
     gl.useProgram(prog);
 
     // The ground: a grid, denser across than deep, as one indexed mesh.
-    const NX = 200, NZ = 150;
+    // Phones and small screens get a lighter mesh and fewer pixels.
+    const small = matchMedia("(max-width: 768px), (pointer: coarse)").matches;
+    const NX = small ? 110 : 200, NZ = small ? 90 : 150;
     const verts = new Float32Array(NX * NZ * 2);
     for (let z = 0; z < NZ; z++)
       for (let x = 0; x < NX; x++) {
@@ -216,7 +235,7 @@ export default function TerrainField() {
     gl.enable(gl.DEPTH_TEST);
 
     const u = (n: string) => gl.getUniformLocation(prog, n);
-    const uVP = u("uVP"), uTime = u("uTime"), uHill = u("uHill"), uLift = u("uLift");
+    const uVP = u("uVP"), uTime = u("uTime"), uHill = u("uHill"), uLift = u("uLift"), uGlow = u("uGlow");
     const css = getComputedStyle(document.documentElement);
     const bg = hex(css.getPropertyValue("--bg").trim() || "#f3f1ec");
     gl.uniform3fv(u("uBg"), bg);
@@ -225,7 +244,7 @@ export default function TerrainField() {
     gl.clearColor(bg[0], bg[1], bg[2], 1);
 
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.25 : 1.75);
     let w = 1, h = 1, vp: M4 = new Float32Array(16), inv: M4 | null = null;
 
     // The camera climbs and tilts down as the hero scrolls away.
@@ -251,9 +270,11 @@ export default function TerrainField() {
 
     // Where the pointer meets the ground (the y = 0 plane).
     const hill = { x: 1.6, z: -1.2 }, target = { ...hill };
-    let lift = 0, liftTarget = 0, idle = 0;
+    // lift raises the ground; glow tints its contours. A hovered pin gets
+    // glow only, so the pin stays put under the cursor.
+    let lift = 0, liftTarget = 0, glow = 0, glowTarget = 0, idle = 0, moved = false, hovered = -1;
     const onMove = (e: PointerEvent) => {
-      if (!inv) return;
+      if (!inv || hovered >= 0) return;
       const r = canvas.getBoundingClientRect();
       const nx = ((e.clientX - r.left) / r.width) * 2 - 1;
       const ny = 1 - ((e.clientY - r.top) / r.height) * 2;
@@ -264,9 +285,39 @@ export default function TerrainField() {
       const t = -a[1] / dy;
       target.x = a[0] + (b[0] - a[0]) * t;
       target.z = Math.max(-11, a[2] + (b[2] - a[2]) * t);
-      liftTarget = 1;
+      liftTarget = glowTarget = 1;
       idle = 0;
+      moved = true;
     };
+
+    // Pins: hovering or focusing one raises the land under that project.
+    const pinEls = Array.from(root.querySelectorAll<HTMLElement>("[data-pin]"));
+    const spread = () => Math.min(1, Math.max(0.35, w / h / 1.6));
+    const pinListeners = pinEls.map((el, i) => {
+      const on = () => {
+        hovered = i;
+        target.x = pins[i].x * spread();
+        target.z = pins[i].z;
+        liftTarget = 0;
+        glowTarget = 1;
+        idle = -1e9;
+        kick();
+      };
+      const off = () => {
+        hovered = -1;
+        idle = 0;
+      };
+      el.addEventListener("pointerenter", on);
+      el.addEventListener("focus", on);
+      el.addEventListener("pointerleave", off);
+      el.addEventListener("blur", off);
+      return () => {
+        el.removeEventListener("pointerenter", on);
+        el.removeEventListener("focus", on);
+        el.removeEventListener("pointerleave", off);
+        el.removeEventListener("blur", off);
+      };
+    });
 
     const start = performance.now();
     let raf = 0, visible = true, last = start;
@@ -275,16 +326,49 @@ export default function TerrainField() {
       const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
       idle += dt;
-      if (idle > 2) liftTarget = 0;
+      if (idle > 2) liftTarget = glowTarget = 0;
       hill.x += (target.x - hill.x) * Math.min(1, dt * 5);
       hill.z += (target.z - hill.z) * Math.min(1, dt * 5);
       lift += (liftTarget - lift) * Math.min(1, dt * 2.5);
+      glow += (glowTarget - glow) * Math.min(1, dt * 4);
       camera();
       gl.uniform1f(uTime, still ? 0 : (now - start) / 1000);
       gl.uniform2f(uHill, hill.x, hill.z);
       gl.uniform1f(uLift, lift);
+      gl.uniform1f(uGlow, glow);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+
+      // Stand each pin on the ground where the camera sees it.
+      const secs = still ? 0 : (now - start) / 1000;
+      const cw = canvas.clientWidth, ch = canvas.clientHeight, k = spread();
+      // Pins stand on the base terrain (not the pointer's hill), and hold
+      // still while one is hovered so it can't drift out from under the cursor.
+      if (hovered < 0) pinEls.forEach((el, i) => {
+        const px = pins[i].x * k, pz = pins[i].z;
+        const py = terrainHeight(px, pz, secs, hill.x, hill.z, 0) + 0.02;
+        const [sx, sy, sz] = project(vp, px, py, pz);
+        const off = sz > 1 || sx < -1.2 || sx > 1.2 || sy < -1.2 || sy > 1.2;
+        el.style.transform = `translate3d(${((sx + 1) / 2) * cw}px, ${((1 - sy) / 2) * ch}px, 0)`;
+        el.style.visibility = off ? "hidden" : "";
+        // Cards open beside the pin, toward the middle of the screen.
+        el.toggleAttribute("data-flip", sx > 0.2);
+      });
+
+      // The survey readout: where the pointer is, in made-up Bay Area coordinates.
+      if (moved) {
+        moved = false;
+        const elev = terrainHeight(target.x, target.z, secs, hill.x, hill.z, lift);
+        window.dispatchEvent(
+          new CustomEvent("terrain:cursor", {
+            detail: {
+              lat: 37.7749 - target.z * 0.012,
+              lon: -122.4194 + target.x * 0.015,
+              elev: Math.max(0, Math.round((elev + 0.6) * 420)),
+            },
+          }),
+        );
+      }
       if (!still && visible && !document.hidden) raf = requestAnimationFrame(frame);
     };
     const kick = () => {
@@ -309,6 +393,7 @@ export default function TerrainField() {
 
     frame(performance.now());
     canvas.dataset.live = "true";
+    root.dataset.live = "true";
 
     return () => {
       if (raf) cancelAnimationFrame(raf);
@@ -316,9 +401,42 @@ export default function TerrainField() {
       ro.disconnect();
       document.removeEventListener("visibilitychange", kick);
       window.removeEventListener("pointermove", onMove);
+      pinListeners.forEach((off) => off());
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, []);
+  }, [pins]);
 
-  return <canvas ref={ref} aria-hidden="true" className="terrain-field" />;
+  return (
+    <div ref={wrap} className="terrain">
+      <canvas ref={ref} aria-hidden="true" className="terrain-field" />
+      {pins.length > 0 && (
+        <ul className="pins" aria-label="Projects on the map">
+          {pins.map((p, i) => (
+            <li key={p.title}>
+              <a
+                data-pin={i}
+                href={p.href}
+                className="pin"
+                {...(p.external ? { target: "_blank", rel: "noreferrer noopener" } : {})}
+              >
+                <span className="pin-dot" aria-hidden="true" />
+                <span className="pin-stem" aria-hidden="true" />
+                <span className="pin-label">
+                  {p.title}
+                  <span className="pin-year">{p.year}</span>
+                </span>
+                <span className="pin-card">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.thumb} alt="" width={240} height={135} loading="lazy" decoding="async" />
+                  <span className="pin-desc">{p.desc}</span>
+                  <span className="pin-go">{p.external ? "Visit site" : "Read the case study"}</span>
+                </span>
+                {p.external && <span className="sr-only"> (opens in a new tab)</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }

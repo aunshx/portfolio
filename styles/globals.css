@@ -475,16 +475,6 @@ a:focus-visible > .shot {
   width: 100%;
   padding: 1.25rem 3vw 2rem;
 }
-.hero-meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.45;
-}
-@media (min-width: 640px) {
-  .hero-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
 .kinetic {
   position: relative;
   display: block;
@@ -504,31 +494,285 @@ a:focus-visible > .shot {
   display: inline-block;
   font-variation-settings: "wght" 820, "wdth" 125;
 }
-.hero-name {
-  color: var(--text);
-}
-.hero-name .kinetic-row + .kinetic-row {
-  margin-top: 0.06em;
-}
-.hero-foot {
-  display: flex;
+/* The map: terrain, pins, legend and furniture -------------------- */
+
+.hero-inner {
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem 3rem;
+  align-content: flex-end;
+  pointer-events: none;
 }
-.hero-pitch {
-  max-width: 24ch;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
-  line-height: 1.08;
+/* Phones: the map takes the top of the screen, the legend sits below it. */
+@media (max-width: 640px) {
+  .terrain {
+    bottom: auto;
+    height: 58svh;
+  }
+  .hero-inner {
+    padding-top: calc(58svh - 1rem);
+  }
+}
+.hero-inner > * {
+  pointer-events: auto;
+}
+.terrain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.terrain:not([data-live]) .pins {
+  display: none;
+}
+.pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+  will-change: transform;
+}
+.pin-dot {
+  position: absolute;
+  left: -0.4375rem;
+  top: -0.4375rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.pin-stem {
+  position: absolute;
+  left: -0.5px;
+  top: -3.25rem;
+  width: 1px;
+  height: 3.25rem;
+  background: var(--text);
+}
+.pin-label {
+  position: absolute;
+  bottom: 3.25rem;
+  left: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 700, "wdth" 110;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: background-color 0.25s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pin-label::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem -0.25rem;
+}
+.pin-year {
+  font-family: var(--font-sans);
+  font-variation-settings: normal;
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+.pin:hover .pin-label,
+.pin:focus-visible .pin-label {
+  background: var(--accent);
+  color: var(--text);
+  transform: translateX(-50%) translateY(-4px);
+}
+.pin-card {
+  position: absolute;
+  top: -12.5rem;
+  left: 4.75rem;
+  display: grid;
+  gap: 0.4rem;
+  width: 15.5rem;
+  padding: 0.5rem 0.5rem 0.65rem;
+  border: 1px solid var(--text);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--text);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-0.5rem) scale(0.96);
+  transform-origin: 0% 100%;
+  transition:
+    opacity 0.25s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pin-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0.4rem;
+}
+.pin-desc {
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+.pin-go {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent-ink);
+}
+.pin:hover .pin-card,
+.pin:focus-visible .pin-card {
+  opacity: 1;
+  transform: none;
+}
+/* Pins on the right open their card to the left. */
+.pin[data-flip] .pin-card {
+  left: auto;
+  right: 4.75rem;
+  transform-origin: 100% 100%;
+  transform: translateX(0.5rem) scale(0.96);
+}
+.pin[data-flip]:hover .pin-card,
+.pin[data-flip]:focus-visible .pin-card {
+  transform: none;
+}
+.pin:hover,
+.pin:focus-visible {
+  z-index: 5;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pin-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--accent);
+    animation: ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+}
+@media (pointer: coarse) {
+  .pin-card { display: none; }
+}
+
+.legend {
+  width: min(100%, 26rem);
+  padding: 1.25rem 1.25rem 0.75rem;
+  border: 1px solid var(--text);
+  border-radius: 0.25rem;
+  background: var(--surface);
+}
+.legend-name {
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 760, "wdth" 112;
+  font-size: 1.25rem;
+  line-height: 1.2;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
-.hero-actions {
+.legend-what {
+  margin-top: 0.35rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+.legend-key {
+  display: grid;
+  margin-top: 0.9rem;
+  border-top: 1px solid var(--text);
+}
+.legend-key > div {
+  display: grid;
+  grid-template-columns: 7.25rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding-block: 0.45rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.legend-key dt {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.legend-key dt svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.legend-key dd {
+  color: var(--text-muted);
+}
+.legend-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0 1rem;
+  margin-top: 0.25rem;
+}
+
+.map-furniture {
+  position: absolute;
+  top: 1.25rem;
+  right: 3vw;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  pointer-events: none;
+}
+.north {
+  width: 1.6rem;
+  height: auto;
+}
+.north text {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text);
+}
+.scalebar {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.scalebar-bar {
+  display: block;
+  width: 7.5rem;
+  height: 0.4rem;
+  border: 1px solid var(--text);
+  background: repeating-linear-gradient(90deg, var(--text) 0 25%, var(--bg) 25% 50%);
+}
+
+.hero-corner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.9rem;
+  margin-left: auto;
+}
+.readout {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-align: right;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .hero-corner { width: 100%; align-items: stretch; }
+  .readout { display: none; }
+  .map-furniture .scalebar { display: none; }
 }
 
 /* Loading screen: first visit of a session only ------------------- */
@@ -904,6 +1148,8 @@ a:focus-visible > .shot {
   height: 6rem;
   border-radius: 50%;
   background: var(--accent);
+  /* Multiply, so the dot tints what it passes over instead of hiding it. */
+  mix-blend-mode: multiply;
   transform: scale(0.12);
   transition:
     transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),

@@ -23,6 +23,7 @@ export default function KineticText({
   fallback,
   delay = 0,
   decorative = false,
+  uniform = false,
 }: {
   id?: string;
   lines: string[];
@@ -34,6 +35,8 @@ export default function KineticText({
   delay?: number;
   /** Hide from assistive tech when the text is already announced nearby. */
   decorative?: boolean;
+  /** One size for every line, set by the longest, instead of each line filling the width. */
+  uniform?: boolean;
 }) {
   const root = useRef<HTMLElement>(null);
 
@@ -66,8 +69,10 @@ export default function KineticText({
     });
     const fit = () => {
       const width = el.clientWidth;
+      const ratios = probes.map((p) => p.scrollWidth / 100);
+      const widest = Math.max(...ratios);
       rows.forEach((row, i) => {
-        const ratio = probes[i].scrollWidth / 100;
+        const ratio = uniform ? widest : ratios[i];
         if (ratio > 0) row.style.fontSize = `${width / ratio}px`;
       });
     };
@@ -118,7 +123,7 @@ export default function KineticText({
       window.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerleave", onLeave);
     };
-  }, []);
+  }, [uniform]);
 
   let n = 0;
   return (
