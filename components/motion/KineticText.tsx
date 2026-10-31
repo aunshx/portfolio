@@ -22,6 +22,7 @@ export default function KineticText({
   as: Tag = "span",
   fallback,
   delay = 0,
+  decorative = false,
 }: {
   id?: string;
   lines: string[];
@@ -31,6 +32,8 @@ export default function KineticText({
   fallback: number[];
   /** Seconds before the letters inflate in. */
   delay?: number;
+  /** Hide from assistive tech when the text is already announced nearby. */
+  decorative?: boolean;
 }) {
   const root = useRef<HTMLElement>(null);
 
@@ -123,7 +126,8 @@ export default function KineticText({
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={root as any}
       id={id}
-      aria-label={lines.join(" ")}
+      aria-label={decorative ? undefined : lines.join(" ")}
+      aria-hidden={decorative || undefined}
       className={`kinetic ${className}`}
     >
       {lines.map((line, i) => (

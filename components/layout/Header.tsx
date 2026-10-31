@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg">
       <span aria-hidden="true" data-progress className="progress" />
-      <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-6 px-5 sm:px-8">
+      <div className="flex h-14 items-center justify-between gap-6 px-[3vw]">
         <a
           href="#top"
           className="inline-flex min-h-11 items-center text-[0.875rem] font-semibold text-text"
@@ -87,7 +87,7 @@ export default function Header() {
 
       {open && (
         <nav id="mobile-nav" aria-label="Sections" className="border-t border-line bg-bg md:hidden">
-          <ul className="mx-auto max-w-[1180px] px-5 py-2 sm:px-8">
+          <ul className="px-[3vw] py-2">
             {NAV.map((item) => (
               <li key={item.id}>
                 <a

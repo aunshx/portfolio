@@ -1,20 +1,20 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import KineticText from "@/components/motion/KineticText";
-import ContourField from "@/components/motion/ContourField";
+import TerrainField from "@/components/motion/TerrainField";
 import Contours from "@/components/motion/Contours";
 import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
 
 /**
- * Full screen: a live contour map, the name edge to edge, three short
- * facts across the top and the pitch and actions across the bottom.
+ * Full screen: a 3D contour landscape you can push around, the name across
+ * the width, three short facts on top, the pitch and actions below.
  */
 export default function Hero() {
   const [first, ...rest] = PROFILE.name.toUpperCase().split(" ");
   return (
     <section id="top" aria-labelledby="hero-title" className="hero">
       <Contours />
-      <ContourField />
+      <TerrainField />
 
       <div className="hero-inner">
         <div className="hero-meta intro-fade" style={{ ["--d" as string]: "0.1s" }}>
@@ -40,14 +40,17 @@ export default function Hero() {
           </p>
         </div>
 
-        <KineticText
-          as="h1"
-          id="hero-title"
-          lines={[first, rest.join(" ")]}
-          fallback={[19.9, 8.95]}
-          className="hero-name"
-          delay={0.15}
-        />
+        {/* One line across the width on tablets and up; two lines on phones,
+            where one line would be too small to read. */}
+        <h1 id="hero-title" className="hero-name">
+          <span className="sr-only">{PROFILE.name}</span>
+          <span className="hidden md:block">
+            <KineticText decorative lines={[`${first} ${rest.join(" ")}`]} fallback={[6.06]} delay={0.15} />
+          </span>
+          <span className="block md:hidden">
+            <KineticText decorative lines={[first, rest.join(" ")]} fallback={[19.9, 8.95]} delay={0.15} />
+          </span>
+        </h1>
 
         <div className="hero-foot">
           <p className="hero-pitch intro-fade" style={{ ["--d" as string]: "0.7s" }}>

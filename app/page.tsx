@@ -4,7 +4,6 @@ import Hero from "@/components/sections/Hero";
 import Work from "@/components/sections/Work";
 import Statement from "@/components/sections/Statement";
 import FinePrint from "@/components/sections/FinePrint";
-import Marquee from "@/components/motion/Marquee";
 import Motion from "@/components/motion/Motion";
 import Preloader from "@/components/motion/Preloader";
 
@@ -21,7 +20,6 @@ export default function Home() {
       <Header />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <Marquee />
         <Statement />
         <Work />
         <FinePrint />

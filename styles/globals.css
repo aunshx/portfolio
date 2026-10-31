@@ -445,17 +445,23 @@ a:focus-visible > .shot {
   min-height: calc(100svh - 3.5rem);
   overflow: hidden;
 }
-.contour-field {
+.terrain-field {
   position: absolute;
-  inset: -8% 0 0;
+  inset: 0;
   z-index: 0;
   width: 100%;
-  height: 108%;
+  height: 100%;
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 1.4s ease;
 }
-.contour-field[data-live] {
+.terrain-field[data-live] {
   opacity: 1;
+}
+/* The land fades into the page instead of stopping at a hard edge. */
+.terrain-field,
+.hero .contours-svg {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
 }
 .hero-inner {
   position: relative;
@@ -601,45 +607,6 @@ a:focus-visible > .shot {
 .preloader-pct {
   margin-top: 0.08em;
   font-size: 0.28em;
-}
-
-/* Marquee ---------------------------------------------------------- */
-
-.marquee-band {
-  overflow: hidden;
-  border-block: 1px solid var(--text);
-  padding-block: 1rem;
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-}
-.marquee-run,
-.marquee-item {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.marquee-item {
-  gap: 3vw;
-  padding-right: 3vw;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(3rem, 1rem + 8vw, 9.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-.marquee-star {
-  width: 0.42em;
-  height: 0.42em;
-  fill: var(--accent);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .marquee-track { animation: marquee 48s linear infinite; }
-}
-@keyframes marquee {
-  to { transform: translateX(-50%); }
 }
 
 /* Statement -------------------------------------------------------- */

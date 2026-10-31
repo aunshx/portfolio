@@ -75,7 +75,7 @@ export default function Motion() {
             { opacity: 1 },
             { opacity: 0, ease: "none", immediateRender: false, scrollTrigger: { ...leave, end: "50% top" } },
           );
-          gsap.to(".contour-field, .contours-svg", { yPercent: 18, ease: "none", scrollTrigger: leave });
+          // (The terrain moves its own camera with the scroll.)
 
           // Headings rise out of their own line boxes.
           below<HTMLElement>("[data-split]").forEach((el) => {
