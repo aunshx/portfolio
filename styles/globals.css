@@ -797,10 +797,14 @@ a:focus-visible > .shot {
   display: block;
   overflow: hidden;
   color: var(--text);
+  /* Nothing in here is clickable, so it never gets in the way. */
+  pointer-events: none;
   animation: pre-out 0.01s linear 2.75s forwards;
 }
+/* Hidden at every point of the step, not only at its end: browsers can
+   finish a step at 0.99999 of the way, which leaves it visible. */
 @keyframes pre-out {
-  to { visibility: hidden; }
+  from, to { visibility: hidden; }
 }
 /* The paper goes first, so the lines tip back over the real terrain. */
 .pre-paper {
