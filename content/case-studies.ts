@@ -694,12 +694,12 @@ const frredss: CaseStudy = {
     domain: "forestdss.ucdavis.edu",
   },
   summary:
-    "FRREDSS answers a planner's question: if we build a biomass power plant here, where does the wood come from, what does it cost and what does it emit? It runs three UC Davis models over forest data for the whole state. I took over a frontend that had been quiet for two years and made it a routed app with runs you can save and share.",
+    "FRREDSS answers a planner's question: if we build a biomass power plant here, where does the wood come from, what does it cost and what does it emit? It runs ten models over forest data for the whole state. I took over a frontend that had been quiet for two years and made it a routed app with runs you can save and share.",
   stats: [
     { value: "94%", label: "of commits since July 2024 are mine" },
-    { value: "3", label: "UC Davis models behind every run: cost, harvest and life cycle" },
+    { value: "10", label: "models behind every run, from harvest cost to life-cycle emissions", accent: true },
     { value: "11", label: "map layers, from fire hazard zones to sawmills" },
-    { value: "+7.4k", unit: "/ -1.7k", label: "lines changed across 150 files", accent: true },
+    { value: "4", label: "major upgrades in one rebuild: React, Leaflet, Router and TypeScript" },
   ],
   ownership: {
     heading: "What I shipped",
@@ -786,9 +786,9 @@ const frredss: CaseStudy = {
     ],
   },
   tech: {
-    title: "Three models, one map",
+    title: "Ten models, one map",
     steps: [
-      { kicker: "Browser", title: "React and Leaflet", detail: "TypeScript, react-leaflet, Recharts and Victory for inputs, maps and results. The cost, harvest and life-cycle models run on the API." },
+      { kicker: "Browser", title: "React and Leaflet", detail: "TypeScript, react-leaflet, Recharts and Victory for inputs, maps and results. The models run on the API." },
       { kicker: "API", title: "Express on Azure", detail: "Runs the models. One call sets up the whole run, then one call per year carries the chosen clusters and the search radius forward." },
       { kicker: "Data", title: "PostgreSQL and PostGIS", detail: "Treated forest clusters by county and year, boxed by latitude and longitude in SQL, then trimmed to a radius in Node." },
       { kicker: "Pipeline", title: "Batch loads on the cluster", detail: "A SLURM job on the campus cluster prepares the clusters; a separate script loads county files with COPY and moves loaded and failed files aside, so a rerun picks up where it stopped." },
