@@ -11,7 +11,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     name: "mlpal.ai",
-    position: "Software Engineer (Founding)",
+    position: "Founding Engineer",
     duration: "Mar 2024 – Aug 2024",
     link: "https://mlpal.ai",
     summary: "Early engineer at a pre-seed AI infrastructure startup.",
