@@ -1,109 +1,126 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
+import { Fragment, useEffect, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { PROFILE, LINKS } from "@/content/profile";
+import { CaseStudyList, CaseStudyMenu } from "./CaseStudyMenu";
 
 const NAV = [
   { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
-  { id: "skills", label: "Stack" },
   { id: "writing", label: "Writing" },
   { id: "contact", label: "Contact" },
 ];
 
-// "top" is not a nav item, but the backdrop needs the hero as its own
-// section so the page does not open on the work wash.
-const SPY_IDS = ["top", ...NAV.map((n) => n.id)];
+const SPY_IDS = ["top", "work", "experience", "writing", "contact"];
 
+/** Always visible. Solid, so it never fights the content it scrolls over. */
 export default function Header() {
   const active = useActiveSection(SPY_IDS);
-
-  useEffect(() => {
-    document.documentElement.dataset.section = active;
-  }, [active]);
   const [open, setOpen] = useState(false);
 
+  // Escape closes the phone menu.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <header className="site-header sticky z-50 border-b border-line bg-bg/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-6 px-5 sm:px-8">
+    <header className="sticky top-0 z-50 border-b border-line bg-bg">
+      <span aria-hidden="true" data-progress className="progress" />
+      <div className="flex h-14 items-center justify-between gap-6 px-[3vw]">
         <a
           href="#top"
-          className="font-mono text-[13px] font-medium tracking-tight text-text"
+          className="inline-flex min-h-11 items-center text-[0.875rem] font-semibold text-text"
         >
-          {PROFILE.shortName}
-          <span className="text-accent">.</span>
+          {PROFILE.name}
         </a>
 
-        <nav aria-label="Sections" className="hidden md:block">
-          <ul className="flex items-center gap-7">
-            {NAV.map((item) => (
-              <li key={item.id}>
+        <div className="-mr-2 flex items-center gap-2">
+          <nav aria-label="Sections" className="hidden md:block">
+            <ul className="flex items-center gap-1">
+              {NAV.map((item, i) => {
+                const on = active === item.id;
+                return (
+                  <Fragment key={item.id}>
+                    <li>
+                      <a
+                        href={`#${item.id}`}
+                        aria-current={on ? "true" : undefined}
+                        className={`inline-flex min-h-11 items-center px-3 text-[0.875rem] transition-colors hover:text-accent ${
+                          on ? "font-medium text-text" : "text-muted"
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                    {i === 0 && (
+                      <li>
+                        <CaseStudyMenu />
+                      </li>
+                    )}
+                  </Fragment>
+                );
+              })}
+              <li>
                 <a
-                  href={`#${item.id}`}
-                  aria-current={active === item.id ? "true" : undefined}
-                  className={`font-mono text-[11px] uppercase tracking-[0.14em] transition-colors hover:text-accent ${
-                    active === item.id ? "text-accent" : "text-muted"
-                  }`}
+                  href={LINKS.resume}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex min-h-11 items-center gap-1 pl-3 text-[0.875rem] text-muted transition-colors hover:text-accent"
                 >
-                  {item.label}
+                  Résumé
+                  <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
+                  <span className="sr-only">(opens in a new tab)</span>
                 </a>
               </li>
-            ))}
-          </ul>
-        </nav>
+            </ul>
+          </nav>
 
-        <div className="flex items-center gap-1.5">
-          <a
-            href={LINKS.resume}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="hidden rounded-full border border-line px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted transition-colors hover:border-accent hover:text-accent sm:inline-block"
-          >
-            Résumé
-          </a>
-          <ThemeToggle />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid size-9 place-items-center rounded-full text-muted transition-colors hover:text-accent md:hidden"
+            className="grid size-11 place-items-center rounded-full text-muted transition-colors hover:text-accent md:hidden"
           >
-            {open ? <X size={17} /> : <Menu size={17} />}
+            {open ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {open && (
-        <nav
-          id="mobile-nav"
-          aria-label="Sections"
-          className="border-t border-line bg-bg md:hidden"
-        >
-          <ul className="mx-auto max-w-[1180px] px-5 py-3 sm:px-8">
-            {NAV.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={() => setOpen(false)}
-                  className="block py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-muted hover:text-accent"
-                >
-                  {item.label}
-                </a>
-              </li>
+        <nav id="mobile-nav" aria-label="Sections" className="border-t border-line bg-bg md:hidden">
+          <ul className="px-[3vw] py-2">
+            {NAV.map((item, i) => (
+              <Fragment key={item.id}>
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={() => setOpen(false)}
+                    aria-current={active === item.id ? "true" : undefined}
+                    className="flex min-h-11 items-center text-base text-text hover:text-accent"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+                {i === 0 && <CaseStudyList onPick={() => setOpen(false)} />}
+              </Fragment>
             ))}
             <li>
               <a
                 href={LINKS.resume}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="block py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-muted hover:text-accent"
+                className="flex min-h-11 items-center gap-1 text-base text-text hover:text-accent"
               >
                 Résumé
+                <ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" />
+                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </li>
           </ul>

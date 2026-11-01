@@ -1,126 +1,147 @@
-import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, BookOpen } from "lucide-react";
-import StackPanel from "@/components/ui/StackPanel";
-import SplitText from "@/components/ui/SplitText";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import TerrainField, { type TerrainPin, type TerrainTrail } from "@/components/motion/TerrainField";
+import Contours from "@/components/motion/Contours";
+import Readout from "@/components/motion/Readout";
+import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
+import { WORK } from "@/content/work";
+import { PLACES } from "@/content/places";
+import { ROUTE_FADE_FROM, ROUTE_GROUND, STOPS } from "@/content/route";
 
-const SOCIAL = [
-  { href: LINKS.github, label: "GitHub", Icon: Github },
-  { href: LINKS.linkedin, label: "LinkedIn", Icon: Linkedin },
-  { href: LINKS.medium, label: "Medium", Icon: BookOpen },
-  { href: LINKS.email, label: "Email", Icon: Mail },
+const PINS: TerrainPin[] = WORK.map((w) => ({
+  title: w.title,
+  year: w.year,
+  desc: w.description,
+  href: w.caseStudy ? `/work/${w.caseStudy}` : w.link!,
+  external: !w.caseStudy,
+  thumb: `${w.shot.base}-${w.shot.widths[0]}.webp`,
+  ...PLACES[w.title],
+}));
+
+/** The career trail, the same one the loading screen draws. */
+const TRAIL: TerrainTrail = {
+  ground: ROUTE_GROUND,
+  stops: STOPS.map(({ name, when, x, z, heroAt, heroSide }) => ({ name, when, x, z, at: heroAt, side: heroSide })),
+  fadeFrom: ROUTE_FADE_FROM,
+};
+
+const LINK_ROW = [
+  { href: LINKS.github, label: "GitHub" },
+  { href: LINKS.linkedin, label: "LinkedIn" },
+  { href: LINKS.medium, label: "Medium" },
+  { href: LINKS.resume, label: "Résumé", pdf: true },
 ];
 
+/* Legend symbols, drawn rather than typed. */
+const Sym = {
+  pin: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.5" fill="var(--accent)" /><circle cx="10" cy="10" r="8" fill="none" stroke="var(--accent)" strokeWidth="1.2" /></svg>
+  ),
+  contour: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M1 13c3-6 6 2 9-3s6-1 9-4" fill="none" stroke="currentColor" strokeWidth="1.3" /><path d="M1 17c3-5 6 1 9-2s6 0 9-3" fill="none" stroke="currentColor" strokeWidth="0.8" opacity=".6" /></svg>
+  ),
+  trail: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 15c4-1 4-9 8-9s4 6 8 3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeDasharray="2.6 2" /></svg>
+  ),
+  peak: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16 10 4l7 12Z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>
+  ),
+  status: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="#10b981" /></svg>
+  ),
+  where: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" strokeWidth="1.3" /><path d="M10 1v5M10 14v5M1 10h5M14 10h5" stroke="currentColor" strokeWidth="1.3" /></svg>
+  ),
+};
+
+/**
+ * The hero is a map of the work: a 3D landscape with each project standing
+ * on it as a pin, and a cartographic legend that holds the name, what he
+ * does, where he is and how to reach him.
+ */
 export default function Hero() {
   return (
-    <section
-      id="top"
-      className="relative flex min-h-[calc(100svh-var(--ticker-h)-3.5rem)] items-center overflow-hidden"
-    >
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-5 py-12 sm:px-8 sm:py-14">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_minmax(0,400px)] lg:gap-16">
-          <div>
-            {/* Availability, as a pill rather than a stray line of text. */}
-            <div
-              className="rise inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 py-1.5 pl-1.5 pr-4 backdrop-blur"
-              style={{ animationDelay: "40ms" }}
-            >
-              <Image
-                src={PROFILE.avatar}
-                alt={`Portrait of ${PROFILE.name}`}
-                width={72}
-                height={72}
-                priority
-                className="size-7 rounded-full object-cover"
-              />
-              <span className="text-[13px] font-medium text-text">
-                {PROFILE.name}
-              </span>
-            </div>
+    <section id="top" aria-labelledby="hero-title" className="hero">
+      <Contours />
+      <TerrainField pins={PINS} trail={TRAIL} />
 
-            <h1 className="mt-7 text-[2.7rem] font-semibold leading-[1.03] tracking-[-0.04em] text-text sm:text-[3.9rem] lg:text-[3.5rem] xl:text-[4.4rem]">
-              <SplitText text="Full-stack engineer." />
-              <br aria-hidden="true" />
-              <SplitText text="End to end." offset={20} gradient />
-            </h1>
-
-            <p
-              className="rise mt-6 max-w-[44ch] text-[15.5px] leading-[1.7] text-muted sm:text-[17px]"
-              style={{ animationDelay: "620ms" }}
-            >
-              {PROFILE.pitch}
-            </p>
-
-            <div
-              className="rise mt-7 flex flex-wrap items-center gap-3"
-              style={{ animationDelay: "700ms" }}
-            >
-              <a
-                href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
-              >
-                See the work
-                <ArrowDown
-                  size={15}
-                  strokeWidth={2.2}
-                  className="transition-transform group-hover:translate-y-0.5"
-                />
-              </a>
-
-              <a
-                href={LINKS.email}
-                className="group inline-flex items-center gap-1.5 rounded-full border border-line px-6 py-3 text-sm font-medium text-text transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-              >
-                Contact
-                <Mail size={15} strokeWidth={2} aria-hidden="true" />
-              </a>
-
-              <a
-                href={LINKS.resume}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="group inline-flex items-center gap-1.5 rounded-full px-3 py-3 text-sm font-medium text-muted transition-colors hover:text-accent"
-              >
-                Résumé
-                <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
-              </a>
-
-            </div>
-
-            <ul
-              className="rise mt-10 flex flex-wrap items-center gap-2 border-t border-line pt-7"
-              style={{ animationDelay: "780ms" }}
-            >
-              {SOCIAL.map(({ href, label, Icon }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target={href.startsWith("mailto") ? undefined : "_blank"}
-                    rel="noreferrer noopener"
-                    className="group inline-flex items-center gap-2 rounded-full border border-line px-4 py-2.5 text-[13px] font-medium text-muted transition-all hover:-translate-y-0.5 hover:border-accent hover:text-accent"
-                  >
-                    <Icon size={16} strokeWidth={1.7} aria-hidden="true" />
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="rise hidden lg:block" style={{ animationDelay: "700ms" }}>
-            <StackPanel />
-          </div>
+      {/* Map furniture: north arrow and a scale bar. */}
+      <div className="map-furniture intro-fade" aria-hidden="true" style={{ ["--d" as string]: "0.4s" }}>
+        <svg viewBox="0 0 40 56" className="north">
+          <path d="M20 4 30 40 20 33 10 40Z" fill="var(--text)" />
+          <path d="M20 4 20 33 10 40Z" fill="var(--bg)" stroke="var(--text)" strokeWidth="1.2" strokeLinejoin="round" />
+          <text x="20" y="54" textAnchor="middle">N</text>
+        </svg>
+        <div className="scalebar">
+          <span className="scalebar-bar" />
+          <span className="scalebar-label">0 &nbsp; 1 side project</span>
         </div>
       </div>
 
-      <a
-        href="#work"
-        aria-label="Scroll to work"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-faint transition-colors hover:text-accent lg:flex"
-      >
-        Scroll
-        <ArrowDown size={13} strokeWidth={2} className="animate-bounce" />
-      </a>
+      <div className="hero-inner">
+        <div className="legend intro-fade" style={{ ["--d" as string]: "0.2s" }}>
+          <h1 id="hero-title" className="legend-name">
+            {PROFILE.name}
+          </h1>
+          <p className="legend-what">
+            Full-stack engineer. Interface to database, AI included. It mostly behaves.
+          </p>
+
+          <dl className="legend-key">
+            <div>
+              <dt>{Sym.pin}Projects</dt>
+              <dd>Hover a pin</dd>
+            </div>
+            <div>
+              <dt>{Sym.contour}Contours</dt>
+              <dd>Each line is 10 m of scope creep</dd>
+            </div>
+            <div>
+              <dt>{Sym.trail}Trail</dt>
+              <dd>Every job so far, newest up front</dd>
+            </div>
+            <div>
+              <dt>{Sym.peak}Peaks</dt>
+              <dd>Things that shipped</dd>
+            </div>
+            <div>
+              <dt>{Sym.status}Status</dt>
+              <dd>{PROFILE.availability}</dd>
+            </div>
+            <div>
+              <dt>{Sym.where}Location</dt>
+              <dd>
+                {PROFILE.location}, <Clock />
+              </dd>
+            </div>
+          </dl>
+
+          <ul className="legend-links">
+            {LINK_ROW.map(({ href, label, pdf }) => (
+              <li key={label}>
+                <a href={href} target="_blank" rel="noreferrer noopener" className="link">
+                  {label}
+                  <ArrowUpRight size={14} strokeWidth={2} aria-hidden="true" />
+                  <span className="sr-only">{pdf ? "(PDF, opens in a new tab)" : "(opens in a new tab)"}</span>
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href={LINKS.email} className="link">
+                Email
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div className="hero-corner intro-fade" style={{ ["--d" as string]: "0.5s" }}>
+          <Readout />
+          <a href="#work" className="btn btn-primary" data-magnetic>
+            See the work
+            <ArrowDown size={15} strokeWidth={2} aria-hidden="true" />
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,37 +1,50 @@
+/**
+ * A screenshot served as pre-sized WebP files: `${base}-${width}.webp` for
+ * every width listed. Pre-encoded so fine UI text stays sharp.
+ */
+export type HomeShot = {
+  base: string;
+  widths: number[];
+  /** Intrinsic size of the largest file, for the aspect ratio. */
+  w: number;
+  h: number;
+  alt: string;
+};
+
 export type WorkItem = {
   id: number;
   title: string;
-  subTitle: string;
+  /** A few words: what it is. */
   description: string;
-  image: string;
-  tech: string[];
+  /** One result, with the number kept separate so it can carry weight. */
+  metric: { value: string; label: string };
+  shot: HomeShot;
   link?: string;
   gitUrl?: string;
-  /** Quiet credit line: grant, org, or status. */
-  tag?: string;
-  year?: string;
-  /** Shown as a live status pill on the card. */
-  status?: "live" | "building" | "handed-off" | "archived";
-  /** Bare domain, rendered in the card's browser chrome. */
+  year: string;
+  /** Bare domain, for link text. */
   domain?: string;
-  /** The first card is featured and spans the grid. */
-  featured?: boolean;
+  /** Slug of a case study at /work/[slug], when one exists. */
+  caseStudy?: string;
+  /** The card's colors, taken from the product itself. */
+  tone: { bg: string; fg: string; muted: string; accent: string };
 };
 
 export type ExperienceItem = {
   name: string;
+  /** A short name, for tight spots like the loading screen's map. */
+  short?: string;
   position: string;
   duration: string;
   link?: string;
-  work: string[];
-  tech?: string[];
+  /** One line, from the résumé. */
+  summary: string;
 };
 
 export type ResearchItem = {
   title: string;
-  description: string;
-  tags: string[];
-  achievements: string[];
+  /** Venue or status, when there is one. */
+  note?: string;
   link?: string;
 };
 
@@ -56,4 +69,102 @@ export type EducationItem = {
 export type SkillGroup = {
   group: string;
   items: string[];
+};
+
+/* ------------------------------------------------------------------ */
+/*  Case studies                                                       */
+/* ------------------------------------------------------------------ */
+
+export type Shot = {
+  src: string;
+  alt: string;
+  /** Intrinsic size of the capture, so the layout never shifts. */
+  w: number;
+  h: number;
+  /** Shown in the browser chrome when set. */
+  domain?: string;
+  caption?: string;
+};
+
+export type Metric = {
+  value: string;
+  unit?: string;
+  label: string;
+  accent?: boolean;
+};
+
+export type SpecimenFont =
+  | "outfit"
+  | "dmSerif"
+  | "jetbrains"
+  | "geist"
+  | "geistMono"
+  /** The platform's own UI font, for products that ship no web fonts. */
+  | "system"
+  /** This site's faces, already loaded on every page. */
+  | "archivo"
+  | "instrument"
+  | "inter";
+
+export type CaseStudy = {
+  slug: string;
+  title: string;
+  /** Rendered after the title in the accent colour, e.g. ".cc". */
+  titleSuffix?: string;
+  tagline: string;
+  /** Meta description. */
+  description: string;
+  domain: string;
+  link: string;
+  /** Text for the main link, when "Visit <domain>" doesn't fit (no live site). */
+  linkLabel?: string;
+  repo?: string;
+  meta: { label: string; value: string }[];
+  hero: Shot;
+  summary: string;
+  stats: Metric[];
+  ownership: {
+    heading: string;
+    intro: string;
+    rows: { area: string; detail: string }[];
+  };
+  /** kicker labels the chapter (defaults to "Landing page" for the first, "Product" after). */
+  chapters: { title: string; kicker?: string; lead?: string; shots: Shot[] }[];
+  mobile?: { title: string; lead: string; shots: Shot[] };
+  design: {
+    title: string;
+    swatches: { name: string; hex: string; onDark?: boolean }[];
+    fonts: { family: SpecimenFont; name: string; role: string; sample: string }[];
+    code?: { label: string; source: string };
+    notes: string[];
+  };
+  tech: {
+    title: string;
+    steps: { kicker: string; title: string; detail: string }[];
+    decisions: { title: string; detail: string }[];
+    chips: string[];
+  };
+  performance?: {
+    title: string;
+    lead: string;
+    groups: { name: string; note: string; metrics: Metric[] }[];
+  };
+  optimization?: {
+    title: string;
+    lead: string;
+    cards: { value: string; title: string; detail: string; href: string }[];
+    shot?: Shot;
+  };
+  ai?: { title: string; paragraphs: string[]; stats?: Metric[]; shot: Shot };
+  code?: {
+    title: string;
+    lead: string;
+    file: string;
+    href: string;
+    lang: string;
+    source: string;
+    note?: string;
+  };
+  next: string[];
+  nextStudy: { slug: string; title: string };
 };

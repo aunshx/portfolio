@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, Github, Linkedin, Mail, BookOpen, FileText } from "lucide-react";
 
-import ThemeToggle from "@/components/layout/ThemeToggle";
 import { PROFILE, LINKS, SITE } from "@/content/profile";
 import { TLDR_LINKS } from "@/content/tldr";
 import { SKILLS } from "@/content/skills";
@@ -42,7 +41,7 @@ export default function Tldr() {
             priority
             className="size-16 rounded-full object-cover ring-1 ring-line"
           />
-          <ThemeToggle />
+          
         </div>
 
         <h1 className="mt-6 text-[2rem] font-semibold leading-[1.08] tracking-[-0.03em] text-text sm:text-[2.6rem]">
