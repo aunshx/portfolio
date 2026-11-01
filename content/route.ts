@@ -1,24 +1,26 @@
 import { EXPERIENCE } from "./experience";
-import { fromSurvey } from "./places";
+import { toSurvey } from "./places";
 
 /**
- * The career route: a trail up the land, one stop per job, oldest first.
- * Drawn on the loading screen's survey map and painted onto the 3D hero, so
- * both show the same trail in the same place.
+ * The career route: a trail switching back up the land, one stop per job,
+ * oldest nearest. The loading screen draws it on its survey map; the 3D hero
+ * lays it over the terrain, where it climbs away from the camera and fades
+ * out toward the horizon past the last job.
  *
- * Points are on the survey map (1600 × 900, see places.ts). The trail enters
- * from below the map's bottom edge, where the land runs on toward the viewer.
- * Stops stay in the middle band, so phones (which crop the sides) keep them.
+ * Points are on the land (terrain units, see places.ts), placed so the hero's
+ * camera sees every leg. The map's trail starts below its bottom edge (the
+ * lead-in); the hero's starts at the first job and runs on into the tail.
  */
-const START: [number, number] = [705, 1160];
-/* x, y on the map; which side the label sits on the map, and in the 3D hero
-   (the camera's angle moves things around, so they differ). */
-const STOP_AT: [number, number, "l" | "r", "l" | "r"][] = [
-  [650, 705, "r", "r"],
-  [935, 590, "l", "r"],
-  [700, 450, "r", "r"],
-  [835, 268, "r", "r"],
+type Pt = [number, number];
+const LEAD_IN: Pt = [-0.75, 0.9];
+/* x, z, and which side the label sits on the map and in the hero. */
+const JOBS: [number, number, "l" | "r", "l" | "r"][] = [
+  [-0.59, -0.67, "l", "l"],
+  [-0.01, -1.58, "r", "r"],
+  [-0.59, -2.35, "l", "l"],
+  [-0.07, -3.13, "r", "r"],
 ];
+const TAIL: Pt = [-0.51, -5.17];
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -32,64 +34,71 @@ function when(duration: string) {
   return `${span} · ${length}`;
 }
 
-type Pt = [number, number];
-const KNOTS: Pt[] = [START, ...STOP_AT.map(([x, y]): Pt => [x, y])];
-
-/* A Catmull-Rom curve through the knots, as cubic Bézier segments. */
+/* One Catmull-Rom curve through every knot, as cubic Bézier segments, so the
+   map and the hero share the exact same trail. */
+const KNOTS: Pt[] = [LEAD_IN, ...JOBS.map(([x, z]): Pt => [x, z]), TAIL];
 const SEGMENTS = KNOTS.slice(0, -1).map((_, i) => {
   const [p0, p1, p2, p3] = [KNOTS[i - 1] ?? KNOTS[i], KNOTS[i], KNOTS[i + 1], KNOTS[i + 2] ?? KNOTS[i + 1]];
-  const c1: Pt = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
-  const c2: Pt = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
-  return [p1, c1, c2, p2] as const;
+  return [p1, [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6], p2] as Pt[];
 });
 
-/** The trail as an SVG path on the survey map. */
-export const ROUTE_D =
-  `M${START[0]} ${START[1]}` +
-  SEGMENTS.map(([, c1, c2, p]) => `C${c1.map(Math.round).join(" ")} ${c2.map(Math.round).join(" ")} ${p.join(" ")}`).join("");
+const bez = ([a, b, c, d]: Pt[], t: number): Pt => {
+  const u = 1 - t;
+  return [
+    u * u * u * a[0] + 3 * u * u * t * b[0] + 3 * u * t * t * c[0] + t * t * t * d[0],
+    u * u * u * a[1] + 3 * u * u * t * b[1] + 3 * u * t * t * c[1] + t * t * t * d[1],
+  ];
+};
 
-/* Sampled evenly in t, with the distance walked so far. */
-const STEPS = 48;
-const samples: Pt[] = [START];
-const walked: number[] = [0];
-const stopAt: number[] = [];
-SEGMENTS.forEach(([a, b, c, d]) => {
-  for (let s = 1; s <= STEPS; s++) {
-    const t = s / STEPS, u = 1 - t;
-    const p: Pt = [
-      u * u * u * a[0] + 3 * u * u * t * b[0] + 3 * u * t * t * c[0] + t * t * t * d[0],
-      u * u * u * a[1] + 3 * u * u * t * b[1] + 3 * u * t * t * c[1] + t * t * t * d[1],
-    ];
-    const q = samples[samples.length - 1];
-    walked.push(walked[walked.length - 1] + Math.hypot(p[0] - q[0], p[1] - q[1]));
-    samples.push(p);
+/** Samples along some segments, with the distance walked to the end of each. */
+function walk(segs: Pt[][]) {
+  const pts: Pt[] = [segs[0][0]];
+  const ends: number[] = [];
+  let walked = 0;
+  for (const seg of segs) {
+    for (let s = 1; s <= 48; s++) {
+      const p = bez(seg, s / 48), q = pts[pts.length - 1];
+      walked += Math.hypot(p[0] - q[0], p[1] - q[1]);
+      pts.push(p);
+    }
+    ends.push(walked);
   }
-  stopAt.push(walked[walked.length - 1]);
-});
-const LENGTH = walked[walked.length - 1];
+  return { pts, ends, length: walked };
+}
 
-/** The trail on the land itself (terrain units), for the 3D hero. It starts
- *  at the first job: the lead-in from the map's edge would sit right in front
- *  of the camera there, and come out huge. */
-export const ROUTE_GROUND = samples.slice(STEPS).map(([X, Y]) => {
-  const { x, z } = fromSurvey(X, Y);
-  return [Math.round(x * 1000) / 1000, Math.round(z * 1000) / 1000] as Pt;
-});
+/* The map: lead-in to the last job. */
+const MAP_SEGS = SEGMENTS.slice(0, JOBS.length);
+const mapWalk = walk(MAP_SEGS);
+const m = (p: Pt) => {
+  const s = toSurvey(p[0], p[1]);
+  return `${s.x} ${s.y}`;
+};
+/** The trail as an SVG path on the survey map. */
+export const ROUTE_D = `M${m(MAP_SEGS[0][0])}` + MAP_SEGS.map(([, c1, c2, p]) => `C${m(c1)} ${m(c2)} ${m(p)}`).join("");
 
-/** Each job: where it sits on the map and the land, and how far along the trail. */
+/* The hero: first job to the end of the tail. */
+const heroWalk = walk(SEGMENTS.slice(1));
+
+/** The hero's trail on the land, and where along it (0 to 1) the tail starts fading. */
+export const ROUTE_GROUND = heroWalk.pts.map(([x, z]) => [Math.round(x * 1000) / 1000, Math.round(z * 1000) / 1000] as Pt);
+export const ROUTE_FADE_FROM = heroWalk.ends[JOBS.length - 2] / heroWalk.length;
+
+/** Each job: where it sits on the land and the map, and how far along each trail. */
 export const STOPS = [...EXPERIENCE].reverse().map((job, i) => {
-  const [X, Y, side, heroSide] = STOP_AT[i];
+  const [x, z, side, heroSide] = JOBS[i];
+  const map = toSurvey(x, z);
   return {
     name: job.short ?? job.name,
     when: when(job.duration),
-    X,
-    Y,
+    x,
+    z,
+    X: map.x,
+    Y: map.y,
     side,
     heroSide,
-    ...fromSurvey(X, Y),
     /** 0 at the start of the map's trail, 1 at the end. */
-    at: stopAt[i] / LENGTH,
+    at: mapWalk.ends[i] / mapWalk.length,
     /** The same along the hero's trail, which starts at the first job. */
-    heroAt: (stopAt[i] - stopAt[0]) / (LENGTH - stopAt[0]),
+    heroAt: i === 0 ? 0 : heroWalk.ends[i - 1] / heroWalk.length,
   };
 });

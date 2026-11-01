@@ -28,14 +28,20 @@ export type TerrainStop = {
 };
 
 /** The career trail: points on the ground, in order, and the jobs along it. */
-export type TerrainTrail = { ground: [number, number][]; stops: TerrainStop[] };
+export type TerrainTrail = {
+  ground: [number, number][];
+  stops: TerrainStop[];
+  /** Where along the trail (0 to 1) it starts fading out toward the horizon. */
+  fadeFrom: number;
+};
 
 /* The trail's ink, in terrain units: line width, dash and gap. */
 const TRAIL_W = 0.026, TRAIL_DASH = 0.075, TRAIL_GAP = 0.055;
 
 /**
- * The hero graphic: a 3D landscape with contour lines draped over it,
- * drifting toward the viewer like a slow survey flight. The pointer raises
+ * The hero graphic: a 3D landscape with contour lines draped over it, seen
+ * from a camera that sways slowly, like a survey flight. The land holds
+ * still so the projects and the career trail stay put on it. The pointer raises
  * a mountain where it lands (its contours turn orange). As the page scrolls,
  * the camera climbs and tilts down until the land reads as a flat map.
  *
@@ -75,7 +81,6 @@ float snoise(vec2 v) {
 const VERT = `#version 300 es
 in vec2 aGrid;
 uniform mat4 uVP;
-uniform float uTime;
 uniform vec2 uHill;
 uniform float uLift;
 uniform float uGlow;
@@ -85,7 +90,7 @@ out float vNear;
 out float vShade;
 ${NOISE}
 float terrain(vec2 p) {
-  vec2 q = p * 0.42 - vec2(0.0, uTime * 0.05);
+  vec2 q = p * 0.42;
   float h = snoise(q) * 0.62 + snoise(q * 2.3 + 7.1) * 0.2 + snoise(q * 5.3 - 3.0) * 0.05;
   float d = distance(p, uHill);
   h += uLift * 1.35 * exp(-d * d * 0.9);
@@ -136,7 +141,7 @@ void main() {
 
 const TERRAIN_FN = `
 float terrain(vec2 p) {
-  vec2 q = p * 0.42 - vec2(0.0, uTime * 0.05);
+  vec2 q = p * 0.42;
   float h = snoise(q) * 0.62 + snoise(q * 2.3 + 7.1) * 0.2 + snoise(q * 5.3 - 3.0) * 0.05;
   float d = distance(p, uHill);
   h += uLift * 1.35 * exp(-d * d * 0.9);
@@ -148,7 +153,6 @@ in vec2 aPos;
 in vec2 aOff;
 in float aAlong;
 uniform mat4 uVP;
-uniform float uTime;
 uniform vec2 uHill;
 uniform float uLift;
 uniform float uSpread;
@@ -173,13 +177,15 @@ in float vAlong;
 in float vDepth;
 uniform float uReveal;
 uniform float uAlpha;
+uniform vec2 uFade;
 uniform vec3 uInk;
 uniform vec3 uBg;
 out vec4 color;
 void main() {
   if (vAlong > uReveal || mod(vAlong, ${(TRAIL_DASH + TRAIL_GAP).toFixed(4)}) > ${TRAIL_DASH.toFixed(4)}) discard;
   float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);
-  color = vec4(mix(uBg, uInk, haze), uAlpha);
+  float fade = 1.0 - smoothstep(uFade.x, uFade.y, vAlong);
+  color = vec4(mix(uBg, uInk, haze), uAlpha * fade);
 }`;
 
 type M4 = Float32Array<ArrayBuffer>;
@@ -307,7 +313,7 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
     gl.enable(gl.DEPTH_TEST);
 
     const u = (n: string) => gl.getUniformLocation(prog, n);
-    const uVP = u("uVP"), uTime = u("uTime"), uHill = u("uHill"), uLift = u("uLift"), uGlow = u("uGlow");
+    const uVP = u("uVP"), uHill = u("uHill"), uLift = u("uLift"), uGlow = u("uGlow");
     const css = getComputedStyle(document.documentElement);
     const bg = hex(css.getPropertyValue("--bg").trim() || "#f3f1ec");
     gl.uniform3fv(u("uBg"), bg);
@@ -355,12 +361,14 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
     const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.25 : 1.75);
     let w = 1, h = 1, vp: M4 = new Float32Array(16), inv: M4 | null = null;
 
-    // The camera climbs and tilts down as the hero scrolls away.
+    // The camera sways slowly, and climbs and tilts down as the hero scrolls away.
+    let swayT = 0;
     const camera = () => {
       const r = canvas.getBoundingClientRect();
       const s = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height)));
-      const eye = [0, 2.1 + s * 5.5, 4.2 - s * 3.2];
-      const at = [0, -0.2, -2.6 - s * 0.4];
+      const sx = Math.sin(swayT * 0.13), sy = Math.sin(swayT * 0.083);
+      const eye = [sx * 0.3, 3.0 + s * 4.6 + sy * 0.06, 3.9 - s * 2.9];
+      const at = [sx * 0.1, -0.3, -2.4 - s * 0.6];
       vp = mul(perspective((34 * Math.PI) / 180, w / h, 0.1, 60), lookAt(eye, at, [0, 1, 0]));
       inv = invert(vp);
     };
@@ -440,15 +448,14 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       hill.z += (target.z - hill.z) * Math.min(1, dt * 5);
       lift += (liftTarget - lift) * Math.min(1, dt * 2.5);
       glow += (glowTarget - glow) * Math.min(1, dt * 4);
+      if (!still && hovered < 0) swayT += dt;
       camera();
       const k = spread();
       const walk = still || !walkIn ? 1 : Math.min(1, Math.max(0, (now - start - 350) / 1900));
       const reveal = walk < 1 ? 0.5 - Math.cos(Math.PI * walk) / 2 : 1;
-      const secsNow = still ? 0 : (now - start) / 1000;
       gl.useProgram(prog);
       gl.bindVertexArray(groundVao);
       gl.uniformMatrix4fv(uVP, false, vp);
-      gl.uniform1f(uTime, secsNow);
       gl.uniform2f(uHill, hill.x, hill.z);
       gl.uniform1f(uLift, lift);
       gl.uniform1f(uGlow, glow);
@@ -459,7 +466,7 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
         gl.useProgram(tprog);
         gl.bindVertexArray(trailVao);
         gl.uniformMatrix4fv(tu("uVP"), false, vp);
-        gl.uniform1f(tu("uTime"), secsNow);
+        gl.uniform2f(tu("uFade"), trail!.fadeFrom * trailLength, trailLength);
         gl.uniform2f(tu("uHill"), hill.x, hill.z);
         gl.uniform1f(tu("uLift"), lift);
         gl.uniform1f(tu("uSpread"), k);
@@ -469,11 +476,11 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
         gl.depthMask(false);
         // Behind the hills: faint.
         gl.depthFunc(gl.GREATER);
-        gl.uniform1f(tu("uAlpha"), 0.15);
+        gl.uniform1f(tu("uAlpha"), 0.3);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
         // In view: full ink.
         gl.depthFunc(gl.LEQUAL);
-        gl.uniform1f(tu("uAlpha"), 0.7);
+        gl.uniform1f(tu("uAlpha"), 0.8);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
         gl.depthFunc(gl.LESS);
         gl.depthMask(true);
@@ -481,13 +488,12 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       }
 
       // Stand each pin on the ground where the camera sees it.
-      const secs = still ? 0 : (now - start) / 1000;
       const cw = canvas.clientWidth, ch = canvas.clientHeight;
       // Pins stand on the base terrain (not the pointer's hill), and hold
       // still while one is hovered so it can't drift out from under the cursor.
       if (hovered < 0) pinEls.forEach((el, i) => {
         const px = pins[i].x * k, pz = pins[i].z;
-        const py = terrainHeight(px, pz, secs, hill.x, hill.z, 0) + 0.02;
+        const py = terrainHeight(px, pz, 0, hill.x, hill.z, 0) + 0.02;
         const [sx, sy, sz] = project(vp, px, py, pz);
         const off = sz > 1 || sx < -1.2 || sx > 1.2 || sy < -1.2 || sy > 1.2;
         el.style.transform = `translate3d(${((sx + 1) / 2) * cw}px, ${((1 - sy) / 2) * ch}px, 0)`;
@@ -500,7 +506,8 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       stopEls.forEach((el, i) => {
         const st = trail!.stops[i];
         const px = st.x * k, pz = st.z;
-        const [sx, sy, sz] = project(vp, px, terrainHeight(px, pz, secs, hill.x, hill.z, 0), pz);
+        // On the land as drawn, hill and all, so a stop stays on the trail.
+        const [sx, sy, sz] = project(vp, px, terrainHeight(px, pz, 0, hill.x, hill.z, lift) + 0.014, pz);
         const off = sz > 1 || sx < -1.2 || sx > 1.2 || sy < -1.2 || sy > 1.2;
         el.style.transform = `translate3d(${((sx + 1) / 2) * cw}px, ${((1 - sy) / 2) * ch}px, 0)`;
         el.style.visibility = off ? "hidden" : "";
@@ -510,7 +517,7 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       // The survey readout: where the pointer is, in made-up Bay Area coordinates.
       if (moved) {
         moved = false;
-        const elev = terrainHeight(target.x, target.z, secs, hill.x, hill.z, lift);
+        const elev = terrainHeight(target.x, target.z, 0, hill.x, hill.z, lift);
         window.dispatchEvent(
           new CustomEvent("terrain:cursor", {
             detail: {

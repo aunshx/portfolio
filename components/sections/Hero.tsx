@@ -6,7 +6,7 @@ import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
 import { WORK } from "@/content/work";
 import { PLACES } from "@/content/places";
-import { ROUTE_GROUND, STOPS } from "@/content/route";
+import { ROUTE_FADE_FROM, ROUTE_GROUND, STOPS } from "@/content/route";
 
 const PINS: TerrainPin[] = WORK.map((w) => ({
   title: w.title,
@@ -22,6 +22,7 @@ const PINS: TerrainPin[] = WORK.map((w) => ({
 const TRAIL: TerrainTrail = {
   ground: ROUTE_GROUND,
   stops: STOPS.map(({ name, when, x, z, heroAt, heroSide }) => ({ name, when, x, z, at: heroAt, side: heroSide })),
+  fadeFrom: ROUTE_FADE_FROM,
 };
 
 const LINK_ROW = [
