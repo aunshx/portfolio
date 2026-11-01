@@ -2,10 +2,10 @@ import { EXPERIENCE } from "./experience";
 import { toSurvey } from "./places";
 
 /**
- * The career route: a trail switching back up the land, one stop per job,
- * oldest nearest. The loading screen draws it on its survey map; the 3D hero
- * lays it over the terrain, where it climbs away from the camera and fades
- * out toward the horizon past the last job.
+ * The career route: a trail switching back across the land, one stop per
+ * job, newest nearest, like a résumé. The loading screen draws it on its
+ * survey map; the 3D hero lays it over the terrain, where it runs back from
+ * the camera through older jobs and fades out toward the horizon.
  *
  * Points are on the land (terrain units, see places.ts), placed so the hero's
  * camera sees every leg. The map's trail starts below its bottom edge (the
@@ -13,7 +13,8 @@ import { toSurvey } from "./places";
  */
 type Pt = [number, number];
 const LEAD_IN: Pt = [-0.75, 0.9];
-/* x, z, and which side the label sits on the map and in the hero. */
+/* x, z, and which side the label sits on the map and in the hero. Nearest
+   first; the jobs fill them newest first. */
 const JOBS: [number, number, "l" | "r", "l" | "r"][] = [
   [-0.59, -0.67, "l", "l"],
   [-0.01, -1.58, "r", "r"],
@@ -84,7 +85,7 @@ export const ROUTE_GROUND = heroWalk.pts.map(([x, z]) => [Math.round(x * 1000) /
 export const ROUTE_FADE_FROM = heroWalk.ends[JOBS.length - 2] / heroWalk.length;
 
 /** Each job: where it sits on the land and the map, and how far along each trail. */
-export const STOPS = [...EXPERIENCE].reverse().map((job, i) => {
+export const STOPS = EXPERIENCE.map((job, i) => {
   const [x, z, side, heroSide] = JOBS[i];
   const map = toSurvey(x, z);
   return {

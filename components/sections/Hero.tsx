@@ -98,7 +98,7 @@ export default function Hero() {
             </div>
             <div>
               <dt>{Sym.trail}Trail</dt>
-              <dd>Every job so far, mostly uphill</dd>
+              <dd>Every job so far, newest up front</dd>
             </div>
             <div>
               <dt>{Sym.peak}Peaks</dt>
