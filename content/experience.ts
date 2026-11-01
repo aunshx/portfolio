@@ -4,6 +4,7 @@ import type { ExperienceItem } from "./types";
 export const EXPERIENCE: ExperienceItem[] = [
   {
     name: "University of California, Davis",
+    short: "UC Davis",
     position: "Software Developer, Research",
     duration: "Sep 2024 – Sep 2026",
     link: "https://its.ucdavis.edu",
@@ -18,6 +19,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     name: "Prosperix, Inc",
+    short: "Prosperix",
     position: "Software Engineer (Frontend)",
     duration: "Aug 2022 – Aug 2023",
     link: "https://prosperix.com",

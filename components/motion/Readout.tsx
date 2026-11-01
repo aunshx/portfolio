@@ -18,7 +18,7 @@ export default function Readout() {
         <>
           {fix.lat.toFixed(4)}° N, {Math.abs(fix.lon).toFixed(4)}° W
           <br />
-          Elevation {fix.elev} m <span className="text-faint">(you made that hill)</span>
+          Elevation {fix.elev} m
         </>
       ) : (
         <>

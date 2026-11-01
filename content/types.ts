@@ -32,6 +32,8 @@ export type WorkItem = {
 
 export type ExperienceItem = {
   name: string;
+  /** A short name, for tight spots like the loading screen's map. */
+  short?: string;
   position: string;
   duration: string;
   link?: string;
