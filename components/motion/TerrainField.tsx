@@ -31,7 +31,7 @@ export type TerrainStop = {
 export type TerrainTrail = { ground: [number, number][]; stops: TerrainStop[] };
 
 /* The trail's ink, in terrain units: line width, dash and gap. */
-const TRAIL_W = 0.03, TRAIL_DASH = 0.075, TRAIL_GAP = 0.055;
+const TRAIL_W = 0.026, TRAIL_DASH = 0.075, TRAIL_GAP = 0.055;
 
 /**
  * The hero graphic: a 3D landscape with contour lines draped over it,
@@ -157,7 +157,10 @@ out float vDepth;
 ${NOISE}
 ${TERRAIN_FN}
 void main() {
-  vec2 p = vec2(aPos.x * uSpread, aPos.y) + aOff;
+  // Widen with distance, so the line keeps about the same width on screen.
+  vec2 c = vec2(aPos.x * uSpread, aPos.y);
+  float depth = (uVP * vec4(c.x, terrain(c), c.y, 1.0)).w;
+  vec2 p = c + aOff * clamp(depth / 6.5, 0.45, 1.8);
   vec4 pos = uVP * vec4(p.x, terrain(p) + 0.014, p.y, 1.0);
   vAlong = aAlong;
   vDepth = pos.w;
@@ -466,11 +469,11 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
         gl.depthMask(false);
         // Behind the hills: faint.
         gl.depthFunc(gl.GREATER);
-        gl.uniform1f(tu("uAlpha"), 0.2);
+        gl.uniform1f(tu("uAlpha"), 0.15);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
         // In view: full ink.
         gl.depthFunc(gl.LEQUAL);
-        gl.uniform1f(tu("uAlpha"), 0.85);
+        gl.uniform1f(tu("uAlpha"), 0.7);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
         gl.depthFunc(gl.LESS);
         gl.depthMask(true);

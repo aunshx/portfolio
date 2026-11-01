@@ -21,7 +21,7 @@ const PINS: TerrainPin[] = WORK.map((w) => ({
 /** The career trail, the same one the loading screen draws. */
 const TRAIL: TerrainTrail = {
   ground: ROUTE_GROUND,
-  stops: STOPS.map(({ name, when, x, z, at, side }) => ({ name, when, x, z, at, side })),
+  stops: STOPS.map(({ name, when, x, z, heroAt, heroSide }) => ({ name, when, x, z, at: heroAt, side: heroSide })),
 };
 
 const LINK_ROW = [

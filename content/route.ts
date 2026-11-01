@@ -11,11 +11,13 @@ import { fromSurvey } from "./places";
  * Stops stay in the middle band, so phones (which crop the sides) keep them.
  */
 const START: [number, number] = [705, 1160];
-const STOP_AT: [number, number, "l" | "r"][] = [
-  [650, 705, "r"],
-  [905, 590, "l"],
-  [700, 450, "r"],
-  [835, 268, "r"],
+/* x, y on the map; which side the label sits on the map, and in the 3D hero
+   (the camera's angle moves things around, so they differ). */
+const STOP_AT: [number, number, "l" | "r", "l" | "r"][] = [
+  [650, 705, "r", "r"],
+  [935, 590, "l", "r"],
+  [700, 450, "r", "r"],
+  [835, 268, "r", "r"],
 ];
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -66,23 +68,28 @@ SEGMENTS.forEach(([a, b, c, d]) => {
 });
 const LENGTH = walked[walked.length - 1];
 
-/** The trail on the land itself (terrain units), for the 3D hero. */
-export const ROUTE_GROUND = samples.map(([X, Y]) => {
+/** The trail on the land itself (terrain units), for the 3D hero. It starts
+ *  at the first job: the lead-in from the map's edge would sit right in front
+ *  of the camera there, and come out huge. */
+export const ROUTE_GROUND = samples.slice(STEPS).map(([X, Y]) => {
   const { x, z } = fromSurvey(X, Y);
   return [Math.round(x * 1000) / 1000, Math.round(z * 1000) / 1000] as Pt;
 });
 
 /** Each job: where it sits on the map and the land, and how far along the trail. */
 export const STOPS = [...EXPERIENCE].reverse().map((job, i) => {
-  const [X, Y, side] = STOP_AT[i];
+  const [X, Y, side, heroSide] = STOP_AT[i];
   return {
     name: job.short ?? job.name,
     when: when(job.duration),
     X,
     Y,
     side,
+    heroSide,
     ...fromSurvey(X, Y),
-    /** 0 at the start of the trail, 1 at the end. */
+    /** 0 at the start of the map's trail, 1 at the end. */
     at: stopAt[i] / LENGTH,
+    /** The same along the hero's trail, which starts at the first job. */
+    heroAt: (stopAt[i] - stopAt[0]) / (LENGTH - stopAt[0]),
   };
 });
