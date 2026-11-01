@@ -21,11 +21,18 @@ const geist = Geist({ subsets: ["latin"], weight: ["900"], display: "swap", prel
 
 const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["400"], display: "swap", preload: false });
 
-/** JetBrains Mono is already the site's mono face, so it maps to the theme. */
+/**
+ * JetBrains Mono, Archivo, Instrument Serif and Inter are this site's own
+ * faces, so they map to the theme; "system" is the platform UI font.
+ */
 export const SPECIMEN_CLASS: Record<SpecimenFont, string> = {
   outfit: outfit.className,
   dmSerif: dmSerif.className,
   jetbrains: "font-mono",
   geist: geist.className,
   geistMono: geistMono.className,
+  system: "specimen-system",
+  archivo: "specimen-archivo",
+  instrument: "font-serif italic",
+  inter: "font-sans",
 };

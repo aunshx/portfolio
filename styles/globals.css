@@ -1525,6 +1525,68 @@ a:focus-visible > .shot {
 }
 
 /* Phones scroll sideways on narrow screens rather than shrinking to stamps. */
+/* Case studies menu in the header -------------------------------- */
+.cs-menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  z-index: 60;
+  width: min(19rem, calc(100vw - 2rem));
+  padding: 0.375rem;
+  border: 1px solid var(--line);
+  border-radius: 0.875rem;
+  background: var(--surface);
+  box-shadow: 0 22px 44px -20px rgba(17, 17, 17, 0.28);
+}
+.cs-menu[hidden] {
+  display: none;
+}
+.cs-menu-link {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  transition: background-color 0.2s ease;
+}
+.cs-menu-link:hover,
+.cs-menu-link:focus-visible {
+  background: var(--surface-raised);
+}
+.cs-menu-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.cs-menu-link[aria-current="page"] .cs-menu-name {
+  color: var(--accent-ink);
+}
+.cs-menu-blurb {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+.cs-menu-all {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-top: 0.25rem;
+  padding: 0 0.75rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.cs-menu-all:hover {
+  color: var(--accent);
+}
+
+/* Type specimens for faces that aren't loaded through next/font. */
+.specimen-system {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.specimen-archivo {
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 760, "wdth" 112;
+  letter-spacing: -0.02em;
+}
 .cs-phones {
   display: flex;
   gap: 1.25rem;

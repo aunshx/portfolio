@@ -28,7 +28,7 @@ export default function Preloader() {
       <div className="pre-paper" />
       <div className="pre-map">
         <div className="pre-map-zoom">
-          {/* An image, not inline SVG, so its 170 paths stay out of the page's HTML. */}
+          {/* An image, not inline SVG, so its contour paths stay out of the page's HTML. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/home/survey.svg" alt="" className="pre-map-img" fetchPriority="high" />
           <svg viewBox={`0 0 ${SURVEY.w} ${SURVEY.h}`} preserveAspectRatio="xMidYMid slice" className="pre-pins">

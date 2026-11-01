@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { PROFILE, LINKS } from "@/content/profile";
+import { CaseStudyList, CaseStudyMenu } from "./CaseStudyMenu";
 
 const NAV = [
   { id: "work", label: "Work" },
@@ -41,20 +42,27 @@ export default function Header() {
         <div className="-mr-2 flex items-center gap-2">
           <nav aria-label="Sections" className="hidden md:block">
             <ul className="flex items-center gap-1">
-              {NAV.map((item) => {
+              {NAV.map((item, i) => {
                 const on = active === item.id;
                 return (
-                  <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      aria-current={on ? "true" : undefined}
-                      className={`inline-flex min-h-11 items-center px-3 text-[0.875rem] transition-colors hover:text-accent ${
-                        on ? "font-medium text-text" : "text-muted"
-                      }`}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
+                  <Fragment key={item.id}>
+                    <li>
+                      <a
+                        href={`#${item.id}`}
+                        aria-current={on ? "true" : undefined}
+                        className={`inline-flex min-h-11 items-center px-3 text-[0.875rem] transition-colors hover:text-accent ${
+                          on ? "font-medium text-text" : "text-muted"
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                    {i === 0 && (
+                      <li>
+                        <CaseStudyMenu />
+                      </li>
+                    )}
+                  </Fragment>
                 );
               })}
               <li>
@@ -88,17 +96,20 @@ export default function Header() {
       {open && (
         <nav id="mobile-nav" aria-label="Sections" className="border-t border-line bg-bg md:hidden">
           <ul className="px-[3vw] py-2">
-            {NAV.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={() => setOpen(false)}
-                  aria-current={active === item.id ? "true" : undefined}
-                  className="flex min-h-11 items-center text-base text-text hover:text-accent"
-                >
-                  {item.label}
-                </a>
-              </li>
+            {NAV.map((item, i) => (
+              <Fragment key={item.id}>
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={() => setOpen(false)}
+                    aria-current={active === item.id ? "true" : undefined}
+                    className="flex min-h-11 items-center text-base text-text hover:text-accent"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+                {i === 0 && <CaseStudyList onPick={() => setOpen(false)} />}
+              </Fragment>
             ))}
             <li>
               <a

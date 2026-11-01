@@ -54,6 +54,7 @@ export const WORK: WorkItem[] = [
     gitUrl: "https://github.com/ucdavis/cecdss",
     link: "https://forestdss.ucdavis.edu",
     domain: "forestdss.ucdavis.edu",
+    caseStudy: "frredss",
     year: "2024",
     tone: { bg: "#dfe6d3", fg: "#16210f", muted: "#47543d", accent: "#2f6b2a" },
   },
@@ -69,9 +70,10 @@ export const WORK: WorkItem[] = [
       h: 652,
       alt: "ResView's landing page: “Visualizer for New Age Blockchain Fabrics.”",
     },
-    gitUrl: "https://github.com/ResilientApp/ResView",
-    link: "https://resview.resilientdb.com/pages/home",
-    domain: "resview.resilientdb.com",
+    // The old deployment (resview.resilientdb.com) now redirects to Apache
+    // ResilientDB, so there's no live link; the case study covers it.
+    gitUrl: "https://github.com/ExpoLab-App/ResView",
+    caseStudy: "resview",
     year: "2023",
     tone: { bg: "#17224d", fg: "#eef0fb", muted: "#b3bbe0", accent: "#8fa6ff" },
   },

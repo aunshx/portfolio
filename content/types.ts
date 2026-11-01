@@ -93,7 +93,18 @@ export type Metric = {
   accent?: boolean;
 };
 
-export type SpecimenFont = "outfit" | "dmSerif" | "jetbrains" | "geist" | "geistMono";
+export type SpecimenFont =
+  | "outfit"
+  | "dmSerif"
+  | "jetbrains"
+  | "geist"
+  | "geistMono"
+  /** The platform's own UI font, for products that ship no web fonts. */
+  | "system"
+  /** This site's faces, already loaded on every page. */
+  | "archivo"
+  | "instrument"
+  | "inter";
 
 export type CaseStudy = {
   slug: string;
@@ -105,6 +116,8 @@ export type CaseStudy = {
   description: string;
   domain: string;
   link: string;
+  /** Text for the main link, when "Visit <domain>" doesn't fit (no live site). */
+  linkLabel?: string;
   repo?: string;
   meta: { label: string; value: string }[];
   hero: Shot;
@@ -115,8 +128,9 @@ export type CaseStudy = {
     intro: string;
     rows: { area: string; detail: string }[];
   };
-  chapters: { title: string; lead?: string; shots: Shot[] }[];
-  mobile: { title: string; lead: string; shots: Shot[] };
+  /** kicker labels the chapter (defaults to "Landing page" for the first, "Product" after). */
+  chapters: { title: string; kicker?: string; lead?: string; shots: Shot[] }[];
+  mobile?: { title: string; lead: string; shots: Shot[] };
   design: {
     title: string;
     swatches: { name: string; hex: string; onDark?: boolean }[];
@@ -130,7 +144,7 @@ export type CaseStudy = {
     decisions: { title: string; detail: string }[];
     chips: string[];
   };
-  performance: {
+  performance?: {
     title: string;
     lead: string;
     groups: { name: string; note: string; metrics: Metric[] }[];
@@ -141,7 +155,7 @@ export type CaseStudy = {
     cards: { value: string; title: string; detail: string; href: string }[];
     shot?: Shot;
   };
-  ai: { title: string; paragraphs: string[]; stats?: Metric[]; shot: Shot };
+  ai?: { title: string; paragraphs: string[]; stats?: Metric[]; shot: Shot };
   code?: {
     title: string;
     lead: string;

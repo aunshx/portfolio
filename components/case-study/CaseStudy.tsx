@@ -5,6 +5,7 @@ import { PROFILE } from "@/content/profile";
 import type { CaseStudy as Study, Metric } from "@/content/types";
 import { Phone, Shot } from "./Shot";
 import { SPECIMEN_CLASS } from "./specimen-fonts";
+import { CaseStudyMenu } from "@/components/layout/CaseStudyMenu";
 
 const WIDE = "(max-width: 1240px) 100vw, 1180px";
 const HALF = "(max-width: 900px) 100vw, 580px";
@@ -76,6 +77,7 @@ function Section({
 export default function CaseStudy({ study }: { study: Study }) {
   let n = 0;
   const next = () => ++n;
+  const perf = study.performance;
 
   return (
     <div className="cs" data-study={study.slug}>
@@ -96,9 +98,10 @@ export default function CaseStudy({ study }: { study: Study }) {
             {PROFILE.name}
           </Link>
           <div className="-mr-2 flex items-center gap-1">
+            <CaseStudyMenu current={study.slug} />
             <Link
               href="/#work"
-              className="inline-flex min-h-11 items-center gap-1.5 px-3 text-[0.875rem] text-muted transition-colors hover:text-accent"
+              className="hidden min-h-11 items-center gap-1.5 px-3 text-[0.875rem] text-muted transition-colors hover:text-accent sm:inline-flex"
             >
               <ArrowLeft size={14} strokeWidth={2} aria-hidden="true" />
               All work
@@ -145,7 +148,7 @@ export default function CaseStudy({ study }: { study: Study }) {
               rel="noreferrer noopener"
               className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-text px-5 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
             >
-              Visit {study.domain}
+              {study.linkLabel ?? `Visit ${study.domain}`}
               <ArrowUpRight size={15} strokeWidth={2.2} aria-hidden="true" />
               <span className="sr-only">(opens in a new tab)</span>
             </a>
@@ -217,7 +220,7 @@ export default function CaseStudy({ study }: { study: Study }) {
           return (
             <Section key={id} id={id}>
               <Reveal>
-                <Eyebrow n={next()}>{ci === 0 ? "Landing page" : "Product"}</Eyebrow>
+                <Eyebrow n={next()}>{c.kicker ?? (ci === 0 ? "Landing page" : "Product")}</Eyebrow>
                 <SectionTitle id={id}>{c.title}</SectionTitle>
                 {c.lead && <Lead>{c.lead}</Lead>}
               </Reveal>
@@ -225,9 +228,11 @@ export default function CaseStudy({ study }: { study: Study }) {
                 <Shot shot={first} sizes={WIDE} />
               </div>
               {rest.length > 0 && (
-                <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-6">
+                <div
+                  className={`mt-10 grid grid-cols-1 gap-10 md:gap-6 ${rest.length > 1 ? "md:grid-cols-2" : ""}`}
+                >
                   {rest.map((s) => (
-                    <Shot key={s.src} shot={s} sizes={HALF} />
+                    <Shot key={s.src} shot={s} sizes={rest.length > 1 ? HALF : WIDE} />
                   ))}
                 </div>
               )}
@@ -236,18 +241,20 @@ export default function CaseStudy({ study }: { study: Study }) {
         })}
 
         {/* Mobile */}
-        <Section id="mobile" tint>
-          <Reveal>
-            <Eyebrow n={next()}>Mobile</Eyebrow>
-            <SectionTitle id="mobile">{study.mobile.title}</SectionTitle>
-            <Lead>{study.mobile.lead}</Lead>
-          </Reveal>
-          <div className="cs-phones mt-12">
-            {study.mobile.shots.map((s) => (
-              <Phone key={s.src} shot={s} />
-            ))}
-          </div>
-        </Section>
+        {study.mobile && (
+          <Section id="mobile" tint>
+            <Reveal>
+              <Eyebrow n={next()}>Mobile</Eyebrow>
+              <SectionTitle id="mobile">{study.mobile.title}</SectionTitle>
+              <Lead>{study.mobile.lead}</Lead>
+            </Reveal>
+            <div className="cs-phones mt-12">
+              {study.mobile.shots.map((s) => (
+                <Phone key={s.src} shot={s} />
+              ))}
+            </div>
+          </Section>
+        )}
 
         {/* Design system */}
         <Section id="design">
@@ -268,7 +275,7 @@ export default function CaseStudy({ study }: { study: Study }) {
             ))}
           </ul>
           <div
-            className={`mt-2.5 grid gap-2.5 md:grid-cols-2 ${
+            className={`mt-2.5 grid gap-2.5 ${study.design.fonts.length > 1 ? "md:grid-cols-2" : ""} ${
               study.design.fonts.length === 3 ? "lg:grid-cols-3" : ""
             }`}
           >
@@ -396,14 +403,15 @@ export default function CaseStudy({ study }: { study: Study }) {
         )}
 
         {/* Performance */}
+        {perf && (
         <Section id="performance" tint={!!study.code}>
           <Reveal>
             <Eyebrow n={next()}>Performance</Eyebrow>
-            <SectionTitle id="performance">{study.performance.title}</SectionTitle>
-            <Lead>{study.performance.lead}</Lead>
+            <SectionTitle id="performance">{perf.title}</SectionTitle>
+            <Lead>{perf.lead}</Lead>
           </Reveal>
-          <div className={`mt-10 grid gap-4 ${study.performance.groups.length > 1 ? "lg:grid-cols-2" : ""}`}>
-            {study.performance.groups.map((g) => (
+          <div className={`mt-10 grid gap-4 ${perf.groups.length > 1 ? "lg:grid-cols-2" : ""}`}>
+            {perf.groups.map((g) => (
               <div key={g.name} className="overflow-hidden rounded-2xl border border-line">
                 <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-line bg-surface px-5 py-3.5">
                   <h3 className="text-[16px] font-semibold text-text">{g.name}</h3>
@@ -411,7 +419,7 @@ export default function CaseStudy({ study }: { study: Study }) {
                 </div>
                 <dl
                   className={`grid grid-cols-2 ${
-                    study.performance.groups.length > 1 ? "" : "sm:grid-cols-3"
+                    perf.groups.length > 1 ? "" : "sm:grid-cols-3"
                   }`}
                 >
                   {g.metrics.map((m) => (
@@ -430,6 +438,7 @@ export default function CaseStudy({ study }: { study: Study }) {
             ))}
           </div>
         </Section>
+        )}
 
         {/* Optimization */}
         {study.optimization && (
@@ -469,6 +478,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         )}
 
         {/* Applied AI */}
+        {study.ai && (
         <Section id="ai">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-14">
             <div>
@@ -497,6 +507,7 @@ export default function CaseStudy({ study }: { study: Study }) {
             </div>
           </div>
         </Section>
+        )}
 
         {/* Next */}
         <Section id="next" tint>
