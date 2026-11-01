@@ -16,6 +16,23 @@ export type TerrainPin = {
   z: number;
 };
 
+/** A job on the career trail: a marker that rides the land, not a link. */
+export type TerrainStop = {
+  name: string;
+  when: string;
+  x: number;
+  z: number;
+  /** How far along the trail, 0 to 1. */
+  at: number;
+  side: "l" | "r";
+};
+
+/** The career trail: points on the ground, in order, and the jobs along it. */
+export type TerrainTrail = { ground: [number, number][]; stops: TerrainStop[] };
+
+/* The trail's ink, in terrain units: line width, dash and gap. */
+const TRAIL_W = 0.03, TRAIL_DASH = 0.075, TRAIL_GAP = 0.055;
+
 /**
  * The hero graphic: a 3D landscape with contour lines draped over it,
  * drifting toward the viewer like a slow survey flight. The pointer raises
@@ -24,7 +41,9 @@ export type TerrainPin = {
  *
  * Raw WebGL2, no library: a grid mesh displaced by simplex noise in the
  * vertex shader, isolines from height in the fragment shader, light shading
- * from the surface normal and haze with distance. It pauses offscreen and in
+ * from the surface normal and haze with distance. The career trail is
+ * painted onto the ground from a texture, so it follows every rise and dip;
+ * on visits without the loading screen it walks itself in. It pauses offscreen and in
  * background tabs, renders one still frame under reduced motion, and leaves
  * the static SVG contours in place if WebGL2 isn't available.
  */
@@ -115,6 +134,51 @@ void main() {
   color = vec4(mix(uBg, col, haze), 1.0);
 }`;
 
+const TERRAIN_FN = `
+float terrain(vec2 p) {
+  vec2 q = p * 0.42 - vec2(0.0, uTime * 0.05);
+  float h = snoise(q) * 0.62 + snoise(q * 2.3 + 7.1) * 0.2 + snoise(q * 5.3 - 3.0) * 0.05;
+  float d = distance(p, uHill);
+  h += uLift * 1.35 * exp(-d * d * 0.9);
+  return h * 0.75;
+}`;
+
+const TRAIL_VERT = `#version 300 es
+in vec2 aPos;
+in vec2 aOff;
+in float aAlong;
+uniform mat4 uVP;
+uniform float uTime;
+uniform vec2 uHill;
+uniform float uLift;
+uniform float uSpread;
+out float vAlong;
+out float vDepth;
+${NOISE}
+${TERRAIN_FN}
+void main() {
+  vec2 p = vec2(aPos.x * uSpread, aPos.y) + aOff;
+  vec4 pos = uVP * vec4(p.x, terrain(p) + 0.014, p.y, 1.0);
+  vAlong = aAlong;
+  vDepth = pos.w;
+  gl_Position = pos;
+}`;
+
+const TRAIL_FRAG = `#version 300 es
+precision highp float;
+in float vAlong;
+in float vDepth;
+uniform float uReveal;
+uniform float uAlpha;
+uniform vec3 uInk;
+uniform vec3 uBg;
+out vec4 color;
+void main() {
+  if (vAlong > uReveal || mod(vAlong, ${(TRAIL_DASH + TRAIL_GAP).toFixed(4)}) > ${TRAIL_DASH.toFixed(4)}) discard;
+  float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);
+  color = vec4(mix(uBg, uInk, haze), uAlpha);
+}`;
+
 type M4 = Float32Array<ArrayBuffer>;
 
 function perspective(fovy: number, aspect: number, near: number, far: number): M4 {
@@ -179,7 +243,7 @@ function hex(c: string): [number, number, number] {
   return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
 }
 
-export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
+export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]; trail?: TerrainTrail }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
 
@@ -196,15 +260,20 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
       gl.compileShader(s);
       return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
     };
-    const vs = compile(gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl.FRAGMENT_SHADER, FRAG);
-    if (!vs || !fs) return;
-    const prog = gl.createProgram()!;
-    gl.attachShader(prog, vs);
-    gl.attachShader(prog, fs);
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    const link = (vsrc: string, fsrc: string) => {
+      const vs = compile(gl.VERTEX_SHADER, vsrc), fs = compile(gl.FRAGMENT_SHADER, fsrc);
+      if (!vs || !fs) return null;
+      const p = gl.createProgram()!;
+      gl.attachShader(p, vs);
+      gl.attachShader(p, fs);
+      gl.linkProgram(p);
+      return gl.getProgramParameter(p, gl.LINK_STATUS) ? p : null;
+    };
+    const prog = link(VERT, FRAG);
+    if (!prog) return;
     gl.useProgram(prog);
+    const groundVao = gl.createVertexArray();
+    gl.bindVertexArray(groundVao);
 
     // The ground: a grid, denser across than deep, as one indexed mesh.
     // Phones and small screens get a lighter mesh and fewer pixels.
@@ -243,6 +312,42 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
     gl.uniform3fv(u("uAccent"), hex(css.getPropertyValue("--accent").trim() || "#ff4f00"));
     gl.clearColor(bg[0], bg[1], bg[2], 1);
 
+    // The career trail: a ribbon along the ground, drawn after the land.
+    // Where a hill hides it, it shows faintly through, like a route on a map.
+    const tprog = trail ? link(TRAIL_VERT, TRAIL_FRAG) : null;
+    let trailVao: WebGLVertexArrayObject | null = null, trailCount = 0, trailLength = 0;
+    const tu = (n: string) => (tprog ? gl.getUniformLocation(tprog, n) : null);
+    if (trail && tprog) {
+      const g = trail.ground, n = g.length;
+      const data = new Float32Array(n * 2 * 5);
+      let along = 0;
+      g.forEach(([x, z], i) => {
+        if (i) along += Math.hypot(x - g[i - 1][0], z - g[i - 1][1]);
+        const [ax, az] = g[Math.max(0, i - 1)], [bx, bz] = g[Math.min(n - 1, i + 1)];
+        const len = Math.hypot(bx - ax, bz - az) || 1;
+        const nx = (-(bz - az) / len) * (TRAIL_W / 2), nz = ((bx - ax) / len) * (TRAIL_W / 2);
+        data.set([x, z, nx, nz, along, x, z, -nx, -nz, along], i * 10);
+      });
+      trailCount = n * 2;
+      trailLength = along;
+      trailVao = gl.createVertexArray();
+      gl.bindVertexArray(trailVao);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+      ([["aPos", 2, 0], ["aOff", 2, 8], ["aAlong", 1, 16]] as const).forEach(([name, size, offset]) => {
+        const l = gl.getAttribLocation(tprog, name);
+        gl.enableVertexAttribArray(l);
+        gl.vertexAttribPointer(l, size, gl.FLOAT, false, 20, offset);
+      });
+      gl.bindVertexArray(groundVao);
+      gl.useProgram(tprog);
+      gl.uniform3fv(tu("uBg"), bg);
+      gl.uniform3fv(tu("uInk"), hex(css.getPropertyValue("--text").trim() || "#111111"));
+      gl.useProgram(prog);
+    }
+    // After the loading screen the trail is already drawn; otherwise it walks in.
+    const walkIn = !document.documentElement.classList.contains("intro");
+
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.25 : 1.75);
     let w = 1, h = 1, vp: M4 = new Float32Array(16), inv: M4 | null = null;
@@ -255,7 +360,6 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
       const at = [0, -0.2, -2.6 - s * 0.4];
       vp = mul(perspective((34 * Math.PI) / 180, w / h, 0.1, 60), lookAt(eye, at, [0, 1, 0]));
       inv = invert(vp);
-      gl.uniformMatrix4fv(uVP, false, vp);
     };
     const resize = () => {
       const r = canvas.getBoundingClientRect();
@@ -319,6 +423,8 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
       };
     });
 
+    const stopEls = Array.from(root.querySelectorAll<HTMLElement>("[data-stop]"));
+
     const start = performance.now();
     let raf = 0, visible = true, last = start;
     const frame = (now: number) => {
@@ -332,16 +438,48 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
       lift += (liftTarget - lift) * Math.min(1, dt * 2.5);
       glow += (glowTarget - glow) * Math.min(1, dt * 4);
       camera();
-      gl.uniform1f(uTime, still ? 0 : (now - start) / 1000);
+      const k = spread();
+      const walk = still || !walkIn ? 1 : Math.min(1, Math.max(0, (now - start - 350) / 1900));
+      const reveal = walk < 1 ? 0.5 - Math.cos(Math.PI * walk) / 2 : 1;
+      const secsNow = still ? 0 : (now - start) / 1000;
+      gl.useProgram(prog);
+      gl.bindVertexArray(groundVao);
+      gl.uniformMatrix4fv(uVP, false, vp);
+      gl.uniform1f(uTime, secsNow);
       gl.uniform2f(uHill, hill.x, hill.z);
       gl.uniform1f(uLift, lift);
       gl.uniform1f(uGlow, glow);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
 
+      if (tprog && trailVao && reveal > 0) {
+        gl.useProgram(tprog);
+        gl.bindVertexArray(trailVao);
+        gl.uniformMatrix4fv(tu("uVP"), false, vp);
+        gl.uniform1f(tu("uTime"), secsNow);
+        gl.uniform2f(tu("uHill"), hill.x, hill.z);
+        gl.uniform1f(tu("uLift"), lift);
+        gl.uniform1f(tu("uSpread"), k);
+        gl.uniform1f(tu("uReveal"), reveal * trailLength);
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+        gl.depthMask(false);
+        // Behind the hills: faint.
+        gl.depthFunc(gl.GREATER);
+        gl.uniform1f(tu("uAlpha"), 0.2);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
+        // In view: full ink.
+        gl.depthFunc(gl.LEQUAL);
+        gl.uniform1f(tu("uAlpha"), 0.85);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
+        gl.depthFunc(gl.LESS);
+        gl.depthMask(true);
+        gl.disable(gl.BLEND);
+      }
+
       // Stand each pin on the ground where the camera sees it.
       const secs = still ? 0 : (now - start) / 1000;
-      const cw = canvas.clientWidth, ch = canvas.clientHeight, k = spread();
+      const cw = canvas.clientWidth, ch = canvas.clientHeight;
       // Pins stand on the base terrain (not the pointer's hill), and hold
       // still while one is hovered so it can't drift out from under the cursor.
       if (hovered < 0) pinEls.forEach((el, i) => {
@@ -353,6 +491,17 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
         el.style.visibility = off ? "hidden" : "";
         // Cards open beside the pin, toward the middle of the screen.
         el.toggleAttribute("data-flip", sx > 0.2);
+      });
+
+      // Jobs ride the land along the trail, each showing once the trail reaches it.
+      stopEls.forEach((el, i) => {
+        const st = trail!.stops[i];
+        const px = st.x * k, pz = st.z;
+        const [sx, sy, sz] = project(vp, px, terrainHeight(px, pz, secs, hill.x, hill.z, 0), pz);
+        const off = sz > 1 || sx < -1.2 || sx > 1.2 || sy < -1.2 || sy > 1.2;
+        el.style.transform = `translate3d(${((sx + 1) / 2) * cw}px, ${((1 - sy) / 2) * ch}px, 0)`;
+        el.style.visibility = off ? "hidden" : "";
+        el.toggleAttribute("data-on", reveal >= st.at - 0.01);
       });
 
       // The survey readout: where the pointer is, in made-up Bay Area coordinates.
@@ -416,11 +565,24 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
       pinListeners.forEach((off) => off());
       canvas.removeEventListener("webglcontextlost", onLost);
     };
-  }, [pins]);
+  }, [pins, trail]);
 
   return (
     <div ref={wrap} className="terrain">
       <canvas ref={ref} aria-hidden="true" className="terrain-field" />
+      {trail && (
+        <ul className="stops" aria-hidden="true">
+          {trail.stops.map((st, i) => (
+            <li key={st.name} data-stop={i} data-side={st.side} className="stop">
+              <span className="stop-mark" />
+              <span className="stop-label">
+                <span className="stop-name">{st.name}</span>
+                <span className="stop-when">{st.when}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
       {pins.length > 0 && (
         <ul className="pins" aria-label="Projects on the map">
           {pins.map((p, i) => (

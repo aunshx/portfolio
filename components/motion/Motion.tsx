@@ -71,7 +71,7 @@ export default function Motion() {
           // own camera climbs to a map view.
           const leave = { trigger: "#top", start: "top top", end: "60% top", scrub: true };
           gsap.fromTo(
-            ".legend, .hero-corner, .map-furniture, .pins",
+            ".legend, .hero-corner, .map-furniture, .pins, .stops",
             { opacity: 1 },
             { opacity: 0, ease: "none", immediateRender: false, scrollTrigger: leave },
           );

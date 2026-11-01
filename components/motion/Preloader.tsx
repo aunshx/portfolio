@@ -1,58 +1,15 @@
 import { WORK } from "@/content/work";
-import { EXPERIENCE } from "@/content/experience";
 import { PLACES, SURVEY, toSurvey } from "@/content/places";
+import { ROUTE_D, STOPS } from "@/content/route";
 
 const MID = SURVEY.w / 2;
 
 /** Projects, as pins on the land. */
 const PINS = WORK.map((w) => ({ title: w.title, ...toSurvey(PLACES[w.title].x, PLACES[w.title].z) }));
 
-/* The career route: a trail up the map, one stop per job, oldest first.
-   Stops stay in the middle band so phones (which crop the sides) keep them. */
-const STOP_AT: [number, number, "l" | "r"][] = [
-  [650, 705, "r"],
-  [905, 590, "l"],
-  [700, 450, "r"],
-  [835, 268, "r"],
-];
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-/** "Jul 2021 – Jul 2022" → "2021–22 · 1 yr" */
-function when(duration: string) {
-  const [a, b] = duration.split("–").map((s) => s.trim().split(" "));
-  const [m1, y1, m2, y2] = [MONTHS.indexOf(a[0]), Number(a[1]), MONTHS.indexOf(b[0]), Number(b[1])];
-  const months = (y2 - y1) * 12 + (m2 - m1) + 1;
-  const span = y1 === y2 ? `${y1}` : `${y1}–${String(y2).slice(2)}`;
-  const length = months < 12 ? `${months} mo` : `${Math.round(months / 12)} yr${months >= 18 ? "s" : ""}`;
-  return `${span} · ${length}`;
-}
-
-const STOPS = [...EXPERIENCE].reverse().map((job, i) => ({
-  name: job.short ?? job.name,
-  when: when(job.duration),
-  x: STOP_AT[i][0],
-  y: STOP_AT[i][1],
-  side: STOP_AT[i][2],
-}));
-
-/** A smooth trail through the stops, entering from the bottom edge. */
-const TRAIL: [number, number][] = [[700, SURVEY.h + 30], ...STOPS.map((s): [number, number] => [s.x, s.y])];
-function smooth(pts: [number, number][]) {
-  const c = (n: number) => Math.round(n);
-  let d = `M${pts[0][0]} ${pts[0][1]}`;
-  for (let i = 0; i < pts.length - 1; i++) {
-    const [p0, p1, p2, p3] = [pts[i - 1] ?? pts[i], pts[i], pts[i + 1], pts[i + 2] ?? pts[i + 1]];
-    d += `C${c(p1[0] + (p2[0] - p0[0]) / 6)} ${c(p1[1] + (p2[1] - p0[1]) / 6)} ${c(p2[0] - (p3[0] - p1[0]) / 6)} ${c(p2[1] - (p3[1] - p1[1]) / 6)} ${p2[0]} ${p2[1]}`;
-  }
-  return d;
-}
-const ROUTE = smooth(TRAIL);
-
-/* Each stop appears as the trail reaches it (the trail draws at an even pace). */
-const ROUTE_START = 0.3, ROUTE_TIME = 1.2;
-const legs = TRAIL.slice(1).map((p, i) => Math.hypot(p[0] - TRAIL[i][0], p[1] - TRAIL[i][1]));
-const total = legs.reduce((a, b) => a + b, 0);
-const arrive = legs.map((_, i) => ROUTE_START + (ROUTE_TIME * legs.slice(0, i + 1).reduce((a, b) => a + b, 0)) / total);
+/* The trail draws at an even pace (it starts below the map's edge), and each
+   job's stop appears as the trail reaches it. */
+const ROUTE_START = 0.1, ROUTE_TIME = 1.3;
 
 /**
  * The loading screen is a survey of the land the hero stands on: its contour
@@ -78,19 +35,23 @@ export default function Preloader() {
             <defs>
               <mask id="pre-route-mask" maskUnits="userSpaceOnUse">
                 <path
-                  d={ROUTE}
+                  d={ROUTE_D}
                   pathLength={1}
                   className="pre-route-reveal"
                   style={{ ["--t" as string]: `${ROUTE_TIME}s`, ["--d" as string]: `${ROUTE_START}s` }}
                 />
               </mask>
             </defs>
-            <path d={ROUTE} className="pre-route" mask="url(#pre-route-mask)" />
+            <path d={ROUTE_D} className="pre-route" mask="url(#pre-route-mask)" />
 
-            {STOPS.map((s, i) => {
+            {STOPS.map((s) => {
               const x = s.side === "r" ? 15 : -15;
               return (
-                <g key={s.name} transform={`translate(${s.x} ${s.y})`} style={{ ["--d" as string]: `${arrive[i].toFixed(2)}s` }}>
+                <g
+                  key={s.name}
+                  transform={`translate(${s.X} ${s.Y})`}
+                  style={{ ["--d" as string]: `${(ROUTE_START + ROUTE_TIME * s.at).toFixed(2)}s` }}
+                >
                   <rect x="-5.5" y="-5.5" width="11" height="11" className="pre-stop-mark" />
                   <text
                     x={x}

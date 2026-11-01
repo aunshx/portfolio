@@ -1,11 +1,12 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import TerrainField, { type TerrainPin } from "@/components/motion/TerrainField";
+import TerrainField, { type TerrainPin, type TerrainTrail } from "@/components/motion/TerrainField";
 import Contours from "@/components/motion/Contours";
 import Readout from "@/components/motion/Readout";
 import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
 import { WORK } from "@/content/work";
 import { PLACES } from "@/content/places";
+import { ROUTE_GROUND, STOPS } from "@/content/route";
 
 const PINS: TerrainPin[] = WORK.map((w) => ({
   title: w.title,
@@ -16,6 +17,12 @@ const PINS: TerrainPin[] = WORK.map((w) => ({
   thumb: `${w.shot.base}-${w.shot.widths[0]}.webp`,
   ...PLACES[w.title],
 }));
+
+/** The career trail, the same one the loading screen draws. */
+const TRAIL: TerrainTrail = {
+  ground: ROUTE_GROUND,
+  stops: STOPS.map(({ name, when, x, z, at, side }) => ({ name, when, x, z, at, side })),
+};
 
 const LINK_ROW = [
   { href: LINKS.github, label: "GitHub" },
@@ -31,6 +38,9 @@ const Sym = {
   ),
   contour: (
     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M1 13c3-6 6 2 9-3s6-1 9-4" fill="none" stroke="currentColor" strokeWidth="1.3" /><path d="M1 17c3-5 6 1 9-2s6 0 9-3" fill="none" stroke="currentColor" strokeWidth="0.8" opacity=".6" /></svg>
+  ),
+  trail: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 15c4-1 4-9 8-9s4 6 8 3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeDasharray="2.6 2" /></svg>
   ),
   peak: (
     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16 10 4l7 12Z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>
@@ -52,7 +62,7 @@ export default function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="hero">
       <Contours />
-      <TerrainField pins={PINS} />
+      <TerrainField pins={PINS} trail={TRAIL} />
 
       {/* Map furniture: north arrow and a scale bar. */}
       <div className="map-furniture intro-fade" aria-hidden="true" style={{ ["--d" as string]: "0.4s" }}>
@@ -84,6 +94,10 @@ export default function Hero() {
             <div>
               <dt>{Sym.contour}Contours</dt>
               <dd>Each line is 10 m of scope creep</dd>
+            </div>
+            <div>
+              <dt>{Sym.trail}Trail</dt>
+              <dd>Every job so far, mostly uphill</dd>
             </div>
             <div>
               <dt>{Sym.peak}Peaks</dt>

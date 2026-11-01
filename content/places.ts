@@ -16,3 +16,8 @@ export const toSurvey = (x: number, z: number) => ({
   x: Math.round(((x + 6) / 12) * SURVEY.w),
   y: Math.round(((z + 7.225) / 6.75) * SURVEY.h),
 });
+/** And back: a point on the survey map, on the land. */
+export const fromSurvey = (X: number, Y: number) => ({
+  x: (X / SURVEY.w) * 12 - 6,
+  z: (Y / SURVEY.h) * 6.75 - 7.225,
+});
