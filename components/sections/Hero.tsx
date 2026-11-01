@@ -5,14 +5,7 @@ import Readout from "@/components/motion/Readout";
 import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
 import { WORK } from "@/content/work";
-
-/** Where each project stands on the land. */
-const PLACES: Record<string, { x: number; z: number }> = {
-  FRED: { x: 0.35, z: -1.4 },
-  reaktr: { x: 2.4, z: -3.0 },
-  FRREDSS: { x: -1.7, z: -4.3 },
-  ResView: { x: 1.05, z: -6.3 },
-};
+import { PLACES } from "@/content/places";
 
 const PINS: TerrainPin[] = WORK.map((w) => ({
   title: w.title,
