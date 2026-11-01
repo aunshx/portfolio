@@ -391,6 +391,18 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
     document.addEventListener("visibilitychange", kick);
     if (!still) window.addEventListener("pointermove", onMove, { passive: true });
 
+    // If the GPU drops the context, stop drawing and let the static contour
+    // lines underneath show through (the pins hide with it).
+    const onLost = (e: Event) => {
+      e.preventDefault();
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      visible = false;
+      delete canvas.dataset.live;
+      delete root.dataset.live;
+    };
+    canvas.addEventListener("webglcontextlost", onLost);
+
     frame(performance.now());
     canvas.dataset.live = "true";
     root.dataset.live = "true";
@@ -402,7 +414,7 @@ export default function TerrainField({ pins = [] }: { pins?: TerrainPin[] }) {
       document.removeEventListener("visibilitychange", kick);
       window.removeEventListener("pointermove", onMove);
       pinListeners.forEach((off) => off());
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
+      canvas.removeEventListener("webglcontextlost", onLost);
     };
   }, [pins]);
 
