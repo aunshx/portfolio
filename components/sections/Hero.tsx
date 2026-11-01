@@ -80,7 +80,7 @@ export default function Hero() {
             {PROFILE.name}
           </h1>
           <p className="legend-what">
-            Full-stack engineer. I build applied AI products, from the interface down to the database.
+            Full-stack engineer. I build products end to end, from the interface down to the database, AI included. It mostly behaves.
           </p>
 
           <dl className="legend-key">
