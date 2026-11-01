@@ -32,6 +32,6 @@ export const SITE = {
 } as const;
 
 export const COLOPHON = {
-  credit: "Designed and built by Aunsh Bandivadekar. The contour lines are made up. The projects are real.",
+  credit: "Built in CA, mostly after midnight.",
   year: "2026",
 } as const;
