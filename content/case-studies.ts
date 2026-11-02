@@ -1015,11 +1015,11 @@ const portfolio: CaseStudy = {
   },
   code: {
     title: "Contour lines from height, in the shader",
-    lead: "There's no line geometry. Each pixel checks how close its height is to a contour level and inks itself when it's close. fwidth keeps lines the same width at any distance, every fifth line is thicker, and the land fades into haze far away.",
+    lead: "There's no line geometry. Each pixel checks how close its height is to a contour level and inks itself when it's close. fwidth keeps lines the same width at any distance, every fifth line is thicker, the light is worked out per pixel so no mesh triangles show, and the land fades into haze far away.",
     file: "components/motion/TerrainField.tsx",
-    href: "https://github.com/aunshx/portfolio/blob/main/components/motion/TerrainField.tsx#L126-L140",
+    href: "https://github.com/aunshx/portfolio/blob/main/components/motion/TerrainField.tsx#L135-L154",
     lang: "GLSL",
-    source: "void main() {\n  float v = vH * 9.0;\n  float f = fract(v);\n  float w = fwidth(v);\n  float band = floor(v + 0.5);\n  bool index = mod(band, 5.0) == 0.0;\n  float line = 1.0 - smoothstep(0.0, w * (index ? 1.7 : 1.0), min(f, 1.0 - f));\n\n  float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);\n  vec3 ground = uBg * (0.9 + 0.1 * clamp(vShade, 0.0, 1.0));\n  vec3 ink = mix(uInk, uAccent, clamp(vNear * 1.4, 0.0, 1.0));\n  float a = line * mix(index ? 0.5 : 0.3, 0.95, clamp(vNear, 0.0, 1.0));\n  vec3 col = mix(ground, ink, a);\n  color = vec4(mix(uBg, col, haze), 1.0);\n}",
+    source: "void main() {\n  // Light per pixel, not per mesh corner: shading interpolated between\n  // corners picks out the triangles where the land is close.\n  float e = 0.06;\n  vec3 n = normalize(vec3(relief(vP - vec2(e, 0.0)) - relief(vP + vec2(e, 0.0)), 2.0 * e, relief(vP - vec2(0.0, e)) - relief(vP + vec2(0.0, e))));\n  float shade = dot(n, normalize(vec3(-0.5, 0.75, 0.45)));\n  float v = vH * 9.0;\n  float f = fract(v);\n  float w = fwidth(v);\n  float band = floor(v + 0.5);\n  bool index = mod(band, 5.0) == 0.0;\n  float line = 1.0 - smoothstep(0.0, w * (index ? 1.7 : 1.0), min(f, 1.0 - f));\n\n  float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);\n  vec3 ground = uBg * (0.9 + 0.1 * clamp(shade, 0.0, 1.0));\n  vec3 ink = mix(uInk, uAccent, clamp(vNear * 1.4, 0.0, 1.0));\n  float a = line * mix(index ? 0.5 : 0.3, 0.95, clamp(vNear, 0.0, 1.0));\n  vec3 col = mix(ground, ink, a);\n  color = vec4(mix(uBg, col, haze), 1.0);\n}",
     note: "The fragment shader's main function, unedited.",
   },
   performance: {
