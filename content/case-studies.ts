@@ -841,7 +841,7 @@ const portfolio: CaseStudy = {
   ],
   hero: {
     src: `${PORTFOLIO_IMG}/hero.jpg`,
-    alt: "The aun.sh hero: a 3D contour landscape with four project pins, the career trail with four jobs, and the legend card",
+    alt: "The aun.sh hero: a 3D contour landscape with four project pins, small side-project dots, the career trail through five jobs, and the legend card",
     w: 1505,
     h: 812,
     domain: "aun.sh",
@@ -849,20 +849,23 @@ const portfolio: CaseStudy = {
   summary:
     "A portfolio is usually a list. I wanted a place: the projects stand on a 3D landscape, my jobs run across it as a trail, and the loading screen is a survey of the same land drawn from above. No 3D library, no stock art, and it still loads like a page.",
   stats: [
-    { value: "118", unit: "KB", label: "first-load JavaScript on the home page" },
+    { value: "120", unit: "KB", label: "first-load JavaScript on the home page" },
     { value: "0.002", label: "layout shift on a cold load" },
     { value: "0", label: "3D libraries. The terrain is raw WebGL2" },
-    { value: "1", label: "noise function behind the hero, the loader and the pins", accent: true },
+    { value: "1", label: "noise function behind the hero, the loader, the pins and the trail", accent: true },
   ],
   ownership: {
     heading: "What I made",
     intro: "All of it, design to deploy. The hero alone went through more drafts than I'll admit to.",
     rows: [
       { area: "Terrain", detail: "A WebGL2 landscape: a grid lifted by simplex noise, contour lines drawn from height, and a hill that rises under the pointer." },
-      { area: "Pins and trail", detail: "Projects and jobs as HTML the camera keeps on the ground, joined by a dashed trail that shows faintly through hills." },
+      { area: "Pins and trail", detail: "Projects as pins and jobs as stops, kept on the ground by the camera. The trail is an SVG switchback cast onto the land, so it rides the hills." },
+      { area: "Side projects", detail: "Smaller work as quiet dots between the pins, each with a tooltip. The cursor says Go over anything you can open." },
+      { area: "Logo", detail: "An Archivo \"a\" with an orange pin on its shoulder: the favicon, the app icons, and the header, where the name folds into it." },
       { area: "Loading screen", detail: "A survey map of the same land, an SVG animated with CSS, that tips back into the 3D hero." },
       { area: "Motion", detail: "Smooth scrolling, headings that rise line by line, stacking project cards and a custom cursor, all skipped under reduced motion." },
       { area: "Case studies", detail: "These pages, with captures and numbers measured from the real products." },
+      { area: "Search and sharing", detail: "Structured data for the person, the site and each case study, plus a share card drawn as a miniature of the hero." },
       { area: "Words", detail: "The copy and the jokes. The contour lines are 10 m of scope creep each." },
     ],
   },
@@ -874,7 +877,7 @@ const portfolio: CaseStudy = {
       shots: [
         {
           src: `${PORTFOLIO_IMG}/loader-plotted.jpg`,
-          alt: "The loading screen at the end: a contour map with the dashed career trail through UC Davis, mlpal.ai, Prosperix and 2WheelR, four orange project pins and a counter at 100%",
+          alt: "The loading screen at the end: a contour map with the dashed career trail through UC Davis, mlpal.ai, Prosperix, 2WheelR and Teach for India, four orange project pins and a counter at 100%",
           w: 1505,
           h: 812,
           domain: "aun.sh",
@@ -882,7 +885,7 @@ const portfolio: CaseStudy = {
         },
         {
           src: `${PORTFOLIO_IMG}/loader-draw.jpg`,
-          alt: "The loading screen mid-way: contour lines drawn, the trail partway through the jobs, the counter at 69%",
+          alt: "The loading screen mid-way: contour lines drawn, the trail through its first two jobs, the counter at 54%",
           w: 1505,
           h: 812,
           caption: "Mid-survey. The counter and the status line are CSS only, so they run before the page's JavaScript loads.",
@@ -892,11 +895,11 @@ const portfolio: CaseStudy = {
     {
       kicker: "Hero",
       title: "The work, standing on the land",
-      lead: "Each project is a pin and each job a stop on the trail. Move the pointer and a hill rises under it, its contours turning orange; hover a pin and the land glows under that project.",
+      lead: "Each project is a pin, each side project a small dot, and each job a stop on a trail that switchbacks up the land, newest first. Move the pointer and a hill rises under it, its contours turning orange; hover a pin and the cursor says Go.",
       shots: [
         {
           src: `${PORTFOLIO_IMG}/hero-hill.jpg`,
-          alt: "The hero with an orange-contoured hill raised under the pointer near the reaktr pin, and the survey readout showing coordinates and elevation",
+          alt: "The hero with an orange-contoured hill raised under the pointer between the FRED and reaktr pins, and the survey readout showing coordinates and elevation",
           w: 1505,
           h: 812,
           domain: "aun.sh",
@@ -904,10 +907,10 @@ const portfolio: CaseStudy = {
         },
         {
           src: `${PORTFOLIO_IMG}/hero-pin.jpg`,
-          alt: "Hovering the FRED pin: a preview card with a screenshot, a one-line description and a link to the case study",
+          alt: "Hovering the FRED pin: an orange Go cursor and a preview card with a screenshot, a one-line description and a link to the case study",
           w: 1505,
           h: 812,
-          caption: "Pin cards open beside the pin, toward the middle of the screen.",
+          caption: "Pin cards open beside the pin, toward the middle of the screen, and the cursor turns orange and says Go.",
         },
         {
           src: `${PORTFOLIO_IMG}/work.jpg`,
@@ -949,12 +952,12 @@ const portfolio: CaseStudy = {
   ],
   mobile: {
     title: "Same map at 390 pixels",
-    lead: "The terrain takes the top of the screen and the legend moves below it. Pins pull toward the middle to stay on screen, job labels drop off, and the loader leaves out the outer project pins.",
+    lead: "The terrain takes the top of the screen and the legend moves below it. Pins pull toward the middle to stay on screen, job labels and side-project dots drop off, and the loader leaves out the outer project pins.",
     shots: [
-      { src: `${PORTFOLIO_IMG}/m-loader.jpg`, alt: "Phone loading screen: the contour map cropped to its middle, with the trail, its four jobs and the ResView pin", w: 764, h: 1301, caption: "Loader" },
-      { src: `${PORTFOLIO_IMG}/m-hero.jpg`, alt: "Phone hero: the terrain with four pins on top and the legend card below", w: 764, h: 1301, caption: "Hero" },
+      { src: `${PORTFOLIO_IMG}/m-loader.jpg`, alt: "Phone loading screen: the contour map cropped to its middle, with the trail and its five jobs", w: 764, h: 1301, caption: "Loader" },
+      { src: `${PORTFOLIO_IMG}/m-hero.jpg`, alt: "Phone hero: the terrain with four pins and the trail on top, and the legend card below", w: 764, h: 1301, caption: "Hero" },
       { src: `${PORTFOLIO_IMG}/m-work.jpg`, alt: "Phone work section: the FRED card stacked full width", w: 764, h: 1301, caption: "Work" },
-      { src: `${PORTFOLIO_IMG}/m-menu.jpg`, alt: "Phone menu open with the section links over the hero", w: 764, h: 1301, caption: "Menu" },
+      { src: `${PORTFOLIO_IMG}/m-menu.jpg`, alt: "Phone menu open: Work, the five case studies, Experience, Writing, Contact and Résumé", w: 764, h: 1301, caption: "Menu" },
     ],
   },
   design: {
@@ -988,7 +991,7 @@ const portfolio: CaseStudy = {
 @keyframes pre-count { to { --n: 100; } }`,
     },
     notes: [
-      "Orange is for things that respond to you: pins, the pointer's hill, links on hover.",
+      "Orange is for things that respond to you: pins, the pointer's hill, the Go cursor, links on hover. And the dot on the logo.",
       "Light only. The paper is part of the map.",
       "A typed integer property animates from 0 to 100 and a CSS counter prints it, so the loader counts before the page's JavaScript arrives.",
     ],
@@ -996,40 +999,41 @@ const portfolio: CaseStudy = {
   tech: {
     title: "Static pages, a GPU and very little JavaScript",
     steps: [
-      { kicker: "Build", title: "Next.js App Router", detail: "Every page is static. Fonts come through next/font, and the case studies are generated from one content file." },
+      { kicker: "Build", title: "Next.js App Router", detail: "Every page is static. Fonts come through next/font, the case studies come from one content file, and each page carries JSON-LD and a share card drawn with next/og." },
       { kicker: "First paint", title: "CSS only", detail: "The loader, its counter and the intro fades run before the page's JavaScript loads, and only on the first visit of a session." },
-      { kicker: "Hero", title: "Raw WebGL2", detail: "One shader pair for the land and one for the trail. Pins are HTML, placed each frame with a CPU copy of the same noise." },
+      { kicker: "Hero", title: "Raw WebGL2", detail: "One shader pair draws the land. Pins, dots and the trail are HTML and SVG on top, placed each frame with a CPU copy of the same noise." },
       { kicker: "Motion", title: "GSAP and Lenis, later", detail: "Loaded after hydration, so they never hold up the first paint, and their effects are skipped under reduced motion." },
     ],
     decisions: [
-      { title: "One noise, three uses", detail: "The shader, the pin placement and the loader's contour map share one simplex noise, so the map you see first is the land you arrive on." },
+      { title: "One noise, four uses", detail: "The shader, the pin placement, the trail and the loader's contour map share one simplex noise, so the map you see first is the land you arrive on." },
       { title: "Keep the GPU cheap", detail: "The canvas pauses offscreen and in background tabs, caps pixel density and draws a lighter mesh on phones." },
       { title: "An image, not markup", detail: "The loader's 142 contour lines ship as one animated SVG file, which keeps them out of the HTML and the hydration payload." },
+      { title: "The trail left the shader", detail: "Drawn in WebGL it broke wherever a ridge hid it. Now it's laid out once per resize as a screen-space switchback, each point cast down onto the land, then projected every frame as a plain SVG path, so it stays whole and sharp." },
     ],
-    chips: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 4", "WebGL2", "GLSL", "GSAP", "Lenis", "next/font", "d3-contour", "Netlify"],
+    chips: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 4", "WebGL2", "GLSL", "SVG", "GSAP", "Lenis", "next/font", "next/og", "JSON-LD", "d3-contour", "Netlify"],
   },
   code: {
     title: "Contour lines from height, in the shader",
-    lead: "There's no line geometry. Each pixel checks how close its height is to a contour level and inks itself when it's close. fwidth keeps lines the same width at any distance, every fifth line is thicker, and the land fades into haze far away.",
+    lead: "There's no line geometry. Each pixel checks how close its height is to a contour level and inks itself when it's close. fwidth keeps lines the same width at any distance, every fifth line is thicker, the light is worked out per pixel so no mesh triangles show, and the land fades into haze far away.",
     file: "components/motion/TerrainField.tsx",
-    href: "https://github.com/aunshx/portfolio/blob/main/components/motion/TerrainField.tsx#L126-L140",
+    href: "https://github.com/aunshx/portfolio/blob/main/components/motion/TerrainField.tsx#L135-L154",
     lang: "GLSL",
-    source: "void main() {\n  float v = vH * 9.0;\n  float f = fract(v);\n  float w = fwidth(v);\n  float band = floor(v + 0.5);\n  bool index = mod(band, 5.0) == 0.0;\n  float line = 1.0 - smoothstep(0.0, w * (index ? 1.7 : 1.0), min(f, 1.0 - f));\n\n  float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);\n  vec3 ground = uBg * (0.9 + 0.1 * clamp(vShade, 0.0, 1.0));\n  vec3 ink = mix(uInk, uAccent, clamp(vNear * 1.4, 0.0, 1.0));\n  float a = line * mix(index ? 0.5 : 0.3, 0.95, clamp(vNear, 0.0, 1.0));\n  vec3 col = mix(ground, ink, a);\n  color = vec4(mix(uBg, col, haze), 1.0);\n}",
+    source: "void main() {\n  // Light per pixel, not per mesh corner: shading interpolated between\n  // corners picks out the triangles where the land is close.\n  float e = 0.06;\n  vec3 n = normalize(vec3(relief(vP - vec2(e, 0.0)) - relief(vP + vec2(e, 0.0)), 2.0 * e, relief(vP - vec2(0.0, e)) - relief(vP + vec2(0.0, e))));\n  float shade = dot(n, normalize(vec3(-0.5, 0.75, 0.45)));\n  float v = vH * 9.0;\n  float f = fract(v);\n  float w = fwidth(v);\n  float band = floor(v + 0.5);\n  bool index = mod(band, 5.0) == 0.0;\n  float line = 1.0 - smoothstep(0.0, w * (index ? 1.7 : 1.0), min(f, 1.0 - f));\n\n  float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);\n  vec3 ground = uBg * (0.9 + 0.1 * clamp(shade, 0.0, 1.0));\n  vec3 ink = mix(uInk, uAccent, clamp(vNear * 1.4, 0.0, 1.0));\n  float a = line * mix(index ? 0.5 : 0.3, 0.95, clamp(vNear, 0.0, 1.0));\n  vec3 col = mix(ground, ink, a);\n  color = vec4(mix(uBg, col, haze), 1.0);\n}",
     note: "The fragment shader's main function, unedited.",
   },
   performance: {
     title: "Measured on a production build",
-    lead: "A cold load of the home page with the loading screen, served by next start on November 1, 2026 and read from the browser's Performance API.",
+    lead: "A cold load of the home page with the loading screen, served by next start on November 2, 2026 and read from the browser's Performance API.",
     groups: [
       {
         name: "Home page",
         note: "next start · gzip",
         metrics: [
-          { value: "175", unit: "KB", label: "JavaScript in 12 files, motion libraries included" },
-          { value: "12", unit: "KB", label: "CSS" },
-          { value: "111", unit: "KB", label: "fonts, three files" },
+          { value: "182", unit: "KB", label: "JavaScript in 13 files, motion libraries included" },
+          { value: "14", unit: "KB", label: "CSS" },
+          { value: "170", unit: "KB", label: "fonts, four files" },
           { value: "26", unit: "KB", label: "the loader's animated map" },
-          { value: "26", label: "requests" },
+          { value: "28", label: "requests" },
           { value: "0.002", label: "cumulative layout shift", accent: true },
         ],
       },
