@@ -991,7 +991,7 @@ const portfolio: CaseStudy = {
 @keyframes pre-count { to { --n: 100; } }`,
     },
     notes: [
-      "Orange is for things that respond to you: pins, the pointer's hill, links on hover.",
+      "Orange is for things that respond to you: pins, the pointer's hill, the Go cursor, links on hover. And the dot on the logo.",
       "Light only. The paper is part of the map.",
       "A typed integer property animates from 0 to 100 and a CSS counter prints it, so the loader counts before the page's JavaScript arrives.",
     ],
@@ -1001,15 +1001,17 @@ const portfolio: CaseStudy = {
     steps: [
       { kicker: "Build", title: "Next.js App Router", detail: "Every page is static. Fonts come through next/font, and the case studies are generated from one content file." },
       { kicker: "First paint", title: "CSS only", detail: "The loader, its counter and the intro fades run before the page's JavaScript loads, and only on the first visit of a session." },
-      { kicker: "Hero", title: "Raw WebGL2", detail: "One shader pair for the land and one for the trail. Pins are HTML, placed each frame with a CPU copy of the same noise." },
+      { kicker: "Hero", title: "Raw WebGL2", detail: "One shader pair draws the land. Pins, dots and the trail are HTML and SVG on top, placed each frame with a CPU copy of the same noise." },
       { kicker: "Motion", title: "GSAP and Lenis, later", detail: "Loaded after hydration, so they never hold up the first paint, and their effects are skipped under reduced motion." },
+      { kicker: "Search", title: "Metadata and JSON-LD", detail: "A Person and WebSite graph on every page, an Article and breadcrumbs per case study, and share cards rendered at build time with next/og." },
     ],
     decisions: [
       { title: "One noise, three uses", detail: "The shader, the pin placement and the loader's contour map share one simplex noise, so the map you see first is the land you arrive on." },
       { title: "Keep the GPU cheap", detail: "The canvas pauses offscreen and in background tabs, caps pixel density and draws a lighter mesh on phones." },
       { title: "An image, not markup", detail: "The loader's 142 contour lines ship as one animated SVG file, which keeps them out of the HTML and the hydration payload." },
+      { title: "The trail left the shader", detail: "Drawn in WebGL it broke wherever a ridge hid it. Now it's laid out once per resize as a screen-space switchback, each point cast down onto the land, then projected every frame as a plain SVG path, so it stays whole and sharp." },
     ],
-    chips: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 4", "WebGL2", "GLSL", "GSAP", "Lenis", "next/font", "d3-contour", "Netlify"],
+    chips: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS 4", "WebGL2", "GLSL", "SVG", "GSAP", "Lenis", "next/font", "next/og", "JSON-LD", "d3-contour", "Netlify"],
   },
   code: {
     title: "Contour lines from height, in the shader",
