@@ -1024,17 +1024,17 @@ const portfolio: CaseStudy = {
   },
   performance: {
     title: "Measured on a production build",
-    lead: "A cold load of the home page with the loading screen, served by next start on November 1, 2026 and read from the browser's Performance API.",
+    lead: "A cold load of the home page with the loading screen, served by next start on November 2, 2026 and read from the browser's Performance API.",
     groups: [
       {
         name: "Home page",
         note: "next start · gzip",
         metrics: [
-          { value: "175", unit: "KB", label: "JavaScript in 12 files, motion libraries included" },
-          { value: "12", unit: "KB", label: "CSS" },
-          { value: "111", unit: "KB", label: "fonts, three files" },
+          { value: "182", unit: "KB", label: "JavaScript in 13 files, motion libraries included" },
+          { value: "14", unit: "KB", label: "CSS" },
+          { value: "170", unit: "KB", label: "fonts, four files" },
           { value: "26", unit: "KB", label: "the loader's animated map" },
-          { value: "26", label: "requests" },
+          { value: "28", label: "requests" },
           { value: "0.002", label: "cumulative layout shift", accent: true },
         ],
       },
