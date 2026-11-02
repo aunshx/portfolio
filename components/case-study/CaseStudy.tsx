@@ -340,7 +340,9 @@ export default function CaseStudy({ study }: { study: Study }) {
               </li>
             ))}
           </ol>
-          <div className="mt-8 grid gap-3 md:grid-cols-3">
+          <div
+            className={`mt-8 grid gap-3 ${study.tech.decisions.length % 2 ? "md:grid-cols-3" : "md:grid-cols-2"}`}
+          >
             {study.tech.decisions.map((d) => (
               <div key={d.title} className="rounded-xl border border-line p-5">
                 <h3 className="text-[16px] font-semibold text-text">{d.title}</h3>
