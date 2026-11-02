@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 132" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <rect width="880" height="132" rx="14" fill="#f3f1ec"/>
+  <g font-size="13">
+    <g transform="translate(20 20)">
+      <rect width="110" height="56" rx="8" fill="#f3f1ec" stroke="#111111" stroke-opacity="0.18"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Paper</text><text y="98" x="2" fill="#4a4741">#F3F1EC</text>
+    </g>
+    <g transform="translate(142 20)">
+      <rect width="110" height="56" rx="8" fill="#fbfaf7" stroke="#111111" stroke-opacity="0.18"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Surface</text><text y="98" x="2" fill="#4a4741">#FBFAF7</text>
+    </g>
+    <g transform="translate(264 20)">
+      <rect width="110" height="56" rx="8" fill="#111111"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Ink</text><text y="98" x="2" fill="#4a4741">#111111</text>
+    </g>
+    <g transform="translate(386 20)">
+      <rect width="110" height="56" rx="8" fill="#4a4741"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Muted</text><text y="98" x="2" fill="#4a4741">#4A4741</text>
+    </g>
+    <g transform="translate(508 20)">
+      <rect width="110" height="56" rx="8" fill="#67635b"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Faint</text><text y="98" x="2" fill="#4a4741">#67635B</text>
+    </g>
+    <g transform="translate(630 20)">
+      <rect width="110" height="56" rx="8" fill="#ff4f00"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Orange</text><text y="98" x="2" fill="#4a4741">#FF4F00</text>
+    </g>
+    <g transform="translate(752 20)">
+      <rect width="110" height="56" rx="8" fill="#c43c00"/>
+      <text y="80" x="2" fill="#111111" font-weight="600">Orange ink</text><text y="98" x="2" fill="#4a4741">#C43C00</text>
+    </g>
+  </g>
+</svg>
