@@ -1,12 +1,13 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import TerrainField, { type TerrainPin, type TerrainTrail } from "@/components/motion/TerrainField";
+import TerrainField, { type TerrainDot, type TerrainPin, type TerrainTrail } from "@/components/motion/TerrainField";
 import Contours from "@/components/motion/Contours";
 import Readout from "@/components/motion/Readout";
 import Clock from "@/components/ui/Clock";
 import { PROFILE, LINKS } from "@/content/profile";
 import { WORK } from "@/content/work";
-import { PLACES } from "@/content/places";
-import { ROUTE_FADE_FROM, ROUTE_GROUND, STOPS } from "@/content/route";
+import { DOT_PLACES, PLACES } from "@/content/places";
+import { SIDE_PROJECTS } from "@/content/side-projects";
+import { ROUTE_TAIL, STOPS } from "@/content/route";
 
 const PINS: TerrainPin[] = WORK.map((w) => ({
   title: w.title,
@@ -18,11 +19,12 @@ const PINS: TerrainPin[] = WORK.map((w) => ({
   ...PLACES[w.title],
 }));
 
+const DOTS: TerrainDot[] = SIDE_PROJECTS.map((p) => ({ ...p, ...DOT_PLACES[p.title] }));
+
 /** The career trail, the same one the loading screen draws. */
 const TRAIL: TerrainTrail = {
-  ground: ROUTE_GROUND,
-  stops: STOPS.map(({ name, when, x, z, heroAt, heroSide }) => ({ name, when, x, z, at: heroAt, side: heroSide })),
-  fadeFrom: ROUTE_FADE_FROM,
+  stops: STOPS.map(({ name, role, when, x, z, heroSide }) => ({ name, role, when, x, z, side: heroSide })),
+  tail: ROUTE_TAIL,
 };
 
 const LINK_ROW = [
@@ -37,11 +39,14 @@ const Sym = {
   pin: (
     <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="4.5" fill="var(--accent)" /><circle cx="10" cy="10" r="8" fill="none" stroke="var(--accent)" strokeWidth="1.2" /></svg>
   ),
+  dot: (
+    <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.5" fill="currentColor" /></svg>
+  ),
   contour: (
     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M1 13c3-6 6 2 9-3s6-1 9-4" fill="none" stroke="currentColor" strokeWidth="1.3" /><path d="M1 17c3-5 6 1 9-2s6 0 9-3" fill="none" stroke="currentColor" strokeWidth="0.8" opacity=".6" /></svg>
   ),
   trail: (
-    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 15c4-1 4-9 8-9s4 6 8 3" fill="none" stroke="currentColor" strokeWidth="1.4" strokeDasharray="2.6 2" /></svg>
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 16c4-1 4-10 8-10s4 6 8 3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /><circle cx="10" cy="6" r="2.2" fill="var(--bg)" stroke="currentColor" strokeWidth="1.3" /></svg>
   ),
   peak: (
     <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 16 10 4l7 12Z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" /></svg>
@@ -63,7 +68,7 @@ export default function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="hero">
       <Contours />
-      <TerrainField pins={PINS} trail={TRAIL} />
+      <TerrainField pins={PINS} dots={DOTS} trail={TRAIL} />
 
       {/* Map furniture: north arrow and a scale bar. */}
       <div className="map-furniture intro-fade" aria-hidden="true" style={{ ["--d" as string]: "0.4s" }}>
@@ -91,6 +96,10 @@ export default function Hero() {
             <div>
               <dt>{Sym.pin}Projects</dt>
               <dd>Hover a pin</dd>
+            </div>
+            <div className="legend-dots">
+              <dt>{Sym.dot}Side projects</dt>
+              <dd>The small dots</dd>
             </div>
             <div>
               <dt>{Sym.contour}Contours</dt>

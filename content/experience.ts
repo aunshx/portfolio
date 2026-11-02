@@ -32,4 +32,11 @@ export const EXPERIENCE: ExperienceItem[] = [
     link: "https://2wheelr.com",
     summary: "Product and go-to-market in the founder’s office at a mobility startup.",
   },
+  {
+    name: "Teach for India",
+    position: "Fellow",
+    duration: "May 2020 – Jun 2021",
+    link: "https://www.teachforindia.org",
+    summary: "Taught high school math and science to 60 students from low-income communities.",
+  },
 ];

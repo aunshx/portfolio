@@ -168,3 +168,11 @@ export type CaseStudy = {
   next: string[];
   nextStudy: { slug: string; title: string };
 };
+
+export type SideProject = {
+  title: string;
+  year: string;
+  /** A few words: what it is. */
+  desc: string;
+  href: string;
+};

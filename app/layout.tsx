@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SITE, PROFILE, LINKS } from "@/content/profile";
+import { SITE, PROFILE } from "@/content/profile";
+import { SITE_LD, ldJson } from "@/lib/seo";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -66,17 +67,21 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
   },
-  robots: { index: true, follow: true },
-  manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  category: "technology",
+  // The manifest comes from app/manifest.ts. The ICO is sized 32 so browsers
+  // that read SVG icons pick the sharper SVG instead.
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: "/apple-touch-icon.png",
   },
-  other: { "msapplication-TileColor": "#f3f1ec" },
 };
 
 export const viewport: Viewport = {
@@ -89,31 +94,11 @@ export const viewport: Viewport = {
 
 /**
  * Runs before first paint. `motion` turns on the animated layer; `intro`
- * plays the loading screen once per browser session. Reduced motion gets
+ * plays the loading screen once per browser session, and `brand-seen` skips
+ * the header's name-to-logo fold once it has played. Reduced motion gets
  * neither.
  */
-const MOTION_BOOTSTRAP = `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');if(location.pathname==='/'&&!sessionStorage.getItem('intro')){d.classList.add('intro');sessionStorage.setItem('intro','1');}}catch(e){}})();`;
-
-const JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: PROFILE.name,
-  url: SITE.url,
-  jobTitle: PROFILE.role,
-  description: SITE.description,
-  worksFor: { "@type": "Organization", name: "University of California, Davis" },
-  alumniOf: [
-    { "@type": "CollegeOrUniversity", name: "University of California, Davis" },
-    { "@type": "CollegeOrUniversity", name: "University of Pune" },
-  ],
-  knowsAbout: [
-    "Spatial AI",
-    "Geospatial decision support",
-    "Machine learning",
-    "Forest biomass",
-  ],
-  sameAs: [LINKS.github, LINKS.linkedin, LINKS.medium],
-};
+const MOTION_BOOTSTRAP = `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');if(sessionStorage.getItem('brand'))d.classList.add('brand-seen');if(location.pathname==='/'&&!sessionStorage.getItem('intro')){d.classList.add('intro');sessionStorage.setItem('intro','1');}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -128,7 +113,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: MOTION_BOOTSTRAP }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+          dangerouslySetInnerHTML={{ __html: ldJson(SITE_LD) }}
         />
       </head>
       <body>{children}</body>

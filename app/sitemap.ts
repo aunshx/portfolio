@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE.url}/work/${c.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+      // The hero screenshot, so the case studies can turn up in image search.
+      images: [`${SITE.url}${c.hero.src}`],
     })),
   ];
 }

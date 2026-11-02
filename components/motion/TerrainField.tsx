@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { terrainHeight } from "./terrain-math";
 
 /** A project standing on the land, as an HTML link the camera keeps in place. */
@@ -16,27 +16,31 @@ export type TerrainPin = {
   z: number;
 };
 
+/** A side project: a small dot on the land, named on hover. */
+export type TerrainDot = {
+  title: string;
+  year: string;
+  desc: string;
+  href: string;
+  x: number;
+  z: number;
+};
+
 /** A job on the career trail: a marker that rides the land, not a link. */
 export type TerrainStop = {
   name: string;
+  role: string;
   when: string;
   x: number;
   z: number;
-  /** How far along the trail, 0 to 1. */
-  at: number;
   side: "l" | "r";
 };
 
-/** The career trail: points on the ground, in order, and the jobs along it. */
+/** The career trail: the jobs along it, newest first, and where it fades out past the oldest. */
 export type TerrainTrail = {
-  ground: [number, number][];
   stops: TerrainStop[];
-  /** Where along the trail (0 to 1) it starts fading out toward the horizon. */
-  fadeFrom: number;
+  tail: [number, number];
 };
-
-/* The trail's ink, in terrain units: line width, dash and gap. */
-const TRAIL_W = 0.026, TRAIL_DASH = 0.075, TRAIL_GAP = 0.055;
 
 /**
  * The hero graphic: a 3D landscape with contour lines draped over it, seen
@@ -47,9 +51,10 @@ const TRAIL_W = 0.026, TRAIL_DASH = 0.075, TRAIL_GAP = 0.055;
  *
  * Raw WebGL2, no library: a grid mesh displaced by simplex noise in the
  * vertex shader, isolines from height in the fragment shader, light shading
- * from the surface normal and haze with distance. The career trail is
- * painted onto the ground from a texture, so it follows every rise and dip;
- * on visits without the loading screen it walks itself in. It pauses offscreen and in
+ * from the surface normal and haze with distance. The career trail is an SVG
+ * line over the land: a switchback laid out on screen, pinned to the ground
+ * point by point so it rides the camera and the hills without ever breaking
+ * behind a ridge; on visits without the loading screen it walks itself in. It pauses offscreen and in
  * background tabs, renders one still frame under reduced motion, and leaves
  * the static SVG contours in place if WebGL2 isn't available.
  */
@@ -87,7 +92,7 @@ uniform float uGlow;
 out float vH;
 out float vDepth;
 out float vNear;
-out float vShade;
+out vec2 vP;
 ${NOISE}
 float terrain(vec2 p) {
   vec2 q = p * 0.42;
@@ -99,12 +104,7 @@ float terrain(vec2 p) {
 void main() {
   vec2 p = vec2(aGrid.x * 8.0, 1.5 - aGrid.y * 14.0);
   float h = terrain(p);
-  float e = 0.06;
-  vec3 n = normalize(vec3(
-    terrain(p - vec2(e, 0.0)) - terrain(p + vec2(e, 0.0)),
-    2.0 * e,
-    terrain(p - vec2(0.0, e)) - terrain(p + vec2(0.0, e))));
-  vShade = dot(n, normalize(vec3(-0.5, 0.75, 0.45)));
+  vP = p;
   vH = h;
   float d = distance(p, uHill);
   vNear = uGlow * exp(-d * d * 0.7);
@@ -118,12 +118,26 @@ precision highp float;
 in float vH;
 in float vDepth;
 in float vNear;
-in float vShade;
+in vec2 vP;
+uniform vec2 uHill;
+uniform float uLift;
 uniform vec3 uBg;
 uniform vec3 uInk;
 uniform vec3 uAccent;
 out vec4 color;
+${NOISE}
+// The broad shape of the land (the fine octave adds nothing to the light).
+float relief(vec2 p) {
+  vec2 q = p * 0.42;
+  float d = distance(p, uHill);
+  return (snoise(q) * 0.62 + snoise(q * 2.3 + 7.1) * 0.2 + uLift * 1.35 * exp(-d * d * 0.9)) * 0.75;
+}
 void main() {
+  // Light per pixel, not per mesh corner: shading interpolated between
+  // corners picks out the triangles where the land is close.
+  float e = 0.06;
+  vec3 n = normalize(vec3(relief(vP - vec2(e, 0.0)) - relief(vP + vec2(e, 0.0)), 2.0 * e, relief(vP - vec2(0.0, e)) - relief(vP + vec2(0.0, e))));
+  float shade = dot(n, normalize(vec3(-0.5, 0.75, 0.45)));
   float v = vH * 9.0;
   float f = fract(v);
   float w = fwidth(v);
@@ -132,60 +146,11 @@ void main() {
   float line = 1.0 - smoothstep(0.0, w * (index ? 1.7 : 1.0), min(f, 1.0 - f));
 
   float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);
-  vec3 ground = uBg * (0.9 + 0.1 * clamp(vShade, 0.0, 1.0));
+  vec3 ground = uBg * (0.9 + 0.1 * clamp(shade, 0.0, 1.0));
   vec3 ink = mix(uInk, uAccent, clamp(vNear * 1.4, 0.0, 1.0));
   float a = line * mix(index ? 0.5 : 0.3, 0.95, clamp(vNear, 0.0, 1.0));
   vec3 col = mix(ground, ink, a);
   color = vec4(mix(uBg, col, haze), 1.0);
-}`;
-
-const TERRAIN_FN = `
-float terrain(vec2 p) {
-  vec2 q = p * 0.42;
-  float h = snoise(q) * 0.62 + snoise(q * 2.3 + 7.1) * 0.2 + snoise(q * 5.3 - 3.0) * 0.05;
-  float d = distance(p, uHill);
-  h += uLift * 1.35 * exp(-d * d * 0.9);
-  return h * 0.75;
-}`;
-
-const TRAIL_VERT = `#version 300 es
-in vec2 aPos;
-in vec2 aOff;
-in float aAlong;
-uniform mat4 uVP;
-uniform vec2 uHill;
-uniform float uLift;
-uniform float uSpread;
-out float vAlong;
-out float vDepth;
-${NOISE}
-${TERRAIN_FN}
-void main() {
-  // Widen with distance, so the line keeps about the same width on screen.
-  vec2 c = vec2(aPos.x * uSpread, aPos.y);
-  float depth = (uVP * vec4(c.x, terrain(c), c.y, 1.0)).w;
-  vec2 p = c + aOff * clamp(depth / 6.5, 0.45, 1.8);
-  vec4 pos = uVP * vec4(p.x, terrain(p) + 0.014, p.y, 1.0);
-  vAlong = aAlong;
-  vDepth = pos.w;
-  gl_Position = pos;
-}`;
-
-const TRAIL_FRAG = `#version 300 es
-precision highp float;
-in float vAlong;
-in float vDepth;
-uniform float uReveal;
-uniform float uAlpha;
-uniform vec2 uFade;
-uniform vec3 uInk;
-uniform vec3 uBg;
-out vec4 color;
-void main() {
-  if (vAlong > uReveal || mod(vAlong, ${(TRAIL_DASH + TRAIL_GAP).toFixed(4)}) > ${TRAIL_DASH.toFixed(4)}) discard;
-  float haze = clamp(1.0 - (vDepth - 3.0) / 12.0, 0.0, 1.0);
-  float fade = 1.0 - smoothstep(uFade.x, uFade.y, vAlong);
-  color = vec4(mix(uBg, uInk, haze), uAlpha * fade);
 }`;
 
 type M4 = Float32Array<ArrayBuffer>;
@@ -252,9 +217,29 @@ function hex(c: string): [number, number, number] {
   return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
 }
 
-export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]; trail?: TerrainTrail }) {
+/** A smooth SVG path through screen points (Catmull-Rom, as cubic Béziers). */
+function curve(p: number[][]) {
+  const f = (n: number) => n.toFixed(1);
+  let d = `M${f(p[0][0])} ${f(p[0][1])}`;
+  for (let i = 0; i < p.length - 1; i++) {
+    const [a, b, c, e] = [p[i - 1] ?? p[i], p[i], p[i + 1], p[i + 2] ?? p[i + 1]];
+    d += `C${f(b[0] + (c[0] - a[0]) / 6)} ${f(b[1] + (c[1] - a[1]) / 6)} ${f(c[0] - (e[0] - b[0]) / 6)} ${f(c[1] - (e[1] - b[1]) / 6)} ${f(c[0])} ${f(c[1])}`;
+  }
+  return d;
+}
+
+export default function TerrainField({
+  pins = [],
+  dots = [],
+  trail,
+}: {
+  pins?: TerrainPin[];
+  dots?: TerrainDot[];
+  trail?: TerrainTrail;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
+  const uid = useId().replace(/:/g, "");
 
   useEffect(() => {
     const canvas = ref.current;
@@ -321,39 +306,6 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
     gl.uniform3fv(u("uAccent"), hex(css.getPropertyValue("--accent").trim() || "#ff4f00"));
     gl.clearColor(bg[0], bg[1], bg[2], 1);
 
-    // The career trail: a ribbon along the ground, drawn after the land.
-    // Where a hill hides it, it shows faintly through, like a route on a map.
-    const tprog = trail ? link(TRAIL_VERT, TRAIL_FRAG) : null;
-    let trailVao: WebGLVertexArrayObject | null = null, trailCount = 0, trailLength = 0;
-    const tu = (n: string) => (tprog ? gl.getUniformLocation(tprog, n) : null);
-    if (trail && tprog) {
-      const g = trail.ground, n = g.length;
-      const data = new Float32Array(n * 2 * 5);
-      let along = 0;
-      g.forEach(([x, z], i) => {
-        if (i) along += Math.hypot(x - g[i - 1][0], z - g[i - 1][1]);
-        const [ax, az] = g[Math.max(0, i - 1)], [bx, bz] = g[Math.min(n - 1, i + 1)];
-        const len = Math.hypot(bx - ax, bz - az) || 1;
-        const nx = (-(bz - az) / len) * (TRAIL_W / 2), nz = ((bx - ax) / len) * (TRAIL_W / 2);
-        data.set([x, z, nx, nz, along, x, z, -nx, -nz, along], i * 10);
-      });
-      trailCount = n * 2;
-      trailLength = along;
-      trailVao = gl.createVertexArray();
-      gl.bindVertexArray(trailVao);
-      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-      gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
-      ([["aPos", 2, 0], ["aOff", 2, 8], ["aAlong", 1, 16]] as const).forEach(([name, size, offset]) => {
-        const l = gl.getAttribLocation(tprog, name);
-        gl.enableVertexAttribArray(l);
-        gl.vertexAttribPointer(l, size, gl.FLOAT, false, 20, offset);
-      });
-      gl.bindVertexArray(groundVao);
-      gl.useProgram(tprog);
-      gl.uniform3fv(tu("uBg"), bg);
-      gl.uniform3fv(tu("uInk"), hex(css.getPropertyValue("--text").trim() || "#111111"));
-      gl.useProgram(prog);
-    }
     // After the loading screen the trail is already drawn; otherwise it walks in.
     const walkIn = !document.documentElement.classList.contains("intro");
 
@@ -363,14 +315,84 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
 
     // The camera sways slowly, and climbs and tilts down as the hero scrolls away.
     let swayT = 0;
-    const camera = () => {
-      const r = canvas.getBoundingClientRect();
-      const s = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height)));
-      const sx = Math.sin(swayT * 0.13), sy = Math.sin(swayT * 0.083);
+    const view = (sway: number, s: number) => {
+      const sx = Math.sin(sway * 0.13), sy = Math.sin(sway * 0.083);
       const eye = [sx * 0.3, 3.0 + s * 4.6 + sy * 0.06, 3.9 - s * 2.9];
       const at = [sx * 0.1, -0.3, -2.4 - s * 0.6];
-      vp = mul(perspective((34 * Math.PI) / 180, w / h, 0.1, 60), lookAt(eye, at, [0, 1, 0]));
+      return mul(perspective((34 * Math.PI) / 180, w / h, 0.1, 60), lookAt(eye, at, [0, 1, 0]));
+    };
+    const camera = () => {
+      const r = canvas.getBoundingClientRect();
+      vp = view(swayT, Math.min(1, Math.max(0, -r.top / Math.max(1, r.height))));
       inv = invert(vp);
+    };
+
+    // The trail, laid out against the camera at rest: on screen, a smooth
+    // switchback that runs straight up through each stop and swings across
+    // between them. Points along it are pinned to the ground under them, so
+    // from then on the land carries the line. A point that falls behind a
+    // ridge lands on the nearest ground in view, which keeps the line whole.
+    let route: [number, number][] = [], stopIdx: number[] = [], stopAt: number[] = [], tailFrom = 0;
+    const [caseEl, lineEl, tailEl] = ["case", "line", "tail"].map((n) => root.querySelector<SVGPathElement>(`[data-trail=${n}]`));
+    const fadeEl = root.querySelector<SVGLinearGradientElement>("linearGradient");
+    const layTrail = () => {
+      if (!trail) return;
+      const rest = view(0, 0), k = Math.min(1, Math.max(0.35, w / h / 1.6));
+      const onScreen = (x: number, z: number) => {
+        const [sx, sy] = project(rest, x, terrainHeight(x, z, 0, 0, 0, 0), z);
+        return [((sx + 1) / 2) * w, ((1 - sy) / 2) * h];
+      };
+      // The ground under a screen point: cast a ray from the camera and keep
+      // the first land it meets.
+      const back = invert(rest);
+      const under = (px: number, py: number, x: number, z: number): [number, number] => {
+        if (!back) return [x, z];
+        const nx = (px / w) * 2 - 1, ny = 1 - (py / h) * 2;
+        const a = project(back, nx, ny, -1), b = project(back, nx, ny, 1);
+        const at = (t: number) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+        const above = (t: number) => { const [rx, ry, rz] = at(t); return ry > terrainHeight(rx, rz, 0, 0, 0, 0); };
+        let lo = 0;
+        for (let t = 0.0005; t <= 0.3; t += 0.0005) {
+          if (!above(t)) {
+            let hi = t;
+            for (let n = 0; n < 20; n++) {
+              const mid = (lo + hi) / 2;
+              if (above(mid)) lo = mid; else hi = mid;
+            }
+            const [rx, , rz] = at(hi);
+            return [rx, rz];
+          }
+          lo = t;
+        }
+        return [x, z];
+      };
+      const knots: [number, number][] = [...trail.stops.map((st): [number, number] => [st.x * k, st.z]), [trail.tail[0] * k, trail.tail[1]]];
+      const flat = knots.map(([x, z]) => onScreen(x, z));
+      // A stop just behind a rise moves onto the rise, where the camera sees it.
+      knots.forEach(([x, z], i) => (knots[i] = under(flat[i][0], flat[i][1], x, z)));
+      route = [knots[0]];
+      stopAt = [0];
+      knots.slice(1).forEach((b, i) => {
+        const a = knots[i], [ax, ay] = flat[i], [bx, by] = flat[i + 1], lean = (ay - by) * 0.55;
+        for (let t = 0.125; t < 1; t += 0.125) {
+          const u = 1 - t;
+          const px = (u * u * u + 3 * u * u * t) * ax + (3 * u * t * t + t * t * t) * bx;
+          const py = u * u * u * ay + 3 * u * u * t * (ay - lean) + 3 * u * t * t * (by + lean) + t * t * t * by;
+          route.push(under(px, py, a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t));
+        }
+        route.push(b);
+        stopAt.push(route.length - 1);
+      });
+      stopAt.pop();
+      stopIdx = [...stopAt];
+      tailFrom = stopAt[stopAt.length - 1];
+      // Where each stop falls along the line's length, 0 to 1, for the walk-in.
+      const lens = [0];
+      route.slice(1, tailFrom + 1).forEach(([x, z], i) => {
+        const [ax, ay] = onScreen(...route[i]), [bx, by] = onScreen(x, z);
+        lens.push(lens[i] + Math.hypot(bx - ax, by - ay));
+      });
+      stopAt = stopAt.map((j) => lens[j] / lens[tailFrom]);
     };
     const resize = () => {
       const r = canvas.getBoundingClientRect();
@@ -380,6 +402,7 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       canvas.height = h;
       gl.viewport(0, 0, w, h);
       camera();
+      layTrail();
     };
     resize();
 
@@ -405,14 +428,16 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       moved = true;
     };
 
-    // Pins: hovering or focusing one raises the land under that project.
+    // Pins, then side-project dots: hovering or focusing one lights the land
+    // under it. Both stand on the ground the same way.
+    const spots = [...pins, ...dots];
     const pinEls = Array.from(root.querySelectorAll<HTMLElement>("[data-pin]"));
     const spread = () => Math.min(1, Math.max(0.35, w / h / 1.6));
     const pinListeners = pinEls.map((el, i) => {
       const on = () => {
         hovered = i;
-        target.x = pins[i].x * spread();
-        target.z = pins[i].z;
+        target.x = spots[i].x * spread();
+        target.z = spots[i].z;
         liftTarget = 0;
         glowTarget = 1;
         idle = -1e9;
@@ -462,37 +487,12 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
       gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
 
-      if (tprog && trailVao && reveal > 0) {
-        gl.useProgram(tprog);
-        gl.bindVertexArray(trailVao);
-        gl.uniformMatrix4fv(tu("uVP"), false, vp);
-        gl.uniform2f(tu("uFade"), trail!.fadeFrom * trailLength, trailLength);
-        gl.uniform2f(tu("uHill"), hill.x, hill.z);
-        gl.uniform1f(tu("uLift"), lift);
-        gl.uniform1f(tu("uSpread"), k);
-        gl.uniform1f(tu("uReveal"), reveal * trailLength);
-        gl.enable(gl.BLEND);
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-        gl.depthMask(false);
-        // Behind the hills: faint.
-        gl.depthFunc(gl.GREATER);
-        gl.uniform1f(tu("uAlpha"), 0.3);
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
-        // In view: full ink.
-        gl.depthFunc(gl.LEQUAL);
-        gl.uniform1f(tu("uAlpha"), 0.8);
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, trailCount);
-        gl.depthFunc(gl.LESS);
-        gl.depthMask(true);
-        gl.disable(gl.BLEND);
-      }
-
       // Stand each pin on the ground where the camera sees it.
       const cw = canvas.clientWidth, ch = canvas.clientHeight;
       // Pins stand on the base terrain (not the pointer's hill), and hold
       // still while one is hovered so it can't drift out from under the cursor.
       if (hovered < 0) pinEls.forEach((el, i) => {
-        const px = pins[i].x * k, pz = pins[i].z;
+        const px = spots[i].x * k, pz = spots[i].z;
         const py = terrainHeight(px, pz, 0, hill.x, hill.z, 0) + 0.02;
         const [sx, sy, sz] = project(vp, px, py, pz);
         const off = sz > 1 || sx < -1.2 || sx > 1.2 || sy < -1.2 || sy > 1.2;
@@ -502,16 +502,38 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
         el.toggleAttribute("data-flip", sx > 0.2);
       });
 
+      // The trail rides the land as drawn, hill and all, through the stops.
+      if (lineEl && route.length) {
+        const pts = route.map(([x, z]) => {
+          const [sx, sy] = project(vp, x, terrainHeight(x, z, 0, hill.x, hill.z, lift) + 0.014, z);
+          return [((sx + 1) / 2) * cw, ((1 - sy) / 2) * ch];
+        });
+        const main = curve(pts.slice(0, tailFrom + 1));
+        caseEl!.setAttribute("d", main);
+        lineEl.setAttribute("d", main);
+        lineEl.style.strokeDasharray = caseEl!.style.strokeDasharray = `${reveal} 1`;
+        tailEl!.setAttribute("d", curve(pts.slice(tailFrom)));
+        tailEl!.style.opacity = reveal >= 1 ? "1" : "0";
+        const [[x1, y1], [x2, y2]] = [pts[tailFrom], pts[pts.length - 1]];
+        fadeEl?.setAttribute("x1", `${x1}`);
+        fadeEl?.setAttribute("y1", `${y1}`);
+        fadeEl?.setAttribute("x2", `${x2}`);
+        fadeEl?.setAttribute("y2", `${y2}`);
+      }
+
       // Jobs ride the land along the trail, each showing once the trail reaches it.
       stopEls.forEach((el, i) => {
-        const st = trail!.stops[i];
-        const px = st.x * k, pz = st.z;
+        const [px, pz] = route[stopIdx[i]];
         // On the land as drawn, hill and all, so a stop stays on the trail.
-        const [sx, sy, sz] = project(vp, px, terrainHeight(px, pz, 0, hill.x, hill.z, lift) + 0.014, pz);
+        const py = terrainHeight(px, pz, 0, hill.x, hill.z, lift) + 0.014;
+        const [sx, sy, sz] = project(vp, px, py, pz);
         const off = sz > 1 || sx < -1.2 || sx > 1.2 || sy < -1.2 || sy > 1.2;
         el.style.transform = `translate3d(${((sx + 1) / 2) * cw}px, ${((1 - sy) / 2) * ch}px, 0)`;
         el.style.visibility = off ? "hidden" : "";
-        el.toggleAttribute("data-on", reveal >= st.at - 0.01);
+        // Older jobs sit farther off: let them recede into the haze a little.
+        const depth = vp[3] * px + vp[7] * py + vp[11] * pz + vp[15];
+        el.style.opacity = String(Math.min(1, Math.max(0.55, 1.45 - depth / 11)));
+        el.toggleAttribute("data-on", reveal >= stopAt[i] - 0.01);
       });
 
       // The survey readout: where the pointer is, in made-up Bay Area coordinates.
@@ -575,11 +597,24 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
       pinListeners.forEach((off) => off());
       canvas.removeEventListener("webglcontextlost", onLost);
     };
-  }, [pins, trail]);
+  }, [pins, dots, trail]);
 
   return (
     <div ref={wrap} className="terrain">
       <canvas ref={ref} aria-hidden="true" className="terrain-field" />
+      {trail && (
+        <svg className="trail" aria-hidden="true">
+          <defs>
+            <linearGradient id={`${uid}-fade`} gradientUnits="userSpaceOnUse">
+              <stop offset="0" stopColor="var(--text)" />
+              <stop offset="1" stopColor="var(--text)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path data-trail="case" className="trail-case" pathLength={1} />
+          <path data-trail="line" className="trail-line" pathLength={1} />
+          <path data-trail="tail" className="trail-tail" stroke={`url(#${uid}-fade)`} />
+        </svg>
+      )}
       {trail && (
         <ul className="stops" aria-hidden="true">
           {trail.stops.map((st, i) => (
@@ -587,6 +622,7 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
               <span className="stop-mark" />
               <span className="stop-label">
                 <span className="stop-name">{st.name}</span>
+                <span className="stop-role">{st.role}</span>
                 <span className="stop-when">{st.when}</span>
               </span>
             </li>
@@ -601,6 +637,8 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
                 data-pin={i}
                 href={p.href}
                 className="pin"
+                data-cursor="Go"
+                data-cursor-tone="accent"
                 {...(p.external ? { target: "_blank", rel: "noreferrer noopener" } : {})}
               >
                 <span className="pin-dot" aria-hidden="true" />
@@ -616,6 +654,33 @@ export default function TerrainField({ pins = [], trail }: { pins?: TerrainPin[]
                   <span className="pin-go">{p.external ? "Visit site" : "Read the case study"}</span>
                 </span>
                 {p.external && <span className="sr-only"> (opens in a new tab)</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+      {dots.length > 0 && (
+        <ul className="dots" aria-label="Side projects on the map">
+          {dots.map((d, i) => (
+            <li key={d.title}>
+              <a
+                data-pin={pins.length + i}
+                href={d.href}
+                className="dot"
+                data-cursor="Go"
+                data-cursor-tone="accent"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <span className="dot-mark" aria-hidden="true" />
+                <span className="dot-tip">
+                  <span className="dot-name">
+                    {d.title}
+                    <span className="dot-year">{d.year}</span>
+                  </span>
+                  <span className="dot-desc">{d.desc}</span>
+                </span>
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </li>
           ))}

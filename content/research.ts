@@ -7,6 +7,14 @@ export const RESEARCH: ResearchItem[] = [
     link: "https://drive.google.com/file/d/16OJgNEtry66OZOVhmm6F2xEvsaN8kYtj/view?usp=drive_link",
   },
   {
+    title: "Characterizing Road Network Circuity Across Diverse Topography",
+    note: "Under review",
+  },
+  {
+    title: "Compositional Spatial RAG: Multi-Layer Spatial Reasoning",
+    note: "Under review",
+  },
+  {
     title: "FRREDSS 2.0: Decision Support for Forest Biomass Energy Assessment and Lifecycle Analysis",
     link: "https://drive.google.com/file/d/17rLkjHeBkYXq0YjcfZ_u8gsityeHID3A/view?usp=sharing",
   },

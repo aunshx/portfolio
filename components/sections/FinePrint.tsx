@@ -79,10 +79,17 @@ export default function FinePrint() {
           <ul data-stagger>
             {RESEARCH.map((p) => (
               <li key={p.title}>
-                <Out href={p.link!} className="fine-row row-link">
-                  <span className="fine-main">{p.title}</span>
-                  {p.note && <span className="fine-meta">{p.note}</span>}
-                </Out>
+                {p.link ? (
+                  <Out href={p.link} className="fine-row row-link">
+                    <span className="fine-main">{p.title}</span>
+                    {p.note && <span className="fine-meta">{p.note}</span>}
+                  </Out>
+                ) : (
+                  <div className="fine-row">
+                    <span className="fine-main">{p.title}</span>
+                    {p.note && <span className="fine-meta">{p.note}</span>}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
