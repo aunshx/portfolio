@@ -999,11 +999,10 @@ const portfolio: CaseStudy = {
   tech: {
     title: "Static pages, a GPU and very little JavaScript",
     steps: [
-      { kicker: "Build", title: "Next.js App Router", detail: "Every page is static. Fonts come through next/font, and the case studies are generated from one content file." },
+      { kicker: "Build", title: "Next.js App Router", detail: "Every page is static. Fonts come through next/font, the case studies come from one content file, and each page carries JSON-LD and a share card drawn with next/og." },
       { kicker: "First paint", title: "CSS only", detail: "The loader, its counter and the intro fades run before the page's JavaScript loads, and only on the first visit of a session." },
       { kicker: "Hero", title: "Raw WebGL2", detail: "One shader pair draws the land. Pins, dots and the trail are HTML and SVG on top, placed each frame with a CPU copy of the same noise." },
       { kicker: "Motion", title: "GSAP and Lenis, later", detail: "Loaded after hydration, so they never hold up the first paint, and their effects are skipped under reduced motion." },
-      { kicker: "Search", title: "Metadata and JSON-LD", detail: "A Person and WebSite graph on every page, an Article and breadcrumbs per case study, and share cards rendered at build time with next/og." },
     ],
     decisions: [
       { title: "One noise, four uses", detail: "The shader, the pin placement, the trail and the loader's contour map share one simplex noise, so the map you see first is the land you arrive on." },
