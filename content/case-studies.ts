@@ -841,7 +841,7 @@ const portfolio: CaseStudy = {
   ],
   hero: {
     src: `${PORTFOLIO_IMG}/hero.jpg`,
-    alt: "The aun.sh hero: a 3D contour landscape with four project pins, the career trail with four jobs, and the legend card",
+    alt: "The aun.sh hero: a 3D contour landscape with four project pins, small side-project dots, the career trail through five jobs, and the legend card",
     w: 1505,
     h: 812,
     domain: "aun.sh",
@@ -849,10 +849,10 @@ const portfolio: CaseStudy = {
   summary:
     "A portfolio is usually a list. I wanted a place: the projects stand on a 3D landscape, my jobs run across it as a trail, and the loading screen is a survey of the same land drawn from above. No 3D library, no stock art, and it still loads like a page.",
   stats: [
-    { value: "118", unit: "KB", label: "first-load JavaScript on the home page" },
+    { value: "120", unit: "KB", label: "first-load JavaScript on the home page" },
     { value: "0.002", label: "layout shift on a cold load" },
     { value: "0", label: "3D libraries. The terrain is raw WebGL2" },
-    { value: "1", label: "noise function behind the hero, the loader and the pins", accent: true },
+    { value: "1", label: "noise function behind the hero, the loader, the pins and the trail", accent: true },
   ],
   ownership: {
     heading: "What I made",
