@@ -1006,7 +1006,7 @@ const portfolio: CaseStudy = {
       { kicker: "Search", title: "Metadata and JSON-LD", detail: "A Person and WebSite graph on every page, an Article and breadcrumbs per case study, and share cards rendered at build time with next/og." },
     ],
     decisions: [
-      { title: "One noise, three uses", detail: "The shader, the pin placement and the loader's contour map share one simplex noise, so the map you see first is the land you arrive on." },
+      { title: "One noise, four uses", detail: "The shader, the pin placement, the trail and the loader's contour map share one simplex noise, so the map you see first is the land you arrive on." },
       { title: "Keep the GPU cheap", detail: "The canvas pauses offscreen and in background tabs, caps pixel density and draws a lighter mesh on phones." },
       { title: "An image, not markup", detail: "The loader's 142 contour lines ship as one animated SVG file, which keeps them out of the HTML and the hydration payload." },
       { title: "The trail left the shader", detail: "Drawn in WebGL it broke wherever a ridge hid it. Now it's laid out once per resize as a screen-space switchback, each point cast down onto the land, then projected every frame as a plain SVG path, so it stays whole and sharp." },
