@@ -877,7 +877,7 @@ const portfolio: CaseStudy = {
       shots: [
         {
           src: `${PORTFOLIO_IMG}/loader-plotted.jpg`,
-          alt: "The loading screen at the end: a contour map with the dashed career trail through UC Davis, mlpal.ai, Prosperix and 2WheelR, four orange project pins and a counter at 100%",
+          alt: "The loading screen at the end: a contour map with the dashed career trail through UC Davis, mlpal.ai, Prosperix, 2WheelR and Teach for India, four orange project pins and a counter at 100%",
           w: 1505,
           h: 812,
           domain: "aun.sh",
@@ -885,7 +885,7 @@ const portfolio: CaseStudy = {
         },
         {
           src: `${PORTFOLIO_IMG}/loader-draw.jpg`,
-          alt: "The loading screen mid-way: contour lines drawn, the trail partway through the jobs, the counter at 69%",
+          alt: "The loading screen mid-way: contour lines drawn, the trail through its first two jobs, the counter at 54%",
           w: 1505,
           h: 812,
           caption: "Mid-survey. The counter and the status line are CSS only, so they run before the page's JavaScript loads.",
@@ -895,11 +895,11 @@ const portfolio: CaseStudy = {
     {
       kicker: "Hero",
       title: "The work, standing on the land",
-      lead: "Each project is a pin and each job a stop on the trail. Move the pointer and a hill rises under it, its contours turning orange; hover a pin and the land glows under that project.",
+      lead: "Each project is a pin, each side project a small dot, and each job a stop on a trail that switchbacks up the land, newest first. Move the pointer and a hill rises under it, its contours turning orange; hover a pin and the cursor says Go.",
       shots: [
         {
           src: `${PORTFOLIO_IMG}/hero-hill.jpg`,
-          alt: "The hero with an orange-contoured hill raised under the pointer near the reaktr pin, and the survey readout showing coordinates and elevation",
+          alt: "The hero with an orange-contoured hill raised under the pointer between the FRED and reaktr pins, and the survey readout showing coordinates and elevation",
           w: 1505,
           h: 812,
           domain: "aun.sh",
@@ -907,10 +907,10 @@ const portfolio: CaseStudy = {
         },
         {
           src: `${PORTFOLIO_IMG}/hero-pin.jpg`,
-          alt: "Hovering the FRED pin: a preview card with a screenshot, a one-line description and a link to the case study",
+          alt: "Hovering the FRED pin: an orange Go cursor and a preview card with a screenshot, a one-line description and a link to the case study",
           w: 1505,
           h: 812,
-          caption: "Pin cards open beside the pin, toward the middle of the screen.",
+          caption: "Pin cards open beside the pin, toward the middle of the screen, and the cursor turns orange and says Go.",
         },
         {
           src: `${PORTFOLIO_IMG}/work.jpg`,
@@ -952,12 +952,12 @@ const portfolio: CaseStudy = {
   ],
   mobile: {
     title: "Same map at 390 pixels",
-    lead: "The terrain takes the top of the screen and the legend moves below it. Pins pull toward the middle to stay on screen, job labels drop off, and the loader leaves out the outer project pins.",
+    lead: "The terrain takes the top of the screen and the legend moves below it. Pins pull toward the middle to stay on screen, job labels and side-project dots drop off, and the loader leaves out the outer project pins.",
     shots: [
-      { src: `${PORTFOLIO_IMG}/m-loader.jpg`, alt: "Phone loading screen: the contour map cropped to its middle, with the trail, its four jobs and the ResView pin", w: 764, h: 1301, caption: "Loader" },
-      { src: `${PORTFOLIO_IMG}/m-hero.jpg`, alt: "Phone hero: the terrain with four pins on top and the legend card below", w: 764, h: 1301, caption: "Hero" },
+      { src: `${PORTFOLIO_IMG}/m-loader.jpg`, alt: "Phone loading screen: the contour map cropped to its middle, with the trail and its five jobs", w: 764, h: 1301, caption: "Loader" },
+      { src: `${PORTFOLIO_IMG}/m-hero.jpg`, alt: "Phone hero: the terrain with four pins and the trail on top, and the legend card below", w: 764, h: 1301, caption: "Hero" },
       { src: `${PORTFOLIO_IMG}/m-work.jpg`, alt: "Phone work section: the FRED card stacked full width", w: 764, h: 1301, caption: "Work" },
-      { src: `${PORTFOLIO_IMG}/m-menu.jpg`, alt: "Phone menu open with the section links over the hero", w: 764, h: 1301, caption: "Menu" },
+      { src: `${PORTFOLIO_IMG}/m-menu.jpg`, alt: "Phone menu open: Work, the five case studies, Experience, Writing, Contact and Résumé", w: 764, h: 1301, caption: "Menu" },
     ],
   },
   design: {
