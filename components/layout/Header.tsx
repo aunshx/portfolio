@@ -3,8 +3,9 @@
 import { Fragment, useEffect, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useActiveSection } from "@/lib/useActiveSection";
-import { PROFILE, LINKS } from "@/content/profile";
+import { LINKS } from "@/content/profile";
 import { CaseStudyList, CaseStudyMenu } from "./CaseStudyMenu";
+import Brand from "./Brand";
 
 const NAV = [
   { id: "work", label: "Work" },
@@ -32,12 +33,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-bg">
       <span aria-hidden="true" data-progress className="progress" />
       <div className="flex h-14 items-center justify-between gap-6 px-[3vw]">
-        <a
-          href="#top"
-          className="inline-flex min-h-11 items-center text-[0.875rem] font-semibold text-text"
-        >
-          {PROFILE.name}
-        </a>
+        <Brand href="#top" />
 
         <div className="-mr-2 flex items-center gap-2">
           <nav aria-label="Sections" className="hidden md:block">

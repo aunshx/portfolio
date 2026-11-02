@@ -4,6 +4,7 @@ import CaseStudy from "@/components/case-study/CaseStudy";
 import Footer from "@/components/layout/Footer";
 import { CASE_STUDIES, getCaseStudy } from "@/content/case-studies";
 import { SITE } from "@/content/profile";
+import { caseStudyLd, ldJson } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -50,6 +51,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ldJson(caseStudyLd(study)) }} />
       <CaseStudy study={study} />
       <Footer />
     </>

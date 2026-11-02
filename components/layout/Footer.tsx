@@ -43,7 +43,7 @@ export default function Footer() {
           Bay Area, <Clock />
           <br />
           {COLOPHON.credit}
-          <br />© {COLOPHON.year}
+          <br />© {COLOPHON.year} · v{COLOPHON.version}
         </p>
       </div>
     </footer>

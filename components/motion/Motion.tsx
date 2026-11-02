@@ -182,6 +182,7 @@ export default function Motion() {
               const link = t?.closest("a, button");
               cursor.dataset.state = tagged ? "label" : link ? "link" : "dot";
               if (tagged) label.textContent = tagged.dataset.cursor || "View";
+              cursor.dataset.tone = tagged?.dataset.cursorTone ?? "";
             };
             const move = (e: PointerEvent) => {
               px = e.clientX;

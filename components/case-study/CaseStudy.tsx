@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
-import { PROFILE } from "@/content/profile";
+import Brand from "@/components/layout/Brand";
 import type { CaseStudy as Study, Metric } from "@/content/types";
 import { Phone, Shot } from "./Shot";
 import { SPECIMEN_CLASS } from "./specimen-fonts";
@@ -91,12 +91,7 @@ export default function CaseStudy({ study }: { study: Study }) {
       {/* Same header as the home page, so the two read as one site. */}
       <header className="sticky top-0 z-50 border-b border-line bg-bg">
         <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-4 px-5 sm:px-8">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 items-center text-[0.875rem] font-semibold text-text"
-          >
-            {PROFILE.name}
-          </Link>
+          <Brand href="/" />
           <div className="-mr-2 flex items-center gap-1">
             <CaseStudyMenu current={study.slug} />
             <Link

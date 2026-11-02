@@ -5,10 +5,22 @@
  * nothing hides behind a hill.
  */
 export const PLACES: Record<string, { x: number; z: number }> = {
-  FRED: { x: 0.98, z: -0.28 },
+  FRED: { x: 1.12, z: -0.28 },
   reaktr: { x: 2.23, z: -1.5 },
   FRREDSS: { x: -2.02, z: -3.7 },
-  ResView: { x: 1.29, z: -3.72 },
+  ResView: { x: 1.6, z: -3.72 },
+};
+
+/** The side projects' dots, by title: out on the land around the pins and the trail. */
+export const DOT_PLACES: Record<string, { x: number; z: number }> = {
+  VisaVerify: { x: 2.96, z: -5.56 },
+  Switchboard: { x: 4.1, z: -4.14 },
+  Cairn: { x: 2.64, z: -1.13 },
+  Watchtower: { x: 1.45, z: 0.36 },
+  "RAD, replicated": { x: 2.8, z: -0.38 },
+  CipherPrint: { x: -3.48, z: -6.58 },
+  Gotuu: { x: -1.29, z: -5.29 },
+  "whatsapp-react-component": { x: -4.36, z: -5.18 },
 };
 
 /**

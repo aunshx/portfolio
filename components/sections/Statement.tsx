@@ -3,7 +3,7 @@
  * (Motion.tsx). Without the script it is simply there.
  */
 const PARTS: { text: string; serif?: boolean }[] = [
-  { text: "I build applied AI products end to end: the agent, the API, the database, and the pixels people actually touch." },
+  { text: "I build products end to end: the agent, the API, the database, and the pixels people actually touch." },
   { text: "Lately that’s FRED, an AI that answers questions about land and shows its work." },
   { text: "Also, yes, the CSS.", serif: true },
 ];

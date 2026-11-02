@@ -4,7 +4,7 @@ import { toSurvey } from "./places";
 /**
  * The career route: a trail switching back across the land, one stop per
  * job, newest nearest, like a résumé. The loading screen draws it on its
- * survey map; the 3D hero lays it over the terrain, where it runs back from
+ * survey map; the 3D hero draws it over the terrain, where it runs back from
  * the camera through older jobs and fades out toward the horizon.
  *
  * Points are on the land (terrain units, see places.ts), placed so the hero's
@@ -14,33 +14,39 @@ import { toSurvey } from "./places";
 type Pt = [number, number];
 const LEAD_IN: Pt = [-0.75, 0.9];
 /* x, z, and which side the label sits on the map and in the hero. Nearest
-   first; the jobs fill them newest first. */
+   first; the jobs fill them newest first. Solved against the hero's camera at
+   rest so the stops climb the screen evenly, about 90 px apart, in two columns
+   right of the legend; the far land is squashed, so the gaps grow on the ground. */
 const JOBS: [number, number, "l" | "r", "l" | "r"][] = [
-  [-0.59, -0.67, "l", "l"],
-  [-0.01, -1.58, "r", "r"],
-  [-0.59, -2.35, "l", "l"],
-  [-0.07, -3.13, "r", "r"],
+  [-0.32, -0.46, "l", "l"],
+  [0.36, -1.32, "r", "r"],
+  [-0.4, -2.1, "l", "l"],
+  [0.42, -2.52, "r", "r"],
+  [-0.46, -3.42, "l", "l"],
 ];
-const TAIL: Pt = [-0.51, -5.17];
+const TAIL: Pt = [0.1, -6.2];
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-/** "Jul 2021 – Jul 2022" → "2021–22 · 1 yr" */
+/** "Jul 2021 – Jul 2022" → "2021–22" */
 function when(duration: string) {
-  const [a, b] = duration.split("–").map((s) => s.trim().split(" "));
-  const [m1, y1, m2, y2] = [MONTHS.indexOf(a[0]), Number(a[1]), MONTHS.indexOf(b[0]), Number(b[1])];
-  const months = (y2 - y1) * 12 + (m2 - m1) + 1;
-  const span = y1 === y2 ? `${y1}` : `${y1}–${String(y2).slice(2)}`;
-  const length = months < 12 ? `${months} mo` : `${Math.round(months / 12)} yr${months >= 18 ? "s" : ""}`;
-  return `${span} · ${length}`;
+  const [y1, y2] = duration.split("–").map((s) => s.trim().split(" ")[1]);
+  return y1 === y2 ? y1 : `${y1}–${y2.slice(2)}`;
 }
 
-/* One Catmull-Rom curve through every knot, as cubic Bézier segments, so the
-   map and the hero share the exact same trail. */
+/* One smooth curve through every knot, as cubic Bézier segments, so the map
+   and the hero share the exact same trail. Each knot's tangent points from its
+   neighbour behind to its neighbour ahead (as in Catmull-Rom), but the handles
+   are a fixed share of the segment they shape, so a short leg next to a long
+   one can't overshoot: every stop reads as a clean switchback turn. */
 const KNOTS: Pt[] = [LEAD_IN, ...JOBS.map(([x, z]): Pt => [x, z]), TAIL];
+const tangent = (i: number): Pt => {
+  const a = KNOTS[i - 1] ?? KNOTS[i], b = KNOTS[i + 1] ?? KNOTS[i];
+  const l = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1;
+  return [(b[0] - a[0]) / l, (b[1] - a[1]) / l];
+};
 const SEGMENTS = KNOTS.slice(0, -1).map((_, i) => {
-  const [p0, p1, p2, p3] = [KNOTS[i - 1] ?? KNOTS[i], KNOTS[i], KNOTS[i + 1], KNOTS[i + 2] ?? KNOTS[i + 1]];
-  return [p1, [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6], p2] as Pt[];
+  const [p1, p2, t1, t2] = [KNOTS[i], KNOTS[i + 1], tangent(i), tangent(i + 1)];
+  const h = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]) * 0.4;
+  return [p1, [p1[0] + t1[0] * h, p1[1] + t1[1] * h], [p2[0] - t2[0] * h, p2[1] - t2[1] * h], p2] as Pt[];
 });
 
 const bez = ([a, b, c, d]: Pt[], t: number): Pt => {
@@ -77,12 +83,9 @@ const m = (p: Pt) => {
 /** The trail as an SVG path on the survey map. */
 export const ROUTE_D = `M${m(MAP_SEGS[0][0])}` + MAP_SEGS.map(([, c1, c2, p]) => `C${m(c1)} ${m(c2)} ${m(p)}`).join("");
 
-/* The hero: first job to the end of the tail. */
-const heroWalk = walk(SEGMENTS.slice(1));
-
-/** The hero's trail on the land, and where along it (0 to 1) the tail starts fading. */
-export const ROUTE_GROUND = heroWalk.pts.map(([x, z]) => [Math.round(x * 1000) / 1000, Math.round(z * 1000) / 1000] as Pt);
-export const ROUTE_FADE_FROM = heroWalk.ends[JOBS.length - 2] / heroWalk.length;
+/** Where the hero's trail fades out, past the oldest job. The hero lays its
+    own line through the stops (see TerrainField). */
+export const ROUTE_TAIL = TAIL;
 
 /** Each job: where it sits on the land and the map, and how far along each trail. */
 export const STOPS = EXPERIENCE.map((job, i) => {
@@ -90,6 +93,8 @@ export const STOPS = EXPERIENCE.map((job, i) => {
   const map = toSurvey(x, z);
   return {
     name: job.short ?? job.name,
+    /** The title without its qualifier: "Technical Analyst (Founder’s Office)" → "Technical Analyst". */
+    role: job.position.split(/[,(]/)[0].trim(),
     when: when(job.duration),
     x,
     z,
@@ -99,7 +104,5 @@ export const STOPS = EXPERIENCE.map((job, i) => {
     heroSide,
     /** 0 at the start of the map's trail, 1 at the end. */
     at: mapWalk.ends[i] / mapWalk.length,
-    /** The same along the hero's trail, which starts at the first job. */
-    heroAt: i === 0 ? 0 : heroWalk.ends[i - 1] / heroWalk.length,
   };
 });

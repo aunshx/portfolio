@@ -2,10 +2,10 @@ export const PROFILE = {
   name: "Aunsh Bandivadekar",
   shortName: "Aunsh",
   headline: "Full-stack engineer. I ship products end to end.",
-  role: "Full-Stack Engineer",
+  role: "Software Engineer",
   location: "San Francisco Bay Area",
   /** The one line under the name on the landing. */
-  pitch: "Full-stack engineer building applied AI products end to end.",
+  pitch: "Full-stack engineer. I build products end to end.",
   /** The aside under the pitch. */
   quip: "Yes, including the CSS.",
   availability: "Open to full-stack and applied AI roles",
@@ -26,12 +26,13 @@ export const LINKS = {
 
 export const SITE = {
   url: "https://aun.sh",
-  title: "Aunsh Bandivadekar, Full-Stack Engineer",
+  title: "Aunsh Bandivadekar · Software Engineer",
   description:
-    "Full-stack engineer building applied AI products with React, Next.js, TypeScript, FastAPI and PostgreSQL.",
+    "Full-stack engineer in the San Francisco Bay Area, building products end to end with React, Next.js, TypeScript, FastAPI and PostgreSQL.",
 } as const;
 
 export const COLOPHON = {
   credit: "Built in CA, mostly after midnight.",
-  year: "2026",
+  year: "2021–26",
+  version: "7.0.2",
 } as const;

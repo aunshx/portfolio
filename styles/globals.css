@@ -340,6 +340,109 @@ a:focus-visible > .shot {
   transform-origin: left center;
 }
 
+/*
+ * Header brand. The name shows first; with `brand-seen` on <html> (or no
+ * motion) it folds away letter by letter, the logo grows in its place and
+ * the pin drops onto the "a". Hover or focus brings the name back.
+ */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.brand-mark {
+  display: block;
+  width: 0;
+  height: 1.5rem;
+  overflow: visible;
+}
+.brand-pin {
+  transform: translateY(-16px);
+  opacity: 0;
+}
+.brand-name {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.brand-name > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.brand-name i {
+  display: inline-block;
+  font-style: normal;
+}
+
+/* The logo state. */
+:root.brand-seen .brand .brand-mark,
+:root:not(.motion) .brand .brand-mark {
+  width: 1.6rem;
+}
+:root.brand-seen .brand .brand-pin,
+:root:not(.motion) .brand .brand-pin {
+  transform: none;
+  opacity: 1;
+}
+:root.brand-seen .brand .brand-name,
+:root:not(.motion) .brand .brand-name {
+  grid-template-columns: 0fr;
+}
+:root.brand-seen .brand .brand-name i,
+:root:not(.motion) .brand .brand-name i {
+  opacity: 0;
+  transform: translateX(-0.5em);
+}
+
+/* Hover: the name slides back out beside the logo. */
+:root.brand-seen .brand:is(:hover, :focus-visible) .brand-name,
+:root:not(.motion) .brand:is(:hover, :focus-visible) .brand-name {
+  grid-template-columns: 1fr;
+}
+:root.brand-seen .brand:is(:hover, :focus-visible) .brand-name > span,
+:root:not(.motion) .brand:is(:hover, :focus-visible) .brand-name > span {
+  padding-left: 0.5rem;
+}
+:root.brand-seen .brand:is(:hover, :focus-visible) .brand-name i,
+:root:not(.motion) .brand:is(:hover, :focus-visible) .brand-name i {
+  opacity: 1;
+  transform: none;
+}
+
+/* Folding: last letter first, then the logo, then the pin lands. */
+:root.motion .brand-mark {
+  transition: width 0.55s cubic-bezier(0.65, 0, 0.35, 1) 0.2s;
+}
+:root.motion .brand-pin {
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.7, 0.64, 1) 0.7s,
+    opacity 0.15s linear 0.7s;
+}
+:root.motion .brand-name {
+  transition: grid-template-columns 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+}
+:root.motion .brand-name > span {
+  transition: padding-left 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+}
+:root.motion .brand-name i {
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s ease;
+  transition-delay: calc((var(--n) - var(--i)) * 16ms);
+}
+/* Unfolding on hover: quicker, first letter first. */
+:root.motion .brand:is(:hover, :focus-visible) .brand-name,
+:root.motion .brand:is(:hover, :focus-visible) .brand-name > span {
+  transition-duration: 0.4s;
+  transition-delay: 0s;
+}
+:root.motion .brand:is(:hover, :focus-visible) .brand-name i {
+  transition-delay: calc(var(--i) * 10ms);
+}
+
 /* Hover: screenshots lean in, rows fill from the left, arrows nudge. */
 .row-link {
   position: relative;
@@ -463,6 +566,12 @@ a:focus-visible > .shot {
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
 }
+/* The flat contours are the fallback for no WebGL. Once the land is live they
+   go, or they show through where it fades out and cross its lines. */
+.hero:has(.terrain[data-live]) .contours-svg {
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -522,8 +631,39 @@ a:focus-visible > .shot {
   z-index: 0;
 }
 .terrain:not([data-live]) .pins,
+.terrain:not([data-live]) .dots,
+.terrain:not([data-live]) .trail,
 .terrain:not([data-live]) .stops {
   display: none;
+}
+
+/* The career trail: an ink line on a paper casing, like a route on a printed
+   map. The script sets its shape every frame. */
+.trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.trail path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.trail-case {
+  stroke: var(--bg);
+  stroke-width: 6;
+}
+.trail-line {
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.trail-tail {
+  stroke-width: 2;
+  stroke-dasharray: 2 5;
+  transition: opacity 0.6s ease;
 }
 
 /* Jobs on the career trail: quieter than the project pins. */
@@ -542,30 +682,36 @@ a:focus-visible > .shot {
 }
 .stop-mark {
   position: absolute;
-  left: -0.3125rem;
-  top: -0.3125rem;
-  width: 0.625rem;
-  height: 0.625rem;
-  border: 1.5px solid var(--text);
+  left: -0.4375rem;
+  top: -0.4375rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 2px solid var(--text);
+  border-radius: 50%;
   background: var(--bg);
+  box-shadow: 0 0 0 2.5px var(--bg);
   transform: scale(0);
   transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+/* The newest job: a filled waypoint, where the trail starts. */
+.stop[data-stop="0"] .stop-mark {
+  background: var(--text);
+}
 .stop-label {
   position: absolute;
-  left: 0.75rem;
-  top: -0.6rem;
+  left: 1rem;
+  top: -0.55rem;
   display: grid;
   white-space: nowrap;
-  line-height: 1.15;
-  text-shadow: 0 0 2px var(--bg), 0 0 4px var(--bg), 0 0 8px var(--bg);
+  line-height: 1.2;
+  text-shadow: 0 0 2px var(--bg), 0 0 4px var(--bg), 0 0 8px var(--bg), 0 0 12px var(--bg);
   opacity: 0;
   transform: translateX(-0.35rem);
   transition: opacity 0.4s ease 0.05s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
 }
 .stop[data-side="l"] .stop-label {
   left: auto;
-  right: 0.75rem;
+  right: 1rem;
   text-align: right;
   transform: translateX(0.35rem);
 }
@@ -578,12 +724,17 @@ a:focus-visible > .shot {
 }
 .stop-name {
   font-family: var(--font-display);
-  font-variation-settings: "wght" 700, "wdth" 100;
-  font-size: 0.8125rem;
+  font-variation-settings: "wght" 700, "wdth" 105;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+.stop-role {
+  font-size: 0.75rem;
   color: var(--text);
 }
 .stop-when {
   font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
   color: var(--text-muted);
 }
 /* Phones squeeze the land into a narrow band: keep the markers, drop the
@@ -730,6 +881,107 @@ a:focus-visible > .shot {
 }
 @media (pointer: coarse) {
   .pin-card { display: none; }
+}
+
+/* Side projects: small ink dots, named on hover. Quieter than the pins. */
+.dots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+/* Pins sit over the dots. */
+.pins {
+  z-index: 1;
+}
+/* Phones have no hover to name a dot, and little room: pins only. */
+@media (max-width: 640px) {
+  .dots,
+  .legend-dots { display: none; }
+}
+.dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+  will-change: transform;
+}
+.dot-mark {
+  position: absolute;
+  left: -0.28125rem;
+  top: -0.28125rem;
+  width: 0.5625rem;
+  height: 0.5625rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--text) 38%, var(--bg));
+  box-shadow: 0 0 0 2px var(--bg);
+  transition: background-color 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* A bigger target than the dot itself. */
+.dot-mark::after {
+  content: "";
+  position: absolute;
+  inset: -0.6rem;
+  border-radius: 50%;
+}
+.dot-tip {
+  position: absolute;
+  /* Clear of the "Go" cursor sitting on the dot. */
+  left: 2.25rem;
+  top: -0.9rem;
+  display: grid;
+  gap: 0.15rem;
+  width: max-content;
+  max-width: 14rem;
+  padding: 0.45rem 0.65rem 0.5rem;
+  border: 1px solid var(--text);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-0.35rem);
+  transition: opacity 0.2s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dot[data-flip] .dot-tip {
+  left: auto;
+  right: 2.25rem;
+  transform: translateX(0.35rem);
+}
+.dot-name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 700, "wdth" 105;
+  font-size: 0.8125rem;
+}
+.dot-year {
+  font-family: var(--font-sans);
+  font-variation-settings: normal;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.dot-desc {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+.dot:hover,
+.dot:focus-visible {
+  z-index: 5;
+}
+.dot:hover .dot-mark,
+.dot:focus-visible .dot-mark {
+  background: var(--text);
+  transform: scale(1.25);
+}
+.dot:hover .dot-tip,
+.dot:focus-visible .dot-tip {
+  opacity: 1;
+  transform: none;
 }
 
 .legend {
@@ -1409,6 +1661,9 @@ a:focus-visible > .shot {
 .cursor[data-state="hidden"] .cursor-ball { transform: scale(0); }
 .cursor[data-state="link"] .cursor-ball { transform: scale(0.45); opacity: 0.85; }
 .cursor[data-state="label"] .cursor-ball { transform: scale(1); background: var(--text); }
+/* Over the map's pins and dots: a small orange "Go". */
+.cursor[data-state="label"][data-tone="accent"] .cursor-ball { transform: scale(0.6); background: var(--accent); mix-blend-mode: normal; }
+.cursor[data-tone="accent"] .cursor-label { color: var(--text); font-weight: 600; }
 .cursor-label {
   position: absolute;
   left: 0;
