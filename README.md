@@ -111,7 +111,7 @@ GSAP and Lenis load after hydration, so they never hold up the first paint. Redu
 
 A cold load of the home page, loader included, served by `next start` and read from the browser's Performance API.
 
-|   |   |
+| Measure | Result |
 | --- | --- |
 | First-load JavaScript, home page | **120 KB** |
 | JavaScript in total, motion libraries included | 182 KB in 13 files |
@@ -139,7 +139,7 @@ The logo is Archivo's "a" at weight 900 with an orange pin on its shoulder. In t
 
 ## Stack
 
-| | |
+| Layer | Tools |
 | --- | --- |
 | Framework | Next.js 15 (App Router, every page static), React 19, TypeScript |
 | Styling | Tailwind CSS 4 plus hand-written CSS in `styles/globals.css` |
