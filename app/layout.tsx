@@ -3,6 +3,7 @@ import { Archivo, Inter, Instrument_Serif, JetBrains_Mono } from "next/font/goog
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE, PROFILE } from "@/content/profile";
 import { SITE_LD, ldJson } from "@/lib/seo";
+import IntroOnce from "@/components/motion/IntroOnce";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -116,7 +117,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: ldJson(SITE_LD) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <IntroOnce />
+      </body>
       {ANALYTICS && <GoogleAnalytics gaId="G-D8T0VT49PX" />}
     </html>
   );
