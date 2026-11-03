@@ -14,7 +14,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ldJson(PROFILE_PAGE_LD) }} />
       <Preloader />
       <Header />
-      <main id="main" tabIndex={-1} className="outline-none">
+      <main id="main">
         <Hero />
         <Statement />
         <Work />
