@@ -81,13 +81,6 @@ export default function CaseStudy({ study }: { study: Study }) {
 
   return (
     <div className="cs" data-study={study.slug}>
-      <a
-        href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-text focus:px-4 focus:py-2 focus:text-sm focus:text-bg"
-      >
-        Skip to content
-      </a>
-
       {/* Same header as the home page, so the two read as one site. */}
       <header className="sticky top-0 z-50 border-b border-line bg-bg">
         <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-4 px-5 sm:px-8">
