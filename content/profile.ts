@@ -34,5 +34,5 @@ export const SITE = {
 export const COLOPHON = {
   credit: "Built in CA, mostly after midnight.",
   year: "2021–26",
-  version: "7.0.3",
+  version: "7.0.4",
 } as const;
