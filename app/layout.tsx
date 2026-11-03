@@ -3,6 +3,7 @@ import { Archivo, Inter, Instrument_Serif, JetBrains_Mono } from "next/font/goog
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SITE, PROFILE } from "@/content/profile";
 import { SITE_LD, ldJson } from "@/lib/seo";
+import IntroOnce from "@/components/motion/IntroOnce";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -94,11 +95,11 @@ export const viewport: Viewport = {
 
 /**
  * Runs before first paint. `motion` turns on the animated layer; `intro`
- * plays the loading screen once per browser session, and `brand-seen` skips
- * the header's name-to-logo fold once it has played. Reduced motion gets
- * neither.
+ * plays the loading screen once per tab, and only if the tab opens on the
+ * home page; `brand-seen` skips the header's name-to-logo fold once it has
+ * played. Reduced motion gets none of it.
  */
-const MOTION_BOOTSTRAP = `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');if(sessionStorage.getItem('brand'))d.classList.add('brand-seen');if(location.pathname==='/'&&!sessionStorage.getItem('intro')){d.classList.add('intro');sessionStorage.setItem('intro','1');}}catch(e){}})();`;
+const MOTION_BOOTSTRAP = `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');if(sessionStorage.getItem('brand'))d.classList.add('brand-seen');if(!sessionStorage.getItem('intro')){if(location.pathname==='/')d.classList.add('intro');sessionStorage.setItem('intro','1');}}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -116,7 +117,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: ldJson(SITE_LD) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <IntroOnce />
+      </body>
       {ANALYTICS && <GoogleAnalytics gaId="G-D8T0VT49PX" />}
     </html>
   );
