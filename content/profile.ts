@@ -19,8 +19,8 @@ export const LINKS = {
   medium: "https://aunsh.medium.com/",
   email: "mailto:aunsh.spb@gmail.com",
   github: "https://github.com/aunshx",
-  /** Served from the site. Replace public/resume.pdf to update it. */
-  resume: "/resume.pdf",
+  /** On Google Drive, so it can change without a deploy. /resume.pdf redirects here. */
+  resume: "https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5xUn6p-NZDR1vJ/view?usp=sharing",
   license: "https://creativecommons.org/licenses/by-nc/4.0/deed.en",
 } as const;
 
@@ -34,5 +34,5 @@ export const SITE = {
 export const COLOPHON = {
   credit: "Built in CA, mostly after midnight.",
   year: "2021–26",
-  version: "7.0.3",
+  version: "7.0.4",
 } as const;

@@ -1,6 +1,6 @@
 import type { ExperienceItem } from "./types";
 
-/** Titles, dates and summaries match the résumé (public/resume.pdf). */
+/** Titles, dates and summaries match the résumé (LINKS.resume in profile.ts). */
 export const EXPERIENCE: ExperienceItem[] = [
   {
     name: "University of California, Davis",

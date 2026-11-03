@@ -9,7 +9,7 @@
 The projects stand on a 3D landscape, the jobs run across it as a trail,<br>
 and the loading screen is a survey of the same land, drawn from above.
 
-[**Visit aun.sh**](https://aun.sh) · [The case study](https://aun.sh/work/portfolio) · [Résumé](https://aun.sh/resume.pdf)
+[**Visit aun.sh**](https://aun.sh) · [The case study](https://aun.sh/work/portfolio) · [Résumé](https://drive.google.com/file/d/12DklMUKkmv4QJcPMAh5xUn6p-NZDR1vJ/view?usp=sharing)
 
 ![Next.js 15](https://img.shields.io/badge/Next.js-15-111111?style=flat-square&logo=nextdotjs&logoColor=white)
 ![React 19](https://img.shields.io/badge/React-19-111111?style=flat-square&logo=react&logoColor=61DAFB)
@@ -203,7 +203,7 @@ All the content is typed data in `content/`, and the components only read it.
 | A job | `content/experience.ts`, plus a slot in `JOBS` in `content/route.ts` (one per job, newest first) |
 | A side project dot | `content/side-projects.ts`, plus its spot in `DOT_PLACES` in `content/places.ts` |
 | Papers, writing, education, tools | `research.ts`, `writing.ts`, `education.ts` and `skills.ts` in `content/` |
-| The résumé | Replace `public/resume.pdf` |
+| The résumé | `LINKS.resume` in `content/profile.ts` and the `/resume.pdf` redirect in `next.config.mjs` |
 
 Land coordinates are terrain units: `x` runs to the right and `z` runs away from the camera, so more negative is farther. If you move pins or jobs, regenerate the loader's map so it still matches the land. The command is at the top of `scripts/survey-map.mjs`.
 
@@ -223,5 +223,5 @@ Netlify builds `main` with `@netlify/plugin-nextjs`. Analytics load only in prod
 <br>
 
 <div align="center">
-<sub>Built in CA, mostly after midnight. © 2021–26 · v7.0.3</sub>
+<sub>Built in CA, mostly after midnight. © 2021–26 · v7.0.4</sub>
 </div>
