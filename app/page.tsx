@@ -13,12 +13,6 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ldJson(PROFILE_PAGE_LD) }} />
       <Preloader />
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-[100] focus:rounded-full focus:bg-text focus:px-4 focus:py-3 focus:text-sm focus:text-bg"
-      >
-        Skip to content
-      </a>
       <Header />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
