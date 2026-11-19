@@ -4,8 +4,8 @@ import { ROUTE_D, STOPS } from "@/content/route";
 
 const MID = SURVEY.w / 2;
 
-/** Projects, as pins on the land. */
-const PINS = WORK.map((w) => ({ title: w.title, ...toSurvey(PLACES[w.title].x, PLACES[w.title].z) }));
+/** Projects, as pins on the land: the ones with a spot in PLACES. */
+const PINS = WORK.filter((w) => PLACES[w.title]).map((w) => ({ title: w.title, ...toSurvey(PLACES[w.title].x, PLACES[w.title].z) }));
 
 /* The trail draws at an even pace (it starts below the map's edge), and each
    job's stop appears as the trail reaches it. */
