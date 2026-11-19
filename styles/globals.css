@@ -1891,3 +1891,396 @@ a:focus-visible > .shot {
   position: absolute;
   inset: -0.75rem -0.25rem;
 }
+
+/* ------------------------------------------------------------------ */
+/*  Case studies index (/work): a ledger beside a survey sheet          */
+/* ------------------------------------------------------------------ */
+
+.si-head {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  color: rgba(20, 40, 80, 0.16);
+}
+/* The site's contours, kept to the right so the title stays clear. */
+.si-head .contours-svg {
+  inset: 0;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(to left, #000 10%, transparent 72%);
+  mask-image: linear-gradient(to left, #000 10%, transparent 72%);
+}
+.si-head-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 4.5rem 1.25rem 3.5rem;
+  color: var(--text);
+}
+@media (min-width: 640px) {
+  .si-head-inner { padding: 6.5rem 2rem 4.5rem; }
+}
+.si-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.si-h1 {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 800, "wdth" 112;
+  font-size: clamp(3.1rem, 0.8rem + 8.4vw, 9.25rem);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+}
+.si-h1-dot { color: var(--accent); }
+.si-aside {
+  margin: 0.35rem 0 0 0.15em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.75rem, 1rem + 2.4vw, 3.1rem);
+  line-height: 1;
+  color: var(--text-muted);
+}
+.si-intro {
+  max-width: 52ch;
+  margin-top: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.si-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.si-key li { display: flex; gap: 0.6rem; }
+.si-key span { color: var(--accent-ink); }
+
+/* Grid: the ledger, and on wide screens the sheet beside it. */
+.si-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 6rem;
+}
+@media (min-width: 640px) {
+  .si-grid { padding: 1.5rem 2rem 8rem; }
+}
+@media (min-width: 1024px) {
+  .si-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+
+/* A row. Its top rule draws across in the product's ink when it's the one on the sheet. */
+.si-item {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+.si-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.si-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  column-gap: 0.75rem;
+  padding: 2rem 3.5rem 2.25rem 0;
+  color: var(--text);
+}
+@media (min-width: 640px) {
+  .si-row { grid-template-columns: 3.5rem minmax(0, 1fr); padding: 2.5rem 4rem 2.75rem 0; }
+}
+.si-row:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 0.5rem;
+}
+
+/* Phones and tablets: the picture rides with its row. */
+.si-thumb {
+  grid-column: 1 / -1;
+  display: block;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1rem 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--tone-bg);
+}
+.si-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.55rem 0.55rem 0 0;
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.5);
+}
+@media (min-width: 1024px) {
+  .si-thumb { display: none; }
+}
+
+/* The number, with a square trail stop that fills in. */
+.si-num {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: fit-content;
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  transition: color 0.3s ease;
+}
+.si-num::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid currentColor;
+  transition: background-color 0.3s ease;
+}
+
+.si-body {
+  display: grid;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.si-title {
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 720, "wdth" 100;
+  font-size: clamp(2.6rem, 1.4rem + 4vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  transition: font-variation-settings 0.6s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.si-suffix { color: var(--ink); }
+.si-tagline {
+  max-width: 42ch;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.si-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.si-sep { width: 1.25rem; height: 1px; background: var(--line-strong); }
+.si-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.si-chip {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* One number per study, in the product's ink. */
+.si-stat {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line-strong);
+}
+.si-stat-value {
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 760, "wdth" 108;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.si-stat-unit { margin-left: 0.2em; font-size: 0.5em; color: var(--text-faint); }
+.si-stat-label { font-size: 0.875rem; color: var(--text-muted); }
+
+.si-go {
+  position: absolute;
+  top: 2.4rem;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+@media (min-width: 640px) {
+  .si-go { top: 3rem; width: 3rem; height: 3rem; }
+}
+
+/* Hover, focus, or mid-screen on the sheet: the title widens, the stop fills, the rule draws. */
+.si-item[data-active]::before,
+.si-item:hover::before { transform: scaleX(1); }
+.si-item[data-active] .si-num,
+.si-row:hover .si-num { color: var(--ink); }
+.si-item[data-active] .si-num::before,
+.si-row:hover .si-num::before { background: var(--ink); }
+.si-row:hover .si-title,
+.si-row:focus-visible .si-title { font-variation-settings: "wght" 820, "wdth" 118; }
+.si-row:hover .si-go,
+.si-row:focus-visible .si-go {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+  transform: translateX(4px);
+}
+/* On phones there's no sheet, so no row is singled out, and the picture
+   takes the arrow's room: the whole row is the link anyway. */
+@media (max-width: 1023px) {
+  .si-row { padding-right: 0; }
+  .si-go { display: none; }
+  .si-item[data-active]::before { transform: scaleX(0); }
+  .si-item[data-active] .si-num { color: var(--text-faint); }
+  .si-item[data-active] .si-num::before { background: none; }
+}
+
+/* The sheet: a survey grid in the product's own colors, with its screenshot on top. */
+.si-viewer { display: none; }
+@media (min-width: 1024px) {
+  .si-viewer {
+    display: block;
+    position: sticky;
+    top: 5rem;
+    margin-top: 1.5rem;
+  }
+}
+.si-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: clamp(480px, calc(100svh - 7.5rem), 760px);
+  padding: 1.1rem 1.25rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: var(--stage-bg);
+  color: var(--stage-fg);
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
+.si-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--stage-fg) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--stage-fg) 9%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  background-position: -1px -1px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  pointer-events: none;
+}
+/* A crosshair at the middle of the sheet, like a map's centre mark. */
+.si-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  translate: -50% -50%;
+  background:
+    linear-gradient(var(--stage-accent), var(--stage-accent)) center / 1px 100% no-repeat,
+    linear-gradient(var(--stage-accent), var(--stage-accent)) center / 100% 1px no-repeat;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.si-sheet-top,
+.si-sheet-foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stage-muted);
+  transition: color 0.7s ease;
+}
+.si-sheet-name {
+  font-family: var(--font-display);
+  font-variation-settings: "wght" 760, "wdth" 110;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--stage-fg);
+}
+.si-swatches { display: flex; gap: 6px; }
+.si-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--stage-fg) 30%, transparent);
+}
+
+.si-frames {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  margin: 0.75rem 0.5rem;
+}
+.si-frame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--stage-fg) 16%, transparent);
+  border-radius: 0.8rem;
+  background: var(--surface);
+  box-shadow: 0 40px 70px -35px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(calc(-50% + 22px)) scale(0.97);
+  transition: opacity 0.45s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.si-frame[data-on] {
+  opacity: 1;
+  transform: translateY(-50%);
+}
+.si-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .si-item::before,
+  .si-title,
+  .si-go,
+  .si-stage,
+  .si-frame { transition: none; }
+}

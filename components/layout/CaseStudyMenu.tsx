@@ -70,8 +70,13 @@ export function CaseStudyMenu({ current }: { current?: string }) {
             </li>
           ))}
         </ul>
-        <Link href="/#work" onClick={() => setOpen(false)} className="cs-menu-all">
-          All work
+        <Link
+          href="/work"
+          aria-current={current === "index" ? "page" : undefined}
+          onClick={() => setOpen(false)}
+          className="cs-menu-all"
+        >
+          All case studies
         </Link>
       </div>
     </div>
@@ -97,6 +102,16 @@ export function CaseStudyList({ current, onPick }: { current?: string; onPick?: 
             </Link>
           </li>
         ))}
+        <li>
+          <Link
+            href="/work"
+            onClick={onPick}
+            aria-current={current === "index" ? "page" : undefined}
+            className="flex min-h-11 items-center text-base text-text hover:text-accent aria-[current=page]:text-accent"
+          >
+            All case studies
+          </Link>
+        </li>
       </ul>
     </li>
   );

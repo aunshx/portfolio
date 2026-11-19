@@ -154,6 +154,7 @@ The logo is Archivo's "a" at weight 900 with an orange pin on its shoulder. In t
 app/
   layout.tsx            fonts, metadata, the pre-paint motion bootstrap, site JSON-LD
   page.tsx              home: hero, statement, work, fine print
+  work/page.tsx         the case studies index: a ledger beside a sticky sheet in each product's colors
   work/[slug]/          case study pages, generated from content/case-studies.ts
   tldr/                 a short page of links, for people in a hurry
   opengraph-image.tsx   the share card, drawn as a miniature of the hero
@@ -198,7 +199,7 @@ All the content is typed data in `content/`, and the components only read it.
 | To change | Edit |
 | --- | --- |
 | Name, role, pitch, links, footer | `content/profile.ts` |
-| A project on the land | `content/work.ts`, plus its spot in `PLACES` in `content/places.ts` |
+| A project on the land | `content/work.ts`, plus its spot in `PLACES` in `content/places.ts` (no spot, no pin: Scout has a card but sits on the trail as a job) |
 | A case study | `content/case-studies.ts`, with images in `public/images/case-studies/<slug>/` |
 | A job | `content/experience.ts`, plus a slot in `JOBS` in `content/route.ts` (one per job, newest first) |
 | A side project dot | `content/side-projects.ts`, plus its spot in `DOT_PLACES` in `content/places.ts` |
