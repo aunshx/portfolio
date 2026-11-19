@@ -92,7 +92,7 @@ function Card({ item }: { item: WorkItem }) {
 }
 
 /**
- * Four big cards in each project's own colors. On wider screens they stick
+ * Big cards in each project's own colors. On wider screens they stick
  * and stack as you scroll, each one settling back under the next.
  */
 export default function Work() {
