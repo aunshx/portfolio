@@ -1920,15 +1920,7 @@ a:focus-visible > .shot {
 @media (min-width: 640px) {
   .si-head-inner { padding: 6.5rem 2rem 4.5rem; }
 }
-.si-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent-ink);
-}
 .si-h1 {
-  margin-top: 1rem;
   font-family: var(--font-display);
   font-variation-settings: "wght" 800, "wdth" 112;
   font-size: clamp(3.1rem, 0.8rem + 8.4vw, 9.25rem);
@@ -1951,19 +1943,6 @@ a:focus-visible > .shot {
   line-height: 1.6;
   color: var(--text-muted);
 }
-.si-key {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.75rem;
-  margin-top: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-.si-key li { display: flex; gap: 0.6rem; }
-.si-key span { color: var(--accent-ink); }
 
 /* Grid: the ledger, and on wide screens the sheet beside it. */
 .si-grid {

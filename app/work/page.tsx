@@ -57,7 +57,6 @@ const STUDIES: IndexStudy[] = CASE_STUDY_INDEX.map(({ slug }) => {
 });
 
 export default function CaseStudiesPage() {
-  const count = String(STUDIES.length).padStart(2, "0");
   return (
     <div className="si">
       <header className="sticky top-0 z-50 border-b border-line bg-bg">
@@ -80,9 +79,6 @@ export default function CaseStudiesPage() {
         <section className="si-head" aria-labelledby="si-title">
           <Contours />
           <div className="si-head-inner">
-            <p className="si-eyebrow">
-              <span className="tabular">{count}</span> case studies
-            </p>
             <h1 id="si-title" className="si-h1">
               The long versions<span className="si-h1-dot">.</span>
             </h1>
@@ -91,14 +87,6 @@ export default function CaseStudiesPage() {
               Each one covers what I owned, how the thing is put together, the numbers I measured, and what I&rsquo;d
               change next. Pick one, or start at the top.
             </p>
-            <ul className="si-key" aria-label="In every case study">
-              {["What I owned", "How it’s built", "The numbers", "What’s next"].map((k, i) => (
-                <li key={k}>
-                  <span className="tabular">{String(i + 1).padStart(2, "0")}</span>
-                  {k}
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
