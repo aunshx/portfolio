@@ -4,7 +4,7 @@
  */
 const PARTS: { text: string; serif?: boolean }[] = [
   { text: "I build products end to end: the agent, the API, the database, and the pixels people actually touch." },
-  { text: "Lately that’s FRED, an AI that answers questions about land and shows its work." },
+  { text: "Lately that’s Scout, an AI that finds the people you need to talk to, books the calls and writes up what they said." },
   { text: "Also, yes, the CSS.", serif: true },
 ];
 
