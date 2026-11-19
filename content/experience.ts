@@ -3,6 +3,13 @@ import type { ExperienceItem } from "./types";
 /** Titles, dates and summaries match the résumé (LINKS.resume in profile.ts). */
 export const EXPERIENCE: ExperienceItem[] = [
   {
+    name: "Scout",
+    position: "Technical Founder",
+    duration: "Sep 2026 – Present",
+    link: "https://okscout.io",
+    summary: "AI outreach that finds people, books the calls and writes them up.",
+  },
+  {
     name: "University of California, Davis",
     short: "UC Davis",
     position: "Software Developer, Research",

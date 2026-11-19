@@ -23,12 +23,16 @@ const JOBS: [number, number, "l" | "r", "l" | "r"][] = [
   [-0.4, -2.1, "l", "l"],
   [0.42, -2.52, "r", "r"],
   [-0.46, -3.42, "l", "l"],
+  [0.15, -5.2, "r", "r"],
 ];
 const TAIL: Pt = [0.1, -6.2];
 
-/** "Jul 2021 – Jul 2022" → "2021–22" */
+/** "Jul 2021 – Jul 2022" → "2021–22"; "Sep 2026 – Present" → "2026–now" */
 function when(duration: string) {
-  const [y1, y2] = duration.split("–").map((s) => s.trim().split(" ")[1]);
+  const [start, end] = duration.split("–").map((s) => s.trim());
+  const y1 = start.split(" ")[1];
+  if (end === "Present") return `${y1}–now`;
+  const y2 = end.split(" ")[1];
   return y1 === y2 ? y1 : `${y1}–${y2.slice(2)}`;
 }
 
