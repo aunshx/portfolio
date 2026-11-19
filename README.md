@@ -224,5 +224,5 @@ Netlify builds `main` with `@netlify/plugin-nextjs`. Analytics load only in prod
 <br>
 
 <div align="center">
-<sub>Built in CA, mostly after midnight. © 2021–26 · v7.0.4</sub>
+<sub>Built in CA, mostly after midnight. © 2021–26 · v7.1.0</sub>
 </div>
