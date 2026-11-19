@@ -14,7 +14,7 @@ const fred: CaseStudy = {
   domain: "biofred.us",
   link: "https://biofred.us",
   meta: [
-    { label: "Role", value: "Founder. Designed and shipped the first release end to end" },
+    { label: "Role", value: "Co-creator. Designed and shipped the first release end to end" },
     { label: "Frontend", value: "React, TypeScript, Tailwind CSS, Leaflet" },
     { label: "Year", value: "2026. Live at biofred.us, in beta" },
     { label: "Recognition", value: "NSF I-Corps, 2026 cohort" },

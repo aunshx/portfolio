@@ -4,6 +4,7 @@ import { ImageResponse } from "next/og";
 import { PROFILE, SITE } from "@/content/profile";
 import { CONTOURS } from "@/content/contours";
 import { WORK } from "@/content/work";
+import { PLACES } from "@/content/places";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -11,10 +12,11 @@ export const alt = `${PROFILE.name}, ${PROFILE.role}: a contour map with a legen
 
 const PAPER = "#f3f1ec", SURFACE = "#faf9f6", INK = "#111111", MUTED = "#5b5a55", ORANGE = "#ff4f00";
 
-/* Two pins on the land, like the hero's. */
+/* Two pins on the land, like the hero's: the first two projects it pins. */
+const PINNED = WORK.filter((w) => PLACES[w.title]);
 const PINS = [
-  { title: WORK[0].title, year: WORK[0].year, x: 930, y: 250 },
-  { title: WORK[1].title, year: WORK[1].year, x: 1060, y: 470 },
+  { title: PINNED[0].title, year: PINNED[0].year, x: 930, y: 250 },
+  { title: PINNED[1].title, year: PINNED[1].year, x: 1060, y: 470 },
 ];
 
 /**

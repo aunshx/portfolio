@@ -3,6 +3,23 @@ import type { WorkItem } from "./types";
 /** Newest first. Each card takes its colors from the product it shows. */
 export const WORK: WorkItem[] = [
   {
+    id: 5,
+    title: "Scout",
+    description: "AI outreach that finds people, books the calls and writes them up.",
+    metric: { value: "4.5×", label: "the callbacks of cold outreach" },
+    shot: {
+      base: "/images/home/scout-landing",
+      widths: [800, 1500],
+      w: 1500,
+      h: 900,
+      alt: "Scout's landing page: “Your outreach, on autopilot,” above a mission card for 15 calls with restaurant owners: 42 found, 30 emailed, 9 booked, 6 written up.",
+    },
+    link: "https://okscout.io",
+    domain: "okscout.io",
+    year: "2026",
+    tone: { bg: "#f3e3c3", fg: "#0e180b", muted: "#4b5541", accent: "#2e6b47" },
+  },
+  {
     id: 1,
     title: "FRED",
     description: "Agentic AI that answers questions about land, and shows its work.",

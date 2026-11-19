@@ -9,7 +9,8 @@ import { DOT_PLACES, PLACES } from "@/content/places";
 import { SIDE_PROJECTS } from "@/content/side-projects";
 import { ROUTE_TAIL, STOPS } from "@/content/route";
 
-const PINS: TerrainPin[] = WORK.map((w) => ({
+/* Only work with a spot on the land gets a pin. Scout is on the trail as a job instead. */
+const PINS: TerrainPin[] = WORK.filter((w) => PLACES[w.title]).map((w) => ({
   title: w.title,
   year: w.year,
   desc: w.description,

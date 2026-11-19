@@ -7,6 +7,11 @@ export type TldrLink = {
 
 export const TLDR_LINKS: TldrLink[] = [
   {
+    label: "Scout",
+    detail: "AI outreach that books and writes up customer calls",
+    href: "https://okscout.io",
+  },
+  {
     label: "FRED",
     detail: "Spatial agents for forest biomass procurement",
     href: "https://biofred.us",
