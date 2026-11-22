@@ -14,10 +14,9 @@ const HALF = "(max-width: 900px) 100vw, 580px";
 /*  Small pieces                                                       */
 /* ------------------------------------------------------------------ */
 
-function Eyebrow({ n, children }: { n?: number; children: React.ReactNode }) {
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--cs-accent)]">
-      {n !== undefined && <span className="tabular">{String(n).padStart(2, "0")} · </span>}
       {children}
     </p>
   );
@@ -75,8 +74,6 @@ function Section({
 /* ------------------------------------------------------------------ */
 
 export default function CaseStudy({ study }: { study: Study }) {
-  let n = 0;
-  const next = () => ++n;
   const perf = study.performance;
 
   return (
@@ -111,7 +108,7 @@ export default function CaseStudy({ study }: { study: Study }) {
       <main id="content" className="relative z-10">
         {/* Cover */}
         <div className="mx-auto max-w-[1180px] px-5 pb-16 pt-14 sm:px-8 sm:pb-24 sm:pt-20">
-          <Eyebrow>Case study · Frontend</Eyebrow>
+          <Eyebrow>Case study</Eyebrow>
           <h1 className="text-[4.5rem] font-semibold leading-[0.9] tracking-[-0.05em] text-text sm:text-[7.5rem]">
             {study.title}
             {study.titleSuffix && <span className="text-[var(--cs-accent)]">{study.titleSuffix}</span>}
@@ -208,7 +205,7 @@ export default function CaseStudy({ study }: { study: Study }) {
           return (
             <Section key={id} id={id}>
               <Reveal>
-                <Eyebrow n={next()}>{c.kicker ?? (ci === 0 ? "Landing page" : "Product")}</Eyebrow>
+                <Eyebrow>{c.kicker ?? (ci === 0 ? "Landing page" : "Product")}</Eyebrow>
                 <SectionTitle id={id}>{c.title}</SectionTitle>
                 {c.lead && <Lead>{c.lead}</Lead>}
               </Reveal>
@@ -232,7 +229,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         {study.mobile && (
           <Section id="mobile" tint>
             <Reveal>
-              <Eyebrow n={next()}>Mobile</Eyebrow>
+              <Eyebrow>Mobile</Eyebrow>
               <SectionTitle id="mobile">{study.mobile.title}</SectionTitle>
               <Lead>{study.mobile.lead}</Lead>
             </Reveal>
@@ -247,7 +244,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         {/* Design system */}
         <Section id="design">
           <Reveal>
-            <Eyebrow n={next()}>Design system</Eyebrow>
+            <Eyebrow>Design system</Eyebrow>
             <SectionTitle id="design">{study.design.title}</SectionTitle>
           </Reveal>
           <ul className="mt-10 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-7">
@@ -314,7 +311,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         {/* Tech */}
         <Section id="tech" tint>
           <Reveal>
-            <Eyebrow n={next()}>Tech</Eyebrow>
+            <Eyebrow>Tech</Eyebrow>
             <SectionTitle id="tech">{study.tech.title}</SectionTitle>
           </Reveal>
           <ol className="mt-10 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -360,7 +357,7 @@ export default function CaseStudy({ study }: { study: Study }) {
           <Section id="code">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-14">
               <Reveal>
-                <Eyebrow n={next()}>Code</Eyebrow>
+                <Eyebrow>Code</Eyebrow>
                 <SectionTitle id="code">{study.code.title}</SectionTitle>
                 <Lead>{study.code.lead}</Lead>
                 {study.code.note && (
@@ -396,7 +393,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         {perf && (
         <Section id="performance" tint={!!study.code}>
           <Reveal>
-            <Eyebrow n={next()}>Performance</Eyebrow>
+            <Eyebrow>Performance</Eyebrow>
             <SectionTitle id="performance">{perf.title}</SectionTitle>
             <Lead>{perf.lead}</Lead>
           </Reveal>
@@ -434,7 +431,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         {study.optimization && (
           <Section id="optimization" tint={!study.code}>
             <Reveal>
-              <Eyebrow n={next()}>Optimization</Eyebrow>
+              <Eyebrow>Optimization</Eyebrow>
               <SectionTitle id="optimization">{study.optimization.title}</SectionTitle>
               <Lead>{study.optimization.lead}</Lead>
             </Reveal>
@@ -473,7 +470,7 @@ export default function CaseStudy({ study }: { study: Study }) {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.35fr] lg:gap-14">
             <div>
               <Reveal>
-                <Eyebrow n={next()}>Applied AI</Eyebrow>
+                <Eyebrow>Applied AI</Eyebrow>
                 <SectionTitle id="ai">{study.ai.title}</SectionTitle>
               </Reveal>
               <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-muted">
@@ -503,7 +500,7 @@ export default function CaseStudy({ study }: { study: Study }) {
         <Section id="next" tint>
           <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <div>
-              <Eyebrow n={next()}>Next</Eyebrow>
+              <Eyebrow>Next</Eyebrow>
               <SectionTitle id="next">What I&apos;d ship next</SectionTitle>
             </div>
             <ol className="border-t border-line">

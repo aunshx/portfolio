@@ -99,6 +99,8 @@ export type SpecimenFont =
   | "jetbrains"
   | "geist"
   | "geistMono"
+  | "plexSans"
+  | "plexMono"
   /** The platform's own UI font, for products that ship no web fonts. */
   | "system"
   /** This site's faces, already loaded on every page. */

@@ -14,13 +14,14 @@ import { SITE } from "@/content/profile";
 export const metadata: Metadata = {
   title: "Case studies",
   description:
-    "The long versions: what I owned, how each product is put together, the numbers, and what I'd do next. FRED, reaktr, FRREDSS, ResView and this site.",
+    "The long versions: what I owned, how each product is put together, the numbers, and what I'd do next. Scout, FRED, reaktr, FRREDSS, ResView and this site.",
   alternates: { canonical: "/work" },
   openGraph: { type: "website", url: `${SITE.url}/work`, title: "Case studies · Aunsh Bandivadekar" },
 };
 
 /* A shade of each product that reads on this site's paper, for the row marks. */
 const INK: Record<string, string> = {
+  scout: "#2e6b47",
   fred: "#7a5c24",
   reaktr: "#0b6e61",
   frredss: "#2f6b2a",
@@ -43,8 +44,8 @@ const STUDIES: IndexStudy[] = CASE_STUDY_INDEX.map(({ slug }) => {
     title: s.title,
     titleSuffix: s.titleSuffix,
     tagline: s.tagline,
-    // "2023 to 2025. Used in UC Davis courses" → "2023–25"
-    year: meta(s, "Year").replace(/^(\d{4}) to \d{2}(\d{2}).*$/, "$1–$2").replace(/^(\d{4})\..*$/, "$1"),
+    // "2023 to 2025. Used in UC Davis courses" → "2023 to 2025"; "2026. Live at…" → "2026"
+    year: meta(s, "Year").replace(/^(\d{4}(?: to \d{4})?)\..*$/, "$1"),
     // The role's first clause: "Led the frontend from 2024: the rebuild…" → "Led the frontend from 2024"
     role: meta(s, "Role").split(/[.:]/)[0],
     chips: s.tech.chips.slice(0, 4),

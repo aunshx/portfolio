@@ -48,8 +48,6 @@ export default function StudyIndex({ studies }: { studies: IndexStudy[] }) {
     return () => io.disconnect();
   }, []);
 
-  const n = (i: number) => String(i + 1).padStart(2, "0");
-
   return (
     <div className="si-grid">
       <ol ref={list} className="si-list">
@@ -72,8 +70,6 @@ export default function StudyIndex({ studies }: { studies: IndexStudy[] }) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={st.hero.src} alt="" width={st.hero.w} height={st.hero.h} loading="lazy" decoding="async" />
               </span>
-
-              <span className="si-num tabular">{n(i)}</span>
 
               <span className="si-body">
                 <span className="si-title">
@@ -121,11 +117,6 @@ export default function StudyIndex({ studies }: { studies: IndexStudy[] }) {
             ["--stage-accent" as string]: s.tone.accent,
           }}
         >
-          <div className="si-sheet-top">
-            <span>Sheet {n(active)} / {n(studies.length - 1)}</span>
-            <span>{s.hero.domain}</span>
-          </div>
-
           <div className="si-frames">
             {studies.map((st, i) => (
               <figure key={st.slug} className="si-frame" data-on={i === active ? "" : undefined}>

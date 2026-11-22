@@ -21,7 +21,7 @@
   --accent-quiet: rgba(255, 79, 0, 0.12);
   --contour: rgba(20, 40, 80, 0.055);
 
-  /* sequential ramp — density bars */
+  /* sequential ramp: density bars */
   --ramp-1: #dbeafe;
   --ramp-2: #93c5fd;
   --ramp-3: #3b9bff;
@@ -1982,13 +1982,11 @@ a:focus-visible > .shot {
 .si-row {
   position: relative;
   display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr);
-  column-gap: 0.75rem;
   padding: 2rem 3.5rem 2.25rem 0;
   color: var(--text);
 }
 @media (min-width: 640px) {
-  .si-row { grid-template-columns: 3.5rem minmax(0, 1fr); padding: 2.5rem 4rem 2.75rem 0; }
+  .si-row { padding: 2.5rem 4rem 2.75rem 0; }
 }
 .si-row:focus-visible {
   outline: 2px solid var(--accent);
@@ -2015,26 +2013,6 @@ a:focus-visible > .shot {
 }
 @media (min-width: 1024px) {
   .si-thumb { display: none; }
-}
-
-/* The number, with a square trail stop that fills in. */
-.si-num {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  height: fit-content;
-  margin-top: 0.85rem;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-faint);
-  transition: color 0.3s ease;
-}
-.si-num::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border: 1.5px solid currentColor;
-  transition: background-color 0.3s ease;
 }
 
 .si-body {
@@ -2069,7 +2047,7 @@ a:focus-visible > .shot {
   text-transform: uppercase;
   color: var(--text-faint);
 }
-.si-sep { width: 1.25rem; height: 1px; background: var(--line-strong); }
+.si-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--line-strong); }
 .si-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .si-chip {
   padding: 0.2rem 0.6rem;
@@ -2081,7 +2059,6 @@ a:focus-visible > .shot {
 
 /* One number per study, in the product's ink. */
 .si-stat {
-  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -2118,13 +2095,9 @@ a:focus-visible > .shot {
   .si-go { top: 3rem; width: 3rem; height: 3rem; }
 }
 
-/* Hover, focus, or mid-screen on the sheet: the title widens, the stop fills, the rule draws. */
+/* Hover, focus, or mid-screen on the sheet: the title widens and the rule draws. */
 .si-item[data-active]::before,
 .si-item:hover::before { transform: scaleX(1); }
-.si-item[data-active] .si-num,
-.si-row:hover .si-num { color: var(--ink); }
-.si-item[data-active] .si-num::before,
-.si-row:hover .si-num::before { background: var(--ink); }
 .si-row:hover .si-title,
 .si-row:focus-visible .si-title { font-variation-settings: "wght" 820, "wdth" 118; }
 .si-row:hover .si-go,
@@ -2140,8 +2113,6 @@ a:focus-visible > .shot {
   .si-row { padding-right: 0; }
   .si-go { display: none; }
   .si-item[data-active]::before { transform: scaleX(0); }
-  .si-item[data-active] .si-num { color: var(--text-faint); }
-  .si-item[data-active] .si-num::before { background: none; }
 }
 
 /* The sheet: a survey grid in the product's own colors, with its screenshot on top. */
@@ -2194,7 +2165,6 @@ a:focus-visible > .shot {
   opacity: 0.5;
   pointer-events: none;
 }
-.si-sheet-top,
 .si-sheet-foot {
   position: relative;
   z-index: 2;
