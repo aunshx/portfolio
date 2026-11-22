@@ -4,6 +4,7 @@
  * browser bundle. Slugs must match content/case-studies.ts.
  */
 export const CASE_STUDY_INDEX = [
+  { slug: "scout", name: "Scout", blurb: "AI outreach that books and writes up calls" },
   { slug: "fred", name: "FRED", blurb: "Agentic AI for siting bioenergy" },
   { slug: "reaktr", name: "reaktr.cc", blurb: "Cost analytics for cultivated meat" },
   { slug: "frredss", name: "FRREDSS", blurb: "Biomass power planning for California" },

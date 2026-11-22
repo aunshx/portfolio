@@ -1,4 +1,4 @@
-import { DM_Serif_Display, Geist, Geist_Mono, Outfit } from "next/font/google";
+import { DM_Serif_Display, Geist, Geist_Mono, IBM_Plex_Mono, IBM_Plex_Sans, Outfit } from "next/font/google";
 import type { SpecimenFont } from "@/content/types";
 
 /*
@@ -21,6 +21,10 @@ const geist = Geist({ subsets: ["latin"], weight: ["900"], display: "swap", prel
 
 const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["400"], display: "swap", preload: false });
 
+const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["500"], display: "swap", preload: false });
+
+const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400"], display: "swap", preload: false });
+
 /**
  * JetBrains Mono, Archivo, Instrument Serif and Inter are this site's own
  * faces, so they map to the theme; "system" is the platform UI font.
@@ -31,6 +35,8 @@ export const SPECIMEN_CLASS: Record<SpecimenFont, string> = {
   jetbrains: "font-mono",
   geist: geist.className,
   geistMono: geistMono.className,
+  plexSans: plexSans.className,
+  plexMono: plexMono.className,
   system: "specimen-system",
   archivo: "specimen-archivo",
   instrument: "font-serif italic",

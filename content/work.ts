@@ -17,6 +17,7 @@ export const WORK: WorkItem[] = [
     link: "https://okscout.io",
     domain: "okscout.io",
     year: "2026",
+    caseStudy: "scout",
     tone: { bg: "#f3e3c3", fg: "#0e180b", muted: "#4b5541", accent: "#2e6b47" },
   },
   {

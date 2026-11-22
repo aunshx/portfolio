@@ -27,13 +27,13 @@ const JOBS: [number, number, "l" | "r", "l" | "r"][] = [
 ];
 const TAIL: Pt = [0.1, -6.2];
 
-/** "Jul 2021 – Jul 2022" → "2021–22"; "Sep 2026 – Present" → "2026–now" */
+/** "Jul 2021 to Jul 2022" → "2021 to 2022"; "Sep 2026 to Present" → "2026 to now" */
 function when(duration: string) {
-  const [start, end] = duration.split("–").map((s) => s.trim());
+  const [start, end] = duration.split(" to ").map((s) => s.trim());
   const y1 = start.split(" ")[1];
-  if (end === "Present") return `${y1}–now`;
+  if (end === "Present") return `${y1} to now`;
   const y2 = end.split(" ")[1];
-  return y1 === y2 ? y1 : `${y1}–${y2.slice(2)}`;
+  return y1 === y2 ? y1 : `${y1} to ${y2}`;
 }
 
 /* One smooth curve through every knot, as cubic Bézier segments, so the map

@@ -3,6 +3,200 @@ import type { CaseStudy } from "./types";
 const FRED_IMG = "/images/case-studies/fred";
 const REAKTR_IMG = "/images/case-studies/reaktr";
 
+const SCOUT_IMG = "/images/case-studies/scout";
+
+// Live site captures from desktop Chrome at 1505 x 812 and a 382 px phone at
+// 2x. The app shot is the meeting page on seeded demo data: the people and
+// companies in it are made up.
+const scout: CaseStudy = {
+  slug: "scout",
+  title: "Scout",
+  tagline: "AI outreach that finds the people, books the calls and writes them up.",
+  description:
+    "How Scout works: an agent that finds people to interview, emails them from your own inbox, books the calls and turns each one into notes and evidence, with a person approving every step that matters.",
+  domain: "okscout.io",
+  link: "https://okscout.io",
+  meta: [
+    { label: "Role", value: "Technical founder. Designed and built all of it" },
+    { label: "Stack", value: "React, TypeScript, Hono, Cloudflare Workers, D1" },
+    { label: "Year", value: "2026. Live at okscout.io, in early access" },
+    { label: "Origin", value: "Built for our own I-Corps interviews on FRED" },
+  ],
+  hero: {
+    src: `${SCOUT_IMG}/hero.jpg`,
+    alt: "Scout's landing page: the headline Your outreach, on autopilot, above a mission card for 15 calls with restaurant owners showing found, emailed, followed up, booked, held and written up counts",
+    w: 1505,
+    h: 812,
+    domain: "okscout.io",
+  },
+  summary:
+    "Customer discovery means talking to a lot of strangers, and most of the work is everything around the call. Scout takes a goal like 15 calls with restaurant owners by December, finds people who fit, emails them from your inbox, follows up, books the calls and writes up what was said against your hypotheses. You approve the list and the first email. It does the rest.",
+  stats: [
+    { value: "94", unit: "%", label: "of eval cases passed on the cheap model, up from 73%" },
+    { value: "16/16", label: "grounding cases passed, up from 1 of 12" },
+    { value: "1.0", unit: "s", label: "median chat turn on Claude Haiku" },
+    { value: "0", label: "emails sent before a person approves the batch", accent: true },
+  ],
+  ownership: {
+    heading: "What I built",
+    intro: "All of it, from the first commit in October: the product, the agent, the website and the infrastructure.",
+    rows: [
+      { area: "Missions", detail: "The loop that finds, looks up, drafts, sends, follows up and books until the goal is met or the deadline passes." },
+      { area: "Finding people", detail: "Planned web searches, a screen that scores each person out of 100 with reasons, and a source link on every suggestion." },
+      { area: "Email lookup", detail: "A waterfall from the person's own page to Hunter and Apollo, then mailbox checks before anything is sent." },
+      { area: "Outreach", detail: "Sends from the person's own Gmail or Outlook, with sequences, reply handling and its own booking pages." },
+      { area: "Meetings", detail: "Recording from Meet, Zoom, Fathom, Fireflies or a Chrome extension, transcription, then notes and evidence for each hypothesis." },
+      { area: "MCP server", detail: "Scout's data and tools inside Claude and ChatGPT, read and suggest only, on the same daily budget as the app." },
+      { area: "Design", detail: "The Open air look for the app and the weather-toned website, both tested for contrast in light and dark." },
+      { area: "Evals", detail: "Routing, drafting, screening and grounding suites, judged by a stronger model, run before any prompt or model change ships." },
+    ],
+  },
+  chapters: [
+    {
+      title: "A landing page that walks through one real week",
+      lead: "No feature grid. The page follows one mission from the goal to the write-up, so a visitor sees what Scout makes at each step.",
+      shots: [
+        {
+          src: `${SCOUT_IMG}/artifacts.jpg`,
+          alt: "Everything it makes along the way: a row of cards for a found person, a checked work email, an email sent from your inbox and a follow-up schedule",
+          w: 1505,
+          h: 812,
+          caption: "Everything it makes along the way. Each card is a thing you can use: a vetted name, a checked address, a sent email, a booked call.",
+        },
+        {
+          src: `${SCOUT_IMG}/timeline.jpg`,
+          alt: "You do four things. Scout does the rest: a week-long timeline with your steps in ochre and Scout's in green, including approving the first email",
+          w: 1505,
+          h: 812,
+          caption: "The week as a timeline. Your four steps and Scout's steps are told apart by color, and the cards fill in as you scroll.",
+        },
+        {
+          src: `${SCOUT_IMG}/use-cases.jpg`,
+          alt: "Whatever you need from people: tabs for customers, a job, a co-founder, investors and experts, showing a goal to get referred to climate startups in Denver with three scored people",
+          w: 1505,
+          h: 812,
+          caption: "One autopilot, five goals. The same loop finds customers, referrals, a co-founder, investors or experts.",
+        },
+      ],
+    },
+    {
+      kicker: "Product",
+      title: "From a call to evidence you can check",
+      lead: "After a call, Scout drafts structured notes beside the transcript. Nothing counts until a person accepts it.",
+      shots: [
+        {
+          src: `${SCOUT_IMG}/app-meeting.jpg`,
+          alt: "The Scout meeting page: notes on past behavior, pains in their own words, workaround, spend, commitments and next step beside a searchable transcript, with the project sidebar on the left",
+          w: 1550,
+          h: 1200,
+          domain: "app.okscout.io",
+          caption: "Meeting page, on demo data. Notes sit beside the transcript, any passage can be added as evidence, and consent to record is logged with who noted it.",
+        },
+        {
+          src: `${SCOUT_IMG}/trust.jpg`,
+          alt: "On autopilot, never out of your hands: four promises on a dark green panel, nothing goes out without you, consent comes first, not used for training, and your inbox, your limits",
+          w: 1505,
+          h: 812,
+          caption: "The rules, stated plainly. Each one is enforced in code, not just written on the page.",
+        },
+        {
+          src: `${SCOUT_IMG}/pricing.jpg`,
+          alt: "Pricing: free for teams during early access, and a let's talk card for programs that run cohorts",
+          w: 1505,
+          h: 812,
+          caption: "Free for teams during early access. Programs like I-Corps pay per cohort.",
+        },
+      ],
+    },
+  ],
+  mobile: {
+    title: "The same week at 382 pixels",
+    lead: "The hero puts the promise first and the mission card below. The timeline drops to one column with the rail on the left, and the feature tabs scroll sideways.",
+    shots: [
+      { src: `${SCOUT_IMG}/m-hero.jpg`, alt: "Mobile landing hero: headline, the short description, the early access button and the top of the mission card", w: 764, h: 1568, caption: "Hero" },
+      { src: `${SCOUT_IMG}/m-timeline.jpg`, alt: "Mobile timeline: set the goal, then Scout finds 42 people who fit, with a scored person card", w: 764, h: 1568, caption: "Timeline" },
+      { src: `${SCOUT_IMG}/m-quote.jpg`, alt: "Mobile: a quote card tagged as supporting a hypothesis, then the heading Whatever you need from people", w: 764, h: 1568, caption: "Use cases" },
+      { src: `${SCOUT_IMG}/m-trust.jpg`, alt: "Mobile: On autopilot, never out of your hands, with the promises in one column", w: 764, h: 1568, caption: "Promises" },
+      { src: `${SCOUT_IMG}/m-pricing.jpg`, alt: "Mobile pricing: the free plan's list and button, then the programs card", w: 764, h: 1568, caption: "Pricing" },
+    ],
+  },
+  design: {
+    title: "Open air, weather tints and one green",
+    swatches: [
+      { name: "Ground", hex: "#EEF0EB" },
+      { name: "Panel", hex: "#FFFFFF" },
+      { name: "Ink", hex: "#151714", onDark: true },
+      { name: "Scout green", hex: "#1B6B45", onDark: true },
+      { name: "Sun", hex: "#F3CF93" },
+      { name: "Sage", hex: "#C7DBBF" },
+      { name: "Dusk", hex: "#EAB89E" },
+    ],
+    fonts: [
+      { family: "plexSans", name: "IBM Plex Sans", role: "Interface, headings in the app", sample: "15 calls with restaurant owners" },
+      { family: "instrument", name: "Instrument Serif", role: "The wordmark and the website's headlines", sample: "Your outreach, on autopilot" },
+      { family: "plexMono", name: "IBM Plex Mono", role: "Counts, email addresses and timestamps", sample: "42 found · 9 booked" },
+    ],
+    code: {
+      label: "One file of tokens, both themes",
+      source: `// src/ui/palette.ts: the single source of truth
+{ name: 'ground', light: '#eef0eb', dark: '#0b0f0c' },
+{ name: 'accent', light: '#1b6b45', dark: '#7fc9a0' },
+
+/* written into styles.css at build time */
+--color-ground: light-dark(#eef0eb, #0b0f0c);`,
+    },
+    notes: [
+      "The app is a soft gray-green ground with white panels floating on it. Scout green marks what's current and what's next, and nothing else.",
+      "Every color lives in one TypeScript file. The build writes it into the CSS, and a test checks contrast for both themes.",
+      "Tailwind's default colors, fonts, radii and shadows are switched off, so nothing off the palette can slip in.",
+      "Motion is calm: things rise, lift and slide, and nothing moves under reduced motion.",
+    ],
+  },
+  tech: {
+    title: "How it's put together",
+    steps: [
+      { kicker: "Browser", title: "React app and a plain site", detail: "React, TanStack Query and Tailwind for the app. The website is plain HTML, CSS and TypeScript." },
+      { kicker: "Edge", title: "One Cloudflare Worker", detail: "Serves the site, the app, the API on Hono, inbound email and the MCP server." },
+      { kicker: "Jobs", title: "Queues and a cron", detail: "Missions tick every few minutes. Long work runs as queue jobs that are safe to retry." },
+      { kicker: "Data", title: "D1 and R2", detail: "SQLite through Drizzle, one tenant per org, recordings in R2 until they're transcribed." },
+    ],
+    decisions: [
+      { title: "People stay in charge", detail: "Anything the AI changes stays a suggestion until someone accepts it. No email goes out before the batch review." },
+      { title: "No invented people", detail: "Every suggestion cites a real search result, and every chip or number Scout offers comes from the project's own data." },
+      { title: "A guard on every draft", detail: "Dashes, exclamation marks and emojis are scrubbed. Drafts that claim research or a track record the sender never gave are refused." },
+      { title: "Sends from your inbox", detail: "Gmail or Outlook, at 20 a day per person with a gap between sends, so replies land in the thread you already use." },
+      { title: "A cheap model first", detail: "Workers AI handles most calls, Claude takes over when there's a key, and every paid call is metered and budgeted per day." },
+    ],
+    chips: ["React", "TypeScript", "Tailwind CSS", "Hono", "Cloudflare Workers", "D1", "Drizzle", "Queues", "R2", "Better Auth", "Workers AI", "Claude", "MCP"],
+  },
+  ai: {
+    title: "An agent you can leave running",
+    paragraphs: [
+      "A mission is a loop. Each tick it reconciles replies, bookings and bounces, finds more people if the pool runs low, drafts first emails, and opens one batch for review. Approved emails go out about one every five minutes, with follow-ups at four and seven days.",
+      "Replies are sorted by a cheap model. A clear yes gets the booking link, a no stops the follow-ups, an out-of-office waits, and anything else becomes a card with a drafted answer.",
+      "Every change to a prompt or model runs against the evals first. Adding checks on the cheap model's output took it from 73% to 94% of cases, and grounding the chat in the project's own data took it from 1 of 12 cases to 16 of 16.",
+    ],
+    stats: [
+      { value: "4.77", label: "judged score for chat on Haiku, out of 5" },
+      { value: "14×", label: "cheaper than Sonnet for nearly the same score" },
+    ],
+    shot: {
+      src: `${SCOUT_IMG}/hypotheses.jpg`,
+      alt: "Every call adds up to an answer: a chart of hypotheses over eight weeks, one crossing the pass mark as supported, with a quote from a call",
+      w: 1505,
+      h: 812,
+      caption: "Hypotheses over a mission. Each call counts once, for or against, and a person agrees or overrules the verdict.",
+    },
+  },
+  next: [
+    "Measure hours saved per team per week, the number the product was built to move.",
+    "Standing searches that keep finding people for a project between missions.",
+    "A public demo so visitors can try a mission without signing up.",
+    "Open the evals' baseline on the docs, next to the rules they enforce.",
+  ],
+  nextStudy: { slug: "fred", title: "FRED" },
+};
+
 // Desktop captures are 1505 x 812 (FRED) and 1456 x 825 (reaktr); phones are
 // 390 px viewports captured at 2x.
 const fred: CaseStudy = {
@@ -1044,10 +1238,10 @@ const portfolio: CaseStudy = {
     "Pin cards on touch screens, which only get the labels today.",
     "Lighthouse in CI with budgets, so the 3D hero can't quietly get heavier.",
   ],
-  nextStudy: { slug: "fred", title: "FRED" },
+  nextStudy: { slug: "scout", title: "Scout" },
 };
 
-export const CASE_STUDIES: CaseStudy[] = [fred, reaktr, frredss, resview, portfolio];
+export const CASE_STUDIES: CaseStudy[] = [scout, fred, reaktr, frredss, resview, portfolio];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return CASE_STUDIES.find((c) => c.slug === slug);
